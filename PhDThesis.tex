@@ -64,8 +64,8 @@
 %------------------------------------------------------------------------------
 % The following definitions are used to produce the title pages
 % needed at various stages
-\newcommand{\thesistitle}{Title of the Thesis}
-\newcommand*{\thesisauthor}{Author's name}
+\newcommand{\thesistitle}{Performance optimisation and evaluation studies for the CLIC vertex detector}
+\newcommand*{\thesisauthor}{Niloufar Alipour Tehrani}
 \newcommand*{\thesistown}{Place of birth}
 \renewcommand*{\InstituteName}{\PI}
 \renewcommand*{\inInstitute}{\inPI}
@@ -102,8 +102,10 @@
 % Note that \includeonly can be quite picky! Do not forget to put a
 % comma after the filename, otherwise it will simply be ignored!
 \includeonly{%
-  Introduction,
+  planning,
   Silicon,
+  appendix_TODO,
+  refs,
 }
 
 %------------------------------------------------------------------------------
@@ -192,12 +194,12 @@
 
 %------------------------------------------------------------------------------
 % Add your chapters here - don't forget to also add them to \includeonly above
-\input{include/Introduction}
+\input{include/planning}
 \input{include/Silicon}
 % Uncomment the following command to get references per chapter.
 % Put it inside the file or change \include to \input if you do not want the references
 % on a separate page
-% \printbibliography[heading=subbibliography]
+%\printbibliography[heading=subbibliography]
 
 %------------------------------------------------------------------------------
 % Use biblatex for the bibliography
@@ -218,9 +220,9 @@
 
 %------------------------------------------------------------------------------
 \appendix
-% \part*{Appendix}
+\part*{Appendix}
 % Add your appendices here - don't forget to also add them to \includeonly above
-\include{thesis_appendix}
+\include{include/appendix_TODO}
 \printbibliography[heading=subbibliography]
 
 %------------------------------------------------------------------------------

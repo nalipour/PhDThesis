@@ -7,7 +7,7 @@
 \subsection{Band structure}
 Due to periodic lattice of crystalline structure of semiconductor material, electrons within the solid have allowed energy bands. The energy of the electrons is confined to one of the energy bands. The bands may be separated by ranges of forbidden energies.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \begin{tikzpicture}
     \begin{scope} % Valence and conduction bands
@@ -244,6 +244,93 @@ And the diffusion sigma is given by,
   \; ,
   \label{eq:driftTimeIntegrated}
 \end{equation}
+
+
+\section{Spatial resolution}
+
+The spatial resolution of a pixel detector is mainly determined by the pixel
+pitch. But this can be improved by the readout choice (binary or
+analog), the threshold value, the charge sharing, thickness of the
+detector and the reconstruction algorithm. The effect of the readout
+is studied in the sections here-below.
+
+\subsection{Binary readout}
+For a binary readout, for a pixel centered at 0 and having a pitch
+$p$, where only one pixel is fired per particle track the probability
+density function $D\left(x\right)$ is illustrated in
+Figure~\ref{fig:SpatResBinary}.
+The average difference between the real position ($x_r$) and the measured
+position ($x_m=0$) of the particle in a pixel is given
+by~\cite{Rossi:976471}:
+
+\subsection{Binary readout and charge sharing}
+
+\begin{equation}
+\sigma_{position}^2={{\int_{-p/2}^{p/2} \left(x_r-x_m\right)^2
+    D\left(x_r\right) dx_r } \over { \int_{-p/2}^{p/2}
+    D\left(x_r\right) dx_r }}={p^2 \over 12} \; ,
+\label{eq:spatialResBinary}
+\end{equation}
+which results in a spatial resolution of 
+
+\begin{equation}
+\sigma_{position}={p \over \sqrt{12}} \;.
+\label{eq:sigmapos}
+\end{equation}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
+      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+      \draw[-] (-1.5, 1) -- (-1.5, 0) node[below]{${-p \over 2}$};
+      \draw[-] (-1.5, 1) -- (1.5, 1);
+      \draw[-] (1.5, 1) -- (1.5, 0) node[below]{${p \over 2}$};
+      \node[] at (0.2, 1.2) {1};
+    \end{tikzpicture}
+    \caption{}\label{fig:SpatResBinary}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
+      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+      \draw[-] (-0.7, 1) -- (-0.7, 0) node[below]{\tiny ${{-(p-s)}\over 2}$};
+      \draw[-] (-0.7, 1) -- (0.7, 1);
+      \draw[-] (0.7, 1) -- (0.7, 0) node[below]{\tiny ${(p-s)\over 2}$};
+      \node[] at (0.2, 1.2) {1};
+      \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
+      \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
+    \end{tikzpicture}
+    \caption{}\label{fig:SpatResBinaryChargeSharing}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
+      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+      \draw (-1.5,0) to[out=0, in=-120] (-0.9,0.2) to[out=60, in=180](-0.3, 1)--(0,1);
+      % \draw (1.5,0) to[out=0, in=-60] (0.9,0.2) to[out=120, in=120](0.3, 1) --(0,1);
+      \draw (0,1)--(0.3, 1) to [out=-20, in=120] (0.9,0.2) to[out=-60,
+      in=0] (1.5,0);
+
+      \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
+      \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
+      \node[] at (0.2, 1.2) {1};
+    \end{tikzpicture}
+    \caption{}\label{fig:SpatResAnaglogChargeSharing}
+  \end{subfigure}
+  \caption{(a) Binary readout. (b) Binary readout with charge
+    sharing. (c) Analog readout with charge sharing.}\label{fig:SpatialResolution}
+\end{figure}
+
+
+
 
 %% --------------------------------------------------- %%
 % Carriers move in random direction due to the thermal energy. \\
