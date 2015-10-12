@@ -1,11 +1,14 @@
-%==============================================================================    
+% ==============================================================================
 \chapter{Silicon theory}
 \label{sec:SiliconTheory}
 %==============================================================================    
 \section{Properties of semiconductor material}
 
 \subsection{Band structure}
-Due to periodic lattice of crystalline structure of semiconductor material, electrons within the solid have allowed energy bands. The energy of the electrons is confined to one of the energy bands. The bands may be separated by ranges of forbidden energies.
+Due to periodic lattice of crystalline structure of semiconductor
+material, electrons within the solid have allowed energy bands. The
+energy of the electrons is confined to one of the energy bands. The
+bands may be separated by ranges of forbidden energies.
 
 \begin{figure}[htbp]
   \centering
@@ -254,30 +257,6 @@ analog), the threshold value, the charge sharing, thickness of the
 detector and the reconstruction algorithm. The effect of the readout
 is studied in the sections here-below.
 
-\subsection{Binary readout}
-For a binary readout, for a pixel centered at 0 and having a pitch
-$p$, where only one pixel is fired per particle track the probability
-density function $D\left(x\right)$ is illustrated in
-Figure~\ref{fig:SpatResBinary}.
-The average difference between the real position ($x_r$) and the measured
-position ($x_m=0$) of the particle in a pixel is given
-by~\cite{Rossi:976471}:
-
-\subsection{Binary readout and charge sharing}
-
-\begin{equation}
-\sigma_{position}^2={{\int_{-p/2}^{p/2} \left(x_r-x_m\right)^2
-    D\left(x_r\right) dx_r } \over { \int_{-p/2}^{p/2}
-    D\left(x_r\right) dx_r }}={p^2 \over 12} \; ,
-\label{eq:spatialResBinary}
-\end{equation}
-which results in a spatial resolution of 
-
-\begin{equation}
-\sigma_{position}={p \over \sqrt{12}} \;.
-\label{eq:sigmapos}
-\end{equation}
-
 \begin{figure}[htbp]
   \centering
   \begin{subfigure}[b]{0.3\textwidth}
@@ -315,12 +294,15 @@ which results in a spatial resolution of
       \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
       
       \draw (-1.5,0) to[out=0, in=-120] (-0.9,0.2) to[out=60, in=180](-0.3, 1)--(0,1);
-      % \draw (1.5,0) to[out=0, in=-60] (0.9,0.2) to[out=120, in=120](0.3, 1) --(0,1);
       \draw (0,1)--(0.3, 1) to [out=-20, in=120] (0.9,0.2) to[out=-60,
       in=0] (1.5,0);
 
       \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
       \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
+
+      \draw[-] (-0.5, 0.1) -- (-0.5, 0) node[below] {\tiny ${-(p-s) \over 2}$};
+      \draw[-] (0.5, 0.1) -- (0.5, 0) node[below] {\tiny ${(p-s) \over 2}$};
+
       \node[] at (0.2, 1.2) {1};
     \end{tikzpicture}
     \caption{}\label{fig:SpatResAnaglogChargeSharing}
@@ -329,7 +311,79 @@ which results in a spatial resolution of
     sharing. (c) Analog readout with charge sharing.}\label{fig:SpatialResolution}
 \end{figure}
 
+The spatial resolution is defined by:
+\begin{equation}
+\sigma_{position}^2={{\int_{-p/2}^{p/2} \left(x_r-x_m\right)^2
+    D\left(x_r\right) dx_r } \over { \int_{-p/2}^{p/2}
+    D\left(x_r\right) dx_r }}\; ,
+\label{eq:spatialRes}
+\end{equation}
 
+where $\sigma_{position}$ is the average distance between the real
+impact position ($x_r$) and the measured position ($x_m$) of the
+particle in a pixel.
+
+\subsection{Binary readout}
+For a binary readout, for a pixel centered at 0 and having a pitch
+$p$, where only one pixel is fired per particle track the probability
+density function $D\left(x\right)$ is illustrated in
+Figure~\ref{fig:SpatResBinary}.  The average difference between the
+real position ($x_r$) and the measured position ($x_m=0$) of the
+particle in a pixel is calculated using Equation~\ref{eq:spatialRes}
+\cite{Rossi:976471}:
+\begin{equation}
+\sigma_{position}^2={{\int_{-p/2}^{p/2} \left(x_r\right)^2
+    1 dx_r } \over { \int_{-p/2}^{p/2}
+    1 dx_r }}={p^2 \over 12} \; ,
+\label{eq:spatialResBinary}
+\end{equation}
+which results in a spatial resolution of:
+\begin{equation}
+\sigma_{position}={p \over \sqrt{12}} \;.
+\label{eq:sigmapos}
+\end{equation}
+
+
+\subsection{Binary readout and charge sharing}
+The threshold of the readout electronics is usually set as low as
+possible which can result in more than one pixel hit per particle
+track. In this case, the charge is shared between two or more pixels
+and this group is called a cluster. Multi-hit clusters improves the
+resolution of
+Equation~\ref{eq:spatialResBinary}. Figure~\ref{fig:SpatResBinaryChargeSharing}
+illustrates the charge sharing between two pixels. If a track passes
+close to the edge of a pixel (within a distance of $s\over 2$ close to
+the edge), then the neighbouring pixel is also fired. For events
+triggering single-hit events, the spatial resolution is given by:
+
+\begin{equation}
+\sigma_{position}^2={{\int_{-(p/2-s/2)}^{(p/2-s/2)} \left(x_r\right)^2
+    1 dx_r } \over { \int_{-(p/2-s/2)}^{(p/2-s/2)}
+    1 dx_r }}={(p-s)^2 \over 12} \; ,
+\label{eq:spatialResCharge sharing_1hit}
+\end{equation}
+
+and for two-hit clusters, the spatial resolution is given by
+\begin{equation}
+\sigma_{position}={s \over \sqrt{12}} \; .
+\label{eq:spatialResCharge sharing_2hit}
+\end{equation}
+
+The optimal average spatial resolution is obtained for $s=p/2$. This
+means that the number of single-hit and multi-hit clusters is the
+same. But, in this situation one is not able to distinguish between
+one track triggering two pixels and two tracks hitting the sensor
+within $2p$.
+
+\subsection{Analog readout and charge sharing}
+The spatial resolution can be improved more when an analog readout is
+used that delivers a signal proportional to the collected charge as
+illustrated in Figure~\ref{fig:SpatResAnaglogChargeSharing}. In this
+case, for multi-hit clusters $\eta$-function as described
+in~\cite{Belau:1983eh} is used to reconstruct the hit position within
+the pixels. 
+In the region where only one pixel fires, the resolution is still
+limited to $(p-s)\over \sqrt{12}$.
 
 
 %% --------------------------------------------------- %%
