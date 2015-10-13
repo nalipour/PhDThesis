@@ -385,7 +385,31 @@ the pixels.
 In the region where only one pixel fires, the resolution is still
 limited to $(p-s)\over \sqrt{12}$.
 
+The charge carriers follow the field lines to end-up on a certain
+electrode. They are also subject to thermal diffusion which spreads
+the charge cloud as it drifts through the silicon. The width of the
+diffusion $\sigma_{diffusion}(z)$ (for simplicity called $\sigma(z)$) at depth $z$ is given by
+Equation~\ref{eq:driftTimeIntegrated}.
+The charge distribution at position $x_{hit}$ for a pixel extending from
+$x_1$ to $x_2$ is:
+\begin{equation}
+Q(x_{hit}, z)= Q(z) {1\over{\sqrt{2 \pi \sigma^2(z)}}}
+{\int_{x_1}^{x_2} e^{-({{x-x_{hit}}\over{\sqrt{2} \sigma(z)}})^2} } dx\; .
+\label{eq:ChargeDistribution}
+\end{equation}
 
+By integrating Equation~\ref{eq:ChargeDistribution} over the whole
+thickness of the detector, the charge deposited in a pixel at
+coordinate $x_{hit}$ having coordinates $x_1$ and $x_2$ is given by:  
+\begin{equation}
+Q(x_{hit})= \int_{x_1}^{x_2}  \int_{0}^{d} {Q(z) \over {\sqrt{2 \pi
+      \sigma^2(z)}} } e^{-({{x-x_{hit}}\over{\sqrt{2} \sigma(z)}})^2}
+  dz \; dx\; .
+\label{eq:ChargeDistribution_integrated_z}
+\end{equation}
+
+
+\section{Ramo's theorem: induced charge}
 %% --------------------------------------------------- %%
 % Carriers move in random direction due to the thermal energy. \\
 % Material-dependent diffusion constant given by the Einstein equation:  
