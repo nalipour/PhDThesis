@@ -47,7 +47,7 @@ bands may be separated by ranges of forbidden energies.
 Figure~\ref{fig:basicDetectorFunction}, schematically summarises the sequence of basic detector functions.
 
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/basicDetectorFunction.png}
   \caption{The sequence of basic detector functions. From~\cite{Spieler2005}.}
@@ -410,6 +410,108 @@ Q(x_{hit})= \int_{x_1}^{x_2}  \int_{0}^{d} {Q(z) \over {\sqrt{2 \pi
 
 
 \section{Ramo's theorem: induced charge}
+When a charge moves in the sensitive volume of a detector, a current
+$i_s(t)$ flows instantaneously. \\ 
+First, consider the simple example of a charge $q$ near an infinitely
+large electrode with all the electric field lines terminating on the
+electrode. The Gauss's law, for a surface $S$ surrounding the charge
+is expressed as
+
+\begin{equation}
+\oint_{s} \vec{E} \cdot d\vec{a}=q\; .
+\label{eq:GaussLaw}
+\end{equation}
+
+The induced charge obtained by integrating over a Gaussian surface
+enclosing only the electrode is $-q$. \\
+Considering two parallel electrodes with a charge $q$ in between as
+showin in Figure~\ref{fig:InducedCharge_parallelPlates}. If the charge
+is placed midway between the two parallel plates, it induces equal
+charge of $-q/2$ on the both electrodes as half of the electric field
+lines end up on the higher and the other half on the lower
+electrode. When the charge moves towards the closer to a plate rather
+than the other, the induced charge will be higher for the closer
+plate. \\
+The induced charge can not be observed directly but its change can be
+measured when the two electrodes are connected in a closed circuit
+(like a pixel detector) as it produces an induced current.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{figures/Ramo/InducedCharge_parallelPlates.png}
+  \caption{The charge induced on two parallel plates depending on the
+    position of the charge $q$. From~\cite{Spieler2005}.}
+  \label{fig:InducedCharge_parallelPlates}
+\end{figure}
+
+Ramo's theorem describes the time evolution of the induced current
+created in a detector. The induced current on the electrodes is
+described as a function of the weighting potential $\Phi$ which
+describes the coupling of a charge to an electrode. \\
+The weighting potential is defined for a specific electrode. It is
+obtained by setting the potential of the electrode to 1 and setting
+all other electrodes to potential 0. Equation~\ref{eq:RamoCharge}
+describes the induced charge $Q_k$ on electrode $k$ if a charge q moves along
+any path from position $z_0$ to $z_p$.
+\begin{equation}
+    Q_{k}=q \cdot [\Phi_k(z_p)-\Phi_k(z_0)] \; .
+   \label{eq:RamoCharge} 
+  \end{equation}
+
+ It is important to note that the weighting potential (field) is
+ different than the electric potential (field). The electric field
+ determines the drift trajectory and velocity of the charge carriers
+ whereas the weighting field depends only on the geometry of the
+ electrodes and defines how the charge motion induces a charge to a
+ specific electrode. In the specific case of two-electrode configuration the
+ electric and the weighting fields are the same. \\
+In a TCAD simulation, the weighting field and potential are obtained
+as shown in Figure~\ref{fig:RamoTCAD}. For this study the silicon
+sensor has a thickness of 200~\micron and is over-depleted with a bias
+voltage of \SI{50}{\volt} on the back-side. First, \SI{0}{\volt} is
+applied to all the electrodes and then \SI{1}{\volt} is applied to the
+electrode~$k$. By taking the difference between the two
+configurations, the weighting potential and field are obtained.
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/Ramo/EfieldY_Ramo.png}
+    \caption{Weighting field}\label{fig:WeightingFieldRamo}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/Ramo/RamoPotential.png}
+    \caption{Weighting potential}\label{fig:WeightingPotentialRamo}
+  \end{subfigure} 
+  \caption{The weighting field and potential.}\label{fig:RamoTCAD}
+\end{figure}
+
+The weighting potential for different positions on the
+x-axis is shown in Figure~\ref{fig:RamoTCADCuts}. Since, the total
+charge collected by the electrode $k$ depends only on the positions
+$z_0$ and $z_p$, in the absence of the radiation-induced damages
+(which would affect the distributions of the electric and weighting
+fields), the Ramo theorem can be neglected.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/Ramo/RamoPotential_cuts.png}
+    \caption{}\label{fig:RamoPotentialCuts}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/Ramo/WeightingPotential_1D.pdf}
+    \caption{}\label{fig:RamoPotentialCuts1D}
+  \end{subfigure} 
+  \caption{The weighting potential for different positions on the x-axis.}\label{fig:RamoTCADCuts}
+\end{figure}
+
+
 
 
 %% --------------------------------------------------- %%
