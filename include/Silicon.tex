@@ -249,6 +249,93 @@ And the diffusion sigma is given by,
 \end{equation}
 
 
+\begin{table}[htpb]
+  \centering
+  \caption{Sensors characteristics:}
+  \label{tab:Efield_mobility}
+  \begin{tabular}{ c c c c c c }
+    \toprule
+    Assembly & Sensor type & Thickness & V\textsubscript{depletion} &  V\textsubscript{bias} & THL\textsubscript{op} \\
+    \midrule
+    A06-W0110 & p-in-n & 50~\micron & $<15$~V & 15~V & 326 (855e\textsuperscript{-}) \\
+    L04-W0125 & p-in-n & 100~\micron & 19.64~V & 35~V & 410 (916e\textsuperscript{-}) \\
+    B06-W0125 & n-in-p & 200~\micron  & 30.31~V & -50~V & 435 (1066e\textsuperscript{-}) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_A06.pdf}
+    \caption{50~\micron silicon}\label{fig:Mob_Efield_A06}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_L04.pdf}
+    \caption{100~\micron Silicon}\label{fig:Mob_Efield_L04}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_B06.pdf}
+    \caption{200~\micron Silicon}\label{fig:Mob_Efield_B06}
+  \end{subfigure} 
+  \caption{Mobility dependence on the electric field.}\label{fig:Efield_mobility}
+\end{figure}
+
+Assuming the mobility constant is a good approximation for calculating
+the charge sharing spread since the electric field is low. An example
+is given for the case where the silicon sensor has a thickness of 200~\micron.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_FunctionToIntegrate.pdf}
+    \caption{}\label{fig:}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_driftTime.pdf}
+    \caption{}\label{fig:}
+  \end{subfigure} 
+  \caption{Drift time considering the mobility constant or non-constant.}\label{fig:}
+\end{figure}
+
+The diffusion constant and the diffusion spread considering the
+mobility constant and non-constant.
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_DiffusionConstant.pdf}
+    \caption{}\label{fig:}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_SigmaDiffusion.pdf}
+    \caption{}\label{fig:}
+  \end{subfigure} 
+  \caption{The diffusion constant and spread for a constant mobility
+    and a mobility which depends on the electric field. }\label{fig:}
+\end{figure}
+
+Comparing TCAD simulations and the charge sharing obtained by the
+theoretical calculations gives us the following for a 200~\micron with
+a depletion voltage of 30.31~V. Comparing for two different bias
+voltages of 35~V and 50~V. In the case of the TCAD
+simulations these results depend largely on the mesh divisions and
+their locations. Both TCAD and theory assume a charge deposition of
+80e- per \micron.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/tcad_vs_theory.pdf}
+  \caption{Diffusion comparing TCAD and theory.}\label{fig:}
+\end{figure}
+
+
 \section{Spatial resolution}
 
 The spatial resolution of a pixel detector is mainly determined by the pixel
