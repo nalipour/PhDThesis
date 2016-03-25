@@ -36,3 +36,27 @@
       reportNumber   = "MPI-PAE/Exp El-114",
       SLACcitation   = "%%CITATION = NUIMA,214,253;%%"
 }
+
+@article{Timepix3Poikela,
+  author={T Poikela and others},
+  title={Timepix3: a 65K channel hybrid pixel readout chip with simultaneous ToA/ToT and sparse readout},
+  journal={\href{http://stacks.iop.org/1748-0221/9/i=05/a=C05013}{Journal of Instrumentation}},
+  volume={9},
+  number={05},
+  pages={C05013},
+  %url={http://stacks.iop.org/1748-0221/9/i=05/a=C05013},
+  year={2014},
+  abstract={The Timepix3, hybrid pixel detector (HPD) readout chip, a successor to the Timepix \cite{timepix2007} chip, can record time-of-arrival (ToA) and time-over-threshold (ToT) simultaneously in each pixel. ToA information is recorded in a 14-bit register at 40 MHz and can be refined by a further 4 bits with a nominal resolution of 1.5625 ns (640 MHz). ToT is recorded in a 10-bit overflow controlled counter at 40 MHz. Pixels can be programmed to record 14 bits of integral ToT and 10 bits of event counting, both at 40 MHz. The chip is designed in 130 nm CMOS and contains 256 × 256 pixel channels (55 × 55 μm 2 ). The chip, which has more than 170 M transistors, has been conceived as a general-purpose readout chip for HPDs used in a wide range of applications. Common requirements of these applications are operation without a trigger signal, and sparse readout where only pixels containing event information are read out. A new architecture has been designed for sparse readout and can achieve a throughput of up to 40 Mhits/s/cm 2 . The flexible architecture offers readout schemes ranging from serial (one link) readout (40 Mbps) to faster parallel (up to 8 links) readout of 5.12 Gbps. In the ToA/ToT operation mode, readout is simultaneous with data acquisition thus keeping pixels sensitive at all times. The pixel matrix is formed by super pixel (SP) structures of 2 × 4 pixels. This optimizes resources by sharing the pixel readout logic which transports data from SPs to End-of-Column (EoC) using a 2-phase handshake protocol. To reduce power consumption in applications with a low duty cycle, an on-chip power pulsing scheme has been implemented. The logic switches bias currents of the analog front-ends in a sequential manner, and all front-ends can be switched in 800 ns. The digital design uses a mixture of commercial and custom standard cell libraries and was verified using Open Verification Methodology (OVM) and commercial timing analysis tools. The analog front-end and a voltage-controlled oscillator for 1.5625 ns timing resolution have been designed using full custom techniques.}
+}
+
+@article{AdvacamRef,
+  author={X Wu and others},
+  title={Recent advances in processing and characterization of edgeless detectors},
+  journal={\href{http://stacks.iop.org/1748-0221/7/i=02/a=C02001}{Journal of Instrumentation}},
+  volume={7},
+  number={02},
+  pages={C02001},
+%  url={http://stacks.iop.org/1748-0221/7/i=02/a=C02001},
+  year={2012},
+  abstract={During past five years VTT has actively developed edgeless detector fabrication process. The straightforward and high yield process relies on ion-implantation to activate the edges of the detector. A recent fabrication process was performed at VTT to provide p-on-n edgeless detectors. The layout contained DC- and AC-coupled strip detector and pixel detectors for Medipix/Timepix readouts. The fabricated detector thicknesses were 50, 100 and 150 μm. Electrical characterization was done for 5 × 5 mm 2 edgeless diodes on wafer level. All measured electrical parameters showed a dramatic dependence on the diode thickness. Leakage current was measured below 10 nA/cm 2 at full depletion. Calculation using a theoretical approximation indicates the diode surface generation current of less than 300 pA. The breakdown voltages were measured to be above 140 V and increased as a function of diode thickness. Reverse bias of 10 V is enough to fully deplete designed edgeless diodes. Leakage current dependence of temperature was investigated for both p-on-n and previous n-on-n edgeless detectors and results show that the leakage current doubles for every 8.5 degree Celsius rise in temperature. TCAD device simulations reveal that breakdown occurs at the lateral p-n junction where the electric field reaches its highest value. Thick edgeless diodes have wider bulk space that allows electric potential to drop and causes smaller curvature of the equipotential lines. This releases the accumulation of electric field at the corner of anode and increases the breakdown voltage. A good match of the simulated and the measured capacitance-voltage curves enables identification of proper parameters used in the simulation.}
+}

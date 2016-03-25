@@ -2,51 +2,88 @@
 
 
 \begin{enumerate}
-
-\item Introduction
-\item CLIC: Compact Linear Collider
+\item Introduction (1 page)
+\item CLIC: Compact Linear Collider (7 pages)
   \begin{itemize}
-  \item Motivation (post-LHC), Accelerator: two-beam acceleration, CLIC detector
-  \item Detector concept, Vertex/tracking detectors for CLIC: Goal, requirements,
+  \item Motivation (post-LHC), Accelerator (two-beam acceleration),
+    CLIC detector concept, picture of the full detector (3 pages).
+  \item Vertex detectors for CLIC: motivation for pixel
+    detectors in high-energy physics (flavour-tagging plots), requirements,
     design, technical challenges (cooling/mechanics), Beam induced
-    backgrounds, Radiation damage in the vertex detector
-  \item Include flavour-tagging plots to make a motivation
-  \item Detector simulation software (?)
+    backgrounds, Radiation damage in the vertex detector (3
+    pages). 
+  \item Detector simulation software: say motivation of this thesis 
+    $\Rightarrow$ provide input for the digitiser (1 page).
   \end{itemize}
   
-\item Semiconductor detectors for radiation detection: theory, TCAD, \textsc{Geant4}
+\item Semiconductor detectors for radiation detection (26 pages)
   \begin{itemize}
-  \item Silicon structure
-  \item Signal formation: doping, pn-junction, the
-    reverse-biased diode, pixel (strip) detectors
-  \item Charge collection: drift and diffusion, induced charge (Ramo's
-    theorem)
-  \item Signal acquisition and electronic noise
+  \item Intrinsic silicon (with the bands, Fermi level) (1 page).
+  \item Charge generation and recombination in silicon (5 pages)
+    \begin{itemize}
+    \item Bethe-Bloch Formula (-dE/dx)
+    \item Landau distribution, Bichsel model
+    \item Multiple scattering
+    \item Introduction to \textsc{Geant4}
+    \end{itemize}
+  \item Transport of charge carriers (3 pages max)
+    \begin{itemize}
+    \item Diffusion
+    \item Drift
+    \item Introduction to TCAD
+    \end{itemize}
+  \item Pixel detectors: pn-junction (15 pages)
+    \begin{itemize}
+    \item pn-junction in thermal equilibrium
+    \item Reverse bias: equations (drift, diffusion), charge sharing,
+      resolutions
+    \item Charge collection and Ramo's theorem (TCAD simulations).
+    \end{itemize}
+  \item Processing of silicon wafer and describe how active-edge
+    sensor is done (2 pages)
   \end{itemize}
 
-\item Hybrid pixel detectors and calibration:
+\item Front-end electronics (11 pages)
   \begin{itemize}
-  \item Readout ASICS: Timepix, Timepix3 (CLICpix)
-  \item Test-pulse, source calibration 
-  \item Energy deposition and comparison to \textsc{Geant4} and Bichsel models.
+  \item Introduction: generic pixel chip (active area, chip periphery)
+    (1 page).
+  \item Readout ASICS: Timepix, Timepix3 and CLICpix (10 pages)
+    \begin{itemize}
+    \item Charge-sensitive preamplifier
+    \item Feed-back circuit (TOT, TOA description), shaper
+    \item Discriminator
+    \item Test charge injector (test pulse), radio-active source/X-ray fluorescence
+    \item Threshold and variations: threshold calibration, noise,
+      s-curve
+    \item TOT and TOA calibrations
+    \item Energy deposition and comparison to \textsc{Geant4} and Bichsel models.
+    \end{itemize}
   \end{itemize}
 
-\item Thin sensors studies
+\item Thin sensors studies (42 pages)
   \begin{itemize}
-  \item Samples, sensors geometries
-  \item Test-beam setup: EUDET telescope, Timepix3 telescope
-  \item Reconstruction software
-  \item Simulation setups and validation: \textsc{Geant4} (Allpix), TCAD 
-  \item Edge optimisation (comparison to TCAD).
+  \item Samples, sensors geometries (2 pages)
+  \item Test-beam setup: EUDET telescope, Timepix3 telescope (4 pages)
+  \item Reconstruction software: EUTelescope (Timepix3), pyEudet (2
+    pages)
+  \item Simulation software: AllPix description (4 pages)
+  \item Test-beam results for thin sensors and validation with
+    simulation: present results on the telescope (biased residuals,
+    resolution on the DUT), DUT (cluster size, Edep, resolution) for
+    all the thicknesses (10 pages)
+  \item Active-edge sensors: process description, assemblies,
+    geometries of the edge and GR, efficiency and signal at the edge
+    (10 pages)
+  \item TCAD simulation 2D and 3D: process description, Efield distribution,
+    equipotentials, MIP energy deposition, comparison to data (10 pages)
   \end{itemize}
 
 
 \item Extrapolation of results for smaller pixel sizes: input for the
-  new digitisers for physics simulations
+  new digitisers for physics simulations, think about new charge
+  sharing solutions (?) (5 pages)
 
-\item Flavour-tagging performance (?)
-\item RD53 simulation framework (?)
-\item Conclusions
+\item Conclusions (1 page)
   
 \end{enumerate}
 
