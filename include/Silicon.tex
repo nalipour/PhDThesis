@@ -2,9 +2,9 @@
 \chapter{Semiconductor detectors for radiation detection}
 \label{sec:SiliconTheory}
 %==============================================================================    
-\section{Properties of semiconductor material}
 
-\subsection{Band structure}
+%% --------------------------------------------- %%
+\section{Intrinsic silicon}
 Due to periodic lattice of crystalline structure of semiconductor
 material, electrons within the solid have allowed energy bands. The
 energy of the electrons is confined to one of the energy bands. The
@@ -41,32 +41,191 @@ bands may be separated by ranges of forbidden energies.
   \caption{}  \label{fig:energyBands}
 \end{figure}
 
+%% --------------------------------------------- %%
+\section{Charge generation in silicon}
 
-\section{Detector systems}
+\subsection{Bethe-Bloch formula}
+In silicon, free charge careers are generated due to thermal effects
+and lead to leakage current. Charged particles are also detected by a
+current generated due to their interaction with the sensor
+material. Part of the absorbed energy generates electron-hole pairs
+through scattering processes with the shell electrons of silicon and
+can be collected by the readout electronic. The energy loss along the
+particle track is described by the Bethe-Bloch
+formula~\cite{Beringer:1900zz}.
 
-Figure~\ref{fig:basicDetectorFunction}, schematically summarises the sequence of basic detector functions.
+\begin{equation}
+  - \frac{dE}{dx} = 4 \pi N_A r_{e}^2 m_e c^2 z^2 \frac{Z}{A}  \frac{1}{\beta^2} \left[ \frac{1}{2} \ln{\frac{2 m_e c^2 \beta^2 \gamma^2 T_{max}}{I^2}} - \beta^2 - \frac{\delta}{2}\right]\; ,
+  \label{eq:BetheBloch}
+\end{equation}
+
+where $z$ is the charge of the traversing particle, $Z$ the atomic
+number, $A$ the atomic mass of the absorption medium, $m_ec^2$ the
+rest energy of the electron, $\beta={v \over c}$,
+$\gamma=1/\sqrt{1-\beta^2}$, $I$ the mean excitation energy and
+$T_{max}$ the maximum kinetic energy that a particle can transfer to a
+shell electron.  A minimum ionising particle (MIP) has an energy loss
+in the minimum of the Bethe-Bloch formula. Relativistic particles are
+considered as MIPs.
+
+Ionisation is also subject to statistical fluctuations and
+Equation~\ref{eq:BetheBloch} gives its average value. It can be
+described by a probability density function called \textit{straggling
+functions} and characterised by the most probable energy loss
+($\Delta_{p}$) and full-width-at-half-maximum
+($w$). Figure~\ref{fig:LandauDistribution} shows examples of this
+distribution in thin sensors. If a particle is not stopped in the
+sensors, the energy deposition varies around the peak of the
+distribution and the average value is higher than the most probable
+value ($\Delta_{p}$) of the distribution. The fluctuations around the
+$\Delta_{p}$ increase for thinner sensors and should be taken into
+account for the design of the dynamic range of the readout
+electronics.
 
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/basicDetectorFunction.png}
-  \caption{The sequence of basic detector functions. From~\cite{Spieler2005}.}
-  \label{fig:basicDetectorFunction}
+  \includegraphics[width=0.7\textwidth, page=14, trim = 50mm 160mm
+  40mm 20mm, clip]{Articles/rpp2009-rev-passage-particles-matter.pdf}
+  \caption{Straggling functions in silicon for 500 MeV pions,
+    normalized to unity at the most probable value. $w$
+    is the full-width-at-half-maximum~\cite{Beringer:1900zz}.}
+  \label{fig:LandauDistribution}
 \end{figure}
 
+\subsection{Bichsel model}
+Bichsel~\cite{Bichsel} provides a theory to calculate the
+straggling functions and compares different methods. He also gives an
+approximation of $\Delta_{p}$ and $FWHM$ as function of the thickness
+$t$ of silicon detectors for particles with charge $\pm1e$ and
+$\beta\gamma>500$ as listed in Equations~\ref{eq:MPV1}, \ref{eq:MPV2},
+\ref{eq:FWHM}:
 
-\subsection{Sensor} 
-A silicon sensor, converts the energy deposited by a particle to an electric signal by producing electron-hole pairs. By applying an electric field to the sensor, the produced pairs are con
-\subsection{Preamplifier}
-\subsection{Pulse shaper}
-\subsection{Digitiser}
+\begin{itemize}
+\item For $13<t<110$ [micron]:
+  \begin{equation}
+    \Delta_{p}=t \cdot (100.6+35.35 \cdot \ln(t))\; ,
+    \label{eq:MPV1}
+  \end{equation}
+\item For $110<t<3000$ [micron]:
+  \begin{equation}
+    \Delta_{p}=t \cdot (190+16.3 \cdot \ln(t))\; ,
+    \label{eq:MPV2}
+  \end{equation}
+\item For $30<t<260$ [micron]:
+  \begin{equation}
+    FWHM=t \cdot (259.6-28.41 \cdot \ln(t)).
+    \label{eq:FWHM}
+  \end{equation}
+\end{itemize}
+
+Table~\ref{tab:EdepForDifferentThickness} summarises the $\Delta_{p}$
+and $FWHM$ for detectors thicknesses at our disposal. 
+
+\begin{table}[htbp]
+  \centering
+  \caption{$\Delta_{p}$ and $FWHM$ calculated for silicon sensors with
+    different thicknesses using Equations~\ref{eq:MPV1}, \ref{eq:MPV2}
+    and \ref{eq:FWHM}.}
+  \label{tab:EdepForDifferentThickness}
+  \begin{tabular}{c c c c}
+    \toprule
+    Thickness [micron] &  $\Delta_{p}$ [keV] & $FWHM$ [keV] & $\Delta_{p} / FWHM$ \\ 
+    \midrule
+    50 & 11.9 & 7.42 & 1.6      \\
+    100 & 26.34 & 12.88 & 2.045 \\
+    150 & 40.75 & 17.59 & 2.32  \\
+    200 & 55.27 & 21.82 & 2.53  \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 
-\subsection{Charge transport in Silicon}
+\subsection{\textsc{Geant4}}
+
+\textsc{Geant4}~\cite{Agostinelli:2002hh}, as an object-oriented
+simulation toolkit, is widely used in high-energy physics,
+astrophysics and medical applications. It allows for the simulation of
+the passage of particles through matter and their interaction in
+matter. \textsc{Geant4} provides the Photo-Absorption Ionisation (PAI)
+model~\cite{Apostolakis:2000yu} for the precise simulation of
+ionisation energy loss in thin detectors since the Landau model is not
+suitable for thin sensors.  Figure~\ref{fig:BichselVSG4} compares the
+energy loss due to ionisation in $50\,\micron$ silicon for different
+\textsc{Geant4} physics lists and versions. The \textit{emstandard}
+physics lists provide the electromagnetic interactions of photons and
+charged particles with matter and is suited for the simulation of
+ionisation, bremsstrahlung, gamma conversion and other electromagnetic
+interactions of particles with energies from $1\,\kev$ up to
+$10\,\pev$~\cite{Apostolakis2009859}. The energy deposition given by
+the PAI model is very close to the one calculated by Bichsel
+especially the fluctuations around the most probable value. For this
+reason, the PAI model is chosen to be used later for the simulations. 
+ 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/50um_bichsel_physicsLists.pdf}
+  \caption{Energy-loss distribution in $50\,\micron$ silicon comparing
+    the Bichsel model and different physics list in \textsc{Geant4}.}
+  \label{fig:BichselVSG4}
+\end{figure}
+
+%% --------------------------------------------- %%
+\section{Transport of charge carriers in silicon}
+
+In silicon detectors, the movement of the charge carriers (holes and
+electrons) lead to signal pulses in the electrical contacts which can
+be detected by the readout electronics. 
+In absence of any external electric field, free charge carriers move
+randomly and are scattered due to their collisions to the crystal
+lattice or other impurities. In average, in equilibrium conditions,
+the traveled distance averaged over charges is zero. In addition to
+the statistical movement, two other mechanisms can affect the
+transport of charge carriers: diffusion (due to a gradient in
+concentration) and drift (in the presence of an external electric
+field).
+
+The diffusion implies that a carrier is more probable to move from a
+high-concentration region to a low-concentration region. The diffusion
+current per unit area is given by Equation~\ref{eq:diffusionCurrent}~\cite{Rossi:976471}:
+
+\begin{equation}
+  \begin{aligned}
+    J_{n, diff}=-{kT \over e} \mu_n \nabla n \qquad \textnormal{for electrons}
+    \; , \\
+    J_{p, diff}={kT \over e} \mu_p \nabla p \qquad \textnormal{for holes}
+    \; , 
+  \end{aligned}
+  \label{eq:diffusionCurrent}
+\end{equation}
+where $k$ is the Boltzmann constant, $T$ the absolute temperature, $e$ the
+elementary charge, $\mu$ the mobility of the charge carriers, $\nabla
+n$ and $\nabla p$ are the gradients of the electron and hole
+concentrations.
+
+Charge carriers are accelerated between two random collisions in the
+presence of an external electric field in the direction of the field
+and leads to and average drift velocity given by
+Equation~\ref{eq:driftVelocity}~\cite{Rossi:976471}:
+
+\begin{equation}
+  \begin{aligned}
+    v_{n}=-\mu_n \textbf{E} \qquad \textnormal{for electrons}
+    \; , \\
+    v_{p}=\mu_p \textbf{E} \qquad \textnormal{for holes}
+    \; , 
+  \end{aligned}
+  \label{eq:driftVelocity}
+\end{equation}
+where $v$ is the average drift velocity, $\textbf{E}$ the electric
+field and $\mu$ the mobility of the charge carriers.
+
+%% --------------------------------------------- %%
+\section{Pixel detectors: pn-junction}
 The potential $\varphi$ at each point is described by Poisson's equation~\ref{eq:poisson} \cite{Knoll2010}
 \begin{equation}
-\nabla^{2}  \varphi=-{\rho \over \epsilon}\; ,
-\label{eq:poisson}
+  \nabla^{2}  \varphi=-{\rho \over \epsilon}\; ,
+  \label{eq:poisson}
 \end{equation}
 
 where $\epsilon$ is the dielectric constant of the medium and $\rho$ the net charge density.
@@ -600,6 +759,25 @@ fields), the Ramo theorem can be neglected.
 
 
 
+%% --------- Recycle text --------- %%
+% \section{Detector systems}
+
+% Figure~\ref{fig:basicDetectorFunction}, schematically summarises the sequence of basic detector functions.
+
+
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics[width=\textwidth]{figures/basicDetectorFunction.png}
+%   \caption{The sequence of basic detector functions. From~\cite{Spieler2005}.}
+%   \label{fig:basicDetectorFunction}
+% \end{figure}
+
+
+% \subsection{Sensor} 
+% A silicon sensor, converts the energy deposited by a particle to an electric signal by producing electron-hole pairs. By applying an electric field to the sensor, the produced pairs are con
+% \subsection{Preamplifier}
+% \subsection{Pulse shaper}
+% \subsection{Digitiser}
 
 %% --------------------------------------------------- %%
 % Carriers move in random direction due to the thermal energy. \\
