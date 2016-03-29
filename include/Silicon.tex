@@ -218,8 +218,56 @@ Equation~\ref{eq:driftVelocity}~\cite{Rossi:976471}:
   \label{eq:driftVelocity}
 \end{equation}
 where $v$ is the average drift velocity, $\textbf{E}$ the electric
-field and $\mu$ the mobility of the charge carriers.
+field and $\mu$ the mobility of the charge carriers. The mobility is a
+function of the electric field. For higher electric fields the charge
+carriers gain more acceleration and the number of collisions per unit
+time becomes highe. This leads to a saturation of the drift velocity
+$v_s$. The mobility dependence on the electric field is described by
+Equation~\ref{eq:mobility} and parameters described in
+Table~\ref{tab:mobility_parameters}~\cite{Jacoboni197777}:
+\begin{equation}
+  \mu=\frac{v_{s}/E_{c}}{\left[1+(E/E_{c})^{\beta}\right]^{1/\beta}}\; .
+  \label{eq:mobility}
+\end{equation}
 
+\begin{table}[htbp]
+  \centering
+  \caption{Parameters for the mobility as described in
+    Equation~\ref{eq:mobility} with T the absolute temperature and E
+    the absolute electric field.}
+  \label{tab:mobility_parameters}
+  \begin{tabular}{c c c c}
+    \toprule
+    Parameter & Electrons & Holes & unit \\
+    \midrule
+    $v_s$ & 1.53 $\times$ $10^9$ $\times$ T\textsuperscript{-0.87} &
+1.62 $\times$ $10^8$ $\times$ T\textsuperscript{-0.52} & cm/s \\ 
+    $E_c$ & 1.01 $\times$ T\textsuperscript{1.55} & 1.24 $\times$ T\textsuperscript{1.68} & V/cm \\ 
+    $\beta$ & 2.57 $\times$ $10^{-2}$ $\times$ T\textsuperscript{0.66} & 0.46 $\times$ T\textsuperscript{0.17} & -\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Figure~\ref{fig:Mobility_electron_holes} shows the mobility for
+electrons and holes as a function of the electric field. For a low electric field, the mobility for intrinsic silicon at 300~K
+is:
+\begin{equation*}
+  \begin{aligned}
+    \mu_n=1415 \pm 46 \qquad \textnormal{\cmsquared/(Vs)} \; , \\
+    \mu_p=480 \pm 17 \qquad \textnormal{\cmsquared/(Vs)} \; .
+  \end{aligned}
+\end{equation*}
+
+Holes are three times less mobile than electrons which make them more
+likely to be trapped in an irradiated material.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/Mobility_electron_holes.pdf}
+  \caption{Mobility for electrons and holes as a function of an
+    applied electric field calculated with the Equation~\ref{eq:mobility}.}
+  \label{fig:Mobility_electron_holes}
+\end{figure}
 %% --------------------------------------------- %%
 \section{Pixel detectors: pn-junction}
 The potential $\varphi$ at each point is described by Poisson's equation~\ref{eq:poisson} \cite{Knoll2010}
