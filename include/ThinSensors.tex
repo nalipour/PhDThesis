@@ -3,6 +3,48 @@
 \label{ch:ThinSensorsStudies}
 %==============================================================================    
 
+\section{Samples and sensors geometries}
+Operating conditions for the Timepix3 readout ASICs:
+\begin{itemize}
+\item I\textsubscript{krum} DAC is set to 10.
+\item TOT clock frequency: $40\,\megahertz$
+\item VFBK: 150
+\end{itemize}
+ 
+\section{Test-beam setup: EUDET telescope, Timepix3 telescope}
+\subsection{EUDET telescope ?} 
+\subsection{The Timepix3 telescope} \label{sec:Timepix3Telescope}
+The Timepix3 telescope is used as a beam reference telescope and is
+shown in Figure~\ref{fig:TPX3Telescope}. The telescope is used to
+reconstruct the tracks of the particles going through its planes and
+extrapolate the position on the DUT. 
+It is made of 6 planes of
+Timepix3 ASICs~\cite{Timepix3_Poikela} bump bonded to $300\,\micron$
+thick p-in-n planar sensors. The planes are rotated by $9\degrees$
+around the x axis (perpendicular to the beam axis) and the z axis
+(parallel to the beam axis) to optimise the charge sharing within the
+sensors and obtain a pointing resolution of $\sim$$2\,\micron$ on the
+device under test (DUT).
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at
+    (0,0){\includegraphics[width=0.6\textwidth]{ActiveEdge/Timepix3Telescope.jpeg}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+      \node[above, color=white] at (0.5, 0.85) {Device Under Test};
+      \node[above, color=white] at (0.5, 0.8) {(\textbf{DUT})};
+    \end{scope}
+  \end{tikzpicture} 
+  \caption{The Timepix3 beam reference telescope.}
+  \label{fig:TPX3Telescope}
+\end{figure}
+
+\section{Reconstruction softwares}
+\subsection{EUTelescope}
+\subsection{pyEudet analysis}
+\section{AllPix: a \textsc{Geant4}-based simulation software}
+\section{Test-beam results for thin sensors and validation with simulation}
 \section{Active-edge sensors}
 
 Thin n-in-p planar sensors produced by
@@ -207,6 +249,8 @@ differente from above.
   \end{subfigure}
   \label{fig:GuardRingLayout}
 \end{figure}
+
+\section{TCAD simulations}
 
 
 % \begin{figure}[htbp]
