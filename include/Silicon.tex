@@ -2,13 +2,47 @@
 \chapter{Semiconductor detectors for radiation detection}
 \label{sec:SiliconTheory}
 %==============================================================================    
-
+Semiconductor materials have a great advantage in many radiation
+detection applications. The main benefits are the high energy
+resolution due to the large number of carriers that are created by a
+given incident radiation, their compact sizes, fast timing and the
+effective thickness can be adapted to the requirements of the
+applications. Though they show some limitations for smaller sizes and
+their performance can degrade from ration induced damages. Silicon
+detectors are predominant for charge particle spectroscopy among
+semiconductor materials. 
 %% --------------------------------------------- %%
-\section{Intrinsic silicon}
-Due to periodic lattice of crystalline structure of semiconductor
+\section{Band structure in solids}
+Due to the periodic lattice of crystalline structure of semiconductor
 material, electrons within the solid have allowed energy bands. The
-energy of the electrons is confined to one of the energy bands. The
-bands may be separated by ranges of forbidden energies.
+energy of the electrons is confined to one of the energy bands and the
+bands may be separated by gaps of forbidden
+energies. Figure~\ref{fig:energyBands} schematically illustrates the
+bands in insulators, semiconductors and metals. In the \textit{valence
+band}, the electrons are bonded to specific lattice sites within the
+crystal. The electrons in the \textit{conduction band} are free to
+move through the crystal and contribute to the electrical
+conductivity. The \textit{bandgap} separates the valence from the
+conduction band and allows to classify wether the material is a
+semiconductor, an insulator or a metal. In the absence of thermal
+excitation, the valence band for the semiconductors and insulators is
+completely full and the conduction band empty and therefore they are
+not electrically conductive. Metals are highly electrically conductive
+since the fermi energy level lies in the conduction band and the
+electrons are free to migrate through the material even at very low
+temperatures. However, for insulators and semiconductors the electrons
+must cross the bandgap to become conductive. The bandgap for
+semiconductors is much lower than for insulators ($5\,\ev$). If an
+electron in the valence band gains enough thermal energy to cross the
+bandgap and reach the conduction band, it leaves behind a vacancy (a
+hole) behind in the valence band. The electron-hole pair can move
+under the influence of an external electric field (electrons in the
+opposite direction of the holes). This motion creates conductivity in
+the material. This property is exploited in silicon detectors to
+detect radiation and developed more in the coming sections.
+
+
+
 
 \begin{figure}[htbp]
   \centering
@@ -38,7 +72,9 @@ bands may be separated by ranges of forbidden energies.
     \end{scope}
 
   \end{tikzpicture}
-  \caption{}  \label{fig:energyBands}
+  \caption{Illustation of the band structures for electron energies in
+  insulators, semiconductors and metals.}  
+  \label{fig:energyBands}
 \end{figure}
 
 %% --------------------------------------------- %%
@@ -270,6 +306,11 @@ likely to be trapped in an irradiated material.
 \end{figure}
 %% --------------------------------------------- %%
 \section{Pixel detectors: pn-junction}
+
+Silicon sensors are made of reversely biased pn-junctions. The
+electric field due to the bias voltage allows the charge carriers to
+drift towards the readout chip and also to suppress the leakage current.
+
 The potential $\varphi$ at each point is described by Poisson's equation~\ref{eq:poisson} \cite{Knoll2010}
 \begin{equation}
   \nabla^{2}  \varphi=-{\rho \over \epsilon}\; ,
