@@ -11,20 +11,23 @@ Operating conditions for the Timepix3 readout ASICs:
 \item VFBK: 150
 \end{itemize}
  
-\section{Test-beam setup: EUDET telescope, Timepix3 telescope}
+\section{Test-beam setup}
 \subsection{EUDET telescope ?} 
 \subsection{The Timepix3 telescope} \label{sec:Timepix3Telescope}
 The Timepix3 telescope is used as a beam reference telescope and is
 shown in Figure~\ref{fig:TPX3Telescope}. The telescope is used to
 reconstruct the tracks of the particles going through its planes and
-extrapolate the position on the DUT. 
-It is made of 6 planes of
-Timepix3 ASICs~\cite{Timepix3_Poikela} bump bonded to $300\,\micron$
-thick p-in-n planar sensors. The planes are rotated by $9\degrees$
-around the x axis (perpendicular to the beam axis) and the z axis
-(parallel to the beam axis) to optimise the charge sharing within the
-sensors and obtain a pointing resolution of $\sim$$2\,\micron$ on the
-device under test (DUT).
+extrapolate the position on the Device Under Test (DUT). This allows
+to compare the position of the hit on the DUT with the reconstructed
+track and calculate the position, time resolutions and the efficiency
+of the device. The Timepix3 telescope is made of 6 planes of Timepix3
+ASICs~\cite{Timepix3_Poikela} bump bonded to $300\,\micron$ thick
+p-in-n planar sensors. The planes are rotated by $9\degrees$ around
+the x axis (perpendicular to the beam axis) and the z axis (parallel
+to the beam axis) to optimise the charge sharing within the sensors
+and obtain a pointing resolution of $\sim$$2\,\micron$ on the device
+under test (DUT). The data-driven zero-suppressed mode is used for the
+data acquisition of the Timepix3 readout ASICs.
 
 \begin{figure}[htbp]
   \centering
@@ -33,15 +36,41 @@ device under test (DUT).
     (0,0){\includegraphics[width=0.6\textwidth]{ActiveEdge/Timepix3Telescope.jpeg}};
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
       \node[above, color=white] at (0.5, 0.85) {Device Under Test};
-      \node[above, color=white] at (0.5, 0.8) {(\textbf{DUT})};
+      \node[above, color=white] at (0.5, 0.78) {(\textbf{DUT})};
     \end{scope}
   \end{tikzpicture} 
   \caption{The Timepix3 beam reference telescope.}
   \label{fig:TPX3Telescope}
 \end{figure}
 
+\subsection{Experimental setup at the CERN SPS}
+The assemblies are tested at the H6 beam of the CERN SPS using the $120\,\gev$
+pion beam. The particle rate obtained per spill is $\sim2.6 \times
+10^6$ (UNITS?). The telescope planes were positioned in a way to give
+the best tracking resolution for the given beam energy and the level
+of multiple scatterings.
+For most of the measurements, the DUT is perpendicular
+to the beam. A scan was done on the bias voltage and the threshold of
+the DUT. The bias scan allows to obtain the depletion voltage.
+
 \section{Reconstruction softwares}
 \subsection{EUTelescope}
+The EUTelescope software~\cite{Rubinskiy} is used to reconstruct the
+telescope tracks and analyse the telescope data. It is based on the
+ILCSoft framework (REF?). Using a pipeline of Marlin
+processors~\cite{Gaede:2006pj}, it allows to convert the raw data to a
+ROOT (REF?) format and with the intermediate steps in the LCIO (REF?)
+format. The reconstruction chain is defined in the steps below:
+
+\begin{enumerate}
+\item Converter:
+\item Clustering:
+\item Hit making:
+\item Alignment:
+\item Track finding:
+\item DUT analysis:
+\end{enumerate} 
+
 \subsection{pyEudet analysis}
 \section{AllPix: a \textsc{Geant4}-based simulation software}
 \section{Test-beam results for thin sensors and validation with simulation}
