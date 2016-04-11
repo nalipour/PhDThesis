@@ -63,16 +63,48 @@ ROOT (REF?) format and with the intermediate steps in the LCIO (REF?)
 format. The reconstruction chain is defined in the steps below:
 
 \begin{enumerate}
-\item Converter:
-\item Clustering:
-\item Hit making:
-\item Alignment:
-\item Track finding:
-\item DUT analysis:
+\item Converter: converts the raw files written by each telescope
+planes and the DUT in a binary format to an LCIO event. The
+data-driven zero-suppressed mode is used for the data acquisition of
+the Timepix3 readout ASICs. This mode allows for a very low dead-time
+and all the particles at the SPS spill are recorded. Every hit is
+written with a 64-bit time-stamp (\texttt{long long int}) related to
+the TOA (time-of-arrival). The hits written in the raw file are not
+necessarily ordered in time. In the converter processor, the hits
+within a timing window of 3~ms are read and filled into a vector. The
+hits in the vector are ordered in time according to their time
+stamps. An LCIO event is built by choosing the hits in the six
+telescope planes and the DUT with time stamps differing by
+$2.5\,\microsecond$. With this constraint, most probably one track per
+event is obtained.
+Hot pixels (with the maximum allowed frequency of 0.1) are as well
+calculated and also the $\eta$-correction~\cite{Belau:1983eh} values.
+
+\item Clustering: the clusters in each plane is found.
+\item Hit making: reconstruction of the hit position for each cluster
+with the $\eta$-correction method.
+\item Alignment: by assuming straight tracks, the alignment processor
+uses Millepede~II algorithm~\cite{Blobel20065} to align the telescope
+planes with respect to each other. It consists of a least squares
+minimisation problem ($\chi^2$minimisation). A proper definition of
+the geometry is important.
+\item Track finding: fits the tracks based on the hits on the
+telescope planes with taking to account the multiple scatterings
+(radiation length of the material for the described geometry),
+positions of the planes. The \texttt{EUTelTestFitter} algorithm is used for the
+analysis of the test-beam. (TO PUT SOME CHI2 DISTRIBUTION PLOTS). The
+tracks are then extrapolated on the DUT.
 \end{enumerate} 
 
-\subsection{pyEudet analysis}
+\subsection{pyEudetAnalysis}
+For the analysis of the DUT data, the python-based software
+\texttt{pyEudetanalysis} is used. It can be found as a GitHub directory~\cite{pyeudet}.
+
+
 \section{AllPix: a \textsc{Geant4}-based simulation software}
+AllPix~\cite{allpix}, 
+
+
 \section{Test-beam results for thin sensors and validation with simulation}
 \section{Active-edge sensors}
 
