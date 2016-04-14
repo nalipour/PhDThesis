@@ -102,8 +102,55 @@ For the analysis of the DUT data, the python-based software
 
 
 \section{AllPix: a \textsc{Geant4}-based simulation software}
-AllPix~\cite{allpix}, 
+AllPix~\cite{allpix}, is used as a wrapper on \textsc{Geant4} to
+simulate the test beam setup. The software is written in C/C++. It
+provides a flexible interface to define the geometry of the
+setup. Figure~\ref{fig:TPX3TelescopeAllpix} shows the telescope planes
+and the DUT simulated in AllPix.
 
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at
+    (0,0){\includegraphics[width=0.8\textwidth]{figures/ActiveEdge/Allpix_telescope_withParticles.png}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+      \node[above, color=white] at (0.45, 0.65) {\textbf{DUT}};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Simulation of the Timepix3 telescope with AllPix.}
+  \label{fig:TPX3TelescopeAllpix}
+\end{figure}
+
+The main components of the software are described here-below:
+\begin{enumerate}
+\item Digitiser: \textsc{Geant4}, for each simulation step
+  (\texttt{G4Step}) through the matter, provides the energy deposited
+  in the sensitive material. The step length can be customised. For
+  thin sensors simulations a step of $2\,\micron$ is selected and
+  provides a precise energy deposition. The semiconductor physics in a
+  Silicon detector is then defined in the digitiser. The drift and
+  diffusion are performed at each step to simulate the electron-hole
+  pair movement in the electric and magnetic fields. The readout ASIC
+  is also simulated in the digitiser. The electronic noise is added
+  and a threshold is applied to the hits. The hit energy is converted to the
+  digital value TOT (time-over-threshold) using the readout ASICs calibrations.
+\item \texttt{pixeldetector.xml}: defines a pixel detector
+(\texttt{<pixeldet id=''300"/>}) with a unique ID. It contains all the
+properties of the pixel detector like the pixel pitch, detector
+thickness, chip thickness, PCB properties and other geometry
+properties related to an assembly. It can be customised and define the
+parameters of the digitisers. This will allow to run the program
+without needing to compile whenever one wants to change a parameter.
+\item \texttt{macro.in}: Define the position of the detectors in the
+space by giving the x, y and z position of the centre of the detectors
+and the rotations around the x, y and z axes. The physics list used by
+\textsc{Geant4} is also defined in this file. Visualisation parameters
+are also given. The General Particle Source (GPS), which is the
+\textsc{Geant4} toolkit for Monte-Carlo of the high-energy particle
+transport is also described in the macro. The particle type, the beam
+energy, the position and distributions are customisable. The
+simulation is done based on the frames.
+\end{enumerate}
 
 \section{Test-beam results for thin sensors and validation with simulation}
 \section{Active-edge sensors}
@@ -313,7 +360,66 @@ differente from above.
 
 \section{TCAD simulations}
 
+\subsection{Process flow for the active-edge designs}
 
+\begin{itemize}
+\item Sprocess 1:
+  \begin{enumerate}
+  \item First the dimensions of the pixels, implants, contacts, metal
+    layer are defined.
+  \item The meshing is refined at the borders, the implants and also
+    based on the concentration using an adaptive meshing using the
+    \texttt{refinebox} command.
+  \item The silicon region is then defined for the two pixels and the
+    edge region and an extra silicon edge which will be etched (to make
+    the process more realistic). The silicon is doped with borons (p-type material)
+    with the initial resistivity of $\rho=10000 \Omega$cm. 
+  \item A layer of $0.2\,\micron$ thick of Oxide is deposited.
+  \item A layer of $0.2\,\micron$ thick of Nitride is deposited.
+  \item The silicon is then doped with a concentration of
+    $10^{12}\,\inversecmcubic$. From the bias scan of the $150\,\micron$ thick
+    silicon, the depletion voltage was obtained at 16~V and confirms the
+    doping concentration of the silicon. The implantation done is done
+    at the energy of $180\,\kev$.
+  \item The nitride is then etched at the positions where the
+    implantation is going to be done. First the a mask is put on the
+    positions where the Nitride is going to stay. Then the etching is
+    done at the implantation positions. Phosphorus (n-type material) is
+    implanted with a dose of $10^{15}\,\inversecmcubic$ with an energy
+    of $120\,\kev$.
+  \item The extra edge is etched to achieve the edge width wanted. First
+    the Nitride layer is etched, then the Oxide and finally the silicon
+    layer is etched.
+  \item The sensor is then flipped and a layer of oxide is deposited on
+    the backside with a thickness of $0.04\,\micron$. An implantation is
+    done with Boron with a concentration of $10^{15}\,\inversecmcubic$
+    with an energy of $60\,\kev$. Then the oxide is etched from the
+    backside and the sensor is flipped again to the initial position.
+  \end{enumerate}
+
+\item Sprocess 2:
+  \begin{enumerate}
+  \item The oxide is then etched at the contact positions.
+  \item A photoresist is deposited on the top of the sensor with a
+thickness of $2\,\micron$.
+  \item The meshing of the edge is then refined adaptively depending
+on the concentration of the ions and for a thickness of $1\,\micron$.
+  \item Borons are implanted to the edge with a concentration of
+$10^{15}\,\inversecmcubic$, an energy of $60\,\kev$ and a title of
+$15\degrees$C.
+  \item The photoresist is then removed (\texttt{strip resist}).
+  \item To activate the dopants, the sensor is annealed at a constant
+temperature of $940\degrees$C during 240 minutes.
+  \item The metal layer is deposited using Aluminium of thickness
+$0.8\,\micron$.
+  \item The sensor is then flipped and on the back-side, a layer of
+aluminium with a thickness of $0.8\,\micron$ for the contact of the
+high-voltage is deposited.
+  \end{enumerate}
+\end{itemize}
+
+Masks limit the etching and the deposition to a certain range of
+window and provide the possibility to imitate the lithographic patterning.
 % \begin{figure}[htbp]
 %   \centering
 %   \begin{minipage}[t]{.4\textwidth}
