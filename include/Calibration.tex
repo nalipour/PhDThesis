@@ -90,7 +90,7 @@ inverse of \ref{eq:THLDAC}:
         {2 {{THL_{DAC}-q} \over p^3} \sigma_{pq}^2} \; ,
         \label{eq:THLerror}
 \end{equation}
-where $p$, $q$ are given by the linear fit using \ref{eq:THLDAC} with
+where $p$, $q$ are given by the linear fit using \cref{eq:THLDAC} with
 standard deviations $\sigma_{p}$, $\sigma_{q}$ and covariance
 $\sigma_{pq}$.
 
@@ -111,17 +111,56 @@ $\sigma_{pq}$.
   \end{tabular}
 \end{table}
 
-% For further verification of these results, the DAC step gain for each
-% assembly was calculated to be around 24~\Pem/step (see
-% \ref{tab:DACStep}), in agreement with~\cite{art:tmpx}. The width of
-% the derivative of the S-curves shows the error at the front-end of the
-% assembly. For all assemblies it varies between 7 to 11 DAC values
-% which corresponds to 170 to 270 electrons, again in agreement
-% with~\cite{art:tmpx} (the error is obtained by error propagation of
-% \ref{eq:THLDAC}).
+For further verification of these results, the DAC step gain for each
+assembly was calculated to be around
+24~$\pm$e\textsuperscript{-}/step, in agreement
+with~\cite{art:tmpx}. The width of the derivative of the S-curves
+shows the error at the front-end of the assembly. For all assemblies
+it varies between 7 to 11 DAC values which corresponds to 170 to 270
+electrons, again in agreement with~\cite{art:tmpx} (the error is
+obtained by error propagation of \cref{eq:THLDAC}).
 
 
+\subsection{Threshold calibration with test pulses}
 
+TODO:\\ 
+- Explain method\\
+- make a table with nominal operating threshold\\
+- Calculate errors with the error propagation\\
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0019_G07.pdf}
+    \caption{}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0019_F07.pdf}
+    \caption{}
+  \end{subfigure}\\
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0019_L08.pdf}
+    \caption{}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0019_C07.pdf}
+    \caption{}
+  \end{subfigure}\\
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0005_E02.pdf}
+    \caption{}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0005_F01.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Threshold calibration for Timepix3 assemblies using test pulses.}
+  \label{fig:Timepix3_THL_Calibration}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{table}[htbp]
 %   \caption{Measured DAC step gain.}
 %   \label{tab:DACStep}

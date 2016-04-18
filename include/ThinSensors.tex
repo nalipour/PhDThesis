@@ -153,6 +153,87 @@ simulation is done based on the frames.
 \end{enumerate}
 
 \section{Test-beam results for thin sensors and validation with simulation}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/ThresholdScan_W0019_G07.pdf}
+    \caption{}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0019_G07.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{20-NGR (W19\_G7): bias and voltage scan.}
+  \label{fig:Timepix3_THLscan_Vdep_G7}
+\end{figure}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/ThresholdScan_W0019_F07.pdf}
+    \caption{}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0019_F07.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{23-FGR (W19\_F7): bias and voltage scan.}
+  \label{fig:Timepix3_THLscan_Vdep_F7}
+\end{figure}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/ThresholdScan_W0019_L08.pdf}
+    \caption{}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0019_L08.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{28-GNDGR (W19\_L8): bias and voltage scan.}
+  \label{fig:Timepix3_THLscan_Vdep_L8}
+\end{figure}
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/ThresholdScan_W0019_C07.pdf}
+    \caption{}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0019_C07.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{55-GNDGR (W19\_C7): bias and voltage scan.}
+  \label{fig:Timepix3_THLscan_Vdep_C7}
+\end{figure}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/ThresholdScan_W0005_E02.pdf}
+    \caption{}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+%    \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0019_C07.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{55-GNDGR-100 (W5\_E2): bias and voltage scan.}
+  \label{fig:Timepix3_THLscan_Vdep_E2}
+\end{figure}
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/ThresholdScan_W0005_F01.pdf}
+    \caption{}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0005_F01.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{55-GNDGR-150 (W5\_F1): bias and voltage scan.}
+  \label{fig:Timepix3_THLscan_Vdep_F1}
+\end{figure}
+
 \section{Active-edge sensors}
 
 Thin n-in-p planar sensors produced by
@@ -331,8 +412,6 @@ differente from above.
 \end{tabular}
 
 
-
-
 \begin{figure}[htbp]
   \centering
   \begin{subfigure}[b]{0.33\textwidth}
@@ -344,7 +423,7 @@ differente from above.
   \centering
   \begin{subfigure}[b]{0.33\textwidth}
     \centering
-      \fbox{\includegraphics[width=0.95\textwidth]{figures/ActiveEdge/20umEdge_GND_GR_withText.png}}
+    \fbox{\includegraphics[width=0.95\textwidth]{figures/ActiveEdge/20umEdge_GND_GR_withText.png}}
     \caption{20~\micron edge: GND guard ring}
     \label{fig:GuardRingLayout_20_GND_GR}
   \end{subfigure}\hfill
@@ -358,8 +437,151 @@ differente from above.
   \label{fig:GuardRingLayout}
 \end{figure}
 
-\section{TCAD simulations}
+\subsection{Test-beam analysis of the edge}
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,0) {
+        \includegraphics[width=\linewidth, page=3]{figures/TestBeam/edge_bcp.pdf}};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at 
+      (0,0){\includegraphics[width=\textwidth, page=5]{figures/TestBeam/edge.pdf}};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:}
+  \end{subfigure}
+  \caption{(a) Efficiency and (b) charge (TOT) collected as a function of the
+    track position for the assembly 20-NGR.}
+  \label{fig:20-NGR_eff_TOT}
+\end{figure}
 
+
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,0)
+      {\includegraphics[width=\textwidth, page=6]{figures/TestBeam/edge_bcp.pdf}};
+    \end{tikzpicture}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at 
+      (0,0){\includegraphics[width=\textwidth, page=8]{figures/TestBeam/edge.pdf}};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:}
+  \end{subfigure}
+  \caption{(a) Efficiency and (b) charge (TOT) collected as a function of the
+    track position for the assembly 23-FGR.}
+  \label{fig:23-FGR_eff_TOT}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,0)
+      {\includegraphics[width=\textwidth, page=9]{figures/TestBeam/edge_bcp.pdf}};
+    \end{tikzpicture}
+    \caption{}
+  \end{subfigure}~
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at 
+      (0,0){\includegraphics[width=\textwidth, page=11]{figures/TestBeam/edge.pdf}};
+    \end{tikzpicture}
+    \caption{}
+  \end{subfigure}
+  \caption{(a) Efficiency and (b) charge (TOT) collected as a function of the
+    track position for the assembly 28-GNDGR.}
+  \label{fig:28-GNDGR_eff_TOT}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,0)
+      {\includegraphics[width=\textwidth, page=12]{figures/TestBeam/edge_bcp.pdf}};
+    \end{tikzpicture}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at 
+      (0,0){\includegraphics[width=\textwidth,
+        page=14]{figures/TestBeam/edge.pdf}};
+    \end{tikzpicture}
+    \caption{}
+  \end{subfigure}
+  \caption{(a) Efficiency and (b) charge (TOT) collected as a function of the
+    track position for the assembly 55-GNDGR.}
+  \label{fig:55-GNDGR_eff_TOT}
+\end{figure}
+
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,0)
+      {\includegraphics[width=\textwidth, page=15]{figures/TestBeam/edge_bcp.pdf}};
+    \end{tikzpicture}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at 
+      (0,0){\includegraphics[width=\textwidth,
+        page=17]{figures/TestBeam/edge.pdf}};
+    \end{tikzpicture}
+    \caption{}
+  \end{subfigure}
+  \caption{(a) Efficiency and (b) charge (TOT) collected as a function of the
+    track position for the assembly 55-GNDGR-100.}
+  \label{fig:55-GNDGR-100_eff_TOT}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,0)
+      {\includegraphics[width=\textwidth, page=18]{figures/TestBeam/edge_bcp.pdf}};
+    \end{tikzpicture}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at 
+      (0,0){\includegraphics[width=\textwidth,
+        page=20]{figures/TestBeam/edge.pdf}};
+    \end{tikzpicture}
+    \caption{}
+  \end{subfigure}
+  \caption{(a) Efficiency and (b) charge (TOT) collected as a function of the
+    track position for the assembly 55-GNDGR-150.}
+  \label{fig:55-GNDGR-150_eff_TOT}
+\end{figure}
+
+
+\section{TCAD simulations}
 \subsection{Process flow for the active-edge designs}
 
 \begin{itemize}
