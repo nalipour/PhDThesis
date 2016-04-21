@@ -382,7 +382,7 @@ the sensor and the implant of the GR.
     Contact width [\micron] & 15 & 15 & 15 & 15 \\
     GR offset [\micron] & - & 10 & 14.5 & 25 \\
     GR doping width [\micron] & - & 5 & 5 & 5 \\
-    GR contact width [\micron] & - & 3 & 3 & 15 \\
+    GR contact width [\micron] & - & 3 & 3 & 3 \\
     GR metal width [\micron] & - & 7 & 7 & 10 \\
     \bottomrule
   \end{tabular}
@@ -642,7 +642,31 @@ high-voltage is deposited.
 \end{itemize}
 
 Masks limit the etching and the deposition to a certain range of
-window and provide the possibility to imitate the lithographic patterning.
+window and provide the possibility to imitate the lithographic
+patterning.
+
+
+
+The doping concentration for the different layouts is shown in
+Figure~\ref{fig:TCAD_dopingConcentration}.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/TCAD/dopingConcentration_NoGR.png}
+    \caption{20-NGR}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/TCAD/dopingConcentration_FloatGR.png}
+    \caption{23-FGR}
+  \end{subfigure} \\
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/TCAD/dopingConcentration_28_GNDGR.png}
+    \caption{28-GNDGR}
+  \end{subfigure}
+  \caption{Doping concentration in TCAD simulations.}
+  \label{fig:TCAD_dopingConcentration}
+\end{figure}
 % \begin{figure}[htbp]
 %   \centering
 %   \begin{minipage}[t]{.4\textwidth}
