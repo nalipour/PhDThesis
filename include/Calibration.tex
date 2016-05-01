@@ -123,6 +123,51 @@ obtained by error propagation of \cref{eq:THLDAC}).
 
 \subsection{Threshold calibration with test pulses}
 
+The Timepix readout chips provide an internal test pulse generator
+which can be used for calibration as well as equalisation of the
+readout chip. In each pixel, a capacitor allows for injecting a charge
+by switching a voltage over it. The charge injected is given by
+\cref{eq:testpulseCharge}:
+
+\begin{equation}
+  Q = C \cdot \Delta V
+  \label{eq:testpulseCharge}
+\end{equation}
+
+where Q is the injected charge, C the injection capacitance and
+$\Delta V$ the voltage applied. A priori, the injection capacitance is
+unknown and its value varies a lot from pixel to pixel but its value
+can be measured (HOW?). 
+For the Timepix3 readout chip, the test pulse calibration gives very
+good results and is used to calibrate the threshold as well as the TOT
+and the TOA. 
+
+For the calibration of the threshold, pulses at four different heights
+are injected (at 0, 1000, 3000 and 6000
+electrons). \cref{fig:Timepix3_THL_Calibration} shows the threshold
+calibration for different assemblies. 
+
+
+
+\begin{table}[htbp]
+  \centering
+  \caption{Advacam active-edge n-in-p planar pixel sensor assemblies. The edge distance is defined by the distance between the last pixel implant and the physical sensor edge.}
+  \label{tab:NominalThreshold}
+  \begin{tabular}{lccc}
+    \toprule
+    Assembly & Nominal THL\textsubscript{DAC}\textsuperscript{op} [DAC steps] & Nominal THL\textsubscript{e-}\textsuperscript{op} [electrons]\\
+    \midrule
+    W19\_G7 & 1190 & 466.5\\
+    W19\_F7 & 1187 & 532.4\\ \hline
+    W19\_L8 & 1133 & 517.8\\
+    W19\_C7 & 1148 & 553.7\\
+    W5\_E2 & 1160 & 537.9\\ \hline
+    W5\_F1 & 1153 & 441.2\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
 TODO:\\ 
 - Explain method\\
 - make a table with nominal operating threshold\\
@@ -132,27 +177,27 @@ TODO:\\
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0019_G07.pdf}
-    \caption{}
+    \caption{20-NGR}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0019_F07.pdf}
-    \caption{}
+    \caption{23-FGR}
   \end{subfigure}\\
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0019_L08.pdf}
-    \caption{}
+    \caption{28-GNDGR}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0019_C07.pdf}
-    \caption{}
+    \caption{55-GNDGR}
   \end{subfigure}\\
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0005_E02.pdf}
-    \caption{}
+    \caption{55-GNDGR-100}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0005_F01.pdf}
-    \caption{}
+    \caption{55-GNDGR-150}
   \end{subfigure}
   \caption{Threshold calibration for Timepix3 assemblies using test pulses.}
   \label{fig:Timepix3_THL_Calibration}
