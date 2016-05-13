@@ -23,12 +23,13 @@
 % Glossary package
 % \usepackage[acronym,toc,nosuper]{glossaries}
 % TikZ packages and libraries
-% \usepackage{tikz}
 % \usepackage{tikz-3dplot}
 % \usepackage{pgfplots}
 % \usetikzlibrary{positioning,shapes,arrows}
 % \usetikzlibrary{decorations.pathmorphing}
 % \usetikzlibrary{decorations.markings}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
 \usepackage{thesis_defs}
 \usepackage{CLICdp_definitions} % nalipour
 \usepackage{upgreek}
@@ -202,9 +203,9 @@
 \input{include/CLIC}
 \input{include/Silicon}
 \input{include/Calibration}
-\input{include/Telescope}
 \input{include/ThinSensors}
-\input{include/Extrapolation}
+\input{include/Telescope}
+\input{include/ActiveEdgeSensors}
 \input{include/Conclusions}
 % Uncomment the following command to get references per chapter.
 % Put it inside the file or change \include to \input if you do not want the references
