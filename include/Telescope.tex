@@ -98,6 +98,34 @@ AllPix and EUTelescope.
 \section{Timepix3 telescope resolution}
 \label{sec:TelescopeResolution}
 
+\subsection{Beam angle}
+
+For MC beam angle distribution:
+
+\begin{equation}
+  \phi=arctan{{x_2-x_{DUT}} \over {z_2-z_{DUT}}} \; ,
+  \label{eq:beamAnglePhi}
+\end{equation}
+
+\begin{equation}
+  \theta=arctan{{y_2-y_{DUT}} \over {z_2-z_{DUT}}} \; ,
+  \label{eq:beamAngleTheta}
+\end{equation}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Telescope/MC_trackAnglePhi_planes_302_100.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Telescope/MC_trackAngleTheta_planes_302_100.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Beam angular distribution in \textsc{Geant4} simulations
+(comparing the global positions on the second telescope plane and on
+the DUT).}
+  \label{fig:MCbeamAngleDistr}
+\end{figure}
 
 \subsection{Biased residuals on each telescope plane}
 

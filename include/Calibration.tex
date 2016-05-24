@@ -4,7 +4,127 @@
 %==============================================================================    
 
 \section{Calibration} \label{sec:calibration}
-\subsection{Energy and time calibration} \label{sec:TOT_TOA_calibration}
+\subsection{Energy and time
+  calibration} \label{sec:TOT_TOA_calibration}
+\begin{equation}
+  \text{TOT} = a \, E + b - \frac{c}{E - t} \; ,
+  \label{eq:TOTsurrogateFunction}
+\end{equation}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/TOTcalibration_W0005_E02_thresh1160.pdf}
+    \caption{W5\_E2: THL=1160}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/TOTcalibration_W0005_E02_thresh1190.pdf}
+    \caption{W5\_E2: THL=1190}
+  \end{subfigure}
+  \caption{TOT calibration for W5\_E2.}
+  \label{fig:TOTcalibW5E2}
+\end{figure}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/TOTcalibration_W0005_F01_thresh1153.pdf}
+    \caption{TOT calibration for W5\_F1, THL=1153.}
+    \label{fig:TOTcalibW5F1}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/TOTcalibration_W0019_C07_thresh1148.pdf}
+    \caption{TOT calibration for W19\_C7, THL=1148.}
+    \label{fig:TOTcalibW19C7}
+  \end{subfigure}
+\end{figure}
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/TOTcalibration_W0019_G07_thresh1190.pdf}
+    \caption{TOT calibration for W19\_G7, THL=1190.}
+    \label{fig:TOTcalibW19G7}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/TOTcalibration_W0019_L08_thresh1133.pdf}
+    \caption{TOT calibration for W19\_L8, THL=1133.}
+    \label{fig:TOTcalibW19L8}
+  \end{subfigure}
+\end{figure}
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_C07.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_C07.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Energy deposition and comparison to
+    \textsc{Geant4}. W0019\_C07, Run 902, THL=1148.}
+  \label{fig:EdepW19C7}
+\end{figure}
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_L08.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_L08.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Energy deposition and comparison to
+    \textsc{Geant4}. W0019\_L08, Run 1130, THL=1133.}
+  \label{fig:EdepW19L8}
+\end{figure}
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_G07.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_G07.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Energy deposition and comparison to
+    \textsc{Geant4}. W0019\_G07, Run 1190, THL=995.}
+  \label{fig:EdepW19L8}
+\end{figure}
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0005_E02.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_E02.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Energy deposition and comparison to
+    \textsc{Geant4}. W0005\_E02, Run 661, THL=1160.}
+  \label{fig:EdepW19L8}
+\end{figure}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0005_F01.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    % \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_F01.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Energy deposition and comparison to
+    \textsc{Geant4}. W0005\_F01, Run 761, THL=1153.}
+  \label{fig:EdepW19L8}
+\end{figure}
+
 \subsection{Threshold calibration} \label{sec:threshold}
 
 
