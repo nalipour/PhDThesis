@@ -22,29 +22,31 @@ Due to the periodic lattice of crystalline structure of semiconductor
 material, electrons within the solid have allowed energy bands. The
 energy of the electrons is confined to one of the energy bands and the
 bands may be separated by gaps of forbidden
-energies. Figure~\ref{fig:energyBands} schematically illustrates the
-bands in insulators, semiconductors and metals. In the \textit{valence
-band}, the electrons are bonded to specific lattice sites within the
+energies.\\ \cref{fig:energyBands} schematically illustrates the bands
+in insulators, semiconductors and metals. In the \textit{valence
+  band}, the electrons are bonded to specific lattice sites within the
 crystal. The electrons in the \textit{conduction band} are free to
 move through the crystal and contribute to the electrical
-conductivity. The \textit{bandgap} separates the valence from the
-conduction band and allows to classify wether the material is a
-semiconductor, an insulator or a metal. In the absence of thermal
-excitation, the valence band for the semiconductors and insulators is
-completely full and the conduction band empty and therefore they are
-not electrically conductive. Metals are highly electrically conductive
-since the fermi energy level lies in the conduction band and the
-electrons are free to migrate through the material even at very low
+conductivity. The \textit{bandgap} (E\textsubscript{g}) separates the
+valence from the conduction band and allows to classify wether the
+material is a semiconductor, an insulator or a metal. In the absence
+of thermal excitation, the valence band for the semiconductors and
+insulators is completely full and the conduction band empty and
+therefore they are not electrically conductive. Metals are highly
+electrically conductive since the fermi energy level
+(E\textsubscript{F}) lies in the conduction band and the electrons are
+free to migrate through the material even at very low
 temperatures. However, for insulators and semiconductors the electrons
 must cross the bandgap to become conductive. The bandgap for
-semiconductors ($\sim1\,\ev$) is much lower than for insulators ($\sim5\,\ev$). If an
-electron in the valence band gains enough thermal energy to cross the
-bandgap and reach the conduction band, it leaves behind a vacancy (a
-hole) behind in the valence band. The electron-hole pair can move
-under the influence of an external electric field (electrons in the
-opposite direction of the holes). This motion creates conductivity in
-the material. This property is exploited in silicon detectors to
-detect radiation and is developed more in the coming sections.
+semiconductors ($\sim1\,\ev$) is much lower than for insulators
+($\sim5\,\ev$). If an electron in the valence band gains enough
+thermal energy to cross the bandgap and reach the conduction band, it
+leaves behind a vacancy (a hole) behind in the valence band. The
+electron-hole pair can move under the influence of an external
+electric field (electrons in the opposite direction of the
+holes). This motion creates conductivity in the material. This
+property is exploited in silicon detectors to detect radiation and is
+developed more in the coming sections.
 
 
 
@@ -71,14 +73,14 @@ detect radiation and is developed more in the coming sections.
 
 
     \begin{scope} % Energy levels
-        \draw[dashed] (0, 3.5) -- (14, 3.5) node[right] {$E_{F}$};
-        \draw[arrows=<->](1.5, 2)--(1.5, 5) node [pos=0.66,right] {$E_{g}>$\SI{5}{\electronvolt}};
-        \draw[arrows=<->](6, 3)--(6, 4) node [pos=0.66,right] {$E_{g}\sim$\SI{1}{\electronvolt}};
+        \draw[dashed] (0, 3.5) -- (14, 3.5) node[right] {E\textsubscript{F}};
+        \draw[arrows=<->](1.5, 2)--(1.5, 5) node [pos=0.66,right] {E\textsubscript{g}$>5\,\ev$};
+        \draw[arrows=<->](6, 3)--(6, 4) node [pos=0.66,right] {E\textsubscript{g}$\sim1\,\ev$};
     \end{scope}
 
   \end{tikzpicture}
   \caption{Illustation of the band structures for electron energies in
-  insulators, semiconductors and metals.}  
+  insulators, semiconductors and metals. E\textsubscript{F} represents the Fermi energy level and E\textsubscript{g} the bandgap.}  
   \label{fig:energyBands}
 \end{figure}
 
@@ -87,9 +89,9 @@ detect radiation and is developed more in the coming sections.
 
 \subsection{Bethe-Bloch formula}
 In silicon, free charge careers are generated due to thermal effects
-and lead to leakage current. Charged particles are also detected by a
-current generated due to their interaction with the sensor
-material. Part of the absorbed energy generates electron-hole pairs
+and lead to leakage current. A current is also generated due to the
+interaction of charged particles with silicon and can be
+detected. Part of the absorbed energy generates electron-hole pairs
 through scattering processes with the shell electrons of silicon and
 can be collected by the readout electronic. The energy loss along the
 particle track is described by the Bethe-Bloch
@@ -109,12 +111,11 @@ shell electron.  A minimum ionising particle (MIP) has an energy loss
 in the minimum of the Bethe-Bloch formula. Relativistic particles are
 considered as MIPs.
 
-Ionisation is also subject to statistical fluctuations and
-Equation~\ref{eq:BetheBloch} gives its average value. It can be
+Ionisation is also subject to statistical fluctuations and \cref{eq:BetheBloch} gives its average value. It can be
 described by a probability density function called \textit{straggling
 functions} and characterised by the most probable energy loss
 ($\Delta_{p}$) and full-width-at-half-maximum
-($w$). Figure~\ref{fig:LandauDistribution} shows examples of this
+($w$). \cref{fig:LandauDistribution} shows examples of this
 distribution in thin sensors. If a particle is not stopped in the
 sensors, the energy deposition varies around the peak of the
 distribution and the average value is higher than the most probable
@@ -139,8 +140,8 @@ Bichsel~\cite{Bichsel} provides a theory to calculate the
 straggling functions and compares different methods. He also gives an
 approximation of $\Delta_{p}$ and $FWHM$ as function of the thickness
 $t$ of silicon detectors for particles with charge $\pm1e$ and
-$\beta\gamma>500$ as listed in Equations~\ref{eq:MPV1}, \ref{eq:MPV2},
-\ref{eq:FWHM}:
+$\beta\gamma>500$ as listed in \cref{eq:MPV1}, \cref{eq:MPV2},
+\cref{eq:FWHM}:
 
 \begin{itemize}
 \item For $13<t<110$ [micron]:
