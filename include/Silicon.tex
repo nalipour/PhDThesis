@@ -111,17 +111,17 @@ shell electron.  A minimum ionising particle (MIP) has an energy loss
 in the minimum of the Bethe-Bloch formula. Relativistic particles are
 considered as MIPs.
 
-Ionisation is also subject to statistical fluctuations and \cref{eq:BetheBloch} gives its average value. It can be
-described by a probability density function called \textit{straggling
-functions} and characterised by the most probable energy loss
-($\Delta_{p}$) and full-width-at-half-maximum
-($w$). \cref{fig:LandauDistribution} shows examples of this
-distribution in thin sensors. If a particle is not stopped in the
-sensors, the energy deposition varies around the peak of the
-distribution and the average value is higher than the most probable
-value ($\Delta_{p}$) of the distribution. The fluctuations around the
-$\Delta_{p}$ increase for thinner sensors and should be taken into
-account for the design of the dynamic range of the readout
+Ionisation is also subject to statistical fluctuations and
+\cref{eq:BetheBloch} gives its average value. It can be described by a
+probability density function called \textit{straggling functions} and
+characterised by the most probable energy loss ($\Delta_{p}$) and
+full-width-at-half-maximum ($w$). \cref{fig:LandauDistribution} shows
+examples of this distribution in thin sensors. If a particle is not
+stopped in the sensors, the energy deposition varies around the peak
+of the distribution and the average value is higher than the most
+probable value ($\Delta_{p}$) of the distribution. The fluctuations
+around the $\Delta_{p}$ increase for thinner sensors and should be
+taken into account for the design of the dynamic range of the readout
 electronics.
 
 
@@ -135,7 +135,10 @@ electronics.
   \label{fig:LandauDistribution}
 \end{figure}
 
-\subsection{Bichsel model}
+In literature, several approaches address the calculation of the straggling functions. Two of the most relevant ones are described in \cref{sec:landau} and \cref{sec:bichsel}.
+\subsection{The Landau distribution}\label{sec:landau}
+
+\subsection{Bichsel model}\label{sec:bichsel}
 Bichsel~\cite{Bichsel} provides a theory to calculate the
 straggling functions and compares different methods. He also gives an
 approximation of $\Delta_{p}$ and $FWHM$ as function of the thickness
