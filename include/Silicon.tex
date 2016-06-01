@@ -205,14 +205,13 @@ charge $\pm1e$ and $\beta\gamma>500$ as listed in
   \end{equation}
 \end{itemize}
 
-Table~\ref{tab:EdepForDifferentThickness} summarises the $\Delta_{p}$
+\cref{tab:EdepForDifferentThickness} summarises the $\Delta_{p}$
 and $w$ for detectors thicknesses at our disposal. 
 
 \begin{table}[htbp]
   \centering
   \caption{$\Delta_{p}$ and $w$ calculated for silicon sensors with
-    different thicknesses using Equations~\ref{eq:MPV1}, \ref{eq:MPV2}
-    and \ref{eq:FWHM}.}
+    different thicknesses using \cref{eq:MPV1,eq:MPV2,eq:FWHM}.}
   \label{tab:EdepForDifferentThickness}
   \begin{tabular}{c c c c}
     \toprule
@@ -251,7 +250,7 @@ model~\cite{Apostolakis:2000yu} for the precise simulation of
 ionisation energy loss in thin detectors since the Landau model is not
 suitable for thin sensors. 
 
-Figure~\ref{fig:BichselVSG4} compares the energy loss due to
+\cref{fig:BichselVSG4} compares the energy loss due to
 ionisation in $50\,\micron$ and $450\,\micron$ thick silicon sensors
 for different \textsc{Geant4} physics lists and the Bichsel
 model. \textsc{Geant4} version 10.1.2 is used to obtain these
@@ -302,7 +301,7 @@ field).
 
 The diffusion implies that a carrier is more probable to move from a
 high-concentration region to a low-concentration region. The diffusion
-current per unit area is given by Equation~\ref{eq:diffusionCurrent}~\cite{Rossi:976471}:
+current per unit area is given by \cref{eq:diffusionCurrent}~\cite{Rossi:976471}:
 
 \begin{equation}
   \begin{aligned}
@@ -321,7 +320,7 @@ concentrations.
 Charge carriers are accelerated between two random collisions in the
 presence of an external electric field in the direction of the field
 and leads to and average drift velocity given by
-Equation~\ref{eq:driftVelocity}~\cite{Rossi:976471}:
+\cref{eq:driftVelocity}~\cite{Rossi:976471}:
 
 \begin{equation}
   \begin{aligned}
@@ -338,8 +337,8 @@ function of the electric field. For higher electric fields the charge
 carriers gain more acceleration and the number of collisions per unit
 time becomes highe. This leads to a saturation of the drift velocity
 $v_s$. The mobility dependence on the electric field is described by
-Equation~\ref{eq:mobility} and parameters described in
-Table~\ref{tab:mobility_parameters}~\cite{Jacoboni197777}:
+\cref{eq:mobility} and parameters described in
+\cref{tab:mobility_parameters}~\cite{Jacoboni197777}:
 \begin{equation}
   \mu=\frac{v_{s}/E_{c}}{\left[1+(E/E_{c})^{\beta}\right]^{1/\beta}}\; .
   \label{eq:mobility}
@@ -348,8 +347,8 @@ Table~\ref{tab:mobility_parameters}~\cite{Jacoboni197777}:
 \begin{table}[htbp]
   \centering
   \caption{Parameters for the mobility as described in
-    Equation~\ref{eq:mobility} with T the absolute temperature and E
-    the absolute electric field.}
+    \cref{eq:mobility} with T the absolute temperature and E the
+    absolute electric field.}
   \label{tab:mobility_parameters}
   \begin{tabular}{c c c c}
     \toprule
@@ -363,7 +362,7 @@ Table~\ref{tab:mobility_parameters}~\cite{Jacoboni197777}:
   \end{tabular}
 \end{table}
 
-Figure~\ref{fig:Mobility_electron_holes} shows the mobility for
+\cref{fig:Mobility_electron_holes} shows the mobility for
 electrons and holes as a function of the electric field. For a low electric field, the mobility for intrinsic silicon at 300~K
 is:
 \begin{equation*}
@@ -380,7 +379,7 @@ likely to be trapped in an irradiated material.
   \centering
   \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/Mobility_electron_holes.pdf}
   \caption{Mobility for electrons and holes as a function of an
-    applied electric field calculated with the Equation~\ref{eq:mobility}.}
+    applied electric field calculated with the \cref{eq:mobility}.}
   \label{fig:Mobility_electron_holes}
 \end{figure}
 %% --------------------------------------------- %%
@@ -390,21 +389,21 @@ Silicon sensors are made of reversely biased pn-junctions. The
 electric field due to the bias voltage allows the charge carriers to
 drift towards the readout chip and also to suppress the leakage current.
 
-The potential $\varphi$ at each point is described by Poisson's equation~\ref{eq:poisson} \cite{Knoll2010}
+The potential $\varphi$ at each point is described by Poisson's equation~\cref{eq:poisson} \cite{Knoll2010}
 \begin{equation}
   \nabla^{2}  \varphi=-{\rho \over \epsilon}\; ,
   \label{eq:poisson}
 \end{equation}
 
 where $\epsilon$ is the dielectric constant of the medium and $\rho$ the net charge density.
-The electric field E due to the electric potential is obtained by Equation~\ref{eq:Efield}
+The electric field E due to the electric potential is obtained by \cref{eq:Efield}
 
 \begin{equation}
 E=-grad \varphi \; ,
 \label{eq:Efield}
 \end{equation}
 
-In one dimension, Equation~\ref{eq:poisson} becomes
+In one dimension, \cref{eq:poisson} becomes
 \begin{equation}
 {{d^{2}  \varphi(z)} \over {dz^{2}}}=-{\rho(z) \over \epsilon}\; ,
 \label{eq:poisson1D}
@@ -505,14 +504,14 @@ W=\sqrt{2 \epsilon \mu_b \rho_bV_b}
 \end{equation}
 
 In the absence of an externally applied voltage to a pn-junction, the thermal diffusion of the electrons and the holes from their original atoms results in a depletion width with a potential difference between the p- and n-sides called the built-in potential $V_{bi}$ which is about 0.5~V for detector diodes. \\
-By taking into account the built-in reverse bias voltage, Equation~\ref{eq:depletionWidth} is written as,
+By taking into account the built-in reverse bias voltage, \cref{eq:depletionWidth} is written as,
 \begin{equation}
 W=\sqrt{2 \epsilon \mu_b \rho_b \left(V_b+V_{bi}\right)}=\sqrt{{2 \epsilon \left(V_b+V_{bi}\right)} \over {eN_b}}
 \; ,
 \label{eq:depletionWidth2}
 \end{equation}
 
-The electric field of Equation~\ref{eq:PoissonIntegration1}, by replacing the depletion width and $N_d$ by Equation~\ref{eq:depletionWidth2} can be expressed as
+The electric field of \cref{eq:PoissonIntegration1}, by replacing the depletion width and $N_d$ by \cref{eq:depletionWidth2} can be expressed as
 \begin{equation}
 E(z)={{2\left(V_b+V_{bi}\right)} \over {W}} \left({z \over W}-1\right)
 \; ,
@@ -552,7 +551,7 @@ The time required for a charge originating at point $z_0$ to reach a point $z$ i
   \label{eq:driftTimeIntegral}
 \end{equation}
 
-By integrating Equation~\ref{eq:driftTimeIntegral} and replacing the electric field by Equation~\ref{eq:Efield} one obtains:
+By integrating \cref{eq:driftTimeIntegral} and replacing the electric field by \cref{eq:Efield} one obtains:
 
 \begin{equation} 
   t(z, z_0)={{d^2} \over {2 \mu_c V_D}} ln\left( {{d(V_B+V_D)-2V_Dz_0} \over {d(V_B+V_D)-2V_Dz}} \right)
@@ -560,7 +559,7 @@ By integrating Equation~\ref{eq:driftTimeIntegral} and replacing the electric fi
   \label{eq:driftTimeIntegratedz0}
 \end{equation}
 
-In Equation~\ref{eq:driftTimeIntegratedz0}, by replacing $z_0=0$, we obtain:
+In \cref{eq:driftTimeIntegratedz0}, by replacing $z_0=0$, we obtain:
 \begin{equation} 
   t(z)={{d^2} \over {2 \mu_c V_D}} ln\left( {{V_B+V_D} \over {V_B+V_D-2V_Dz/d}} \right)
   \; ,
@@ -741,9 +740,9 @@ particle in a pixel.
 For a binary readout, for a pixel centered at 0 and having a pitch
 $p$, where only one pixel is fired per particle track the probability
 density function $D\left(x\right)$ is illustrated in
-Figure~\ref{fig:SpatResBinary}.  The average difference between the
-real position ($x_r$) and the measured position ($x_m=0$) of the
-particle in a pixel is calculated using Equation~\ref{eq:spatialRes}
+\cref{fig:SpatResBinary}. The average difference between the real
+position ($x_r$) and the measured position ($x_m=0$) of the particle
+in a pixel is calculated using \cref{eq:spatialRes}
 \cite{Rossi:976471}:
 \begin{equation}
 \sigma_{position}^2={{\int_{-p/2}^{p/2} \left(x_r\right)^2
@@ -764,7 +763,7 @@ possible which can result in more than one pixel hit per particle
 track. In this case, the charge is shared between two or more pixels
 and this group is called a cluster. Multi-hit clusters improves the
 resolution of
-Equation~\ref{eq:spatialResBinary}. Figure~\ref{fig:SpatResBinaryChargeSharing}
+\cref{eq:spatialResBinary}. \cref{fig:SpatResBinaryChargeSharing}
 illustrates the charge sharing between two pixels. If a track passes
 close to the edge of a pixel (within a distance of $s\over 2$ close to
 the edge), then the neighbouring pixel is also fired. For events
@@ -792,7 +791,7 @@ within $2p$.
 \subsection{Analog readout and charge sharing}
 The spatial resolution can be improved more when an analog readout is
 used that delivers a signal proportional to the collected charge as
-illustrated in Figure~\ref{fig:SpatResAnaglogChargeSharing}. In this
+illustrated in \cref{fig:SpatResAnaglogChargeSharing}. In this
 case, for multi-hit clusters $\eta$-function as described
 in~\cite{Belau:1983eh} is used to reconstruct the hit position within
 the pixels. 
@@ -803,7 +802,7 @@ The charge carriers follow the field lines to end-up on a certain
 electrode. They are also subject to thermal diffusion which spreads
 the charge cloud as it drifts through the silicon. The width of the
 diffusion $\sigma_{diffusion}(z)$ (for simplicity called $\sigma(z)$) at depth $z$ is given by
-Equation~\ref{eq:driftTimeIntegrated}.
+\cref{eq:driftTimeIntegrated}.
 The charge distribution at position $x_{hit}$ for a pixel extending from
 $x_1$ to $x_2$ is:
 \begin{equation}
@@ -812,7 +811,7 @@ Q(x_{hit}, z)= Q(z) {1\over{\sqrt{2 \pi \sigma^2(z)}}}
 \label{eq:ChargeDistribution}
 \end{equation}
 
-By integrating Equation~\ref{eq:ChargeDistribution} over the whole
+By integrating \cref{eq:ChargeDistribution} over the whole
 thickness of the detector, the charge deposited in a pixel at
 coordinate $x_{hit}$ having coordinates $x_1$ and $x_2$ is given by:  
 \begin{equation}
@@ -839,7 +838,7 @@ is expressed as
 The induced charge obtained by integrating over a Gaussian surface
 enclosing only the electrode is $-q$. \\
 Considering two parallel electrodes with a charge $q$ in between as
-showin in Figure~\ref{fig:InducedCharge_parallelPlates}. If the charge
+showin in \cref{fig:InducedCharge_parallelPlates}. If the charge
 is placed midway between the two parallel plates, it induces equal
 charge of $-q/2$ on the both electrodes as half of the electric field
 lines end up on the higher and the other half on the lower
@@ -864,7 +863,7 @@ described as a function of the weighting potential $\Phi$ which
 describes the coupling of a charge to an electrode. \\
 The weighting potential is defined for a specific electrode. It is
 obtained by setting the potential of the electrode to 1 and setting
-all other electrodes to potential 0. Equation~\ref{eq:RamoCharge}
+all other electrodes to potential 0. \cref{eq:RamoCharge}
 describes the induced charge $Q_k$ on electrode $k$ if a charge q moves along
 any path from position $z_0$ to $z_p$.
 \begin{equation}
@@ -880,7 +879,7 @@ any path from position $z_0$ to $z_p$.
  specific electrode. In the specific case of two-electrode configuration the
  electric and the weighting fields are the same. \\
 In a TCAD simulation~\cite{synopsysTCAD}, the weighting field and potential are obtained
-as shown in Figure~\ref{fig:RamoTCAD}. For this study the silicon
+as shown in \cref{fig:RamoTCAD}. For this study the silicon
 sensor has a thickness of 200~\micron and is over-depleted with a bias
 voltage of \SI{50}{\volt} on the back-side. First, \SI{0}{\volt} is
 applied to all the electrodes and then \SI{1}{\volt} is applied to the
@@ -904,7 +903,7 @@ configurations, the weighting potential and field are obtained.
 \end{figure}
 
 The weighting potential for different positions on the
-x-axis is shown in Figure~\ref{fig:RamoTCADCuts}. Since, the total
+x-axis is shown in \cref{fig:RamoTCADCuts}. Since, the total
 charge collected by the electrode $k$ depends only on the positions
 $z_0$ and $z_p$, in the absence of the radiation-induced damages
 (which would affect the distributions of the electric and weighting
