@@ -93,23 +93,28 @@ and lead to leakage current. A current is also generated due to the
 interaction of charged particles with silicon and can be
 detected. Part of the absorbed energy generates electron-hole pairs
 through scattering processes with the shell electrons of silicon and
-can be collected by the readout electronic. The energy loss along the
-particle track is described by the Bethe-Bloch
-formula~\cite{Beringer:1900zz}.
+can be collected by the readout electronic. The number of
+electron-hole pairs produced in the detector as well as the total
+energy loss of the particle in the detector are stochastic quantities.
+
+The energy loss along the particle track is described by the
+Bethe-Bloch formula~\cite{Beringer:1900zz}.
 
 \begin{equation}
-  - \frac{dE}{dx} = 4 \pi N_A r_{e}^2 m_e c^2 z^2 \frac{Z}{A}  \frac{1}{\beta^2} \left[ \frac{1}{2} \ln{\frac{2 m_e c^2 \beta^2 \gamma^2 T_{max}}{I^2}} - \beta^2 - \frac{\delta}{2}\right]\; ,
+  - \braket{{dE}\over{dx}} = 4 \pi N_A r_{e}^2 m_e c^2 z^2 \frac{Z}{A}  \frac{1}{\beta^2} \left[ \frac{1}{2} \ln{\frac{2 m_e c^2 \beta^2 \gamma^2 T_{max}}{I^2}} - \beta^2 - \frac{\delta\left(\beta\gamma\right)}{2}\right]\; ,
   \label{eq:BetheBloch}
 \end{equation}
 
-where $z$ is the charge of the traversing particle, $Z$ the atomic
-number, $A$ the atomic mass of the absorption medium, $m_ec^2$ the
-rest energy of the electron, $\beta={v \over c}$,
-$\gamma=1/\sqrt{1-\beta^2}$, $I$ the mean excitation energy and
-$T_{max}$ the maximum kinetic energy that a particle can transfer to a
-shell electron.  A minimum ionising particle (MIP) has an energy loss
-in the minimum of the Bethe-Bloch formula. Relativistic particles are
-considered as MIPs.
+where $N_A$ is the Avogadro's number, $r_e$ the classical electron
+radius, $m_ec^2$ the rest energy of the electron, $z$ is the charge of
+the traversing particle, $Z$ the atomic number, $A$ the atomic mass of
+the absorption medium, $\beta={v \over c}$,
+$\gamma=1/\sqrt{1-\beta^2}$, $I$ the mean excitation energy, $T_{max}$
+the maximum kinetic energy that a particle can transfer to a shell
+electron and $\delta\left(\beta\gamma\right)$ the density effect
+correction to ionisation energy loss. A minimum ionising particle
+(MIP) has an energy loss in the minimum of the Bethe-Bloch
+formula. Relativistic particles are considered as MIPs.
 
 Ionisation is also subject to statistical fluctuations and
 \cref{eq:BetheBloch} gives its average value. It can be described by a
@@ -118,17 +123,27 @@ characterised by the most probable energy loss ($\Delta_{p}$) and
 full-width-at-half-maximum ($w$). \cref{fig:LandauDistribution} shows
 examples of this distribution in thin sensors. If a particle is not
 stopped in the sensors, the energy deposition varies around the peak
-of the distribution and the average value is higher than the most
-probable value ($\Delta_{p}$) of the distribution. The fluctuations
-around the $\Delta_{p}$ increase for thinner sensors and should be
-taken into account for the design of the dynamic range of the readout
-electronics.
+of the distribution with a large tail for high signals. The main
+reason for the highly-skewed energy loss distribution is the
+manifestation of $\delta$-rays which happens when electrons acquire
+enough energy by interaction and themselves become ionising
+particles. The $\delta$-rays not only make the average value of the
+energy loss higher than the most probable value ($\Delta_{p}$) of the
+distribution, but also create big clusters and thus degrade the
+spatial resolution of the detector. This is the reason why the Bethe
+equation, \cref{eq:BetheBloch}, is ill-defined experimentally and not
+used for applications where the energy loss for single particles is
+described.
+
+The fluctuations around the $\Delta_{p}$ increase for thinner sensors
+and should be taken into account for the design of the dynamic range
+of the readout electronics.
 
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.7\textwidth, page=14, trim = 50mm 160mm
-  40mm 20mm, clip]{Articles/rpp2009-rev-passage-particles-matter.pdf}
+    40mm 20mm, clip]{Articles/rpp2009-rev-passage-particles-matter.pdf}
   \caption{Straggling functions in silicon for 500 MeV pions,
     normalized to unity at the most probable value. $w$
     is the full-width-at-half-maximum~\cite{Beringer:1900zz}.}
@@ -137,47 +152,71 @@ electronics.
 
 In literature, several approaches address the calculation of the
 straggling functions. The Landau and the Bichsel models, two of the
-most relevant models, are described in \cref{sec:landau,sec:bichsel}.
+most relevant models, are described in \cref{sec:landau,sec:bichsel}. 
+
+The probability of the occurrence of collisions and the probability
+for a particular energy loss $E$ are considered for the calculation of
+the straggling functions. To obtain correct straggling functions, the
+accurate determination of the collision cross section as function of
+energy loss, $\sigma(E)$, is necessary.
 
 \subsection{The Landau distribution}\label{sec:landau}
-Landau distribution~\cite{Landau:1944if}
+The most commonly used model in experiments, is a Landau distribution
+fitted with a Gaussian. The most probable value $\Delta_p$ of the
+distribution is given by the Landau-Vavilov
+method~\cite{Landau:1944if,Vavilov:1957zz}:
+
+\begin{equation}
+  \Delta_p=\xi \left[\text{ln}{{2mc^2\beta^2\gamma^2}\over{I}}+\text{ln}{\xi \over I}+0.200-\beta^2-\delta\left(\beta\gamma\right) \right] \; ,
+  \label{eq:LandauVavilovMPV}
+\end{equation}
+
+where $\xi=(K/2)\braket{Z/A}(x/\beta^2)$~\mev for a detector of
+moderate thickness $x$ in g~\inversecmsquared (the other parameters
+are as the ones described for \cref{eq:BetheBloch}).
+
+Though the Landau-Vavilov calculation does not describe correct
+functions for thin silicon sensors.
+
 \subsection{Bichsel model}\label{sec:bichsel}
-Bichsel~\cite{Bichsel} provides a theory to calculate the
-straggling functions and compares different methods. This method also gives an
-approximation of $\Delta_{p}$ and $w$ as function of the thickness
-$t$ of silicon detectors for particles with charge $\pm1e$ and
-$\beta\gamma>500$ as listed in \cref{eq:MPV1,eq:MPV2,eq:FWHM}:
+Bichsel~\cite{Bichsel} provides a theory to calculate the straggling
+functions. It describes accurately the energy loss for very thin
+sensors.
+Bichsel provides an approximation of $\Delta_{p}$ and $w$ as
+function of the thickness $t$ of silicon detectors for particles with
+charge $\pm1e$ and $\beta\gamma>500$ as listed in
+\cref{eq:MPV1,eq:MPV2,eq:FWHM}:
 
 \begin{itemize}
-\item For $13<t<110$ [micron]:
+\item For $13<t<110$ [\micron]:
   \begin{equation}
     \Delta_{p}=t \cdot (100.6+35.35 \cdot \ln(t))\; ,
     \label{eq:MPV1}
   \end{equation}
-\item For $110<t<3000$ [micron]:
+\item For $110<t<3000$ [\micron]:
   \begin{equation}
     \Delta_{p}=t \cdot (190+16.3 \cdot \ln(t))\; ,
     \label{eq:MPV2}
   \end{equation}
-\item For $30<t<260$ [micron]:
+\item For $30<t<260$ [\micron]:
   \begin{equation}
-    FWHM=t \cdot (259.6-28.41 \cdot \ln(t)).
+    w=t \cdot (259.6-28.41 \cdot \ln(t)).
     \label{eq:FWHM}
   \end{equation}
 \end{itemize}
 
 Table~\ref{tab:EdepForDifferentThickness} summarises the $\Delta_{p}$
-and $FWHM$ for detectors thicknesses at our disposal. 
+and $w$ for detectors thicknesses at our disposal. 
 
 \begin{table}[htbp]
   \centering
-  \caption{$\Delta_{p}$ and $FWHM$ calculated for silicon sensors with
+  \caption{$\Delta_{p}$ and $w$ calculated for silicon sensors with
     different thicknesses using Equations~\ref{eq:MPV1}, \ref{eq:MPV2}
     and \ref{eq:FWHM}.}
   \label{tab:EdepForDifferentThickness}
   \begin{tabular}{c c c c}
     \toprule
-    Thickness [micron] &  $\Delta_{p}$ [keV] & $FWHM$ [keV] & $\Delta_{p} / FWHM$ \\ 
+    Thickness [\micron] &  $\Delta_{p}$ [\kev] & $w$ [\kev] & $\Delta_{p} / w$ \\ 
     \midrule
     50 & 11.9 & 7.42 & 1.6      \\
     100 & 26.34 & 12.88 & 2.045 \\
@@ -191,29 +230,58 @@ and $FWHM$ for detectors thicknesses at our disposal.
 \subsection{\textsc{Geant4}}
 
 \textsc{Geant4}~\cite{Agostinelli:2002hh}, as an object-oriented
-simulation toolkit, is widely used in high-energy physics,
-astrophysics and medical applications. It allows for the simulation of
-the passage of particles through matter and their interaction in
-matter. \textsc{Geant4} provides the Photo-Absorption Ionisation (PAI)
+simulation toolkit implemented in C++ programming language, is widely
+used in high-energy physics, astrophysics and medical applications. It
+allows for the simulation of the passage of particles through matter
+and their interaction in matter.
+
+\textsc{Geant4} provides physics models for different type of
+interactions called \textit{physics lists}. The electromagnetic
+physics handles electromagnetic interactions of leptons, photons,
+hadrons and ions. 
+
+The \textit{emstandard} physics lists provide the electromagnetic
+interactions of photons and charged particles with matter and is
+suited for the simulation of ionisation, bremsstrahlung, gamma
+conversion and other electromagnetic interactions of particles with
+energies from $1\,\kev$ up to $10\,\pev$~\cite{Apostolakis2009859}.
+
+\textsc{Geant4} provides the Photo-Absorption Ionisation (PAI)
 model~\cite{Apostolakis:2000yu} for the precise simulation of
 ionisation energy loss in thin detectors since the Landau model is not
-suitable for thin sensors.  Figure~\ref{fig:BichselVSG4} compares the
-energy loss due to ionisation in $50\,\micron$ silicon for different
-\textsc{Geant4} physics lists and versions. The \textit{emstandard}
-physics lists provide the electromagnetic interactions of photons and
-charged particles with matter and is suited for the simulation of
-ionisation, bremsstrahlung, gamma conversion and other electromagnetic
-interactions of particles with energies from $1\,\kev$ up to
-$10\,\pev$~\cite{Apostolakis2009859}. The energy deposition given by
-the PAI model is very close to the one calculated by Bichsel
-especially the fluctuations around the most probable value. For this
-reason, the PAI model is chosen to be used later for the simulations. 
+suitable for thin sensors. 
+
+Figure~\ref{fig:BichselVSG4} compares the energy loss due to
+ionisation in $50\,\micron$ and $450\,\micron$ thick silicon sensors
+for different \textsc{Geant4} physics lists and the Bichsel
+model. \textsc{Geant4} version 10.1.2 is used to obtain these
+distributions. Version 9.6.2 also showed the same results. For
+$50\,\micron$ thick sensor, the \textit{emstandard\_opt3} physics list
+gives a reasonable value for the $\Delta_p$ but the width $w$ of the
+distribution is more narrow than the Bichsel distribution. The PAI
+model corrects for $w$ and the energy deposition is very similar to
+the Bichsel model. For the thick sensor of $450\,\micron$, all the
+physics lists and the Bichsel model show the similar distributions.
+
+The energy deposition given by the PAI model is very close to the one
+calculated by Bichsel especially the fluctuations around the most
+probable value and for thin sensors. For this reason, the PAI model is
+chosen to be used later for the simulations even though it requires
+more computation power because of its accuracy.
  
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.5\textwidth]{figures/50um_bichsel_physicsLists.pdf}
-  \caption{Energy-loss distribution in $50\,\micron$ silicon comparing
-    the Bichsel model and different physics list in \textsc{Geant4}.}
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/50um_bichsel_physicsLists.pdf}
+    \caption{}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/450um_bichsel_physicsLists.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Energy-loss distribution in (a) $50\,\micron$ and (b)
+    $450\,\micron$ thick silicon sensors by $120\,\gev$ $\pi^{+}$
+    comparing the Bichsel model and \textsc{Geant4} using the PAI and
+    the emstandard\_opt3 physics lists.}
   \label{fig:BichselVSG4}
 \end{figure}
 
