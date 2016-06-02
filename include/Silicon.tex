@@ -270,11 +270,11 @@ more computation power because of its accuracy.
  
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/50um_bichsel_physicsLists.pdf}
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/50um_bichsel_physicsLists.pdf}
     \caption{}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/450um_bichsel_physicsLists.pdf}
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/450um_bichsel_physicsLists.pdf}
     \caption{}
   \end{subfigure}
   \caption{Energy-loss distribution in (a) $50\,\micron$ and (b)
@@ -566,7 +566,7 @@ In \cref{eq:driftTimeIntegratedz0}, by replacing $z_0=0$, we obtain:
   \label{eq:driftTimeIntegrated}
 \end{equation}
 
-And the diffusion sigma is given by,
+And the diffusion standard deviation is given by,
 
 \begin{equation} 
   \sigma_{diffusion}\left(z\right)=\sqrt{2 D_{b} t_{c}}=\sqrt{{{kTd^2}\over{eV_D}}ln\left({{V_B+V_D}\over{V_B+V_D-2V_Dz/d}}\right)}
@@ -574,108 +574,137 @@ And the diffusion sigma is given by,
   \label{eq:driftTimeIntegrated}
 \end{equation}
 
+
 The drift time depends on the charge carrier as shown in
 \cref{eq:driftTimeIntegrated}. \cref{fig:Drift_n_vs_p} compares the
 drift time for n and p-type carriers in a $50\,\micron$ thick silicon
-sensor with a depletion voltage of 4~V and biased at 15~V as a
-function of the depth. The electrons have a higher drift time and
-therefore are faster for readout. But the diffusion does not depend on
-the carrier or the bulk type.
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.5\textwidth]{figures/DriftTime_n_vs_p_carrier.pdf}
-  \caption{Drift time for n and p-type carriers as a function of the
-    depth in the sensor. The depletion voltage is 4~V and the bias
-    voltage is 15~V.}\label{fig:Drift_n_vs_p}
-\end{figure}
+sensor with a depletion voltage of |V\textsubscript{D}|=4~V and biased
+at |V\textsubscript{B}|=15~V as a function of the depth. The electrons
+have a higher drift time and therefore are faster for readout. But
+diffusion does not depend on the carrier.
 
-\begin{table}[htpb]
-  \centering
-  \caption{Sensors characteristics:}
-  \label{tab:Efield_mobility}
-  \begin{tabular}{ c c c c c c }
-    \toprule
-    Assembly & Sensor type & Thickness & V\textsubscript{depletion} &  V\textsubscript{bias} & THL\textsubscript{op} \\
-    \midrule
-    A06-W0110 & p-in-n & 50~\micron & $<15$~V & 15~V & 326 (855e\textsuperscript{-}) \\
-    L04-W0125 & p-in-n & 100~\micron & 19.64~V & 35~V & 410 (916e\textsuperscript{-}) \\
-    B06-W0125 & n-in-p & 200~\micron  & 30.31~V & -50~V & 435 (1066e\textsuperscript{-}) \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+\cref{fig:Efield_n_vs_p} shows the electric field and the mobility
+distribution as a function of the depth in silicon.
 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.33\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_A06.pdf}
-    \caption{50~\micron silicon}\label{fig:Mob_Efield_A06}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/DriftTime_n_vs_p_carrier.pdf}
+    \caption{}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.33\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_L04.pdf}
-    \caption{100~\micron Silicon}\label{fig:Mob_Efield_L04}
-  \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.33\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_B06.pdf}
-    \caption{200~\micron Silicon}\label{fig:Mob_Efield_B06}
-  \end{subfigure} 
-  \caption{Mobility dependence on the electric field.}\label{fig:Efield_mobility}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/Diffusion_n_vs_p_carrier.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{(a) Drift time (b) diffusion standard deviation for n and
+    p-type carriers as a function of the depth in the
+    sensor. Diffusion does not depend on the carrier type. The
+    depletion voltage is |V\textsubscript{D}|=4~V and the bias voltage
+    is |V\textsubscript{B}|=15~V.}\label{fig:Drift_n_vs_p}
 \end{figure}
-
-Assuming the mobility constant is a good approximation for calculating
-the charge sharing spread since the electric field is low. An example
-is given for the case where the silicon sensor has a thickness of 200~\micron.
 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.49\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_FunctionToIntegrate.pdf}
-    \caption{}\label{fig:}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_n_carrier.pdf}
+    \caption{}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.49\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_driftTime.pdf}
-    \caption{}\label{fig:}
-  \end{subfigure} 
-  \caption{Drift time considering the mobility constant or non-constant.}\label{fig:}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_p_carrier.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{The electric field and the mobility as a function of the
+    depth for (a) n-type carriers and (b) p-type
+    carriers.}\label{fig:Efield_n_vs_p}
 \end{figure}
 
-The diffusion constant and the diffusion spread considering the
-mobility constant and non-constant.
-\begin{figure}[htbp]
-  \centering
-  \begin{subfigure}[b]{0.49\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_DiffusionConstant.pdf}
-    \caption{}\label{fig:}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.49\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_SigmaDiffusion.pdf}
-    \caption{}\label{fig:}
-  \end{subfigure} 
-  \caption{The diffusion constant and spread for a constant mobility
-    and a mobility which depends on the electric field. }\label{fig:}
-\end{figure}
+%% \begin{table}[htpb]
+%%   \centering
+%%   \caption{Sensors characteristics:}
+%%   \label{tab:Efield_mobility}
+%%   \begin{tabular}{ c c c c c c }
+%%     \toprule
+%%     Assembly & Sensor type & Thickness & V\textsubscript{depletion} &  V\textsubscript{bias} & THL\textsubscript{op} \\
+%%     \midrule
+%%     A06-W0110 & p-in-n & 50~\micron & $<15$~V & 15~V & 326 (855e\textsuperscript{-}) \\
+%%     L04-W0125 & p-in-n & 100~\micron & 19.64~V & 35~V & 410 (916e\textsuperscript{-}) \\
+%%     B06-W0125 & n-in-p & 200~\micron  & 30.31~V & -50~V & 435 (1066e\textsuperscript{-}) \\
+%%     \bottomrule
+%%   \end{tabular}
+%% \end{table}
 
-Comparing TCAD simulations and the charge sharing obtained by the
-theoretical calculations gives us the following for a 200~\micron with
-a depletion voltage of 30.31~V. Comparing for two different bias
-voltages of 35~V and 50~V. In the case of the TCAD
-simulations these results depend largely on the mesh divisions and
-their locations. Both TCAD and theory assume a charge deposition of
-80e- per \micron.
+%% \begin{figure}[htbp]
+%%   \centering
+%%   \begin{subfigure}[b]{0.33\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_A06.pdf}
+%%     \caption{50~\micron silicon}\label{fig:Mob_Efield_A06}
+%%   \end{subfigure}\hfill
+%%   \begin{subfigure}[b]{0.33\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_L04.pdf}
+%%     \caption{100~\micron Silicon}\label{fig:Mob_Efield_L04}
+%%   \end{subfigure} \hfill
+%%   \begin{subfigure}[b]{0.33\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_B06.pdf}
+%%     \caption{200~\micron Silicon}\label{fig:Mob_Efield_B06}
+%%   \end{subfigure} 
+%%   \caption{Mobility dependence on the electric field.}\label{fig:Efield_mobility}
+%% \end{figure}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/tcad_vs_theory.pdf}
-  \caption{Diffusion comparing TCAD and theory.}\label{fig:}
-\end{figure}
+%% Assuming the mobility constant is a good approximation for calculating
+%% the charge sharing spread since the electric field is low. An example
+%% is given for the case where the silicon sensor has a thickness of 200~\micron.
 
+%% \begin{figure}[htbp]
+%%   \centering
+%%   \begin{subfigure}[b]{0.49\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_FunctionToIntegrate.pdf}
+%%     \caption{}\label{fig:}
+%%   \end{subfigure}\hfill
+%%   \begin{subfigure}[b]{0.49\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_driftTime.pdf}
+%%     \caption{}\label{fig:}
+%%   \end{subfigure} 
+%%   \caption{Drift time considering the mobility constant or non-constant.}\label{fig:}
+%% \end{figure}
 
+%% The diffusion constant and the diffusion spread considering the
+%% mobility constant and non-constant.
+%% \begin{figure}[htbp]
+%%   \centering
+%%   \begin{subfigure}[b]{0.49\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_DiffusionConstant.pdf}
+%%     \caption{}\label{fig:}
+%%   \end{subfigure}\hfill
+%%   \begin{subfigure}[b]{0.49\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_SigmaDiffusion.pdf}
+%%     \caption{}\label{fig:}
+%%   \end{subfigure} 
+%%   \caption{The diffusion constant and spread for a constant mobility
+%%     and a mobility which depends on the electric field. }\label{fig:}
+%% \end{figure}
+
+%% Comparing TCAD simulations and the charge sharing obtained by the
+%% theoretical calculations gives us the following for a 200~\micron with
+%% a depletion voltage of 30.31~V. Comparing for two different bias
+%% voltages of 35~V and 50~V. In the case of the TCAD
+%% simulations these results depend largely on the mesh divisions and
+%% their locations. Both TCAD and theory assume a charge deposition of
+%% 80e- per \micron.
+
+%% \begin{figure}[htbp]
+%%   \centering
+%%   \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/tcad_vs_theory.pdf}
+%%   \caption{Diffusion comparing TCAD and theory.}\label{fig:}
+%% \end{figure}
+
+\newpage
 \section{Spatial resolution}
 
 The spatial resolution of a pixel detector is mainly determined by the pixel
@@ -683,60 +712,6 @@ pitch. But this can be improved by the readout choice (binary or
 analog), the threshold value, the charge sharing, thickness of the
 detector and the reconstruction algorithm. The effect of the readout
 is studied in the sections here-below.
-
-\begin{figure}[htbp]
-  \centering
-  \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
-      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
-      
-      \draw[-] (-1.5, 1) -- (-1.5, 0) node[below]{${-p \over 2}$};
-      \draw[-] (-1.5, 1) -- (1.5, 1);
-      \draw[-] (1.5, 1) -- (1.5, 0) node[below]{${p \over 2}$};
-      \node[] at (0.2, 1.2) {1};
-    \end{tikzpicture}
-    \caption{}\label{fig:SpatResBinary}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
-      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
-      
-      \draw[-] (-0.7, 1) -- (-0.7, 0) node[below]{\tiny ${{-(p-s)}\over 2}$};
-      \draw[-] (-0.7, 1) -- (0.7, 1);
-      \draw[-] (0.7, 1) -- (0.7, 0) node[below]{\tiny ${(p-s)\over 2}$};
-      \node[] at (0.2, 1.2) {1};
-      \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
-      \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
-    \end{tikzpicture}
-    \caption{}\label{fig:SpatResBinaryChargeSharing}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
-      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
-      
-      \draw (-1.5,0) to[out=0, in=-120] (-0.9,0.2) to[out=60, in=180](-0.3, 1)--(0,1);
-      \draw (0,1)--(0.3, 1) to [out=-20, in=120] (0.9,0.2) to[out=-60,
-      in=0] (1.5,0);
-
-      \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
-      \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
-
-      \draw[-] (-0.5, 0.1) -- (-0.5, 0) node[below] {\tiny ${-(p-s) \over 2}$};
-      \draw[-] (0.5, 0.1) -- (0.5, 0) node[below] {\tiny ${(p-s) \over 2}$};
-
-      \node[] at (0.2, 1.2) {1};
-    \end{tikzpicture}
-    \caption{}\label{fig:SpatResAnaglogChargeSharing}
-  \end{subfigure}
-  \caption{(a) Binary readout. (b) Binary readout with charge
-    sharing. (c) Analog readout with charge sharing.}\label{fig:SpatialResolution}
-\end{figure}
 
 The spatial resolution is defined by:
 \begin{equation}
@@ -747,17 +722,87 @@ The spatial resolution is defined by:
 \end{equation}
 
 where $\sigma_{position}$ is the average distance between the real
-impact position ($x_r$) and the measured position ($x_m$) of the
+impact position $x_r$ and the measured position $x_m$ of the
 particle in a pixel.
 
+In the coming sections, the spatial resolution defined by
+\cref{eq:spatialRes} is calculated and studied for different scenarios
+and assumptions.
+
+%% \begin{figure}[htbp]
+%%   \centering
+%%   \begin{subfigure}[b]{0.3\textwidth}
+%%     \centering
+%%     \begin{tikzpicture}
+%%       \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
+%%       \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+%%       \draw[-] (-1.5, 1) -- (-1.5, 0) node[below]{${-p \over 2}$};
+%%       \draw[-] (-1.5, 1) -- (1.5, 1);
+%%       \draw[-] (1.5, 1) -- (1.5, 0) node[below]{${p \over 2}$};
+%%       \node[] at (0.2, 1.2) {1};
+%%     \end{tikzpicture}
+%%     \caption{}\label{fig:SpatResBinary}
+%%   \end{subfigure}\hfill
+%%   \begin{subfigure}[b]{0.3\textwidth}
+%%     \centering
+%%     \begin{tikzpicture}
+%%       \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
+%%       \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+%%       \draw[-] (-0.7, 1) -- (-0.7, 0) node[below]{\tiny ${{-(p-s)}\over 2}$};
+%%       \draw[-] (-0.7, 1) -- (0.7, 1);
+%%       \draw[-] (0.7, 1) -- (0.7, 0) node[below]{\tiny ${(p-s)\over 2}$};
+%%       \node[] at (0.2, 1.2) {1};
+%%       \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
+%%       \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
+%%     \end{tikzpicture}
+%%     \caption{}\label{fig:SpatResBinaryChargeSharing}
+%%   \end{subfigure}\hfill
+%%   \begin{subfigure}[b]{0.3\textwidth}
+%%     \centering
+%%     \begin{tikzpicture}
+%%       \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
+%%       \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+%%       \draw (-1.5,0) to[out=0, in=-120] (-0.9,0.2) to[out=60, in=180](-0.3, 1)--(0,1);
+%%       \draw (0,1)--(0.3, 1) to [out=-20, in=120] (0.9,0.2) to[out=-60,
+%%       in=0] (1.5,0);
+
+%%       \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
+%%       \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
+
+%%       \draw[-] (-0.5, 0.1) -- (-0.5, 0) node[below] {\tiny ${-(p-s) \over 2}$};
+%%       \draw[-] (0.5, 0.1) -- (0.5, 0) node[below] {\tiny ${(p-s) \over 2}$};
+
+%%       \node[] at (0.2, 1.2) {1};
+%%     \end{tikzpicture}
+%%     \caption{}\label{fig:SpatResAnaglogChargeSharing}
+%%   \end{subfigure}
+%%   \caption{(a) Binary readout. (b) Binary readout with charge
+%%     sharing. (c) Analog readout with charge sharing.}\label{fig:SpatialResolution}
+%% \end{figure}
+
+
+
 \subsection{Binary readout}
-For a binary readout, for a pixel centered at 0 and having a pitch
-$p$, where only one pixel is fired per particle track the probability
-density function $D\left(x\right)$ is illustrated in
-\cref{fig:SpatResBinary}. The average difference between the real
-position ($x_r$) and the measured position ($x_m=0$) of the particle
-in a pixel is calculated using \cref{eq:spatialRes}
-\cite{Rossi:976471}:
+The simplest case for the resolution computation is to consider a
+binary readout with single threshold. For a pixel centered at 0 and
+having a pitch $p$ with a probability density function as illustrated
+in \cref{fig:SpatResBinary}, the following assumptions are considered:
+
+\begin{itemize}
+\item The threshold is adjusted in a way to fire one pixel per
+  particle track.
+\item Only hit positions between $-p/2$ and $p/2$ trigger a signal in
+  pixel 0.
+\item A uniform density of particles hit the detector ($D\left(x\right)=1$).
+\end{itemize}
+
+
+The average difference between the real position ($x_r$) and the
+measured position ($x_m=0$) of the particle in a pixel is calculated
+using \cref{eq:spatialRes} \cite{Rossi:976471}:
 \begin{equation}
 \sigma_{position}^2={{\int_{-p/2}^{p/2} \left(x_r\right)^2
     1 dx_r } \over { \int_{-p/2}^{p/2}
@@ -770,39 +815,126 @@ which results in a spatial resolution of:
 \label{eq:sigmapos}
 \end{equation}
 
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}
+      \draw[->, thick] (-2,0)--(5,0) node[right]{$x$};
+      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+      \draw[-, blue, thick] (-1.5, 1) -- (-1.5, 0);
+      \node[below] at (-1.5, 0) {${-p \over 2}$};
+      \draw[-, blue, thick] (-1.5, 1) -- (1.5, 1);
+      \draw[-, blue, thick] (1.5, 1) -- (1.5, 0);
+      \node[below] at (1.5, 0) {${p \over 2}$};
+      \node[] at (0.2, 1.2) {1};
+      \node[above, blue] at (-1.5, 1) {Pixel 0};
 
-\subsection{Binary readout and charge sharing}
+      \draw[-, green, thick] (1.51, 1) -- (1.51, 0);
+      \draw[-, green, thick] (1.51, 1) -- (4.5, 1);
+      \draw[-, green, thick] (4.5, 1) -- (4.5, 0);
+      \node[below] at (4.5, 0) {${{3p} \over 2}$};
+      \node[above, green] at (3.5, 1) {Pixel 1};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Binary readout}  
+  \label{fig:SpatResBinary}
+\end{figure}
+
+This simple model shows the worst resolution achieved and is only
+dependent on the pitch size (geometry of the pixels). In reality, with
+charge sharing, the signal of a particle track is shared between
+several pixels and depending on the readout threshold more than one
+pixel can be fired which is called a \textit{cluster} of pixels. The
+resolution is therefore improved as described in
+\cref{sec:resolutionBinarySharing,sec:resolutionAnalogSharing}.
+
+\subsection{Binary readout and charge sharing}\label{sec:resolutionBinarySharing}
 The threshold of the readout electronics is usually set as low as
 possible which can result in more than one pixel hit per particle
 track. In this case, the charge is shared between two or more pixels
-and this group is called a cluster. Multi-hit clusters improves the
-resolution of
+(cluster). Multi-hit clusters improve the resolution of
 \cref{eq:spatialResBinary}. \cref{fig:SpatResBinaryChargeSharing}
 illustrates the charge sharing between two pixels. If a track passes
 close to the edge of a pixel (within a distance of $s\over 2$ close to
 the edge), then the neighbouring pixel is also fired. For events
-triggering single-hit events, the spatial resolution is given by:
+triggering single-hit events, the spatial resolution in pixel 0 for
+1-hit clusters is given by:
 
 \begin{equation}
 \sigma_{position}^2={{\int_{-(p/2-s/2)}^{(p/2-s/2)} \left(x_r\right)^2
     1 dx_r } \over { \int_{-(p/2-s/2)}^{(p/2-s/2)}
-    1 dx_r }}={(p-s)^2 \over 12} \; ,
+    1 dx_r }}={(p-s)^2 \over 12} \; .
 \label{eq:spatialResCharge sharing_1hit}
 \end{equation}
 
-and for two-hit clusters, the spatial resolution is given by
+For two-hit clusters, the spatial resolution is given by
 \begin{equation}
 \sigma_{position}={s \over \sqrt{12}} \; .
-\label{eq:spatialResCharge sharing_2hit}
+\label{eq:spatialResChargeSharing_2hit}
 \end{equation}
 
-The optimal average spatial resolution is obtained for $s=p/2$. This
-means that the number of single-hit and multi-hit clusters is the
-same. But, in this situation one is not able to distinguish between
-one track triggering two pixels and two tracks hitting the sensor
-within $2p$.
 
-\subsection{Analog readout and charge sharing}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}
+      
+      \draw[->, thick] (-2,0)--(5,0) node[right]{$x$};
+      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+      \draw[-, blue, thick] (-1.8, 1) -- (-1.8, 0);
+
+      \draw[-] (-1.5, 0) -- (-1.5, 0.1);
+      \node[below] at (-1.5, 0) {${-p \over 2}$};
+      \draw[-, blue, thick] (-1.8, 1) -- (1.8, 1);
+      \draw[-, blue, thick] (1.8, 1) -- (1.8, 0);
+
+      \draw[-] (1.5, 0) -- (1.5, 0.1);
+      \node[below] at (1.5, 0) {${p \over 2}$};
+      \node[] at (0.2, 1.2) {1};
+      \node[above, blue] at (-1.5, 1) {Pixel 0};
+      
+      \draw[-, green, thick] (1.2, 1) -- (1.2, 0);
+      \draw[-, green, thick] (1.2, 1) -- (4.8, 1);
+      \draw[-, green, thick] (4.8, 1) -- (4.8, 0);
+      \draw[-] (4.5, 0) -- (4.5, 0.1);
+      \node[below] at (4.5, 0) {${{3p} \over 2}$};
+      \node[above, green] at (3.5, 1) {Pixel 1};
+
+      \draw[<->, thick] (1.2, 1.2)--(1.8, 1.2);
+      \node[above] at (1.5, 1.2) {$s$};
+      
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Binary readout with charge sharing.}\label{fig:SpatResBinaryChargeSharing}
+\end{figure}
+
+The average resolution considering single and multi-hit clusters is given by
+\begin{equation}
+{\sigma_{\text{Total}}}^{2}={{\left(p-s\right)^{2}} \over 12}+{{s^2}\over12} \; .
+\label{eq:spatialResChargeSharingTotal}
+\end{equation}
+
+The optimal average spatial resolution is obtained for $s=p/2$ as
+shown in \cref{fig:sigmaTotal} where the pitch is
+$p=55\,\micron$. This means that the number of single-hit and
+multi-hit clusters is the same. But, in this situation one is not able
+to distinguish between one track triggering two pixels and two tracks
+hitting the sensor within $2p$.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/resolution_binary_chargeSharing_s.pdf}
+  \caption{$\sigma_{\text{Total}}$ calculated using
+    \cref{eq:spatialResChargeSharingTotal} with a pixel pitch of
+    $p=55\,\micron$ where $s$ is the width of the charge sharing
+    region as shown in \cref{fig:SpatResBinaryChargeSharing}.}
+  \label{fig:sigmaTotal}
+\end{figure}
+
+\subsection{Analog readout and charge sharing}\label{sec:resolutionAnalogSharing}
 The spatial resolution can be improved more when an analog readout is
 used that delivers a signal proportional to the collected charge as
 illustrated in \cref{fig:SpatResAnaglogChargeSharing}. In this
@@ -835,6 +967,37 @@ Q(x_{hit})= \int_{x_1}^{x_2}  \int_{0}^{d} {Q(z) \over {\sqrt{2 \pi
 \label{eq:ChargeDistribution_integrated_z}
 \end{equation}
 
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}
+      
+      \draw[->, thick] (-2,0)--(5,0) node[right]{$x$};
+      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+      \draw[thick, blue] (-1.8,0) to[out=0, in=-120] (-1.5,0.2) to[out=60, in=180](-0.8, 1)--(0,1);
+      \draw[thick, blue] (0,1)--(0.8, 1) to [out=-20, in=120] (1.5, 0.2) to[out=-60, in=0] (1.8,0);
+
+      \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
+      \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
+      \node[above, blue] at (-1.5, 1) {Pixel 0};
+
+      \node[] at (0.2, 1.2) {1};
+
+
+      \draw[thick, green] (1.2,0) to[out=0, in=-120] (1.5,0.2) to[out=60, in=180](2.2, 1)--(3,1);
+      \draw[thick, green] (3,1)--(3.8, 1) to [out=-20, in=120] (4.5, 0.2) to[out=-60, in=0] (4.8,0);
+      \draw[-] (4.5, 0) -- (4.5, 0.1);
+      \node[below] at (4.5, 0) {${{3p} \over 2}$};
+      \node[above, green] at (3.5, 1) {Pixel 1};
+
+      \draw[<->, thick] (1.2, 1.2)--(1.8, 1.2);
+      \node[above] at (1.5, 1.2) {$s$}; 
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Analog readout with charge sharing}\label{fig:SpatResAnaglogChargeSharing}
+\end{figure}
 
 \section{Ramo's theorem: induced charge}
 When a charge moves in the sensitive volume of a detector, a current
@@ -871,7 +1034,7 @@ measured when the two electrodes are connected in a closed circuit
   \label{fig:InducedCharge_parallelPlates}
 \end{figure}
 
-Ramo's theorem describes the time evolution of the induced current
+Ramo's theorem~\cite{Ramo:1939vr} describes the time evolution of the induced current
 created in a detector. The induced current on the electrodes is
 described as a function of the weighting potential $\Phi$ which
 describes the coupling of a charge to an electrode. \\
@@ -927,7 +1090,17 @@ fields), the Ramo theorem can be neglected.
   \centering
   \begin{subfigure}[b]{0.49\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/Ramo/RamoPotential_cuts.png}
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=\textwidth]{figures/Ramo/RamoPotential_cuts.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \draw[->, thick] (0, 0)--(0.88, 0) node[right]{$x [\micron]$};
+        \draw[-] (0.355, 0.01) -- (0.355, -0.01) node[below] {0};
+        \draw[-] (0.445, 0.01) -- (0.445, -0.01) node[below] {27.5};
+        \draw[-] (0.533, 0.01) -- (0.533, -0.01) node[below] {55};
+        \draw[-] (0.69, 0.01) -- (0.69, -0.01) node[below] {109};
+      \end{scope}
+    \end{tikzpicture} 
     \caption{}\label{fig:RamoPotentialCuts}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.49\textwidth}
