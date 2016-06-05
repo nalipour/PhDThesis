@@ -3,6 +3,191 @@
 \label{sec:FE_electronics}
 %==============================================================================    
 
+One of the key components of the detector systems is the readout
+electronics. Each experiment, depending on the requirements, has its
+own specific electronics. But the basic principles of the electronics
+and optimisations of the signal-to-noise remain similar between
+different applications.
+
+\section{Basic principles}
+
+The main purpose of the detecting system is to acquire the signal
+generated in the sensor which is in the form of a short current
+pulse. The electronics are responsible for shaping the time response
+of the system in order to optimise the minimum detectable signal,
+energy deposition in detector measurement, event rate, time-of-arrival
+and insensitivity to the pulse shape. Finally, the signal is digitised
+and stored. Robustness to radiation and power consumption are other
+important considerations to be addressed amongst others.
+
+\cref{fig:detectorFunctions} schematically overviews the basic
+detector functions. The incident radiation deposits energy in the
+sensor and it is converted to an electrical signal. The sensor pulse
+being very short (few nanoseconds), a high rate of particles can be
+handled in a semiconductor detector. Since the magnitude of the signal
+charge can be small and is subject to statistical fluctuations
+(\cref{sec:chargeInSi}), a preamplifier is needed to amplify the
+signal. The preamplifier should be designed in such a way to minimise
+the electronic noise. The sensor capacitance and the input capacitance
+of the amplifier are the critical parameters to increase the
+signal-to-noise ratio (SNR): the lower the capacitance, the higher the
+SNR.
+
+After the preamplifier, the pulse shaper is responsible for the
+improvement of the SNR. It modifies the frequency response of the
+signal to improve the signal and attenuate the noise. Since this
+operation reduces the bandwidth of the signal, the duration of the
+pulse will increase. A detector must cope with a high rate of pulses,
+the width of the pulse must be optimised in a way to reduce the
+pile-up.
+
+The analog-to-digital converter (ADC) converts a continuously varying
+amplitude to discrete steps. When the pulse height passes a threshold
+in a comparator, counters are incremented to measure the energy and
+the timing of the signal for example.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
+        %   {0.\y}; }
+
+        %\path (-0.1, 0.5) -- ++(0.08, 0.5) node[rv] {Incident radiation};
+        \draw (0.1, 0.4) rectangle (0.3, 0.6) node[pos=.5] {Sensor};
+        \draw (0.4, 0.6) -- (0.4, 0.4) -- (0.6, 0.5) -- cycle;
+        \node[above] at (0.5, 0.65) {Preamplifier};
+        \draw (0.7, 0.6) -- (0.7, 0.4) -- (0.9, 0.5) -- cycle;
+        \node[above] at (0.8, 0.65) {Pulse shaping};
+        \draw (1, 0.35) rectangle (1.3, 0.65) node[pos=.5] {ADC converter};
+        % \node[above] at (1.15, 0.7) {Analog to digital convertor};
+
+        \draw[arrows=->](-0.1, 0.5)--(0.08, 0.5) node [pos=0.1, above]
+        {Incident radiation};
+
+        \draw[arrows=->](0.3, 0.5)--(0.4, 0.5);
+        \draw[arrows=->](0.6, 0.5)--(0.7, 0.5);
+        \draw[arrows=->](0.9, 0.5)--(1, 0.5);
+        \draw[arrows=->](1.3, 0.5)--(1.5, 0.5) node [pos=0.8, above]
+        {Digital data bus};
+        
+
+      \end{scope}
+  \end{tikzpicture}
+  \caption{Schematic overview of basic detector functions.}  
+  \label{fig:detectorFunctions}
+\end{figure}
+
+\cref{fig:TOT_TOA_concept} schematically shows the energy and the
+timing measurement of the signal. The Time-over-threshold (TOT) allows
+for the measurement of the energy deposited in a pixel. The pulse is
+amplified and the pulse shaper integrates the signal to form a step
+pulse with a long linear decay. The decay is approximately linear and
+proportional to the energy deposited. While the pulse is above the
+programmable threshold, the counter is incremented.
+
+The Time-of-Arrival (TOA) measures the arrival time of a hit and
+therefore is used as a time stamping of the hits. When the amplifier
+output exceeds the pixel threshold, the discriminator output rises and
+the fast TOA (FTOA) counter counts until the rising edge of the
+general clock ($40\,\megahertz$).
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+      % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+      % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+      % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
+      % {0.\y}; }
+      
+      % pulse
+      \draw[-, thick] (0.1, 0.8) -- (0.2, 0.8);
+      \draw[-, thick] (0.2, 0.8) -- (0.21, 0.98);
+      \draw[-, thick] (0.21, 0.98) -- (0.22, 0.8);
+      \draw[-, thick] (0.22, 0.8) -- (1, 0.8);
+
+      % shaper
+      \draw[-, thick] (0.1, 0.5) -- (0.2, 0.5);
+      \draw[-, thick] (0.2, 0.5) -- (0.22, 0.7);
+      \draw[-, thick] (0.22, 0.7) -- (0.8, 0.5);
+      \draw[-, thick, dashed, green] (0.1, 0.55) -- (0.8, 0.55);
+      \draw[-, thick] (0.8, 0.5) -- (1, 0.5);
+
+      % comparator
+      \draw[-, thick] (0.1, 0.3) -- (0.21, 0.3);
+      \draw[-, thick] (0.21, 0.3) -- (0.21, 0.4);
+      \draw[-, thick] (0.21, 0.4) -- (0.65, 0.4);
+      \draw[-, thick] (0.65, 0.4) -- (0.65, 0.3);
+      \draw[-, thick] (0.65, 0.3) -- (1, 0.3);
+
+      \timing [] at (0.1,0.2) {LLLHHLLHHLLHHLLHHLLHHLLLL};
+      \draw[arrows=<->, thick](0.21, 0.15)--(0.65, 0.15) node [pos=0.5, below]
+      {\textbf{TOT (3 counts)}};
+
+      \timing [] at (0.1,0.0) {llllllhlhlhlhllllllllllllllllllllllllllllllllllllll};
+
+      \draw[-, thick, dashed, blue] (0.21, 0.55) -- (0.21, 0.0);
+      \draw[-, thick, dashed, blue] (0.65, 0.55) -- (0.65, 0.0);
+
+      \draw[-, thick, dashed, red] (0.35, 0.2) -- (0.35, 0.0);
+
+      \draw[arrows=<->, thick](0.21, -0.05)--(0.35, -0.05) node [pos=0.5, below]
+      {\textbf{TOA (4 counts)}};
+
+
+      \node[left] at (0.1, 0.8) {Sensor pulse};
+      \node[left, green] at (0.1, 0.6) {Threshold};
+      \node[left] at (0.1, 0.5) {After pulse shaping};
+      \node[left] at (0.1, 0.3) {Discriminator output};
+      \node[left] at (0.1, 0.2) {$40\,\megahertz$ Clk};
+      \node[left] at (0.1, 0.0) {$640\,\megahertz$ Clk (FTOA)};     
+
+
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Time-over-Threshold (TOT) and Time-of-Arrival (TOA).}  
+  \label{fig:TOT_TOA_concept}
+\end{figure}
+
+\section{Timepix readout chip families}
+The Timepix~\cite{art:tmpx,Timepix3Poikela} readout chip families,
+designed by the Medipix collaboration, are a general purpose front-end
+electronics and can measure precisely the energy deposited in the
+sensor and also provide accurate timing information. An overview on
+the Timepix and Timepix3~\cite{Timepix3Poikela} chip families is given
+in~\cref{tab:timepixOverview}. They consist of $256\times256$ pixel
+matrix with pixels pitch of $55\,\micron$. The both chip families
+allow for three operation modes: photon counting, TOT and TOA
+measurements. Timepix3 allows for simultaneous measurement of the TOT
+and the TOA.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Overview of Timepix readout ASICs.}
+  \label{tab:timepixOverview}
+  \begin{tabular}{c c c c}
+    \toprule
+    Chip &  Pixel Matrix & Pixel Pitch [\micron]& Technology \\ 
+    \midrule
+    Timepix & $256\times256$ & 55 & $0.25\,\micron$ CMOS\\
+    Timepix3 & $256\times256$ & 55 & 130~nm CMOS\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\cref{fig:Timepix_pixel_cell_schematic} shows
+schematically the functionalities implemented in a Timepix pixel
+cell.
+\begin{figure}[htbp] 
+  \centering
+  \includegraphics[width=\textwidth]{./figures/Calibration/Timepix_pixel_cell_schematic.jpg}
+  \caption{Timepix pixel cell schematic. From ~\cite{art:tmpx}.}
+  \label{fig:Timepix_pixel_cell_schematic}
+\end{figure}
+
 \section{Calibration} \label{sec:calibration}
 \subsection{Energy and time
   calibration} \label{sec:TOT_TOA_calibration}
