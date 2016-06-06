@@ -1,8 +1,89 @@
 % ==============================================================================
-\chapter{Timepix3 telescope performance}
-\label{ch:Timepix3Telescope}
-%==============================================================================    
+\chapter{Pixel-beam telescope and simulation framework}
+\label{ch:Telescope}
+%==============================================================================  
 
+%% --------------------------------------------- %%
+\section{The Timepix3 telescope} \label{sec:Timepix3Telescope}
+The Timepix3 telescope is used as a beam reference telescope and is
+shown in Figure~\ref{fig:TPX3Telescope}. The telescope is used to
+reconstruct the tracks of the particles going through its planes and
+extrapolate the position on the Device Under Test (DUT). This allows
+to compare the position of the hit on the DUT with the reconstructed
+track and calculate the position, time resolutions and the efficiency
+of the device. The Timepix3 telescope is made of 6 planes of Timepix3
+ASICs~\cite{Timepix3_Poikela} bump bonded to $300\,\micron$ thick
+p-in-n planar sensors. The planes are rotated by $9\degrees$ around
+the x axis (perpendicular to the beam axis) and the z axis (parallel
+to the beam axis) to optimise the charge sharing within the sensors
+and obtain a pointing resolution of $\sim$$2\,\micron$ on the device
+under test (DUT). The data-driven zero-suppressed mode is used for the
+data acquisition of the Timepix3 readout ASICs.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at
+    (0,0){\includegraphics[width=0.6\textwidth]{ActiveEdge/Timepix3Telescope.jpeg}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+      \node[above, color=white] at (0.5, 0.85) {Device Under Test};
+      \node[above, color=white] at (0.5, 0.78) {(\textbf{DUT})};
+    \end{scope}
+  \end{tikzpicture} 
+  \caption{The Timepix3 beam reference telescope.}
+  \label{fig:TPX3Telescope}
+\end{figure}
+%% --------------------------------------------- %%
+\section{Reconstruction software}
+\subsection{EUTelescope}
+The EUTelescope software~\cite{Rubinskiy} is used to reconstruct the
+telescope tracks and analyse the telescope data. It is based on the
+ILCSoft framework (REF?). Using a pipeline of Marlin
+processors~\cite{Gaede:2006pj}, it allows to convert the raw data to a
+ROOT (REF?) format and with the intermediate steps in the LCIO (REF?)
+format. The reconstruction chain is defined in the steps below:
+
+\begin{enumerate}
+\item Converter: converts the raw files written by each telescope
+planes and the DUT in a binary format to an LCIO event. The
+data-driven zero-suppressed mode is used for the data acquisition of
+the Timepix3 readout ASICs. This mode allows for a very low dead-time
+and all the particles at the SPS spill are recorded. Every hit is
+written with a 64-bit time-stamp (\texttt{long long int}) related to
+the TOA (time-of-arrival). The hits written in the raw file are not
+necessarily ordered in time. In the converter processor, the hits
+within a timing window of 3~ms are read and filled into a vector. The
+hits in the vector are ordered in time according to their time
+stamps. An LCIO event is built by choosing the hits in the six
+telescope planes and the DUT with time stamps differing by
+$2.5\,\microsecond$. With this constraint, most probably one track per
+event is obtained.
+Hot pixels (with the maximum allowed frequency of 0.1) are as well
+calculated and also the $\eta$-correction~\cite{Belau:1983eh} values.
+
+\item Clustering: the clusters in each plane is found.
+\item Hit making: reconstruction of the hit position for each cluster
+with the $\eta$-correction method.
+\item Alignment: by assuming straight tracks, the alignment processor
+uses Millepede~II algorithm~\cite{Blobel20065} to align the telescope
+planes with respect to each other. It consists of a least squares
+minimisation problem ($\chi^2$minimisation). A proper definition of
+the geometry is important.
+\item Track finding: fits the tracks based on the hits on the
+telescope planes with taking to account the multiple scatterings
+(radiation length of the material for the described geometry),
+positions of the planes. The \texttt{EUTelTestFitter} algorithm is used for the
+analysis of the test-beam. (TO PUT SOME CHI2 DISTRIBUTION PLOTS). The
+tracks are then extrapolated on the DUT.
+\end{enumerate} 
+
+\subsection{pyEudetAnalysis}
+For the analysis of the DUT data, the python-based software
+\texttt{pyEudetanalysis} is used. It can be found as a GitHub directory~\cite{pyeudet}.
+
+
+
+%% --------------------------------------------- %%
 \section{AllPix: a \textsc{Geant4}-based simulation software}
 AllPix~\cite{allpix}, is used as a wrapper on \textsc{Geant4} to
 simulate the test beam setup. The software is written in C/C++. It
@@ -55,7 +136,7 @@ simulation is done based on the frames.
 \end{enumerate}
 
 
-\section{Coordinate system}
+\subsection{Coordinate system}
 
 Pixel coordinates (X, Y) and the center of the pixels in \textcolor{blue}{local coordinates (x,
   y)} (in millimeters) in the corners of the sensor. In
@@ -94,9 +175,9 @@ AllPix and EUTelescope.
   \label{fig:coordinateSystem}
 \end{figure}
 
-
-\section{Timepix3 telescope resolution}
-\label{sec:TelescopeResolution}
+%% --------------------------------------------- %%
+\section{Timepix3 telescope performance}
+\label{sec:telescopePerformance}
 
 \subsection{Beam angle}
 
@@ -159,3 +240,5 @@ yet corrected in this plot).
 
 
 \subsubsection{Hit vs. MC}
+
+\subsection{Time stamping (?)}

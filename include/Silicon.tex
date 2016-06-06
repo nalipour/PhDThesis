@@ -85,7 +85,7 @@ developed more in the coming sections.
 \end{figure}
 
 %% --------------------------------------------- %%
-\section{Charge generation in silicon}\label{sec:chargeInSi}
+\section{Charge generation and recombination in silicon}\label{sec:chargeInSi}
 
 \subsection{Bethe-Bloch formula}
 In silicon, free charge careers are generated due to thermal effects
@@ -225,6 +225,7 @@ and $w$ for detectors thicknesses at our disposal.
   \end{tabular}
 \end{table}
 
+\subsection{Multiple scattering: TODO}
 
 \subsection{\textsc{Geant4}}
 
@@ -382,12 +383,16 @@ likely to be trapped in an irradiated material.
     applied electric field calculated with the \cref{eq:mobility}.}
   \label{fig:Mobility_electron_holes}
 \end{figure}
+
+\subsection{Introduction to TCAD: TO DO}
 %% --------------------------------------------- %%
 \section{Pixel detectors: pn-junction}
 
 Silicon sensors are made of reversely biased pn-junctions. The
 electric field due to the bias voltage allows the charge carriers to
 drift towards the readout chip and also to suppress the leakage current.
+
+\subsection{pn-junction in thermal equilibrium}
 
 The potential $\varphi$ at each point is described by Poisson's equation~\cref{eq:poisson} \cite{Knoll2010}
 \begin{equation}
@@ -503,7 +508,13 @@ W=\sqrt{2 \epsilon \mu_b \rho_bV_b}
 \label{eq:depletionWidth}
 \end{equation}
 
-In the absence of an externally applied voltage to a pn-junction, the thermal diffusion of the electrons and the holes from their original atoms results in a depletion width with a potential difference between the p- and n-sides called the built-in potential $V_{bi}$ which is about 0.5~V for detector diodes. \\
+In the absence of an externally applied voltage to a pn-junction, the
+thermal diffusion of the electrons and the holes from their original
+atoms results in a depletion width with a potential difference between
+the p- and n-sides called the built-in potential $V_{bi}$ which is
+about 0.5~V for detector diodes. \\
+
+\subsection{Reverse bias}
 By taking into account the built-in reverse bias voltage, \cref{eq:depletionWidth} is written as,
 \begin{equation}
 W=\sqrt{2 \epsilon \mu_b \rho_b \left(V_b+V_{bi}\right)}=\sqrt{{2 \epsilon \left(V_b+V_{bi}\right)} \over {eN_b}}
@@ -999,7 +1010,7 @@ Q(x_{hit})= \int_{x_1}^{x_2}  \int_{0}^{d} {Q(z) \over {\sqrt{2 \pi
   \caption{Analog readout with charge sharing}\label{fig:SpatResAnaglogChargeSharing}
 \end{figure}
 
-\section{Ramo's theorem: induced charge}
+\section{Charge collection and Ramo's theorem: induced charge}
 When a charge moves in the sensitive volume of a detector, a current
 $i_s(t)$ flows instantaneously. \\ 
 First, consider the simple example of a charge $q$ near an infinitely
@@ -1111,6 +1122,9 @@ fields), the Ramo theorem can be neglected.
   \caption{The weighting potential for different positions on the x-axis.}\label{fig:RamoTCADCuts}
 \end{figure}
 
+
+%% --------------------------------------------- %%
+\section{Processing of silicon wafer: TO DO}
 
 
 %% --------- Recycle text --------- %%

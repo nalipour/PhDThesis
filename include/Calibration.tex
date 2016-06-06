@@ -9,7 +9,7 @@ own specific electronics. But the basic principles of the electronics
 and optimisations of the signal-to-noise remain similar between
 different applications.
 
-\section{Basic principles}
+\section{Generic pixel chip}
 
 The main purpose of the detecting system is to acquire the signal
 generated in the sensor which is in the form of a short current
@@ -268,78 +268,6 @@ the matrix.
 \end{figure}
 
 
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_C07.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_C07.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{Energy deposition and comparison to
-    \textsc{Geant4}. W0019\_C07, Run 902, THL=1148.}
-  \label{fig:EdepW19C7}
-\end{figure}
-
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_L08.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_L08.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{Energy deposition and comparison to
-    \textsc{Geant4}. W0019\_L08, Run 1130, THL=1133.}
-  \label{fig:EdepW19L8}
-\end{figure}
-
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_G07.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_G07.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{Energy deposition and comparison to
-    \textsc{Geant4}. W0019\_G07, Run 1190, THL=995.}
-  \label{fig:EdepW19L8}
-\end{figure}
-
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0005_E02.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_E02.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{Energy deposition and comparison to
-    \textsc{Geant4}. W0005\_E02, Run 661, THL=1160.}
-  \label{fig:EdepW19L8}
-\end{figure}
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0005_F01.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_F01.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{Energy deposition and comparison to
-    \textsc{Geant4}. W0005\_F01, Run 761, THL=1153.}
-  \label{fig:EdepW19L8}
-\end{figure}
 
 \subsection{Threshold calibration} \label{sec:threshold}
 
@@ -537,6 +465,84 @@ TODO:\\
   \end{subfigure}
   \caption{Threshold calibration for Timepix3 assemblies using test pulses.}
   \label{fig:Timepix3_THL_Calibration}
+\end{figure}
+
+
+
+
+\section{MIP energy deposition and comparison to \textsc{Geant4}}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_C07.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_C07.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Energy deposition and comparison to
+    \textsc{Geant4}. W0019\_C07, Run 902, THL=1148.}
+  \label{fig:EdepW19C7}
+\end{figure}
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_L08.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_L08.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Energy deposition and comparison to
+    \textsc{Geant4}. W0019\_L08, Run 1130, THL=1133.}
+  \label{fig:EdepW19L8}
+\end{figure}
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_G07.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_G07.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Energy deposition and comparison to
+    \textsc{Geant4}. W0019\_G07, Run 1190, THL=995.}
+  \label{fig:EdepW19L8}
+\end{figure}
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0005_E02.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_E02.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Energy deposition and comparison to
+    \textsc{Geant4}. W0005\_E02, Run 661, THL=1160.}
+  \label{fig:EdepW19L8}
+\end{figure}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0005_F01.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_F01.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Energy deposition and comparison to
+    \textsc{Geant4}. W0005\_F01, Run 761, THL=1153.}
+  \label{fig:EdepW19L8}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
