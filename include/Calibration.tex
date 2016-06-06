@@ -152,7 +152,7 @@ general clock ($40\,\megahertz$).
   \label{fig:TOT_TOA_concept}
 \end{figure}
 
-\section{Timepix readout chip families}
+\section{Timepix readout chip families}\label{sec:TimepixReadout}
 The Timepix~\cite{art:tmpx,Timepix3Poikela} readout chip families,
 designed by the Medipix collaboration, are a general purpose front-end
 electronics and can measure precisely the energy deposited in the
@@ -168,25 +168,56 @@ and the TOA.
   \centering
   \caption{Overview of Timepix readout ASICs.}
   \label{tab:timepixOverview}
-  \begin{tabular}{c c c c}
+  \begin{tabular}{l c c}
     \toprule
-    Chip &  Pixel Matrix & Pixel Pitch [\micron]& Technology \\ 
+    & Timepix& Timepix3\\ 
     \midrule
-    Timepix & $256\times256$ & 55 & $0.25\,\micron$ CMOS\\
-    Timepix3 & $256\times256$ & 55 & 130~nm CMOS\\
+    Pixel Matrix & $256\times256$ & $256\times256$\\
+    Pixel Pitch [\micron] & 55 & 55\\
+    Technology & $0.25\,\micron$ CMOS & 130~nm CMOS\\
+    Counter Depth & 14 bits & 10 bit TOT and 18 bit TOA \\
+    Readout Type & Frame based & Data driven \& frame based \\
+    Electronic Noise & $\sim100$ e\textsuperscript{-} RMS & $<70$ e\textsuperscript{-} RMS\\
     \bottomrule
   \end{tabular}
 \end{table}
 
 \cref{fig:Timepix_pixel_cell_schematic} shows
 schematically the functionalities implemented in a Timepix pixel
-cell.
+cell. Both analogue and digital circuitry are combined. The analogue
+circuitry includes a charge sensitive amplifier with a tunable
+discharge current I\textsubscript{krum} and the
+discriminator. I\textsubscript{krum} affects the slope of the pulse
+discharge after shaping: the higher its value, the shorter the pulse.
+
+Both polarities (electrons and holes collection) are accepted by the
+front end.
+
 \begin{figure}[htbp] 
   \centering
   \includegraphics[width=\textwidth]{./figures/Calibration/Timepix_pixel_cell_schematic.jpg}
   \caption{Timepix pixel cell schematic. From ~\cite{art:tmpx}.}
   \label{fig:Timepix_pixel_cell_schematic}
 \end{figure}
+
+\subsection{Threshold equalisation} \label{sec:ThresholdEqualisation}
+In semiconductor electronics, manufacturing imperfections cause
+variations in the performance within the device. The threshold is one
+of the most affected parameters and its global value set can vary
+highly from one pixel to another within the pixel matrix. For the same
+threshold value, the voltage on the discriminator can vary highly from
+one pixel to another. To overcome this dispersion, a 4-bit local
+threshold adjustment is applied to each pixel in order to make a
+uniform global threshold. The photon counting mode is then
+employed. The equalisation consists of adjusting this local threshold
+by first setting its value to 0000. The global threshold DAC, THL, is
+scanned and the number of pixels responding are counted. Then the
+adjustment bit is set to 1111 and THL is scanned again. For each
+pixel, the operation range is known. Assuming a linear relationship
+between the two points, the adjustment threshold is adjusted in such a
+way that the global threshold dispersion will remain uniform across
+the matrix.
+
 
 \section{Calibration} \label{sec:calibration}
 \subsection{Energy and time
