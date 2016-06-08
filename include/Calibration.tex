@@ -216,8 +216,18 @@ adjustment bit is set to 1111 and THL is scanned again. For each
 pixel, the operation range is known. Assuming a linear relationship
 between the two points, the adjustment threshold is adjusted in such a
 way that the global threshold dispersion will remain uniform across
-the matrix.
+the matrix. 
 
+\cref{fig:THLequalisation} shows the threshold equalisation for an
+assembly. After equalisation the response of the chip becomes more
+uniform even though some dispersion remains.
+
+\begin{figure}[htbp] 
+  \centering
+  \includegraphics[width=0.7\textwidth]{./figures/Calibration/THLequalisation_W2_J5.pdf}
+  \caption{Threshold equalisation for the assembly W2\_J5.}
+  \label{fig:THLequalisation}
+\end{figure}
 
 \section{Calibration} \label{sec:calibration}
 \subsection{Energy and time
