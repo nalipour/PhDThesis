@@ -420,8 +420,76 @@ patterning.
 The doping concentration for the different layouts is shown in
 Figure~\ref{fig:TCAD_dopingConcentration}.
 
+%% --------------------------------------------- %%
 \subsection{Electric field distribution in simulations}
+In silicon, the breakdown field occurs for electric field exceeding
+$\sim3\cdot10^5$~\voltpercm. In active-edge sensors, since the
+back-side implantation as well as the bias voltage are extended to the
+edge of the sensor, the gradient of potential between the edge and the
+last pixel can be very high. This could lead to a breakdown of the
+sensor. In TCAD simulations, the electric field distribution for the
+sensors operated at nominal conditions are shown in
+\cref{fig:TCAD_Efield2D}. In any case, for the nominal conditions, the
+breakdown electric field is never reached and in the laboratory
+measurements, this can be seen through the measurement of the leakage
+current as shown in \cref{fig:IVmeasurements}.
 
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_20_NGR.png}
+    \caption{20-NGR}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_23_FGR.png}
+    \caption{23-FGR}
+  \end{subfigure} \\
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_28_GNDGR.png}
+    \caption{28-GNDGR}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_55_GNDGR.png}
+    \caption{55-GNDGR}
+  \end{subfigure} \\
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_55_GNDGR_100.png}
+    \caption{55-GNDGR-100}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_55_GNDGR_150.png}
+    \caption{55-GNDGR-150}
+  \end{subfigure}
+  \caption{Electric field distribution in TCAD simulations.}
+  \label{fig:TCAD_Efield2D}
+\end{figure}
+
+The electric field and the electrostatic potential in TCAD simulations
+for a cut close to the n-implants ($0.2\,\micron$ from the sensor
+surface) are shown in
+\cref{fig:TCAD_Efield_EPotential_sensorSurface}. Position $0\,\micron$
+corresponds to the position of the first pixel. At the surface, the
+breakdown electric field is never reached for the nominal
+conditions. The floating guard-ring (23-FGR) shows a better potential
+transition between the edge of the sensor and the first pixel.
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/Efiel_cut0_2um.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/EPotential_cut0_2um.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{(a) The electric field and (b) the electrostatic potential
+    at a distance of $0.2\,\micron$ from the sensor surface. Position
+    $0\,\micron$ corresponds to the position of the first pixel.}
+  \label{fig:TCAD_Efield_EPotential_sensorSurface}
+\end{figure}
+%% --------------------------------------------- %%
 \subsection{Validation of simulation with data}
 
 
