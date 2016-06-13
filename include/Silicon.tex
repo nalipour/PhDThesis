@@ -7,10 +7,11 @@ detection applications. The main benefits are the high energy
 resolution due to the large number of carriers that are created by a
 given incident radiation, their compact sizes, fast timing and the
 effective thickness can be adapted to the requirements of the
-applications. Though they show some limitations for smaller sizes and
+applications. Though, they show some limitations for smaller sizes and
 their performance can degrade from ration induced damages. Silicon
 detectors are predominant for charge particle spectroscopy among
 semiconductor materials. 
+
 In this chapter, we will review the basic properties of semiconductor
 material, charge generation in silicon and the transport of charge
 carriers through drift and diffusion. Pixel detectors are studied
@@ -93,7 +94,7 @@ and lead to leakage current. A current is also generated due to the
 interaction of charged particles with silicon and can be
 detected. Part of the absorbed energy generates electron-hole pairs
 through scattering processes with the shell electrons of silicon and
-can be collected by the readout electronic. The number of
+can be collected by the readout electronics. The number of
 electron-hole pairs produced in the detector as well as the total
 energy loss of the particle in the detector are stochastic quantities.
 
@@ -113,9 +114,10 @@ $\gamma=1/\sqrt{1-\beta^2}$, $I$ the mean excitation energy, $T_{max}$
 the maximum kinetic energy that a particle can transfer to a shell
 electron and $\delta\left(\beta\gamma\right)$ the density effect
 correction to ionisation energy loss. A minimum ionising particle
-(MIP) has an energy loss in the minimum of the Bethe-Bloch
+(MIP) has an energy loss near the minimum of the Bethe-Bloch
 formula. Relativistic particles are considered as MIPs.
 
+\subsection{Energy-loss spectrum in silicon}
 Ionisation is also subject to statistical fluctuations and
 \cref{eq:BetheBloch} gives its average value. It can be described by a
 probability density function called \textit{straggling functions} and
@@ -160,9 +162,9 @@ the straggling functions. To obtain correct straggling functions, the
 accurate determination of the collision cross section as function of
 energy loss, $\sigma(E)$, is necessary.
 
-\subsection{The Landau distribution}\label{sec:landau}
+\subsubsection{The Landau distribution}\label{sec:landau}
 The most commonly used model in experiments, is a Landau distribution
-fitted with a Gaussian. The most probable value $\Delta_p$ of the
+convoluted with a Gaussian. The most probable value $\Delta_p$ of the
 distribution is given by the Landau-Vavilov
 method~\cite{Landau:1944if,Vavilov:1957zz}:
 
@@ -172,46 +174,71 @@ method~\cite{Landau:1944if,Vavilov:1957zz}:
 \end{equation}
 
 where $\xi=(K/2)\braket{Z/A}(x/\beta^2)$~\mev for a detector of
-moderate thickness $x$ in g~\inversecmsquared (the other parameters
-are as the ones described for \cref{eq:BetheBloch}).
+moderate thickness $x$ in g~\inversecmsquared. All other parameters
+are as the ones described for \cref{eq:BetheBloch}.
 
-Though the Landau-Vavilov calculation does not describe correct
-functions for thin silicon sensors.
+Though the Landau-Vavilov calculation does not describe correctly the
+width of the energy distribution for thin silicon sensors. For thick
+material, the width of the distribution is $4\xi$.
 
-\subsection{Bichsel model}\label{sec:bichsel}
-Bichsel~\cite{Bichsel} provides a theory to calculate the straggling
-functions. It describes accurately the energy loss for very thin
-sensors.
-Bichsel provides an approximation of $\Delta_{p}$ and $w$ as
-function of the thickness $t$ of silicon detectors for particles with
-charge $\pm1e$ and $\beta\gamma>500$ as listed in
+For $\gamma>>100$, \cref{eq:LandauVavilovMPV} is simplified to~\cite{Bichsel}
+
+\begin{equation}
+  \textsubscript{L}\Delta_{p} (\kev)=t \left(0.1791+0.01782 \ln\left(t\right)\right)
+  \label{eq:LandauVavilovMPV_simplified}
+\end{equation}
+
+where t (\micron) is the thickness of the silicon.
+
+When the Landau distribution is combined with a Gaussian one, $\Delta_
+p$ increases and gives better agreement with data.
+
+\subsubsection{Bichsel model}\label{sec:bichsel}
+Bichsel~\cite{Bichsel} takes into account the binding of atomic
+electrons to find a better agreement between data and theory. In this
+model, experimental and theoretical data for dielectric functions,
+x-ray absorption coefficients and generalised oscillator strengths are
+used to reproduce accurately the observed energy loss spectrum over a
+wide range of incident particle velocities and silicon thicknesses,
+including very thin silicon sensors. But no analytical description of
+the straggling function is provided. 
+
+Bichsel provides an approximation of $\Delta_{p}$ (\ev) and $w$ (\ev)
+as function of the thickness $t$ ($\micron$) of silicon detectors for
+particles with charge $\pm1e$ and $\beta\gamma>500$ as listed in
 \cref{eq:MPV1,eq:MPV2,eq:FWHM}:
 
 \begin{itemize}
 \item For $13<t<110$ [\micron]:
   \begin{equation}
-    \Delta_{p}=t \cdot (100.6+35.35 \cdot \ln(t))\; ,
+    \Delta_{p}=t \cdot \left(100.6+35.35 \cdot \ln(t) \right)\; ,
     \label{eq:MPV1}
   \end{equation}
 \item For $110<t<3000$ [\micron]:
   \begin{equation}
-    \Delta_{p}=t \cdot (190+16.3 \cdot \ln(t))\; ,
+    \Delta_{p}=t \cdot \left(190+16.3 \cdot \ln(t) \right)\; ,
     \label{eq:MPV2}
   \end{equation}
 \item For $30<t<260$ [\micron]:
   \begin{equation}
-    w=t \cdot (259.6-28.41 \cdot \ln(t)).
+    w=t \cdot \left(259.6-28.41 \cdot \ln(t) \right).
     \label{eq:FWHM}
+  \end{equation}
+\item For $260<t<2560$ [\micron]:
+  \begin{equation}
+    w=71.3 t \left( 1+ 39.4/t^{0.8} \right)
+    \label{eq:FWHM2}
   \end{equation}
 \end{itemize}
 
 \cref{tab:EdepForDifferentThickness} summarises the $\Delta_{p}$
-and $w$ for detectors thicknesses at our disposal. 
+and $w$ for detectors thicknesses at our disposal and tested during
+test beams.
 
 \begin{table}[htbp]
   \centering
   \caption{$\Delta_{p}$ and $w$ calculated for silicon sensors with
-    different thicknesses using \cref{eq:MPV1,eq:MPV2,eq:FWHM}.}
+    different thicknesses using \cref{eq:MPV1,eq:MPV2,eq:FWHM,eq:FWHM2}.}
   \label{tab:EdepForDifferentThickness}
   \begin{tabular}{c c c c}
     \toprule
@@ -221,11 +248,32 @@ and $w$ for detectors thicknesses at our disposal.
     100 & 26.34 & 12.88 & 2.045 \\
     150 & 40.75 & 17.59 & 2.32  \\
     200 & 55.27 & 21.82 & 2.53  \\
+    300 & 84.89 & 30.18 & 2.8 \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\subsection{Multiple scattering: TODO}
+\subsubsection{Multiple scattering}
+
+In addition to energy loss, when a particle goes through the detector,
+its trajectory is deflected by small-angle scatters. The deflection is
+mainly due to the Coulomb interaction of the charged particle with the
+nuclei. The strong interaction has also a contribution for
+hadrons. When leaving the detector, the scattering angle of the
+particle follows a Gaussian distribution with an RMS of~\cite{Lynch:1990sq}
+
+\begin{equation}
+  \theta\textsuperscript{RMS}={{13.6\,\mev}\over{\beta p c}} z
+\sqrt{x \over X_0} \left[1+0.038\ln{\left(x \over X_0 \right)}\right],
+  \label{eq:multipleScattering}
+\end{equation}
+
+where the angle $\theta$ is in radians, the particle momentum $p$ in
+\mev, $z$ the charge number of the particle and $x/X_0$ the thickness of
+the absorption medium in units of the radiation length.
+
+In high-energy physics applications, the material budget of pixel
+detectors is minimised in order to have the least scattering angles possible.
 
 \subsection{\textsc{Geant4}}
 
@@ -292,8 +340,8 @@ In silicon detectors, the movement of the charge carriers (holes and
 electrons) lead to signal pulses in the electrical contacts which can
 be detected by the readout electronics. 
 In absence of any external electric field, free charge carriers move
-randomly and are scattered due to their collisions to the crystal
-lattice or other impurities. In average, in equilibrium conditions,
+randomly and are scattered due to their collisions with the crystal
+lattice or other impurities. On average, in equilibrium conditions,
 the traveled distance averaged over charges is zero. In addition to
 the statistical movement, two other mechanisms can affect the
 transport of charge carriers: diffusion (due to a gradient in
