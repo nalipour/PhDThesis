@@ -279,43 +279,56 @@ detectors is minimised in order to have the least scattering angles possible.
 
 \textsc{Geant4}~\cite{Agostinelli:2002hh}, as an object-oriented
 simulation toolkit implemented in C++ programming language, is widely
-used in high-energy physics, astrophysics and medical applications. It
-allows for the simulation of the passage of particles through matter
-and their interaction in matter.
+used in high energy, nuclear and accelerator physics, medical and
+space sciences. As the modern particle physics is going towards
+large-scale detectors, more accurate simulations are needed in order
+to understand the complex situations. \textsc{Geant4} provides
+software components which can be used to study basic phenomena,
+geometries and full-scale detector simulations for
+experiments. \textsc{Geant4} simulations take into account the
+geometry of the system, the materials involved, the fundamental
+particles, the generation of primary particles, the tracking of
+particles through materials and external electromagnetic fields, the
+physics processes involved in the possible interaction of the
+particles with the materials they are passing through, the response of
+sensitive components and mostly validated with data.
 
 \textsc{Geant4} provides physics models for different type of
-interactions called \textit{physics lists}. The electromagnetic
-physics handles electromagnetic interactions of leptons, photons,
-hadrons and ions. 
+interactions called \textit{physics lists}. The \textit{emstandard}
+physics lists provide the electromagnetic interactions of photons and
+charged particles with matter and is suited for the simulation of
+ionisation, bremsstrahlung, gamma conversion and other electromagnetic
+interactions of particles with energies from $1\,\kev$ up to
+$10\,\pev$~\cite{Apostolakis2009859}. This physics list is commonly
+used for the simulation of the energy loss in pixel detectors.
 
-The \textit{emstandard} physics lists provide the electromagnetic
-interactions of photons and charged particles with matter and is
-suited for the simulation of ionisation, bremsstrahlung, gamma
-conversion and other electromagnetic interactions of particles with
-energies from $1\,\kev$ up to $10\,\pev$~\cite{Apostolakis2009859}.
-
-\textsc{Geant4} provides the Photo-Absorption Ionisation (PAI)
+\textsc{Geant4} provides as well the Photo-Absorption Ionisation (PAI)
 model~\cite{Apostolakis:2000yu} for the precise simulation of
-ionisation energy loss in thin detectors since the Landau model is not
-suitable for thin sensors. 
+ionisation energy loss by relativistic charged particles in very thin
+absorbers. Since in very thin sensors the Landau model is not
+suitable, the PAI model is based on the photo-absorption cross-section
+tables obtained by experimental data. In practice several classes are
+used to calculate the integral ionisation cross-section, the mean
+number of ionising collisions as well as the mean ionisation energy
+loss for the selected material and the given Lorentz factor.
 
-\cref{fig:BichselVSG4} compares the energy loss due to
-ionisation in $50\,\micron$ and $450\,\micron$ thick silicon sensors
-for different \textsc{Geant4} physics lists and the Bichsel
-model. \textsc{Geant4} version 10.1.2 is used to obtain these
-distributions. Version 9.6.2 also showed the same results. For
-$50\,\micron$ thick sensor, the \textit{emstandard\_opt3} physics list
-gives a reasonable value for the $\Delta_p$ but the width $w$ of the
-distribution is more narrow than the Bichsel distribution. The PAI
-model corrects for $w$ and the energy deposition is very similar to
-the Bichsel model. For the thick sensor of $450\,\micron$, all the
-physics lists and the Bichsel model show the similar distributions.
+\cref{fig:BichselVSG4} compares the energy loss due to ionisation in
+$50\,\micron$ and $450\,\micron$ thick silicon sensors for different
+\textsc{Geant4} physics lists and the Bichsel model. \textsc{Geant4}
+version 10.1.2 is used to obtain these distributions. Version 9.6.2
+also showed the same results. For $50\,\micron$ thick sensor, the
+\textit{emstandard\_opt3} physics list gives a reasonable value for
+the $\Delta_p$ but the width $w$ of the distribution is more narrow
+than the Bichsel distribution. The PAI model corrects for $w$ and the
+energy deposition is very similar to the Bichsel model. For the thick
+sensor of $450\,\micron$, all the \textsc{Geant4} physics lists and
+the Bichsel model show similar distributions.
 
 The energy deposition given by the PAI model is very close to the one
-calculated by Bichsel especially the fluctuations around the most
-probable value and for thin sensors. For this reason, the PAI model is
-chosen to be used later for the simulations even though it requires
-more computation power because of its accuracy.
+calculated by Bichsel especially for the fluctuations around the most
+probable value and for very thin sensors. For this reason, the PAI
+model is chosen to be used later for the simulations even though it
+requires more computation power.
  
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
