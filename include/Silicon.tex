@@ -352,7 +352,7 @@ requires more computation power.
 In silicon detectors, the movement of the charge carriers (holes and
 electrons) lead to signal pulses in the electrical contacts which can
 be detected by the readout electronics. 
-In absence of any external electric field, free charge carriers move
+In the absence of any external electric field, free charge carriers move
 randomly and are scattered due to their collisions with the crystal
 lattice or other impurities. On average, in equilibrium conditions,
 the traveled distance averaged over charges is zero. In addition to
@@ -363,7 +363,7 @@ field).
 
 The diffusion implies that a carrier is more probable to move from a
 high-concentration region to a low-concentration region. The diffusion
-current per unit area is given by \cref{eq:diffusionCurrent}~\cite{Rossi:976471}:
+current per unit area is given by~\cite{Rossi:976471}
 
 \begin{equation}
   \begin{aligned}
@@ -381,8 +381,7 @@ concentrations.
 
 Charge carriers are accelerated between two random collisions in the
 presence of an external electric field in the direction of the field
-and leads to and average drift velocity given by
-\cref{eq:driftVelocity}~\cite{Rossi:976471}:
+and leads to and average drift velocity given by~\cite{Rossi:976471}
 
 \begin{equation}
   \begin{aligned}
@@ -397,14 +396,14 @@ where $v$ is the average drift velocity, $\textbf{E}$ the electric
 field and $\mu$ the mobility of the charge carriers. The mobility is a
 function of the electric field. For higher electric fields the charge
 carriers gain more acceleration and the number of collisions per unit
-time becomes highe. This leads to a saturation of the drift velocity
-$v_s$. The mobility dependence on the electric field is described by
-\cref{eq:mobility} and parameters described in
-\cref{tab:mobility_parameters}~\cite{Jacoboni197777}:
+time increases. This leads to a saturation of the drift velocity
+$v_s$. The mobility dependence on the electric field is described by~\cite{Jacoboni197777}
 \begin{equation}
-  \mu=\frac{v_{s}/E_{c}}{\left[1+(E/E_{c})^{\beta}\right]^{1/\beta}}\; .
+  \mu=\frac{v_{s}/E_{c}}{\left[1+(E/E_{c})^{\beta}\right]^{1/\beta}}\; ,
   \label{eq:mobility}
 \end{equation}
+
+where the parameters are described in \cref{tab:mobility_parameters}.
 
 \begin{table}[htbp]
   \centering
@@ -424,9 +423,19 @@ $v_s$. The mobility dependence on the electric field is described by
   \end{tabular}
 \end{table}
 
-\cref{fig:Mobility_electron_holes} shows the mobility for
-electrons and holes as a function of the electric field. For a low electric field, the mobility for intrinsic silicon at 300~K
-is:
+\cref{fig:Mobility_electron_holes} shows the mobility for electrons
+and holes as a function of the electric field. 
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/Mobility_electron_holes.pdf}
+  \caption{Mobility for electrons and holes as a function of an
+    applied electric field calculated with the \cref{eq:mobility}.}
+  \label{fig:Mobility_electron_holes}
+\end{figure}
+
+For a low electric field, the mobility for intrinsic silicon at 300~K
+is
 \begin{equation*}
   \begin{aligned}
     \mu_n=1415 \pm 46 \qquad \textnormal{\cmsquared/(Vs)} \; , \\
@@ -437,32 +446,26 @@ is:
 Holes are three times less mobile than electrons which make them more
 likely to be trapped in an irradiated material.
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/Mobility_electron_holes.pdf}
-  \caption{Mobility for electrons and holes as a function of an
-    applied electric field calculated with the \cref{eq:mobility}.}
-  \label{fig:Mobility_electron_holes}
-\end{figure}
-
-\subsection{Introduction to TCAD: TO DO}
 %% --------------------------------------------- %%
 \section{Pixel detectors: pn-junction}
 
 Silicon sensors are made of reversely biased pn-junctions. The
 electric field due to the bias voltage allows the charge carriers to
-drift towards the readout chip and also to suppress the leakage current.
+drift towards the readout chip and also to suppress the leakage
+current.
 
 \subsection{pn-junction in thermal equilibrium}
 
-The potential $\varphi$ at each point is described by Poisson's equation~\cref{eq:poisson} \cite{Knoll2010}
+The potential $\varphi$ at each point is described by Poisson's
+equation~\cref{eq:poisson} \cite{Knoll2010}
 \begin{equation}
   \nabla^{2}  \varphi=-{\rho \over \epsilon}\; ,
   \label{eq:poisson}
 \end{equation}
 
-where $\epsilon$ is the dielectric constant of the medium and $\rho$ the net charge density.
-The electric field E due to the electric potential is obtained by \cref{eq:Efield}
+where $\epsilon$ is the dielectric constant of the medium and $\rho$
+the net charge density.  The electric field E due to the electric
+potential is obtained by \cref{eq:Efield}
 
 \begin{equation}
 E=-grad \varphi \; ,
@@ -690,91 +693,24 @@ distribution as a function of the depth in silicon.
     carriers.}\label{fig:Efield_n_vs_p}
 \end{figure}
 
-%% \begin{table}[htpb]
-%%   \centering
-%%   \caption{Sensors characteristics:}
-%%   \label{tab:Efield_mobility}
-%%   \begin{tabular}{ c c c c c c }
-%%     \toprule
-%%     Assembly & Sensor type & Thickness & V\textsubscript{depletion} &  V\textsubscript{bias} & THL\textsubscript{op} \\
-%%     \midrule
-%%     A06-W0110 & p-in-n & 50~\micron & $<15$~V & 15~V & 326 (855e\textsuperscript{-}) \\
-%%     L04-W0125 & p-in-n & 100~\micron & 19.64~V & 35~V & 410 (916e\textsuperscript{-}) \\
-%%     B06-W0125 & n-in-p & 200~\micron  & 30.31~V & -50~V & 435 (1066e\textsuperscript{-}) \\
-%%     \bottomrule
-%%   \end{tabular}
-%% \end{table}
+%% --------------------------------------------- %%
+\section{TCAD simulations}
+Technology Computer-Aided Design (TCAD) as a powerful simulation tool
+is used to optimise and develop semiconductor processing technologies
+as well as the device operation~\cite{synopsysTCAD}. TCAD uses the
+finite element method to numerically solve the solutions to the
+physical partial differential equations in semiconductor, such as the
+continuity and diffusion equations. This allows for the modeling of
+the structural properties and the electrical behaviour of
+semiconductor devices.
 
-%% \begin{figure}[htbp]
-%%   \centering
-%%   \begin{subfigure}[b]{0.33\textwidth}
-%%     \centering
-%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_A06.pdf}
-%%     \caption{50~\micron silicon}\label{fig:Mob_Efield_A06}
-%%   \end{subfigure}\hfill
-%%   \begin{subfigure}[b]{0.33\textwidth}
-%%     \centering
-%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_L04.pdf}
-%%     \caption{100~\micron Silicon}\label{fig:Mob_Efield_L04}
-%%   \end{subfigure} \hfill
-%%   \begin{subfigure}[b]{0.33\textwidth}
-%%     \centering
-%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_B06.pdf}
-%%     \caption{200~\micron Silicon}\label{fig:Mob_Efield_B06}
-%%   \end{subfigure} 
-%%   \caption{Mobility dependence on the electric field.}\label{fig:Efield_mobility}
-%% \end{figure}
+For this study Synopsys TCAD version I-2013.12 is used for several
+purposes. First to understand the movement of charge carriers in
+silicon and the coupling to the readout in
+\cref{sec:RamoTheorem}. Also it is used to simulate active-edge
+devices and understand the measurements later in
+\cref{ch:ActiveEdgeSensors}.
 
-%% Assuming the mobility constant is a good approximation for calculating
-%% the charge sharing spread since the electric field is low. An example
-%% is given for the case where the silicon sensor has a thickness of 200~\micron.
-
-%% \begin{figure}[htbp]
-%%   \centering
-%%   \begin{subfigure}[b]{0.49\textwidth}
-%%     \centering
-%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_FunctionToIntegrate.pdf}
-%%     \caption{}\label{fig:}
-%%   \end{subfigure}\hfill
-%%   \begin{subfigure}[b]{0.49\textwidth}
-%%     \centering
-%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_driftTime.pdf}
-%%     \caption{}\label{fig:}
-%%   \end{subfigure} 
-%%   \caption{Drift time considering the mobility constant or non-constant.}\label{fig:}
-%% \end{figure}
-
-%% The diffusion constant and the diffusion spread considering the
-%% mobility constant and non-constant.
-%% \begin{figure}[htbp]
-%%   \centering
-%%   \begin{subfigure}[b]{0.49\textwidth}
-%%     \centering
-%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_DiffusionConstant.pdf}
-%%     \caption{}\label{fig:}
-%%   \end{subfigure}\hfill
-%%   \begin{subfigure}[b]{0.49\textwidth}
-%%     \centering
-%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_SigmaDiffusion.pdf}
-%%     \caption{}\label{fig:}
-%%   \end{subfigure} 
-%%   \caption{The diffusion constant and spread for a constant mobility
-%%     and a mobility which depends on the electric field. }\label{fig:}
-%% \end{figure}
-
-%% Comparing TCAD simulations and the charge sharing obtained by the
-%% theoretical calculations gives us the following for a 200~\micron with
-%% a depletion voltage of 30.31~V. Comparing for two different bias
-%% voltages of 35~V and 50~V. In the case of the TCAD
-%% simulations these results depend largely on the mesh divisions and
-%% their locations. Both TCAD and theory assume a charge deposition of
-%% 80e- per \micron.
-
-%% \begin{figure}[htbp]
-%%   \centering
-%%   \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/tcad_vs_theory.pdf}
-%%   \caption{Diffusion comparing TCAD and theory.}\label{fig:}
-%% \end{figure}
 
 \newpage
 \section{Spatial resolution}
@@ -1071,7 +1007,7 @@ Q(x_{hit})= \int_{x_1}^{x_2}  \int_{0}^{d} {Q(z) \over {\sqrt{2 \pi
   \caption{Analog readout with charge sharing}\label{fig:SpatResAnaglogChargeSharing}
 \end{figure}
 
-\section{Charge collection and Ramo's theorem: induced charge}
+\section{Charge collection and Ramo's theorem: induced charge}\label{sec:RamoTheorem}
 When a charge moves in the sensitive volume of a detector, a current
 $i_s(t)$ flows instantaneously. \\ 
 First, consider the simple example of a charge $q$ near an infinitely
@@ -1223,3 +1159,91 @@ fields), the Ramo theorem can be neglected.
 
 
 
+
+
+
+%% \begin{table}[htpb]
+%%   \centering
+%%   \caption{Sensors characteristics:}
+%%   \label{tab:Efield_mobility}
+%%   \begin{tabular}{ c c c c c c }
+%%     \toprule
+%%     Assembly & Sensor type & Thickness & V\textsubscript{depletion} &  V\textsubscript{bias} & THL\textsubscript{op} \\
+%%     \midrule
+%%     A06-W0110 & p-in-n & 50~\micron & $<15$~V & 15~V & 326 (855e\textsuperscript{-}) \\
+%%     L04-W0125 & p-in-n & 100~\micron & 19.64~V & 35~V & 410 (916e\textsuperscript{-}) \\
+%%     B06-W0125 & n-in-p & 200~\micron  & 30.31~V & -50~V & 435 (1066e\textsuperscript{-}) \\
+%%     \bottomrule
+%%   \end{tabular}
+%% \end{table}
+
+%% \begin{figure}[htbp]
+%%   \centering
+%%   \begin{subfigure}[b]{0.33\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_A06.pdf}
+%%     \caption{50~\micron silicon}\label{fig:Mob_Efield_A06}
+%%   \end{subfigure}\hfill
+%%   \begin{subfigure}[b]{0.33\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_L04.pdf}
+%%     \caption{100~\micron Silicon}\label{fig:Mob_Efield_L04}
+%%   \end{subfigure} \hfill
+%%   \begin{subfigure}[b]{0.33\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/Efield_mob_B06.pdf}
+%%     \caption{200~\micron Silicon}\label{fig:Mob_Efield_B06}
+%%   \end{subfigure} 
+%%   \caption{Mobility dependence on the electric field.}\label{fig:Efield_mobility}
+%% \end{figure}
+
+%% Assuming the mobility constant is a good approximation for calculating
+%% the charge sharing spread since the electric field is low. An example
+%% is given for the case where the silicon sensor has a thickness of 200~\micron.
+
+%% \begin{figure}[htbp]
+%%   \centering
+%%   \begin{subfigure}[b]{0.49\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_FunctionToIntegrate.pdf}
+%%     \caption{}\label{fig:}
+%%   \end{subfigure}\hfill
+%%   \begin{subfigure}[b]{0.49\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_driftTime.pdf}
+%%     \caption{}\label{fig:}
+%%   \end{subfigure} 
+%%   \caption{Drift time considering the mobility constant or non-constant.}\label{fig:}
+%% \end{figure}
+
+%% The diffusion constant and the diffusion spread considering the
+%% mobility constant and non-constant.
+%% \begin{figure}[htbp]
+%%   \centering
+%%   \begin{subfigure}[b]{0.49\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_DiffusionConstant.pdf}
+%%     \caption{}\label{fig:}
+%%   \end{subfigure}\hfill
+%%   \begin{subfigure}[b]{0.49\textwidth}
+%%     \centering
+%%     \includegraphics[width=\textwidth]{figures/ChargeSharing/B06_SigmaDiffusion.pdf}
+%%     \caption{}\label{fig:}
+%%   \end{subfigure} 
+%%   \caption{The diffusion constant and spread for a constant mobility
+%%     and a mobility which depends on the electric field. }\label{fig:}
+%% \end{figure}
+
+%% Comparing TCAD simulations and the charge sharing obtained by the
+%% theoretical calculations gives us the following for a 200~\micron with
+%% a depletion voltage of 30.31~V. Comparing for two different bias
+%% voltages of 35~V and 50~V. In the case of the TCAD
+%% simulations these results depend largely on the mesh divisions and
+%% their locations. Both TCAD and theory assume a charge deposition of
+%% 80e- per \micron.
+
+%% \begin{figure}[htbp]
+%%   \centering
+%%   \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/tcad_vs_theory.pdf}
+%%   \caption{Diffusion comparing TCAD and theory.}\label{fig:}
+%% \end{figure}
