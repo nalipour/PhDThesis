@@ -182,16 +182,18 @@ and the TOA.
   \end{tabular}
 \end{table}
 
-\cref{fig:Timepix_pixel_cell_schematic} shows
-schematically the functionalities implemented in a Timepix pixel
-cell. Both analogue and digital circuitry are combined. The analogue
-circuitry includes a charge sensitive amplifier with a tunable
-discharge current I\textsubscript{krum} and the
+\cref{fig:Timepix_pixel_cell_schematic} shows schematically the
+functionalities implemented in a Timepix pixel cell. Both analogue and
+digital circuitry are combined. The analogue circuitry includes a
+charge sensitive amplifier with a tunable discharge current of the
+Krummenacher amplifier architecture
+(I\textsubscript{krum})~\cite{KRUMMENACHER1991527} and the
 discriminator. I\textsubscript{krum} affects the slope of the pulse
-discharge after shaping: the higher its value, the shorter the pulse.
-
-Both polarities (electrons and holes collection) are accepted by the
-front end.
+discharge after shaping: the higher its value, the shorter the
+pulse. The discriminator is used to compare the signal level to a
+threshold (a voltage) and to discriminate a signal from a background
+noise. Both polarities (electrons and holes collection) are accepted
+by the front end.
 
 \begin{figure}[htbp] 
   \centering
@@ -229,12 +231,12 @@ uniform even though some dispersion remains.
   \label{fig:THLequalisation}
 \end{figure}
 
-\section{Calibration} \label{sec:calibration}
-The aim of the calibration is to parametrise the measurements done by
-the readout chip, namely the relationship between the threshold DAC
-and the TOT with the energy deposited in the sensor (in \kev) as well
-as the relation between the TOA measurement and the time of arrival of
-the particle (in seconds).
+\section{Calibration} \label{sec:calibration} The aim of the
+calibration is to parametrise the measurements done by the readout
+chip, namely the relationship between the threshold DAC and the TOT
+with the energy deposited in the sensor (in \kev or number of
+collected charge) as well as the relation between the TOA measurement
+and the time of arrival of the particle (in seconds).
 
 The calibration can be achieved using two main methods. The first one
 consists of the use of photons from radioactive sources with a
@@ -277,8 +279,8 @@ hyperbola. The function used to fit the data points is called a
   \label{eq:TOTsurrogateFunction}
 \end{equation}
 
-where $TOT$ denotes Time-Over-Threshold, $E$ the energy and $a, b, c,
-t$ are the parameters to be found~\cite{Jakubek2008155}.
+where $TOT$ denotes Time-Over-Threshold, $E$ the energy and
+$a, b, c, t$ are the parameters to be found~\cite{Jakubek2008155}.
 
 In \cref{eq:TOTsurrogateFunction}, for higher values of the energy,
 the relationship between $TOT$ and $E$ is linear with gradient $a$ and
@@ -286,52 +288,40 @@ intercept $b$ since the term $aE+b$ dominates. At low energy, the term
 $c/(E-t)$ becomes important. The parameter $c$ defines the amount of
 curvature in the function. An asymptote occurs at $E=t$. The point at
 which the fit crosses the x-axis (TOT=0) corresponds to the threshold:
-below the threshold no charge can be detected. The boundary between
-the low energy (non-linear response) and high energy (linear response)
-is defined by the I\textsubscript{krum} parameter.
+below the threshold no charge can be detected. The range for the TOT
+and the boundary between low energy (non-linear response) and high
+energy (linear response) depend on the clock frequency, the threshold
+and the I\textsubscript{krum} values.
+
+For the Timepix3 ASICs, the test-pulse calibration gives very good
+results. 200 test-pulses with heights ranging from TODO are sent to
+each pixel and the response is fitted with TODO. The data points are
+finally fitted with \cref{eq:TOTsurrogateFunction} for each pixel and
+the pixel-by-pixel energy calibration of the assembly is determined.
+
+\cref{fig:TOTcalib_55GNDGR100} shows the pixel-by-pixel calibration
+for assembly 55-GNDGR-100 operated at two different threshold DACs of
+1160 and 1190. For a higher threshold, the curve is shifted towards
+higher energy values in the x-axis.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/TOTcalibration_W0005_E02_thresh1160.pdf}
-    \caption{W5\_E2: THL=1160}
+    \caption{}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/TOTcalibration_W0005_E02_thresh1190.pdf}
-    \caption{W5\_E2: THL=1190}
+    \caption{}
   \end{subfigure}
-  \caption{TOT calibration for W5\_E2.}
-  \label{fig:TOTcalibW5E2}
+  \caption{Pixel-by-pixel calibration of the TOT for assembly
+    55-GNDGR-100 operated at the threshold DACs of (a) THL=1160 and
+    (b) THL=1190.}
+  \label{fig:TOTcalib_55GNDGR100}
 \end{figure}
 
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/TOTcalibration_W0005_F01_thresh1153.pdf}
-    \caption{TOT calibration for W5\_F1, THL=1153.}
-    \label{fig:TOTcalibW5F1}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/TOTcalibration_W0019_C07_thresh1148.pdf}
-    \caption{TOT calibration for W19\_C7, THL=1148.}
-    \label{fig:TOTcalibW19C7}
-  \end{subfigure}
-\end{figure}
+The calibration for the other assemblies are given in \cref{sec:appendixFE_electronics}.
 
 
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/TOTcalibration_W0019_G07_thresh1190.pdf}
-    \caption{TOT calibration for W19\_G7, THL=1190.}
-    \label{fig:TOTcalibW19G7}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/TOTcalibration_W0019_L08_thresh1133.pdf}
-    \caption{TOT calibration for W19\_L8, THL=1133.}
-    \label{fig:TOTcalibW19L8}
-  \end{subfigure}
-\end{figure}
-
-
-\subsection{Time calibration} \label{sec:TOT_TOA_calibration}
 \subsection{Threshold calibration} \label{sec:threshold}
 
 
@@ -515,7 +505,7 @@ TODO:\\
 
 
 
-
+\subsection{Time calibration} \label{sec:TOA_calibration}
 \section{MIP energy deposition and comparison to \textsc{Geant4}}
 
 \begin{figure}[htbp] \centering
