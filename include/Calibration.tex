@@ -210,13 +210,13 @@ one pixel to another. To overcome this dispersion, a 4-bit local
 threshold adjustment is applied to each pixel in order to make a
 uniform global threshold. The photon counting mode is then
 employed. The equalisation consists of adjusting this local threshold
-by first setting its value to 0000. The global threshold DAC, THL, is
-scanned and the number of pixels responding are counted. Then the
-adjustment bit is set to 1111 and THL is scanned again. For each
-pixel, the operation range is known. Assuming a linear relationship
-between the two points, the adjustment threshold is adjusted in such a
-way that the global threshold dispersion will remain uniform across
-the matrix. 
+by first setting its value to 0000. The global threshold DAC
+(Digital-to-Analog), THL, is scanned and the number of pixels
+responding are counted. Then the adjustment bit is set to 1111 and THL
+is scanned again. For each pixel, the operation range is
+known. Assuming a linear relationship between the two points, the
+adjustment threshold is adjusted in such a way that the global
+threshold dispersion will remain uniform across the matrix.
 
 \cref{fig:THLequalisation} shows the threshold equalisation for an
 assembly. After equalisation the response of the chip becomes more
@@ -224,18 +224,72 @@ uniform even though some dispersion remains.
 
 \begin{figure}[htbp] 
   \centering
-  \includegraphics[width=0.7\textwidth]{./figures/Calibration/THLequalisation_W2_J5.pdf}
+  \includegraphics[width=0.6\textwidth]{./figures/Calibration/THLequalisation_W2_J5.pdf}
   \caption{Threshold equalisation for the assembly W2\_J5.}
   \label{fig:THLequalisation}
 \end{figure}
 
 \section{Calibration} \label{sec:calibration}
+The aim of the calibration is to parametrise the measurements done by
+the readout chip, namely the relationship between the threshold DAC
+and the TOT with the energy deposited in the sensor (in \kev) as well
+as the relation between the TOA measurement and the time of arrival of
+the particle (in seconds).
+
+The calibration can be achieved using two main methods. The first one
+consists of the use of photons from radioactive sources with a
+characteristic decay energy or photons from X-ray fluorescence with a
+characteristic emission energy~\cite{AlipourTehrani:2054922}. The
+photon being stopped in the sensor, it deposits its full energy. Since
+the energy of the photon is known, its relation to the TOT can be
+characterised. The counting mode is used to calibrate the threshold.
+
+The second method consists of the use of an internal analog test pulse
+generator. The Timepix readout ASICs provide an internal test pulse
+generator which can be used for calibration as well as equalisation of
+the readout chip. In each pixel, a capacitor allows for injecting a
+charge by switching a voltage over it. The charge injected is given by
+
+\begin{equation}
+  Q = C \cdot \Delta V \; ,
+  \label{eq:testpulseCharge}
+\end{equation}
+
+where Q is the injected charge, C the injection capacitance and
+$\Delta V$ the voltage applied. A priori, the injection capacitance is
+unknown and its value varies a lot from pixel to pixel but its value
+can be measured (HOW?).  For the Timepix3 readout chip, the test pulse
+calibration gives very good results and is used to calibrate the
+threshold, the TOT and the TOA.
 
 \subsection{Energy calibration} \label{sec:TOT_TOA_calibration}
+
+For the energy calibration, the Timepix readout ASIC is operated in
+the TOT mode. Data points obtained either by radioactive sources or
+test-pulse injection are used to parametrise the relationship between
+the energy deposited and the TOT measurement. Due to the non-linearity
+of the Timepix charge pre-amplifier, this relationship is modeled as a
+hyperbola. The function used to fit the data points is called a
+\textit{surrogate function} and is defined as:
+
 \begin{equation}
-  \text{TOT} = a \, E + b - \frac{c}{E - t} \; ,
+  TOT = a \, E + b - \frac{c}{E - t} \; ,
   \label{eq:TOTsurrogateFunction}
 \end{equation}
+
+where $TOT$ denotes Time-Over-Threshold, $E$ the energy and $a, b, c,
+t$ are the parameters to be found~\cite{Jakubek2008155}.
+
+In \cref{eq:TOTsurrogateFunction}, for higher values of the energy,
+the relationship between $TOT$ and $E$ is linear with gradient $a$ and
+intercept $b$ since the term $aE+b$ dominates. At low energy, the term
+$c/(E-t)$ becomes important. The parameter $c$ defines the amount of
+curvature in the function. An asymptote occurs at $E=t$. The point at
+which the fit crosses the x-axis (TOT=0) corresponds to the threshold:
+below the threshold no charge can be detected. The boundary between
+the low energy (non-linear response) and high energy (linear response)
+is defined by the I\textsubscript{krum} parameter. (TO BE CONTINUED
+DEVELOPED with ikrum thing).
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -397,24 +451,7 @@ obtained by error propagation of \cref{eq:THLDAC}).
 
 \subsubsection{Threshold calibration with test pulses}
 
-The Timepix readout chips provide an internal test pulse generator
-which can be used for calibration as well as equalisation of the
-readout chip. In each pixel, a capacitor allows for injecting a charge
-by switching a voltage over it. The charge injected is given by
-\cref{eq:testpulseCharge}:
 
-\begin{equation}
-  Q = C \cdot \Delta V
-  \label{eq:testpulseCharge}
-\end{equation}
-
-where Q is the injected charge, C the injection capacitance and
-$\Delta V$ the voltage applied. A priori, the injection capacitance is
-unknown and its value varies a lot from pixel to pixel but its value
-can be measured (HOW?). 
-For the Timepix3 readout chip, the test pulse calibration gives very
-good results and is used to calibrate the threshold as well as the TOT
-and the TOA. 
 
 For the calibration of the threshold, pulses at four different heights
 are injected (at 0, 1000, 3000 and 6000
