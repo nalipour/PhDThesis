@@ -275,15 +275,15 @@ hyperbola. The function used to fit the data points is called a
 \textit{surrogate function} and is defined as:
 
 \begin{equation}
-  TOT = a \, E + b - \frac{c}{E - t} \; ,
+  \text{TOT} = a \, E + b - \frac{c}{E - t} \; ,
   \label{eq:TOTsurrogateFunction}
 \end{equation}
 
-where $TOT$ denotes Time-Over-Threshold, $E$ the energy and
+where TOT denotes Time-Over-Threshold, $E$ the energy and
 $a, b, c, t$ are the parameters to be found~\cite{Jakubek2008155}.
 
 In \cref{eq:TOTsurrogateFunction}, for higher values of the energy,
-the relationship between $TOT$ and $E$ is linear with gradient $a$ and
+the relationship between TOT and $E$ is linear with gradient $a$ and
 intercept $b$ since the term $aE+b$ dominates. At low energy, the term
 $c/(E-t)$ becomes important. The parameter $c$ defines the amount of
 curvature in the function. An asymptote occurs at $E=t$. The point at
@@ -299,10 +299,27 @@ each pixel and the response is fitted with TODO. The data points are
 finally fitted with \cref{eq:TOTsurrogateFunction} for each pixel and
 the pixel-by-pixel energy calibration of the assembly is determined.
 
-\cref{fig:TOTcalib_55GNDGR100} shows the pixel-by-pixel calibration
-for assembly 55-GNDGR-100 operated at two different threshold DACs of
-1160 and 1190. For a higher threshold, the curve is shifted towards
-higher energy values in the x-axis.
+\cref{tab:timepix3Operation} summarises the DAC settings used for the
+operation of the Timepix3 assemblies. The same settings are as well
+used for the calibration. \cref{fig:TOTcalib_55GNDGR100} shows the
+pixel-by-pixel calibration for assembly 55-GNDGR-100 operated at two
+different threshold DACs of 1160 and 1190. For a higher threshold, the
+curve is shifted towards higher energy values in the x-axis.
+
+\begin{table}[htbp]
+  \centering
+  \caption{DAC settings for the operation and calibration of the
+    Timepix3 assemblies. VFBK is a programmable DAC to determine the
+    baseline voltage of the chip.}
+  \label{tab:timepix3Operation}
+  \begin{tabular}{ c c c }
+    \toprule
+    I\textsubscript{krum} & TOT/TOA Clock & VFBK \\
+    \midrule
+    10 & $40\,\megahertz$ & 150 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
