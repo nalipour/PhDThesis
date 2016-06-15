@@ -260,9 +260,7 @@ charge by switching a voltage over it. The charge injected is given by
 where Q is the injected charge, C the injection capacitance and
 $\Delta V$ the voltage applied. A priori, the injection capacitance is
 unknown and its value varies a lot from pixel to pixel but its value
-can be measured (HOW?).  For the Timepix3 readout chip, the test pulse
-calibration gives very good results and is used to calibrate the
-threshold, the TOT and the TOA.
+can be measured (HOW?).
 
 \subsection{Energy calibration} \label{sec:TOT_TOA_calibration}
 
@@ -293,18 +291,24 @@ and the boundary between low energy (non-linear response) and high
 energy (linear response) depend on the clock frequency, the threshold
 and the I\textsubscript{krum} values.
 
-For the Timepix3 ASICs, the test-pulse calibration gives very good
-results. 200 test-pulses with heights ranging from TODO are sent to
-each pixel and the response is fitted with TODO. The data points are
-finally fitted with \cref{eq:TOTsurrogateFunction} for each pixel and
-the pixel-by-pixel energy calibration of the assembly is determined.
+For the Timepix3 ASICs, the test-pulse injection is used for the
+calibration of the assemblies. Test pulses with heights ranging from
+$0\,\mv$ to $800\,\mv$ (corresponding to 0 electrons to 14000
+electrons) are sent to each pixel. For each pulse height, 100
+test-pulses are sent. The sum of the TOTs and also the sum of the
+squared of the TOTs for each pulse height is recorded. The mean of the
+TOT response and the standard deviations are then calculated. Finally,
+the data are fitted with the surrogate function as given in
+\cref{eq:TOTsurrogateFunction} for each pixel and the pixel-by-pixel
+energy calibration of the assembly is determined.
 
 \cref{tab:timepix3Operation} summarises the DAC settings used for the
 operation of the Timepix3 assemblies. The same settings are as well
 used for the calibration. \cref{fig:TOTcalib_55GNDGR100} shows the
 pixel-by-pixel calibration for assembly 55-GNDGR-100 operated at two
 different threshold DACs of 1160 and 1190. For a higher threshold, the
-curve is shifted towards higher energy values in the x-axis.
+curve is shifted towards higher energy values on the x-axis but the
+slope (parameter $a$) remains the same.
 
 \begin{table}[htbp]
   \centering
@@ -455,16 +459,26 @@ electrons, again in agreement with~\cite{art:tmpx} (the error is
 obtained by error propagation of \cref{eq:THLDAC}).
 
 
-\subsubsection{Threshold calibration with test pulses}
 
+For Timepix3 assemblies, the threshold is calibrated using test pulses
+at four different heights corresponding to 0, 1000, 3000 and 6000
+electrons. The threshold calibration for 55-GNDGR-100 is shown in
+\cref{fig:THLcalib_55-GNDGR-100} (for the other assemblies refer
+to\cref{fig:Timepix3_THL_Calibration}). For the Timepix3 ASIC has a
+DAC step gain of around $11\pm$e-/step is
+calculated. \cref{tab:NominalThreshold} summarises the conversion of
+the threshold DAC into energy for the different assemblies at nominal
+conditions.
 
-
-For the calibration of the threshold, pulses at four different heights
-are injected (at 0, 1000, 3000 and 6000
-electrons). \cref{fig:Timepix3_THL_Calibration} shows the threshold
-calibration for different assemblies. 
-
-
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{./figures/Calibration/THLcalibration_W0005_E02.pdf}
+  \caption{Threshold calibration for 55-GNDGR-100. Each point
+    corresponds to the maximum gradient of the S-curve for each pulse
+    height. A linear function as described in \cref{eq:THLDAC} was
+    used to fit the data points and obtain the parameters $p$ and $q$.}
+  \label{fig:THLcalib_55-GNDGR-100}
+\end{figure}
 
 \begin{table}[htbp]
   \centering
@@ -474,12 +488,12 @@ calibration for different assemblies.
     \toprule
     Assembly & Nominal THL\textsubscript{DAC}\textsuperscript{op} [DAC steps] & Nominal THL\textsubscript{e-}\textsuperscript{op} [electrons]\\
     \midrule
-    W19\_G7 & 1190 & 466.5\\
-    W19\_F7 & 1187 & 532.4\\ \hline
-    W19\_L8 & 1133 & 517.8\\
-    W19\_C7 & 1148 & 553.7\\
-    W5\_E2 & 1160 & 537.9\\ \hline
-    W5\_F1 & 1153 & 441.2\\
+    20-NGR & 1190 & 466.5\\
+    23-FGR & 1187 & 532.4\\ \hline
+    28-GNDGR & 1133 & 517.8\\
+    55-GNDGR & 1148 & 553.7\\
+    55-GNDGR-100 & 1160 & 537.9\\ \hline
+    55-GNDGR-150 & 1153 & 441.2\\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -487,117 +501,18 @@ calibration for different assemblies.
 
 TODO:\\ 
 - Explain method\\
-- make a table with nominal operating threshold\\
 - Calculate errors with the error propagation\\
 
 
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0019_G07.pdf}
-    \caption{20-NGR}
-  \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0019_F07.pdf}
-    \caption{23-FGR}
-  \end{subfigure}\\
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0019_L08.pdf}
-    \caption{28-GNDGR}
-  \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0019_C07.pdf}
-    \caption{55-GNDGR}
-  \end{subfigure}\\
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0005_E02.pdf}
-    \caption{55-GNDGR-100}
-  \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/THLcalibration_W0005_F01.pdf}
-    \caption{55-GNDGR-150}
-  \end{subfigure}
-  \caption{Threshold calibration for Timepix3 assemblies using test pulses.}
-  \label{fig:Timepix3_THL_Calibration}
-\end{figure}
 
 
 
 \subsection{Time calibration} \label{sec:TOA_calibration}
-\section{MIP energy deposition and comparison to \textsc{Geant4}}
+TODO
 
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_C07.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_C07.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{Energy deposition and comparison to
-    \textsc{Geant4}. W0019\_C07, Run 902, THL=1148.}
-  \label{fig:EdepW19C7}
-\end{figure}
+\section{Application of the calibration to the test-beam data}
 
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_L08.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_L08.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{Energy deposition and comparison to
-    \textsc{Geant4}. W0019\_L08, Run 1130, THL=1133.}
-  \label{fig:EdepW19L8}
-\end{figure}
-
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_G07.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_G07.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{Energy deposition and comparison to
-    \textsc{Geant4}. W0019\_G07, Run 1190, THL=995.}
-  \label{fig:EdepW19L8}
-\end{figure}
-
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0005_E02.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_E02.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{Energy deposition and comparison to
-    \textsc{Geant4}. W0005\_E02, Run 661, THL=1160.}
-  \label{fig:EdepW19L8}
-\end{figure}
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0005_F01.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_F01.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{Energy deposition and comparison to
-    \textsc{Geant4}. W0005\_F01, Run 761, THL=1153.}
-  \label{fig:EdepW19L8}
-\end{figure}
-
+For all the assemblies, the energy deposition in \ev is given in \cref{sec:appendixCalibDataG4}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
