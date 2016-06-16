@@ -493,8 +493,8 @@ transition between the edge of the sensor and the first pixel.
 \subsection{Validation of simulation with data}
 
 The transient simulation of the active edge devices is done by a
-charge deposition of $10^{-5}\,\picocoulomb/\micron$ along the path of
-the particle track. This corresponds to an energy deposition of
+charge deposition of $10^{-5}\,\picocoulomb/\micron$ along the
+particle track. This corresponds to an energy deposition of
 $\sim80\,\text{e-}/\micron$ as expected for the MIP in
 silicon. \cref{fig:TCAD_transientSimu} illustrates a MIP traversing
 the sensor at a distance of $10\,\micron$ from the left edge. The
@@ -521,6 +521,121 @@ integrated over 15~ns.
     line). The electron density 6~ns after the particle hit is shown.}
   \label{fig:TCAD_transientSimu}
 \end{figure}
+
+
+In simulation, hits are generated at different positions. The charge
+collected by each electrode is calculated over the integration
+time. \cref{fig:TCAD_vs_data_20_NGR,fig:TCAD_vs_data_23_FGR,fig:TCAD_vs_data_28_GNDGR,fig:TCAD_vs_data_55_GNDGR,fig:TCAD_vs_data_55_GNDGR_100,fig:TCAD_vs_data_55_GNDGR_150}
+compare the charge collected as a function of the hit position in data
+and TCAD simulations. In data, the charge deposited is plotted versus
+the track position given by the Timepix3 telescope (with a resolution
+of $\sim2\,\micron$). The charge deposited is obtained by applying the
+test-pulse calibrations to the data. For each track position, the
+deposited charge is projected as a one-dimensional histogram and
+fitted with a Landau function convoluted to a Gaussian. The most
+probable value (MPV) of the Landau fit is then compared to the
+collected charge obtained in the TCAD simulations. In the TCAD
+simulations, a fixed amount of charge is deposited and, unlike the
+data, the fluctuations of the deposited charge are not
+considered. This can explain the minor discrepancies on the amount of
+the collected charge between simulation and data. The border of the
+last pixel (at 0~mm) is indicated with a dashed line and the physical
+sensor edge is shown in continuous line.
+
+
+\newpage
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_20_NGR.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_20_NGR.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{20-NGR}
+  \label{fig:TCAD_vs_data_20_NGR}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_23_FGR.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{23-FGR: no calibration is available: TOT is multiplied by 128 to obtain the Edep in electrons.}
+  \label{fig:TCAD_vs_data_23_FGR}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_28_GNDGR.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_28_GNDGR.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{28-GNDGR}
+  \label{fig:TCAD_vs_data_28_GNDGR}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_55_GNDGR.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_55_GNDGR.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{55-GNDGR}
+  \label{fig:TCAD_vs_data_55_GNDGR}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_55_GNDGR_100.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_55_GNDGR_100.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{55-GNDGR-100}
+  \label{fig:TCAD_vs_data_55_GNDGR_100}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_55_GNDGR_150.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_55_GNDGR_150.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{55-GNDGR-150}
+  \label{fig:TCAD_vs_data_55_GNDGR_150}
+\end{figure}
+
+
+
+
 
 % \begin{figure}[htbp]
 %   \centering
