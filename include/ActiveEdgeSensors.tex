@@ -31,14 +31,14 @@ and simulations. The DRIE process consists of extending the back-side
 implantation, as well as the bias voltage, to the edge of the
 sensor. The gradient of potential between the edge and the last pixel
 can be very high and could lead to a breakdown of the sensor. A guard
-ring consists of an n-implant with a metallic contact on top of it
-surrounding the pixel matrix close to the edge and thereby smoothening
-the potential transition between the edge and the neighbouring
-pixels. The guard ring can be kept floating or grounded by connecting
-it to the ground of the readout ASIC. Timepix3 ASICs provide an extra
-row of bumped pixels allowing to connect the guard ring to ground
-potential. Figure~\ref{fig:activeedge} illustrates a cross section of
-an active-edge sensor with and without guard ring.
+ring (GR) consists of an n-implant with a metallic contact on top of
+it surrounding the pixel matrix close to the edge and thereby
+smoothening the potential transition between the edge and the
+neighbouring pixels. The guard ring can be kept floating or grounded
+by connecting it to the ground of the readout ASIC. Timepix3 ASICs
+provide an extra row of bumped pixels allowing to connect the guard
+ring to ground potential. Figure~\ref{fig:activeedge} illustrates a
+cross section of an active-edge sensor with and without guard ring.
 
 
 \begin{figure}[htbp]
@@ -159,7 +159,21 @@ $55\,\micron$.
 \end{table}
 
 \cref{fig:Layout_guard_ring} shows the layout of the assemblies listed
-in \cref{tab:activeEdgeAssembliesList}.
+in \cref{tab:activeEdgeAssembliesList}. The different layers of the
+sensors shown in different colors are described in
+\cref{fig:PixelLayout,tab:PixelStackDimensions}. The same convention
+is also used for describing the layers for the guard
+ring. \cref{tab:DimensionsForAssemblies} summarises the dimensions of
+the implants for the sensors and they can be different for different
+designs of guard rings. The edge width is the distance between the
+last pixel implant to the physical edge of the sensor. The metal width
+is the diameter of the metal for the pixels. The doping width is the
+diameter of the pixels implant. The contact width is the diameter of
+the contact between silicon and the metal (where the oxide is
+etched). The GR offset is the distance between the physical edge of
+the sensor and the implant of the GR. These dimensions are used for
+the implementation of the sensors in TCAD simulations.
+
 
 \begin{figure}[htbp]
   \begin{subfigure}[t]{0.5\textwidth}
@@ -169,18 +183,19 @@ in \cref{tab:activeEdgeAssembliesList}.
       (0,0){\includegraphics[width=0.8\textwidth]{figures/ActiveEdge/geometry_20NGR.png}};
 
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \draw[blue, thick](0.56, 0.05)--(0.56, 0.65);
-        \draw[blue, thick, dashed](0.52, 0.05)--(0.52, 0.65);
-        \draw[blue, thick](0.25, 0.05)--(0.25, 0.65);
 
-        \draw[blue, thick](0.25, 0.05)--(0.56, 0.05);
-        \draw[blue, thick](0.25, 0.65)--(0.56, 0.65);
+        \draw[blue, thick](0.62, 0.1)--(0. 62, 0.7);
+        \draw[blue, thick, dashed](0.58, 0.1)--(0.58, 0.7);
+        \draw[blue, thick](0.3, 0.1)--(0.3, 0.7);
 
-        \node[below, color=blue] at (0.25, 0.055) {-0.055 mm};
-        \node[below, color=blue] at (0.52, 0.055) {0 mm};
+        \draw[blue, thick](0.3, 0.1)--(0.62, 0.1);
+        \draw[blue, thick](0.3, 0.7)--(0.62, 0.7);
 
-        \draw[<->, blue, thick](0.46, 0.51)--(0.56, 0.51);
-        \node[right, color=blue] at (0.55, 0.51) {Edge distance};
+        \node[below, color=blue] at (0.3, 0.1) {-0.055 mm};
+        \node[below, color=blue] at (0.58, 0.1) {0 mm};
+
+        \draw[<->, blue, thick](0.51, 0.4)--(0.62, 0.4);
+        \node[right, color=blue] at (0.62, 0.4) {Edge distance};
 
       \end{scope}
     \end{tikzpicture}
@@ -215,11 +230,10 @@ in \cref{tab:activeEdgeAssembliesList}.
     \label{fig:Layout50_GNDGR}
   \end{subfigure}~
   \caption{Sensor layouts for different guard-ring solutions for the
-    assemblies described in\cref{tab:activeEdgeAssembliesList}. (a)
-    shows the convention used in Figures~\ref{fig:20-NGR},
-    \ref{fig:20-FGR}, \ref{fig:20-GNDGR} and \ref{fig:50-GNDGR} to
-    express the efficiency and the charge distribution at the edge as
-    a function of the track position. The border of the last pixel
+    assemblies described in \cref{tab:activeEdgeAssembliesList}. (a)
+    shows the convention used in \cref{fig:20-NGR_eff_TOT,fig:23-FGR_eff_TOT,fig:28-GNDGR_eff_TOT,fig:55-GNDGR_eff_TOT,fig:55-GNDGR-100_eff_TOT,fig:55-GNDGR-150_eff_TOT}
+    to express the efficiency and the charge distribution at the edge
+    as a function of the track position. The border of the last pixel
     before the edge is indicated by a dashed line (at position 0 mm)
     and the physical sensor edge with a continuous line. The edge
     distance is defined by the distance between the last pixel implant
@@ -230,48 +244,23 @@ in \cref{tab:activeEdgeAssembliesList}.
 
 
 
-
-
-
-
-
-
-
-
-Figure~\ref{fig:IVmeasurements} shows the measured leakage current in
-the different assemblies as a function of the bias voltage. The
-breakdown occurs earlier for the assembly without guard ring (20-NGR)
-compared to the other assemblies. For the nominal operation at -15~V,
-none of the assemblies are operated beyond the breakdown voltage.
-
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.7\textwidth]{figures/ActiveEdge/IVCurve.pdf}
-  \caption{IV measurements for the assemblies listed in Table~\ref{tab:activeEdgeAssembliesList}.}
-  \label{fig:IVmeasurements}
-\end{figure}
-
-
-The layers in the geometry description are defined in
-Figure~\ref{fig:PixelLayout} and explained in
-Table~\ref{tab:PixelStackDimensions}.
-
 \begin{figure}[htbp]
   \centering
   \begin{minipage}[t]{.4\textwidth}
     \centering
     \vspace{0pt}
     \includegraphics[width=0.95\textwidth]{figures/ActiveEdge/pixelLayout_withLayers.png}
-    \caption{}
+    \caption{The different layers in the geometry description and used
+      for the sensor production.}
     \label{fig:PixelLayout}
   \end{minipage}
   \hfill
   \begin{minipage}[t]{.56\textwidth}
     \centering
     \vspace{0pt}
-    \captionof{table}{Layers in the sensor from the gds file
-      (Picture from 23-FGR).}
+    \captionof{table}{Layers in the sensor taken from the geometry
+      description file used for the sensor production (Picture from
+      23-FGR).}
     \label{tab:PixelStackDimensions}
     \begin{tabular}{l c c}
       \toprule
@@ -288,18 +277,16 @@ Table~\ref{tab:PixelStackDimensions}.
   \end{minipage}
 \end{figure}
 
-Table~\ref{tab:DimensionsForAssemblies} summarises the dimensions of
-the implants for the sensors. The edge width is the distance between
-the last pixel implant to the physical edge of the sensor. The metal
-width is the diameter of the metal for the pixels. The doping width is
-the diameter of the pixels implant. The contact width is the diameter
-of the contact between silicon and the metal (where the oxide is
-etched). The GR offset is the distance between the physical edge of
-the sensor and the implant of the GR.
-
 \begin{table}
   \centering
-  \captionof{table}{The pixels and guard-ring dimensions for different assemblies}
+  \captionof{table}{The dimensions of the different implants in for
+    the sensors listed in \cref{tab:activeEdgeAssembliesList}. The
+    edge width is the distance between the last pixel implant to the physical edge of the sensor. The metal width
+    is the diameter of the metal for the pixels. The doping width is the
+    diameter of the pixels implant. The contact width is the diameter of
+    the contact between silicon and the metal (where the oxide is
+    etched). The GR offset is the distance between the physical edge of
+    the sensor and the implant of the GR.}
   \label{tab:DimensionsForAssemblies}
   \begin{tabular}{l c c c c}
     \toprule
@@ -318,47 +305,62 @@ the sensor and the implant of the GR.
 \end{table}
 
 
+%% --------------------------------------------- %%
+\section{Edge performance in test beams}
+The assemblies were tested at the CERN SPS with $120\,\gev$ pions,
+making use of a beam reference telescope.  (TODO: REFERENCE TO
+TESTBEAM chapter).
 
 
+\cref{fig:IVmeasurements} shows the measured leakage current in the
+different assemblies as a function of the bias voltage. The breakdown
+occurs earlier for the assembly without guard ring (20-NGR) compared
+to the other assemblies. For the nominal operation at -15~V, none of
+the assemblies are operated beyond the breakdown voltage.
 
 
-For the 50~\micron grounded GR, the dimensions of the pixels are
-differente from above.
-\captionof{table}{Layers and dimensions from the gds geometry
-  (taken from Timepix 20um GR FLOAt and from Timepix 50~\micron grounded GR).}
-\label{tab:PixelStackDimensions}
-\begin{tabular}{l c c c}
-  \toprule
-  Layer number & Layer & Diameter (20 float) [\micron] & Diameter (50 GND) [\micron]\\
-  \midrule
-  6 & metal & 36 & 40 \\
-  3 & - & 34.62 & 36 \\
-  8 & implant & 30 & 30 \\
-  9 & UBM & 25.6 & 25.6 \\
-  15 & passivation & 19.5 & 19.5 \\
-  5 & contact to connect Al to Si & 15 & 15 \\
-  \bottomrule
-\end{tabular}
-
-
-
-
-
-
-
-
-\subsection{Test-beam analysis of the edge}
 \begin{figure}[htbp]
-  \begin{subfigure}[b]{0.5\linewidth}
+  \centering
+  \includegraphics[width=0.7\textwidth]{figures/ActiveEdge/IVCurve.pdf}
+  \caption{Measured leakage current as a function of bias voltage for
+    the assemblies listed in \cref{tab:activeEdgeAssembliesList}.}
+  \label{fig:IVmeasurements}
+\end{figure}
+
+The efficiency and the collected charge (time-over-threshold TOT) on
+the edge as a function of the track position are shown in
+\cref{fig:20-NGR_eff_TOT,fig:23-FGR_eff_TOT,fig:28-GNDGR_eff_TOT,fig:55-GNDGR_eff_TOT,fig:55-GNDGR-100_eff_TOT,fig:55-GNDGR-150_eff_TOT}
+with the convention as illustrated in \cref{fig:Layout20_NGR}. The
+border of the last pixel (at 0~mm) is indicated with a dashed line and
+the physical sensor edge is shown in continuous line. The detection
+efficiency is calculated by counting the number of matched tracks to
+hits on the DUT divided by the total number of tracks projected on the
+DUT. The efficiency within the pixels is then mapped into a grid of
+$2\times2$ pixels. The x-axis shows the track position relative to the
+last pixel. The y-axis combines the tracks for the even rows (in the
+coordinates between 0~mm and 0.055~mm) and the odd rows (in the
+coordinates between 0.055~mm and 0.11~mm). The z-axis shows the
+efficiency. To increase the statistics, the beam was focused on only
+one of the edges during the data taking.
+
+
+The assemblies without (\cref{fig:20-NGR_eff_TOT}) and with floating
+guard ring (\cref{fig:23-FGR_eff_TOT}) are efficient up to the physical
+edge of the sensor. The charge is fully collected by the last pixel
+for 20-NGR. For 23-FGR, a loss of the charge near the edge is observed
+(charge lost in the guard ring).
+
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at (0,0) {
-        \includegraphics[width=\linewidth, page=3]{figures/TestBeam/edge_bcp.pdf}};
+        \includegraphics[width=\textwidth, page=3]{figures/TestBeam/edge_bcp.pdf}};
     \end{tikzpicture}
     \caption{}
     \label{fig:}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at 
@@ -374,7 +376,7 @@ differente from above.
 
 
 \begin{figure}[htbp]
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at (0,0)
@@ -382,7 +384,7 @@ differente from above.
     \end{tikzpicture}
     \caption{}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at 
@@ -396,9 +398,18 @@ differente from above.
   \label{fig:23-FGR_eff_TOT}
 \end{figure}
 
+The grounded guard ring degrades significantly the detection
+efficiency at the edge. For 28-GNDGR, the efficiency drops between
+pixels as shown in \cref{fig:28-GNDGR_eff_TOT}. A large part of the
+charge is collected by the guard ring. For 55-GNDGR, as shown in
+\cref{fig:55-GNDGR_eff_TOT}, the edge is not efficient anymore due to
+the reduced amount of detected charge in thin sensors and its low
+sharing to the neighbouring pixels (lower than the threshold of the
+readout chip). All of the charge created in the edge is collected by
+the guard ring.
 
 \begin{figure}[htbp]
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at (0,0)
@@ -406,7 +417,7 @@ differente from above.
     \end{tikzpicture}
     \caption{}
   \end{subfigure}~
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at 
@@ -421,7 +432,7 @@ differente from above.
 
 
 \begin{figure}[htbp]
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at (0,0)
@@ -429,7 +440,7 @@ differente from above.
     \end{tikzpicture}
     \caption{}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at 
@@ -443,8 +454,20 @@ differente from above.
   \label{fig:55-GNDGR_eff_TOT}
 \end{figure}
 
+For thin sensors, a floating guard ring appears to be the most
+suitable solution, as it shows a high detection efficiency at the edge
+and an acceptable breakdown behaviour
+(\cref{fig:IVmeasurements}). Tests with additional assemblies will be
+needed to confirm this observation.
+
+For thicker sensors of $100\,\micron$ and $150\,\micron$ thick, the
+grounded guard ring is a suitable solution. The assemblies
+55-GNDGR-100 and 55-GNDGR-150 are efficient up to the edge even with a
+loss of the charge near the edge as shown in
+\cref{fig:55-GNDGR-100_eff_TOT,fig:55-GNDGR-150_eff_TOT}.
+
 \begin{figure}[htbp]
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at (0,0)
@@ -452,7 +475,7 @@ differente from above.
     \end{tikzpicture}
     \caption{}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at 
@@ -468,7 +491,7 @@ differente from above.
 
 
 \begin{figure}[htbp]
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at (0,0)
@@ -476,7 +499,7 @@ differente from above.
     \end{tikzpicture}
     \caption{}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at 
@@ -492,76 +515,81 @@ differente from above.
 
 %% --------------------------------------------- %%
 \newpage
-\section{TCAD simulations}
-\subsection{Process flow for the active-edge designs}
+\section{TCAD simulations of active-edge sensors}
 
-\begin{itemize}
-\item Sprocess 1:
-  \begin{enumerate}
-  \item First the dimensions of the pixels, implants, contacts, metal
-    layer are defined.
-  \item The meshing is refined at the borders, the implants and also
-    based on the concentration using an adaptive meshing using the
-    \texttt{refinebox} command.
-  \item The silicon region is then defined for the two pixels and the
-    edge region and an extra silicon edge which will be etched (to make
-    the process more realistic). The silicon is doped with borons (p-type material)
-    with the initial resistivity of $\rho=10000 \Omega$cm ($4.41\times
-    10^{11}\,\inversecmcubic$). 
-  \item A layer of $0.2\,\micron$ thick of Oxide is deposited.
-  \item A layer of $0.2\,\micron$ thick of Nitride is deposited.
-  \item The silicon is then doped with borons with a concentration of
-    $10^{12}\,\inversecmcubic$. From the bias scan of the $150\,\micron$ thick
-    silicon, the depletion voltage was obtained at 16~V and confirms the
-    doping concentration of the silicon. The implantation done is done
-    at the energy of $180\,\kev$.
-  \item The nitride is then etched at the positions where the
-    implantation is going to be done. First the a mask is put on the
-    positions where the Nitride is going to stay. Then the etching is
-    done at the implantation positions. Phosphorus (n-type material) is
-    implanted with a dose of $10^{15}\,\inversecmcubic$ with an energy
-    of $120\,\kev$.
-  \item The extra edge is etched to achieve the edge width wanted. First
-    the Nitride layer is etched, then the Oxide and finally the silicon
-    layer is etched.
-  \item The sensor is then flipped and a layer of oxide is deposited on
-    the backside with a thickness of $0.04\,\micron$. An implantation is
-    done with Boron with a concentration of $10^{15}\,\inversecmcubic$
-    with an energy of $60\,\kev$. Then the oxide is etched from the
-    backside and the sensor is flipped again to the initial position.
-  \end{enumerate}
+TCAD simulations are used to simulate the fabrication process and the
+device operation of active edge sensors. The electric field and the
+electrostatic potential distributions within the sensor are
+calculated. For realistic simulations, the real dimensions of the
+assemblies as listed in \cref{tab:DimensionsForAssemblies} are
+used. Due to the computational power required for such simulations,
+the simulation is done for two pixels in a 2D configuration.
 
-\item Sprocess 2:
-  \begin{enumerate}
-  \item The oxide is then etched at the contact positions.
-  \item A photoresist is deposited on the top of the sensor with a
-thickness of $2\,\micron$.
-  \item The meshing of the edge is then refined adaptively depending
-on the concentration of the ions and for a thickness of $1\,\micron$.
-  \item Borons are implanted to the edge with a concentration of
-$10^{15}\,\inversecmcubic$, an energy of $60\,\kev$ and a title of
-$15\degrees$C.
-  \item The photoresist is then removed (\texttt{strip resist}).
-  \item To activate the dopants, the sensor is annealed at a constant
-temperature of $940\degrees$C during 240 minutes.
-  \item The metal layer is deposited using Aluminium of thickness
-$0.8\,\micron$.
-  \item The sensor is then flipped and on the back-side, a layer of
-aluminium with a thickness of $0.8\,\micron$ for the contact of the
-high-voltage is deposited.
-  \end{enumerate}
-\end{itemize}
 
-Masks limit the etching and the deposition to a certain range of
-window and provide the possibility to imitate the lithographic
-patterning.
+\subsection{Simulation process flow for the active-edge designs}\label{sec:processFlow}
+
+
+The fabrication process of the sensors is described as following in
+the simulation:
+\begin{enumerate}
+\item The dimensions of the pixels, implants, contacts and metal
+  layers are defined.
+\item The meshing is refined at the borders of the sensor and around the
+  implants based on the concentration of the dopants using an adaptive
+  meshing with the command \texttt{refinebox}.
+\item The silicon region is then defined for two pixels, the edge
+  region and an extra silicon edge which will be etched later (to make
+  the process more realistic). The silicon is doped with borons
+  (p-type material) with the initial resistivity of
+  $\rho=10~\text{k}\Omega\text{cm}$
+  ($4.41\times 10^{11}\,\inversecmcubic$).
+\item First a layer of $0.2\,\micron$ thick oxide and then a layer of
+  $0.2\,\micron$ thick nitride are deposited on the top of the sensor.
+\item From the bias scan of 55-GNDGR-150, the depletion voltage is
+  measured at 16~V. Thus the silicon is doped with borons at a
+  concentration of $10^{12}\,\inversecmcubic$. The implantation is
+  done with an energy of $180\,\kev$.
+\item The nitride is then etched at the positions of the implants for
+  the pixels and the guard ring if the assembly contains one. First a
+  mask is put on the positions where the nitride is going to
+  stay. Then the etching is done at the implantation
+  positions. Phosphorus (n-type material) is implanted with a dose of
+  $10^{15}\,\inversecmcubic$ with an energy of $120\,\kev$. Masks
+  limit the etching and the deposition to a certain range of window
+  and provide the possibility to imitate the lithographic patterning.
+\item The extra edge is etched to achieve the edge distance of the
+  assembly. First the nitride layer is etched, then the oxide and
+  finally the silicon layers are etched.
+\item The sensor is then flipped and a layer of oxide is deposited on
+  the backside with a thickness of $0.04\,\micron$. Borons with a
+  concentration of $10^{15}\,\inversecmcubic$ and an energy of
+  $60\,\kev$ are implanted. Then the oxide is etched from the backside
+  and the sensor is flipped again to the initial position.
+\item The oxide is then etched at the contact positions.
+\item A photoresist is deposited on the top of the sensor with a
+  thickness of $2\,\micron$.
+\item The meshing of the edge is then refined adaptively depending
+  on the concentration of the ions and for a thickness of $1\,\micron$.
+\item Borons are implanted to the edge with a concentration of
+  $10^{15}\,\inversecmcubic$, an energy of $60\,\kev$ and a title of
+  $15\degrees$.
+\item The photoresist is then removed (\texttt{strip resist}).
+\item To activate the dopants, the sensor is annealed at a constant
+  temperature of $940\degrees$C during 240 minutes.
+\item The pixels and guard ring metal layer is deposited using an
+  aluminium layer with a thickness of $0.8\,\micron$.
+\item The sensor is then flipped and on the back-side, a layer of
+  aluminium with a thickness of $0.8\,\micron$ is deposited for the
+  contact of the high-voltage.
+\end{enumerate}
+ 
 
 The doping concentration for the different layouts is shown in
 Figure~\ref{fig:TCAD_dopingConcentration}.
 
 %% --------------------------------------------- %%
-\subsection{Electric field distribution in simulations}
-In silicon, the breakdown field occurs for electric field exceeding
+\subsection{Electric field distribution in simulations}\label{sec:TCAD_Efield_activeEdge}
+In silicon, the breakdown occurs for electric fields exceeding
 $\sim3\cdot10^5$~\voltpercm. In active-edge sensors, since the
 back-side implantation as well as the bias voltage are extended to the
 edge of the sensor, the gradient of potential between the edge and the
@@ -575,27 +603,27 @@ current as shown in \cref{fig:IVmeasurements}.
 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_20_NGR.png}
     \caption{20-NGR}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_23_FGR.png}
     \caption{23-FGR}
   \end{subfigure} \\
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_28_GNDGR.png}
     \caption{28-GNDGR}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_55_GNDGR.png}
     \caption{55-GNDGR}
   \end{subfigure} \\
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_55_GNDGR_100.png}
     \caption{55-GNDGR-100}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_55_GNDGR_150.png}
     \caption{55-GNDGR-150}
   \end{subfigure}
@@ -615,11 +643,11 @@ transition between the edge of the sensor and the first pixel.
 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/Efiel_cut0_2um.pdf}
     \caption{}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/EPotential_cut0_2um.pdf}
     \caption{}
   \end{subfigure}
@@ -630,7 +658,8 @@ transition between the edge of the sensor and the first pixel.
 \end{figure}
 
 %% --------------------------------------------- %%
-\subsection{Validation of simulation with data}
+\subsection{Validation of simulation with
+  data}\label{sec:TCAD_dataValidation_activeEdge}
 
 The transient simulation of the active edge devices is done by a
 charge deposition of $10^{-5}\,\picocoulomb/\micron$ along the
@@ -653,12 +682,13 @@ integrated over 15~ns.
       %% \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
       %% \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
 
-      \draw[-, dashed, very thick] (0.093, 0.05) -- (0.093, 0.96);
+      \draw[->, very thick] (0.093, 0.0) -- (0.093, 1.05);
     \end{scope}
   \end{tikzpicture}
   \caption{Transient simulation of a particle track traversing the
-    sensor at a distance of $10\,\micron$ from the edge (in dashed
-    line). The electron density 6~ns after the particle hit is shown.}
+    sensor at a distance of $10\,\micron$ from the edge (the
+    arrow). The electron density 6~ns after the particle hit is
+    shown.}
   \label{fig:TCAD_transientSimu}
 \end{figure}
 
@@ -680,17 +710,19 @@ data, the fluctuations of the deposited charge are not
 considered. This can explain the minor discrepancies on the amount of
 the collected charge between simulation and data. The border of the
 last pixel (at 0~mm) is indicated with a dashed line and the physical
-sensor edge is shown in continuous line.
+sensor edge is shown in continuous line with the convention as
+illustrated in \cref{fig:Layout20_NGR}.
 
+For 20-NGR, the TCAD simulation agrees well with the data observation
+as shown in \cref{fig:TCAD_vs_data_20_NGR}.
 
-\newpage
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_20_NGR.pdf}
     \caption{}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_20_NGR.pdf}
     \caption{}
   \end{subfigure}
@@ -698,13 +730,19 @@ sensor edge is shown in continuous line.
   \label{fig:TCAD_vs_data_20_NGR}
 \end{figure}
 
+To simulate a floating guard ring for 23-FGR, in TCAD, the electrode
+on the guard ring is forced to have no current and the potential is
+left undefined. The agreement seems good but in data it seems that
+more charge is collected by the guard ring than in simulation as shown
+in \cref{fig:TCAD_vs_data_23_FGR}.
+ 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
 
     \caption{}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_23_FGR.pdf}
     \caption{}
   \end{subfigure}
@@ -712,14 +750,24 @@ sensor edge is shown in continuous line.
   \label{fig:TCAD_vs_data_23_FGR}
 \end{figure}
 
+In the TCAD simulations for the grounded guard ring configurations,
+the electrode of the guard ring is forced to have no current and the
+potential is forced to be 0~V. For 28-GNDGR and 55-GNDGR, the TCAD
+simulations show a drop in the collected charge but less than in data
+as shown in
+\cref{fig:TCAD_vs_data_28_GNDGR,fig:TCAD_vs_data_55_GNDGR}. For
+55-GNDGR, in TCAD simulations charges are collected by the pixel even
+for hit positions which are very close to the physical edge since no
+threshold was applied in simulation. In data a threshold of $\sim$500
+electrons is applied.
 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_28_GNDGR.pdf}
     \caption{}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_28_GNDGR.pdf}
     \caption{}
   \end{subfigure}
@@ -730,11 +778,11 @@ sensor edge is shown in continuous line.
 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_55_GNDGR.pdf}
     \caption{}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_55_GNDGR.pdf}
     \caption{}
   \end{subfigure}
@@ -742,14 +790,17 @@ sensor edge is shown in continuous line.
   \label{fig:TCAD_vs_data_55_GNDGR}
 \end{figure}
 
+For 55-GNDGR-100 and 55-GNDGR-150 the agreement between data and
+simulation is perfect as shown in
+\cref{fig:TCAD_vs_data_55_GNDGR_100,fig:TCAD_vs_data_55_GNDGR_150}.
 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_55_GNDGR_100.pdf}
     \caption{}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_55_GNDGR_100.pdf}
     \caption{}
   \end{subfigure}
@@ -761,11 +812,11 @@ sensor edge is shown in continuous line.
 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_55_GNDGR_150.pdf}
     \caption{}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.5\linewidth}
+  \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_55_GNDGR_150.pdf}
     \caption{}
   \end{subfigure}
@@ -835,3 +886,22 @@ sensor edge is shown in continuous line.
 %   \end{subfigure}
 %   \label{fig:GuardRingLayout}
 % \end{figure}
+
+
+% For the 50~\micron grounded GR, the dimensions of the pixels are
+% differente from above.
+% \captionof{table}{Layers and dimensions from the gds geometry
+%   (taken from Timepix 20um GR FLOAt and from Timepix 50~\micron grounded GR).}
+% \label{tab:PixelStackDimensions}
+% \begin{tabular}{l c c c}
+%   \toprule
+%   Layer number & Layer & Diameter (20 float) [\micron] & Diameter (50 GND) [\micron]\\
+%   \midrule
+%   6 & metal & 36 & 40 \\
+%   3 & - & 34.62 & 36 \\
+%   8 & implant & 30 & 30 \\
+%   9 & UBM & 25.6 & 25.6 \\
+%   15 & passivation & 19.5 & 19.5 \\
+%   5 & contact to connect Al to Si & 15 & 15 \\
+%   \bottomrule
+% \end{tabular}
