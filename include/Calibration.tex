@@ -1,6 +1,6 @@
 %==============================================================================    
 \chapter{Front-end electronics}
-\label{sec:FE_electronics}
+\label{ch:FE_electronics}
 %==============================================================================    
 
 One of the key components of the detector systems is the readout
@@ -8,6 +8,13 @@ electronics. Each experiment, depending on the requirements, has its
 own specific electronics. But the basic principles of the electronics
 and optimisations of the signal-to-noise remain similar between
 different applications.
+
+In this chapter, we will review the basic principles and requirements
+of a readout chip. The Timepix readout chip families are described in
+the following sections since they are used to study thin and
+active-edge assemblies in the following chapters. They are calibrated
+using different methods and the MIP energy deposition measured by
+these chips is compared to \textsc{Geant4} simulations.
 
 \section{Generic pixel chip}
 
@@ -22,18 +29,16 @@ important considerations to be addressed amongst others.
 
 \cref{fig:detectorFunctions} schematically overviews the basic
 detector functions. The incident radiation deposits energy in the
-sensor and it is converted to an electrical signal. The sensor pulse
-being very short (few nanoseconds), a high rate of particles can be
-handled in a semiconductor detector. Since the magnitude of the signal
-charge can be small and is subject to statistical fluctuations
-(\cref{sec:chargeInSi}), a preamplifier is needed to amplify the
-signal. The preamplifier should be designed in such a way to minimise
-the electronic noise. The sensor capacitance and the input capacitance
-of the amplifier are the critical parameters to increase the
-signal-to-noise ratio (SNR): the lower the capacitance, the higher the
-SNR.
-
-After the preamplifier, the pulse shaper is responsible for the
+sensor and it is converted to an electrical signal. A high rate of
+particles can be handled in a semiconductor detector because the
+sensor pulse is very short (few nanoseconds). Since the magnitude of
+the signal charge can be small and is subject to statistical
+fluctuations (\cref{sec:chargeInSi}), a preamplifier is needed to
+amplify the signal. The preamplifier should be designed in such a way
+to minimise the electronic noise. The sensor capacitance and the input
+capacitance of the amplifier are the critical parameters to increase
+the signal-to-noise ratio (SNR): the lower the capacitance, the higher
+the SNR. After the preamplifier, the pulse shaper is responsible for the
 improvement of the SNR. It modifies the frequency response of the
 signal to improve the signal and attenuate the noise. Since this
 operation reduces the bandwidth of the signal, the duration of the
@@ -92,7 +97,8 @@ The Time-of-Arrival (TOA) measures the arrival time of a hit and
 therefore is used as a time stamping of the hits. When the amplifier
 output exceeds the pixel threshold, the discriminator output rises and
 the fast TOA (FTOA) counter counts until the rising edge of the
-general clock ($40\,\megahertz$).
+general clock. A combination of the TOA and the FTOA counters is used
+as the timing information for the hits.
 
 \begin{figure}[htbp]
   \centering
@@ -135,20 +141,21 @@ general clock ($40\,\megahertz$).
       \draw[-, thick, dashed, red] (0.35, 0.2) -- (0.35, 0.0);
 
       \draw[arrows=<->, thick](0.21, -0.05)--(0.35, -0.05) node [pos=0.5, below]
-      {\textbf{TOA (4 counts)}};
+      {\textbf{FTOA (4 counts)}};
 
 
       \node[left] at (0.1, 0.8) {Sensor pulse};
       \node[left, green] at (0.1, 0.6) {Threshold};
-      \node[left] at (0.1, 0.5) {After pulse shaping};
+      \node[left] at (0.1, 0.5) {Pulse after shaping};
       \node[left] at (0.1, 0.3) {Discriminator output};
-      \node[left] at (0.1, 0.2) {$40\,\megahertz$ Clk};
-      \node[left] at (0.1, 0.0) {$640\,\megahertz$ Clk (FTOA)};     
+      \node[left] at (0.1, 0.2) {General clock}; %$40\,\megahertz$ Clk}
+      \node[left] at (0.1, 0.0) {FTOA clock}; %$640\,\megahertz$ Clk (FTOA)     
 
 
     \end{scope}
   \end{tikzpicture}
-  \caption{Time-over-Threshold (TOT) and Time-of-Arrival (TOA).}  
+  \caption{Schematic overview of the Time-over-Threshold (TOT) and
+    Time-of-Arrival (TOA) measurements in a readout chip.}  
   \label{fig:TOT_TOA_concept}
 \end{figure}
 
@@ -162,7 +169,7 @@ in~\cref{tab:timepixOverview}. They consist of $256\times256$ pixel
 matrix with pixels pitch of $55\,\micron$. The both chip families
 allow for three operation modes: photon counting, TOT and TOA
 measurements. Timepix3 allows for simultaneous measurement of the TOT
-and the TOA.
+and the TOA with a timing resolution of 1.6~ns.
 
 \begin{table}[htbp]
   \centering
@@ -195,6 +202,13 @@ threshold (a voltage) and to discriminate a signal from a background
 noise. Both polarities (electrons and holes collection) are accepted
 by the front end.
 
+The Timepix3 readout chip allows for a data driven readout mode which
+can reach higher readout rates than the frame based mode. In the data
+driven mode, after a hit is processed by the pixel, a data packet
+containing the TOT and the TOA information is immediately sent off the
+chip. This reduces significantly the dead time of the pixels and
+allows to reach very high readout rates.
+
 \begin{figure}[htbp] 
   \centering
   \includegraphics[width=\textwidth]{./figures/Calibration/Timepix_pixel_cell_schematic.jpg}
@@ -212,7 +226,7 @@ one pixel to another. To overcome this dispersion, a 4-bit local
 threshold adjustment is applied to each pixel in order to make a
 uniform global threshold. The photon counting mode is then
 employed. The equalisation consists of adjusting this local threshold
-by first setting its value to 0000. The global threshold DAC
+by first setting its value to the mask 0000. The global threshold DAC
 (Digital-to-Analog), THL, is scanned and the number of pixels
 responding are counted. Then the adjustment bit is set to 1111 and THL
 is scanned again. For each pixel, the operation range is
@@ -259,8 +273,8 @@ charge by switching a voltage over it. The charge injected is given by
 
 where Q is the injected charge, C the injection capacitance and
 $\Delta V$ the voltage applied. A priori, the injection capacitance is
-unknown and its value varies a lot from pixel to pixel but its value
-can be measured (HOW?).
+unknown and its value varies from pixel to pixel but its value can be
+measured.
 
 \subsection{Energy calibration} \label{sec:TOT_TOA_calibration}
 
@@ -316,11 +330,11 @@ slope (parameter $a$) remains the same.
     Timepix3 assemblies. VFBK is a programmable DAC to determine the
     baseline voltage of the chip.}
   \label{tab:timepix3Operation}
-  \begin{tabular}{ c c c }
+  \begin{tabular}{ c c c c }
     \toprule
-    I\textsubscript{krum} & TOT/TOA Clock & VFBK \\
+    I\textsubscript{krum} & TOT/TOA Clock & FTOA Clock & VFBK \\
     \midrule
-    10 & $40\,\megahertz$ & 150 \\
+    10 & $40\,\megahertz$ & $640\,\megahertz$ & 150 \\
     \bottomrule
   \end{tabular}
 \end{table}
