@@ -276,7 +276,7 @@ $\Delta V$ the voltage applied. A priori, the injection capacitance is
 unknown and its value varies from pixel to pixel but its value can be
 measured.
 
-\subsection{Energy calibration} \label{sec:TOT_TOA_calibration}
+\subsection{Energy calibration} \label{sec:EnergyCalibration}
 
 For the energy calibration, the Timepix readout ASIC is operated in
 the TOT mode. Data points obtained either by radioactive sources or
@@ -317,12 +317,12 @@ the data are fitted with the surrogate function as given in
 energy calibration of the assembly is determined.
 
 \cref{tab:timepix3Operation} summarises the DAC settings used for the
-operation of the Timepix3 assemblies. The same settings are as well
-used for the calibration. \cref{fig:TOTcalib_55GNDGR100} shows the
-pixel-by-pixel calibration for assembly 55-GNDGR-100 operated at two
-different threshold DACs of 1160 and 1190. For a higher threshold, the
-curve is shifted towards higher energy values on the x-axis but the
-slope (parameter $a$) remains the same.
+operation of the Timepix3 assemblies in test beams. The same settings
+are as well used for the calibration. \cref{fig:TOTcalib_55GNDGR100}
+shows the pixel-by-pixel calibration for assembly 55-GNDGR-100
+operated at two different threshold DACs of 1160 and 1190. For a
+higher threshold, the curve is shifted towards higher energy values on
+the x-axis but the slope (parameter $a$) remains the same.
 
 \begin{table}[htbp]
   \centering
@@ -363,17 +363,22 @@ The calibration for the other assemblies are given in \cref{sec:appendixFE_elect
 The operating threshold DAC (Digital-to-Analog Converter) set in each
 Timepix/Timepix3 readout chip can be translated into an effective
 energy and used as a data point for the surrogate fit at the
-crossing-point on the $x$-axis. The counting (Medipix) mode was used
-for this measurement. The assembly was exposed to photons of a
-characteristic energy and the threshold DAC was scanned from a level
-of no counts (threshold above the signal) to a level where all the
-pixels count (threshold close to the noise level) resulting in an
-S-shaped curve as shown in \cref{fig:scurve_example}. At the
-maximum gradient of the S-curve, the threshold DAC corresponds to the
-photon energy. The derivative of the S-curve is a Gaussian as shown in
-\cref{fig:deriv_example} with a mean at the maximum gradient of
-the S-curve. The derivative at each point of the S-curve corresponds
-to the slope of the line connecting it to its neighbour.
+crossing-point on the $x$-axis. The counting (Medipix) mode is used
+for this measurement.  
+
+For the Timepix assemblies, the calibration is done with radioactive
+sources since the test-pulse calibration is not possible due to the
+choice of the I\textsubscript{krum} value. The assembly is exposed to
+photons of a characteristic energy and the threshold DAC is scanned
+from a level of no counts (threshold above the signal) to a level
+where all the pixels count (threshold close to the noise level)
+resulting in an S-shaped curve as shown in
+\cref{fig:scurve_example}. At the maximum gradient of the S-curve, the
+threshold DAC corresponds to the photon energy. The derivative of the
+S-curve is a Gaussian as shown in \cref{fig:deriv_example} with a mean
+at the maximum gradient of the S-curve. The derivative at each point
+of the S-curve corresponds to the slope of the line connecting it to
+its neighbour.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -394,19 +399,20 @@ to the slope of the line connecting it to its neighbour.
     \label{fig:deriv_example}
   \end{subfigure}
   \caption{An example of a measured S-curve (a) and its derivative
-    fitted with a Gaussian function (b) for L04-W0125 (Timepix readout
-    ASIC) using the Indium target. $K_{\alpha}$ corresponds to the
-    strongest X-ray spectral line for the bombarded target. The smaller
-    peak for $K_{\beta}$ is ignored. For Timepix assemblies. The Pixelman
-    software~\cite{1748-0221-6-01-C01046} provides the \emph{DACs Scan}
-    plug-in which was used to scan the threshold DAC value and save the
-    hit maps in a text file. The threshold calibration was done at CERN
-    using the XRF targets. This measurement was performed globally for
-    each assembly. The threshold DAC is scanned with a step size of 2.}
+    fitted with a Gaussian function (b) for a Timepix readout ASIC
+    (L04-W0125) using the Indium target. $K_{\alpha}$ corresponds to
+    the strongest X-ray spectral line for the bombarded target. The
+    smaller peak for $K_{\beta}$ is ignored. For Timepix
+    assemblies. The Pixelman software~\cite{1748-0221-6-01-C01046}
+    provides the \emph{DACs Scan} plug-in which was used to scan the
+    threshold DAC value and save the hit maps in a text file. The
+    threshold calibration was done at CERN using the XRF targets. This
+    measurement was performed globally for each assembly. The
+    threshold DAC is scanned with a step size of 2.}
   \label{fig:scurve_deriv_example}
 \end{figure}
 
-A linear fit was used to parametrise the relationship between the
+A linear fit is used to parametrise the relationship between the
 photon energy and the threshold DAC given by the mean of the
 derivative of the S-curves:
 \begin{equation}
@@ -415,10 +421,11 @@ derivative of the S-curves:
 \end{equation}
 where $THL_{DAC}$ is the threshold DAC and $THL_{\kev}$ its conversion
 into an energy. \cref{fig:THLcalib_A06} shows an example of the
-threshold calibration obtained for A06-W0110. Each point used for the
-fit corresponds to the mean of the Gaussian fitted to the derivative
-of the S-curve for each target. The error on each point corresponds to
-the error on the mean of the fitted Gaussian.
+threshold calibration obtained for a Timepix chip (assembly
+A06-W0110). Each point used for the fit corresponds to the mean of the
+Gaussian fitted to the derivative of the S-curve for each target. The
+error on each point corresponds to the error on the mean of the fitted
+Gaussian.
 
 \begin{figure}[htbp]
   \centering
@@ -433,7 +440,7 @@ the error on the mean of the fitted Gaussian.
 
 The operating threshold DAC for each assembly was converted to an
 energy by solving \cref{eq:THLDAC} for $THL_{\kev}$ with
-$THL_{DAC}=THL_{DAC}^{op}$. Results are shown in \cref{tab:evalTHL}. The error on the evaluated threshold in energy
+$THL_{DAC}=THL_{DAC}^{op}$. The error on the evaluated threshold in energy
 ($THL_{\kev}^{op}$) is obtained by the propagation of errors for the
 inverse of \ref{eq:THLDAC}:
 \begin{equation}
@@ -446,25 +453,25 @@ where $p$, $q$ are given by the linear fit using \cref{eq:THLDAC} with
 standard deviations $\sigma_{p}$, $\sigma_{q}$ and covariance
 $\sigma_{pq}$.
 
-\begin{table}[htbp]
-  \caption{Threshold fit parameters $p$ and $q$, the operating
-    threshold DAC and its conversion into energy.}
-  \label{tab:evalTHL} 
-  \centering
-  \begin{tabular}{ c c c c c }
-    \toprule
-    Assembly & $p$ [DAC steps/\kev] & $q$ [DAC steps] & $THL_{DAC}^{op}$ [DAC steps] & $THL_{\kev}^{op}$ [\kev] \\
-    \midrule
-    A06-W0110 & $-12.36\pm0.03$ & $364.0\pm0.50$ & 326 & $3.077\pm0.033$ \\
-    C04-W0110 & $-11.8\pm0.02$ & $441.6\pm0.42$ & 405 & $3.102\pm0.030$ \\
-    L04-W0125 & $-11.68\pm0.02$ & $448.6\pm0.31$ & 410 & $3.303\pm0.023$ \\
-    B06-W0125 & $11.58\pm0.037$ & $390.6\pm0.80$ & 435 & $3.836\pm0.057$ \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+% \begin{table}[htbp]
+%   \caption{Threshold fit parameters $p$ and $q$, the operating
+%     threshold DAC and its conversion into energy.}
+%   \label{tab:evalTHL} 
+%   \centering
+%   \begin{tabular}{ c c c c c }
+%     \toprule
+%     Assembly & $p$ [DAC steps/\kev] & $q$ [DAC steps] & $THL_{DAC}^{op}$ [DAC steps] & $THL_{\kev}^{op}$ [\kev] \\
+%     \midrule
+%     A06-W0110 & $-12.36\pm0.03$ & $364.0\pm0.50$ & 326 & $3.077\pm0.033$ \\
+%     C04-W0110 & $-11.8\pm0.02$ & $441.6\pm0.42$ & 405 & $3.102\pm0.030$ \\
+%     L04-W0125 & $-11.68\pm0.02$ & $448.6\pm0.31$ & 410 & $3.303\pm0.023$ \\
+%     B06-W0125 & $11.58\pm0.037$ & $390.6\pm0.80$ & 435 & $3.836\pm0.057$ \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
 
-For further verification of these results, the DAC step gain for each
-assembly was calculated to be around
+For further verification of these results, the Timepix DAC step gain
+for each assembly is calculated to be around
 24~$\pm$e\textsuperscript{-}/step, in agreement
 with~\cite{art:tmpx}. The width of the derivative of the S-curves
 shows the error at the front-end of the assembly. For all assemblies
@@ -473,14 +480,21 @@ electrons, again in agreement with~\cite{art:tmpx} (the error is
 obtained by error propagation of \cref{eq:THLDAC}).
 
 
-
 For Timepix3 assemblies, the threshold is calibrated using test pulses
 at four different heights corresponding to 0, 1000, 3000 and 6000
-electrons. The threshold calibration for 55-GNDGR-100 is shown in
-\cref{fig:THLcalib_55-GNDGR-100} (for the other assemblies refer
-to\cref{fig:Timepix3_THL_Calibration}). For the Timepix3 ASIC has a
-DAC step gain of around $11\pm$e-/step is
-calculated. \cref{tab:NominalThreshold} summarises the conversion of
+electrons. For each pulse height, 200 pulses are sent to the pixels in
+the diagonal of the matrix. The threshold is scanned, like for Timepix
+assemblies, from a level of no counts to a level where all the pixels
+count. The S-curves and their derivatives are calculated. Finally, a
+linear fit is used to parametrise the relationship between the pulse
+height and the threshold DAC.
+
+The threshold calibration for 55-GNDGR-100 is shown in
+\cref{fig:THLcalib_55-GNDGR-100} (for the other assemblies refer to
+\cref{fig:Timepix3_THL_Calibration}). For the Timepix3 ASIC has a DAC
+step gain of around $11\pm$e-/step is calculated. The noise measured
+at the front-end corresponds to 80 to 90
+electrons. \cref{tab:NominalThreshold} summarises the conversion of
 the threshold DAC into energy for the different assemblies at nominal
 conditions.
 
@@ -513,18 +527,92 @@ conditions.
 \end{table}
 
 
-TODO:\\ 
-- Explain method\\
-- Calculate errors with the error propagation\\
-
-
-
-
-
 \subsection{Time calibration} \label{sec:TOA_calibration}
 TODO
 
-\section{Application of the calibration to the test-beam data}
+\section{Calibrated test beam data}
+
+The test pulse calibration as described in
+\cref{sec:EnergyCalibration} is applied to the data from test beams in
+order to convert the energy deposited by the MIP
+particles. \cref{sec:testBeamDataCalibrated_vs_G4} compares the
+calibrated data with the \textsc{Geant4} energy deposition using the
+PAI physics list (c.f. \cref{sec:Silicon_Geant4}) for $50\,\micron$,
+$100\,\micron$ and $150\,\micron$ thick planar sensors. There is a
+good agreement in terms of the most probable value (MPV) and the
+full-width-at-half-maximum (FWHM) in both simulation and data.
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_G07.pdf}
+    \caption{55-GNDGR}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_E02.pdf}
+    \caption{55-GNDGR-100}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_F01.pdf}
+    \caption{55-GNDGR-150}
+  \end{subfigure}
+  \caption{Calibrated energy distribution of test beam data for
+    different assemblies. The pixel-by-pixel calibration is applied to
+    the data which is obtained using test pulses. \textsc{Geant4}
+    energy deposition is obtained using the PAI physics list.}
+  \label{sec:testBeamDataCalibrated_vs_G4}
+\end{figure}
+
+\cref{sec:testBeamDataCalibrated_TOT} shows the TOT distribution for
+one, two, three and four-hit clusters. The MPV of the TOT
+distributions for different cluster sizes do not align due to the
+non-linear behaviour of the Timepix3, as sharing the same deposited
+charge amongst several pixels results in each pixel having a higher
+TOT than would be expected from simply scaling the charge. The
+calibrated energy distribution aligns for different cluster sizes
+since the calibration takes into account the non-linearities of the
+chip as shown in \cref{sec:testBeamDataCalibrated_Edep}. For the
+$50\,\micron$ thick sensor, the calibrated distributions do not
+align. This is due to the low energy deposition in thin sensors
+especially for multi-hit clusters where the energy deposition per
+pixel is close to the threshold.
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/TOT_Clusters_W0019_G07.pdf}
+    \caption{55-GNDGR}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/TOT_Clusters_W0005_E02.pdf}
+    \caption{55-GNDGR-100}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/TOT_Clusters_W0005_F01.pdf}
+    \caption{55-GNDGR-150}
+  \end{subfigure}
+  \caption{TOT distribution for one, two, three and four-hit clusters
+    for various assemblies with (a) $50\,\micron$, (b) $100\,\micron$
+    and (c) $150\,\micron$ thick planar sensors.}
+  \label{sec:testBeamDataCalibrated_TOT}
+\end{figure}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_G07.pdf}
+    \caption{55-GNDGR}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0005_E02.pdf}
+    \caption{55-GNDGR-100}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0005_F01.pdf}
+    \caption{55-GNDGR-150}
+  \end{subfigure}
+  \caption{Energy deposition distribution for one, two, three and
+    four-hit clusters for various assemblies with (a) $50\,\micron$,
+    (b) $100\,\micron$ and (c) $150\,\micron$ thick planar sensors.}
+  \label{sec:testBeamDataCalibrated_Edep}
+\end{figure}
 
 For all the assemblies, the energy deposition in \ev is given in \cref{sec:appendixCalibDataG4}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
