@@ -824,7 +824,38 @@ simulation is perfect as shown in
   \label{fig:TCAD_vs_data_55_GNDGR_150}
 \end{figure}
 
+\cref{fig:TCAD_streamlines} compares the distribution of the
+streamlines in the edge for different configurations of guard
+rings. The generated charge follows the streamlines and gets collected
+by the implants. In the case where there is no guard ring, all the
+streamlines reach the first pixel. As confirmed by the data, all the
+charge in the edge is collected without any loss. In the case of a
+floating guard ring, few streamlines reach the guard ring. This means
+some charge is lost in the guard ring instead of being collected by
+the first pixel. Finally, in the case of a grounded guard ring more
+streamlines end up in the guard ring. This explains also the high drop
+in the collected charge in the edge region.
 
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=0.8\textwidth]{figures/ActiveEdge/streamlines_NGR.pdf}
+    \caption{No guard ring}
+  \end{subfigure}\\
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=0.8\textwidth]{figures/ActiveEdge/streamlines_FGR.pdf}
+    \caption{Floating guard ring}
+  \end{subfigure}\\
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=0.8\textwidth]{figures/ActiveEdge/streamlines_GNDGR.pdf}
+    \caption{Grounded guard ring}
+  \end{subfigure}
+  \caption{Streamlines for different configurations of guard ring. The
+    generated charges follow the streamlines. The streamlines which
+    end up in the guard ring means that those charges are not
+    collected by the first pixel and thus lost.}
+  \label{fig:TCAD_streamlines}
+\end{figure}
 
 
 
