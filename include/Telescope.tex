@@ -3,39 +3,51 @@
 \label{ch:Telescope}
 %==============================================================================  
 
-%% --------------------------------------------- %%
-Testing in a high energy beam is a crucial step in the R\&D projects
-for the development of the pixel detector sensors and readout chips. 
-%% --------------------------------------------- %%
-\section{Beamlines}
-%% --------------------------------------------- %%
-\section{Components of the Timepix3 telescope}
-%% --------------------------------------------- %%
-\subsection{Sensors and mechanics}
-\subsection{Data acquisition system}
-%% --------------------------------------------- %%
-\section{Reconstruction and analysis softwares}
-%% --------------------------------------------- %%
-\section{Tracking resolution studies}
-\subsection{Data}
-\subsection{Simulation}
+%% --------------------------------------------- %% 
+
+Testing in a high energy beam is a crucial step in the R\&D for the
+pixel detector sensors and readout chips. Test beam data are used at
+various stages of the development for evaluating the performance of a
+prototype in addition to simulations (i.e. TCAD, \textsc{Geant4},
+...). 
+
+Pixel-beam telescopes play a key role in the study of position
+sensitive sensors with requirements ranging from high radiation
+hardness, high resolution and low material budget but also medical
+applications amongst others. A telescope is used to reconstruct the
+tracks of the particles going through its planes. The track position
+is then extrapolated on the Device Under Test (DUT). This allows to
+compare the position of the hit on the DUT with the reconstructed
+track and calculate the position, time resolutions and the efficiency
+of the device.
+
+For the CLIC vertex detector R\&D, the Timepix3 telescope is used as a
+beam reference. Its components, performance and reconstruction
+software are described in the following sections. (TO DO: develop more
+what is described in the following).
 
 %% --------------------------------------------- %%
-\section{The Timepix3 telescope} \label{sec:Timepix3Telescope}
-The Timepix3 telescope is used as a beam reference telescope and is
-shown in Figure~\ref{fig:TPX3Telescope}. The telescope is used to
-reconstruct the tracks of the particles going through its planes and
-extrapolate the position on the Device Under Test (DUT). This allows
-to compare the position of the hit on the DUT with the reconstructed
-track and calculate the position, time resolutions and the efficiency
-of the device. The Timepix3 telescope is made of 6 planes of Timepix3
+\section{Experimental setup at the CERN SPS}
+The thin sensors assemblies are tested at the H6 beam of the CERN SPS
+using the $120\,\gev$ pion beam. The beam is configured in such a way
+to have $\sim2.6 \times 10^6$ particles per spill. The telescope
+planes are positioned in a way to give the best tracking resolution
+for the given beam energy and the level of multiple scatterings.
+%% --------------------------------------------- %%
+\section{Components of the Timepix3 telescope}
+
+\subsection{Sensors and mechanics}
+The Timepix3 telescope consists of six planes of Timepix3
 ASICs~\cite{Timepix3_Poikela} bump bonded to $300\,\micron$ thick
-p-in-n planar sensors. The planes are rotated by $9\degrees$ around
-the x axis (perpendicular to the beam axis) and the z axis (parallel
-to the beam axis) to optimise the charge sharing within the sensors
-and obtain a pointing resolution of $\sim$$2\,\micron$ on the device
-under test (DUT). The data-driven zero-suppressed mode is used for the
-data acquisition of the Timepix3 readout ASICs.
+p-in-n planar sensors as shown in \cref{fig:TPX3Telescope}. The planes
+are rotated by $9\degrees$ around the x axis (perpendicular to the
+beam axis) and the z axis (parallel to the beam axis)
+\cite{Akiba:2013yxa}. Given the pixel pitch and the sensor thickness,
+this angle mainly leads to clusters of three-hit pixels. Combining the
+TOT information, the reconstructed hit position provides sub-pixel
+resolution. A tracking resolution of $\sim$$2\,\micron$ on the DUT can
+be obtained.
+
 
 \begin{figure}[htbp]
   \centering
@@ -45,20 +57,97 @@ data acquisition of the Timepix3 readout ASICs.
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
       \node[above, color=white] at (0.5, 0.85) {Device Under Test};
       \node[above, color=white] at (0.5, 0.78) {(\textbf{DUT})};
+
+      \draw[->, very thick, color=black](0.8, 0.25) -- (0.25, 0.25);
+      \node[above, color=black] at (0.5, 0.18) {\textbf{Beam}};
+      
+      %% \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+      %% \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+      %% \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+      
     \end{scope}
   \end{tikzpicture} 
-  \caption{The Timepix3 beam reference telescope.}
+  \caption{The Timepix3 beam reference telescope with six planes for
+    the tracking and the DUT in the middle inserted perpendicular to
+    the beam direction.}
   \label{fig:TPX3Telescope}
 \end{figure}
+
+\subsection{Coordinates system}
+A Cartesian right-handed coordinate system is chosen to describe the
+geometry of the telescope. The z-direction is along the beam as shown
+in \cref{fig:TPX3Telescope} and the y-direction points vertically in
+the up direction.
+
+\subsection{Data acquisition system}
+The data-driven zero-suppressed mode (c.f. \cref{sec:TimepixReadout})
+is used for the data acquisition of the Timepix3 readout ASICs. 
+
+The SPIDR (Speedy PIxel Detector Readout) read-out system has been
+developed by NIKHEF and CERN is used~\cite{Visser:2015bsa}. This
+system is able to handle high rates of data sent by the Timepix3 ASIC
+at full speed. This is achieved with Xilinx Virtex-7
+FPGA~\cite{XilinxVirtex7} and a 10~Gb Ethernet link. All the particles
+from the SPS spill are read out using this system.
+
 %% --------------------------------------------- %%
-\section{Reconstruction software}
+\section{Reconstruction and analysis software frameworks}
+
+The offline reconstruction of the test beam data is done using two
+software frameworks. The EUTelescope software
+package~\cite{Rubinskiy,EutelescopeWebsite} is used to reconstruct the
+tracks from the telescope and extrapolate their positions on the
+DUT. For the analysis of the DUT data, the python-based software
+pyEudetanalysis is used (it can be found as a GitHub
+directory~\cite{pyeudet}).
+
 \subsection{EUTelescope}
-The EUTelescope software~\cite{Rubinskiy} is used to reconstruct the
-telescope tracks and analyse the telescope data. It is based on the
-ILCSoft framework (REF?). Using a pipeline of Marlin
-processors~\cite{Gaede:2006pj}, it allows to convert the raw data to a
-ROOT (REF?) format and with the intermediate steps in the LCIO (REF?)
-format. The reconstruction chain is defined in the steps below:
+The EUTelescope software is based on the ILCSoft
+framework~\cite{Aplin:2009zz}. This latter provides the basic building
+blocks such as the LCIO (Linear Collider Input Output) data model, the
+geometry description toolkit GEAR and a modular application framework
+for event analysis Marlin~\cite{Gaede:2006pj}.
+
+A modular analysis and reconstruction chain can be defined using
+Marlin processors. Each processor implements algorithms for specific
+tasks. The input parameters for the algorithms can be configured and
+loaded at runtime using \textit{steering files} in XML format. For
+each event, the processors are called centrally by Marlin and this
+scheme offers flexibility to the users.
+
+EUTelescope framework, originally developed for the EUDET/AIDA pixel
+beam telescope~\cite{Rubinskiy:2014kza}, provides Marlin processors
+for the track reconstruction and data analysis of test beam
+experiments. \cref{fig:EUTelescope_EUDET_pipeline} schematically shows
+the analysis strategy in EUTelescope framework starting from the raw
+data recorded during the test beam to finally particle tracks
+reconstruction. Since each experiment has its own data format for the
+DUT, the format converter is defined by the user. This makes the
+framework more flexible for testing different chip families.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at
+    (0,0){\includegraphics[width=0.8\textwidth]{figures/Telescope/EUTelescope_pipeline.png}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+    \end{scope}
+  \end{tikzpicture} 
+  \caption{Data reconstruction and analysis strategy using the
+    EUTelescope framework. From~\cite{Jansen:2016bkd}.}
+  \label{fig:EUTelescope_EUDET_pipeline}
+\end{figure}
+
+The EUTelescope framework is adapted to be used for the data from the
+Timepix3 telescope. The framework is written for a frame-based readout
+mode and had to be adapted to the data-driven readout mode which was
+used during the data taking. This affects mainly the definition of an
+event. In a frame-based mode, an event corresponds to a frame. Whereas
+in the data-driven mode, the data are written as soon as a pixel is
+hit (there is no shutter). Although, in the raw file, the hits are not
+ordered in time. Some pre-processing is needed to order the hits by
+their time of arrival (TOA) and create events. The reconstruction
+chain for the Timepix3 telescope is described in the following steps:
 
 \begin{enumerate}
 \item Converter: converts the raw files written by each telescope
@@ -98,99 +187,11 @@ tracks are then extrapolated on the DUT.
 For the analysis of the DUT data, the python-based software
 \texttt{pyEudetanalysis} is used. It can be found as a GitHub directory~\cite{pyeudet}.
 
-
-
 %% --------------------------------------------- %%
-\section{AllPix: a \textsc{Geant4}-based simulation software}
-AllPix~\cite{allpix}, is used as a wrapper on \textsc{Geant4} to
-simulate the test beam setup. The software is written in C/C++. It
-provides a flexible interface to define the geometry of the
-setup. \cref{fig:TPX3TelescopeAllpix} shows the telescope planes
-and the DUT simulated in AllPix.
+\section{Tracking resolution studies}
+\subsection{Data}
+\subsection{Simulation}
 
-\begin{figure}[htbp]
-  \centering
-  \begin{tikzpicture}
-    \node[anchor=south west,inner sep=0] (image) at
-    (0,0){\includegraphics[width=0.8\textwidth]{figures/ActiveEdge/Allpix_telescope_withParticles.png}};
-    \begin{scope}[x={(image.south east)},y={(image.north west)}]
-      \node[above, color=white] at (0.45, 0.65) {\textbf{DUT}};
-    \end{scope}
-  \end{tikzpicture}
-  \caption{Simulation of the Timepix3 telescope with AllPix.}
-  \label{fig:TPX3TelescopeAllpix}
-\end{figure}
-
-The main components of the software are described here-below:
-\begin{enumerate}
-\item Digitiser: \textsc{Geant4}, for each simulation step
-  (\texttt{G4Step}) through the matter, provides the energy deposited
-  in the sensitive material. The step length can be customised. For
-  thin sensors simulations a step of $2\,\micron$ is selected and
-  provides a precise energy deposition. The semiconductor physics in a
-  Silicon detector is then defined in the digitiser. The drift and
-  diffusion are performed at each step to simulate the electron-hole
-  pair movement in the electric and magnetic fields. The readout ASIC
-  is also simulated in the digitiser. The electronic noise is added
-  and a threshold is applied to the hits. The hit energy is converted to the
-  digital value TOT (time-over-threshold) using the readout ASICs calibrations.
-\item \texttt{pixeldetector.xml}: defines a pixel detector
-(\texttt{<pixeldet id=''300"/>}) with a unique ID. It contains all the
-properties of the pixel detector like the pixel pitch, detector
-thickness, chip thickness, PCB properties and other geometry
-properties related to an assembly. It can be customised and define the
-parameters of the digitisers. This will allow to run the program
-without needing to compile whenever one wants to change a parameter.
-\item \texttt{macro.in}: Define the position of the detectors in the
-space by giving the x, y and z position of the centre of the detectors
-and the rotations around the x, y and z axes. The physics list used by
-\textsc{Geant4} is also defined in this file. Visualisation parameters
-are also given. The General Particle Source (GPS), which is the
-\textsc{Geant4} toolkit for Monte-Carlo of the high-energy particle
-transport is also described in the macro. The particle type, the beam
-energy, the position and distributions are customisable. The
-simulation is done based on the frames.
-\end{enumerate}
-
-
-\subsection{Coordinate system}
-
-Pixel coordinates (X, Y) and the center of the pixels in \textcolor{blue}{local coordinates (x,
-  y)} (in millimeters) in the corners of the sensor. In
-\cref{fig:coordinateSystem}, we are looking from the sensor side with
-the periphery on the top. The same coordinate system is used for both
-AllPix and EUTelescope.
-\begin{figure}[htbp]
-  \centering
-  \begin{tikzpicture}
-    \begin{scope} 
-
-      \draw (0, 0) rectangle (10, 10) node[pos=.5] {Sensor side};
-      \draw[fill=gray] (0, 10) rectangle (10, 11) node[pos=.5]
-      {Periphery};
-
-      \draw (0, 10) rectangle (3, 7) node[align=center, pos=.5] {(255, 0) \\ \textcolor{blue}{(7.0125, -7.0125)}};
-      \draw (7, 10) rectangle (10, 7) node[align=center, pos=.5] {(0, 0) \\ \textcolor{blue}{(-7.0125, -7.0125)}};
-      
-      \draw (0, 0) rectangle (3, 3) node[align=center, pos=.5] {(255,
-        255) \\ \textcolor{blue}{(7.0125, 7.0125)}};
-      \draw (7, 0) rectangle (10, 3) node[align=center, pos=.5] {(0, 255) \\ \textcolor{blue}{(-7.0125, 7.0125)}};
-      % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (10,10);
-      % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-      % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
-      %   {0.\y}; }
-
-    %   \draw[step=2cm,color=gray] (-5, -5) grid (5, 5);
-    %   \matrix[matrix of nodes,nodes={inner sep=0pt,text width=2cm,align=center,minimum height=2cm}]{
-    %     {(255, 0) \\ \textcolor{blue}{(7.0125, -7.0125)}} & &  & {(0,0) \\ \textcolor{blue}{(-7.0125, -7.0125)}} \\
-    %     &  &  &  \\
-    %     &  &  &  \\
-    %     {(255, 255) \\ \textcolor{blue}{(7.0125, 7.0125)}} &  &  & {(0, 255) \\ \textcolor{blue}{(-7.0125, 7.0125)}} \\};
-    \end{scope}  
-  \end{tikzpicture}
-  \caption{}
-  \label{fig:coordinateSystem}
-\end{figure}
 
 %% --------------------------------------------- %%
 \section{Timepix3 telescope performance}
