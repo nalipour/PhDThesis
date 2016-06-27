@@ -189,9 +189,46 @@ For the analysis of the DUT data, the python-based software
 
 %% --------------------------------------------- %%
 \section{Tracking resolution studies}
-\subsection{Data}
-\subsection{Simulation}
 
+The cluster size distribution and the collected charge comparing data
+and simulations is shown in \cref{fig:TelescopeCluSize_data_simu}.
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/clusterSizeX_telescope0_data_simu.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/clusterSizeY_telescope0_data_simu.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/clusterSignal_telescope0_data_simu.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{data run 661, simulation run 54.}
+  \label{fig:TelescopeCluSize_data_simu}
+\end{figure}
+
+The biased residuals (RMS) comparing data and simulation in
+\cref{fig:telescopeBiasedRMS_data_simu} (the distributions are given
+in
+\cref{fig:telescope_biasedResiduals_data_X,fig:telescope_biasedResiduals_data_Y}
+for data and
+\cref{fig:telescope_biasedResiduals_simu_X,fig:telescope_biasedResiduals_simu_Y}
+for simulation.
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/RMSX_simu_vs_data.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/RMSY_simu_vs_data.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{data run 661, simulation run 54.}
+  \label{fig:telescopeBiasedRMS_data_simu}
+\end{figure}
 
 %% --------------------------------------------- %%
 \section{Timepix3 telescope performance}
