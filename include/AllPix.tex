@@ -3,19 +3,18 @@
 \label{ch:AllPix}
 %==============================================================================  
 
-\section{Introduction}
-\section{Geometry description of the sensors}
-\section{Geometry description of the world}
-\section{Digitiser}
-\section{Reconstruction software}
-
 %% --------------------------------------------- %%
-\section{AllPix: a \textsc{Geant4}-based simulation software}
-AllPix~\cite{allpix}, is used as a wrapper on \textsc{Geant4} to
-simulate the test beam setup. The software is written in C/C++. It
-provides a flexible interface to define the geometry of the
-setup. \cref{fig:TPX3TelescopeAllpix} shows the telescope planes
-and the DUT simulated in AllPix.
+\section{Introduction}
+
+AllPix~\cite{allpix} is a \textsc{Geant4} based simulation
+software. It is written in C/C++ and provides a flexible interface to
+define any pixel detector geometry to simulate pixelated sensors and
+readout chips.
+
+\cref{fig:TPX3TelescopeAllpix} shows an example of the simulation for
+the Timepix3 telescope (described in \cref{ch:Telescope}) in AllPix
+with the device under test (DUT) in the middle of the rotated telescope
+planes.
 
 \begin{figure}[htbp]
   \centering
@@ -29,6 +28,13 @@ and the DUT simulated in AllPix.
   \caption{Simulation of the Timepix3 telescope with AllPix.}
   \label{fig:TPX3TelescopeAllpix}
 \end{figure}
+\section{Geometry description of the sensors}
+\section{Geometry description of the world}
+\section{Digitiser}
+\section{Reconstruction software}
+
+%% --------------------------------------------- %%
+
 
 The main components of the software are described here-below:
 \begin{enumerate}
