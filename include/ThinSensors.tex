@@ -19,12 +19,65 @@ Operating conditions for the Timepix3 readout ASICs:
 
 %% --------------------------------------------- %%
 \section{Test-beam results for thin sensors}
+
 \subsection{Bias scan}
+
+The total TOT of all cluster sizes is fitted with a landau function
+convoluted with a Gaussian. The fit is done using RooFit and an
+example is given in \cref{fig:W2_J5_1998_totalTOT_langauFit}. The MPV
+of the Landau and the error on the fit are plotted versus the square
+root of the bias voltage.
+
+\begin{figure}[htbp] 
+  \centering
+  \includegraphics[width=0.5\textwidth]{./figures/TestBeam/W2_J5_totalTOT_Langau_run1998.pdf}
+  \caption{W2\_J5: Vbias=95 V}
+  \label{fig:W2_J5_1998_totalTOT_langauFit}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Measured depletion voltage}
+  \label{tab:depletionVoltage}
+  \begin{tabular}{lcccc}
+    \toprule
+    Assembly & Thickness [\micron] & Sensor type & Nominal voltage [V] & Depletion voltage [V] \\
+    \midrule
+    20-NGR  & 50 & n-in-p & -15 & $<$9.47 \\
+    23-FGR & 50 & n-in-p & -15 & $<$6.32 \\
+    28-GNDGR & 50 & n-in-p & -15 & $<$7.19\\
+    55-GNDGR & 50 & n-in-p & -15 & $<$5.43\\ \hline
+    55-GNDGR-100 & 100 & n-in-p & -20 &  \\ \hline
+    55-GNDGR-150 & 150 & n-in-p & -30 & 14.86 \\ \hline
+    W2\_J5       & 300 & p-in-n & 100 & 63.23 \\ 
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
 \subsection{Threshold scan}
+
 \subsection{Resolution vs. thickness}
+
+
 \subsection{Efficiency vs. thickness}
 
+The efficiency as a function of the threshold is shown in \cref{fig:efficiency_VS_Threshold}.
 
+\begin{figure}[htbp] 
+  \centering
+  \includegraphics[width=0.5\textwidth]{./figures/TestBeam/Efficiency_vs_THL.pdf}
+  \caption{Efficiency vs. threshold: W2\_J5 is missing.}
+  \label{fig:efficiency_VS_Threshold}
+\end{figure}
+
+
+%% --------------------------------------------- %%
+\section{Validation of the simulation}
+%% --------------------------------------------- %%
+\section{Extrapolation to smaller pixels (CLICpix)}
+
+%% --------------------------------------------- %%
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/TestBeam/ThresholdScan_W0019_G07.pdf}
@@ -104,9 +157,3 @@ Operating conditions for the Timepix3 readout ASICs:
   \caption{55-GNDGR-150 (W5\_F1): bias and voltage scan.}
   \label{fig:Timepix3_THLscan_Vdep_F1}
 \end{figure}
-
-
-%% --------------------------------------------- %%
-\section{Validation of the simulation}
-%% --------------------------------------------- %%
-\section{Extrapolation to smaller pixels (CLICpix)}
