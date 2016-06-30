@@ -1,7 +1,8 @@
 % ==============================================================================
-\chapter{Semiconductor detectors for radiation detection}
+\chapter{Semiconductor detectors}
 \label{sec:SiliconTheory}
 %==============================================================================    
+
 Semiconductor materials have a great advantage in many radiation
 detection applications. The main benefits are the high energy
 resolution due to the large number of carriers that are created by a
@@ -18,7 +19,7 @@ carriers through drift and diffusion. Pixel detectors are studied
 through pn-junctions. 
 
 %% --------------------------------------------- %%
-\section{Band structure in solids}
+\section{Basic properties}
 Due to the periodic lattice of crystalline structure of semiconductor
 material, electrons within the solid have allowed energy bands. The
 energy of the electrons is confined to one of the energy bands and the
@@ -347,8 +348,9 @@ requires more computation power.
 \end{figure}
 
 %% --------------------------------------------- %%
-\section{Transport of charge carriers in silicon}
+\section{Silicon device physics and properties}
 
+\subsection{Transport of charge carriers}
 In silicon detectors, the movement of the charge carriers (holes and
 electrons) lead to signal pulses in the electrical contacts which can
 be detected by the readout electronics. 
@@ -447,7 +449,7 @@ Holes are three times less mobile than electrons which make them more
 likely to be trapped in an irradiated material.
 
 %% --------------------------------------------- %%
-\section{Pixel detectors: pn-junction}
+%\section{Pixel detectors: pn-junction}
 
 Silicon sensors are made of reversely biased pn-junctions. The
 electric field due to the bias voltage allows the charge carriers to
@@ -694,7 +696,7 @@ distribution as a function of the depth in silicon.
 \end{figure}
 
 %% --------------------------------------------- %%
-\section{TCAD simulations}
+\subsection{TCAD simulations}
 Technology Computer-Aided Design (TCAD) as a powerful simulation tool
 is used to optimise and develop semiconductor processing technologies
 as well as the device operation~\cite{synopsysTCAD}. TCAD uses the
@@ -713,301 +715,10 @@ devices and understand the measurements later in
 
 
 \newpage
-\section{Spatial resolution}
-
-The spatial resolution of a pixel detector is mainly determined by the pixel
-pitch. But this can be improved by the readout choice (binary or
-analog), the threshold value, the charge sharing, thickness of the
-detector and the reconstruction algorithm. The effect of the readout
-is studied in the sections here-below.
-
-The spatial resolution is defined by:
-\begin{equation}
-\sigma_{position}^2={{\int_{-p/2}^{p/2} \left(x_r-x_m\right)^2
-    D\left(x_r\right) dx_r } \over { \int_{-p/2}^{p/2}
-    D\left(x_r\right) dx_r }}\; ,
-\label{eq:spatialRes}
-\end{equation}
-
-where $\sigma_{position}$ is the average distance between the real
-impact position $x_r$ and the measured position $x_m$ of the
-particle in a pixel.
-
-In the coming sections, the spatial resolution defined by
-\cref{eq:spatialRes} is calculated and studied for different scenarios
-and assumptions.
-
-%% \begin{figure}[htbp]
-%%   \centering
-%%   \begin{subfigure}[b]{0.3\textwidth}
-%%     \centering
-%%     \begin{tikzpicture}
-%%       \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
-%%       \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
-      
-%%       \draw[-] (-1.5, 1) -- (-1.5, 0) node[below]{${-p \over 2}$};
-%%       \draw[-] (-1.5, 1) -- (1.5, 1);
-%%       \draw[-] (1.5, 1) -- (1.5, 0) node[below]{${p \over 2}$};
-%%       \node[] at (0.2, 1.2) {1};
-%%     \end{tikzpicture}
-%%     \caption{}\label{fig:SpatResBinary}
-%%   \end{subfigure}\hfill
-%%   \begin{subfigure}[b]{0.3\textwidth}
-%%     \centering
-%%     \begin{tikzpicture}
-%%       \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
-%%       \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
-      
-%%       \draw[-] (-0.7, 1) -- (-0.7, 0) node[below]{\tiny ${{-(p-s)}\over 2}$};
-%%       \draw[-] (-0.7, 1) -- (0.7, 1);
-%%       \draw[-] (0.7, 1) -- (0.7, 0) node[below]{\tiny ${(p-s)\over 2}$};
-%%       \node[] at (0.2, 1.2) {1};
-%%       \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
-%%       \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
-%%     \end{tikzpicture}
-%%     \caption{}\label{fig:SpatResBinaryChargeSharing}
-%%   \end{subfigure}\hfill
-%%   \begin{subfigure}[b]{0.3\textwidth}
-%%     \centering
-%%     \begin{tikzpicture}
-%%       \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
-%%       \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
-      
-%%       \draw (-1.5,0) to[out=0, in=-120] (-0.9,0.2) to[out=60, in=180](-0.3, 1)--(0,1);
-%%       \draw (0,1)--(0.3, 1) to [out=-20, in=120] (0.9,0.2) to[out=-60,
-%%       in=0] (1.5,0);
-
-%%       \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
-%%       \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
-
-%%       \draw[-] (-0.5, 0.1) -- (-0.5, 0) node[below] {\tiny ${-(p-s) \over 2}$};
-%%       \draw[-] (0.5, 0.1) -- (0.5, 0) node[below] {\tiny ${(p-s) \over 2}$};
-
-%%       \node[] at (0.2, 1.2) {1};
-%%     \end{tikzpicture}
-%%     \caption{}\label{fig:SpatResAnaglogChargeSharing}
-%%   \end{subfigure}
-%%   \caption{(a) Binary readout. (b) Binary readout with charge
-%%     sharing. (c) Analog readout with charge sharing.}\label{fig:SpatialResolution}
-%% \end{figure}
-
-
-
-\subsection{Binary readout}
-The simplest case for the resolution computation is to consider a
-binary readout with single threshold. For a pixel centered at 0 and
-having a pitch $p$ with a probability density function as illustrated
-in \cref{fig:SpatResBinary}, the following assumptions are considered:
-
-\begin{itemize}
-\item The threshold is adjusted in a way to fire one pixel per
-  particle track.
-\item Only hit positions between $-p/2$ and $p/2$ trigger a signal in
-  pixel 0.
-\item A uniform density of particles hit the detector ($D\left(x\right)=1$).
-\end{itemize}
-
-
-The average difference between the real position ($x_r$) and the
-measured position ($x_m=0$) of the particle in a pixel is calculated
-using \cref{eq:spatialRes} \cite{Rossi:976471}:
-\begin{equation}
-\sigma_{position}^2={{\int_{-p/2}^{p/2} \left(x_r\right)^2
-    1 dx_r } \over { \int_{-p/2}^{p/2}
-    1 dx_r }}={p^2 \over 12} \; ,
-\label{eq:spatialResBinary}
-\end{equation}
-which results in a spatial resolution of:
-\begin{equation}
-\sigma_{position}={p \over \sqrt{12}} \;.
-\label{eq:sigmapos}
-\end{equation}
-
-\begin{figure}[htbp]
-  \centering
-  \begin{tikzpicture}
-    \begin{scope}
-      \draw[->, thick] (-2,0)--(5,0) node[right]{$x$};
-      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
-      
-      \draw[-, blue, thick] (-1.5, 1) -- (-1.5, 0);
-      \node[below] at (-1.5, 0) {${-p \over 2}$};
-      \draw[-, blue, thick] (-1.5, 1) -- (1.5, 1);
-      \draw[-, blue, thick] (1.5, 1) -- (1.5, 0);
-      \node[below] at (1.5, 0) {${p \over 2}$};
-      \node[] at (0.2, 1.2) {1};
-      \node[above, blue] at (-1.5, 1) {Pixel 0};
-
-      \draw[-, green, thick] (1.51, 1) -- (1.51, 0);
-      \draw[-, green, thick] (1.51, 1) -- (4.5, 1);
-      \draw[-, green, thick] (4.5, 1) -- (4.5, 0);
-      \node[below] at (4.5, 0) {${{3p} \over 2}$};
-      \node[above, green] at (3.5, 1) {Pixel 1};
-    \end{scope}
-  \end{tikzpicture}
-  \caption{Binary readout}  
-  \label{fig:SpatResBinary}
-\end{figure}
-
-This simple model shows the worst resolution achieved and is only
-dependent on the pitch size (geometry of the pixels). In reality, with
-charge sharing, the signal of a particle track is shared between
-several pixels and depending on the readout threshold more than one
-pixel can be fired which is called a \textit{cluster} of pixels. The
-resolution is therefore improved as described in
-\cref{sec:resolutionBinarySharing,sec:resolutionAnalogSharing}.
-
-\subsection{Binary readout and charge sharing}\label{sec:resolutionBinarySharing}
-The threshold of the readout electronics is usually set as low as
-possible which can result in more than one pixel hit per particle
-track. In this case, the charge is shared between two or more pixels
-(cluster). Multi-hit clusters improve the resolution of
-\cref{eq:spatialResBinary}. \cref{fig:SpatResBinaryChargeSharing}
-illustrates the charge sharing between two pixels. If a track passes
-close to the edge of a pixel (within a distance of $s\over 2$ close to
-the edge), then the neighbouring pixel is also fired. For events
-triggering single-hit events, the spatial resolution in pixel 0 for
-1-hit clusters is given by:
-
-\begin{equation}
-\sigma_{position}^2={{\int_{-(p/2-s/2)}^{(p/2-s/2)} \left(x_r\right)^2
-    1 dx_r } \over { \int_{-(p/2-s/2)}^{(p/2-s/2)}
-    1 dx_r }}={(p-s)^2 \over 12} \; .
-\label{eq:spatialResCharge sharing_1hit}
-\end{equation}
-
-For two-hit clusters, the spatial resolution is given by
-\begin{equation}
-\sigma_{position}={s \over \sqrt{12}} \; .
-\label{eq:spatialResChargeSharing_2hit}
-\end{equation}
-
-
-
-\begin{figure}[htbp]
-  \centering
-  \begin{tikzpicture}
-    \begin{scope}
-      
-      \draw[->, thick] (-2,0)--(5,0) node[right]{$x$};
-      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
-      
-      \draw[-, blue, thick] (-1.8, 1) -- (-1.8, 0);
-
-      \draw[-] (-1.5, 0) -- (-1.5, 0.1);
-      \node[below] at (-1.5, 0) {${-p \over 2}$};
-      \draw[-, blue, thick] (-1.8, 1) -- (1.8, 1);
-      \draw[-, blue, thick] (1.8, 1) -- (1.8, 0);
-
-      \draw[-] (1.5, 0) -- (1.5, 0.1);
-      \node[below] at (1.5, 0) {${p \over 2}$};
-      \node[] at (0.2, 1.2) {1};
-      \node[above, blue] at (-1.5, 1) {Pixel 0};
-      
-      \draw[-, green, thick] (1.2, 1) -- (1.2, 0);
-      \draw[-, green, thick] (1.2, 1) -- (4.8, 1);
-      \draw[-, green, thick] (4.8, 1) -- (4.8, 0);
-      \draw[-] (4.5, 0) -- (4.5, 0.1);
-      \node[below] at (4.5, 0) {${{3p} \over 2}$};
-      \node[above, green] at (3.5, 1) {Pixel 1};
-
-      \draw[<->, thick] (1.2, 1.2)--(1.8, 1.2);
-      \node[above] at (1.5, 1.2) {$s$};
-      
-    \end{scope}
-  \end{tikzpicture}
-  \caption{Binary readout with charge sharing.}\label{fig:SpatResBinaryChargeSharing}
-\end{figure}
-
-The average resolution considering single and multi-hit clusters is given by
-\begin{equation}
-{\sigma_{\text{Total}}}^{2}={{\left(p-s\right)^{2}} \over 12}+{{s^2}\over12} \; .
-\label{eq:spatialResChargeSharingTotal}
-\end{equation}
-
-The optimal average spatial resolution is obtained for $s=p/2$ as
-shown in \cref{fig:sigmaTotal} where the pitch is
-$p=55\,\micron$. This means that the number of single-hit and
-multi-hit clusters is the same. But, in this situation one is not able
-to distinguish between one track triggering two pixels and two tracks
-hitting the sensor within $2p$.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/resolution_binary_chargeSharing_s.pdf}
-  \caption{$\sigma_{\text{Total}}$ calculated using
-    \cref{eq:spatialResChargeSharingTotal} with a pixel pitch of
-    $p=55\,\micron$ where $s$ is the width of the charge sharing
-    region as shown in \cref{fig:SpatResBinaryChargeSharing}.}
-  \label{fig:sigmaTotal}
-\end{figure}
-
-\subsection{Analog readout and charge sharing}\label{sec:resolutionAnalogSharing}
-The spatial resolution can be improved more when an analog readout is
-used that delivers a signal proportional to the collected charge as
-illustrated in \cref{fig:SpatResAnaglogChargeSharing}. In this
-case, for multi-hit clusters $\eta$-function as described
-in~\cite{Belau:1983eh} is used to reconstruct the hit position within
-the pixels. 
-In the region where only one pixel fires, the resolution is still
-limited to $(p-s)\over \sqrt{12}$.
-
-The charge carriers follow the field lines to end-up on a certain
-electrode. They are also subject to thermal diffusion which spreads
-the charge cloud as it drifts through the silicon. The width of the
-diffusion $\sigma_{diffusion}(z)$ (for simplicity called $\sigma(z)$) at depth $z$ is given by
-\cref{eq:driftTimeIntegrated}.
-The charge distribution at position $x_{hit}$ for a pixel extending from
-$x_1$ to $x_2$ is:
-\begin{equation}
-Q(x_{hit}, z)= Q(z) {1\over{\sqrt{2 \pi \sigma^2(z)}}}
-{\int_{x_1}^{x_2} e^{-({{x-x_{hit}}\over{\sqrt{2} \sigma(z)}})^2} } dx\; .
-\label{eq:ChargeDistribution}
-\end{equation}
-
-By integrating \cref{eq:ChargeDistribution} over the whole
-thickness of the detector, the charge deposited in a pixel at
-coordinate $x_{hit}$ having coordinates $x_1$ and $x_2$ is given by:  
-\begin{equation}
-Q(x_{hit})= \int_{x_1}^{x_2}  \int_{0}^{d} {Q(z) \over {\sqrt{2 \pi
-      \sigma^2(z)}} } e^{-({{x-x_{hit}}\over{\sqrt{2} \sigma(z)}})^2}
-  dz \; dx\; .
-\label{eq:ChargeDistribution_integrated_z}
-\end{equation}
-
-
-\begin{figure}[htbp]
-  \centering
-  \begin{tikzpicture}
-    \begin{scope}
-      
-      \draw[->, thick] (-2,0)--(5,0) node[right]{$x$};
-      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
-      
-      \draw[thick, blue] (-1.8,0) to[out=0, in=-120] (-1.5,0.2) to[out=60, in=180](-0.8, 1)--(0,1);
-      \draw[thick, blue] (0,1)--(0.8, 1) to [out=-20, in=120] (1.5, 0.2) to[out=-60, in=0] (1.8,0);
-
-      \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
-      \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
-      \node[above, blue] at (-1.5, 1) {Pixel 0};
-
-      \node[] at (0.2, 1.2) {1};
-
-
-      \draw[thick, green] (1.2,0) to[out=0, in=-120] (1.5,0.2) to[out=60, in=180](2.2, 1)--(3,1);
-      \draw[thick, green] (3,1)--(3.8, 1) to [out=-20, in=120] (4.5, 0.2) to[out=-60, in=0] (4.8,0);
-      \draw[-] (4.5, 0) -- (4.5, 0.1);
-      \node[below] at (4.5, 0) {${{3p} \over 2}$};
-      \node[above, green] at (3.5, 1) {Pixel 1};
-
-      \draw[<->, thick] (1.2, 1.2)--(1.8, 1.2);
-      \node[above] at (1.5, 1.2) {$s$}; 
-    \end{scope}
-  \end{tikzpicture}
-  \caption{Analog readout with charge sharing}\label{fig:SpatResAnaglogChargeSharing}
-\end{figure}
-
-\section{Charge collection and Ramo's theorem: induced charge}\label{sec:RamoTheorem}
+\section{Pixelated silicon sensors properties}
+\subsection{Silicon sensors types}
+\subsection{Leakage current}
+\subsection{Charge collection and Ramo's theorem: induced charge}\label{sec:RamoTheorem}
 When a charge moves in the sensitive volume of a detector, a current
 $i_s(t)$ flows instantaneously. \\ 
 First, consider the simple example of a charge $q$ near an infinitely
@@ -1120,8 +831,303 @@ fields), the Ramo theorem can be neglected.
 \end{figure}
 
 
+\subsection{Spatial resolution}
+
+The spatial resolution of a pixel detector is mainly determined by the pixel
+pitch. But this can be improved by the readout choice (binary or
+analog), the threshold value, the charge sharing, thickness of the
+detector and the reconstruction algorithm. The effect of the readout
+is studied in the sections here-below.
+
+The spatial resolution is defined by:
+\begin{equation}
+\sigma_{position}^2={{\int_{-p/2}^{p/2} \left(x_r-x_m\right)^2
+    D\left(x_r\right) dx_r } \over { \int_{-p/2}^{p/2}
+    D\left(x_r\right) dx_r }}\; ,
+\label{eq:spatialRes}
+\end{equation}
+
+where $\sigma_{position}$ is the average distance between the real
+impact position $x_r$ and the measured position $x_m$ of the
+particle in a pixel.
+
+In the coming sections, the spatial resolution defined by
+\cref{eq:spatialRes} is calculated and studied for different scenarios
+and assumptions.
+
+%% \begin{figure}[htbp]
+%%   \centering
+%%   \begin{subfigure}[b]{0.3\textwidth}
+%%     \centering
+%%     \begin{tikzpicture}
+%%       \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
+%%       \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+%%       \draw[-] (-1.5, 1) -- (-1.5, 0) node[below]{${-p \over 2}$};
+%%       \draw[-] (-1.5, 1) -- (1.5, 1);
+%%       \draw[-] (1.5, 1) -- (1.5, 0) node[below]{${p \over 2}$};
+%%       \node[] at (0.2, 1.2) {1};
+%%     \end{tikzpicture}
+%%     \caption{}\label{fig:SpatResBinary}
+%%   \end{subfigure}\hfill
+%%   \begin{subfigure}[b]{0.3\textwidth}
+%%     \centering
+%%     \begin{tikzpicture}
+%%       \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
+%%       \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+%%       \draw[-] (-0.7, 1) -- (-0.7, 0) node[below]{\tiny ${{-(p-s)}\over 2}$};
+%%       \draw[-] (-0.7, 1) -- (0.7, 1);
+%%       \draw[-] (0.7, 1) -- (0.7, 0) node[below]{\tiny ${(p-s)\over 2}$};
+%%       \node[] at (0.2, 1.2) {1};
+%%       \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
+%%       \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
+%%     \end{tikzpicture}
+%%     \caption{}\label{fig:SpatResBinaryChargeSharing}
+%%   \end{subfigure}\hfill
+%%   \begin{subfigure}[b]{0.3\textwidth}
+%%     \centering
+%%     \begin{tikzpicture}
+%%       \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
+%%       \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+%%       \draw (-1.5,0) to[out=0, in=-120] (-0.9,0.2) to[out=60, in=180](-0.3, 1)--(0,1);
+%%       \draw (0,1)--(0.3, 1) to [out=-20, in=120] (0.9,0.2) to[out=-60,
+%%       in=0] (1.5,0);
+
+%%       \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
+%%       \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
+
+%%       \draw[-] (-0.5, 0.1) -- (-0.5, 0) node[below] {\tiny ${-(p-s) \over 2}$};
+%%       \draw[-] (0.5, 0.1) -- (0.5, 0) node[below] {\tiny ${(p-s) \over 2}$};
+
+%%       \node[] at (0.2, 1.2) {1};
+%%     \end{tikzpicture}
+%%     \caption{}\label{fig:SpatResAnaglogChargeSharing}
+%%   \end{subfigure}
+%%   \caption{(a) Binary readout. (b) Binary readout with charge
+%%     sharing. (c) Analog readout with charge sharing.}\label{fig:SpatialResolution}
+%% \end{figure}
+
+
+
+\subsubsection{Binary readout}
+The simplest case for the resolution computation is to consider a
+binary readout with single threshold. For a pixel centered at 0 and
+having a pitch $p$ with a probability density function as illustrated
+in \cref{fig:SpatResBinary}, the following assumptions are considered:
+
+\begin{itemize}
+\item The threshold is adjusted in a way to fire one pixel per
+  particle track.
+\item Only hit positions between $-p/2$ and $p/2$ trigger a signal in
+  pixel 0.
+\item A uniform density of particles hit the detector ($D\left(x\right)=1$).
+\end{itemize}
+
+
+The average difference between the real position ($x_r$) and the
+measured position ($x_m=0$) of the particle in a pixel is calculated
+using \cref{eq:spatialRes} \cite{Rossi:976471}:
+\begin{equation}
+\sigma_{position}^2={{\int_{-p/2}^{p/2} \left(x_r\right)^2
+    1 dx_r } \over { \int_{-p/2}^{p/2}
+    1 dx_r }}={p^2 \over 12} \; ,
+\label{eq:spatialResBinary}
+\end{equation}
+which results in a spatial resolution of:
+\begin{equation}
+\sigma_{position}={p \over \sqrt{12}} \;.
+\label{eq:sigmapos}
+\end{equation}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}
+      \draw[->, thick] (-2,0)--(5,0) node[right]{$x$};
+      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+      \draw[-, blue, thick] (-1.5, 1) -- (-1.5, 0);
+      \node[below] at (-1.5, 0) {${-p \over 2}$};
+      \draw[-, blue, thick] (-1.5, 1) -- (1.5, 1);
+      \draw[-, blue, thick] (1.5, 1) -- (1.5, 0);
+      \node[below] at (1.5, 0) {${p \over 2}$};
+      \node[] at (0.2, 1.2) {1};
+      \node[above, blue] at (-1.5, 1) {Pixel 0};
+
+      \draw[-, green, thick] (1.51, 1) -- (1.51, 0);
+      \draw[-, green, thick] (1.51, 1) -- (4.5, 1);
+      \draw[-, green, thick] (4.5, 1) -- (4.5, 0);
+      \node[below] at (4.5, 0) {${{3p} \over 2}$};
+      \node[above, green] at (3.5, 1) {Pixel 1};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Binary readout}  
+  \label{fig:SpatResBinary}
+\end{figure}
+
+This simple model shows the worst resolution achieved and is only
+dependent on the pitch size (geometry of the pixels). In reality, with
+charge sharing, the signal of a particle track is shared between
+several pixels and depending on the readout threshold more than one
+pixel can be fired which is called a \textit{cluster} of pixels. The
+resolution is therefore improved as described in
+\cref{sec:resolutionBinarySharing,sec:resolutionAnalogSharing}.
+
+\subsubsection{Binary readout and charge sharing}\label{sec:resolutionBinarySharing}
+The threshold of the readout electronics is usually set as low as
+possible which can result in more than one pixel hit per particle
+track. In this case, the charge is shared between two or more pixels
+(cluster). Multi-hit clusters improve the resolution of
+\cref{eq:spatialResBinary}. \cref{fig:SpatResBinaryChargeSharing}
+illustrates the charge sharing between two pixels. If a track passes
+close to the edge of a pixel (within a distance of $s\over 2$ close to
+the edge), then the neighbouring pixel is also fired. For events
+triggering single-hit events, the spatial resolution in pixel 0 for
+1-hit clusters is given by:
+
+\begin{equation}
+\sigma_{position}^2={{\int_{-(p/2-s/2)}^{(p/2-s/2)} \left(x_r\right)^2
+    1 dx_r } \over { \int_{-(p/2-s/2)}^{(p/2-s/2)}
+    1 dx_r }}={(p-s)^2 \over 12} \; .
+\label{eq:spatialResCharge sharing_1hit}
+\end{equation}
+
+For two-hit clusters, the spatial resolution is given by
+\begin{equation}
+\sigma_{position}={s \over \sqrt{12}} \; .
+\label{eq:spatialResChargeSharing_2hit}
+\end{equation}
+
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}
+      
+      \draw[->, thick] (-2,0)--(5,0) node[right]{$x$};
+      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+      \draw[-, blue, thick] (-1.8, 1) -- (-1.8, 0);
+
+      \draw[-] (-1.5, 0) -- (-1.5, 0.1);
+      \node[below] at (-1.5, 0) {${-p \over 2}$};
+      \draw[-, blue, thick] (-1.8, 1) -- (1.8, 1);
+      \draw[-, blue, thick] (1.8, 1) -- (1.8, 0);
+
+      \draw[-] (1.5, 0) -- (1.5, 0.1);
+      \node[below] at (1.5, 0) {${p \over 2}$};
+      \node[] at (0.2, 1.2) {1};
+      \node[above, blue] at (-1.5, 1) {Pixel 0};
+      
+      \draw[-, green, thick] (1.2, 1) -- (1.2, 0);
+      \draw[-, green, thick] (1.2, 1) -- (4.8, 1);
+      \draw[-, green, thick] (4.8, 1) -- (4.8, 0);
+      \draw[-] (4.5, 0) -- (4.5, 0.1);
+      \node[below] at (4.5, 0) {${{3p} \over 2}$};
+      \node[above, green] at (3.5, 1) {Pixel 1};
+
+      \draw[<->, thick] (1.2, 1.2)--(1.8, 1.2);
+      \node[above] at (1.5, 1.2) {$s$};
+      
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Binary readout with charge sharing.}\label{fig:SpatResBinaryChargeSharing}
+\end{figure}
+
+The average resolution considering single and multi-hit clusters is given by
+\begin{equation}
+{\sigma_{\text{Total}}}^{2}={{\left(p-s\right)^{2}} \over 12}+{{s^2}\over12} \; .
+\label{eq:spatialResChargeSharingTotal}
+\end{equation}
+
+The optimal average spatial resolution is obtained for $s=p/2$ as
+shown in \cref{fig:sigmaTotal} where the pitch is
+$p=55\,\micron$. This means that the number of single-hit and
+multi-hit clusters is the same. But, in this situation one is not able
+to distinguish between one track triggering two pixels and two tracks
+hitting the sensor within $2p$.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/resolution_binary_chargeSharing_s.pdf}
+  \caption{$\sigma_{\text{Total}}$ calculated using
+    \cref{eq:spatialResChargeSharingTotal} with a pixel pitch of
+    $p=55\,\micron$ where $s$ is the width of the charge sharing
+    region as shown in \cref{fig:SpatResBinaryChargeSharing}.}
+  \label{fig:sigmaTotal}
+\end{figure}
+
+\subsubsection{Analog readout and charge sharing}\label{sec:resolutionAnalogSharing}
+The spatial resolution can be improved more when an analog readout is
+used that delivers a signal proportional to the collected charge as
+illustrated in \cref{fig:SpatResAnaglogChargeSharing}. In this
+case, for multi-hit clusters $\eta$-function as described
+in~\cite{Belau:1983eh} is used to reconstruct the hit position within
+the pixels. 
+In the region where only one pixel fires, the resolution is still
+limited to $(p-s)\over \sqrt{12}$.
+
+The charge carriers follow the field lines to end-up on a certain
+electrode. They are also subject to thermal diffusion which spreads
+the charge cloud as it drifts through the silicon. The width of the
+diffusion $\sigma_{diffusion}(z)$ (for simplicity called $\sigma(z)$) at depth $z$ is given by
+\cref{eq:driftTimeIntegrated}.
+The charge distribution at position $x_{hit}$ for a pixel extending from
+$x_1$ to $x_2$ is:
+\begin{equation}
+Q(x_{hit}, z)= Q(z) {1\over{\sqrt{2 \pi \sigma^2(z)}}}
+{\int_{x_1}^{x_2} e^{-({{x-x_{hit}}\over{\sqrt{2} \sigma(z)}})^2} } dx\; .
+\label{eq:ChargeDistribution}
+\end{equation}
+
+By integrating \cref{eq:ChargeDistribution} over the whole
+thickness of the detector, the charge deposited in a pixel at
+coordinate $x_{hit}$ having coordinates $x_1$ and $x_2$ is given by:  
+\begin{equation}
+Q(x_{hit})= \int_{x_1}^{x_2}  \int_{0}^{d} {Q(z) \over {\sqrt{2 \pi
+      \sigma^2(z)}} } e^{-({{x-x_{hit}}\over{\sqrt{2} \sigma(z)}})^2}
+  dz \; dx\; .
+\label{eq:ChargeDistribution_integrated_z}
+\end{equation}
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}
+      
+      \draw[->, thick] (-2,0)--(5,0) node[right]{$x$};
+      \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
+      
+      \draw[thick, blue] (-1.8,0) to[out=0, in=-120] (-1.5,0.2) to[out=60, in=180](-0.8, 1)--(0,1);
+      \draw[thick, blue] (0,1)--(0.8, 1) to [out=-20, in=120] (1.5, 0.2) to[out=-60, in=0] (1.8,0);
+
+      \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
+      \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
+      \node[above, blue] at (-1.5, 1) {Pixel 0};
+
+      \node[] at (0.2, 1.2) {1};
+
+
+      \draw[thick, green] (1.2,0) to[out=0, in=-120] (1.5,0.2) to[out=60, in=180](2.2, 1)--(3,1);
+      \draw[thick, green] (3,1)--(3.8, 1) to [out=-20, in=120] (4.5, 0.2) to[out=-60, in=0] (4.8,0);
+      \draw[-] (4.5, 0) -- (4.5, 0.1);
+      \node[below] at (4.5, 0) {${{3p} \over 2}$};
+      \node[above, green] at (3.5, 1) {Pixel 1};
+
+      \draw[<->, thick] (1.2, 1.2)--(1.8, 1.2);
+      \node[above] at (1.5, 1.2) {$s$}; 
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Analog readout with charge sharing}\label{fig:SpatResAnaglogChargeSharing}
+\end{figure}
+
+
 %% --------------------------------------------- %%
-\section{Processing of silicon wafer: TO DO}
+
 
 
 %% --------- Recycle text --------- %%

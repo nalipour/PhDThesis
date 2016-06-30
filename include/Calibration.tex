@@ -1,5 +1,5 @@
 %==============================================================================    
-\chapter{Front-end electronics}
+\chapter{Pixel chip electronics and calibration}
 \label{ch:FE_electronics}
 %==============================================================================    
 
@@ -16,7 +16,7 @@ active-edge assemblies in the following chapters. They are calibrated
 using different methods and the MIP energy deposition measured by
 these chips is compared to \textsc{Geant4} simulations.
 
-\section{Generic pixel chip}
+\section{Generic pixel chip properties}
 
 The main purpose of the detecting system is to acquire the signal
 generated in the sensor which is in the form of a short current
@@ -159,7 +159,7 @@ as the timing information for the hits.
   \label{fig:TOT_TOA_concept}
 \end{figure}
 
-\section{Timepix readout chip families}\label{sec:TimepixReadout}
+\section{The Timepix readout chip families}\label{sec:TimepixReadout}
 The Timepix~\cite{art:tmpx,Timepix3Poikela} readout chip families,
 designed by the Medipix collaboration, are a general purpose front-end
 electronics and can measure precisely the energy deposited in the
@@ -245,7 +245,7 @@ uniform even though some dispersion remains.
   \label{fig:THLequalisation}
 \end{figure}
 
-\section{Calibration} \label{sec:calibration} The aim of the
+\subsection{Calibration} \label{sec:calibration} The aim of the
 calibration is to parametrise the measurements done by the readout
 chip, namely the relationship between the threshold DAC and the TOT
 with the energy deposited in the sensor (in \kev or number of
@@ -276,7 +276,7 @@ $\Delta V$ the voltage applied. A priori, the injection capacitance is
 unknown and its value varies from pixel to pixel but its value can be
 measured.
 
-\subsection{Energy calibration} \label{sec:EnergyCalibration}
+\subsubsection{Energy calibration} \label{sec:EnergyCalibration}
 
 For the energy calibration, the Timepix readout ASIC is operated in
 the TOT mode. Data points obtained either by radioactive sources or
@@ -357,7 +357,7 @@ the x-axis but the slope (parameter $a$) remains the same.
 The calibration for the other assemblies are given in \cref{sec:appendixFE_electronics}.
 
 
-\subsection{Threshold calibration} \label{sec:threshold}
+\subsubsection{Threshold calibration} \label{sec:threshold}
 
 
 The operating threshold DAC (Digital-to-Analog Converter) set in each
@@ -526,9 +526,6 @@ conditions.
   \end{tabular}
 \end{table}
 
-
-\subsection{Time calibration} \label{sec:TOA_calibration}
-TODO
 
 \section{Calibrated test beam data}
 

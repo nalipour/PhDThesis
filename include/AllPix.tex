@@ -4,7 +4,6 @@
 %==============================================================================  
 
 %% --------------------------------------------- %%
-\section{Introduction}
 
 AllPix~\cite{allpix} is a \textsc{Geant4} based simulation
 software. It is written in C/C++ and provides a flexible interface to
@@ -28,46 +27,9 @@ planes.
   \caption{Simulation of the Timepix3 telescope with AllPix.}
   \label{fig:TPX3TelescopeAllpix}
 \end{figure}
-\section{Geometry description of the sensors}
-\section{Geometry description of the world}
-\section{Digitiser}
-\section{Reconstruction software}
 
 %% --------------------------------------------- %%
-
-
-The main components of the software are described here-below:
-\begin{enumerate}
-\item Digitiser: \textsc{Geant4}, for each simulation step
-  (\texttt{G4Step}) through the matter, provides the energy deposited
-  in the sensitive material. The step length can be customised. For
-  thin sensors simulations a step of $2\,\micron$ is selected and
-  provides a precise energy deposition. The semiconductor physics in a
-  Silicon detector is then defined in the digitiser. The drift and
-  diffusion are performed at each step to simulate the electron-hole
-  pair movement in the electric and magnetic fields. The readout ASIC
-  is also simulated in the digitiser. The electronic noise is added
-  and a threshold is applied to the hits. The hit energy is converted to the
-  digital value TOT (time-over-threshold) using the readout ASICs calibrations.
-\item \texttt{pixeldetector.xml}: defines a pixel detector
-(\texttt{<pixeldet id=''300"/>}) with a unique ID. It contains all the
-properties of the pixel detector like the pixel pitch, detector
-thickness, chip thickness, PCB properties and other geometry
-properties related to an assembly. It can be customised and define the
-parameters of the digitisers. This will allow to run the program
-without needing to compile whenever one wants to change a parameter.
-\item \texttt{macro.in}: Define the position of the detectors in the
-space by giving the x, y and z position of the centre of the detectors
-and the rotations around the x, y and z axes. The physics list used by
-\textsc{Geant4} is also defined in this file. Visualisation parameters
-are also given. The General Particle Source (GPS), which is the
-\textsc{Geant4} toolkit for Monte-Carlo of the high-energy particle
-transport is also described in the macro. The particle type, the beam
-energy, the position and distributions are customisable. The
-simulation is done based on the frames.
-\end{enumerate}
-
-
+\section{Geometry description}
 \subsection{Coordinate system}
 
 Pixel coordinates (X, Y) and the center of the pixels in \textcolor{blue}{local coordinates (x,
@@ -106,3 +68,40 @@ AllPix and EUTelescope.
   \caption{}
   \label{fig:coordinateSystem}
 \end{figure}
+%% --------------------------------------------- %%
+\section{Digitisation}
+%% --------------------------------------------- %%
+
+
+The main components of the software are described here-below:
+\begin{enumerate}
+\item Digitiser: \textsc{Geant4}, for each simulation step
+  (\texttt{G4Step}) through the matter, provides the energy deposited
+  in the sensitive material. The step length can be customised. For
+  thin sensors simulations a step of $2\,\micron$ is selected and
+  provides a precise energy deposition. The semiconductor physics in a
+  Silicon detector is then defined in the digitiser. The drift and
+  diffusion are performed at each step to simulate the electron-hole
+  pair movement in the electric and magnetic fields. The readout ASIC
+  is also simulated in the digitiser. The electronic noise is added
+  and a threshold is applied to the hits. The hit energy is converted to the
+  digital value TOT (time-over-threshold) using the readout ASICs calibrations.
+\item \texttt{pixeldetector.xml}: defines a pixel detector
+(\texttt{<pixeldet id=''300"/>}) with a unique ID. It contains all the
+properties of the pixel detector like the pixel pitch, detector
+thickness, chip thickness, PCB properties and other geometry
+properties related to an assembly. It can be customised and define the
+parameters of the digitisers. This will allow to run the program
+without needing to compile whenever one wants to change a parameter.
+\item \texttt{macro.in}: Define the position of the detectors in the
+space by giving the x, y and z position of the centre of the detectors
+and the rotations around the x, y and z axes. The physics list used by
+\textsc{Geant4} is also defined in this file. Visualisation parameters
+are also given. The General Particle Source (GPS), which is the
+\textsc{Geant4} toolkit for Monte-Carlo of the high-energy particle
+transport is also described in the macro. The particle type, the beam
+energy, the position and distributions are customisable. The
+simulation is done based on the frames.
+\end{enumerate}
+
+
