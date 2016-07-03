@@ -190,6 +190,85 @@ For the analysis of the DUT data, the python-based software
 %% --------------------------------------------- %%
 \section{Timepix3 telescope performance}\label{sec:telescopePerformance}
 
+
+\subsection{Single-hit resolution on the telescope planes}
+
+The reconstructed hit on each telescope plane is compared to the Monte
+Carlo Truth position obtained by the \textsc{Geant4}
+simulations. \cref{fig:TelPlane0_MC_hit} compares the hit resolution
+on the first telescope plane in x and y directions.
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/telescopePlane0_MC_vs_hit_x.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/telescopePlane0_MC_vs_hit_y.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{MC hit vs. reconstructed hit position.}
+  \label{fig:TelPlane0_MC_hit}
+\end{figure}
+
+The residuals as a function of the x\textsubscript{MC} and
+y\textsubscript{MC} are shown in \cref{fig:TelPlane0_MC_hit_2D}.
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/telescopePlane0_MC_vs_hit_x_2D.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/telescopePlane0_MC_vs_hit_y_2D.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{MC hit vs. reconstructed hit position.}
+  \label{fig:TelPlane0_MC_hit_2D}
+\end{figure}
+
+
+The tracking resolution on the DUT ($100\,\micron$ thick sensor) in
+the x and y directions is shown in \cref{fig:DUT_MC_track}.
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/Unbiased_trackRes_DUT_x.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/Unbiased_trackRes_DUT_y.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{The tracking resolution on the DUT comparing the
+    reconstructed track position to the true position of the particles
+    coming from \textsc{Geant4}.}
+  \label{fig:DUT_MC_track}
+\end{figure}
+
+
+In 2D the tracking resolution on the DUT is shown in \cref{fig:DUT_MC_track_2D}.
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/Unbiased_trackRes_DUT_x_2D.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/Unbiased_trackRes_DUT_y_2D.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Track vs. MC position on the DUT.}
+  \label{fig:DUT_MC_track_2D}
+\end{figure}
+
+\subsection{Biased residuals on each telescope plane}
+
+In simulation the material for the PCB in simulations is chosen to be
+an epoxy (G4\_PLEXIGLASS) with a density of 1.19~g~\inversecmcubic and
+a radiation length of X\textsubscript{0}=4.06~g~\inversecmsquared
+(3.41~cm).
+
+
 The cluster size distribution and the collected charge comparing data
 and simulations is shown in \cref{fig:TelescopeCluSize_data_simu}.
 
@@ -232,8 +311,6 @@ for simulation.
 
 %% --------------------------------------------- %%
 
-
-
 \subsection{Beam angle}
 
 For MC beam angle distribution:
@@ -262,38 +339,3 @@ For MC beam angle distribution:
 the DUT).}
   \label{fig:MCbeamAngleDistr}
 \end{figure}
-
-\subsection{Biased residuals on each telescope plane}
-
-\subsubsection{Track vs. hit}
-\subsubsection{Track vs. MC}
-\subsubsection{Hit vs. MC}
-
-\subsection{Unbiased resolution on the DUT}
-\subsubsection{Track vs. hit}
-\subsubsection{Track vs. MC}
-
-Unbiased residuals on the DUT ($100\,\micron$ thick sensor) in the x
-and y directions (the dependence on the x and y of the residual is not
-yet corrected in this plot).
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Telescope/run49_x_track_MC_DUT.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Telescope/run49_y_track_MC_DUT.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{The tracking resolution on the DUT comparing the
-    reconstructed track position to the true position of the particles
-    coming from \textsc{Geant4}.}
-  \label{fig:UnbiasedResidualOnDUT}
-\end{figure}
-
-
-
-\subsubsection{Hit vs. MC}
-
-\subsection{Time stamping (?)}
