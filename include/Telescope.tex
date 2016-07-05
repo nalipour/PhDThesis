@@ -73,6 +73,28 @@ be obtained.
   \label{fig:TPX3Telescope}
 \end{figure}
 
+The material used for the mechanical support of the sensors is
+described in \cref{tab:TPX3TelescopeMaterial} with a total material
+budget of $2.5\%$. For the PCB, in \textsc{Geant4}, the material
+G4\_BONE\_COMPACT\_ICRU is used.
+
+\begin{table}[htbp]
+  \centering
+  \caption{The mechanical support material used for the telescope planes.}
+  \label{tab:TPX3TelescopeMaterial}
+  \begin{tabular}{c c c}
+    \toprule
+    Material & Thickness [mm] & X\textsubscript{0} [mm]\\
+    \midrule
+    PCB (G10) & 1.6 & 164.8 \\
+    Sensor cover (ABS plastic) & 2 & 406.4\\
+    Cooling material for the chip (Cu) & 0.1 & 14.4 \\
+    ASIC (Si) & 0.7 & 93.7 \\
+    Sensor (Si) & 0.3 & 93.7 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
 \subsection{Coordinates system}
 A Cartesian right-handed coordinate system is chosen to describe the
 geometry of the telescope. The z-direction is along the beam as shown
