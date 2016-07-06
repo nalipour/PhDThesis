@@ -291,8 +291,14 @@ hyperbola. The function used to fit the data points is called a
   \label{eq:TOTsurrogateFunction}
 \end{equation}
 
-where TOT denotes Time-Over-Threshold, $E$ the energy and
-$a, b, c, t$ are the parameters to be found~\cite{Jakubek2008155}.
+where TOT denotes Time-Over-Threshold, $E$ the energy and $a, b, c, t$
+are the parameters to be found~\cite{Jakubek2008155}. The inverse of
+the surrogate function is defined as:
+
+\begin{equation}
+  E = { {t \cdot a - \text{TOT} -b + \sqrt{\left(b+t \cdot a -\text{TOT}\right)^2+4\cdot a \cdot c}} \over {2a} } \; ,
+  \label{eq:inverseTOTsurrogateFunction}
+\end{equation}
 
 In \cref{eq:TOTsurrogateFunction}, for higher values of the energy,
 the relationship between TOT and $E$ is linear with gradient $a$ and
