@@ -518,16 +518,57 @@ conditions.
   \centering
   \caption{Advacam active-edge n-in-p planar pixel sensor assemblies. The edge distance is defined by the distance between the last pixel implant and the physical sensor edge.}
   \label{tab:NominalThreshold}
-  \begin{tabular}{lccc}
+  \resizebox{\textwidth}{!}{\begin{tabular}{lccc}
+      \toprule
+      Assembly & Nominal THL\textsubscript{DAC}\textsuperscript{op} [DAC steps] & Nominal THL\textsubscript{e-}\textsuperscript{op} [electrons]\\
+      \midrule
+      20-NGR & 1190 & 466.5\\
+      23-FGR & 1187 & 532.4\\ \hline
+      28-GNDGR & 1133 & 517.8\\
+      55-GNDGR & 1148 & 553.7\\
+      55-GNDGR-100 & 1160 & 537.9\\ \hline
+      55-GNDGR-150 & 1153 & 441.2\\
+      \bottomrule
+  \end{tabular}}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htbp]
+  \centering
+  \caption{}
+  \label{tab:THLcalibration}
+  \begin{tabular}{lcccc}
     \toprule
-    Assembly & Nominal THL\textsubscript{DAC}\textsuperscript{op} [DAC steps] & Nominal THL\textsubscript{e-}\textsuperscript{op} [electrons]\\
+    Assembly & p [DAC steps/e\textsuperscript{-}] & q [DAC steps] & THL\textsubscript{DAC}\textsuperscript{op} [DAC steps] & THL\textsubscript{e-}\textsuperscript{op} [e\textsuperscript{-}] \\
     \midrule
-    20-NGR & 1190 & 466.5\\
-    23-FGR & 1187 & 532.4\\ \hline
-    28-GNDGR & 1133 & 517.8\\
-    55-GNDGR & 1148 & 553.7\\
-    55-GNDGR-100 & 1160 & 537.9\\ \hline
-    55-GNDGR-150 & 1153 & 441.2\\
+    W19\_G7 & $0.087\pm0.000$ & $1144.037\pm0.005$ & 1190 & $526.230\pm0.649$ \\
+    W19\_F7 & $0.092\pm0.000$ & $1131.874\pm0.009$ & 1187 & $600.406\pm0.551$ \\
+    W19\_L8 & $0.090\pm0.000$ & $1082.057\pm0.005$ & 1133 & $568.506\pm0.538$ \\
+    W19\_C7 & $0.091\pm0.000$ & $1092.887\pm0.005$ & 1148 & $608.700\pm0.488$ \\
+    W5\_E2 &  $0.095\pm0.000$ & $1106.921\pm0.004$ & 1160 & $561.019\pm0.712$ \\
+    W5\_F1 & $0.089\pm0.000$ & $1103.618\pm0.004$ & 1153 & $554.885\pm0.493$ \\
+    W2\_J5 & $-0.109\pm0.000$& $1232.643\pm0.034$ & 1170 & $565.723\pm1.560$\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{}
+  \label{tab:THLcalibration_noise}
+  \begin{tabular}{lcccc}
+    \toprule
+    Assembly & Baseline mean [DAC steps] & Threshold DAC step [e\textsuperscript{-}] & Noise [DAC steps] & Noise [e\textsuperscript{-}] \\
+    \midrule
+    W19\_G7 & $1143.992\pm0.005$ & $11.450\pm0.000$ & $6.864\pm0.005$ & $78.585\pm0.056$ \\
+    W19\_F7 & $1131.664\pm0.009$ & $10.892\pm0.000$ & $7.060\pm0.009$ & $76.891\pm0.098$ \\
+    W19\_L8 & $1081.998\pm0.005$ & $11.160\pm0.000$ & $6.996\pm0.005$ & $78.078\pm0.058$ \\
+    W19\_C7 & $1092.825\pm0.005$ & $11.044\pm0.000$ & $7.413\pm0.005$ & $81.870\pm0.051$ \\
+    W5\_E2  & $1106.895\pm0.004$ & $10.570\pm0.000$ & $7.155\pm0.004$ & $75.628\pm0.046$ \\
+    W5\_F1  & $1103.591\pm0.004$ & $11.237\pm0.000$ & $6.711\pm0.004$ & $75.408\pm0.046$ \\
+    W2\_J5  & $1231.70\pm0.034$ & $-9.177\pm0.000$ & $11.826\pm0.041$ & $108.53\pm0.379$ \\
     \bottomrule
   \end{tabular}
 \end{table}
