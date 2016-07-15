@@ -74,23 +74,26 @@ be obtained.
 \end{figure}
 
 The material used for the mechanical support of the sensors is
-described in \cref{tab:TPX3TelescopeMaterial} with a total material
-budget of $2.5\%$. For the PCB, in \textsc{Geant4}, the material
-G4\_BONE\_COMPACT\_ICRU is used.
+described in \cref{tab:TPX3TelescopeMaterial}. The PCB stacks up eight
+layers of copper interlacing with Isola IS410 type material. In
+\textsc{Geant4} simulations, G4\_BONE\_COMPACT\_ICRU is used for the
+simulation of Isola IS410.
 
 \begin{table}[htbp]
   \centering
-  \caption{The mechanical support material used for the telescope planes.}
+  \caption{The mechanical support material used for the \textsc{Geant4} simulation of the telescope planes with X the thickness in millimeters, X\textsubscript{0} the radiation length in millimeters.}
   \label{tab:TPX3TelescopeMaterial}
-  \begin{tabular}{c c c}
+  \begin{tabular}{l c c c}
     \toprule
-    Material & Thickness [mm] & X\textsubscript{0} [mm]\\
+    Material & X [mm] & X\textsubscript{0} [mm] & X/X\textsubscript{0} [$\%$] \\
     \midrule
-    PCB (G10) & 1.6 & 164.8 \\
-    Sensor cover (ABS plastic) & 2 & 406.4\\
-    Cooling material for the chip (Cu) & 0.1 & 14.4 \\
-    ASIC (Si) & 0.7 & 93.7 \\
-    Sensor (Si) & 0.3 & 93.7 \\
+    Isola IS410 in the PCB & 1.475 & 167.6 & 0.88 \\
+    Copper in the PCB & 0.125 & 14.4 & 0.87 \\
+    Sensor cover (ABS plastic) & 2 & 406.4 & 0.49 \\
+    Cooling material for the chip (Cu) & 0.1 & 14.4 & 0.69 \\
+    ASIC (Si) & 0.7 & 93.7 & 0.75\\
+    Sensor (Si) & 0.3 & 93.7 & 0.32\\ \hline
+    Total & & & 4 \\
     \bottomrule
   \end{tabular}
 \end{table}
