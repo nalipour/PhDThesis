@@ -648,7 +648,7 @@ And the diffusion standard deviation is given by,
 \begin{equation} 
   \sigma_{diffusion}\left(z\right)=\sqrt{2 D_{b} t_{c}}=\sqrt{{{kTd^2}\over{eV_D}}ln\left({{V_B+V_D}\over{V_B+V_D-2V_Dz/d}}\right)}
   \; ,
-  \label{eq:driftTimeIntegrated}
+  \label{eq:sigmaDiffusion}
 \end{equation}
 
 
@@ -1127,7 +1127,133 @@ Q(x_{hit})= \int_{x_1}^{x_2}  \int_{0}^{d} {Q(z) \over {\sqrt{2 \pi
 
 
 %% --------------------------------------------- %%
+\section{AllPix simulation framework}
+\label{sec:AllPix}
 
+AllPix~\cite{allpix} is a \textsc{Geant4}-based simulation
+software. It is written in C/C++ and provides a flexible interface to
+define any pixel detector geometry to simulate pixelated sensors and
+readout chips.
+
+The pixel detectors are placed in the world volume. \textsc{Geant4}
+provides the simulation of particles through the matter: it calculates
+the position of the hits (or the Monte Carlo Truth position)
+considering the multiple scatterings and the energy deposition in the
+sensitive volumes (sensors). The software user defines the
+semiconductor physics and readout chip properties in a digitiser as
+described here below.
+
+\cref{fig:TPX3TelescopeAllpix} shows an example of the simulation for
+the Timepix3 telescope (described in \cref{ch:Telescope}) in AllPix
+with the device under test (DUT) in the middle of the rotated telescope
+planes.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at
+    (0,0){\includegraphics[width=0.8\textwidth]{figures/ActiveEdge/Allpix_telescope_withParticles.png}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+      \node[above, color=white] at (0.45, 0.65) {\textbf{DUT}};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Simulation of the Timepix3 telescope with AllPix.}
+  \label{fig:TPX3TelescopeAllpix}
+\end{figure}
+
+%% --------------------------------------------- %%
+\subsection{Coordinate system}
+
+The convention used for the pixel detectors (in AllPix but also the
+reconstruction software as described in \cref{sec:recoSoft}) for a
+matrix of $256\times256$ pixels is shown in
+\cref{fig:coordinateSystem}. The pixel coordinates (X, Y) and the
+\textcolor{blue}{local coordinates (x, y) in millimeters} of the
+center of the pixels in the corners of the sensor are shown. In this
+convention we are looking from the sensor side with the periphery on
+the top.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope} 
+
+      \draw (0, 0) rectangle (10, 10) node[pos=.5] {Sensor side};
+      \draw[fill=gray] (0, 10) rectangle (10, 11) node[pos=.5]
+      {Periphery};
+
+      \draw (0, 10) rectangle (3, 7) node[align=center, pos=.5] {(255, 0) \\ \textcolor{blue}{(7.0125, -7.0125)}};
+      \draw (7, 10) rectangle (10, 7) node[align=center, pos=.5] {(0, 0) \\ \textcolor{blue}{(-7.0125, -7.0125)}};
+      
+      \draw (0, 0) rectangle (3, 3) node[align=center, pos=.5] {(255,
+        255) \\ \textcolor{blue}{(7.0125, 7.0125)}};
+      \draw (7, 0) rectangle (10, 3) node[align=center, pos=.5] {(0, 255) \\ \textcolor{blue}{(-7.0125, 7.0125)}};
+      % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (10,10);
+      % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+      % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
+      %   {0.\y}; }
+
+    %   \draw[step=2cm,color=gray] (-5, -5) grid (5, 5);
+    %   \matrix[matrix of nodes,nodes={inner sep=0pt,text width=2cm,align=center,minimum height=2cm}]{
+    %     {(255, 0) \\ \textcolor{blue}{(7.0125, -7.0125)}} & &  & {(0,0) \\ \textcolor{blue}{(-7.0125, -7.0125)}} \\
+    %     &  &  &  \\
+    %     &  &  &  \\
+    %     {(255, 255) \\ \textcolor{blue}{(7.0125, 7.0125)}} &  &  & {(0, 255) \\ \textcolor{blue}{(-7.0125, 7.0125)}} \\};
+    \end{scope}  
+  \end{tikzpicture}
+  \caption{The coordinates system for a matrix of $256\times256$
+    pixels. The pixel coordinates (X, Y) and the
+    \textcolor{blue}{local coordinates (x, y) in millimeters} of the
+    center of the pixels in the corners of the sensor are shown. In
+    this convention we are looking from the sensor side with the
+    periphery on the top.}
+  \label{fig:coordinateSystem}
+\end{figure}
+%% --------------------------------------------- %%
+\subsection{Geometry of the pixel detector}
+
+In AllPix, the pixel detector geometry can be defined by the pitch
+size, the thickness of the sensor and the readout chip, the PCB
+properties, the mechanical support and other geometry properties
+related to an assembly. These parameters are usually defined in an XML
+file format called the \texttt{pixeldetector.xml}. Each detector is
+identified by a unique ID. This facilitates the running of the
+simulation with different parameters by only changing the
+\texttt{pixeldetector.xml} file without any need of re-compiling the
+code. It is also possible to define the parameters of the digitiser in
+this XML file.
+%% --------------------------------------------- %%
+\subsection{Geometry of the simulation scenario}
+
+In a file \texttt{macro.in}, all the simulation scenario is
+defined. The position of the detectors in the space is specified by
+the coordinates (x, y, z) of the centre of the detectors and the
+rotations around the x, y and z axes. The physics list used by
+\textsc{Geant4} is specified. The General Particle Source (GPS), which
+is the \textsc{Geant4} toolkit for Monte-Carlo of the high-energy
+particle transport is also described in the macro. The particle type,
+the beam energy, the position and distributions are customisable. The
+simulation is done based on frames.
+
+Visualisation parameters are also given in the macro. Open
+Inventor~\cite{OpenInventor} can be for example used to visualise the
+simulation scenario and also the particle tracks in the detectors.
+
+%% --------------------------------------------- %%
+\subsection{Digitisation}
+
+\textsc{Geant4}, for each simulation step (\texttt{G4Step}) through
+the matter, provides the energy deposited in the sensitive
+material. The step length can be customised. For thin sensors
+simulations a step of $2\,\micron$ is selected and provides a precise
+energy deposition. The semiconductor physics in a Silicon detector is
+then defined in the digitiser. The drift and diffusion are performed
+at each step (using \cref{eq:sigmaDiffusion}) to simulate the
+electron-hole pair movement in the electric and magnetic fields. The
+digitiser also defines the parameters of the readout chip. The
+electronic noise is added and the chip threshold are applied to the
+hits. The hit energy is converted to the digital value TOT
+(time-over-threshold) using the readout ASICs calibrations.
 
 
 %% --------- Recycle text --------- %%

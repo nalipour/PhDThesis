@@ -8,8 +8,8 @@
 Testing in a high energy beam is a crucial step in the R\&D for the
 pixel detector sensors and readout chips. Test beam data are used at
 various stages of the development for evaluating the performance of a
-prototype in addition to simulations (i.e. TCAD, \textsc{Geant4},
-...). 
+prototype in addition to simulations tools like TCAD and
+\textsc{Geant4} simulations.
 
 Pixel-beam telescopes play a key role in the study of position
 sensitive sensors with requirements ranging from high radiation
@@ -18,8 +18,8 @@ applications amongst others. A telescope is used to reconstruct the
 tracks of the particles going through its planes. The track position
 is then extrapolated on the Device Under Test (DUT). This allows to
 compare the position of the hit on the DUT with the reconstructed
-track and calculate the position, time resolutions and the efficiency
-of the device.
+track and calculate the position and time resolutions and the
+efficiency of the device.
 
 For the CLIC vertex detector R\&D, the Timepix3 telescope is used as a
 beam reference. Its components, performance and reconstruction
@@ -73,26 +73,37 @@ be obtained.
   \label{fig:TPX3Telescope}
 \end{figure}
 
-The material used for the mechanical support of the sensors is
-described in \cref{tab:TPX3TelescopeMaterial}. The PCB stacks up eight
-layers of copper interlacing with Isola IS410 type material. In
-\textsc{Geant4} simulations, G4\_BONE\_COMPACT\_ICRU is used for the
-simulation of Isola IS410.
+The mechanical support for each telescope plane is minimised in order
+to reduce the multiple scatterings of the particles and therefore
+improving the tracking resolution. An aluminum support is used to hold
+each telescope plane which does not cover the sensor. To protect the
+sensors an ABS plastic material is used as cover (in black in
+\cref{fig:TPX3Telescope}) with a thickness of 2~mm and placed at a
+distance of 10~mm away from the PCB. \cref{tab:TPX3TelescopeMaterial}
+describes the material (with their thicknesses and radiation lengths)
+seen by the particles for each telescope plane which would contribute
+to the multiple scatterings. The PCB stacks up eight layers of copper
+interlacing with Isola IS410 type material. An average is done to
+estimate the total thickness of Copper in the PCB. Behind the PCB a
+layer of Copper is used for the cooling of the chip.
 
 \begin{table}[htbp]
   \centering
-  \caption{The mechanical support material used for the \textsc{Geant4} simulation of the telescope planes with X the thickness in millimeters, X\textsubscript{0} the radiation length in millimeters.}
+  \caption{The material in each telescope plane contributing to the
+    multiple scatterings of the particles detected by the sensor where
+    X refers to the thickness and X\textsubscript{0} to the radiation
+    length (both in millimeters).}
   \label{tab:TPX3TelescopeMaterial}
   \begin{tabular}{l c c c}
     \toprule
     Material & X [mm] & X\textsubscript{0} [mm] & X/X\textsubscript{0} [$\%$] \\
     \midrule
+    Cooling material for the chip (Cu) & 0.1 & 14.4 & 0.69 \\
     Isola IS410 in the PCB & 1.475 & 167.6 & 0.88 \\
     Copper in the PCB & 0.125 & 14.4 & 0.87 \\
-    Sensor cover (ABS plastic) & 2 & 406.4 & 0.49 \\
-    Cooling material for the chip (Cu) & 0.1 & 14.4 & 0.69 \\
     ASIC (Si) & 0.7 & 93.7 & 0.75\\
-    Sensor (Si) & 0.3 & 93.7 & 0.32\\ \hline
+    Sensor (Si) & 0.3 & 93.7 & 0.32\\ 
+    Sensor cover (ABS plastic) & 2 & 406.4 & 0.49 \\ \hline
     Total & & & 4 \\
     \bottomrule
   \end{tabular}
@@ -112,11 +123,14 @@ The SPIDR (Speedy PIxel Detector Readout) read-out system has been
 developed by NIKHEF and CERN is used~\cite{Visser:2015bsa}. This
 system is able to handle high rates of data sent by the Timepix3 ASIC
 at full speed. This is achieved with Xilinx Virtex-7
-FPGA~\cite{XilinxVirtex7} and a 10~Gb Ethernet link. All the particles
-from the SPS spill are read out using this system.
+FPGA~\cite{XilinxVirtex7} and a 10~Gb Ethernet link. This system
+allows to record the data from all the particles from the SPS spill
+and generates a huge amount of data for processing offline as
+described in \cref{sec:recoSoft}.
 
 %% --------------------------------------------- %%
 \section{Reconstruction and analysis software frameworks}
+\label{sec:recoSoft}
 
 The offline reconstruction of the test beam data is done using two
 software frameworks. The EUTelescope software
@@ -131,7 +145,7 @@ The EUTelescope software is based on the ILCSoft
 framework~\cite{Aplin:2009zz}. This latter provides the basic building
 blocks such as the LCIO (Linear Collider Input Output) data model, the
 geometry description toolkit GEAR and a modular application framework
-for event analysis Marlin~\cite{Gaede:2006pj}.
+for event analysis, called Marlin~\cite{Gaede:2006pj}.
 
 A modular analysis and reconstruction chain can be defined using
 Marlin processors. Each processor implements algorithms for specific
@@ -163,49 +177,59 @@ framework more flexible for testing different chip families.
   \label{fig:EUTelescope_EUDET_pipeline}
 \end{figure}
 
-The EUTelescope framework is adapted to be used for the data from the
-Timepix3 telescope. The framework is written for a frame-based readout
-mode and had to be adapted to the data-driven readout mode which was
-used during the data taking. This affects mainly the definition of an
-event. In a frame-based mode, an event corresponds to a frame. Whereas
-in the data-driven mode, the data are written as soon as a pixel is
-hit (there is no shutter). Although, in the raw file, the hits are not
-ordered in time. Some pre-processing is needed to order the hits by
-their time of arrival (TOA) and create events. The reconstruction
-chain for the Timepix3 telescope is described in the following steps:
+The EUTelescope framework is adapted for the reconstruction of the
+data from the Timepix3 telescope. The framework is originally written
+for a frame-based readout mode and had to be adapted to the
+data-driven readout mode which was used during the data taking. This
+affects mainly the definition of an event. In a frame-based mode, an
+event corresponds to a frame where the shutter of the detectors are
+opened and all the hits are integrated during an exposure time. When
+the shutter is closed, there is a dead-time where no data is acquired
+and all the hits are read out from the readout chips and recorded on
+tape in a raw data file. Whereas in the data-driven mode, the data are
+acquired as soon as a pixel is hit (there is no shutter and no
+dead-time). The hits are written in the raw file with their time-stamps
+coming from a combination of the TOA and the FPGA timing. They are not
+ordered in time in the raw file since the readout chip does not send
+them in the order they are produced. Some pre-processing is needed to
+order the hits by their time of arrival (TOA) and create events.
+
+The reconstruction chain for the Timepix3 telescope is described in
+the following steps:
 
 \begin{enumerate}
 \item Converter: converts the raw files written by each telescope
-planes and the DUT in a binary format to an LCIO event. The
-data-driven zero-suppressed mode is used for the data acquisition of
-the Timepix3 readout ASICs. This mode allows for a very low dead-time
-and all the particles at the SPS spill are recorded. Every hit is
-written with a 64-bit time-stamp (\texttt{long long int}) related to
-the TOA (time-of-arrival). The hits written in the raw file are not
-necessarily ordered in time. In the converter processor, the hits
-within a timing window of 3~ms are read and filled into a vector. The
-hits in the vector are ordered in time according to their time
-stamps. An LCIO event is built by choosing the hits in the six
-telescope planes and the DUT with time stamps differing by
-$2.5\,\microsecond$. With this constraint, most probably one track per
-event is obtained.
-Hot pixels (with the maximum allowed frequency of 0.1) are as well
-calculated and also the $\eta$-correction~\cite{Belau:1983eh} values.
-
-\item Clustering: the clusters in each plane is found.
+  planes and the DUT in a binary format to an LCIO event. The
+  data-driven zero-suppressed mode is used for the data acquisition of
+  the Timepix3 readout ASICs. This mode allows for a very low
+  dead-time and all the particles at the SPS spill are recorded. Every
+  hit is written with a 64-bit time-stamp (\texttt{long long int})
+  related to the TOA of the hits and a time-stamp from the FPGA. The
+  hits written in the raw file are not necessarily ordered in time. In
+  the converter processor, the hits within a timing window of 3~ms are
+  read and filled into a vector. The hits in the vector are ordered in
+  time according to their time-stamps. An LCIO event is built by
+  choosing the hits in the six telescope planes and the DUT with time
+  stamps differing by $2.5\,\microsecond$. With this constraint, most
+  probably one track per event is obtained and all the hits belong to
+  the same track. Hot pixels (with the maximum allowed frequency of
+  0.1 i.e. pixels firing at minimum once every 10 events) are as well
+  calculated and also the $\eta$-correction~\cite{Belau:1983eh}
+  values.
+\item Clustering: the clusters in each telescope plane is found.
 \item Hit making: reconstruction of the hit position for each cluster
-with the $\eta$-correction method.
+  with the $\eta$-correction method.
 \item Alignment: by assuming straight tracks, the alignment processor
-uses Millepede~II algorithm~\cite{Blobel20065} to align the telescope
-planes with respect to each other. It consists of a least squares
-minimisation problem ($\chi^2$minimisation). A proper definition of
-the geometry is important.
+  uses Millepede~II algorithm~\cite{Blobel20065} to align the
+  telescope planes with respect to each other. It consists of a least
+  squares minimisation problem ($\chi^2$minimisation). A proper
+  definition of the geometry is important for this step.
 \item Track finding: fits the tracks based on the hits on the
-telescope planes with taking to account the multiple scatterings
-(radiation length of the material for the described geometry),
-positions of the planes. The \texttt{EUTelTestFitter} algorithm is used for the
-analysis of the test-beam. (TO PUT SOME CHI2 DISTRIBUTION PLOTS). The
-tracks are then extrapolated on the DUT.
+  telescope planes by taking into account the multiple scatterings
+  (radiation length of the material for the described geometry) and
+  the positions of the planes. The \texttt{EUTelTestFitter} algorithm
+  is used for the analysis of the test-beam. The tracks are then
+  extrapolated on the DUT.
 \end{enumerate} 
 
 \subsection{pyEudetAnalysis}
@@ -215,6 +239,37 @@ For the analysis of the DUT data, the python-based software
 %% --------------------------------------------- %%
 \section{Timepix3 telescope performance}\label{sec:telescopePerformance}
 
+The Timepix3 telescope is simulated using the AllPix simulation
+framework (c.f. \cref{sec:AllPix}). This allows for the understanding
+of the telescope performance, the tracking resolution and also the
+validation of the simulations. Since AllPix returns the Monte Carlo
+Truth position (MC position) of the hits, the true tracking resolution
+can be obtained by comparing the MC position with the reconstructed
+track or hit positions.  
+
+For the simulations, the telescope planes are placed with the same
+positions and rotations as done in data. The geometry of the sensors
+and the readout chip are defined based on the hardware. The mechanical
+support for the telescope planes is also simulated to have multiple
+scatterings as realistic as possible based on the material as
+described in \cref{tab:TPX3TelescopeMaterial}. \textsc{Geant4}
+provides the class \textsc{G4Material} describes the macroscopic
+properties of the material used in simulations and contains all the
+information relevant to the constituent elements. The density and the
+radiation length of the material are the two main properties to be
+considered for the simulations. \textsc{Geant4} already provides a
+material database for all the standard material such as copper and
+silicon. For the Isola IS410, the material G4\_BONE\_COMPACT\_ICRU has
+the closest radiation length and density. For the ABS plastic used as
+the sensor covers it composition
+(C\textsubscript{8}H\textsubscript{8}~C\textsubscript{4}H\textsubscript{6}~C\textsubscript{3}H\textsubscript{3}N)
+has been implemented in the simulations to obtain the correct density
+and radiation length.
+
+
+A digitiser for the Timepix3 readout chips bump-bonded to planar
+sensors is defined in AllPix. It simulates the silicon physics by
+calculating the diffusion at each \textsc{Geant4} step. 
 
 \subsection{Single-hit resolution on the telescope planes}
 
