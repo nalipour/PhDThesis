@@ -1,7 +1,7 @@
 % ==============================================================================
 \chapter{The Timepix3 pixel-beam telescope}
 \label{ch:Telescope}
-%==============================================================================  
+% ==============================================================================  
 
 %% --------------------------------------------- %% 
 
@@ -247,6 +247,7 @@ Truth position (MC position) of the hits, the true tracking resolution
 can be obtained by comparing the MC position with the reconstructed
 track or hit positions.  
 
+\subsection{Timepix3 telescope simulation in AllPix}
 For the simulations, the telescope planes are placed with the same
 positions and rotations as done in data. The geometry of the sensors
 and the readout chip are defined based on the hardware. The mechanical
@@ -260,24 +261,75 @@ radiation length of the material are the two main properties to be
 considered for the simulations. \textsc{Geant4} already provides a
 material database for all the standard material such as copper and
 silicon. For the Isola IS410, the material G4\_BONE\_COMPACT\_ICRU has
-the closest radiation length and density. For the ABS plastic used as
-the sensor covers it composition
+the closest radiation length and density. For the ABS plastic, used as
+the sensor covers, its constituent elements
 (C\textsubscript{8}H\textsubscript{8}~C\textsubscript{4}H\textsubscript{6}~C\textsubscript{3}H\textsubscript{3}N)
-has been implemented in the simulations to obtain the correct density
-and radiation length.
+have been implemented as a \textsc{G4Material} in the simulations to
+obtain the correct density and radiation length.
 
 
 A digitiser for the Timepix3 readout chips bump-bonded to planar
 sensors is defined in AllPix. It simulates the silicon physics by
-calculating the diffusion at each \textsc{Geant4} step. 
+calculating the diffusion at each \textsc{Geant4} step using
+\cref{eq:sigmaDiffusion}. The contribution of the generated charge by
+diffusion in the hit pixel and all its direct neighbouring pixels is
+calculated for each step. All the contributions add-up and finally the
+charge in each pixel is calculated. Finally a threshold is applied to
+each pixel and the electronic noise of the Timepix3 ASIC also adds up
+to the charge in each pixel. And finally, the TOT value is calculated
+by applying the calibration to each assembly.
 
 \subsection{Single-hit resolution on the telescope planes}
 
-The reconstructed hit on each telescope plane is compared to the Monte
-Carlo Truth position obtained by the \textsc{Geant4}
-simulations. \cref{fig:TelPlane0_MC_hit} compares the hit resolution
-on the first telescope plane in x and y directions.
+\cref{tab:AllPixTelescopePlanesParams} shows the parameters used for
+the simulation of the telescope planes. The bias and the depletion
+voltages, the sensor type and the threshold values are the parameters
+defining the charge sharing and the cluster size
+distribution. Therefore they define the intrinsic resolution of the
+sensors.
 
+\begin{table}[htbp]
+  \centering
+  \caption{Parameters used for the simulation of the telescope planes in AllPix.}
+  \label{tab:AllPixTelescopePlanesParams}
+  \begin{tabular}{cccc}
+    \toprule
+    Bias voltage [V] & Depletion voltage [V] & Sensor type & Threshold [e-] \\
+    \midrule
+    50 & 30 & p-in-n & 830 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+\cref{fig:TelescopeCluSize_data_simu} compares the cluster size
+distribution and the charge of the clusters in data and simulations
+for the first telescope plane.
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/clusterSizeX_telescope0_data_simu.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/clusterSizeY_telescope0_data_simu.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/clusterSignal_telescope0_data_simu.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{For the first telescope plane, the cluster-size distribution in the (a) x direction and (b) y direction. (c) shows the sum of the charge in the cluster in units of TOT.} %data run 661, simulation run 54.
+  \label{fig:TelescopeCluSize_data_simu}
+\end{figure}
+
+The reconstructed hit on each telescope plane is compared to the Monte
+Carlo Truth position (x\textsubscript{MC} and y\textsubscript{MC})
+obtained by AllPix simulations. \cref{fig:TelPlane0_MC_hit} compares
+the hit resolution on the first telescope plane in x and y
+directions. These resolutions are in fact the intrinsic resolution of
+the telescope planes sensors and depends on their thickness, rotations
+and the charge sharing.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -288,12 +340,16 @@ on the first telescope plane in x and y directions.
     \includegraphics[width=\textwidth]{figures/Telescope/telescopePlane0_MC_vs_hit_y.pdf}
     \caption{}
   \end{subfigure}
-  \caption{MC hit vs. reconstructed hit position.}
+  \caption{The difference between the reconstructed hit position .}
   \label{fig:TelPlane0_MC_hit}
 \end{figure}
 
 The residuals as a function of the x\textsubscript{MC} and
-y\textsubscript{MC} are shown in \cref{fig:TelPlane0_MC_hit_2D}.
+y\textsubscript{MC} are shown in \cref{fig:TelPlane0_MC_hit_2D}. The
+intrinsic resolution does not depend on the position of the hit and
+stays the same for all positions. This is also used as a check of
+coherence in geometry description in the AllPix simulations and the
+EUTelescope reconstruction.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -309,8 +365,65 @@ y\textsubscript{MC} are shown in \cref{fig:TelPlane0_MC_hit_2D}.
 \end{figure}
 
 
+
+\subsection{Biased residuals on each telescope plane}
+
+\cref{fig:telescopeBiasedRMS_data_simu} compares the RMS of the biased
+residuals obtained by the difference between the measured hit and the
+biased fitted track position in simulations and data on the telescope
+planes (the original distributions are given in
+\cref{fig:telescope_biasedResiduals_data_X,fig:telescope_biasedResiduals_data_Y}
+for data and
+\cref{fig:telescope_biasedResiduals_simu_X,fig:telescope_biasedResiduals_simu_Y}
+for simulation). For this calculation, a cut is applied to remove
+$10\%$ of tracks with the highest
+$\chi^2$/NDF. \cref{fig:chi2_data_simu} shows the $\chi^2$/NDF in data
+(a) and in simulations (b) with a cut applied illustrated in a red
+line.
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/RMSX_simu_vs_data.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/RMSY_simu_vs_data.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{The RMS of the biased residuals in the (a) x and (b) y directions
+    comparing the data and simulation for the telescope planes. A cut
+    is applied to remove the $10\%$ of tracks with highest
+    $\chi^2$/NDF.}
+  \label{fig:telescopeBiasedRMS_data_simu}
+\end{figure}
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/chi2_run661.pdf}
+    \caption{Data}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/chi2_run73.pdf}
+    \caption{Simulation}
+  \end{subfigure}
+  \caption{$\chi^2$/NDF distributions for (a) data and (b)
+    simulation. A cut is applied to remove the $10\%$ of tracks with
+    highest $\chi^2$/NDF (at the position of the red line).}
+  \label{fig:chi2_data_simu}
+\end{figure}
+
+The width of the biased residuals increases with the distance (in z
+direction). In fact, the uncertainty on the deflection angle due to
+the multiple scatterings increases with larger distances of the
+telescope planes.
+
+
+
+\subsection{Tracking resolution on the DUT}
 The tracking resolution on the DUT ($100\,\micron$ thick sensor) in
-the x and y directions is shown in \cref{fig:DUT_MC_track}.
+the x and y directions is shown in \cref{fig:DUT_MC_track}. This value
+can be only obtained in simulations as the MC truth position is
+needed.
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{figures/Telescope/Unbiased_trackRes_DUT_x.pdf}
@@ -341,53 +454,22 @@ In 2D the tracking resolution on the DUT is shown in \cref{fig:DUT_MC_track_2D}.
   \label{fig:DUT_MC_track_2D}
 \end{figure}
 
-\subsection{Biased residuals on each telescope plane}
+\cref{tab:SummaryOfResolutions} summarises the telescope resolutions
+obtained in simulations.
 
-In simulation the material for the PCB in simulations is chosen to be
-an epoxy (G4\_PLEXIGLASS) with a density of 1.19~g~\inversecmcubic and
-a radiation length of X\textsubscript{0}=4.06~g~\inversecmsquared
-(3.41~cm).
+\begin{table}[htbp]
+  \centering
+  \caption{A summary of the calculated telescope performance.}
+  \label{tab:SummaryOfResolutions}
+  \begin{tabular}{ccc}
+    \toprule
+    $\sigma$\textsubscript{int} [$\micron$] & $\sigma$\textsubscript{x,DUT} [$\micron$] & $\sigma$\textsubscript{y,DUT} [$\micron$]\\
+    \midrule
+    2.4 & 1.86 & 1.60 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
-
-The cluster size distribution and the collected charge comparing data
-and simulations is shown in \cref{fig:TelescopeCluSize_data_simu}.
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/clusterSizeX_telescope0_data_simu.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/clusterSizeY_telescope0_data_simu.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/clusterSignal_telescope0_data_simu.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{data run 661, simulation run 54.}
-  \label{fig:TelescopeCluSize_data_simu}
-\end{figure}
-
-The biased residuals (RMS) comparing data and simulation in
-\cref{fig:telescopeBiasedRMS_data_simu} (the distributions are given
-in
-\cref{fig:telescope_biasedResiduals_data_X,fig:telescope_biasedResiduals_data_Y}
-for data and
-\cref{fig:telescope_biasedResiduals_simu_X,fig:telescope_biasedResiduals_simu_Y}
-for simulation.
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/RMSX_simu_vs_data.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/RMSY_simu_vs_data.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{data run 661, simulation run 54.}
-  \label{fig:telescopeBiasedRMS_data_simu}
-\end{figure}
 
 %% --------------------------------------------- %%
 
