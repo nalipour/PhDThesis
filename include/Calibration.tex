@@ -216,6 +216,32 @@ allows to reach very high readout rates.
   \label{fig:Timepix_pixel_cell_schematic}
 \end{figure}
 
+%% --------------------------------------------- %%
+\subsection{Timepix3 assemblies}\label{sec:Timepix3Assemblies}
+A summary of the Timepix3 assemblies is shown in \cref{tab:Timepix3Assemblies}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Details of different Advacam planar pixel sensors
+    bump-bonded to Timepix3 readout ASICs and studied in calibration
+    and test beams.}
+  \label{tab:Timepix3Assemblies}
+  \begin{tabular}{lccccc}
+    \toprule
+    Timepix3 ID & Thickness [\micron] & Type & Edge distance [\micron] & Guard-ring potential & Assembly\\
+    \midrule
+     W19\_G7 & 50 & n-in-p & 20 & Without GR & 20-NGR-50 \\
+     W19\_F7 & 50 & n-in-p & 23 & Floating & 23-FGR-50 \\
+     W19\_L8 & 50 & n-in-p & 28 & Grounded & 28-GNDGR-50 \\
+     W19\_C7 & 50 & n-in-p & 55 & Grounded & 55-GNDGR-50 \\ \hline
+     W5\_E2 & 100 & n-in-p & 55 & Grounded & 55-GNDGR-100 \\ \hline
+     W5\_F1 & 150 & n-in-p & 55 & Grounded & 55-GNDGR-150 \\ \hline
+     W2\_J5 & 300 & p-in-n & - & - & - \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+%% --------------------------------------------- %%
 \subsection{Threshold equalisation} \label{sec:ThresholdEqualisation}
 In semiconductor electronics, manufacturing imperfections cause
 variations in the performance within the device. The threshold is one
@@ -363,7 +389,7 @@ the x-axis but the slope (parameter $a$) remains the same.
 The calibration for the other assemblies are given in \cref{sec:appendixFE_electronics}.
 
 
-\subsubsection{Threshold calibration} \label{sec:threshold}
+\subsubsection{Threshold calibration} \label{sec:thresholdCalibration}
 
 
 The operating threshold DAC (Digital-to-Analog Converter) set in each
@@ -500,7 +526,7 @@ The threshold calibration for 55-GNDGR-100 is shown in
 \cref{fig:Timepix3_THL_Calibration}). For the Timepix3 ASIC has a DAC
 step gain of around $11\pm$e-/step is calculated. The noise measured
 at the front-end corresponds to 80 to 90
-electrons. \cref{tab:NominalThreshold} summarises the conversion of
+electrons. \cref{tab:THLcalibration,tab:THLcalibration_noise} summarises the conversion of
 the threshold DAC into energy for the different assemblies at nominal
 conditions.
 
@@ -514,23 +540,7 @@ conditions.
   \label{fig:THLcalib_55-GNDGR-100}
 \end{figure}
 
-\begin{table}[htbp]
-  \centering
-  \caption{Advacam active-edge n-in-p planar pixel sensor assemblies. The edge distance is defined by the distance between the last pixel implant and the physical sensor edge.}
-  \label{tab:NominalThreshold}
-  \resizebox{\textwidth}{!}{\begin{tabular}{lccc}
-      \toprule
-      Assembly & Nominal THL\textsubscript{DAC}\textsuperscript{op} [DAC steps] & Nominal THL\textsubscript{e-}\textsuperscript{op} [electrons]\\
-      \midrule
-      20-NGR & 1190 & 466.5\\
-      23-FGR & 1187 & 532.4\\ \hline
-      28-GNDGR & 1133 & 517.8\\
-      55-GNDGR & 1148 & 553.7\\
-      55-GNDGR-100 & 1160 & 537.9\\ \hline
-      55-GNDGR-150 & 1153 & 441.2\\
-      \bottomrule
-  \end{tabular}}
-\end{table}
+
 
 
 
@@ -685,3 +695,23 @@ For all the assemblies, the energy deposition in \ev is given in \cref{sec:appen
 % D09-W0126 was not operating as expected for a $100\,\micron$
 % sensor. Therefore the calibration of these assemblies was done without
 % threshold measurements.
+
+
+
+%% \begin{table}[htbp]
+%%   \centering
+%%   \caption{Advacam active-edge n-in-p planar pixel sensor assemblies. The edge distance is defined by the distance between the last pixel implant and the physical sensor edge.}
+%%   \label{tab:NominalThreshold}
+%%   \resizebox{\textwidth}{!}{\begin{tabular}{lccc}
+%%       \toprule
+%%       Assembly & Nominal THL\textsubscript{DAC}\textsuperscript{op} [DAC steps] & Nominal THL\textsubscript{e-}\textsuperscript{op} [electrons]\\
+%%       \midrule
+%%       20-NGR & 1190 & 466.5\\
+%%       23-FGR & 1187 & 532.4\\ \hline
+%%       28-GNDGR & 1133 & 517.8\\
+%%       55-GNDGR & 1148 & 553.7\\
+%%       55-GNDGR-100 & 1160 & 537.9\\ \hline
+%%       55-GNDGR-150 & 1153 & 441.2\\
+%%       \bottomrule
+%%   \end{tabular}}
+%% \end{table}

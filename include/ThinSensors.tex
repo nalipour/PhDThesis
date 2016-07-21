@@ -1,16 +1,81 @@
 % ==============================================================================
 \chapter{Thin sensors studies}
 \label{ch:ThinSensorsStudies}
-%==============================================================================    
+% ==============================================================================    
+
+The aim of the CLIC vertex detector is the precise determination of
+the displaced vertices and jet flavour-tagging in an environment with
+high occupancy from beam-induced backgrounds. Multi-layer barrel and
+endcap pixel detectors with geometrical coverage extending down to low
+polar angles ($\theta_{min}\sim8^{\circ}$) are foreseen to fulfill
+these requirements. The goal is to achieve a single-point resolution
+of $\sim 3\,\micron$ with $25\,\micron$ pixel pitch and analog
+readout. A material budget of $\sim0.2\%$~X\textsubscript{0} per layer
+is required including readout, support and cabling. This can be
+achieved with $50\,\micron$ thick sensors on $50\,\micron$ thick
+readout ASICs.
+
+As part of the R\&D programme for the CLIC vertex detector, the
+performance of thin silicon sensors is quantified using the Timepix3
+readout chip with $55\,\micron$ pixel pitch. $50\,\micron$ to
+$300\,\micron$ thick planar sensors are bump-bonded to $700\,\micron$
+thick Timepix3 ASICs. These assemblies are tested in test beams and
+the data are used to compare to \textsc{Geant4}-based simulations. The
+simulation is finally extrapolated for smaller pixels of
+$25\,\micron$ pixel pitch.
+
+%% --------------------------------------------- %%
+\section{Thin-sensor assemblies}
+A summary of the Timepix3 assemblies bump-bonded to thin sensors is
+shown in \cref{tab:Timepix3Assemblies}. 
+
+The assemblies were tested in beam reference telescope as shown in
+\cref{fig:TPX3Telescope}. The assemblies were placed in the middle of
+the Timepix3 telescope.
+
+%% --------------------------------------------- %%
+\subsection{Operating conditions}\label{sec:operatingConditions}
+The Timepix3 readout ASICs were operated with the optimised parameters
+as described in \cref{tab:timepix3Operation}. 
+
+The nominal values for the threshold and the bias voltage are shown in
+\cref{tab:nominalBiasThreshold}. For the nominal bias voltage, the
+sensor is fully (or over) depleted. The nominal threshold set insures
+that the readout chip is not operating in noisy conditions. These
+nominal values are held throughout the data taking except for the
+cases where the threshold or the bias voltages are scanned.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Nominal operating bias voltage, threshold in DAC and
+    calibrated in number of electrons (measured as described in
+    \cref{sec:thresholdCalibration}) for the tested assemblies as
+    shown in \cref{tab:Timepix3Assemblies}.}
+  \label{tab:nominalBiasThreshold}
+  \begin{tabular}{lccc}
+    \toprule
+    Timepix3 ID & Bias voltage [V] & Threshold [DAC] & Threhsold [e\textsuperscript{-}]\\
+    \midrule
+    W19\_G7 & -15 & 1190 & $526.230\pm0.649$ \\
+    W19\_F7 & -15 & 1187 & $600.406\pm0.551$ \\
+    W19\_L8 & -15 & 1133 & $568.506\pm0.538$ \\
+    W19\_C7 & -15 & 1148 & $608.700\pm0.488$ \\ \hline
+    W5\_E2 & -20 & 1160 & $561.019\pm0.712$ \\ \hline
+    W5\_F1 & -30 & 1153 & $554.885\pm0.493$ \\ \hline
+    W2\_J5 & 100 & 1170 & $565.723\pm1.560$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 %% --------------------------------------------- %%
 \section{Samples and sensors geometries}
-Operating conditions for the Timepix3 readout ASICs:
-\begin{itemize}
-\item I\textsubscript{krum} DAC is set to 10.
-\item TOT clock frequency: $40\,\megahertz$
-\item VFBK: 150
-\end{itemize}
+%% The DAC settings used for the operation of the Timepix3 assemblies in
+%% test beams is summarised in \cref{tab:timepix3Operation}.
+%% \begin{itemize}
+%% \item I\textsubscript{krum} DAC is set to 10.
+%% \item TOT clock frequency: $40\,\megahertz$
+%% \item VFBK: 150
+%% \end{itemize}
 
 
  For most of the measurements, the DUT is perpendicular to the beam. A
@@ -18,41 +83,114 @@ Operating conditions for the Timepix3 readout ASICs:
  bias scan allows to obtain the depletion voltage.
 
 %% --------------------------------------------- %%
-\section{Test-beam results for thin sensors}
+\section{Experimental results for thin sensors}
 
-\subsection{Bias scan}
+\subsection{Measurement of the depletion voltage}
 
-The total TOT of all cluster sizes is fitted with a landau function
-convoluted with a Gaussian. The fit is done using RooFit and an
-example is given in \cref{fig:W2_J5_1998_totalTOT_langauFit}. The MPV
-of the Landau and the error on the fit are plotted versus the square
-root of the bias voltage.
+The depletion voltage corresponds to the voltage at which the sensor
+is fully depleted and the charge of the full thickness of the sensor
+is collected. This can be measured in test beams by scanning the bias
+voltage. Lowering the bias voltage causes the under-depletion of the
+sensor and therefore the charge collected is also reduced. The
+depletion voltage and the depletion width are related by
+\cref{eq:depletionVoltage}. 
 
-\begin{figure}[htbp] 
-  \centering
-  \includegraphics[width=0.5\textwidth]{./figures/TestBeam/W2_J5_totalTOT_Langau_run1998.pdf}
-  \caption{W2\_J5: Vbias=95 V}
-  \label{fig:W2_J5_1998_totalTOT_langauFit}
+\cref{fig:W2_J5_DepletionVoltage_chargeVSbiasVoltage} shows the most
+probable value (MPV) of the measured TOT as a function of the square
+root of the bias voltage. The measured TOT is obtained by summing up
+the TOT in the clusters considering all cluster sizes. The
+distribution is fitted with a landau function convoluted with a
+Gaussian. The fit is done using RooFit~\cite{Cranmer:2012sba} and an
+example is given in \cref{fig:W2_J5_DepletionVoltage_TOTdistr}. The
+TOT MPV shows two distinct regions: a sloped region and a plateau
+region. The intersection of these two regions gives the depletion
+voltage of the assembly and it is calculated by the intersection of a
+linear fits performed on the both regions. The calculated depletion
+voltages for all the assemblies is presented in
+\cref{tab:depletionVoltage}.
+
+\begin{figure}[htbp]\centering
+  \begin{subfigure}[b]{0.45\textwidth}
+  \includegraphics[width=\textwidth]{./figures/TestBeam/W2_J5_totalTOT_Langau_run1998.pdf}
+  \caption{}\label{fig:W2_J5_DepletionVoltage_TOTdistr}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0002_J05.pdf}
+    \caption{}\label{fig:W2_J5_DepletionVoltage_chargeVSbiasVoltage}
+  \end{subfigure}
+  \caption{(a) The measured TOT distribution in a $300\,\micron$ thick
+    silicon sensor (W2\_J5) with a bias voltage of 95~V fitted with a
+    Landau function convoluted with a Gaussian function. (b) The most
+    probable value of the measured TOT as a function of the bias
+    voltage for W2\_J5. Straight lines are used to fit the slope and
+    the plateau regions. The depletion voltage corresponds to the
+    intersection of these two regions and shown in a red dashed
+    line. The continuous red line shows the nominal operating bias
+    voltage.}
+  \label{fig:W2_J5_DepletionVoltage}
 \end{figure}
 
 \begin{table}[htbp]
   \centering
-  \caption{Measured depletion voltage}
+  \caption{Measured depletion voltage for the assemblies described in
+    \cref{tab:Timepix3Assemblies} and calculated by fitting the
+    plateau and slope regions of TOT as a function of bias voltage.}
   \label{tab:depletionVoltage}
-  \begin{tabular}{lcccc}
+  \begin{tabular}{lc}
     \toprule
-    Assembly & Thickness [\micron] & Sensor type & Nominal voltage [V] & Depletion voltage [V] \\
+    Assembly & Depletion voltage [V] \\
     \midrule
-    20-NGR  & 50 & n-in-p & -15 & $<$-9.47 \\
-    23-FGR & 50 & n-in-p & -15 & $<$-6.32 \\
-    28-GNDGR & 50 & n-in-p & -15 & $<$-7.19\\
-    55-GNDGR & 50 & n-in-p & -15 & $<$-5.43\\ \hline
-    55-GNDGR-100 & 100 & n-in-p & -20 & -10.82 \\ \hline
-    55-GNDGR-150 & 150 & n-in-p & -30 & -14.86 \\ \hline
-    W2\_J5       & 300 & p-in-n & 100 & 63.23 \\ 
+    W19\_G7 & $<$-9.47 \\
+    W19\_F7 & $<$-6.32 \\
+    W19\_L8 & $<$-7.19\\
+    W19\_C7 & $<$-5.43\\ \hline
+    W5\_E2 & -10.82 \\ \hline
+    W5\_F1 & -14.86 \\ \hline
+    W2\_J5 & 63.23 \\ 
     \bottomrule
   \end{tabular}
 \end{table}
+
+%% \begin{table}[htbp]
+%%   \centering
+%%   \caption{Measured depletion voltage for the assemblies described in
+%%     \cref{tab:Timepix3Assemblies} and calculated by fitting the
+%%     plateau and slope regions of TOT as a function of bias voltage.}
+%%   \label{tab:depletionVoltage}
+%%   \begin{tabular}{lcccc}
+%%     \toprule
+%%     Assembly & Thickness [\micron] & Sensor type & Nominal voltage [V] & Depletion voltage [V] \\
+%%     \midrule
+%%     20-NGR  & 50 & n-in-p & -15 & $<$-9.47 \\
+%%     23-FGR & 50 & n-in-p & -15 & $<$-6.32 \\
+%%     28-GNDGR & 50 & n-in-p & -15 & $<$-7.19\\
+%%     55-GNDGR & 50 & n-in-p & -15 & $<$-5.43\\ \hline
+%%     55-GNDGR-100 & 100 & n-in-p & -20 & -10.82 \\ \hline
+%%     55-GNDGR-150 & 150 & n-in-p & -30 & -14.86 \\ \hline
+%%     W2\_J5       & 300 & p-in-n & 100 & 63.23 \\ 
+%%     \bottomrule
+%%   \end{tabular}
+%% \end{table}
+
+
+%% \begin{table}[htbp]
+%%   \centering
+%%   \caption{Measured depletion voltage}
+%%   \label{tab:depletionVoltage}
+%%   \begin{tabular}{lcccc}
+%%     \toprule
+%%     Assembly & Thickness [\micron] & Sensor type & Nominal voltage [V] & Depletion voltage [V] \\
+%%     \midrule
+%%     20-NGR  & 50 & n-in-p & -15 & $<$-9.47 \\
+%%     23-FGR & 50 & n-in-p & -15 & $<$-6.32 \\
+%%     28-GNDGR & 50 & n-in-p & -15 & $<$-7.19\\
+%%     55-GNDGR & 50 & n-in-p & -15 & $<$-5.43\\ \hline
+%%     55-GNDGR-100 & 100 & n-in-p & -20 & -10.82 \\ \hline
+%%     55-GNDGR-150 & 150 & n-in-p & -30 & -14.86 \\ \hline
+%%     W2\_J5       & 300 & p-in-n & 100 & 63.23 \\ 
+%%     \bottomrule
+%%   \end{tabular}
+%% \end{table}
 
 
 \subsection{Threshold scan}
