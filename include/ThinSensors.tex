@@ -67,20 +67,20 @@ cases where the threshold or the bias voltages are scanned.
   \end{tabular}
 \end{table}
 
-%% --------------------------------------------- %%
-\section{Samples and sensors geometries}
-%% The DAC settings used for the operation of the Timepix3 assemblies in
-%% test beams is summarised in \cref{tab:timepix3Operation}.
-%% \begin{itemize}
-%% \item I\textsubscript{krum} DAC is set to 10.
-%% \item TOT clock frequency: $40\,\megahertz$
-%% \item VFBK: 150
-%% \end{itemize}
+% %% --------------------------------------------- %%
+% \section{Samples and sensors geometries}
+% %% The DAC settings used for the operation of the Timepix3 assemblies in
+% %% test beams is summarised in \cref{tab:timepix3Operation}.
+% %% \begin{itemize}
+% %% \item I\textsubscript{krum} DAC is set to 10.
+% %% \item TOT clock frequency: $40\,\megahertz$
+% %% \item VFBK: 150
+% %% \end{itemize}
 
 
- For most of the measurements, the DUT is perpendicular to the beam. A
- scan was done on the bias voltage and the threshold of the DUT. The
- bias scan allows to obtain the depletion voltage.
+% For most of the measurements, the DUT is perpendicular to the beam. A
+% scan was done on the bias voltage and the threshold of the DUT. The
+% bias scan allows to obtain the depletion voltage.
 
 %% --------------------------------------------- %%
 \section{Experimental results for thin sensors}
@@ -107,7 +107,7 @@ region. The intersection of these two regions gives the depletion
 voltage of the assembly and it is calculated by the intersection of a
 linear fits performed on the both regions. The calculated depletion
 voltages for all the assemblies is presented in
-\cref{tab:depletionVoltage}.
+\cref{tab:depletionVoltage} and shown in \cref{fig:depletionVoltage}.
 
 \begin{figure}[htbp]\centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -151,51 +151,64 @@ voltages for all the assemblies is presented in
   \end{tabular}
 \end{table}
 
-%% \begin{table}[htbp]
-%%   \centering
-%%   \caption{Measured depletion voltage for the assemblies described in
-%%     \cref{tab:Timepix3Assemblies} and calculated by fitting the
-%%     plateau and slope regions of TOT as a function of bias voltage.}
-%%   \label{tab:depletionVoltage}
-%%   \begin{tabular}{lcccc}
-%%     \toprule
-%%     Assembly & Thickness [\micron] & Sensor type & Nominal voltage [V] & Depletion voltage [V] \\
-%%     \midrule
-%%     20-NGR  & 50 & n-in-p & -15 & $<$-9.47 \\
-%%     23-FGR & 50 & n-in-p & -15 & $<$-6.32 \\
-%%     28-GNDGR & 50 & n-in-p & -15 & $<$-7.19\\
-%%     55-GNDGR & 50 & n-in-p & -15 & $<$-5.43\\ \hline
-%%     55-GNDGR-100 & 100 & n-in-p & -20 & -10.82 \\ \hline
-%%     55-GNDGR-150 & 150 & n-in-p & -30 & -14.86 \\ \hline
-%%     W2\_J5       & 300 & p-in-n & 100 & 63.23 \\ 
-%%     \bottomrule
-%%   \end{tabular}
-%% \end{table}
 
+\subsection{Charge sharing as a function of the track position}
 
-%% \begin{table}[htbp]
-%%   \centering
-%%   \caption{Measured depletion voltage}
-%%   \label{tab:depletionVoltage}
-%%   \begin{tabular}{lcccc}
-%%     \toprule
-%%     Assembly & Thickness [\micron] & Sensor type & Nominal voltage [V] & Depletion voltage [V] \\
-%%     \midrule
-%%     20-NGR  & 50 & n-in-p & -15 & $<$-9.47 \\
-%%     23-FGR & 50 & n-in-p & -15 & $<$-6.32 \\
-%%     28-GNDGR & 50 & n-in-p & -15 & $<$-7.19\\
-%%     55-GNDGR & 50 & n-in-p & -15 & $<$-5.43\\ \hline
-%%     55-GNDGR-100 & 100 & n-in-p & -20 & -10.82 \\ \hline
-%%     55-GNDGR-150 & 150 & n-in-p & -30 & -14.86 \\ \hline
-%%     W2\_J5       & 300 & p-in-n & 100 & 63.23 \\ 
-%%     \bottomrule
-%%   \end{tabular}
-%% \end{table}
+The charge sharing is studied by extrapolating the track position
+obtained from the telescope to the DUT. The size of the clusters
+depends on the track position within the pixel. For the perpendicular
+tracks to the DUT, multi-pixel clusters are created when the track
+hits the edges or the corners of a pixel, leading to the charge
+sharing between the pixel and its neighbouring pixels. The charge
+sharing is also affected by the operating threshold of the readout
+ASIC in addition to the track position. \cref{fig:chargeSharingTrack}
+illustrates the track position within the pixel for 1 to 4-pixel cluster
+sizes for a $50\,\micron$ sensor. For other thicknesses, the track
+position within the pixel is shown in
+\cref{fig:chargeSharingTrack_W19_G7,fig:chargeSharingTrack_W5_E2,fig:chargeSharingTrack_W5_F1}.
 
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_1hit_runW19_G7.pdf}
+    \caption{Cluster size 1}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_2hit_runW19_G7.pdf}
+    \caption{Cluster size 2}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_3hit_runW19_G7.pdf}
+    \caption{Cluster size 3}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_4hit_runW19_G7.pdf}
+    \caption{Cluster size 4}
+  \end{subfigure}
+  \caption{Extrapolated track position within the pixel for 1 to 4-pixel
+    cluster sizes for a $50\,\micron$ sensor (assembly W19\_G7). The
+    assembly is operated at the nominal conditions.}
+  \label{fig:chargeSharingTrack}
+\end{figure}
 
-\subsection{Threshold scan}
+\cref{fig:chargeSharing_2PC} compares the track position within the
+pixel for two-pixel clusters in a one-dimensional profile for
+different sensor thicknesses. The thinner the sensor, the track
+position is closer to the edges of the pixels to create a two-pixel
+cluster.
 
-\subsection{Resolution vs. thickness}
+\begin{figure}[htbp] 
+  \centering
+  \includegraphics[width=0.5\textwidth]{./figures/TestBeam/chargeSharing_2pixel_clusters.pdf}
+  \caption{Track position within the pixel for tracks leading to
+    two-pixel clusters for different sensor thicknesses (the
+    histograms are scaled to have a unit area).}
+  \label{fig:chargeSharing_2PC}
+\end{figure}
+
+\subsection{Cluster size distribution}
+\subsection{Single point resolution}
+
+%\subsection{Resolution vs. thickness}
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/TestBeam/cluSize_vs_thickness.pdf}
@@ -210,7 +223,7 @@ voltages for all the assemblies is presented in
 \end{figure}
 
 
-\subsection{Efficiency vs. thickness}
+\subsection{Global detection efficiency}
 
 The efficiency as a function of the threshold is shown in \cref{fig:efficiency_VS_Threshold}.
 
@@ -362,3 +375,47 @@ The simulations using AllPix are validated with the data as shown in
 %%   \caption{55-GNDGR-150 (W5\_F1): bias and voltage scan.}
 %%   \label{fig:Timepix3_THLscan_Vdep_F1}
 %% \end{figure}
+
+
+
+
+%% \begin{table}[htbp]
+%%   \centering
+%%   \caption{Measured depletion voltage for the assemblies described in
+%%     \cref{tab:Timepix3Assemblies} and calculated by fitting the
+%%     plateau and slope regions of TOT as a function of bias voltage.}
+%%   \label{tab:depletionVoltage}
+%%   \begin{tabular}{lcccc}
+%%     \toprule
+%%     Assembly & Thickness [\micron] & Sensor type & Nominal voltage [V] & Depletion voltage [V] \\
+%%     \midrule
+%%     20-NGR  & 50 & n-in-p & -15 & $<$-9.47 \\
+%%     23-FGR & 50 & n-in-p & -15 & $<$-6.32 \\
+%%     28-GNDGR & 50 & n-in-p & -15 & $<$-7.19\\
+%%     55-GNDGR & 50 & n-in-p & -15 & $<$-5.43\\ \hline
+%%     55-GNDGR-100 & 100 & n-in-p & -20 & -10.82 \\ \hline
+%%     55-GNDGR-150 & 150 & n-in-p & -30 & -14.86 \\ \hline
+%%     W2\_J5       & 300 & p-in-n & 100 & 63.23 \\ 
+%%     \bottomrule
+%%   \end{tabular}
+%% \end{table}
+
+
+%% \begin{table}[htbp]
+%%   \centering
+%%   \caption{Measured depletion voltage}
+%%   \label{tab:depletionVoltage}
+%%   \begin{tabular}{lcccc}
+%%     \toprule
+%%     Assembly & Thickness [\micron] & Sensor type & Nominal voltage [V] & Depletion voltage [V] \\
+%%     \midrule
+%%     20-NGR  & 50 & n-in-p & -15 & $<$-9.47 \\
+%%     23-FGR & 50 & n-in-p & -15 & $<$-6.32 \\
+%%     28-GNDGR & 50 & n-in-p & -15 & $<$-7.19\\
+%%     55-GNDGR & 50 & n-in-p & -15 & $<$-5.43\\ \hline
+%%     55-GNDGR-100 & 100 & n-in-p & -20 & -10.82 \\ \hline
+%%     55-GNDGR-150 & 150 & n-in-p & -30 & -14.86 \\ \hline
+%%     W2\_J5       & 300 & p-in-n & 100 & 63.23 \\ 
+%%     \bottomrule
+%%   \end{tabular}
+%% \end{table}

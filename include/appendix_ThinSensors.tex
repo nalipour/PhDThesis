@@ -9,36 +9,163 @@
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0019_G07.pdf}
-    \caption{20-NGR}
+    \caption{W19\_G7}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0019_F07.pdf}
-    \caption{23-FGR}
+    \caption{W19\_F7}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0019_L08.pdf}
-    \caption{28-GNDGR}
+    \caption{W19\_L8}
   \end{subfigure} \\
 
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0019_C07.pdf}
-    \caption{55-GNDGR}
+    \caption{W19\_C7}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0005_E02.pdf}
-    \caption{55-GND-GR-100}
+    \caption{W5\_E2}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0005_F01.pdf}
-    \caption{55-GND-GR-150}
+    \caption{W5\_F1}
   \end{subfigure}\\
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0002_J05.pdf}
     \caption{W2\_J5}
   \end{subfigure}
-  \caption{The depletion voltage is shown in dashed line and the nominal operating voltage is shown in continuous line.}
+  \caption{The most probable value of the measured TOT as a function
+    of the bias voltage for the assemblies listed in
+    \cref{tab:Timepix3Assemblies}. Straight lines are used to fit the
+    slope and the plateau regions. The depletion voltage corresponds
+    to the intersection of these two regions and shown in a red dashed
+    line. The continuous red line shows the nominal operating bias
+    voltage.}
   \label{fig:depletionVoltage}
 \end{figure}
+
+\newpage
+%% --------------------------------------------- %%
+\section{Charge sharing}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_1hit_runW19_G7.pdf}
+    \caption{Cluster size 1}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_2hit_runW19_G7.pdf}
+    \caption{Cluster size 2}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_3hit_runW19_G7.pdf}
+    \caption{Cluster size 3}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_4hit_runW19_G7.pdf}
+    \caption{Cluster size 4}
+  \end{subfigure}
+  \caption{Extrapolated track position within the pixel for 1 to 4-hit
+    cluster sizes for a $50\,\micron$ sensor (assembly W19\_G7). The
+    assembly is operated at the nominal conditions.}
+  \label{fig:chargeSharingTrack_W19_G7}
+\end{figure}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_1hit_runW5_E2.pdf}
+    \caption{Cluster size 1}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_2hit_runW5_E2.pdf}
+    \caption{Cluster size 2}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_3hit_runW5_E2.pdf}
+    \caption{Cluster size 3}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_4hit_runW5_E2.pdf}
+    \caption{Cluster size 4}
+  \end{subfigure}
+  \caption{Extrapolated track position within the pixel for 1 to 4-hit
+    cluster sizes for a $100\,\micron$ sensor (assembly W5\_E2). The
+    assembly is operated at the nominal conditions.}
+  \label{fig:chargeSharingTrack_W5_E2}
+\end{figure}
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_1hit_runW5_F1.pdf}
+    \caption{Cluster size 1}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_2hit_runW5_F1.pdf}
+    \caption{Cluster size 2}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_3hit_runW5_F1.pdf}
+    \caption{Cluster size 3}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_4hit_runW5_F1.pdf}
+    \caption{Cluster size 4}
+  \end{subfigure}
+  \caption{Extrapolated track position within the pixel for 1 to 4-hit
+    cluster sizes for a $150\,\micron$ sensor (assembly W5\_F1). The
+    assembly is operated at the nominal conditions.}
+  \label{fig:chargeSharingTrack_W5_F1}
+\end{figure}
+
+% \begin{figure}[htbp] \centering
+%   \begin{subfigure}[b]{0.23\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_1hit_runW19_F7.pdf}
+%     \caption{Cluster size 1}
+%   \end{subfigure} \hfill
+%   \begin{subfigure}[b]{0.23\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_2hit_runW19_F7.pdf}
+%     \caption{Cluster size 2}
+%   \end{subfigure} \hfill
+%   \begin{subfigure}[b]{0.23\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_3hit_runW19_F7.pdf}
+%     \caption{Cluster size 3}
+%   \end{subfigure} \hfill
+%   \begin{subfigure}[b]{0.23\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_4hit_runW19_F7.pdf}
+%     \caption{Cluster size 4}
+%   \end{subfigure}
+%   \caption{Extrapolated track position within the pixel for 1 to 4-hit
+%     cluster sizes for a $50\,\micron$ sensor (assembly W19\_F7). The
+%     assembly is operated at the nominal conditions.}
+%   \label{fig:chargeSharingTrack_W19_F7}
+% \end{figure}
+
+
+% \begin{figure}[htbp] \centering
+%   \begin{subfigure}[b]{0.23\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_1hit_runW19_L8.pdf}
+%     \caption{Cluster size 1}
+%   \end{subfigure} \hfill
+%   \begin{subfigure}[b]{0.23\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_2hit_runW19_L8.pdf}
+%     \caption{Cluster size 2}
+%   \end{subfigure} \hfill
+%   \begin{subfigure}[b]{0.23\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_3hit_runW19_L8.pdf}
+%     \caption{Cluster size 3}
+%   \end{subfigure} \hfill
+%   \begin{subfigure}[b]{0.23\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_4hit_runW19_L8.pdf}
+%     \caption{Cluster size 4}
+%   \end{subfigure}
+%   \caption{Extrapolated track position within the pixel for 1 to 4-hit
+%     cluster sizes for a $50\,\micron$ sensor (assembly W19\_L8). The
+%     assembly is operated at the nominal conditions.}
+%   \label{fig:chargeSharingTrack_W19_L8}
+% \end{figure}
+
 
 \newpage
 %% --------------------------------------------- %%
