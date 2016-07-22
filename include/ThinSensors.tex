@@ -206,21 +206,94 @@ cluster.
 \end{figure}
 
 \subsection{Cluster size distribution}
-\subsection{Single point resolution}
+The cluster size distribution is a straight indication on the amount
+of charge sharing in a sensor. For thicker sensors, more charge
+sharing is expected since the charge drifts in a longer distance and
+diffuses across a larger transverse area. The threshold of the readout
+electronics has a large impact on the detection of the charge
+sharing. The threshold should be as low as possible to avoid
+undetected energy deposits.
 
-%\subsection{Resolution vs. thickness}
+In this analysis, the hit pixels form a cluster with a distance
+criterion of $\sqrt{2}$: pixels sharing common corners or edges are
+considered as clusters. For sensor thicknesses in the range of
+$50\,\micron$-$300\,\micron$, clusters of size one to four are
+expected due to the charge sharing. Larger clusters are due to other
+factors such as the $\delta$-rays.
+
+The fraction of different cluster sizes depends on the operating
+conditions of the assemblies like the bias voltage and the threshold
+of the readout ASICs. \cref{fig:cluSize_operatingConditions} shows the
+cluster size fraction for a $150\,\micron$ thick sensor (assembly
+W5\_F1) operated at different bias voltages and thresholds.  
+
+Higher bias voltages reduce the amount of charge sharing since the
+drift time is lowered in a stronger electric field and the charges
+diffuse less in the transverse direction. For very low bias voltages,
+the sensor is under-depleted. An increase in bias voltage in this
+regime increases the charge sharing. In fact, the pixel neighbouring a
+hit pixel is more likely to be over threshold as more charge is
+collected. The results for other assemblies are shown in
+\cref{fig:clusterSize_vs_biasVoltage}.
+
+Lowering the threshold leads to an increase in the cluster size
+fraction distribution and thus a higher detection of the charge
+sharing. Results for all the assemblies are shown in
+\cref{fig:clusterSize_vs_THLscan}.
+
+
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/TestBeam/cluSize_vs_thickness.pdf}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/cluSize_biasScan_W0005_F01.pdf}
     \caption{}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/TestBeam/residuals_vs_thickness.pdf}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/cluSize_THLscan_W0005_F01.pdf}
     \caption{}
   \end{subfigure}
-  \caption{Cluster size and residuals vs. thickness (run 2003 for 300 um thick sensor was taken at 70 V).}
-  \label{fig:clusize_residuals_vs_thickness}
+  \caption{Fraction of cluster sizes as a function of (a) bias voltage
+    and (b) threshold for the assembly W5\_F1 with a $150\,\micron$
+    thick sensor.}
+  \label{fig:cluSize_operatingConditions}
 \end{figure}
+
+
+The cluster size fraction as a function of the sensor thickness for
+data recorded at the nominal operating conditions is shown in
+\cref{fig:cluSize_thickness}. Charge sharing increases with sensor
+thickness. The fraction of $1\times2$ and $2\times1$-pixel clusters are
+very similar for square pixels and 2-pixel clusters combine these two
+cluster geometries.
+
+\begin{figure}[htbp] 
+  \centering
+  \includegraphics[width=0.5\textwidth]{./figures/TestBeam/cluSize_vs_thickness.pdf}
+  \caption{}
+  \label{fig:cluSize_thickness}
+\end{figure}
+
+\subsection{Single point resolution}
+
+
+\begin{figure}[htbp] 
+  \centering
+  \includegraphics[width=0.5\textwidth]{./figures/TestBeam/residuals_vs_thickness.pdf}
+  \caption{}
+  \label{fig:residuals_thickness}
+\end{figure}
+%%%%\subsection{Resolution vs. thickness}
+% \begin{figure}[htbp] \centering
+%   \begin{subfigure}[b]{0.45\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/TestBeam/cluSize_vs_thickness.pdf}
+%     \caption{}
+%   \end{subfigure} \hfill
+%   \begin{subfigure}[b]{0.45\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/TestBeam/residuals_vs_thickness.pdf}
+%     \caption{}
+%   \end{subfigure}
+%   \caption{Cluster size and residuals vs. thickness (run 2003 for 300 um thick sensor was taken at 70 V).}
+%   \label{fig:clusize_residuals_vs_thickness}
+% \end{figure}
 
 
 \subsection{Global detection efficiency}
