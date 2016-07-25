@@ -272,38 +272,162 @@ cluster geometries.
   \label{fig:cluSize_thickness}
 \end{figure}
 
-\subsection{Single point resolution}
+\subsection{Single-point resolution}
 
+From the test-beam data, the residuals are calculated by comparing the
+reconstructed hit position with the extrapolated track position
+obtained by the telescope. This residual combines in quadrature the
+single-point (or hit) and the track resolutions:
+
+\begin{equation}
+  \sigma_{\mathrm{residual}}^{2}=\sigma_{\mathrm{hit}}^{2}+\sigma_{\mathrm{track}}^{2} .
+  \label{eq:residualEq}
+\end{equation}
+
+In the following, the residual measurements (as defined by
+\cref{eq:residualEq}) are presented in the Figures. For the estimation
+of the single-point resolution, the tracking resolution of
+$\sim2\,\micron$ at the SPS test beam should be unfolded.
+
+The residuals depend highly on the cluster sizes since the
+reconstructed hit position takes into account the number of the hit
+pixels in a cluster and the charge information in each
+pixel. \cref{fig:residuals_cluSize} illustrates the residuals for the
+a $50\,\micron$ thick sensor (assembly W19\_G7) for different cluster
+sizes. For single-pixel clusters, the hit position corresponds to the
+geometric center of the pixel and therefore a resolution of pixel
+pitch$/\sqrt{12}$ is expected (as explained in
+\cref{sec:binaryReadout}). For multi-pixel clusters, by using the
+charge information, a more accurate interpolation of the hit position
+can be obtained and the resolution is better than the geometrical
+information (by using the $\eta$-correction method as described in
+TODO???).
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/residual_1hit_W19_G7.pdf}
+    \caption{Cluster size 1}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/residual_2hit_W19_G7.pdf}
+    \caption{Cluster size 2}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/residual_3hit_W19_G7.pdf}
+    \caption{Cluster size 3}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/residual_4hit_W19_G7.pdf}
+    \caption{Cluster size 4}
+  \end{subfigure}
+  \caption{The residuals for a $50\,\micron$ thick sensor (assembly
+    W19\_G7) for different cluster sizes: (a) Cluster size 1
+    ($1\times1$), (b) Cluster size 2 ($2\times1$), (c) Cluster size 3
+    ($2\times2$) and (d) Cluster size 4 ($2\times2$). The track
+    resolution is not unfolded.}
+  \label{fig:residuals_cluSize}
+\end{figure}
+
+The overall residual is defined by the average of the residual of each
+cluster size weighted by the relative fractions of different cluster
+sizes. The factors affecting the fraction of different cluster sizes
+such as the sensor thickness and the operating conditions of the
+assembly (threshold and bias voltage) affect as well the
+residuals. \cref{fig:Residuals_bias_threshold} shows the RMS of the
+residuals in the x and y directions for a $50\,\micron$ thick sensor
+(assembly W19\_G7). For other assemblies, these plots are shown in
+\cref{fig:Residuals_vs_biasVoltage,fig:Residuals_vs_Threshold}. The
+residuals follow the same trend as the cluster size distributions:
+higher fractions of single-hit clusters result in higher residuals.
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/W19_G7_Residual_vs_bias.pdf}
+    \caption{}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/residuals_W0019_G07_THLscan.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{The RMS of the residuals in x and y directions as a
+    function of (a) bias voltage and (b) threshold for a $50\,\micron$
+    thick sensor (assembly W19\_G7). The track resolution is not
+    unfolded.}
+  \label{fig:Residuals_bias_threshold}
+\end{figure}
+
+
+For the assemblies operated at the nominal operating conditions, the
+RMS of the residuals in the x and y directions are shown in
+\cref{fig:residuals_thickness}. For thicker sensors the fraction of
+multi-pixel clusters is higher and results in lower residuals. The
+distribution of the residuals for different sensor thicknesses
+operated at the nominal conditions is shown in
+\cref{fig:residualsHist_thickness}. The wider component in the
+residual distributions corresponds to the single-pixel clusters. For
+thicker sensors, the fraction of multi-pixel clusters increases. This
+leads to a higher fraction of more precisely reconstructed hits and
+therefore the residual distribution gets narrower.
 
 \begin{figure}[htbp] 
   \centering
   \includegraphics[width=0.5\textwidth]{./figures/TestBeam/residuals_vs_thickness.pdf}
-  \caption{}
+  \caption{The RMS of the residuals in x and y directions as a
+    function of the sensor thickness for assemblies operated at the
+    nominal condition. The track resolution is not unfolded.}
   \label{fig:residuals_thickness}
 \end{figure}
-%%%%\subsection{Resolution vs. thickness}
-% \begin{figure}[htbp] \centering
-%   \begin{subfigure}[b]{0.45\textwidth}
-%     \includegraphics[width=\textwidth]{./figures/TestBeam/cluSize_vs_thickness.pdf}
-%     \caption{}
-%   \end{subfigure} \hfill
-%   \begin{subfigure}[b]{0.45\textwidth}
-%     \includegraphics[width=\textwidth]{./figures/TestBeam/residuals_vs_thickness.pdf}
-%     \caption{}
-%   \end{subfigure}
-%   \caption{Cluster size and residuals vs. thickness (run 2003 for 300 um thick sensor was taken at 70 V).}
-%   \label{fig:clusize_residuals_vs_thickness}
-% \end{figure}
 
 
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/residualsHist_W19_C7.pdf}
+    \caption{$50\,\micron$ sensor}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/residualsHist_W5_E2.pdf}
+    \caption{$100\,\micron$ sensor}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/residualsHist_W5_F1.pdf}
+    \caption{$150\,\micron$ sensor}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.23\textwidth}
+
+    \caption{$300\,\micron$ sensor}
+  \end{subfigure}
+  \caption{Examples of the residuals distributions in the x direction
+    for the assemblies (a) W19\_C7, (b) W5\_E2 and (c) W5\_F1. The
+    track resolution is not unfolded.}
+  \label{fig:residualsHist_thickness}
+\end{figure}
+%% --------------------------------------------- %%
 \subsection{Global detection efficiency}
 
-The efficiency as a function of the threshold is shown in \cref{fig:efficiency_VS_Threshold}.
+The detection efficiency of the assemblies is defined as the fraction
+of total number of hits matched to tracks (within a window of radius
+0.1~mm) and the total number of tracks projected to pass through the
+assembly. The efficiency is calculated within the matrix of
+$256\times256$ pixels of the main sensor area and the hot or masked
+pixels are not excluded from this calculation. They contribute to the
+assemblie's inefficiencies.
+
+The detection efficiency is strongly related to the operating
+threshold of the readout ASIC. With a lower threshold, smaller energy
+depositions can be measured and it is more likely to detect a
+track. \cref{fig:efficiency_VS_Threshold} shows the detection
+efficiency for different sensor thicknesses. For thinner sensors, the
+energy deposition is lower and the efficiency drops more quickly by
+increasing the threshold than for thick sensors.
+
+
 
 \begin{figure}[htbp] 
   \centering
   \includegraphics[width=0.5\textwidth]{./figures/TestBeam/Efficiency_vs_THL.pdf}
-  \caption{Efficiency vs. threshold: W2\_J5 is missing.}
+  \caption{Global detection efficiency as a function of the threshold
+    of the readout ASIC for different sensor thicknesses.}
   \label{fig:efficiency_VS_Threshold}
 \end{figure}
 
@@ -492,3 +616,18 @@ The simulations using AllPix are validated with the data as shown in
 %%     \bottomrule
 %%   \end{tabular}
 %% \end{table}
+
+
+%%%%\subsection{Resolution vs. thickness}
+% \begin{figure}[htbp] \centering
+%   \begin{subfigure}[b]{0.45\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/TestBeam/cluSize_vs_thickness.pdf}
+%     \caption{}
+%   \end{subfigure} \hfill
+%   \begin{subfigure}[b]{0.45\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/TestBeam/residuals_vs_thickness.pdf}
+%     \caption{}
+%   \end{subfigure}
+%   \caption{Cluster size and residuals vs. thickness (run 2003 for 300 um thick sensor was taken at 70 V).}
+%   \label{fig:clusize_residuals_vs_thickness}
+% \end{figure}
