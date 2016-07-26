@@ -520,7 +520,7 @@ For all the assemblies, the energy deposition in \ev is given in \cref{sec:appen
 
 
 %% --------------------------------------------- %%
-\section{Validation of the simulation}
+\section{Validation of the simulation}\label{sec:ThinSensorSimuValidation}
 
 The AllPix simulation framework (described in \cref{sec:AllPix}) is
 used to simulate the performance of thin sensors and to understand the
@@ -530,7 +530,8 @@ validated with the test-beam data.
 The cluster size, the residuals and the energy deposition
 distributions are shown in
 \cref{fig:G4_simu_data_cluSize,fig:G4_simu_data_Residuals,fig:G4_simu_data_Edep}
-comparing data and simulations.
+comparing data and simulations. The simulation is in good agreement
+with the data.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.23\textwidth}
@@ -606,6 +607,36 @@ comparing data and simulations.
 
 %% --------------------------------------------- %%
 \section{Extrapolation to smaller pixels (CLICpix)}
+
+Figure~\ref{fig:cluSize25Pitch} shows the cluster-size distribution
+and the hit residuals for an extrapolation of the simulation to
+$25\,\micron$ pitch pixels with $50\,\micron$ thick sensors with a
+Timepix3-type readout chip operated at 500 electrons threshold with
+10-bit TOT measurement and an electronic noise of $\sim$90
+electrons. The same digitiser as the one used to validate the
+simulation in \cref{sec:ThinSensorSimuValidation} is used for the
+extrapolation. Even with a small pitch, in such thin sensors, only
+$\sim$16\% of clusters originating from minimum ionising particles
+contain more than one pixel. The residual distribution is therefore
+dominated by the broad peak from single-pixel clusters and the
+resulting resolution of $\sim$$6\,\micron$ is still significantly
+worse than the required $3\,\micron$.
+
+\begin{figure}[htbp]\centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/TestBeam/ClusterSize_TPX3_CLICpix.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/TestBeam/ResolutionX_TPX3_CLICpix.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{(a) Cluster-size distribution and (b) hit residuals in
+    x-direction for the extrapolation of the simulation to
+    $25\,\micron$ pixel pitch with a $50\,\micron$ thick sensor and a
+    threshold of $\sim$500 electrons.}
+  \label{fig:cluSize25Pitch}
+\end{figure}
 
 %% %% --------------------------------------------- %%
 %% \begin{figure}[htbp] \centering
