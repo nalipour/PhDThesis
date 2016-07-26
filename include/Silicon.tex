@@ -1050,9 +1050,15 @@ multi-hit clusters is the same. But, in this situation one is not able
 to distinguish between one track triggering two pixels and two tracks
 hitting the sensor within $2p$.
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/resolution_binary_chargeSharing_s.pdf}
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/resolution_binary_chargeSharing_s_25mupitch.pdf}
+    \caption{$25\,\micron$ pitch}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/resolution_binary_chargeSharing_s.pdf}
+    \caption{$55\,\micron$ pitch}
+  \end{subfigure}
   \caption{$\sigma_{\text{Total}}$ calculated using
     \cref{eq:spatialResChargeSharingTotal} with a pixel pitch of
     $p=55\,\micron$ where $s$ is the width of the charge sharing
