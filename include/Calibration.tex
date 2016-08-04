@@ -3,6 +3,12 @@
 \label{ch:FE_electronics}
 %==============================================================================    
 
+% ----------------------------- %
+\tikzstyle{block} = [rectangle, draw, text width=5em, text centered, rounded corners, minimum
+height=4em]
+\usetikzlibrary{backgrounds,fit,decorations.pathreplacing} 
+% ----------------------------- %
+
 One of the key components of the detector systems is the readout
 electronics. Each experiment, depending on the requirements, has its
 own specific electronics. But the basic principles of the electronics
@@ -16,35 +22,64 @@ active-edge assemblies in the following chapters. They are calibrated
 using different methods and the MIP energy deposition measured by
 these chips is compared to \textsc{Geant4} simulations.
 
-\section{Generic pixel chip properties}
+%\section{Generic pixel chip properties}
+\section{The Timepix3 hybrid readout ASICs}\label{sec:TimepixReadout}
 
-The main purpose of the detecting system is to acquire the signal
-generated in the sensor which is in the form of a short current
-pulse. The electronics are responsible for shaping the time response
-of the system in order to optimise the minimum detectable signal,
-energy deposition in detector measurement, event rate, time-of-arrival
-and insensitivity to the pulse shape. Finally, the signal is digitised
-and stored. Robustness to radiation and power consumption are other
-important considerations to be addressed amongst others.
+The hybrid readout chip acquires the short ionisation current pulses
+generated in the sensor by the passing of a high energetic
+particle. The electronics are responsible for shaping the time
+response of the system in order to optimise the minimum detectable
+signal, energy deposition in detector measurement, event rate,
+time-of-arrival and insensitivity to the pulse shape. Finally, the
+signal is digitised and stored. Robustness to radiation and low power
+consumption are other important considerations to be addressed amongst
+others.
 
-\cref{fig:detectorFunctions} schematically overviews the basic
-detector functions. The incident radiation deposits energy in the
-sensor and it is converted to an electrical signal. A high rate of
-particles can be handled in a semiconductor detector because the
-sensor pulse is very short (few nanoseconds). Since the magnitude of
-the signal charge can be small and is subject to statistical
-fluctuations (\cref{sec:chargeInSi}), a preamplifier is needed to
-amplify the signal. The preamplifier should be designed in such a way
-to minimise the electronic noise. The sensor capacitance and the input
-capacitance of the amplifier are the critical parameters to increase
-the signal-to-noise ratio (SNR): the lower the capacitance, the higher
-the SNR. After the preamplifier, the pulse shaper is responsible for the
+
+%% Timepix3 description
+%% \section{The Timepix readout chip families}\label{sec:TimepixReadout}
+The Timepix~\cite{art:tmpx,Timepix3Poikela} hybrid pixel detector
+readout chip family, designed by the Medipix collaboration, is a
+general purpose front-end electronics and can measure precisely the
+energy deposited in the sensor and also provides accurate timing
+information. This chip is used in a wide range of applications such as
+high energy physics and medical imaging. The Timepix3 ASICs are
+deployed for the CLIC vertex detector R\&D to study the feasibility of
+thin sensors and also active-edge sensors as described in the coming
+chapters. 
+
+\cref{fig:detectorFunctions} schematically shows the basic signal flow
+in a Timepix3-like hybrid pixel detector. Both analogue and
+digital circuitry are combined. 
+
+The incident radiation deposits energy in the sensor and it is
+converted to an electrical signal. A high rate of particles can be
+handled in a semiconductor detector because the sensor pulse is very
+short (few nanoseconds). Since the magnitude of the signal charge is
+small and subject to statistical fluctuations (\cref{sec:chargeInSi}),
+a charge sensitive preamplifier is needed to amplify the signal. The
+preamplifier should be designed in such a way to minimise the
+electronic noise. The sensor capacitance and the input capacitance of
+the amplifier are the critical parameters to increase the
+signal-to-noise ratio (SNR): the lower the capacitance, the higher the
+SNR. The amplification is done with a tunable discharge current of the
+Krummenacher amplifier architecture
+(I\textsubscript{krum})~\cite{KRUMMENACHER1991527}.
+
+After the preamplifier, the pulse shaper is responsible for the
 improvement of the SNR. It modifies the frequency response of the
 signal to improve the signal and attenuate the noise. Since this
 operation reduces the bandwidth of the signal, the duration of the
 pulse will increase. A detector must cope with a high rate of pulses,
 the width of the pulse must be optimised in a way to reduce the
-pile-up.
+pile-up. I\textsubscript{krum} affects the slope of the pulse
+discharge after shaping: the higher its value, the shorter the
+pulse.
+
+The discriminator is used to compare the signal level to a
+threshold (a voltage) and to discriminate a signal from a background
+noise. Both polarities (electrons and holes collection) are accepted
+by the front end.
 
 The analog-to-digital converter (ADC) converts a continuously varying
 amplitude to discrete steps. When the pulse height passes a threshold
@@ -53,45 +88,90 @@ the timing of the signal for example.
 
 \begin{figure}[htbp]
   \centering
-  \begin{tikzpicture}
-      \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
-        %   {0.\y}; }
+  \begin{tikzpicture}[node distance = 2.5cm, auto]
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
 
-        %\path (-0.1, 0.5) -- ++(0.08, 0.5) node[rv] {Incident radiation};
-        \draw (0.1, 0.4) rectangle (0.3, 0.6) node[pos=.5] {Sensor};
-        \draw (0.4, 0.6) -- (0.4, 0.4) -- (0.6, 0.5) -- cycle;
-        \node[above] at (0.5, 0.65) {Preamplifier};
-        \draw (0.7, 0.6) -- (0.7, 0.4) -- (0.9, 0.5) -- cycle;
-        \node[above] at (0.8, 0.65) {Pulse shaping};
-        \draw (1, 0.35) rectangle (1.3, 0.65) node[pos=.5] {ADC converter};
-        % \node[above] at (1.15, 0.7) {Analog to digital convertor};
+      \coordinate (input);
+      \node [block, right of=input] (sens) {Sensor};
+      \node [block, right of=sens] (preamp) {Preamplifier};
+      \node [block, right of=preamp] (pulse) {Pulse shaping};
+      \node [block, right of=pulse] (discr) {Discriminator};
+      \node [block, right of=discr] (conv) {ADC converter};
+      \coordinate[right of=conv] (output);
 
-        \draw[arrows=->](-0.1, 0.5)--(0.08, 0.5) node [pos=0.1, above]
-        {Incident radiation};
+      \draw[arrows=->] (input) -- node [text
+      width=2cm,midway] {Incident radiation} (sens);
+      \draw[arrows=->] (sens) -- (preamp);
+      \draw[arrows=->] (preamp) -- (pulse);
+      \draw[arrows=->] (pulse) -- (discr);
+      \draw[arrows=->] (discr) -- (conv);
+      \draw[arrows=->] (conv) -- node [text width=1.5cm,midway]
+      {Digital data bus} (output);
 
-        \draw[arrows=->](0.3, 0.5)--(0.4, 0.5);
-        \draw[arrows=->](0.6, 0.5)--(0.7, 0.5);
-        \draw[arrows=->](0.9, 0.5)--(1, 0.5);
-        \draw[arrows=->](1.3, 0.5)--(1.5, 0.5) node [pos=0.8, above]
-        {Digital data bus};
-        
+      % \draw[] (sens) -- (discr.south);
+      \draw[decorate,decoration={brace, mirror}, thick] (sens.south) to
+      node[below,below] (bracket) {Analogue}
+      (discr.south);
 
-      \end{scope}
+      \draw[decorate,decoration={brace, mirror}, thick] (conv.south west) to
+      node[below,below] (bracket) {Digital}
+      (conv.south east);
+
+    \end{scope}
   \end{tikzpicture}
-  \caption{Schematic overview of basic detector functions.}  
+  \caption{Schematic overview of basic signal flow in a hybrid pixel
+    detector. The energy deposited in the sensor by the incident
+    radiation is converted to an electrical signal. The signal is
+    integrated in the preamplifier, shaped by the pulse shaper and
+    compared to a programmable threshold by the discriminator. The
+    analogue-to-digital converter (ADC) digitises the signal for
+    storage and analysis.}  
   \label{fig:detectorFunctions}
 \end{figure}
 
+
+
+
+
+
+An overview on the Timepix3 readout chip is given
+in~\cref{tab:timepixOverview}. It consists of a $256\times256$ pixel
+matrix with pixels pitch of $55\,\micron$. This chip allows for three
+operation modes: photon counting (PC), Time-over-threshold (TOT) and
+Time-of-Arrival (TOA) measurements. In addition, Timepix3 allows for
+simultaneous measurement of the TOT and the TOA.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Overview of the Timepix3 readout ASICs.}
+  \label{tab:timepixOverview}
+  \begin{tabular}{l c}
+    \toprule
+    Pixel Matrix& $256\times256$\\
+    Pixel Pitch [\micron] & 55\\
+    Technology & 130~nm CMOS\\
+    Counter Depth & 10 bit TOT and 18
+                            bit TOA \\
+    Clock speed & up to 40~\megahertz for TOT and 640~\megahertz for
+                  TOA \\
+    Readout Type & Data driven \& frame based \\
+    Electronic Noise without sensor & $<70$ e\textsuperscript{-} RMS\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+In the photon counting mode, a counter is incremented each time a
+photon hits the pixel and deposits an energy higher than the
+programmable threshold.
+ 
 \cref{fig:TOT_TOA_concept} schematically shows the energy and the
 timing measurement of the signal. The Time-over-threshold (TOT) allows
 for the measurement of the energy deposited in a pixel. The pulse is
 amplified and the pulse shaper integrates the signal to form a step
-pulse with a long linear decay. The decay is approximately linear and
-proportional to the energy deposited. While the pulse is above the
-programmable threshold, the counter is incremented.
+pulse with a long approximately linear decay. The time above the
+programmable threshold is proportional to the energy deposited and
+during this time, the TOT counter is incremented.
 
 The Time-of-Arrival (TOA) measures the arrival time of a hit and
 therefore is used as a time stamping of the hits. When the amplifier
@@ -104,11 +184,6 @@ as the timing information for the hits.
   \centering
   \begin{tikzpicture}
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
-      % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-      % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-      % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
-      % {0.\y}; }
-      
       % pulse
       \draw[-, thick] (0.1, 0.8) -- (0.2, 0.8);
       \draw[-, thick] (0.2, 0.8) -- (0.21, 0.98);
@@ -129,7 +204,7 @@ as the timing information for the hits.
       \draw[-, thick] (0.65, 0.4) -- (0.65, 0.3);
       \draw[-, thick] (0.65, 0.3) -- (1, 0.3);
 
-      \timing [] at (0.1,0.2) {LLLHHLLHHLLHHLLHHLLHHLLLL};
+      \timing [] at (0.11, 0.2) {HLLHHLLHHLLHHLLHHLLHHLLHH};
       \draw[arrows=<->, thick](0.21, 0.15)--(0.65, 0.15) node [pos=0.5, below]
       {\textbf{TOT (3 counts)}};
 
@@ -138,7 +213,7 @@ as the timing information for the hits.
       \draw[-, thick, dashed, blue] (0.21, 0.55) -- (0.21, 0.0);
       \draw[-, thick, dashed, blue] (0.65, 0.55) -- (0.65, 0.0);
 
-      \draw[-, thick, dashed, red] (0.35, 0.2) -- (0.35, 0.0);
+      \draw[-, thick, dashed, red] (0.355, 0.2) -- (0.355, 0.0);
 
       \draw[arrows=<->, thick](0.21, -0.05)--(0.35, -0.05) node [pos=0.5, below]
       {\textbf{FTOA (4 counts)}};
@@ -155,66 +230,21 @@ as the timing information for the hits.
     \end{scope}
   \end{tikzpicture}
   \caption{Schematic overview of the Time-over-Threshold (TOT) and
-    Time-of-Arrival (TOA) measurements in a readout chip.}  
+    Time-of-Arrival (TOA) measurements for the Timepix3 readout chips.}
   \label{fig:TOT_TOA_concept}
 \end{figure}
 
-\section{The Timepix readout chip families}\label{sec:TimepixReadout}
-The Timepix~\cite{art:tmpx,Timepix3Poikela} readout chip families,
-designed by the Medipix collaboration, are a general purpose front-end
-electronics and can measure precisely the energy deposited in the
-sensor and also provide accurate timing information. An overview on
-the Timepix and Timepix3~\cite{Timepix3Poikela} chip families is given
-in~\cref{tab:timepixOverview}. They consist of $256\times256$ pixel
-matrix with pixels pitch of $55\,\micron$. The both chip families
-allow for three operation modes: photon counting, TOT and TOA
-measurements. Timepix3 allows for simultaneous measurement of the TOT
-and the TOA with a timing resolution of 1.6~ns.
-
-\begin{table}[htbp]
-  \centering
-  \caption{Overview of Timepix readout ASICs.}
-  \label{tab:timepixOverview}
-  \begin{tabular}{l c c}
-    \toprule
-    & Timepix& Timepix3\\ 
-    \midrule
-    Pixel Matrix & $256\times256$ & $256\times256$\\
-    Pixel Pitch [\micron] & 55 & 55\\
-    Technology & $0.25\,\micron$ CMOS & 130~nm CMOS\\
-    Counter Depth & 14 bits & 10 bit TOT and 18 bit TOA \\
-    Readout Type & Frame based & Data driven \& frame based \\
-    Electronic Noise & $\sim100$ e\textsuperscript{-} RMS & $<70$ e\textsuperscript{-} RMS\\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\cref{fig:Timepix_pixel_cell_schematic} shows schematically the
-functionalities implemented in a Timepix pixel cell. Both analogue and
-digital circuitry are combined. The analogue circuitry includes a
-charge sensitive amplifier with a tunable discharge current of the
-Krummenacher amplifier architecture
-(I\textsubscript{krum})~\cite{KRUMMENACHER1991527} and the
-discriminator. I\textsubscript{krum} affects the slope of the pulse
-discharge after shaping: the higher its value, the shorter the
-pulse. The discriminator is used to compare the signal level to a
-threshold (a voltage) and to discriminate a signal from a background
-noise. Both polarities (electrons and holes collection) are accepted
-by the front end.
 
 The Timepix3 readout chip allows for a data driven readout mode which
 can reach higher readout rates than the frame based mode. In the data
 driven mode, after a hit is processed by the pixel, a data packet
 containing the TOT and the TOA information is immediately sent off the
 chip. This reduces significantly the dead time of the pixels and
-allows to reach very high readout rates.
+allows to reach very high readout rates of up to 40~Mhits/s/\cmsquared.
 
-\begin{figure}[htbp] 
-  \centering
-  \includegraphics[width=\textwidth]{./figures/Calibration/Timepix_pixel_cell_schematic.jpg}
-  \caption{Timepix pixel cell schematic. From ~\cite{art:tmpx}.}
-  \label{fig:Timepix_pixel_cell_schematic}
-\end{figure}
+The different settings of the chip are controlled externally using
+programmable DACs such as the I\textsubscript{krum}, threshold,
+polarity of the sensor and the clock speed.
 
 %% --------------------------------------------- %%
 \subsection{Timepix3 assemblies}\label{sec:Timepix3Assemblies}
