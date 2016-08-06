@@ -16,14 +16,14 @@ and optimisations of the signal-to-noise remain similar between
 different applications.
 
 In this chapter, we will review the basic principles and requirements
-of a readout chip. The Timepix readout chip families are described in
-the following sections since they are used to study thin and
-active-edge assemblies in the following chapters. They are calibrated
-using different methods and the MIP energy deposition measured by
-these chips is compared to \textsc{Geant4} simulations.
+of the Timepix3 hybrid pixel readout chip which are used to study thin
+and active-edge sensors as described in the following chapters. The
+calibration method for the Timepix3 ASICs and also the noise
+measurements are explored in this chapter.
 
 %\section{Generic pixel chip properties}
-\section{The Timepix3 hybrid readout ASICs}\label{sec:TimepixReadout}
+\section{The Timepix3 hybrid readout ASICs}
+\label{sec:TimepixChip}
 
 The hybrid readout chip acquires the short ionisation current pulses
 generated in the sensor by the passing of a high energetic
@@ -130,10 +130,6 @@ the timing of the signal for example.
 \end{figure}
 
 
-
-
-
-
 An overview on the Timepix3 readout chip is given
 in~\cref{tab:timepixOverview}. It consists of a $256\times256$ pixel
 matrix with pixels pitch of $55\,\micron$. This chip allows for three
@@ -235,6 +231,27 @@ as the timing information for the hits.
 \end{figure}
 
 
+\subsection{SPIDR readout system for Timepix3}\label{sec:TimepixReadout}
+
+The SPIDR (Speedy PIxel Detector Readout) readout system has been
+developed by NIKHEF and CERN is used~\cite{Visser:2015bsa} for the
+Timepix3 data acquisition. This system is able to handle high rates of
+data sent by the Timepix3 ASIC at full speed. This is achieved with
+Xilinx Virtex-7 FPGA~\cite{XilinxVirtex7} and a 10~Gb Ethernet link.
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Timepix3board.jpg}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.65\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/SPIDRboard.png}
+    \caption{}
+  \end{subfigure}
+  \caption{(a) Timepix3 chip board and (b) SPIDR readout board.}
+  \label{fig:Timepix3board_SPIDR}
+\end{figure}
+
 The Timepix3 readout chip allows for a data driven readout mode which
 can reach higher readout rates than the frame based mode. In the data
 driven mode, after a hit is processed by the pixel, a data packet
@@ -247,8 +264,10 @@ programmable DACs such as the I\textsubscript{krum}, threshold,
 polarity of the sensor and the clock speed.
 
 %% --------------------------------------------- %%
-\subsection{Timepix3 assemblies}\label{sec:Timepix3Assemblies}
-A summary of the Timepix3 assemblies is shown in \cref{tab:Timepix3Assemblies}.
+\section{Timepix3 assemblies}\label{sec:Timepix3Assemblies}
+A summary of the Timepix3 assemblies is shown in
+\cref{tab:Timepix3Assemblies}. Advacam sensors of thickness
+$50$-$300\,\micron$ are bump-bonded to Timepix3 readout chips.
 
 \begin{table}[htbp]
   \centering
@@ -272,52 +291,89 @@ A summary of the Timepix3 assemblies is shown in \cref{tab:Timepix3Assemblies}.
 \end{table}
 
 %% --------------------------------------------- %%
-\subsection{Threshold equalisation} \label{sec:ThresholdEqualisation}
-In semiconductor electronics, manufacturing imperfections cause
-variations in the performance within the device. The threshold is one
-of the most affected parameters and its global value set can vary
-highly from one pixel to another within the pixel matrix. For the same
-threshold value, the voltage on the discriminator can vary highly from
-one pixel to another. To overcome this dispersion, a 4-bit local
-threshold adjustment is applied to each pixel in order to make a
-uniform global threshold. The photon counting mode is then
-employed. The equalisation consists of adjusting this local threshold
-by first setting its value to the mask 0000. The global threshold DAC
-(Digital-to-Analog), THL, is scanned and the number of pixels
-responding are counted. Then the adjustment bit is set to 1111 and THL
-is scanned again. For each pixel, the operation range is
-known. Assuming a linear relationship between the two points, the
-adjustment threshold is adjusted in such a way that the global
-threshold dispersion will remain uniform across the matrix.
+\section{Electronic noise}\label{sec:noise}
 
-\cref{fig:THLequalisation} shows the threshold equalisation for an
-assembly. After equalisation the response of the chip becomes more
-uniform even though some dispersion remains.
+Electronic noise places a limit on the minimum detectable signal
+level, defines the ability to distinguish signal levels and their
+precision of measurement. Thermal excitations and sensor leakage
+currents are important sources for the noise. The electronic noise can
+be measured as explained further in
+\cref{sec:thresholdCalibration}. For Timepix3 readout chips, the
+electronic noise before bonding to any sensor is less than
+70~e\textsuperscript{-} RMS and after bonding it increases to
+$\sim80$~e\textsuperscript{-} RMS due to the capacitance of the sensor
+and its leakage current.
+
+The electronic noise is an important parameter to determine the
+operating threshold of the readout chip. In fact, the operating
+threshold for the Timepix3 chip is set to 6 times the electronic noise
+RMS. This threshold significantly reduces the detection of noisy
+hits. Sometimes at this threshold few pixels show a high rate of hits
+in absence of incident radiation (hot pixels) and they are manually
+masked to be able to operate the chip at the lowest possible
+threshold.
+
+The operating threshold affects significantly the spatial resolution
+of the device. A lower threshold allows for a higher detection of the
+charge sharing. For this reason, it is important to minimise the
+electronic noise.
+
+%% --------------------------------------------- %%
+\section{Threshold dispersion and equalisation} 
+\label{sec:ThresholdEqualisation}
+
+
+In semiconductor electronics, manufacturing imperfections cause
+variations in the performance within the device. The programmable
+global threshold of the chip is one of the most affected
+parameters. In fact, the global threshold is programmed through a
+programmable DAC (Digital-to-Analog) and is translated to the voltage
+applied at the discriminator. The signal level is compared to this
+voltage. For the same global threshold value, the voltage on the
+discriminator can vary highly from one pixel to another. To overcome
+this dispersion, a 4-bit local threshold adjustment is applied to each
+pixel in order to make a uniform global threshold. The photon counting
+mode is then employed. The equalisation consists of adjusting this
+local threshold. First it is set to its minimum value (mask 0000). The
+global threshold DAC (THL) is scanned and the number of pixels
+responding are counted. Then the adjustment bit is set to its maximum
+value (mask 1111) and THL is scanned again. For each pixel, the
+operation range is thus known. Assuming a linear relationship between
+the two points, the adjustment threshold is adjusted in such a way
+that the global threshold will remain uniform across the matrix.
+
+\cref{fig:THLequalisation} shows the threshold equalisation for the
+assembly W2\_J5. After equalisation the response of the chip becomes
+more uniform even though some dispersion remains.
 
 \begin{figure}[htbp] 
   \centering
   \includegraphics[width=0.6\textwidth]{./figures/Calibration/THLequalisation_W2_J5.pdf}
-  \caption{Threshold equalisation for the assembly W2\_J5.}
+  \caption{Spread of pixel responses for the assembly W2\_J5 during
+    equalisation for the local threshold set at its minimum value
+    (mask 0000), to its maximum value (mask 1111) and after
+    equalisation.}
   \label{fig:THLequalisation}
 \end{figure}
 
-\subsection{Calibration} \label{sec:calibration} The aim of the
+\section{Calibration} \label{sec:calibration} The aim of the
 calibration is to parametrise the measurements done by the readout
 chip, namely the relationship between the threshold DAC and the TOT
-with the energy deposited in the sensor (in \kev or number of
-collected charge) as well as the relation between the TOA measurement
-and the time of arrival of the particle (in seconds).
+with the energy deposited in the sensor (in number of collected
+charge) as well as the relation between the TOA measurement and the
+time of arrival of the particle (in seconds). In this work we focus on
+the threshold DAC and the TOT calibration.
 
-The calibration can be achieved using two main methods. The first one
-consists of the use of photons from radioactive sources with a
-characteristic decay energy or photons from X-ray fluorescence with a
-characteristic emission energy~\cite{AlipourTehrani:2054922}. The
-photon being stopped in the sensor, it deposits its full energy. Since
-the energy of the photon is known, its relation to the TOT can be
-characterised. The counting mode is used to calibrate the threshold.
+The threshold DAC and TOT calibration can be achieved using two main
+methods. The first one consists of the use of photons from radioactive
+sources with a characteristic decay energy or photons from X-ray
+fluorescence (XRF) with a characteristic emission
+energy~\cite{AlipourTehrani:2054922}. The photon being stopped in the
+sensor, it deposits its full energy. Since the energy of the photon is
+known, its relation to the threshold DAC or TOT can be characterised. 
 
 The second method consists of the use of an internal analog test pulse
-generator. The Timepix readout ASICs provide an internal test pulse
+generator. The Timepix3 readout ASICs provide an internal test pulse
 generator which can be used for calibration as well as equalisation of
 the readout chip. In each pixel, a capacitor allows for injecting a
 charge by switching a voltage over it. The charge injected is given by
@@ -329,18 +385,21 @@ charge by switching a voltage over it. The charge injected is given by
 
 where Q is the injected charge, C the injection capacitance and
 $\Delta V$ the voltage applied. A priori, the injection capacitance is
-unknown and its value varies from pixel to pixel but its value can be
-measured.
+unknown and its value varies from pixel to pixel, but its value can be
+measured. For the capacitance, $20.2$~e\textsuperscript{-}/mV is a
+good approximation.
 
-\subsubsection{Energy calibration} \label{sec:EnergyCalibration}
+In \cref{fig:detectorFunctions}, the injection capacitance replaces
+the sensor. For the calibration if the chip is bump-bonded to a
+sensor, the sensor is fully depleted with a bias voltage.
 
-For the energy calibration, the Timepix readout ASIC is operated in
-the TOT mode. Data points obtained either by radioactive sources or
-test-pulse injection are used to parametrise the relationship between
-the energy deposited and the TOT measurement. Due to the non-linearity
-of the Timepix charge pre-amplifier, this relationship is modeled as a
-hyperbola. The function used to fit the data points is called a
-\textit{surrogate function} and is defined as:
+\subsection{TOT-energy calibration} \label{sec:EnergyCalibration}
+
+The TOT calibration parametrises the relationship between the energy
+deposited (in number of electrons) and the TOT measurement. Due to the
+non-linearity of the Timepix3 charge preamplifier, this relationship
+is modeled as a hyperbola. The function used to fit the data points is
+called a \textit{surrogate function} and is defined as:
 
 \begin{equation}
   \text{TOT} = a \, E + b - \frac{c}{E - t} \; ,
@@ -365,10 +424,11 @@ which the fit crosses the x-axis (TOT=0) corresponds to the threshold:
 below the threshold no charge can be detected. The range for the TOT
 and the boundary between low energy (non-linear response) and high
 energy (linear response) depend on the clock frequency, the threshold
-and the I\textsubscript{krum} values.
+and the I\textsubscript{krum} value.
 
-For the Timepix3 ASICs, the test-pulse injection is used for the
-calibration of the assemblies. Test pulses with heights ranging from
+For the calibration of the assemblies, the Timepix3 ASICs is operated
+in the TOT mode and the test-pulse injection is used
+(\cref{eq:testpulseCharge}). Test pulses with heights ranging from
 $0\,\mv$ to $800\,\mv$ (corresponding to 0 electrons to 14000
 electrons) are sent to each pixel. For each pulse height, 100
 test-pulses are sent. The sum of the TOTs and also the sum of the
@@ -381,10 +441,10 @@ energy calibration of the assembly is determined.
 \cref{tab:timepix3Operation} summarises the DAC settings used for the
 operation of the Timepix3 assemblies in test beams. The same settings
 are as well used for the calibration. \cref{fig:TOTcalib_55GNDGR100}
-shows the pixel-by-pixel calibration for assembly 55-GNDGR-100
-operated at two different threshold DACs of 1160 and 1190. For a
-higher threshold, the curve is shifted towards higher energy values on
-the x-axis but the slope (parameter $a$) remains the same.
+shows the pixel-by-pixel calibration for assembly W5\_E2 operated at
+two different threshold DACs of 1160 and 1190. For a higher threshold,
+the curves are shifted towards higher energy values on the x-axis but
+the slope (parameter $a$) remains the same.
 
 \begin{table}[htbp]
   \centering
@@ -410,103 +470,113 @@ the x-axis but the slope (parameter $a$) remains the same.
     \includegraphics[width=\textwidth]{./figures/Calibration/TOTcalibration_W0005_E02_thresh1190.pdf}
     \caption{}
   \end{subfigure}
-  \caption{Pixel-by-pixel calibration of the TOT for assembly
-    55-GNDGR-100 operated at the threshold DACs of (a) THL=1160 and
-    (b) THL=1190.}
+  \caption{Pixel-by-pixel calibration of the TOT for assembly W5\_E2
+    operated at the threshold DACs of (a) THL=1160 and (b) THL=1190.}
   \label{fig:TOTcalib_55GNDGR100}
 \end{figure}
 
-The calibration for the other assemblies are given in \cref{sec:appendixFE_electronics}.
+The calibration for the other assemblies are given in
+\cref{sec:appendixFE_electronics}.
 
 
-\subsubsection{Threshold calibration} \label{sec:thresholdCalibration}
+\subsection{Threshold-energy calibration} 
+\label{sec:thresholdCalibration}
 
+\cref{sec:noise} describes the selection of the operating threshold
+DAC (Digital-to-Analog Converter) for a Timepix3 readout chip. This
+threshold can be translated into an effective energy and used as a
+data point for the surrogate fit at the crossing-point on the
+$x$-axis. The counting mode is used for this measurement.
 
-The operating threshold DAC (Digital-to-Analog Converter) set in each
-Timepix/Timepix3 readout chip can be translated into an effective
-energy and used as a data point for the surrogate fit at the
-crossing-point on the $x$-axis. The counting (Medipix) mode is used
-for this measurement.  
-
-For the Timepix assemblies, the calibration is done with radioactive
-sources since the test-pulse calibration is not possible due to the
-choice of the I\textsubscript{krum} value. The assembly is exposed to
-photons of a characteristic energy and the threshold DAC is scanned
-from a level of no counts (threshold above the signal) to a level
-where all the pixels count (threshold close to the noise level)
+For Timepix3 assemblies, the threshold is calibrated using test pulses
+at four different heights corresponding to 0, 1000, 3000 and 6000
+electrons. For each pulse height, 200 pulses are sent to the pixels in
+the diagonal of the matrix and the threshold DAC is scanned with a
+step of 2 from a level of no counts (threshold above the signal) to a
+level where all the pixels count (threshold close to the noise level)
 resulting in an S-shaped curve as shown in
-\cref{fig:scurve_example}. At the maximum gradient of the S-curve, the
-threshold DAC corresponds to the photon energy. The derivative of the
-S-curve is a Gaussian as shown in \cref{fig:deriv_example} with a mean
-at the maximum gradient of the S-curve. The derivative at each point
-of the S-curve corresponds to the slope of the line connecting it to
-its neighbour.
+\cref{fig:scurve_example}. The readout electronics noise smears the
+ideal sharp turn on and generates the S-curve. At the maximum gradient
+of the S-curve, the threshold DAC corresponds to the pulse
+amplitude. The derivative of the S-curve is a Gaussian as shown in
+\cref{fig:deriv_example} with a mean at the maximum gradient of the
+S-curve. The derivative at each point of the S-curve corresponds to
+the slope of the line connecting it to its neighbour.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
-    \begin{tikzpicture} \node[anchor=south west,inner sep=0] (image)
-      at
-      (0,0){\includegraphics[width=\textwidth]{./figures/Calibration/L04-W0125_scurve_In.pdf}};
-      % \draw[->,line width=.4pt, color=black](1.8, 1.4) -- (2.4, 1.4);
-      \node[left, color=black] at (1.9, 1.6) {$K_{\beta}$}; %\draw[->,line
-      width=.4pt, color=black](3, 2.7) -- (3.7, 2.7); \node[left,
-      color=black] at (3.5, 2.7) {$K_{\alpha}$};
-    \end{tikzpicture}
+    \includegraphics[width=\textwidth]{./figures/Calibration/W5_E2_scurve_ampl1.pdf}
+    % \begin{tikzpicture} \node[anchor=south west,inner sep=0] (image)
+    %   at
+    %   (0,0){\includegraphics[width=\textwidth]{./figures/Calibration/L04-W0125_scurve_In.pdf}};
+    %   % \draw[->,line width=.4pt, color=black](1.8, 1.4) -- (2.4, 1.4);
+    %   \node[left, color=black] at (1.9, 1.6) {$K_{\beta}$}; %\draw[->,line
+    %   width=.4pt, color=black](3, 2.7) -- (3.7, 2.7); \node[left,
+    %   color=black] at (3.5, 2.7) {$K_{\alpha}$};
+    % \end{tikzpicture}
     \caption{Measured S-curve}
     \label{fig:scurve_example}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/L04-W0125_scurveDeriv_In.pdf}
+    % \includegraphics[width=\textwidth]{./figures/Calibration/L04-W0125_scurveDeriv_In.pdf}
+    \includegraphics[width=\textwidth]{./figures/Calibration/W5_E2_deriv_scurve_ampl1.pdf}
     \caption{Derivative of the S-curve}
     \label{fig:deriv_example}
   \end{subfigure}
   \caption{An example of a measured S-curve (a) and its derivative
-    fitted with a Gaussian function (b) for a Timepix readout ASIC
-    (L04-W0125) using the Indium target. $K_{\alpha}$ corresponds to
-    the strongest X-ray spectral line for the bombarded target. The
-    smaller peak for $K_{\beta}$ is ignored. For Timepix
-    assemblies. The Pixelman software~\cite{1748-0221-6-01-C01046}
-    provides the \emph{DACs Scan} plug-in which was used to scan the
-    threshold DAC value and save the hit maps in a text file. The
-    threshold calibration was done at CERN using the XRF targets. This
-    measurement was performed globally for each assembly. The
-    threshold DAC is scanned with a step size of 2.}
+    fitted with a Gaussian function (b) for the assembly W5\_E2 using
+    a pulse height of 1000 electrons for the pixel (0, 0). This
+    measurement is performed for all the pixels on the diagonal of the
+    matrix for each assembly. The threshold DAC is scanned with a step
+    size of 2.}
   \label{fig:scurve_deriv_example}
 \end{figure}
 
-A linear fit is used to parametrise the relationship between the
-photon energy and the threshold DAC given by the mean of the
-derivative of the S-curves:
+A linear fit is used to parametrise the relationship between the pulse
+height and the threshold DAC given by the mean of the derivative of
+the S-curves:
 \begin{equation}
-  THL_{DAC}=p \; THL_{\kev} + q \; ,
+  THL_{DAC}=p \; THL_{e-} + q \; ,
   \label{eq:THLDAC}
 \end{equation}
-where $THL_{DAC}$ is the threshold DAC and $THL_{\kev}$ its conversion
-into an energy. \cref{fig:THLcalib_A06} shows an example of the
-threshold calibration obtained for a Timepix chip (assembly
-A06-W0110). Each point used for the fit corresponds to the mean of the
-Gaussian fitted to the derivative of the S-curve for each target. The
-error on each point corresponds to the error on the mean of the fitted
-Gaussian.
+where $THL_{DAC}$ is the threshold DAC setting and $THL_{e-}$ the
+corresponding energy (in number of electrons). 
+
+\cref{fig:THLcalib_55-GNDGR-100} shows an example of the threshold
+calibration obtained for the assembly W5\_E2. Each point used for the
+fit corresponds to the mean of the Gaussian fitted to the derivative
+of the S-curve for each pulse height. The error on each point
+corresponds to the error on the mean of the fitted Gaussians of all
+diagonal pixels combined using the propagation of errors.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.5\textwidth]{./figures/Calibration/A06-W0110_THLcalibration.pdf}
-  \caption{Threshold calibration for A06-W0110. Each point corresponds
-    to the maximum gradient of the S-curve for each target (Cu, Zr, Pd
-    and In). A linear function as described in \cref{eq:THLDAC} was
-    used to fit the data points and obtain the parameters $p$ and
-    $q$.}
-  \label{fig:THLcalib_A06}
+  \includegraphics[width=0.5\textwidth]{./figures/Calibration/THLcalibration_W0005_E02.pdf}
+  \caption{Threshold calibration for W5\_E2. Each point corresponds to
+    the maximum gradient of the S-curve for each pulse height. A
+    linear function as described in \cref{eq:THLDAC} was used to fit
+    the data points and obtain the parameters $p$ and $q$.}
+  \label{fig:THLcalib_55-GNDGR-100}
 \end{figure}
 
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics[width=0.5\textwidth]{./figures/Calibration/A06-W0110_THLcalibration.pdf}
+%   \caption{Threshold calibration for A06-W0110. Each point corresponds
+%     to the maximum gradient of the S-curve for each target (Cu, Zr, Pd
+%     and In). A linear function as described in \cref{eq:THLDAC} was
+%     used to fit the data points and obtain the parameters $p$ and
+%     $q$.}
+%   \label{fig:THLcalib_A06}
+% \end{figure}
+
 The operating threshold DAC for each assembly was converted to an
-energy by solving \cref{eq:THLDAC} for $THL_{\kev}$ with
+energy by solving \cref{eq:THLDAC} for $THL_{e-}$ with
 $THL_{DAC}=THL_{DAC}^{op}$. The error on the evaluated threshold in energy
-($THL_{\kev}^{op}$) is obtained by the propagation of errors for the
+($THL_{e-}^{op}$) is obtained by the propagation of errors for the
 inverse of \ref{eq:THLDAC}:
 \begin{equation}
-  \sigma_{THL_{\kev}}^2(THL_{DAC})={{{(THL_{DAC}-q)^2} \over {p^4}} \sigma_{p}^2} +
+  \sigma_{THL_{e-}}^2(THL_{DAC})={{{(THL_{DAC}-q)^2} \over {p^4}} \sigma_{p}^2} +
         {\frac{1}{p^2} \sigma_{q}^2}+
         {2 {{THL_{DAC}-q} \over p^3} \sigma_{pq}^2} \; ,
         \label{eq:THLerror}
@@ -515,69 +585,15 @@ where $p$, $q$ are given by the linear fit using \cref{eq:THLDAC} with
 standard deviations $\sigma_{p}$, $\sigma_{q}$ and covariance
 $\sigma_{pq}$.
 
-% \begin{table}[htbp]
-%   \caption{Threshold fit parameters $p$ and $q$, the operating
-%     threshold DAC and its conversion into energy.}
-%   \label{tab:evalTHL} 
-%   \centering
-%   \begin{tabular}{ c c c c c }
-%     \toprule
-%     Assembly & $p$ [DAC steps/\kev] & $q$ [DAC steps] & $THL_{DAC}^{op}$ [DAC steps] & $THL_{\kev}^{op}$ [\kev] \\
-%     \midrule
-%     A06-W0110 & $-12.36\pm0.03$ & $364.0\pm0.50$ & 326 & $3.077\pm0.033$ \\
-%     C04-W0110 & $-11.8\pm0.02$ & $441.6\pm0.42$ & 405 & $3.102\pm0.030$ \\
-%     L04-W0125 & $-11.68\pm0.02$ & $448.6\pm0.31$ & 410 & $3.303\pm0.023$ \\
-%     B06-W0125 & $11.58\pm0.037$ & $390.6\pm0.80$ & 435 & $3.836\pm0.057$ \\
-%     \bottomrule
-%   \end{tabular}
-% \end{table}
+\cref{tab:THLcalibration} summarises the fit parameters p and q, the
+operating threshold DAC and its conversion into energy deposition in
+number of electrons for all the assemblies listed in
+\cref{tab:THLcalibration}.
 
-For further verification of these results, the Timepix DAC step gain
-for each assembly is calculated to be around
-24~$\pm$e\textsuperscript{-}/step, in agreement
-with~\cite{art:tmpx}. The width of the derivative of the S-curves
-shows the error at the front-end of the assembly. For all assemblies
-it varies between 7 to 11 DAC values which corresponds to 170 to 270
-electrons, again in agreement with~\cite{art:tmpx} (the error is
-obtained by error propagation of \cref{eq:THLDAC}).
-
-
-For Timepix3 assemblies, the threshold is calibrated using test pulses
-at four different heights corresponding to 0, 1000, 3000 and 6000
-electrons. For each pulse height, 200 pulses are sent to the pixels in
-the diagonal of the matrix. The threshold is scanned, like for Timepix
-assemblies, from a level of no counts to a level where all the pixels
-count. The S-curves and their derivatives are calculated. Finally, a
-linear fit is used to parametrise the relationship between the pulse
-height and the threshold DAC.
-
-The threshold calibration for 55-GNDGR-100 is shown in
-\cref{fig:THLcalib_55-GNDGR-100} (for the other assemblies refer to
-\cref{fig:Timepix3_THL_Calibration}). For the Timepix3 ASIC has a DAC
-step gain of around $11\pm$e-/step is calculated. The noise measured
-at the front-end corresponds to 80 to 90
-electrons. \cref{tab:THLcalibration,tab:THLcalibration_noise} summarises the conversion of
-the threshold DAC into energy for the different assemblies at nominal
-conditions.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.5\textwidth]{./figures/Calibration/THLcalibration_W0005_E02.pdf}
-  \caption{Threshold calibration for 55-GNDGR-100. Each point
-    corresponds to the maximum gradient of the S-curve for each pulse
-    height. A linear function as described in \cref{eq:THLDAC} was
-    used to fit the data points and obtain the parameters $p$ and $q$.}
-  \label{fig:THLcalib_55-GNDGR-100}
-\end{figure}
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[htbp]
   \centering
-  \caption{}
+  \caption{Threshold fit parameters p and q, the operating threshold
+    DAC and its conversion into energy deposition.}
   \label{tab:THLcalibration}
   \begin{tabular}{lcccc}
     \toprule
@@ -594,9 +610,32 @@ conditions.
   \end{tabular}
 \end{table}
 
+
+
+For further verification of these results, the Timepix3 DAC step gain
+for each assembly is calculated to be around
+11~$\pm$e\textsuperscript{-}/step, in agreement
+with~\cite{Timepix3Poikela}. 
+
+Without any test-pulse injection, the threshold scan results in a
+Gaussian distribution. The mean of the Gaussian distribution defines
+the baseline of the chip and its width, the electronic noise. For all
+assemblies the noise varies between 6 to 7 DAC values which
+corresponds to 70 to 80 electrons, again in agreement
+with~\cite{art:tmpx} (the error is obtained by error propagation of
+\cref{eq:THLDAC}). Except for the assembly W2\_J5 which appears to be
+noisy. \cref{tab:THLcalibration_noise} summarises the baseline mean,
+the threshold DAC step, the electronic noise and its conversion into
+energy deposition for the assemblies listed in
+\cref{tab:THLcalibration}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{table}[htbp]
   \centering
-  \caption{}
+  \caption{Measured baseline mean, threshold DAC step gain, the electronic noise
+    and its conversion into energy deposition.}
   \label{tab:THLcalibration_noise}
   \begin{tabular}{lcccc}
     \toprule
@@ -659,3 +698,21 @@ conditions.
 %%       \bottomrule
 %%   \end{tabular}}
 %% \end{table}
+
+
+% \begin{table}[htbp]
+%   \caption{Threshold fit parameters $p$ and $q$, the operating
+%     threshold DAC and its conversion into energy.}
+%   \label{tab:evalTHL} 
+%   \centering
+%   \begin{tabular}{ c c c c c }
+%     \toprule
+%     Assembly & $p$ [DAC steps/\kev] & $q$ [DAC steps] & $THL_{DAC}^{op}$ [DAC steps] & $THL_{\kev}^{op}$ [\kev] \\
+%     \midrule
+%     A06-W0110 & $-12.36\pm0.03$ & $364.0\pm0.50$ & 326 & $3.077\pm0.033$ \\
+%     C04-W0110 & $-11.8\pm0.02$ & $441.6\pm0.42$ & 405 & $3.102\pm0.030$ \\
+%     L04-W0125 & $-11.68\pm0.02$ & $448.6\pm0.31$ & 410 & $3.303\pm0.023$ \\
+%     B06-W0125 & $11.58\pm0.037$ & $390.6\pm0.80$ & 435 & $3.836\pm0.057$ \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
