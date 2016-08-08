@@ -22,17 +22,22 @@ track and calculate the position and time resolutions and the
 efficiency of the device.
 
 For the CLIC vertex detector R\&D, the Timepix3 telescope is used as a
-beam reference. Its components, performance and reconstruction
-software are described in the following sections. (TO DO: develop more
-what is described in the following).
+beam reference. This chapter overviews the components of the Timepix3
+telescope and its tracking performance. The Timepix3 telescope is
+implemented in AllPix simulations (\cref{sec:AllPix}) and its
+performance is compared to data taken at the CERN SPS. Finally, the
+tracking resolution on the DUT is extracted in simulations using the
+Monte Carlo truth position.
 
 %% --------------------------------------------- %%
 \section{Experimental setup at the CERN SPS}
-The thin sensors assemblies are tested at the H6 beam of the CERN SPS
-using the $120\,\gev$ pion beam. The beam is configured in such a way
-to have $\sim2.6 \times 10^6$ particles per spill. The telescope
-planes are positioned in a way to give the best tracking resolution
-for the given beam energy and the level of multiple scatterings.
+The Timepix3 telescope is commissioned and tested at the H6 beam of
+the CERN SPS using the $120\,\gev$ pion beam. The assemblies listed in
+\cref{tab:Timepix3Assemblies} are tested as DUTs using this
+telescope. The beam is configured in such a way to have $\sim2.6
+\times 10^6$ particles per spill. The telescope planes are positioned
+in a way to give the best tracking resolution for the given beam
+energy and the level of multiple scatterings.
 %% --------------------------------------------- %%
 \section{Components of the Timepix3 telescope}
 
@@ -73,11 +78,12 @@ be obtained.
   \label{fig:TPX3Telescope}
 \end{figure}
 
-The mechanical support for each telescope plane is minimised in order
+The mechanical support for the telescope planes are optimised in order
 to reduce the multiple scatterings of the particles and therefore
-improving the tracking resolution. An aluminum support is used to hold
-each telescope plane which does not cover the sensor. To protect the
-sensors an ABS plastic material is used as cover (in black in
+improving the tracking resolution. The Timepix3 assemblies are mounted
+on a PCB as shown in \cref{fig:Timepix3board_PCB}. An aluminum support
+is used to hold the PCBs which does not cover the sensor. To protect
+the sensors an ABS plastic material is used as cover (in black in
 \cref{fig:TPX3Telescope}) with a thickness of 2~mm and placed at a
 distance of 10~mm away from the PCB. \cref{tab:TPX3TelescopeMaterial}
 describes the material (with their thicknesses and radiation lengths)
@@ -85,7 +91,9 @@ seen by the particles for each telescope plane which would contribute
 to the multiple scatterings. The PCB stacks up eight layers of copper
 interlacing with Isola IS410 type material. An average is done to
 estimate the total thickness of Copper in the PCB. Behind the PCB a
-layer of Copper is used for the cooling of the chip.
+layer of Copper is used for the cooling of the chip. The total
+material budget of a telescope plane is estimated to be
+$\sim4\%$~X\textsubscript{0}.
 
 \begin{table}[htbp]
   \centering
@@ -116,44 +124,84 @@ in \cref{fig:TPX3Telescope} and the y-direction points vertically in
 the up direction.
 
 \subsection{Data acquisition system}
-The data-driven zero-suppressed mode (c.f. \cref{sec:TimepixReadout})
-is used for the data acquisition of the Timepix3 readout ASICs. 
-
-This system allows to record the data from all the particles from the
-SPS spill and generates a huge amount of data for processing offline
-as described in \cref{sec:recoSoft}.
+The SPIDR readout system, as described in \cref{sec:TimepixReadout},
+is used for the data acquisition of the Timepix3 telescope planes. The
+Timepix3 readout ASICs are operated with the data-driven
+zero-suppressed readout mode. This system allows to record the data
+from all the particles from the SPS spill and generates a huge amount
+of data for processing offline as described in \cref{sec:recoSoft}.
 
 
 %% --------------------------------------------- %%
-\section{Timepix3 telescope performance}\label{sec:telescopePerformance}
+\section{Timepix3 telescope performance}
+\label{sec:telescopePerformance}
 
-The Timepix3 telescope is simulated using the AllPix simulation
-framework (c.f. \cref{sec:AllPix}). This allows for the understanding
-of the telescope performance, the tracking resolution and also the
-validation of the simulations. Since AllPix returns the Monte Carlo
-Truth position (MC position) of the hits, the true tracking resolution
-can be obtained by comparing the MC position with the reconstructed
-track or hit positions.  
+The Timepix3 telescope is simulated with the \textsc{Geant4}-based
+AllPix simulation framework (c.f. \cref{sec:AllPix}). This allows for
+a better understanding of the telescope performance, extraction of the
+tracking resolution on the DUT and comparison to data. Since AllPix
+gives access to the Monte Carlo Truth position (MC position) of the
+hits, the true tracking resolution can be obtained by comparing the MC
+position with the reconstructed track or hit positions.
 
 \subsection{Timepix3 telescope simulation in AllPix}
-For the simulations, the telescope planes are placed with the same
-positions and rotations as done in data. The geometry of the sensors
-and the readout chip are defined based on the hardware. The mechanical
-support for the telescope planes is also simulated to have multiple
-scatterings as realistic as possible based on the material as
-described in \cref{tab:TPX3TelescopeMaterial}. \textsc{Geant4}
-provides the class \textsc{G4Material} describes the macroscopic
-properties of the material used in simulations and contains all the
-information relevant to the constituent elements. The density and the
-radiation length of the material are the two main properties to be
-considered for the simulations. \textsc{Geant4} already provides a
-material database for all the standard material such as copper and
-silicon. For the Isola IS410, the material G4\_BONE\_COMPACT\_ICRU has
-the closest radiation length and density. For the ABS plastic, used as
-the sensor covers, its constituent elements
+In the simulations, the geometry of the telescope is defined as
+realistic as possible by taking into account the positions and the
+rotations of the telescope planes, the thickness of the sensors and
+the pixel pitch. 
+
+The mechanical support for the telescope planes is implemented using
+the material as described in
+\cref{tab:TPX3TelescopeMaterial}. \textsc{Geant4} provides the class
+\textsc{G4Material} which describes the macroscopic properties of the
+material used in simulations and contains all the relevant information
+on its constituent elements. The density and the radiation length of
+the material are the two main properties to be considered for the
+simulations. \textsc{Geant4} already provides a material database for
+all the standard material such as copper and silicon. For the Isola
+IS410, the material G4\_BONE\_COMPACT\_ICRU has the closest radiation
+length and density. For the sensor covers in ABS plastic, their
+constituent elements
 (C\textsubscript{8}H\textsubscript{8}~C\textsubscript{4}H\textsubscript{6}~C\textsubscript{3}H\textsubscript{3}N)
 have been implemented as a \textsc{G4Material} in the simulations to
 obtain the correct density and radiation length.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at
+    (0,0){\includegraphics[width=0.6\textwidth]{figures/Telescope/AllpixTelescope.png}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+      
+      \draw[->, very thick, color=black](0.8, 0.9) -- (0.25, 0.9);
+      \node[above, color=black] at (0.5, 0.91) {\textbf{Beam}};
+      
+      \node[above, color=black] at (0.9, 0.05) {Plane 0};
+      \node[above, color=black] at (0.75, 0.05) {Plane 1};
+      \node[above, color=black] at (0.6, 0.05) {Plane 2};
+      \node[above, color=black] at (0.48, 0.05) {DUT};
+      \node[above, color=black] at (0.35, 0.05) {Plane 3};
+      \node[above, color=black] at (0.2, 0.05) {Plane 4};
+      \node[above, color=black] at (0.07, 0.05) {Plane 5};
+
+      \node[above, color=black] at (0.35, 0.7) {Sensor cover};
+      \draw[->, color=black](0.35, 0.7) -- (0.35, 0.45);
+      \node[above, color=black] at (0.9, 0.7) {Cooling};
+      \draw[->, color=black](0.85, 0.7) -- (0.85, 0.4);
+
+      %% \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+      %% \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+      %% \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+      
+    \end{scope}
+  \end{tikzpicture} 
+  \caption{The Timepix3 beam reference telescope implemented in AllPix
+    with six planes for the tracking and the DUT in the middle
+    inserted perpendicular to the beam direction. The sensor covers
+    and the chip cooling are shown. The telescope planes numbering
+    convention is also shown.}
+  \label{fig:Timepix3Telescope_Allpix}
+\end{figure}
 
 
 A digitiser for the Timepix3 readout chips bump-bonded to planar
@@ -170,9 +218,9 @@ by applying the calibration to each assembly.
 \subsection{Single-hit resolution on the telescope planes}
 
 \cref{tab:AllPixTelescopePlanesParams} shows the parameters used for
-the simulation of the telescope planes. The bias and the depletion
-voltages, the sensor type and the threshold values are the parameters
-defining the charge sharing and the cluster size
+the simulation of the sensors of the telescope planes. The bias and
+the depletion voltages, the sensor type and the threshold values are
+the parameters defining the charge sharing and the cluster size
 distribution. Therefore they define the intrinsic resolution of the
 sensors.
 
@@ -207,7 +255,7 @@ for the first telescope plane.
     \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/clusterSignal_telescope0_data_simu.pdf}
     \caption{}
   \end{subfigure}
-  \caption{For the first telescope plane, the cluster-size distribution in the (a) x direction and (b) y direction. (c) shows the sum of the charge in the cluster in units of TOT.} %data run 661, simulation run 54.
+  \caption{For the telescope plane 0, the cluster-size distribution in the (a) x direction and (b) y direction. (c) shows the sum of the charge in the cluster in units of TOT.} %data run 661, simulation run 54.
   \label{fig:TelescopeCluSize_data_simu}
 \end{figure}
 
@@ -216,8 +264,8 @@ Carlo Truth position (x\textsubscript{MC} and y\textsubscript{MC})
 obtained by AllPix simulations. \cref{fig:TelPlane0_MC_hit} compares
 the hit resolution on the first telescope plane in x and y
 directions. These resolutions are in fact the intrinsic resolution of
-the telescope planes sensors and depends on their thickness, rotations
-and the charge sharing.
+the telescope planes sensors and depends on their thickness, charge
+sharing and rotations.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -228,16 +276,18 @@ and the charge sharing.
     \includegraphics[width=\textwidth]{figures/Telescope/telescopePlane0_MC_vs_hit_y.pdf}
     \caption{}
   \end{subfigure}
-  \caption{The difference between the reconstructed hit position .}
+  \caption{The intrinsic resolution of a telescope plane in (a) x and
+    (b) y directions comparing the MC and the reconstructed
+    hit positions.}
   \label{fig:TelPlane0_MC_hit}
 \end{figure}
 
 The residuals as a function of the x\textsubscript{MC} and
 y\textsubscript{MC} are shown in \cref{fig:TelPlane0_MC_hit_2D}. The
 intrinsic resolution does not depend on the position of the hit and
-stays the same for all positions. This is also used as a check of
-coherence in geometry description in the AllPix simulations and the
-EUTelescope reconstruction.
+stays the same for all positions. This confirms the coherence between
+the geometry description in the AllPix simulations and the EUTelescope
+reconstruction.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -248,18 +298,21 @@ EUTelescope reconstruction.
     \includegraphics[width=\textwidth]{figures/Telescope/telescopePlane0_MC_vs_hit_y_2D.pdf}
     \caption{}
   \end{subfigure}
-  \caption{MC hit vs. reconstructed hit position.}
+  \caption{The intrinsic resolution of a telescope plane in (a) x and
+    (b) y directions comparing the MC and the reconstructed
+    hit positions as a function of the MC position.}
   \label{fig:TelPlane0_MC_hit_2D}
 \end{figure}
 
 
-
+\newpage
 \subsection{Biased residuals on each telescope plane}
 
-\cref{fig:telescopeBiasedRMS_data_simu} compares the RMS of the biased
-residuals obtained by the difference between the measured hit and the
-biased fitted track position in simulations and data on the telescope
-planes (the original distributions are given in
+The biased residual on each telescope plane is defined as the
+difference between the measured hit and the biased fitted track
+position. \cref{fig:telescopeBiasedRMS_data_simu} compares the RMS of
+the biased residuals in data and simulations (the original
+distributions are given in
 \cref{fig:telescope_biasedResiduals_data_X,fig:telescope_biasedResiduals_data_Y}
 for data and
 \cref{fig:telescope_biasedResiduals_simu_X,fig:telescope_biasedResiduals_simu_Y}
@@ -310,8 +363,9 @@ telescope planes.
 \subsection{Tracking resolution on the DUT}
 The tracking resolution on the DUT ($100\,\micron$ thick sensor) in
 the x and y directions is shown in \cref{fig:DUT_MC_track}. This value
-can be only obtained in simulations as the MC truth position is
+can be only obtained in simulations as the MC position is
 needed.
+
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{figures/Telescope/Unbiased_trackRes_DUT_x.pdf}
@@ -323,12 +377,16 @@ needed.
   \end{subfigure}
   \caption{The tracking resolution on the DUT comparing the
     reconstructed track position to the true position of the particles
-    coming from \textsc{Geant4}.}
+    obtained from \textsc{Geant4} in AllPix simulations in (a) x and
+    (b) y directions.}
   \label{fig:DUT_MC_track}
 \end{figure}
 
 
-In 2D the tracking resolution on the DUT is shown in \cref{fig:DUT_MC_track_2D}.
+The tracking resolution on the DUT as a function of the
+x\textsubscript{MC} and y\textsubscript{MC} positions is shown in
+\cref{fig:DUT_MC_track_2D}.
+
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{figures/Telescope/Unbiased_trackRes_DUT_x_2D.pdf}
@@ -338,16 +396,17 @@ In 2D the tracking resolution on the DUT is shown in \cref{fig:DUT_MC_track_2D}.
     \includegraphics[width=\textwidth]{figures/Telescope/Unbiased_trackRes_DUT_y_2D.pdf}
     \caption{}
   \end{subfigure}
-  \caption{Track vs. MC position on the DUT.}
+  \caption{The tracking resolution on the DUT in (a) x and (b)
+    directions as a function of the MC position.}
   \label{fig:DUT_MC_track_2D}
 \end{figure}
 
 \cref{tab:SummaryOfResolutions} summarises the telescope resolutions
-obtained in simulations.
+measured by the simulations.
 
 \begin{table}[htbp]
   \centering
-  \caption{A summary of the calculated telescope performance.}
+  \caption{A summary of the measured telescope performance.}
   \label{tab:SummaryOfResolutions}
   \begin{tabular}{ccc}
     \toprule

@@ -242,7 +242,7 @@ Xilinx Virtex-7 FPGA~\cite{XilinxVirtex7} and a 10~Gb Ethernet link.
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/Timepix3board.jpg}
-    \caption{}
+    \caption{}\label{fig:Timepix3board_PCB}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.65\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/SPIDRboard.png}
@@ -252,12 +252,13 @@ Xilinx Virtex-7 FPGA~\cite{XilinxVirtex7} and a 10~Gb Ethernet link.
   \label{fig:Timepix3board_SPIDR}
 \end{figure}
 
-The Timepix3 readout chip allows for a data driven readout mode which
-can reach higher readout rates than the frame based mode. In the data
-driven mode, after a hit is processed by the pixel, a data packet
-containing the TOT and the TOA information is immediately sent off the
-chip. This reduces significantly the dead time of the pixels and
-allows to reach very high readout rates of up to 40~Mhits/s/\cmsquared.
+The Timepix3 readout chip allows for a data-driven zero-suppressed
+readout mode which can reach higher readout rates than the frame based
+mode. In the data driven mode, after a hit is processed by the pixel,
+a data packet containing the TOT and the TOA information is
+immediately sent off the chip. This reduces significantly the dead
+time of the pixels and allows to reach very high readout rates of up
+to 40~Mhits/s/\cmsquared.
 
 The different settings of the chip are controlled externally using
 programmable DACs such as the I\textsubscript{krum}, threshold,
