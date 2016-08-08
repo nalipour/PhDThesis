@@ -266,16 +266,19 @@ polarity of the sensor and the clock speed.
 %% --------------------------------------------- %%
 \section{Timepix3 assemblies}\label{sec:Timepix3Assemblies}
 A summary of the Timepix3 assemblies is shown in
-\cref{tab:Timepix3Assemblies}. Advacam sensors of thickness
-$50$-$300\,\micron$ are bump-bonded to Timepix3 readout chips.
+\cref{tab:Timepix3Assemblies}. Advacam sensors~\cite{AdvacamRef} of
+thickness $50$-$300\,\micron$ are bump-bonded to Timepix3 readout
+chips.
 
 \begin{table}[htbp]
   \centering
   \caption{Details of different Advacam planar pixel sensors
     bump-bonded to Timepix3 readout ASICs and studied in calibration
-    and test beams.}
+    and test beams. For active-edge sensors, the edge distance is
+    defined by the distance between the last pixel implant and the
+    physical sensor edge.}
   \label{tab:Timepix3Assemblies}
-  \begin{tabular}{lccccc}
+  \resizebox{\textwidth}{!}{\begin{tabular}{lccccc}
     \toprule
     Timepix3 ID & Thickness [\micron] & Type & Edge distance [\micron] & Guard-ring potential & Assembly\\
     \midrule
@@ -287,7 +290,7 @@ $50$-$300\,\micron$ are bump-bonded to Timepix3 readout chips.
      W5\_F1 & 150 & n-in-p & 55 & Grounded & 55-GNDGR-150 \\ \hline
      W2\_J5 & 300 & p-in-n & - & - & - \\
     \bottomrule
-  \end{tabular}
+  \end{tabular}}
 \end{table}
 
 %% --------------------------------------------- %%
@@ -637,7 +640,7 @@ energy deposition for the assemblies listed in
   \caption{Measured baseline mean, threshold DAC step gain, the electronic noise
     and its conversion into energy deposition.}
   \label{tab:THLcalibration_noise}
-  \begin{tabular}{lcccc}
+  \resizebox{\textwidth}{!}{\begin{tabular}{lcccc}
     \toprule
     Assembly & Baseline mean [DAC steps] & Threshold DAC step [e\textsuperscript{-}] & Noise [DAC steps] & Noise [e\textsuperscript{-}] \\
     \midrule
@@ -649,7 +652,7 @@ energy deposition for the assemblies listed in
     W5\_F1  & $1103.591\pm0.004$ & $11.237\pm0.000$ & $6.711\pm0.004$ & $75.408\pm0.046$ \\
     W2\_J5  & $1231.70\pm0.034$ & $-9.177\pm0.000$ & $11.826\pm0.041$ & $108.53\pm0.379$ \\
     \bottomrule
-  \end{tabular}
+  \end{tabular}}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

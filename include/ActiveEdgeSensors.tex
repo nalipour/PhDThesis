@@ -4,31 +4,27 @@
 %==============================================================================    
 
 
-Active-edge sensors allow for seamless tiling of pixel sensors of a
-vertex detector by depleting the sensors up to their physical
+Active-edge technology allows for seamless tiling of pixel sensors of
+a vertex detector by depleting the sensors up to their physical
 edges. This allows for high coverage without creating overlaps between
 the pixel sensors and therefore reduces the material budget in the
-detector. This process consists of extending the backside
-implantation to the edge.
+detector. The process consists of extending the backside implantation
+to the edge.
 
 In this chapter, the fabrication process for active edge sensors is
-studied. Planar sensors produced by Advacam~\cite{AdvacamRef} and bump
-bonded to Timepix3 ASICs are tested in test beams. The signal
+described. Planar sensors produced by Advacam~\cite{AdvacamRef} and
+bump bonded to Timepix3 ASICs are tested in test beams. The signal
 collection and the efficiency on the edge is presented. The test beam
 results are compared to TCAD simulations.
 %% --------------------------------------------- %%
 \section{Introduction}
 
-Active-edge sensors allow for seamless tiling of pixel sensor matrices
-in large areas of a vertex detector by depleting them to their
-physical edges. This allows for high coverage without creating
-overlaps between the pixel sensors and therefore reduces the
-material. Thin n-in-p planar sensors with active edges using a Deep
-Reactive Ion Etching (DRIE) process have been produced by
-Advacam~\cite{AdvacamRef}. They are bump bonded to the Timepix3
-readout chips ($55\,\micron$ pixel pitch) and studied in test beams
-and simulations. The DRIE process consists of extending the back-side
-implantation, as well as the bias voltage, to the edge of the
+Thin $50-150\,\micron$ thick n-in-p planar sensors with active edges
+have been produced by Advacam~\cite{AdvacamRef} using a Deep Reactive
+Ion Etching (DRIE) process. They are bump bonded to Timepix3 readout
+chips ($55\,\micron$ pixel pitch) and studied in test beams and
+simulations. The DRIE process consists of extending the back-side
+implantation, and thereby the bias voltage, to the edge of the
 sensor. The gradient of potential between the edge and the last pixel
 can be very high and could lead to a breakdown of the sensor. A guard
 ring (GR) consists of an n-implant with a metallic contact on top of
@@ -37,15 +33,14 @@ smoothening the potential transition between the edge and the
 neighbouring pixels. The guard ring can be kept floating or grounded
 by connecting it to the ground of the readout ASIC. Timepix3 ASICs
 provide an extra row of bumped pixels allowing to connect the guard
-ring to ground potential. Figure~\ref{fig:activeedge} illustrates a
-cross section of an active-edge sensor with and without guard ring.
+ring to ground potential. Figure~\ref{fig:activeedge} shows a cross
+section of an active-edge sensor with and without guard ring.
 
 
 \begin{figure}[htbp]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \begin{tikzpicture}
-      % \node[anchor=south west,inner sep=0] (image) at (0,0){\includegraphics[width=\textwidth]{figures/ActiveEdge/schematic.png}};
       \node[anchor=south west,inner sep=0] (image) at
       (0,0){\includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_20_NGR.png}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
@@ -66,7 +61,7 @@ cross section of an active-edge sensor with and without guard ring.
         \node[below, color=violet] at (0.15, 0.0) {p+ backside contact};
         \draw[-, line width=3pt, color=violet](0.0, 0.045) -- (0.0, 0.93); % p+ active-edge contact
         \node[left, color=violet, rotate=90] at (-0.05, 0.7) {p+ active edge};
-        \node[left, color=white, rotate=90] at (0.08, 0.9) {\textbf{final pixel edge}};
+        % \node[left, color=white, rotate=90] at (0.08, 0.9) {\textbf{final pixel edge}};
 
         % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
         % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
@@ -74,7 +69,7 @@ cross section of an active-edge sensor with and without guard ring.
 
       \end{scope}
     \end{tikzpicture}
-    \caption{}
+    \caption{No guard ring}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.45\textwidth}
     \begin{tikzpicture}
@@ -87,92 +82,47 @@ cross section of an active-edge sensor with and without guard ring.
         
         \node[above, color=black] at (0.1, 1) {edge};
         \node[above, color=white] at (0.1, 0.75) {\textbf{GR}};
-
-        % \draw[<->, line width=.4pt, color=black](0.17, 0.97) -- (0.47, 0.97); % n-implant
-        % \node[above, color=black] at (0.35, 0.97) {\small{n-implant}};
-        \node[above, color=white] at (0.3, 0.5) {\small{p-substrate}};
+        \node[above, color=white] at (0.3, 0.5) {\textbf{p-substrate}};
         \draw[<->, line width=.4pt, color=black](0.54, 0.0) -- (0.98, 0.0); % pixel width
-        \node[below, color=black] at (0.75, 0.0) {\small{pixel (55 \micron)}};
+        \node[below, color=black] at (0.75, 0.0) {\small{pixel (55
+            \micron)}};
+
+        \draw[<->, thick, color=black](0.19, 1) -- (0.44, 1); % n-implant
+        \node[above, color=black] at (0.33, 1) {n-implant};
         
         \draw[-, line width=3pt, color=violet](0.01, 0.05) -- (0.99, 0.05); % p+ backside contact
-  %      \node[below, color=violet] at (0.15, 0.0) {\small{p+ backside contact}};
         \draw[-, line width=3pt, color=violet](0.01, 0.045) -- (0.01, 0.95); % p+ active-edge contact
-%        \node[left, color=violet, rotate=90] at (-0.05, 0.7) {\small{p+ active edge}};
-
         % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
         % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
         % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
       \end{scope}
     \end{tikzpicture}
-    \caption{}
+    \caption{With guard ring}
   \end{subfigure}
-  \caption{Schematic showing the cross section of a sensor with
-    active-edge technology. The pixel edges considered in the analysis
-    are indicated with dashed lines. The electric field distribution
-    is also illustrated. (a) does not contain any guard ring and (b)
-    contains a guard ring (GR) in the edge which consists of an
-    n-implant with a metallic contact on top of it.}
+  \caption{Schematic showing the cross section of a $50\,\micron$
+    thick sensor with active-edge technology. The pixel grid
+    considered in the analysis is indicated with dashed lines. The
+    electric field distribution obtained from a TCAD simulation with a
+    bias voltage of 15~V is also illustrated. (a) does not contain any
+    guard ring (GR) and (b) contains a guard ring in the edge which
+    consists of an n-implant with a metallic contact on top of it.}
   \label{fig:activeedge}
 \end{figure}
 
-\section{Active-edge assemblies}\label{sec:AEgeometry}
+\section{Layout parameters of active-edge assemblies}
+\label{sec:AEgeometry}
 
 The produced assemblies by Advacam and tested in test beams are listed
-in \cref{tab:activeEdgeAssembliesList}. The edge distance is defined
-by the distance between the last pixel implant and the physical sensor
-edge.
-
-For the $50\,\micron$ thick sensors, 4 edge configurations are
-studied: 
-\begin{itemize}
-\item 20-NGR does not contain any guard-ring in the edge with an edge
-  distance of $20\,\micron$.
-\item 23-FGR contains a guard ring with a floating potential. The
-  edge distance is $23\,\micron$.
-\item 28-GNDGR contains a guard ring connected to the ground potential
-  with an edge distance of $28\,\micron$.
-\item 55-GNDGR contains a guard ring connected to the ground potential
-  with an edge distance of $55\,\micron$.
-\end{itemize}
-
-For 55-GNDGR-100 ($100\,\micron$ thick sensor) and 55-GNDGR-150
-($150\,\micron$ thick sensor), the edge contains a guard ring
-connected to the ground potential with an edge distance of
-$55\,\micron$.
-
-\begin{table}[htbp]
-  \centering
-  \caption{Advacam active-edge n-in-p planar pixel sensor assemblies. The edge distance is defined by the distance between the last pixel implant and the physical sensor edge.}
-  \label{tab:activeEdgeAssembliesList}
-  \begin{tabular}{lccc}
-    \toprule
-    Assembly & Thickness [\micron] & Edge distance [\micron] & ID \\
-    \midrule
-    20-NGR  & 50 & 20 & W19\_G7 \\
-    23-FGR & 50 & 23 & W19\_F7 \\
-    28-GNDGR & 50 & 28 & W19\_L8 \\
-    55-GNDGR & 50 & 55 &W19\_C7 \\ \hline
-    55-GNDGR-100 & 100 & 55 & W5\_E2  \\ \hline
-    55-GNDGR-150 & 150 & 55 & W5\_F1 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\cref{fig:Layout_guard_ring} shows the layout of the assemblies listed
-in \cref{tab:activeEdgeAssembliesList}. The different layers of the
-sensors shown in different colors are described in
+in \cref{tab:Timepix3Assemblies}. The edge distance is defined by the
+distance between the last pixel implant and the physical sensor
+edge. The layouts of the assemblies are shown in
+\cref{fig:Layout_guard_ring} and the colors defining the different
+sensor layers are described in
 \cref{fig:PixelLayout,tab:PixelStackDimensions}. The same convention
 is also used for describing the layers for the guard
 ring. \cref{tab:DimensionsForAssemblies} summarises the dimensions of
-the implants for the sensors and they can be different for different
-designs of guard rings. The edge width is the distance between the
-last pixel implant to the physical edge of the sensor. The metal width
-is the diameter of the metal for the pixels. The doping width is the
-diameter of the pixels implant. The contact width is the diameter of
-the contact between silicon and the metal (where the oxide is
-etched). The GR offset is the distance between the physical edge of
-the sensor and the implant of the GR. These dimensions are used for
-the implementation of the sensors in TCAD simulations.
+the implants for the sensors. These dimensions are used for the
+implementation of the sensors in TCAD simulations.
 
 
 \begin{figure}[htbp]
@@ -186,10 +136,10 @@ the implementation of the sensors in TCAD simulations.
 
         \draw[blue, thick](0.62, 0.1)--(0. 62, 0.7);
         \draw[blue, thick, dashed](0.58, 0.1)--(0.58, 0.7);
-        \draw[blue, thick](0.3, 0.1)--(0.3, 0.7);
+        \draw[blue, thick, dashed](0.3, 0.1)--(0.3, 0.7);
 
-        \draw[blue, thick](0.3, 0.1)--(0.62, 0.1);
-        \draw[blue, thick](0.3, 0.7)--(0.62, 0.7);
+        \draw[blue, thick, dashed](0.3, 0.1)--(0.62, 0.1);
+        \draw[blue, thick, dashed](0.3, 0.7)--(0.62, 0.7);
 
         \node[below, color=blue] at (0.3, 0.1) {-0.055 mm};
         \node[below, color=blue] at (0.58, 0.1) {0 mm};
@@ -230,14 +180,13 @@ the implementation of the sensors in TCAD simulations.
     \label{fig:Layout50_GNDGR}
   \end{subfigure}~
   \caption{Sensor layouts for different guard-ring solutions for the
-    assemblies described in \cref{tab:activeEdgeAssembliesList}. (a)
-    shows the convention used in \cref{fig:20-NGR_eff_TOT,fig:23-FGR_eff_TOT,fig:28-GNDGR_eff_TOT,fig:55-GNDGR_eff_TOT,fig:55-GNDGR-100_eff_TOT,fig:55-GNDGR-150_eff_TOT}
+    assemblies described in \cref{tab:Timepix3Assemblies}. (a) shows
+    the convention used in
+    \cref{fig:20-NGR_eff_TOT,fig:23-FGR_eff_TOT,fig:28-GNDGR_eff_TOT,fig:55-GNDGR_eff_TOT,fig:55-GNDGR-100_eff_TOT,fig:55-GNDGR-150_eff_TOT}
     to express the efficiency and the charge distribution at the edge
     as a function of the track position. The border of the last pixel
     before the edge is indicated by a dashed line (at position 0 mm)
-    and the physical sensor edge with a continuous line. The edge
-    distance is defined by the distance between the last pixel implant
-    and the physical sensor edge.}
+    and the physical sensor edge with a continuous line.}
   \label{fig:Layout_guard_ring}
 \end{figure}
 
@@ -250,17 +199,16 @@ the implementation of the sensors in TCAD simulations.
     \centering
     \vspace{0pt}
     \includegraphics[width=0.95\textwidth]{figures/ActiveEdge/pixelLayout_withLayers.png}
-    \caption{The different layers in the geometry description and used
-      for the sensor production.}
+    \caption{The different layers in the geometry description used for
+      the sensor production.}
     \label{fig:PixelLayout}
   \end{minipage}
   \hfill
   \begin{minipage}[t]{.56\textwidth}
     \centering
     \vspace{0pt}
-    \captionof{table}{Layers in the sensor taken from the geometry
-      description file used for the sensor production (Picture from
-      23-FGR).}
+    \captionof{table}{Layers in the geometry description used for the
+      sensor production (Picture from 23-FGR).}
     \label{tab:PixelStackDimensions}
     \begin{tabular}{l c c}
       \toprule
@@ -280,17 +228,17 @@ the implementation of the sensors in TCAD simulations.
 \begin{table}
   \centering
   \captionof{table}{The dimensions of the different implants in for
-    the sensors listed in \cref{tab:activeEdgeAssembliesList}. The
-    edge width is the distance between the last pixel implant to the physical edge of the sensor. The metal width
-    is the diameter of the metal for the pixels. The doping width is the
-    diameter of the pixels implant. The contact width is the diameter of
+    the sensors listed in \cref{tab:Timepix3Assemblies}. The
+    edge distance is the distance between the last pixel implant to the physical edge of the sensor. The metal width
+    is the diameter of the metal layer for the pixels. The doping width is the
+    diameter of the pixel implant. The contact width is the diameter of
     the contact between silicon and the metal (where the oxide is
     etched). The GR offset is the distance between the physical edge of
-    the sensor and the implant of the GR.}
+    the sensor and the implant of the guard ring.}
   \label{tab:DimensionsForAssemblies}
   \begin{tabular}{l c c c c}
     \toprule
-    & 20-NGR & 23-FGR & 28-GNDGR & 55-GNDGR \\
+    & 20-NGR-50 & 23-FGR-50 & 28-GNDGR-50 & 55-GNDGR-50, 100, 150 \\
     \midrule
     Edge width [\micron] & 20 & 23 & 28 & 55 \\
     Metal width [\micron] & 40 & 36 & 36 & 40 \\
@@ -303,6 +251,25 @@ the implementation of the sensors in TCAD simulations.
     \bottomrule
   \end{tabular}
 \end{table}
+
+%% --------------------------------------------- %%
+\section{Electrical measurements}
+
+\cref{fig:IVmeasurements} shows the measured leakage current in the
+different assemblies as a function of the bias voltage at the room
+temperature of $22^{\circ}$~C. The breakdown occurs earlier for the
+assembly without guard ring (20-NGR) compared to the other
+assemblies. For the nominal operation at -15~V, none of the assemblies
+are operated beyond the breakdown voltage.
+
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figures/ActiveEdge/IVCurve.pdf}
+  \caption{Measured leakage current as a function of bias voltage for
+    the assemblies listed in \cref{tab:activeEdgeAssembliesList}.}
+  \label{fig:IVmeasurements}
+\end{figure}
 
 
 %% --------------------------------------------- %%
@@ -945,3 +912,44 @@ in the collected charge in the edge region.
 %   5 & contact to connect Al to Si & 15 & 15 \\
 %   \bottomrule
 % \end{tabular}
+
+
+
+
+
+
+% For the $50\,\micron$ thick sensors, 4 edge configurations are
+% studied: 
+% \begin{itemize}
+% \item 20-NGR does not contain any guard-ring in the edge with an edge
+%   distance of $20\,\micron$.
+% \item 23-FGR contains a guard ring with a floating potential. The
+%   edge distance is $23\,\micron$.
+% \item 28-GNDGR contains a guard ring connected to the ground potential
+%   with an edge distance of $28\,\micron$.
+% \item 55-GNDGR contains a guard ring connected to the ground potential
+%   with an edge distance of $55\,\micron$.
+% \end{itemize}
+
+% For 55-GNDGR-100 ($100\,\micron$ thick sensor) and 55-GNDGR-150
+% ($150\,\micron$ thick sensor), the edge contains a guard ring
+% connected to the ground potential with an edge distance of
+% $55\,\micron$.
+
+% \begin{table}[htbp]
+%   \centering
+%   \caption{Advacam active-edge n-in-p planar pixel sensor assemblies. The edge distance is defined by the distance between the last pixel implant and the physical sensor edge.}
+%   \label{tab:activeEdgeAssembliesList}
+%   \begin{tabular}{lccc}
+%     \toprule
+%     Assembly & Thickness [\micron] & Edge distance [\micron] & ID \\
+%     \midrule
+%     20-NGR  & 50 & 20 & W19\_G7 \\
+%     23-FGR & 50 & 23 & W19\_F7 \\
+%     28-GNDGR & 50 & 28 & W19\_L8 \\
+%     55-GNDGR & 50 & 55 &W19\_C7 \\ \hline
+%     55-GNDGR-100 & 100 & 55 & W5\_E2  \\ \hline
+%     55-GNDGR-150 & 150 & 55 & W5\_F1 \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
