@@ -258,64 +258,49 @@ implementation of the sensors in TCAD simulations.
 \cref{fig:IVmeasurements} shows the measured leakage current in the
 different assemblies as a function of the bias voltage at the room
 temperature of $22^{\circ}$~C. The breakdown occurs earlier for the
-assembly without guard ring (20-NGR) compared to the other
-assemblies. For the nominal operation at -15~V, none of the assemblies
-are operated beyond the breakdown voltage.
+assembly without guard ring (20-NGR-50) compared to the other
+assemblies. For the nominal operation (at -15~V for $50\,\micron$,
+-20~V for $100\,\micron$ and -30~V for $150\,\micron$ thick sensors),
+none of the assemblies are operated beyond the breakdown voltage.
 
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.7\textwidth]{figures/ActiveEdge/IVCurve.pdf}
-  \caption{Measured leakage current as a function of bias voltage for
-    the assemblies listed in \cref{tab:activeEdgeAssembliesList}.}
+  \caption{Measured leakage current at the room temperature of
+    $22^{\circ}$~C as a function of bias voltage for the active-edge
+    assemblies listed in \cref{tab:Timepix3Assemblies}.}
   \label{fig:IVmeasurements}
 \end{figure}
 
 
 %% --------------------------------------------- %%
 \section{Edge performance in test beams}
-The assemblies were tested at the CERN SPS with $120\,\gev$ pions,
-making use of a beam reference telescope.  (TODO: REFERENCE TO
-TESTBEAM chapter).
+The active-edge assemblies are tested at the CERN SPS with $120\,\gev$
+pions (c.f. \cref{sec:CERN_SPS}), making use of the Timepix3 beam
+reference telescope as described in \cref{ch:Telescope}.
 
-
-\cref{fig:IVmeasurements} shows the measured leakage current in the
-different assemblies as a function of the bias voltage. The breakdown
-occurs earlier for the assembly without guard ring (20-NGR) compared
-to the other assemblies. For the nominal operation at -15~V, none of
-the assemblies are operated beyond the breakdown voltage.
-
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.7\textwidth]{figures/ActiveEdge/IVCurve.pdf}
-  \caption{Measured leakage current as a function of bias voltage for
-    the assemblies listed in \cref{tab:activeEdgeAssembliesList}.}
-  \label{fig:IVmeasurements}
-\end{figure}
-
-The efficiency and the collected charge (time-over-threshold TOT) on
+The efficiency and the collected charge (time-over-threshold TOT) at
 the edge as a function of the track position are shown in
 \cref{fig:20-NGR_eff_TOT,fig:23-FGR_eff_TOT,fig:28-GNDGR_eff_TOT,fig:55-GNDGR_eff_TOT,fig:55-GNDGR-100_eff_TOT,fig:55-GNDGR-150_eff_TOT}
 with the convention as illustrated in \cref{fig:Layout20_NGR}. The
 border of the last pixel (at 0~mm) is indicated with a dashed line and
-the physical sensor edge is shown in continuous line. The detection
-efficiency is calculated by counting the number of matched tracks to
+the physical sensor edge is shown as a continuous line. The detection
+efficiency is calculated by counting the number of tracks matched to
 hits on the DUT divided by the total number of tracks projected on the
 DUT. The efficiency within the pixels is then mapped into a grid of
 $2\times2$ pixels. The x-axis shows the track position relative to the
 last pixel. The y-axis combines the tracks for the even rows (in the
 coordinates between 0~mm and 0.055~mm) and the odd rows (in the
 coordinates between 0.055~mm and 0.11~mm). The z-axis shows the
-efficiency. To increase the statistics, the beam was focused on only
-one of the edges during the data taking.
-
+efficiency for the plots on the left. To increase the statistics, the
+beam was focused on only one of the edges during the data taking.
 
 The assemblies without (\cref{fig:20-NGR_eff_TOT}) and with floating
-guard ring (\cref{fig:23-FGR_eff_TOT}) are efficient up to the physical
-edge of the sensor. The charge is fully collected by the last pixel
-for 20-NGR. For 23-FGR, a loss of the charge near the edge is observed
-(charge lost in the guard ring).
+guard ring (\cref{fig:23-FGR_eff_TOT}) are efficient up to the
+physical edge of the sensor. The charge is fully collected by the last
+pixel for 20-NGR-50. For 23-FGR-50, a loss of the charge near the edge
+is observed (charge lost in the guard ring).
 
 \begin{figure}[htbp]
   \begin{subfigure}[b]{0.5\textwidth}
@@ -325,7 +310,6 @@ for 20-NGR. For 23-FGR, a loss of the charge near the edge is observed
         \includegraphics[width=\textwidth, page=3]{figures/TestBeam/edge_bcp.pdf}};
     \end{tikzpicture}
     \caption{}
-    \label{fig:}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
@@ -334,10 +318,9 @@ for 20-NGR. For 23-FGR, a loss of the charge near the edge is observed
       (0,0){\includegraphics[width=\textwidth, page=5]{figures/TestBeam/edge.pdf}};
     \end{tikzpicture}
     \caption{}
-    \label{fig:}
   \end{subfigure}
   \caption{(a) Efficiency and (b) charge (TOT) collected as a function of the
-    track position for the assembly 20-NGR.}
+    track position for the assembly 20-NGR-50.}
   \label{fig:20-NGR_eff_TOT}
 \end{figure}
 
@@ -358,17 +341,16 @@ for 20-NGR. For 23-FGR, a loss of the charge near the edge is observed
       (0,0){\includegraphics[width=\textwidth, page=8]{figures/TestBeam/edge.pdf}};
     \end{tikzpicture}
     \caption{}
-    \label{fig:}
   \end{subfigure}
   \caption{(a) Efficiency and (b) charge (TOT) collected as a function of the
-    track position for the assembly 23-FGR.}
+    track position for the assembly 23-FGR-50.}
   \label{fig:23-FGR_eff_TOT}
 \end{figure}
 
 The grounded guard ring degrades significantly the detection
-efficiency at the edge. For 28-GNDGR, the efficiency drops between
+efficiency at the edge. For 28-GNDGR-50, the efficiency drops between
 pixels as shown in \cref{fig:28-GNDGR_eff_TOT}. A large part of the
-charge is collected by the guard ring. For 55-GNDGR, as shown in
+charge is collected by the guard ring. For 55-GNDGR-50, as shown in
 \cref{fig:55-GNDGR_eff_TOT}, the edge is not efficient anymore due to
 the reduced amount of detected charge in thin sensors and its low
 sharing to the neighbouring pixels (lower than the threshold of the
@@ -393,7 +375,7 @@ the guard ring.
     \caption{}
   \end{subfigure}
   \caption{(a) Efficiency and (b) charge (TOT) collected as a function of the
-    track position for the assembly 28-GNDGR.}
+    track position for the assembly 28-GNDGR-50.}
   \label{fig:28-GNDGR_eff_TOT}
 \end{figure}
 
@@ -416,8 +398,8 @@ the guard ring.
     \end{tikzpicture}
     \caption{}
   \end{subfigure}
-  \caption{(a) Efficiency and (b) charge (TOT) collected as a function of the
-    track position for the assembly 55-GNDGR.}
+  \caption{(a) Efficiency and (b) charge (TOT) collected as a function
+    of the track position for the assembly 55-GNDGR-50.}
   \label{fig:55-GNDGR_eff_TOT}
 \end{figure}
 
@@ -427,7 +409,7 @@ and an acceptable breakdown behaviour
 (\cref{fig:IVmeasurements}). Tests with additional assemblies will be
 needed to confirm this observation.
 
-For thicker sensors of $100\,\micron$ and $150\,\micron$ thick, the
+For the thicker sensors ($100\,\micron$ and $150\,\micron$), the
 grounded guard ring is a suitable solution. The assemblies
 55-GNDGR-100 and 55-GNDGR-150 are efficient up to the edge even with a
 loss of the charge near the edge as shown in
@@ -499,7 +481,7 @@ electrostatic potential distributions within the sensor are
 calculated. For realistic simulations, the real dimensions of the
 assemblies as listed in \cref{tab:DimensionsForAssemblies} are
 used. Due to the computational power required for such simulations,
-the simulation is done for two pixels in a 2D configuration.
+the simulation is restricted to two pixels in a 2D configuration.
 
 
 \subsection{Simulation process flow for the active-edge designs}\label{sec:processFlow}
