@@ -81,7 +81,7 @@ threshold (a voltage) and to discriminate a signal from a background
 noise. Both polarities (electrons and holes collection) are accepted
 by the front end.
 
-The analog-to-digital converter (ADC) converts a continuously varying
+The analogue-to-digital converter (ADC) converts a continuously varying
 amplitude to discrete steps. When the pulse height passes a threshold
 in a comparator, counters are incremented to measure the energy and
 the timing of the signal for example.
@@ -331,7 +331,7 @@ In semiconductor electronics, manufacturing imperfections cause
 variations in the performance within the device. The programmable
 global threshold of the chip is one of the most affected
 parameters. In fact, the global threshold is programmed through a
-programmable DAC (Digital-to-Analog) and is translated to the voltage
+programmable DAC (Digital-to-Analogue) and is translated to the voltage
 applied at the discriminator. The signal level is compared to this
 voltage. For the same global threshold value, the voltage on the
 discriminator can vary highly from one pixel to another. To overcome
@@ -376,11 +376,12 @@ energy~\cite{AlipourTehrani:2054922}. The photon being stopped in the
 sensor, it deposits its full energy. Since the energy of the photon is
 known, its relation to the threshold DAC or TOT can be characterised. 
 
-The second method consists of the use of an internal analog test pulse
-generator. The Timepix3 readout ASICs provide an internal test pulse
-generator which can be used for calibration as well as equalisation of
-the readout chip. In each pixel, a capacitor allows for injecting a
-charge by switching a voltage over it. The charge injected is given by
+The second method consists of the use of an internal analogue test
+pulse generator. The Timepix3 readout ASICs provide an internal test
+pulse generator which can be used for calibration as well as
+equalisation of the readout chip. In each pixel, a capacitor allows
+for injecting a charge by switching a voltage over it. The charge
+injected is given by
 
 \begin{equation}
   Q = C \cdot \Delta V \; ,
@@ -487,7 +488,7 @@ The calibration for the other assemblies are given in
 \label{sec:thresholdCalibration}
 
 \cref{sec:noise} describes the selection of the operating threshold
-DAC (Digital-to-Analog Converter) for a Timepix3 readout chip. This
+DAC (Digital-to-Analogue Converter) for a Timepix3 readout chip. This
 threshold can be translated into an effective energy and used as a
 data point for the surrogate fit at the crossing-point on the
 $x$-axis. The counting mode is used for this measurement.

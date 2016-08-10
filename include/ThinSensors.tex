@@ -9,7 +9,7 @@ high occupancy from beam-induced backgrounds. Multi-layer barrel and
 endcap pixel detectors with geometrical coverage extending down to low
 polar angles ($\theta_{min}\sim8^{\circ}$) are foreseen to fulfill
 these requirements. The goal is to achieve a single-point resolution
-of $\sim 3\,\micron$ with $25\,\micron$ pixel pitch and analog
+of $\sim 3\,\micron$ with $25\,\micron$ pixel pitch and analogue
 readout. A material budget of $\sim0.2\%$~X\textsubscript{0} per layer
 is required including readout, support and cabling. This can be
 achieved with $50\,\micron$ thick sensors on $50\,\micron$ thick
@@ -20,30 +20,31 @@ performance of thin silicon sensors is quantified using the Timepix3
 readout chip with $55\,\micron$ pixel pitch. $50\,\micron$ to
 $300\,\micron$ thick planar sensors are bump-bonded to $700\,\micron$
 thick Timepix3 ASICs. These assemblies are tested in test beams and
-the data are used to compare to \textsc{Geant4}-based simulations. The
-simulation is finally extrapolated for smaller pixels of
-$25\,\micron$ pixel pitch.
+the data are used to validate the AllPix \textsc{Geant4}-based
+simulations. The simulation is finally extrapolated for smaller pixels
+of $25\,\micron$ pixel pitch.
 
 %% --------------------------------------------- %%
 \section{Thin-sensor assemblies}
-A summary of the Timepix3 assemblies bump-bonded to thin sensors is
-shown in \cref{tab:Timepix3Assemblies}. 
-
-The assemblies were tested in beam reference telescope as shown in
-\cref{fig:TPX3Telescope}. The assemblies were placed in the middle of
-the Timepix3 telescope.
+A summary of thin sensors ($50-300\,\micron$ thick) bump-bonded to the
+Timepix3 readout ASICs is shown in
+\cref{tab:Timepix3Assemblies}. These assemblies are tested using the
+Timepix3 pixel beam reference telescope at the CERN SPS with the
+experimental setup as described in \cref{sec:CERN_SPS}.
 
 %% --------------------------------------------- %%
-\subsection{Operating conditions}\label{sec:operatingConditions}
+\subsection{Operating conditions}
+\label{sec:operatingConditions}
 The Timepix3 readout ASICs were operated with the optimised parameters
-as described in \cref{tab:timepix3Operation}. 
-
-The nominal values for the threshold and the bias voltage are shown in
+as described in \cref{tab:timepix3Operation}. The nominal values for
+the threshold and the bias voltage are shown in
 \cref{tab:nominalBiasThreshold}. For the nominal bias voltage, the
 sensor is fully (or over) depleted. The nominal threshold set insures
-that the readout chip is not operating in noisy conditions. These
-nominal values are held throughout the data taking except for the
-cases where the threshold or the bias voltages are scanned.
+that the readout chip is not operating in noisy
+conditions. \cref{sec:noise} describes the procedure for the selection
+of the nominal threshold value. These nominal values are held
+throughout the data taking except for the cases where the threshold or
+the bias voltages are scanned.
 
 \begin{table}[htbp]
   \centering
@@ -91,23 +92,23 @@ The depletion voltage corresponds to the voltage at which the sensor
 is fully depleted and the charge of the full thickness of the sensor
 is collected. This can be measured in test beams by scanning the bias
 voltage. Lowering the bias voltage causes the under-depletion of the
-sensor and therefore the charge collected is also reduced. The
+sensor and therefore the collected charge is also reduced. The
 depletion voltage and the depletion width are related by
-\cref{eq:depletionVoltage}. 
+\cref{eq:depletionVoltage}.
 
+To obtain the depletion voltage, the total measured TOT is calculated
+by summing up the TOT in the clusters considering all cluster
+sizes. The distribution is fitted with a landau function convoluted
+with a Gaussian. The fit is done using RooFit~\cite{Cranmer:2012sba}
+and an example is given in \cref{fig:W2_J5_DepletionVoltage_TOTdistr}.
 \cref{fig:W2_J5_DepletionVoltage_chargeVSbiasVoltage} shows the most
 probable value (MPV) of the measured TOT as a function of the square
-root of the bias voltage. The measured TOT is obtained by summing up
-the TOT in the clusters considering all cluster sizes. The
-distribution is fitted with a landau function convoluted with a
-Gaussian. The fit is done using RooFit~\cite{Cranmer:2012sba} and an
-example is given in \cref{fig:W2_J5_DepletionVoltage_TOTdistr}. The
-TOT MPV shows two distinct regions: a sloped region and a plateau
-region. The intersection of these two regions gives the depletion
-voltage of the assembly and it is calculated by the intersection of a
-linear fits performed on the both regions. The calculated depletion
-voltages for all the assemblies is presented in
-\cref{tab:depletionVoltage} and shown in \cref{fig:depletionVoltage}.
+root of the bias voltage. The TOT MPV shows two distinct regions: a
+sloped region and a plateau region. The intersection of these two
+regions gives the depletion voltage of the assembly. This is obtained
+by calculating the intersection of a linear fit performed on the both
+regions. The calculated depletion voltages for all the assemblies is
+summarised in \cref{fig:depletionVoltage}.
 
 \begin{figure}[htbp]\centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -134,7 +135,8 @@ voltages for all the assemblies is presented in
   \centering
   \caption{Measured depletion voltage for the assemblies described in
     \cref{tab:Timepix3Assemblies} and calculated by fitting the
-    plateau and slope regions of TOT as a function of bias voltage.}
+    plateau and slope regions of TOT as a function of the bias
+    voltage.}
   \label{tab:depletionVoltage}
   \begin{tabular}{lc}
     \toprule
@@ -192,9 +194,9 @@ position within the pixel is shown in
 
 \cref{fig:chargeSharing_2PC} compares the track position within the
 pixel for two-pixel clusters in a one-dimensional profile for
-different sensor thicknesses. The thinner the sensor, the track
-position is closer to the edges of the pixels to create a two-pixel
-cluster.
+different sensor thicknesses. The track position is closer to the
+edges of the pixels to create a two-pixel clusters for thinner
+sensors.
 
 \begin{figure}[htbp] 
   \centering
@@ -268,7 +270,8 @@ cluster geometries.
 \begin{figure}[htbp] 
   \centering
   \includegraphics[width=0.5\textwidth]{./figures/TestBeam/cluSize_vs_thickness.pdf}
-  \caption{}
+  \caption{Fraction of different cluster sizes as a function of sensor
+    thickness for runs recorded under nominal operating conditions.}
   \label{fig:cluSize_thickness}
 \end{figure}
 
@@ -284,10 +287,10 @@ single-point (or hit) and the track resolutions:
   \label{eq:residualEq}
 \end{equation}
 
-In the following, the residual measurements (as defined by
-\cref{eq:residualEq}) are presented in the Figures. For the estimation
-of the single-point resolution, the tracking resolution of
-$\sim2\,\micron$ at the SPS test beam should be unfolded.
+In the following, the tracking resolution is not unfolded from the
+residual measurements presented. For the estimation of the single-point
+resolution, the tracking resolution of $\sim2\,\micron$ at the SPS
+test beam should be unfolded.
 
 The residuals depend highly on the cluster sizes since the
 reconstructed hit position takes into account the number of the hit
@@ -335,7 +338,8 @@ such as the sensor thickness and the operating conditions of the
 assembly (threshold and bias voltage) affect as well the
 residuals. \cref{fig:Residuals_bias_threshold} shows the RMS of the
 residuals in the x and y directions for a $50\,\micron$ thick sensor
-(assembly W19\_G7). For other assemblies, these plots are shown in
+(assembly W19\_G7) as a function of the bias voltage and the
+threshold. For other assemblies, these plots are shown in
 \cref{fig:Residuals_vs_biasVoltage,fig:Residuals_vs_Threshold}. The
 residuals follow the same trend as the cluster size distributions:
 higher fractions of single-hit clusters result in higher residuals.
@@ -359,16 +363,17 @@ higher fractions of single-hit clusters result in higher residuals.
 
 
 For the assemblies operated at the nominal operating conditions, the
-RMS of the residuals in the x and y directions are shown in
-\cref{fig:residuals_thickness}. For thicker sensors the fraction of
-multi-pixel clusters is higher and results in lower residuals. The
-distribution of the residuals for different sensor thicknesses
-operated at the nominal conditions is shown in
-\cref{fig:residualsHist_thickness}. The wider component in the
-residual distributions corresponds to the single-pixel clusters. For
-thicker sensors, the fraction of multi-pixel clusters increases. This
-leads to a higher fraction of more precisely reconstructed hits and
-therefore the residual distribution gets narrower.
+RMS of the residuals in the x and y directions as a function of the
+sensor thickness are shown in \cref{fig:residuals_thickness}. For
+thicker sensors the fraction of multi-pixel clusters is higher and
+results in lower residuals. The distribution of the residuals for
+different sensor thicknesses operated at the nominal conditions is
+shown in \cref{fig:residualsHist_thickness}. The wider component in
+the residual distributions corresponds to the single-pixel
+clusters. For thicker sensors, the fraction of multi-pixel clusters
+increases. This leads to a higher fraction of more precisely
+reconstructed hits and therefore the residual distribution gets
+narrower.
 
 \begin{figure}[htbp] 
   \centering
@@ -411,7 +416,7 @@ of total number of hits matched to tracks (within a window of radius
 assembly. The efficiency is calculated within the matrix of
 $256\times256$ pixels of the main sensor area and the hot or masked
 pixels are not excluded from this calculation. They contribute to the
-assemblie's inefficiencies.
+assemblies' inefficiencies.
 
 The detection efficiency is strongly related to the operating
 threshold of the readout ASIC. With a lower threshold, smaller energy
@@ -520,7 +525,15 @@ For all the assemblies, the energy deposition in \ev is given in \cref{sec:appen
 
 
 %% --------------------------------------------- %%
-\section{Validation of the simulation}\label{sec:ThinSensorSimuValidation}
+\section{Validation of the simulation}
+\label{sec:ThinSensorSimuValidation}
+
+\begin{figure}[htbp] 
+  \centering
+  \includegraphics[width=0.5\textwidth]{./figures/TestBeam/chargeSharing_theory.pdf}
+  \caption{Thresholds at 500 at 1000 electrons are shown in green lines.}
+  \label{fig:chargeSharing_theory}
+\end{figure}
 
 The AllPix simulation framework (described in \cref{sec:AllPix}) is
 used to simulate the performance of thin sensors and to understand the
