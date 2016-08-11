@@ -1,7 +1,7 @@
 % ==============================================================================
 \chapter{Active edge sensors}
 \label{ch:ActiveEdgeSensors}
-%==============================================================================    
+% ==============================================================================    
 
 
 Active-edge technology allows for seamless tiling of pixel sensors of
@@ -462,12 +462,16 @@ loss of the charge near the edge as shown in
   \label{fig:55-GNDGR-150_eff_TOT}
 \end{figure}
 
-The edge efficiency in projected in one direction is summarised in \cref{fig:EdgeEff_2D}.
+\cref{fig:EdgeEff_2D} summarises the edge efficiency as a function of
+the track position relative to the edge projected in one direction for
+the different assemblies.
+
 \begin{figure}[htbp]
   \centering
   %EdgeEfficiency_2D.py
   \includegraphics[width=0.7\textwidth]{figures/ActiveEdge/edgeEff_2D.pdf}
-  \caption{Edge efficiency in 2D.}
+  \caption{The edge efficiency as a function of the track position
+    relative to the edge projected in one direction.}
   \label{fig:EdgeEff_2D}
 \end{figure}
 
@@ -475,20 +479,20 @@ The edge efficiency in projected in one direction is summarised in \cref{fig:Edg
 \newpage
 \section{TCAD simulations of active-edge sensors}
 
-TCAD simulations are used to simulate the fabrication process and the
-device operation of active edge sensors. The electric field and the
-electrostatic potential distributions within the sensor are
-calculated. For realistic simulations, the real dimensions of the
-assemblies as listed in \cref{tab:DimensionsForAssemblies} are
-used. Due to the computational power required for such simulations,
-the simulation is restricted to two pixels in a 2D configuration.
+TCAD simulations (c.f. \cref{sec:TCAD}) are used to simulate the
+fabrication process and the device operation of active edge
+sensors. The electric field and the electrostatic potential
+distributions within the sensor are calculated. For realistic
+simulations, the real dimensions of the assemblies as listed in
+\cref{tab:DimensionsForAssemblies} are used. Due to the computational
+power required for such simulations, the simulation is restricted to
+two pixels in a 2D configuration.
 
 
 \subsection{Simulation process flow for the active-edge designs}\label{sec:processFlow}
 
 
-The fabrication process of the sensors is described as following in
-the simulation:
+The fabrication process of the sensors is simulated as follows:
 \begin{enumerate}
 \item The dimensions of the pixels, implants, contacts and metal
   layers are defined.
@@ -497,41 +501,42 @@ the simulation:
   meshing with the command \texttt{refinebox}.
 \item The silicon region is then defined for two pixels, the edge
   region and an extra silicon edge which will be etched later (to make
-  the process more realistic). The silicon is doped with borons
-  (p-type material) with the initial resistivity of
-  $\rho=10~\text{k}\Omega\text{cm}$
-  ($4.41\times 10^{11}\,\inversecmcubic$).
+  the process more realistic). 
+  %The silicon is doped with borons (p-type material) with the initial resistivity of $\rho=10~\text{k}\Omega\text{cm}$ ($4.41\times 10^{11}\,\inversecmcubic$).
 \item First a layer of $0.2\,\micron$ thick oxide and then a layer of
   $0.2\,\micron$ thick nitride are deposited on the top of the sensor.
-\item From the bias scan of 55-GNDGR-150, the depletion voltage is
-  measured at 16~V. Thus the silicon is doped with borons at a
-  concentration of $10^{12}\,\inversecmcubic$. The implantation is
-  done with an energy of $180\,\kev$.
+\item From the bias scan, the depletion voltage is measured for the
+  assemblies (c.f. \cref{sec:ThinSensors_depletionVoltage}). Thus the
+  silicon is doped with borons at a concentration of
+  $1\times10^{12}\,\inversecmcubic$. The implantation is done with an
+  energy of $180\,\kev$.
 \item The nitride is then etched at the positions of the implants for
   the pixels and the guard ring if the assembly contains one. First a
   mask is put on the positions where the nitride is going to
   stay. Then the etching is done at the implantation
-  positions. Phosphorus (n-type material) is implanted with a dose of
-  $10^{15}\,\inversecmcubic$ with an energy of $120\,\kev$. Masks
-  limit the etching and the deposition to a certain range of window
-  and provide the possibility to imitate the lithographic patterning.
-\item The extra edge is etched to achieve the edge distance of the
-  assembly. First the nitride layer is etched, then the oxide and
-  finally the silicon layers are etched.
+  positions. Phosphorus (n-type material) is implanted with a
+  concentration of $1\times10^{15}\,\inversecmcubic$ with an energy of
+  $120\,\kev$. Masks limit the etching and the deposition to a certain
+  window and provide the possibility to imitate the lithographic
+  patterning.
+\item The extra edge (as explained in point 3) is etched to achieve
+  the edge distance of the assembly. In this process, first the
+  nitride layer, then the oxide and finally the silicon layers are
+  etched.
 \item The sensor is then flipped and a layer of oxide is deposited on
   the backside with a thickness of $0.04\,\micron$. Borons with a
-  concentration of $10^{15}\,\inversecmcubic$ and an energy of
+  concentration of $1\times10^{15}\,\inversecmcubic$ and an energy of
   $60\,\kev$ are implanted. Then the oxide is etched from the backside
   and the sensor is flipped again to the initial position.
 \item The oxide is then etched at the contact positions.
-\item A photoresist is deposited on the top of the sensor with a
-  thickness of $2\,\micron$.
 \item The meshing of the edge is then refined adaptively depending
   on the concentration of the ions and for a thickness of $1\,\micron$.
+\item A photoresist is deposited on the top of the sensor with a
+  thickness of $2\,\micron$.
 \item Borons are implanted to the edge with a concentration of
-  $10^{15}\,\inversecmcubic$, an energy of $60\,\kev$ and a title of
-  $15\degrees$.
-\item The photoresist is then removed (\texttt{strip resist}).
+  $1\times10^{15}\,\inversecmcubic$, an energy of $60\,\kev$ and a
+  tilt of $15\degrees$.
+\item The photoresist is then removed.
 \item To activate the dopants, the sensor is annealed at a constant
   temperature of $940\degrees$C during 240 minutes.
 \item The pixels and guard ring metal layer is deposited using an
@@ -542,22 +547,23 @@ the simulation:
 \end{enumerate}
  
 
-The doping concentration for the different layouts is shown in
-Figure~\ref{fig:TCAD_dopingConcentration}.
+The resulting doping concentration for the different layouts is shown
+in Figure~\ref{fig:TCAD_dopingConcentration}.
 
 %% --------------------------------------------- %%
 \subsection{Electric field distribution in simulations}\label{sec:TCAD_Efield_activeEdge}
 In silicon, the breakdown occurs for electric fields exceeding
-$\sim3\cdot10^5$~\voltpercm. In active-edge sensors, since the
-back-side implantation as well as the bias voltage are extended to the
-edge of the sensor, the gradient of potential between the edge and the
-last pixel can be very high. This could lead to a breakdown of the
-sensor. In TCAD simulations, the electric field distribution for the
-sensors operated at nominal conditions are shown in
-\cref{fig:TCAD_Efield2D}. In any case, for the nominal conditions, the
-breakdown electric field is never reached and in the laboratory
-measurements, this can be seen through the measurement of the leakage
-current as shown in \cref{fig:IVmeasurements}.
+$\sim3\times10^5$~\voltpercm~\cite{Sze:100213}. In active-edge
+sensors, since the back-side implantation as well as the bias voltage
+are extended to the edge of the sensor, the gradient of potential
+between the edge and the last pixel can be very high. This could lead
+to a breakdown of the sensor. In TCAD simulations, the electric field
+distribution for the sensors operated at nominal conditions are shown
+in \cref{fig:TCAD_Efield2D}. In any case, for the nominal conditions
+(c.f.~\cref{tab:nominalBiasThreshold}), the breakdown electric field
+is never reached and in the laboratory measurements, this can be seen
+through the measurement of the leakage current as shown in
+\cref{fig:IVmeasurements}.
 
 \begin{figure}[htbp]
   \centering
@@ -567,15 +573,15 @@ current as shown in \cref{fig:IVmeasurements}.
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_23_FGR.png}
-    \caption{23-FGR}
+    \caption{23-FGR-50}
   \end{subfigure} \\
   \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_28_GNDGR.png}
-    \caption{28-GNDGR}
+    \caption{28-GNDGR-50}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_55_GNDGR.png}
-    \caption{55-GNDGR}
+    \caption{55-GNDGR-50}
   \end{subfigure} \\
   \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_55_GNDGR_100.png}
@@ -589,14 +595,29 @@ current as shown in \cref{fig:IVmeasurements}.
   \label{fig:TCAD_Efield2D}
 \end{figure}
 
+\cref{fig:IVmeasurements_TCAD} shows the leakage current obtained from
+the TCAD simulations. The current calculated from the 2D simulation is
+scaled to obtain the current in the total matrix.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figures/ActiveEdge/IVCurve_TCAD.pdf}
+  \caption{Measured leakage current at as a function of bias voltage
+    for the active-edge assemblies listed in
+    \cref{tab:Timepix3Assemblies} implemented in TCAD simulations.}
+  \label{fig:IVmeasurements_TCAD}
+\end{figure}
+
+
 The electric field and the electrostatic potential in TCAD simulations
 for a cut close to the n-implants ($0.2\,\micron$ from the sensor
 surface) are shown in
 \cref{fig:TCAD_Efield_EPotential_sensorSurface}. Position $0\,\micron$
 corresponds to the position of the first pixel. At the surface, the
 breakdown electric field is never reached for the nominal
-conditions. The floating guard-ring (23-FGR) shows a better potential
-transition between the edge of the sensor and the first pixel.
+conditions. The floating guard-ring (23-FGR-50) results in a smoother
+potential transition between the edge of the sensor and the first
+pixel.
 
 
 \begin{figure}[htbp]
@@ -610,8 +631,9 @@ transition between the edge of the sensor and the first pixel.
     \caption{}
   \end{subfigure}
   \caption{(a) The electric field and (b) the electrostatic potential
-    at a distance of $0.2\,\micron$ from the sensor surface. Position
-    $0\,\micron$ corresponds to the position of the first pixel.}
+    for nominal bias voltage at a distance of $0.2\,\micron$ from the
+    sensor surface. Position $0\,\micron$ corresponds to the position
+    of the first pixel.}
   \label{fig:TCAD_Efield_EPotential_sensorSurface}
 \end{figure}
 
