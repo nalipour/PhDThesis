@@ -248,16 +248,152 @@ of less than $10^{11}$~neq/cm\textsuperscript{2}/year and a total
 ionising dose of less than 1~kGy are expected~\cite{Dannheim:1443516}.
 
 The aim of the R\&D is to achieve the required single-point resolution
-with pixels of size $\approx25\,\micron\times25\,\micron$ and an
-analogue readout. The constraint on the material budge implies no
-active cooling elements can be placed inside the vertex detector. To
-limit the maximum power dissipation of the readout electronics to
+with pixels of size $\approx25\,\micron\times25\,\micron$ with
+$50\,\micron$ thick sensors coupled to $50\,\micron$ thick analogue
+readout ASICs. The constraint on the material budge implies no active
+cooling elements can be placed inside the vertex detector. To limit
+the maximum power dissipation of the readout electronics to
 $\approx50~\text{mW/cm}^2$ forced air-flow cooling and power pulsing
 (i.e. turning off most components on the readout chips during the
 20~ms gaps between bunch trains) are foreseen.
 
 \section{Flavour tagging performance at CLIC}
 \label{sec:flavourTagging}
+
+The precision physics measurements require excellent flavour-tagging
+performance of the CLIC vertex detector. The flavour-tagging
+performance is being investigated in simulations. The multi-variate
+LCFIPlus flavour-tagging package~\cite{website:LCFIPlus} is used to
+assign each jet category with a b- and c-probability.
+
+The detector models in simulations considers the single-point
+resolution of the sensors ($~3\,\micron$), constraints from the
+mechanical support and the cooling
+system~\cite{AlipourTehrani:1742993}.
+
+As illustrated in Figure~\ref{fig:cooling}, a spiral arrangement for
+the modules in the endcap regions can be used instead of disks,
+allowing the air to flow through the vertex detector. The physics
+performance of the geometries described in Table~\ref{tab:geometries}
+and illustrated in Figure~\ref{fig:geometries} have been studied in
+simulations.
+
+\begin{table}[htbp]
+  \caption{Geometries implemented in simulations.}
+  \begin{center}
+    \begin{tabular}{ l c c c }
+      \hline
+      Geometry & Barrel layers & Endcap layers & Material budget \\ \hline \hline
+      \emph{spirals} (Figure~\ref{fig:SpiralsGeometry}) & 5 single-sided & 4 single-sided & $0.1\%X_{0}$ per single-sided layer  \\ %\hline 
+      \emph{double\_spirals} (Figure~\ref{fig:doubleLayer}) & 3 double-sided & 3 double-sided & $0.2\%X_{0}$ per double-sided layer  \\ %\hline
+      \emph{double\_spirals\_v2} & 3 double-sided & 3 double-sided & $0.4\%X_{0}$ per double-sided layer  \\ \hline  
+    \end{tabular}
+  \end{center}
+  \label{tab:geometries}
+\end{table}
+
+
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/CLIC/Cooling.png}  
+    \caption{}
+    \label{fig:cooling}
+  \end{subfigure}~
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=0.65\textwidth]{figures/CLIC/single_spiral.jpg}
+    \caption{}
+    \label{fig:SpiralsGeometry}
+  \end{subfigure}~
+  \begin{subfigure}[b]{0.25\textwidth}
+    \centering
+    \includegraphics[trim = 32mm 98mm 85mm 106mm, clip, width=0.65\textwidth]{figures/CLIC/double_spiral.pdf} \\
+    \includegraphics[width=1.5\textwidth]{figures/CLIC/double_layer_module.png} 
+    \caption{}
+    \label{fig:doubleLayer}
+  \end{subfigure}
+  \caption{(a)~Sketch showing the airflow cooling strategy within the
+    vertex detector~\cite{DuarteRamos:1572989}. (b)~Schematic view of
+    the vertex detector for the \emph{spirals} geometry. (c)~Schematic
+    view of the vertex detector for the
+    \emph{double\_spirals(\_v2)}. In the \textsc{GEANT4} simulations,
+    a double-sided layer is implemented as two silicon sensors on top
+    of each other with an overall thickness of \SI{2}{\milli\meter}.}
+  \label{fig:geometries}
+\end{figure}
+
+The performance of the flavour tagging depends on the jet energy and
+polar angle: dijet events with different center-of-mass energies,
+$\sqrt{s}$, having polar angles of $10^{\circ} \leq \theta \leq
+90^{\circ}$ with a uniform distribution in $\phi$ angles are
+considered. Initial state radiation (ISR) and beamstrahlung (BS) were
+switched off during the event generation and hence the final-state
+quarks are in a back-to-back configuration. For each jet flavour,
+energy and angle, 80000 events are used for the following processes:
+e$^+$e$^-$ $\rightarrow$ b\={b}, c\={c}, u\={u}, d\={d}, s\={s}. The
+boosted decision trees (BDTs) are trained using 50\% of the generated
+events and the other 50\% are used for testing the performance of the
+flavour tagging.
+
+The \emph{spirals} and \emph{disks} have a similar flavour-tagging
+performance except for jets at $\theta=40^{\circ}$ (see
+Figure~\ref{fig:spiral_disks}), which corresponds to the transition
+between the vertex endcaps and the barrel region, where the
+beauty-tagging performance is up to $20\%$ worse using the
+\emph{spirals} geometry (compared to disks). With the spiral
+configuration, the number of sensitive layers becomes dependent on the
+azimuthal angle $\phi$ and less layers can be hit in certain ranges of
+$\phi$. The performance of the \emph{spirals} and the
+\emph{double\_spirals} is very similar as shown in
+Figure~\ref{fig:spiral_doubleSpirals}.  The \emph{double\_spirals\_v2}
+geometry is a more realistic version of the \emph{double\_spirals}
+geometry, taking into account the material used for the mechanical
+support of the sensors and also for the cables. As shown in
+Figure~\ref{fig:doubleSpirals_doubleSpirals}, the misidentification
+probability increases by $\sim$35\% due to the increased material.
+
+
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west, inner sep=0] (image) at (0,0){\includegraphics[trim = 5mm 50mm 20mm 20mm, clip, width=\textwidth]{figures/CLIC/200GeV_Ratio_allAngles_spirals_CDR_B_C.pdf}};
+      \draw  (1.8, 1.5) node {\textbf{CLICdp}};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:spiral_disks}
+  \end{subfigure}~
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west, inner sep=0] (image) at (0,0){\includegraphics[width=\textwidth]{figures/CLIC/general_200_Beauty.pdf}};
+      \draw (1.8, 2.8) node {\textbf{CLICdp}};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:spiral_doubleSpirals}
+  \end{subfigure}~
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west, inner sep=0] (image) at (0,0){\includegraphics[width=\textwidth]{figures/CLIC/heavy_general_200_Beauty.pdf}};
+      \draw (1.8, 2.8) node {\textbf{CLICdp}};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:doubleSpirals_doubleSpirals}
+  \end{subfigure}
+  \caption{Beauty-tagging performance for dijet events at
+    \SI{200}{\giga\electronvolt}. (a)~Comparison between \emph{disks}
+    and \emph{spirals} in terms of the ratio of the misidentification
+    probabilities for charm background. (b)~Comparison of the
+    beauty-tagging performance between the \emph{spirals} and
+    \emph{double\_spirals} geometries. (c)~Comparison of the
+    beauty-tagging performance between the \emph{double\_spirals} and
+    \emph{double\_spirals\_v2} geometries. For (b) and (c), dijet
+    events with a mixture of polar angles between \SI{10}{\degree} and
+    \SI{90}{\degree} are considered.}
+  \label{fig:performance}
+\end{figure}
 
 % In the following Section, we describe different components of the CLIC detector.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
