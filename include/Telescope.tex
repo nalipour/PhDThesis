@@ -18,16 +18,16 @@ applications amongst others. A telescope is used to reconstruct the
 tracks of the particles going through its planes. The track position
 is then extrapolated on the Device Under Test (DUT). This allows to
 compare the position of the hit on the DUT with the reconstructed
-track and calculate the position and time resolutions and the
+track and extract the position and time resolutions as well as the
 efficiency of the device.
 
 For the CLIC vertex detector R\&D, the Timepix3 telescope is used as a
 beam reference. This chapter overviews the components of the Timepix3
 telescope and its tracking performance. The Timepix3 telescope is
-implemented in AllPix simulations (\cref{sec:AllPix}) and its
-performance is compared to data taken at the CERN SPS. Finally, the
-tracking resolution on the DUT is extracted in simulations using the
-Monte Carlo truth position.
+implemented in AllPix simulations (c.f. \cref{sec:AllPix}) and its
+performance is compared to the data taken at the CERN SPS. Finally,
+the tracking resolution on the DUT is extracted in simulations using
+the Monte Carlo Truth position.
 
 %% --------------------------------------------- %%
 \section{Experimental setup at the CERN SPS}
@@ -83,10 +83,10 @@ The mechanical support for the telescope planes are optimised in order
 to reduce the multiple scatterings of the particles and therefore
 improving the tracking resolution. The Timepix3 assemblies are mounted
 on a PCB as shown in \cref{fig:Timepix3board_PCB}. An aluminum support
-is used to hold the PCBs which does not cover the sensor. To protect
-the sensors an ABS plastic material is used as cover (in black in
-\cref{fig:TPX3Telescope}) with a thickness of 2~mm and placed at a
-distance of 10~mm away from the PCB. \cref{tab:TPX3TelescopeMaterial}
+is used to hold the PCB which does not cover the sensor. To protect
+the sensors an ABS plastic material is used as cover with a thickness
+of 2~mm and placed at a distance of 10~mm away from the PCB (in black
+in \cref{fig:TPX3Telescope}). \cref{tab:TPX3TelescopeMaterial}
 describes the material (with their thicknesses and radiation lengths)
 seen by the particles for each telescope plane which would contribute
 to the multiple scatterings. The PCB stacks up eight layers of copper
@@ -129,7 +129,7 @@ The SPIDR readout system, as described in \cref{sec:TimepixReadout},
 is used for the data acquisition of the Timepix3 telescope planes. The
 Timepix3 readout ASICs are operated with the data-driven
 zero-suppressed readout mode. This system allows to record the data
-from all the particles from the SPS spill and generates a huge amount
+from all the particles from the SPS spill and generates a large amount
 of data for processing offline as described in \cref{sec:recoSoft}.
 
 
@@ -177,13 +177,13 @@ obtain the correct density and radiation length.
       \draw[->, very thick, color=black](0.8, 0.9) -- (0.25, 0.9);
       \node[above, color=black] at (0.5, 0.91) {\textbf{Beam}};
       
-      \node[above, color=black] at (0.9, 0.05) {Plane 0};
-      \node[above, color=black] at (0.75, 0.05) {Plane 1};
-      \node[above, color=black] at (0.6, 0.05) {Plane 2};
+      \node[above, color=black] at (0.9, 0.05) {\footnotesize{Plane 0}};
+      \node[above, color=black] at (0.75, 0.05) {\footnotesize{Plane 1}};
+      \node[above, color=black] at (0.6, 0.05) {\footnotesize{Plane 2}};
       \node[above, color=black] at (0.48, 0.05) {DUT};
-      \node[above, color=black] at (0.35, 0.05) {Plane 3};
-      \node[above, color=black] at (0.2, 0.05) {Plane 4};
-      \node[above, color=black] at (0.07, 0.05) {Plane 5};
+      \node[above, color=black] at (0.35, 0.05) {\footnotesize{Plane 3}};
+      \node[above, color=black] at (0.2, 0.05) {\footnotesize{Plane 4}};
+      \node[above, color=black] at (0.07, 0.05) {\footnotesize{Plane 5}};
 
       \node[above, color=black] at (0.35, 0.7) {Sensor cover};
       \draw[->, color=black](0.35, 0.7) -- (0.35, 0.45);
@@ -207,14 +207,14 @@ obtain the correct density and radiation length.
 
 A digitiser for the Timepix3 readout chips bump-bonded to planar
 sensors is defined in AllPix. It simulates the silicon physics by
-calculating the diffusion at each \textsc{Geant4} step using
-\cref{eq:sigmaDiffusion}. The contribution of the generated charge by
-diffusion in the hit pixel and all its direct neighbouring pixels is
-calculated for each step. All the contributions add-up and finally the
-charge in each pixel is calculated. Finally a threshold is applied to
-each pixel and the electronic noise of the Timepix3 ASIC also adds up
-to the charge in each pixel. And finally, the TOT value is calculated
-by applying the calibration to each assembly.
+calculating the diffusion at each \textsc{Geant4} step as described in
+\cref{sec:allpix_digitisation}. The contribution of the generated
+charge by diffusion in the hit pixel and all its direct neighbouring
+pixels is calculated for each step. All the contributions add-up and
+finally the charge in each pixel is calculated. Finally a threshold is
+applied to each pixel and the electronic noise of the Timepix3 ASIC
+also adds up to the charge in each pixel. And finally, the TOT value
+is calculated by applying the calibration to each assembly.
 
 \subsection{Single-hit resolution on the telescope planes}
 
@@ -233,7 +233,7 @@ sensors.
     \toprule
     Bias voltage [V] & Depletion voltage [V] & Sensor type & Threshold [e-] \\
     \midrule
-    50 & 30 & p-in-n & 830 \\
+    50 & 30 & p-in-n & 1000 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -241,7 +241,7 @@ sensors.
 
 \cref{fig:TelescopeCluSize_data_simu} compares the cluster size
 distribution and the charge of the clusters in data and simulations
-for the first telescope plane.
+for the first telescope plane (plane 0).
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.3\textwidth}
@@ -345,7 +345,7 @@ line.
     \caption{Data}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/chi2_run73.pdf}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/chi2_run77.pdf}
     \caption{Simulation}
   \end{subfigure}
   \caption{$\chi^2$/NDF distributions for (a) data and (b)
