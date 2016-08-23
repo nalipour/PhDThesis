@@ -44,15 +44,15 @@ energy and the level of multiple scatterings.
 
 \subsection{Sensors and mechanics}
 The Timepix3 telescope consists of six planes of Timepix3
-ASICs~\cite{Timepix3_Poikela} bump bonded to $300\,\micron$ thick
+ASICs~\cite{Timepix3Poikela} bump bonded to $300\,\micron$ thick
 p-in-n planar sensors as shown in \cref{fig:TPX3Telescope}. The planes
 are rotated by $9\degrees$ around the x axis (perpendicular to the
 beam axis) and the z axis (parallel to the beam axis)
 \cite{Akiba:2013yxa}. Given the pixel pitch and the sensor thickness,
 this angle mainly leads to clusters of three-hit pixels. Combining the
 TOT information, the reconstructed hit position provides sub-pixel
-resolution. A tracking resolution of $\sim$$2\,\micron$ on the DUT can
-be obtained.
+resolution. A tracking resolution of $\sim$$2\,\micron$
+on the DUT can be obtained.
 
 
 \begin{figure}[htbp]
@@ -219,11 +219,11 @@ is calculated by applying the calibration to each assembly.
 \subsection{Single-hit resolution on the telescope planes}
 
 \cref{tab:AllPixTelescopePlanesParams} shows the parameters used for
-the simulation of the sensors of the telescope planes. The bias and
-the depletion voltages, the sensor type and the threshold values are
-the parameters defining the charge sharing and the cluster size
-distribution. Therefore they define the intrinsic resolution of the
-sensors.
+the AllPix simulations of the sensors of the telescope planes. The
+bias and the depletion voltages, the sensor type and the threshold
+values are the parameters defining the charge sharing and the cluster
+size distribution. Therefore they define the intrinsic resolution of
+the sensors.
 
 \begin{table}[htbp]
   \centering
@@ -265,8 +265,9 @@ Carlo Truth position (x\textsubscript{MC} and y\textsubscript{MC})
 obtained by AllPix simulations. \cref{fig:TelPlane0_MC_hit} compares
 the hit resolution on the first telescope plane in x and y
 directions. These resolutions are in fact the intrinsic resolution of
-the telescope planes sensors and depends on their thickness, charge
-sharing and rotations.
+the telescope planes sensors and depend on their thickness, charge
+sharing and rotations. For this calculation, hits corresponding to
+tracks with the $10\%$ of highest $\chi^2$/NDF are ignored.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -364,8 +365,9 @@ telescope planes.
 \subsection{Tracking resolution on the DUT}
 The tracking resolution on the DUT ($100\,\micron$ thick sensor) in
 the x and y directions is shown in \cref{fig:DUT_MC_track}. This value
-can be only obtained in simulations as the MC position is
-needed.
+can be only obtained in simulations as the MC position is needed. For
+this calculation, hits corresponding to tracks with the $10\%$ of
+highest $\chi^2$/NDF are ignored.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -402,28 +404,15 @@ x\textsubscript{MC} and y\textsubscript{MC} positions is shown in
   \label{fig:DUT_MC_track_2D}
 \end{figure}
 
-\cref{tab:SummaryOfResolutions} summarises the telescope resolutions
-measured by the simulations.
-
-\begin{table}[htbp]
-  \centering
-  \caption{A summary of the measured telescope performance.}
-  \label{tab:SummaryOfResolutions}
-  \begin{tabular}{ccc}
-    \toprule
-    $\sigma$\textsubscript{int} [$\micron$] & $\sigma$\textsubscript{x,DUT} [$\micron$] & $\sigma$\textsubscript{y,DUT} [$\micron$]\\
-    \midrule
-    2.4 & 1.86 & 1.60 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
 
 %% --------------------------------------------- %%
-
 \subsection{Beam angle}
 
-For MC beam angle distribution:
+The beam angle affects largely the resolutions calculated in previous
+sections. \cref{eq:beamAnglePhi,eq:beamAngleTheta} describe the
+angular calculation in $\phi$ and $\theta$ with taking the hit
+position on the telescope plane 2 and on the DUT.
+
 
 \begin{equation}
   \phi=arctan{{x_2-x_{DUT}} \over {z_2-z_{DUT}}} \; ,
@@ -435,6 +424,11 @@ For MC beam angle distribution:
   \label{eq:beamAngleTheta}
 \end{equation}
 
+\cref{fig:MCbeamAngleDistr} shows the beam angular distribution in
+$\theta$ and $\phi$ angles for the simulations. In the simulations,
+the beam is perpendicular to the DUT with a slight spread in $\theta$
+and $\phi$ angles.
+
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/Telescope/MC_trackAnglePhi_planes_302_100.pdf}
@@ -445,7 +439,31 @@ For MC beam angle distribution:
     \caption{}
   \end{subfigure}
   \caption{Beam angular distribution in \textsc{Geant4} simulations
-(comparing the global positions on the second telescope plane and on
-the DUT).}
+    (comparing the global positions on the telescope plane 2 and on
+    the DUT).}
   \label{fig:MCbeamAngleDistr}
 \end{figure}
+
+
+%% --------------------------------------------- %%
+\cref{tab:SummaryOfResolutions} summarises the telescope performance
+obtained in the simulations. The simulations confirm that the Timepix3
+telescope allows for a high resolution track reconstruction on the DUT
+($\sim2\,\micron$). This telescope is adapted for testing the DUTs
+with high resolution constraints as expected for CLIC.
+
+In \cref{ch:ThinSensorsStudies} the Timepix3 telescope is used to
+precisely measure the resolution of thin sensors.
+
+\begin{table}[htbp]
+  \centering
+  \caption{A summary of the measured telescope performance.}
+  \label{tab:SummaryOfResolutions}
+  \begin{tabular}{ccc}
+    \toprule
+    $\sigma$\textsubscript{int} [$\micron$] & $\sigma$\textsubscript{x,DUT} [$\micron$] & $\sigma$\textsubscript{y,DUT} [$\micron$]\\
+    \midrule
+    2.6 & 1.94 & 1.80 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

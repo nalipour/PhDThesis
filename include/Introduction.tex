@@ -1,4 +1,91 @@
-%==============================================================================             
+% ==============================================================================             
 \chapter{Introduction}
 \label{sec:intro}
-%==============================================================================             
+% ==============================================================================             
+
+
+The Compact Linear Collider (CLIC)~\cite{Linssen:1425915} concept for
+a future linear e\textsuperscript{+}e\textsuperscript{-} collider has
+the potential to complement the measurements done by the LHC
+experiments. With proposed centre-of-mass energies of $380\,\gev$,
+$1.5\,\tev$ and $3\,\tev$ and with instantaneous luminosity up to
+$6\times10^{34}\,\inversecmsquaredsec$, it allows for high precision
+measurements of Standard Model physics and of new physics potentially
+discovered at the $13\,\tev$ LHC. 
+
+A detector model is being developed for the CLIC experiment taking
+into account the precision physics requirements and experimental
+conditions. These conditions set challenging demands for the vertex
+detector in terms of spatial resolution, material budget, timing
+resolution and efficient heat removal from sensors and readout. The
+CLIC vertex detector R\&D programme studies different sensor
+technologies and takes into account constraints from mechanics, power
+delivery and cooling.  The goal is to achieve a single-point
+resolution of $3\,\micron$ with $50\,\micron$ thick sensors coupled to
+$50\,\micron$ thick readout ASICs with $25\,\micron$ pixel pitch.
+
+In this thesis, the feasibility of thin sensors for operation for the
+CLIC vertex detector is studied with the
+Timepix3~\cite{Timepix3Poikela} readout chips with a pixel size of
+$55\,\micron$. Test beam data for different sensor thicknesses is
+compared to \textsc{Geant4}-based~\cite{Agostinelli:2002hh}
+simulations to validate the simulations. The simulation is
+extrapolated for smaller pixels of $25\,\micron$.
+
+In order to reduce the multiple scatterings and achieve high precision
+on measurements, a low material budget of
+$\sim0.2\%$~X\textsubscript{0} per vertex detector layer is required
+including readout, support and cabling. Active-edge sensors allow for
+seamless tiling of pixel sensors of a vertex detector by depleting the
+sensors up to their physical edges. This allows for high coverage
+without creating overlaps between the pixel sensors and therefore
+reduces the material. Different guard ring solutions for thin
+active-edge sensors are considered for the CLIC vertex
+detector. Prototypes have been characterised with measurements and
+simulations and an optimal solution is proposed.
+
+This thesis is structured as following. \cref{ch:CLIC} describes the
+CLIC experiment. The accelerator is briefly introduced and the
+requirements on the CLIC detector, with a focus on the vertex
+detector, are given. The flavour-tagging performance is studied for
+different geometries of the vertex detector.
+
+Principles of the semiconductor detectors are presented in
+\cref{sec:SiliconTheory} as this thesis focuses on the R\&D of the
+vertex detector.
+
+The Timepix3 readout ASIC is presented in
+\cref{ch:FE_electronics}. The assemblies tested are introduced and
+their readout noise is as well studied. The calibration methods for
+these assemblies are discussed.
+
+The simulation and reconstruction software frameworks are described in
+\cref{sec:Software}. The simulations are later validated with
+data. The reconstruction frameworks are used for the analysis of both
+simulations and data.
+
+The Timepix3 pixel-beam telescope used for the testing of the Timepix3
+assemblies is described in \cref{ch:Telescope}. Its performance is
+investigated in data and simulations.
+
+The feasibility and performance of thin sensors is studied in
+\cref{ch:ThinSensorsStudies}. Simulations are validated with test-beam
+data. The spatial resolution for a $25\,\micron$ pitch with a
+$50\,\micron$ thick pixel detector is extrapolated using the
+simulations.
+
+The performance of active-edge sensors is discussed in
+\cref{ch:ActiveEdgeSensors}. Different designs for the guard ring are
+considered. Test-beam results are compared to TCAD simulations.
+
+% Different guard ring solutions for thin active-edge sensors and their
+% test beam results are introduced in
+% Section~\ref{sec:SectionActiveEdge}.
+
+% CLICpix~\cite{clicpix}, a readout ASIC with $25\,\micron$
+% pixel pitch, is developed in 65~nm CMOS technology. CLICpix is either
+% bump bonded to planar silicon sensors or capacitively coupled through a thin
+% layer of glue to active sensors implemented in a commercial 180~nm
+% High-Voltage (HV) CMOS process~\cite{AlipourTehrani:2048684}.  Results of
+% recent test beam measurements for these two hybridisation concepts are
+% presented in Section~\ref{sec:SectionCLICpix}.
