@@ -290,9 +290,9 @@ single-point (or hit) and the track resolutions:
 \end{equation}
 
 In the following, the tracking resolution is not unfolded from the
-residual measurements presented. For the estimation of the single-point
-resolution, the tracking resolution of $\sim2\,\micron$ at the SPS
-test beam should be unfolded.
+residual measurements presented. For the estimation of the
+single-point resolution, the tracking resolution of $\sim2\,\micron$
+at the SPS test beam should be unfolded (c.f.~\cref{ch:Telescope}).
 
 The residuals depend highly on the cluster sizes since the
 reconstructed hit position takes into account the number of the hit
@@ -306,7 +306,7 @@ pitch$/\sqrt{12}$ is expected (as explained in
 charge information, a more accurate interpolation of the hit position
 can be obtained and the resolution is better than the geometrical
 information (by using the $\eta$-correction method as described in
-TODO???).
+\cref{sec:EtaCorrection}).
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.23\textwidth}
@@ -442,34 +442,10 @@ increasing the threshold than for thick sensors.
 \section{Calibrated test beam data}
 
 The test pulse calibration as described in
-\cref{sec:EnergyCalibration} is applied to the data from test beams in
-order to convert the energy deposited by the MIP
-particles. \cref{sec:testBeamDataCalibrated_vs_G4} compares the
-calibrated data with the \textsc{Geant4} energy deposition using the
-PAI physics list (c.f. \cref{sec:Silicon_Geant4}) for $50\,\micron$,
-$100\,\micron$ and $150\,\micron$ thick planar sensors. There is a
-good agreement in terms of the most probable value (MPV) and the
-full-width-at-half-maximum (FWHM) in both simulation and data.
+\cref{sec:EnergyCalibration} is applied to the test beam data in order
+to convert the TOT values into energy deposited (in electrons) by the
+MIP particles.
 
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.33\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_G07.pdf}
-    \caption{55-GNDGR}
-  \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.33\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_E02.pdf}
-    \caption{55-GNDGR-100}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.33\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_F01.pdf}
-    \caption{55-GNDGR-150}
-  \end{subfigure}
-  \caption{Calibrated energy distribution of test beam data for
-    different assemblies. The pixel-by-pixel calibration is applied to
-    the data which is obtained using test pulses. \textsc{Geant4}
-    energy deposition is obtained using the PAI physics list.}
-  \label{sec:testBeamDataCalibrated_vs_G4}
-\end{figure}
 
 \cref{sec:testBeamDataCalibrated_TOT} shows the TOT distribution for
 one, two, three and four-hit clusters. The MPV of the TOT
@@ -488,15 +464,15 @@ pixel is close to the threshold.
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/TOT_Clusters_W0019_G07.pdf}
-    \caption{55-GNDGR}
+    \caption{W19\_C7}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/TOT_Clusters_W0005_E02.pdf}
-    \caption{55-GNDGR-100}
+    \caption{W5\_E2}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/TOT_Clusters_W0005_F01.pdf}
-    \caption{55-GNDGR-150}
+    \caption{W5\_F1}
   \end{subfigure}
   \caption{TOT distribution for one, two, three and four-hit clusters
     for various assemblies with (a) $50\,\micron$, (b) $100\,\micron$
@@ -507,15 +483,15 @@ pixel is close to the threshold.
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_G07.pdf}
-    \caption{55-GNDGR}
+    \caption{W19\_C7}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0005_E02.pdf}
-    \caption{55-GNDGR-100}
+    \caption{W5\_E2}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0005_F01.pdf}
-    \caption{55-GNDGR-150}
+    \caption{W5\_F1}
   \end{subfigure}
   \caption{Energy deposition distribution for one, two, three and
     four-hit clusters for various assemblies with (a) $50\,\micron$,
@@ -523,7 +499,8 @@ pixel is close to the threshold.
   \label{sec:testBeamDataCalibrated_Edep}
 \end{figure}
 
-For all the assemblies, the energy deposition in \ev is given in \cref{sec:appendixCalibDataG4}.
+For all the assemblies, the energy deposition in electrons is given in
+\cref{sec:appendixCalibDataG4}.
 
 
 %% --------------------------------------------- %%
@@ -844,3 +821,31 @@ worse than the required $3\,\micron$.
 %%   \caption{For $150\,\micron$ thick sensor.}
 %%   \label{fig:G4_simu_data_150micron}
 %% \end{figure}
+
+
+%%%%% CALIBRATION vs. GEANT4
+% \cref{sec:testBeamDataCalibrated_vs_G4} compares the
+% calibrated data with the \textsc{Geant4} energy deposition using the
+% PAI physics list (c.f. \cref{sec:Silicon_Geant4}) for $50\,\micron$,
+% $100\,\micron$ and $150\,\micron$ thick planar sensors. There is a
+% good agreement in terms of the most probable value (MPV) and the
+% full-width-at-half-maximum (FWHM) in both simulation and data.
+% \begin{figure}[htbp] \centering
+%   \begin{subfigure}[b]{0.33\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0019_G07.pdf}
+%     \caption{55-GNDGR}
+%   \end{subfigure} \hfill
+%   \begin{subfigure}[b]{0.33\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_E02.pdf}
+%     \caption{55-GNDGR-100}
+%   \end{subfigure}\hfill
+%   \begin{subfigure}[b]{0.33\textwidth}
+%     \includegraphics[width=\textwidth]{./figures/Calibration/Edep_G4_W0005_F01.pdf}
+%     \caption{55-GNDGR-150}
+%   \end{subfigure}
+%   \caption{Calibrated energy distribution of test beam data for
+%     different assemblies. The pixel-by-pixel calibration is applied to
+%     the data which is obtained using test pulses. \textsc{Geant4}
+%     energy deposition is obtained using the PAI physics list.}
+%   \label{sec:testBeamDataCalibrated_vs_G4}
+% \end{figure}

@@ -981,7 +981,8 @@ hitting the sensor within $2p$.
   \label{fig:sigmaTotal}
 \end{figure}
 
-\subsubsection{Analogue readout and charge sharing}\label{sec:resolutionAnalogSharing}
+\subsubsection{Analogue readout and charge sharing}
+\label{sec:resolutionAnalogSharing}
 The spatial resolution can be improved more when an analogue readout
 is used that delivers a signal proportional to the collected charge as
 illustrated in \cref{fig:SpatResAnaglogChargeSharing}. In this case,
@@ -1045,6 +1046,38 @@ Q(x_{hit})= \int_{x_1}^{x_2}  \int_{0}^{d} {Q(z) \over {\sqrt{2 \pi
   \caption{Analogue readout with charge sharing}\label{fig:SpatResAnaglogChargeSharing}
 \end{figure}
 
+
+\subsection{The $\eta$-correction method}
+\label{sec:EtaCorrection}
+
+Due to the charge sharing, particle tracks create multi-pixel
+clusters. The hit position within the pixel is reconstructed by using
+the charges of the hit pixels as weights. This also takes into account
+non-linearities in the charge sharing between
+pixels~\cite{Belau:1983eh}.
+
+The $\eta$-correction method calculates the distance with which the
+hit position moves from the geometric centre of two pixels in a
+cluster.
+
+\begin{equation}
+  \text{shift}=\sigma_{EC} \times \text{erf}^{-1}(2\times Q_{rel}-1) \; ,
+  \label{eq:EtaCorrectionShift}
+\end{equation}
+
+where $\sigma_{EC}$ is a parameter to be determined and depends on
+several factors such as the thickness of the silicon sensor, the
+operating conditions of the assembly. The inverse error function
+defined as erf\textsuperscript{-1} (z) where:
+
+\begin{equation}
+\text{erf(z)}={2\over\sqrt{\pi}} \int_{0}^{z} e^{-t^2} dt \; .
+  \label{eq:EtaCorrectionErf}
+\end{equation}
+
+In \cref{eq:EtaCorrectionShift}, $Q_{rel}$ is the maximum charge of
+the cluster divided by the total charge of the cluster
+($Q_{max}/Q_{rel}$).
 
 
 %% --------- Recycle text --------- %%
