@@ -463,7 +463,7 @@ pixel is close to the threshold.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.33\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/TOT_Clusters_W0019_G07.pdf}
+    \includegraphics[width=\textwidth]{./figures/Calibration/TOT_Clusters_W0019_C07.pdf}
     \caption{W19\_C7}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.33\textwidth}
@@ -482,7 +482,7 @@ pixel is close to the threshold.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.33\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_G07.pdf}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Edep_Clusters_W0019_C07.pdf}
     \caption{W19\_C7}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.33\textwidth}
@@ -507,23 +507,24 @@ For all the assemblies, the energy deposition in electrons is given in
 \section{Validation of the simulation}
 \label{sec:ThinSensorSimuValidation}
 
-\begin{figure}[htbp] 
-  \centering
-  \includegraphics[width=0.5\textwidth]{./figures/TestBeam/chargeSharing_theory.pdf}
-  \caption{Thresholds at 500 at 1000 electrons are shown in green lines.}
-  \label{fig:chargeSharing_theory}
-\end{figure}
+
 
 The AllPix simulation framework (described in \cref{sec:AllPix}) is
 used to simulate the performance of thin sensors and to understand the
-charge sharing in such sensors. The simulations are compared and
-validated with the test-beam data.
+charge sharing in such sensors. For the DUT the same digitiser as the
+Timepix3 telescope planes is used
+(c.f. \cref{sec:allpix_digitisation}). This digitiser takes into
+account the semiconductor physics, drift, diffusion charge sharing in
+the planar sensors and also noise in the readout ASICs.
 
-The cluster size, the residuals and the energy deposition
-distributions are shown in
+The assemblies are simulated at the nominal operating conditions. The
+cluster size, the residuals and the energy deposition distributions
+are shown in
 \cref{fig:G4_simu_data_cluSize,fig:G4_simu_data_Residuals,fig:G4_simu_data_Edep}
-comparing data and simulations. The simulation is in good agreement
-with the data.
+comparing data and simulations. The track resolution of
+$\sim2\,\micron$ is not unfolded in the residuals distribution. The
+simulation is in good agreement with the data and is used to predict
+the performance of smaller pixel pitches.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.23\textwidth}
@@ -590,10 +591,10 @@ with the data.
 
     \caption{$300\,\micron$ p-in-n}
   \end{subfigure}
-  \caption{The energy deposition in simulation and data for
-    $50\,\micron$, $100\,\micron$, $150\,\micron$ and $300\,\micron$
-    thick sensors. The assemblies are operated at the nominal
-    conditions.}
+  \caption{The energy deposition for all cluster sizes in simulation
+    and data for $50\,\micron$, $100\,\micron$, $150\,\micron$ and
+    $300\,\micron$ thick sensors. The assemblies are operated at the
+    nominal conditions.}
   \label{fig:G4_simu_data_Edep}
 \end{figure}
 
@@ -611,8 +612,12 @@ extrapolation. Even with a small pitch, in such thin sensors, only
 $\sim$16\% of clusters originating from minimum ionising particles
 contain more than one pixel. The residual distribution is therefore
 dominated by the broad peak from single-pixel clusters and the
-resulting resolution of $\sim$$6\,\micron$ is still significantly
-worse than the required $3\,\micron$.
+resulting resolution of $\sim6\,\micron$ (with the unfolded tracking
+resolution) is still significantly worse than the required
+$3\,\micron$. It can be concluded that the required resolution can be
+either obtained with smaller pixels using planar sensors or new
+solution of charge sharing are needed in order to reduce even more the
+number of single-hit clusters.
 
 \begin{figure}[htbp]\centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -628,6 +633,14 @@ worse than the required $3\,\micron$.
     $25\,\micron$ pixel pitch with a $50\,\micron$ thick sensor and a
     threshold of $\sim$500 electrons.}
   \label{fig:cluSize25Pitch}
+\end{figure}
+
+
+\begin{figure}[htbp] 
+  \centering
+  \includegraphics[width=0.5\textwidth]{./figures/TestBeam/chargeSharing_theory.pdf}
+  \caption{Thresholds at 500 at 1000 electrons are shown in green lines.}
+  \label{fig:chargeSharing_theory}
 \end{figure}
 
 %% %% --------------------------------------------- %%
