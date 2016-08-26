@@ -124,18 +124,18 @@ probability density function called \textit{straggling functions} and
 characterised by the most probable energy loss ($\Delta_{p}$) and
 full-width-at-half-maximum ($w$). \cref{fig:LandauDistribution} shows
 examples of this distribution in thin sensors. If a particle is not
-stopped in the sensors, the energy deposition varies around the peak
-of the distribution with a large tail for high signals. The main
-reason for the highly-skewed energy loss distribution is the
-manifestation of $\delta$-rays which happens when electrons acquire
-enough energy by interaction and themselves become ionising
-particles. The $\delta$-rays not only make the average value of the
-energy loss higher than the most probable value ($\Delta_{p}$) of the
+stopped in the sensor, the energy deposition varies around the peak of
+the distribution with a large tail for high signals. The main reason
+for the highly-skewed energy-loss distribution is the manifestation of
+$\delta$-rays which happens when electrons acquire enough energy by
+interaction and themselves become ionising particles. The
+$\delta$-rays not only make the average value of the energy-loss
+higher than the most probable value ($\Delta_{p}$) of the
 distribution, but also create big clusters and thus degrade the
 spatial resolution of the detector. This is the reason why the Bethe
-equation, \cref{eq:BetheBloch}, is ill-defined experimentally and not
-used for applications where the energy loss for single particles is
-described.
+equation (c.f. \cref{eq:BetheBloch}) is ill-defined experimentally and
+not used for applications where the energy loss for single particles
+is described.
 
 The fluctuations around the $\Delta_{p}$ increase for thinner sensors
 and should be taken into account for the design of the dynamic range
@@ -147,7 +147,7 @@ of the readout electronics.
   \includegraphics[width=0.7\textwidth, page=14, trim = 50mm 160mm
     40mm 20mm, clip]{Articles/rpp2009-rev-passage-particles-matter.pdf}
   \caption{Straggling functions in silicon for 500 MeV pions,
-    normalized to unity at the most probable value. $w$
+    normalized to unity at the most probable value $\Delta_{p}$. $w$
     is the full-width-at-half-maximum~\cite{Beringer:1900zz}.}
   \label{fig:LandauDistribution}
 \end{figure}
@@ -162,7 +162,7 @@ the straggling functions. To obtain correct straggling functions, the
 accurate determination of the collision cross section as function of
 energy loss, $\sigma(E)$, is necessary.
 
-\subsubsection{The Landau distribution}\label{sec:landau}
+\subsection{The Landau distribution}\label{sec:landau}
 The most commonly used model in experiments, is a Landau distribution
 convoluted with a Gaussian. The most probable value $\Delta_p$ of the
 distribution is given by the Landau-Vavilov
@@ -174,37 +174,37 @@ method~\cite{Landau:1944if,Vavilov:1957zz}:
 \end{equation}
 
 where $\xi=(K/2)\braket{Z/A}(x/\beta^2)$~\mev for a detector of
-moderate thickness $x$ in g~\inversecmsquared. All other parameters
-are as the ones described for \cref{eq:BetheBloch}.
+moderate thickness $x$ in g~\inversecmsquared. All the other
+parameters are similar to the ones described for \cref{eq:BetheBloch}.
 
 Though the Landau-Vavilov calculation does not describe correctly the
 width of the energy distribution for thin silicon sensors. For thick
 material, the width of the distribution is $4\xi$.
 
-For $\gamma>>100$, \cref{eq:LandauVavilovMPV} is simplified to~\cite{Bichsel}
+For $\gamma\gg100$, \cref{eq:LandauVavilovMPV} is simplified to~\cite{Bichsel}
 
 \begin{equation}
-  \textsubscript{L}\Delta_{p} (\kev)=t \left(0.1791+0.01782 \ln\left(t\right)\right)
+  \textsubscript{L}\Delta_{p} (\kev)=t \left(0.1791+0.01782 \ln\left(t\right)\right) \; ,
   \label{eq:LandauVavilovMPV_simplified}
 \end{equation}
 
-where t (\micron) is the thickness of the silicon.
+where $t$ (in \micron) is the thickness of the silicon.
 
-When the Landau distribution is combined with a Gaussian one, $\Delta_
-p$ increases and gives better agreement with data.
+When the Landau distribution is combined with a Gaussian, $\Delta_ p$
+increases and gives better agreement with data.
 
-\subsubsection{Bichsel model}\label{sec:bichsel}
-Bichsel~\cite{Bichsel} takes into account the binding of atomic
-electrons to find a better agreement between data and theory. In this
-model, experimental and theoretical data for dielectric functions,
-x-ray absorption coefficients and generalised oscillator strengths are
-used to reproduce accurately the observed energy loss spectrum over a
-wide range of incident particle velocities and silicon thicknesses,
-including very thin silicon sensors. But no analytical description of
-the straggling function is provided. 
+\subsection{The Bichsel model}\label{sec:bichsel}
+The Bichsel model~\cite{Bichsel} takes into account the binding of
+atomic electrons to find a better agreement between data and
+theory. In this model, experimental and theoretical data for
+dielectric functions, x-ray absorption coefficients and generalised
+oscillator strengths are used to reproduce accurately the observed
+energy loss spectrum over a wide range of incident particle velocities
+and silicon thicknesses, including very thin silicon sensors. But no
+analytical description of the straggling function is provided.
 
-Bichsel provides an approximation of $\Delta_{p}$ (\ev) and $w$ (\ev)
-as function of the thickness $t$ ($\micron$) of silicon detectors for
+Bichsel provides an approximation of $\Delta_{p}$ and $w$ (in \ev) as
+function of the thickness $t$ (in $\micron$) of silicon detectors for
 particles with charge $\pm1e$ and $\beta\gamma>500$ as listed in
 \cref{eq:MPV1,eq:MPV2,eq:FWHM}:
 
@@ -233,12 +233,13 @@ particles with charge $\pm1e$ and $\beta\gamma>500$ as listed in
 
 \cref{tab:EdepForDifferentThickness} summarises the $\Delta_{p}$
 and $w$ for detectors thicknesses at our disposal and tested during
-test beams.
+test beams with the results presented in the following chapters.
 
 \begin{table}[htbp]
   \centering
-  \caption{$\Delta_{p}$ and $w$ calculated for silicon sensors with
-    different thicknesses using \cref{eq:MPV1,eq:MPV2,eq:FWHM,eq:FWHM2}.}
+  \caption{Calculated $\Delta_{p}$ and $w$ for silicon sensors with
+    various thicknesses using
+    \cref{eq:MPV1,eq:MPV2,eq:FWHM,eq:FWHM2}.}
   \label{tab:EdepForDifferentThickness}
   \begin{tabular}{c c c c}
     \toprule
@@ -247,20 +248,21 @@ test beams.
     50 & 11.9 & 7.42 & 1.6      \\
     100 & 26.34 & 12.88 & 2.045 \\
     150 & 40.75 & 17.59 & 2.32  \\
-    200 & 55.27 & 21.82 & 2.53  \\
+    %%200 & 55.27 & 21.82 & 2.53  \\
     300 & 84.89 & 30.18 & 2.8 \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\subsubsection{Multiple scattering}
+\subsection{Multiple scattering}
 
 In addition to energy loss, when a particle goes through the detector,
 its trajectory is deflected by small-angle scatters. The deflection is
 mainly due to the Coulomb interaction of the charged particle with the
 nuclei. The strong interaction has also a contribution for
 hadrons. When leaving the detector, the scattering angle of the
-particle follows a Gaussian distribution with an RMS of~\cite{Lynch:1990sq}
+particle follows a Gaussian distribution with an RMS given
+by~\cite{Lynch:1990sq}:
 
 \begin{equation}
   \theta\textsuperscript{RMS}={{13.6\,\mev}\over{\beta p c}} z
