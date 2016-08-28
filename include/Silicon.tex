@@ -86,7 +86,72 @@ radiation and is developed more in the coming sections.
 \end{figure}
 
 %% --------------------------------------------- %%
-\section{Charge generation and recombination in silicon}\label{sec:chargeInSi}
+\subsection{Silicon}
+\label{sec:silicon}
+
+In semiconductors, the excitation energy is defined by the periodicity
+of the crystal lattice. Silicon is a semiconductor with a
+\textit{diamond} lattice as illustrated in
+\cref{fig:SiliconDiamondLattice}. The dimension $a$ is the lattice
+constant and is \SI{5.34}{\angstrom} in silicon.
+
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/SiliconDiamondLattice.png}
+  \caption{Lattice structure of silicon. The building block of the
+    lattice is formed by a central atom bonded to four equidistant
+    neighbours as shown in shaded
+    gray. From~\cite{Spieler2005}.}\label{fig:SiliconDiamondLattice}
+\end{figure}
+
+In the periodic table, silicon is group 4 elements as it has four
+valence electrons and which combine with four neighbours to build
+covalent bonds and close the outer shell.  At 0~K, no electrical
+conduction is possible since all the electrons fill completely the
+valence band. An incident radiation can break a bond and excite an
+electron into the conduction band. This leaves a \textit{hole} or a
+vacant state in the valence band and the electron can freely move in
+the conduction band. The hole can also move in the valance band by the
+indirect mechanism where an electron from a neighbouring atom fills it
+and creates another hole.
+
+An external electric field can direct the motion of the electrons and
+holes created. Holes are treated as positive charge carriers. 
+
+In silicon, the ionisation energy or the average energy deposition
+required to produce an electron-hole pair is $3.6\,\ev$.
+
+%% --------------------------------------------- %%
+\subsection{Doping}
+\label{sec:doping}
+
+By introducing special impurities, the conductivity of semiconductors
+can be controlled. Typical concentration ranges between
+$10^{12}-10^{18}\,\inversecmcubic$. In semiconductors, the
+conductivity comes from either electrons (n-type) or holes (p-type).
+
+In \textit{n-type doping}, a silicon atom is replaced with an atom
+having five valence electrons, for example phosphorus. This creates an
+excess in electrons into the lattice and is called a donor. The donor
+electron is lightly bound to the impurity atom. As a consequence, the
+ionisation probability is increased and mobile electrons are
+introduced into the conduction band.
+
+In \textit{p-type doping}, by introducing a group three atom into the
+silicon lattice, such as the boron, leaves one impurity valence
+electron. This type of dopant is called an acceptor: the dopant
+borrows an electron from a neighbouring atom and the holes can move
+freely throughout the crystal.
+ 
+%% --------------------------------------------- %%
+\section{Charge generation and recombination in silicon}
+\label{sec:chargeInSi}
+
+Previously, we have reviewed the basic properties of semiconductor
+material with a focus on silicon. The electron-hole generation is also
+introduced. In this section, we focus on the amount of charge
+generated due to an incident radiation.
 
 \subsection{Bethe-Bloch formula}
 In silicon, free charge careers are generated due to thermal effects
@@ -282,6 +347,12 @@ detectors is minimised in order to have the least scattering angles possible.
 %% --------------------------------------------- %%
 \section{Silicon device physics and properties}
 
+
+In this section, we review the motion of the charge carriers in
+silicon. First the motion in an intrinsic silicon is studied. Then, a
+pn-junction is described and the motion of charge carriers in silicon
+detectors is sketched.
+
 \subsection{Transport of charge carriers}
 In silicon detectors, the movement of the charge carriers (holes and
 electrons) lead to signal pulses in the electrical contacts which can
@@ -297,7 +368,7 @@ field).
 
 The diffusion implies that a carrier is more probable to move from a
 high-concentration region to a low-concentration region. The diffusion
-current per unit area is given by~\cite{Rossi:976471}
+current per unit area is given by~\cite{Rossi:976471}:
 
 \begin{equation}
   \begin{aligned}
@@ -315,7 +386,7 @@ concentrations.
 
 Charge carriers are accelerated between two random collisions in the
 presence of an external electric field in the direction of the field
-and leads to and average drift velocity given by~\cite{Rossi:976471}
+and leads to and average drift velocity given by~\cite{Rossi:976471}:
 
 \begin{equation}
   \begin{aligned}
@@ -331,7 +402,7 @@ field and $\mu$ the mobility of the charge carriers. The mobility is a
 function of the electric field. For higher electric fields the charge
 carriers gain more acceleration and the number of collisions per unit
 time increases. This leads to a saturation of the drift velocity
-$v_s$. The mobility dependence on the electric field is described by~\cite{Jacoboni197777}
+$v_s$. The mobility dependence on the electric field is described by~\cite{Jacoboni197777}:
 \begin{equation}
   \mu=\frac{v_{s}/E_{c}}{\left[1+(E/E_{c})^{\beta}\right]^{1/\beta}}\; ,
   \label{eq:mobility}
@@ -358,7 +429,14 @@ where the parameters are described in \cref{tab:mobility_parameters}.
 \end{table}
 
 \cref{fig:Mobility_electron_holes} shows the mobility for electrons
-and holes as a function of the electric field. 
+and holes as a function of the electric field. For a low electric
+field, the mobility for intrinsic silicon at 300~K is:
+\begin{equation*}
+  \begin{aligned}
+    \mu_n=1415 \pm 46 \qquad \textnormal{\cmsquared/(Vs)} \; , \\
+    \mu_p=480 \pm 17 \qquad \textnormal{\cmsquared/(Vs)} \; .
+  \end{aligned}
+\end{equation*}
 
 \begin{figure}[htbp]
   \centering
@@ -368,14 +446,6 @@ and holes as a function of the electric field.
   \label{fig:Mobility_electron_holes}
 \end{figure}
 
-For a low electric field, the mobility for intrinsic silicon at 300~K
-is
-\begin{equation*}
-  \begin{aligned}
-    \mu_n=1415 \pm 46 \qquad \textnormal{\cmsquared/(Vs)} \; , \\
-    \mu_p=480 \pm 17 \qquad \textnormal{\cmsquared/(Vs)} \; .
-  \end{aligned}
-\end{equation*}
 
 Holes are three times less mobile than electrons which make them more
 likely to be trapped in an irradiated material.
