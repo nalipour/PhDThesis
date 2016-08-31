@@ -815,13 +815,25 @@ with a low resistance.
 
 %\subsection{Silicon sensors types}
 %\subsection{Leakage current}
-\subsection{Charge collection and Ramo's theorem: induced charge}\label{sec:RamoTheorem}
-When a charge moves in the sensitive volume of a detector, a current
-$i_s(t)$ flows instantaneously. \\ 
-First, consider the simple example of a charge $q$ near an infinitely
-large electrode with all the electric field lines terminating on the
-electrode. The Gauss's law, for a surface $S$ surrounding the charge
-is expressed as:
+\subsection{Charge collection and Ramo's theorem: induced charge}
+\label{sec:RamoTheorem}
+
+Previously, we have seen that due to incident radiation, a signal is
+produced by the motion of charge carriers in the detector. We can
+naively interpret this statement as the signal is formed with a delay
+when the charge carriers are collected by the electrodes. But in
+reality, such a delay does not exist and a signal pulse is created
+immediately after a charge carrier starts its motion to the
+electrodes. When the last charge carriers arrive at the collecting
+electrodes, the charge induction process ends and the signal pulse is
+fully developed. The timing evolution of the signal is important in
+understanding the timing properties of detectors. In the following, we
+derive the induced charge in a pixel detector.
+
+For the calculation of the induced charge, first, consider the simple
+example of a charge $q$ near an infinitely large electrode with all
+the electric field lines terminating on the electrode. The Gauss's
+law, for a surface $S$ surrounding the charge is expressed as:
 
 \begin{equation}
 \oint_{s} \vec{E} \cdot d\vec{a}=q\; .
@@ -829,15 +841,15 @@ is expressed as:
 \end{equation}
 
 The induced charge obtained by integrating over a Gaussian surface
-enclosing only the electrode is $-q$. \\
-Considering two parallel electrodes with a charge $q$ in between as
-showin in \cref{fig:InducedCharge_parallelPlates}. If the charge
-is placed midway between the two parallel plates, it induces equal
-charge of $-q/2$ on the both electrodes as half of the electric field
-lines end up on the higher and the other half on the lower
-electrode. When the charge moves towards the closer to a plate rather
-than the other, the induced charge will be higher for the closer
-plate. \\
+enclosing only the electrode is $-q$. Considering two parallel
+electrodes with a charge $q$ in between as showin in
+\cref{fig:InducedCharge_parallelPlates}. If the charge is placed
+midway between the two parallel plates, it induces equal charge of
+$-q/2$ on the both electrodes as half of the electric field lines end
+up on the higher and the other half on the lower electrode. When the
+charge moves closer to a plate rather than the other, the induced
+charge will be higher for the closer plate.
+
 The induced charge can not be observed directly but its change can be
 measured when the two electrodes are connected in a closed circuit
 (like a pixel detector) as it produces an induced current.
@@ -850,85 +862,109 @@ measured when the two electrodes are connected in a closed circuit
   \label{fig:InducedCharge_parallelPlates}
 \end{figure}
 
-Ramo's theorem~\cite{Ramo:1939vr} describes the time evolution of the induced current
-created in a detector. The induced current on the electrodes is
-described as a function of the weighting potential $\Phi$ which
-describes the coupling of a charge to an electrode. \\
-The weighting potential is defined for a specific electrode. It is
-obtained by setting the potential of the electrode to 1 and setting
-all other electrodes to potential 0. \cref{eq:RamoCharge}
-describes the induced charge $Q_k$ on electrode $k$ if a charge q moves along
-any path from position $z_0$ to $z_p$.
+Ramo's theorem~\cite{Ramo:1939vr} describes the time evolution of the
+induced current created in a detector. The induced current on the
+electrodes is described as a function of the weighting potential
+$\Phi$ which describes the coupling of a charge to an electrode. The
+weighting potential is defined for a specific electrode. In Ramo's
+theorem, it is obtained by setting the potential of the electrode to 1
+and setting all other electrodes to potential 0. \cref{eq:RamoCharge}
+describes the induced charge $Q_k$ on electrode $k$ if a charge q
+moves along any path from position $z_0$ to $z_p$:
 \begin{equation}
     Q_{k}=q \cdot [\Phi_k(z_p)-\Phi_k(z_0)] \; .
    \label{eq:RamoCharge} 
   \end{equation}
 
- It is important to note that the weighting potential (field) is
- different than the electric potential (field). The electric field
- determines the drift trajectory and velocity of the charge carriers
- whereas the weighting field depends only on the geometry of the
- electrodes and defines how the charge motion induces a charge to a
- specific electrode. In the specific case of two-electrode configuration the
- electric and the weighting fields are the same. \\
-In a TCAD simulation~\cite{synopsysTCAD}, the weighting field and potential are obtained
-as shown in \cref{fig:RamoTCAD}. For this study the silicon
-sensor has a thickness of 200~\micron and is over-depleted with a bias
-voltage of \SI{50}{\volt} on the back-side. First, \SI{0}{\volt} is
-applied to all the electrodes and then \SI{1}{\volt} is applied to the
-electrode~$k$. By taking the difference between the two
-configurations, the weighting potential and field are obtained.
+It is important to note that the weighting potential (field) is
+different than the electric potential (field). The electric field
+determines the drift trajectory and velocity of the charge carriers
+whereas the weighting field depends only on the geometry of the
+electrodes and defines how the charge motion induces a charge to a
+specific electrode. In the specific case of two-electrode
+configuration the electric and the weighting fields are the same.
 
 
-\begin{figure}[htbp]
-  \centering
-  \begin{subfigure}[b]{0.49\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/Ramo/EfieldY_Ramo.png}
-    \caption{Weighting field}\label{fig:WeightingFieldRamo}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.49\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/Ramo/RamoPotential.png}
-    \caption{Weighting potential}\label{fig:WeightingPotentialRamo}
-  \end{subfigure} 
-  \caption{The weighting field and potential.}\label{fig:RamoTCAD}
-\end{figure}
+\cref{fig:RamoTCAD} shows the weighting field and potential
+distributions calculated using TCAD simulations~\cite{synopsysTCAD}
+(c.f. \cref{sec:TCAD}). For this study, we consider a silicon sensor
+with 5 pixels, having a thickness of 200~\micron and over-depleted
+with a bias voltage of \SI{50}{\volt} on the back-side. First,
+\SI{0}{\volt} is applied to all the electrodes and then \SI{1}{\volt}
+is applied to the electrode~$k$. By taking the difference between the
+two configurations, the weighting potential and field are obtained.
 
-The weighting potential for different positions on the
-x-axis is shown in \cref{fig:RamoTCADCuts}. Since, the total
-charge collected by the electrode $k$ depends only on the positions
-$z_0$ and $z_p$, in the absence of the radiation-induced damages
-(which would affect the distributions of the electric and weighting
-fields), the Ramo theorem can be neglected.
 
 \begin{figure}[htbp]
   \centering
   \begin{subfigure}[b]{0.49\textwidth}
     \centering
     \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,0){\includegraphics[width=\textwidth]{figures/Ramo/EfieldY_Ramo.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[above, color=black] at (0.35, 1) {electrode $k$};
+      \end{scope}
+    \end{tikzpicture} 
+    \caption{Weighting field}\label{fig:WeightingFieldRamo}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,0){\includegraphics[width=\textwidth]{figures/Ramo/RamoPotential.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[above, color=black] at (0.35, 1) {electrode $k$};
+      \end{scope}
+    \end{tikzpicture} 
+    \caption{Weighting potential}\label{fig:WeightingPotentialRamo}
+  \end{subfigure} 
+  \caption{The weighting field and potential.}\label{fig:RamoTCAD}
+\end{figure}
+
+The weighting potential for different positions on the x-axis is shown
+in \cref{fig:RamoTCADCuts}. Since, the total charge collected by the
+electrode $k$ depends only on the positions $z_0$ and $z_p$, in the
+absence of the radiation-induced damages (which would affect the
+distributions of the electric and weighting fields), the Ramo theorem
+can be neglected. Only the electrostatic field and potential are
+important.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at
       (0,0){\includegraphics[width=\textwidth]{figures/Ramo/RamoPotential_cuts.png}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \draw[->, thick] (0, 0)--(0.88, 0) node[right]{$x [\micron]$};
-        \draw[-] (0.355, 0.01) -- (0.355, -0.01) node[below] {0};
-        \draw[-] (0.445, 0.01) -- (0.445, -0.01) node[below] {27.5};
-        \draw[-] (0.533, 0.01) -- (0.533, -0.01) node[below] {55};
-        \draw[-] (0.69, 0.01) -- (0.69, -0.01) node[below] {109};
+        \draw[->, thick] (-0.1, 1)--(0.73, 1) node[right]{$x$~$[\micron]$};
+        \draw[->, thick] (0, 1.1)--(0, -0.1) node[below]{Depth $z$~$[\micron]$};
+        \draw[-] (0.355, 1.01) -- (0.355, 0.99) node[above] {0};
+        \draw[-] (0.445, 1.01) -- (0.445, 0.99) node[above] {27.5};
+        \draw[-] (0.533, 1.01) -- (0.533, 0.99) node[above] {55};
+        \draw[-] (0.69, 1.01) -- (0.69, 0.99) node[above] {109};
+
+
+        \draw[-] (-0.01, 0.01) -- (0.01, 0.01) node[left] {200};
+        \draw[-] (-0.01, 0.97) -- (0.01, 0.97) node[left] {0};
+        %% \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+        %% \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+        %% \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+
       \end{scope}
     \end{tikzpicture} 
     \caption{}\label{fig:RamoPotentialCuts}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.49\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/Ramo/WeightingPotential_1D.pdf}
+    \includegraphics[width=0.9\textwidth]{figures/Ramo/WeightingPotential_1D.pdf}
     \caption{}\label{fig:RamoPotentialCuts1D}
   \end{subfigure} 
-  \caption{The weighting potential for different positions on the x-axis.}\label{fig:RamoTCADCuts}
+  \caption{The weighting potential for different positions on the x-axis using TCAD simulations. The detector has a thickness of $200\,\micron$.}
+  \label{fig:RamoTCADCuts}
 \end{figure}
 
 
-\subsection{Spatial resolution}
+\section{Spatial resolution}
 
 The spatial resolution of a pixel detector is mainly determined by the
 pixel pitch. But this can be improved by the readout choice (binary or
@@ -945,12 +981,13 @@ The spatial resolution is defined by:
 \end{equation}
 
 where $\sigma_{position}$ is the average distance between the real
-impact position $x_r$ and the measured position $x_m$ of the
-particle in a pixel.
+impact position $x_r$ and the measured position $x_m$ of the particle
+in a pixel. $D\left(x\right)$ is the hit probability density function
+in a pixel. $p$ represents the pixel pitch size.
 
 In the coming sections, the spatial resolution defined by
-\cref{eq:spatialRes} is calculated and studied for different scenarios
-and assumptions.
+\cref{eq:spatialRes} is studied for different scenarios and
+assumptions.
 
 %% \begin{figure}[htbp]
 %%   \centering
@@ -1008,11 +1045,12 @@ and assumptions.
 
 
 
-\subsubsection{Binary readout} \label{sec:binaryReadout}
+\subsection{Binary readout} \label{sec:binaryReadout}
 The simplest case for the resolution computation is to consider a
-binary readout with single threshold. For a pixel centered at 0 and
-having a pitch $p$ with a probability density function as illustrated
-in \cref{fig:SpatResBinary}, the following assumptions are considered:
+binary readout with single threshold for signal and noise
+discrimination. For a pixel centered at 0 and having a pitch $p$ with
+a probability density function as illustrated in
+\cref{fig:SpatResBinary}, the following assumptions are considered:
 
 \begin{itemize}
 \item The threshold is adjusted in a way to fire one pixel per
@@ -1035,7 +1073,7 @@ using \cref{eq:spatialRes} \cite{Rossi:976471}:
 which results in a spatial resolution of:
 \begin{equation}
 \sigma_{position}={p \over \sqrt{12}} \;.
-\label{eq:sigmapos}
+\label{eq:sigmaposBinary}
 \end{equation}
 
 \begin{figure}[htbp]
@@ -1060,7 +1098,9 @@ which results in a spatial resolution of:
       \node[above, green] at (3.5, 1) {Pixel 1};
     \end{scope}
   \end{tikzpicture}
-  \caption{Binary readout}  
+  \caption{The hit probability density function for two neighbouring
+    pixels (pixel 0 and pixel 1) when a binary readout is used to
+    acquire the sensor pulse.}
   \label{fig:SpatResBinary}
 \end{figure}
 
@@ -1072,12 +1112,12 @@ pixel can be fired which is called a \textit{cluster} of pixels. The
 resolution is therefore improved as described in
 \cref{sec:resolutionBinarySharing,sec:resolutionAnalogSharing}.
 
-\subsubsection{Binary readout and charge sharing}\label{sec:resolutionBinarySharing}
+\subsection{Binary readout and charge sharing}\label{sec:resolutionBinarySharing}
 The threshold of the readout electronics is usually set as low as
 possible which can result in more than one pixel hit per particle
 track. In this case, the charge is shared between two or more pixels
-(cluster). Multi-hit clusters improve the resolution of
-\cref{eq:spatialResBinary}. \cref{fig:SpatResBinaryChargeSharing}
+(called a cluster). Multi-hit clusters improve the resolution of
+\cref{eq:sigmaposBinary}. \cref{fig:SpatResBinaryChargeSharing}
 illustrates the charge sharing between two pixels. If a track passes
 close to the edge of a pixel (within a distance of $s\over 2$ close to
 the edge), then the neighbouring pixel is also fired. For events
@@ -1091,7 +1131,7 @@ triggering single-hit events, the spatial resolution in pixel 0 for
 \label{eq:spatialResCharge sharing_1hit}
 \end{equation}
 
-For two-hit clusters, the spatial resolution is given by
+For two-hit clusters, the spatial resolution is given by:
 \begin{equation}
 \sigma_{position}={s \over \sqrt{12}} \; .
 \label{eq:spatialResChargeSharing_2hit}
@@ -1131,21 +1171,28 @@ For two-hit clusters, the spatial resolution is given by
       
     \end{scope}
   \end{tikzpicture}
-  \caption{Binary readout with charge sharing.}\label{fig:SpatResBinaryChargeSharing}
+  \caption{The hit probability density function for two neighbouring
+    pixels (pixel 0 and pixel 1) considering charge sharing between
+    the two pixels when a binary readout is used to acquire the sensor
+    pulse. For a track passing in the edge of the two pixels, within a
+    distance of $s$/2 close to the edge, pixel 0 and pixel 1 are
+    fired.}\label{fig:SpatResBinaryChargeSharing}
+  % Binary readout with charge sharing.
 \end{figure}
 
-The average resolution considering single and multi-hit clusters is given by
+The average resolution considering single and multi-hit clusters is
+given by:
 \begin{equation}
-{\sigma_{\text{Total}}}^{2}={{\left(p-s\right)^{2}} \over 12}+{{s^2}\over12} \; .
+{\sigma_{Total}^{2}}={{\left(p-s\right)^{2}} \over 12}+{{s^2}\over12} \; .
 \label{eq:spatialResChargeSharingTotal}
 \end{equation}
 
 The optimal average spatial resolution is obtained for $s=p/2$ as
-shown in \cref{fig:sigmaTotal} where the pitch is
-$p=55\,\micron$. This means that the number of single-hit and
-multi-hit clusters is the same. But, in this situation one is not able
-to distinguish between one track triggering two pixels and two tracks
-hitting the sensor within $2p$.
+shown in \cref{fig:sigmaTotal} for two pixel pitches of is
+$p=25\,\micron$ and $p=55\,\micron$. This means that the number of
+single-hit and multi-hit clusters is the same. But, in this situation
+one is not able to distinguish between one track triggering two pixels
+and two tracks hitting the sensor within $2p$.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -1157,44 +1204,49 @@ hitting the sensor within $2p$.
     \caption{$55\,\micron$ pitch}
   \end{subfigure}
   \caption{$\sigma_{\text{Total}}$ calculated using
-    \cref{eq:spatialResChargeSharingTotal} with a pixel pitch of
-    $p=55\,\micron$ where $s$ is the width of the charge sharing
-    region as shown in \cref{fig:SpatResBinaryChargeSharing}.}
+    \cref{eq:spatialResChargeSharingTotal} with a pixel pitch of (a)
+    $p=25\,\micron$ and (b) $p=55\,\micron$ where $s$ is the width of
+    the charge sharing region as shown in
+    \cref{fig:SpatResBinaryChargeSharing}.}
   \label{fig:sigmaTotal}
 \end{figure}
 
-\subsubsection{Analogue readout and charge sharing}
+%% --------------------------------------------------- %%
+\subsection{Analogue readout and charge sharing}
 \label{sec:resolutionAnalogSharing}
-The spatial resolution can be improved more when an analogue readout
-is used that delivers a signal proportional to the collected charge as
-illustrated in \cref{fig:SpatResAnaglogChargeSharing}. In this case,
-for multi-hit clusters $\eta$-function as described
-in~\cite{Belau:1983eh} is used to reconstruct the hit position within
-the pixels.  In the region where only one pixel fires, the resolution
-is still limited to $(p-s)\over \sqrt{12}$.
+The spatial resolution can be significantly improved with an analogue
+readout which delivers a signal proportional to the collected charge
+as illustrated in \cref{fig:SpatResAnaglogChargeSharing}. In this
+case, for multi-hit clusters the $\eta$-function~\cite{Belau:1983eh}
+(c.f.~\cref{sec:EtaCorrection}) is used to reconstruct the hit
+position within the pixels using the charge information. In the region
+where only one pixel fires, the resolution is still limited to
+$(p-s)\over \sqrt{12}$. In this case, the readout threshold is wished
+to be as low as possible in order to detect the smallest amounts of
+charge.
 
-The charge carriers follow the field lines to end-up on a certain
-electrode. They are also subject to thermal diffusion which spreads
-the charge cloud as it drifts through the silicon. The width of the
-diffusion $\sigma_{diffusion}(z)$ (for simplicity called $\sigma(z)$) at depth $z$ is given by
-\cref{eq:driftTimeIntegrated}.
-The charge distribution at position $x_{hit}$ for a pixel extending from
-$x_1$ to $x_2$ is:
-\begin{equation}
-Q(x_{hit}, z)= Q(z) {1\over{\sqrt{2 \pi \sigma^2(z)}}}
-{\int_{x_1}^{x_2} e^{-({{x-x_{hit}}\over{\sqrt{2} \sigma(z)}})^2} } dx\; .
-\label{eq:ChargeDistribution}
-\end{equation}
+%% The charge carriers follow the field lines to end-up on a certain
+%% electrode. They are also subject to thermal diffusion which spreads
+%% the charge cloud as it drifts through the silicon. The width of the
+%% diffusion $\sigma_{diffusion}(z)$ (for simplicity called $\sigma(z)$)
+%% at depth $z$ is given by \cref{eq:driftTimeIntegrated}. The charge
+%% distribution at position $x_{hit}$ for a pixel extending from $x_1$ to
+%% $x_2$ is:
+%% \begin{equation}
+%% Q(x_{hit}, z)= Q(z) {1\over{\sqrt{2 \pi \sigma^2(z)}}}
+%% {\int_{x_1}^{x_2} e^{-({{x-x_{hit}}\over{\sqrt{2} \sigma(z)}})^2} } dx\; .
+%% \label{eq:ChargeDistribution}
+%% \end{equation}
 
-By integrating \cref{eq:ChargeDistribution} over the whole
-thickness of the detector, the charge deposited in a pixel at
-coordinate $x_{hit}$ having coordinates $x_1$ and $x_2$ is given by:  
-\begin{equation}
-Q(x_{hit})= \int_{x_1}^{x_2}  \int_{0}^{d} {Q(z) \over {\sqrt{2 \pi
-      \sigma^2(z)}} } e^{-({{x-x_{hit}}\over{\sqrt{2} \sigma(z)}})^2}
-  dz \; dx\; .
-\label{eq:ChargeDistribution_integrated_z}
-\end{equation}
+%% By integrating \cref{eq:ChargeDistribution} over the whole
+%% thickness of the detector, the charge deposited in a pixel at
+%% coordinate $x_{hit}$ having coordinates $x_1$ and $x_2$ is given by:  
+%% \begin{equation}
+%% Q(x_{hit})= \int_{x_1}^{x_2}  \int_{0}^{d} {Q(z) \over {\sqrt{2 \pi
+%%       \sigma^2(z)}} } e^{-({{x-x_{hit}}\over{\sqrt{2} \sigma(z)}})^2}
+%%   dz \; dx\; .
+%% \label{eq:ChargeDistribution_integrated_z}
+%% \end{equation}
 
 
 \begin{figure}[htbp]
@@ -1225,11 +1277,14 @@ Q(x_{hit})= \int_{x_1}^{x_2}  \int_{0}^{d} {Q(z) \over {\sqrt{2 \pi
       \node[above] at (1.5, 1.2) {$s$}; 
     \end{scope}
   \end{tikzpicture}
-  \caption{Analogue readout with charge sharing}\label{fig:SpatResAnaglogChargeSharing}
+  \caption{The hit probability density function for two neighbouring
+    pixels (pixel 0 and pixel 1) considering charge sharing between
+    the two pixels using an analogue to acquire the sensor
+    pulse.}\label{fig:SpatResAnaglogChargeSharing}
 \end{figure}
 
-
-\subsection{The $\eta$-correction method}
+%% --------------------------------------------------- %%
+\section{The $\eta$-correction method}
 \label{sec:EtaCorrection}
 
 Due to the charge sharing, particle tracks create multi-pixel
