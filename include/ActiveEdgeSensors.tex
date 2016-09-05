@@ -118,12 +118,12 @@ active-edge sensor with and without guard ring.
 
 %% --------------------------------------------- %%
 \newpage
-\subsection{Advacam process flow for active edge sensors}
+\subsection{Process flow for sensor production by Advacam}
 \label{sec:AdvacamProcessFlow}
 
-The process flow used by Advacam is schematically illustrated in
-\cref{fig:AdvacamProcessFlow} and described as
-follows~\cite{AdvacamProcessFlow}.
+The process flow used by Advacam to produce active-edge sensors is
+schematically illustrated in \cref{fig:AdvacamProcessFlow} and
+described as follows~\cite{AdvacamProcessFlow}.
 
 \begin{enumerate}
 \item First, the backside implantation is done by doping the detector
@@ -201,7 +201,7 @@ follows~\cite{AdvacamProcessFlow}.
 
 %% --------------------------------------------- %%
 \newpage
-\subsection{Layout parameters of active-edge assemblies}
+\subsection{Layout parameters of produced assemblies}
 \label{sec:AEgeometry}
 
 The produced assemblies by Advacam and tested in test beams are listed
@@ -344,8 +344,8 @@ implementation of the sensors in TCAD simulations.
 
 %% --------------------------------------------- %%
 \newpage
-\subsection{Simulation process flow for the active-edge designs}
-\label{sec:processFlow}
+\subsection{Process flow for the simulation of the active-edge designs}
+\label{sec:processFlowTCAD}
 
 TCAD simulations (c.f. \cref{sec:TCAD}) are used to simulate the
 fabrication process and the device operation of active edge
@@ -405,9 +405,9 @@ The fabrication process of the sensors is simulated as follows:
   temperature of $940\degrees$C during 240 minutes.
 \item The pixels and guard ring metal layer is deposited using an
   aluminium layer with a thickness of $0.8\,\micron$.
-\item The sensor is then flipped and on the back-side, a layer of
-  aluminium with a thickness of $0.8\,\micron$ is deposited for the
-  contact of the high-voltage.
+\item A layer of aluminium with a thickness of $0.8\,\micron$ is
+  deposited for the contact of the high-voltage on the back-side of
+  the sensor.
 \end{enumerate}
  
 
@@ -416,7 +416,7 @@ in Figure~\ref{fig:TCAD_dopingConcentration}.
 
 %% --------------------------------------------- %%
 \newpage
-\section{Electrical measurements}
+\section{Electrical measurements in laboratory and simulations}
 
 \cref{fig:IVmeasurements} shows the measured leakage current in the
 different assemblies as a function of the bias voltage at the room
@@ -453,8 +453,8 @@ included on the leakage current.
 
 
 %% --------------------------------------------- %%
-\subsection{Electric field distribution in simulations}
-\label{sec:TCAD_Efield_activeEdge}
+%% \subsection{Electric field distribution in simulations}
+%% \label{sec:TCAD_Efield_activeEdge}
 
 In silicon, the breakdown occurs for electric fields exceeding
 $\sim3\times10^5$~\voltpercm~\cite{Sze:100213}. In active-edge
@@ -529,15 +529,72 @@ pixel.
 \end{figure}
 
 %% --------------------------------------------- %%
-\section{Edge performance in test beams}
+\newpage
+\section{Edge performance in data and simulations}
 The active-edge assemblies are tested at the CERN SPS with $120\,\gev$
 pions (c.f. \cref{sec:CERN_SPS}), making use of the Timepix3 beam
-reference telescope as described in \cref{ch:Telescope}.
+reference telescope as described in \cref{ch:Telescope}. The edge
+performance is investigated in terms of the efficiency of detecting a
+track and the amount of collected charge as a function of the track
+position on the edge.
 
-The efficiency and the collected charge (time-over-threshold TOT) at
-the edge as a function of the track position are shown in
-\cref{fig:20-NGR_eff_TOT,fig:23-FGR_eff_TOT,fig:28-GNDGR_eff_TOT,fig:55-GNDGR_eff_TOT,fig:55-GNDGR-100_eff_TOT,fig:55-GNDGR-150_eff_TOT}
-with the convention as illustrated in \cref{fig:Layout20_NGR}. The
+%% --------------------------------------------- %%
+\subsection{TCAD simulation of the detector response}
+\label{sec:TCAD_Simu_ActiveEdge}
+
+TCAD simulations are used to study the charge collection in the edge
+region. The process flow as described in \cref{sec:processFlowTCAD} is
+used to simulate two pixels and the edge region in a 2D
+configuration. The transient simulation of the active edge devices is
+done by a charge deposition of $10^{-5}\,\picocoulomb/\micron$ along
+the particle track. This corresponds to an energy deposition of
+$\sim80\,\text{e-}/\micron$ as expected for the MIP in
+silicon. \cref{fig:TCAD_transientSimu} illustrates an example of a MIP
+traversing the sensor at a distance of $10\,\micron$ from the left
+edge 6~ns after the particle hit. The electron density is shown in
+this figure. 
+
+In simulation, hits are generated at different positions. The
+electrodes collect the signal created by the electrons since the
+sensor is of type n-in-p. The signal is integrated over 15~ns. The
+peaking time of the signal is usually less than 5~ns therefore the
+integration time is enough to collect most of the signal.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at
+    (0,0){\includegraphics[width=0.7\textwidth]{figures/ActiveEdge/TCAD_transient_23FGR_hitpos_60.png}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+      %% \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+      %% \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+      %% \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+
+      \draw[->, very thick] (0.093, 0.0) -- (0.093, 1.05);
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Transient simulation of a particle track traversing the
+    sensor at a distance of $10\,\micron$ from the edge (illustrated
+    as an arrow). The electron density 6~ns after the particle hit is
+    shown. The region shown with a white line is the depletion
+    region.}
+  \label{fig:TCAD_transientSimu}
+\end{figure}
+
+
+
+%% --------------------------------------------- %%
+\newpage
+\subsection{Results}
+\label{sec:activeEdge_results}
+
+The performance of the edge is compared in data and simulation in
+terms of efficiency and collected charge in the edge as a function of
+the track position. The convention as illustrated in
+\cref{fig:Layout20_NGR} is used to show the performance of the
+different assemblies in
+\cref{fig:20-NGR_eff_TOT,fig:23-FGR_eff_TOT,fig:28-GNDGR_eff_TOT,fig:55-GNDGR_eff_TOT,fig:55-GNDGR-100_eff_TOT,fig:55-GNDGR-150_eff_TOT}. The
 border of the last pixel (at 0~mm) is indicated with a dashed line and
 the physical sensor edge is shown as a continuous line. The detection
 efficiency is calculated by counting the number of tracks matched to
@@ -729,53 +786,54 @@ the different assemblies.
   \label{fig:EdgeEff_2D}
 \end{figure}
 
-%% --------------------------------------------- %%
-\newpage
-\section{TCAD simulations of active-edge sensors}
+%% %% --------------------------------------------- %%
+%% \newpage
+%% \section{TCAD simulations of active-edge sensors}
 
 
 
 
 
 %% --------------------------------------------- %%
-\subsection{Validation of simulation with
-  data}\label{sec:TCAD_dataValidation_activeEdge}
+%% \subsection{Validation of simulation with
+%%   data}\label{sec:TCAD_dataValidation_activeEdge}
 
-The transient simulation of the active edge devices is done by a
-charge deposition of $10^{-5}\,\picocoulomb/\micron$ along the
-particle track. This corresponds to an energy deposition of
-$\sim80\,\text{e-}/\micron$ as expected for the MIP in
-silicon. \cref{fig:TCAD_transientSimu} illustrates a MIP traversing
-the sensor at a distance of $10\,\micron$ from the left edge. The
-electron density 6~ns after the particle hit is illustrated. The
-electrodes collect the current generated by the electrons and it is
-integrated over 15~ns.
+%% The transient simulation of the active edge devices is done by a
+%% charge deposition of $10^{-5}\,\picocoulomb/\micron$ along the
+%% particle track. This corresponds to an energy deposition of
+%% $\sim80\,\text{e-}/\micron$ as expected for the MIP in
+%% silicon. \cref{fig:TCAD_transientSimu} illustrates a MIP traversing
+%% the sensor at a distance of $10\,\micron$ from the left edge. The
+%% electron density 6~ns after the particle hit is illustrated. The
+%% electrodes collect the current generated by the electrons and it is
+%% integrated over 15~ns.
 
-\begin{figure}[htbp]
-  \centering
-  \begin{tikzpicture}
-    \node[anchor=south west,inner sep=0] (image) at
-    (0,0){\includegraphics[width=0.7\textwidth]{figures/ActiveEdge/TCAD_transient_23FGR_hitpos_60.png}};
-    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+%% \begin{figure}[htbp]
+%%   \centering
+%%   \begin{tikzpicture}
+%%     \node[anchor=south west,inner sep=0] (image) at
+%%     (0,0){\includegraphics[width=0.7\textwidth]{figures/ActiveEdge/TCAD_transient_23FGR_hitpos_60.png}};
+%%     \begin{scope}[x={(image.south east)},y={(image.north west)}]
 
-      %% \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-      %% \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-      %% \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+%%       %% \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+%%       %% \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%%       %% \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
 
-      \draw[->, very thick] (0.093, 0.0) -- (0.093, 1.05);
-    \end{scope}
-  \end{tikzpicture}
-  \caption{Transient simulation of a particle track traversing the
-    sensor at a distance of $10\,\micron$ from the edge (the
-    arrow). The electron density 6~ns after the particle hit is
-    shown.}
-  \label{fig:TCAD_transientSimu}
-\end{figure}
+%%       \draw[->, very thick] (0.093, 0.0) -- (0.093, 1.05);
+%%     \end{scope}
+%%   \end{tikzpicture}
+%%   \caption{Transient simulation of a particle track traversing the
+%%     sensor at a distance of $10\,\micron$ from the edge (the
+%%     arrow). The electron density 6~ns after the particle hit is
+%%     shown.}
+%%   \label{fig:TCAD_transientSimu}
+%% \end{figure}
 
 
-In simulation, hits are generated at different positions. The charge
-collected by each electrode is calculated over the integration
-time. \cref{fig:TCAD_vs_data_20_NGR,fig:TCAD_vs_data_23_FGR,fig:TCAD_vs_data_28_GNDGR,fig:TCAD_vs_data_55_GNDGR,fig:TCAD_vs_data_55_GNDGR_100,fig:TCAD_vs_data_55_GNDGR_150}
+%% In simulation, hits are generated at different positions. The charge
+%% collected by each electrode is calculated over the integration
+%% time. 
+\cref{fig:TCAD_vs_data_20_NGR,fig:TCAD_vs_data_23_FGR,fig:TCAD_vs_data_28_GNDGR,fig:TCAD_vs_data_55_GNDGR,fig:TCAD_vs_data_55_GNDGR_100,fig:TCAD_vs_data_55_GNDGR_150}
 compare the charge collected as a function of the hit position in data
 and TCAD simulations. In data, the charge deposited is plotted versus
 the track position given by the Timepix3 telescope (with a resolution
