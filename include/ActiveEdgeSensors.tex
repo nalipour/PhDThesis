@@ -589,11 +589,12 @@ integration time is enough to collect most of the signal.
 \subsection{Results}
 \label{sec:activeEdge_results}
 
-The performance of the edge is compared in data and simulation in
-terms of efficiency and collected charge in the edge as a function of
-the track position. The convention as illustrated in
-\cref{fig:Layout20_NGR} is used to show the performance of the
-different assemblies in
+The performance of the edge is studied in data in terms of the
+efficiency and the collected charge at the edge as a function of the
+track position. The collected charge at the edge is also simulated (as
+described in \cref{sec:TCAD_Simu_ActiveEdge}) and compared to the
+data. The convention as illustrated in \cref{fig:Layout20_NGR} is used
+to show the performance of the different assemblies in
 \cref{fig:20-NGR_eff_TOT,fig:23-FGR_eff_TOT,fig:28-GNDGR_eff_TOT,fig:55-GNDGR_eff_TOT,fig:55-GNDGR-100_eff_TOT,fig:55-GNDGR-150_eff_TOT}. The
 border of the last pixel (at 0~mm) is indicated with a dashed line and
 the physical sensor edge is shown as a continuous line. The detection
@@ -997,6 +998,134 @@ in the collected charge in the edge region.
     end up in the guard ring means that those charges are not
     collected by the first pixel and thus lost.}
   \label{fig:TCAD_streamlines}
+\end{figure}
+
+
+
+
+\newpage
+\section{Results temp}
+
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, page=3]{figures/TestBeam/edge_bcp.pdf}
+  \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, page=6]{figures/TestBeam/edge_bcp.pdf}
+  \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, page=9]{figures/TestBeam/edge_bcp.pdf}
+  \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, page=12]{figures/TestBeam/edge_bcp.pdf}
+  \caption{}
+  \end{subfigure}
+  \caption{}
+  \label{fig:ResultsTemp}
+\end{figure}
+
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, page=5]{figures/TestBeam/edge_bcp.pdf}
+  \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, page=8]{figures/TestBeam/edge_bcp.pdf}
+  \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, page=11]{figures/TestBeam/edge_bcp.pdf}
+  \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, page=14]{figures/TestBeam/edge_bcp.pdf}
+  \caption{}
+  \end{subfigure}
+  \caption{}
+  \label{fig:ResultsTemp2}
+\end{figure}
+
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_20_NGR.pdf}
+  \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.24\textwidth}
+    \centering
+
+  \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_28_GNDGR.pdf}
+  \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_55_GNDGR.pdf}
+  \caption{}
+  \end{subfigure}
+  \caption{}
+  \label{fig:ResultsTemp3}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, page=15]{figures/TestBeam/edge_bcp.pdf}
+  \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, page=18]{figures/TestBeam/edge_bcp.pdf}
+  \caption{}
+  \end{subfigure}
+  \caption{}
+  \label{fig:ResultsTemp4}
+\end{figure}
+
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, page=17]{figures/TestBeam/edge_bcp.pdf}
+  \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, page=20]{figures/TestBeam/edge_bcp.pdf}
+  \caption{}
+  \end{subfigure}
+  \caption{}
+  \label{fig:ResultsTemp5}
+\end{figure}
+
+\begin{figure}[htbp]
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_55_GNDGR_100.pdf}
+  \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/TCAD_data_Edep_55_GNDGR_150.pdf}
+  \caption{}
+  \end{subfigure}
+  \caption{}
+  \label{fig:ResultsTemp6}
 \end{figure}
 
 
