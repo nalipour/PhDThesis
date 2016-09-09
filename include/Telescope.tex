@@ -1,5 +1,5 @@
 % ==============================================================================
-\chapter{The Timepix3 pixel-beam telescope}
+\chapter{The Timepix3 beam telescope}
 \label{ch:Telescope}
 % ==============================================================================  
 
@@ -9,39 +9,44 @@ Testing in a high energy beam is a crucial step in the R\&D for the
 pixel detector sensors and readout chips. Test beam data are used at
 various stages of the development for evaluating the performance of a
 prototype in addition to simulations tools like TCAD and
-\textsc{Geant4} simulations.
+\textsc{Geant4}.
 
-Pixel-beam telescopes play a key role in the study of position
-sensitive sensors with requirements ranging from high radiation
-hardness, high resolution and low material budget but also medical
-applications amongst others. A telescope is used to reconstruct the
-tracks of the particles going through its planes. The track position
-is then extrapolated on the Device Under Test (DUT). This allows to
-compare the position of the hit on the DUT with the reconstructed
-track and extract the position and time resolutions as well as the
-efficiency of the device.
+A telescope is used to reconstruct the tracks of the particles going
+through its planes. The track position is then extrapolated on the
+Device Under Test (DUT). This allows to compare the position of the
+hit on the DUT with the reconstructed track and extract the position
+and time resolutions as well as the efficiency of the device.
 
 For the CLIC vertex detector R\&D, the Timepix3 telescope is used as a
-beam reference. This chapter overviews the components of the Timepix3
-telescope and its tracking performance. The Timepix3 telescope is
-implemented in AllPix simulations (c.f. \cref{sec:AllPix}) and its
-performance is compared to the data taken at the CERN SPS. Finally,
-the tracking resolution on the DUT is extracted in simulations using
-the Monte Carlo Truth position.
+beam reference. This chapter gives an overview of the components of
+the CLICdp Timepix3 telescope and its tracking performance. The
+Timepix3 telescope is implemented in AllPix simulations
+(c.f. \cref{sec:AllPix}) and its performance is compared to the data
+taken at the CERN SPS. Finally, the tracking resolution on the DUT is
+extracted in simulations using the Monte Carlo information.
 
 %% --------------------------------------------- %%
 \section{Experimental setup at the CERN SPS}
 \label{sec:CERN_SPS}
-The Timepix3 telescope is commissioned and tested at the H6 beam of
-the CERN SPS using the $120\,\gev$ pion beam. The assemblies listed in
-\cref{tab:Timepix3Assemblies} are tested as DUTs using this
-telescope. The beam is configured in such a way to have $\sim2.6
-\times 10^6$ particles per spill. The telescope planes are positioned
-in a way to give the best tracking resolution for the given beam
-energy and the level of multiple scatterings.
+The Timepix3 telescope is placed at the H6 beam of the CERN SPS
+typically operated with a $120\,\gev$ pion beam. The assemblies listed
+in \cref{tab:Timepix3Assemblies} are tested as DUTs using this
+telescope. The beam is configured in such a way to have
+$\sim2.6 \times 10^6$ particles per five-second spill. The telescope
+planes are positioned in a way to give the best tracking resolution
+for the given beam energy taking into account multiple scatterings and
+mechanical constraints.
 %% --------------------------------------------- %%
 \section{Components of the Timepix3 telescope}
 
+%% --------------------------------------------- %%
+\subsection{Coordinates system}
+A Cartesian right-handed coordinate system is chosen to describe the
+geometry of the telescope. The z-direction is along the beam as shown
+in \cref{fig:TPX3Telescope} and the y-direction points vertically in
+the up direction.
+
+%% --------------------------------------------- %%
 \subsection{Sensors and mechanics}
 The Timepix3 telescope consists of six planes of Timepix3
 ASICs~\cite{Timepix3Poikela} bump bonded to $300\,\micron$ thick
@@ -84,23 +89,22 @@ to reduce the multiple scatterings of the particles and therefore
 improving the tracking resolution. The Timepix3 assemblies are mounted
 on a PCB as shown in \cref{fig:Timepix3board_PCB}. An aluminum support
 is used to hold the PCB which does not cover the sensor. To protect
-the sensors an ABS plastic material is used as cover with a thickness
-of 2~mm and placed at a distance of 10~mm away from the PCB (in black
-in \cref{fig:TPX3Telescope}). \cref{tab:TPX3TelescopeMaterial}
-describes the material (with their thicknesses and radiation lengths)
-seen by the particles for each telescope plane which would contribute
-to the multiple scatterings. The PCB stacks up eight layers of copper
-interlacing with Isola IS410 type material. An average is done to
-estimate the total thickness of Copper in the PCB. Behind the PCB a
-layer of Copper is used for the cooling of the chip. The total
-material budget of a telescope plane is estimated to be
-$\sim4\%$~X\textsubscript{0}.
+the sensors from light exposure, an ABS plastic material is used as
+cover with a thickness of 2~mm and placed at a distance of 10~mm away
+from the PCB (in black in
+\cref{fig:TPX3Telescope}). \cref{tab:TPX3TelescopeMaterial} describes
+the material (with their thicknesses and radiation lengths) seen by
+the particles for each telescope plane which contributes to the
+multiple scatterings. The PCB stacks up eight layers of copper
+interlacing with Isola IS410 type material with an average fill factor
+of $75\%$ for copper. Behind the PCB a layer of Copper is used for the
+cooling of the chip. The total material of a telescope plane is
+estimated to correspond to $\sim4\%$~X\textsubscript{0}.
 
 \begin{table}[htbp]
   \centering
   \caption{The material in each telescope plane contributing to the
-    multiple scatterings of the particles detected by the sensor where
-    X refers to the thickness and X\textsubscript{0} to the radiation
+    multiple scatterings of the traversing particles. X refers to the thickness and X\textsubscript{0} to the radiation
     length (both in millimeters).}
   \label{tab:TPX3TelescopeMaterial}
   \begin{tabular}{l c c c}
@@ -118,19 +122,14 @@ $\sim4\%$~X\textsubscript{0}.
   \end{tabular}
 \end{table}
 
-\subsection{Coordinates system}
-A Cartesian right-handed coordinate system is chosen to describe the
-geometry of the telescope. The z-direction is along the beam as shown
-in \cref{fig:TPX3Telescope} and the y-direction points vertically in
-the up direction.
-
-\subsection{Data acquisition system}
+%% --------------------------------------------- %%
+\subsection{Data taking conditions}
 The SPIDR readout system, as described in \cref{sec:TimepixReadout},
 is used for the data acquisition of the Timepix3 telescope planes. The
 Timepix3 readout ASICs are operated with the data-driven
 zero-suppressed readout mode. This system allows to record the data
-from all the particles from the SPS spill and generates a large amount
-of data for processing offline as described in \cref{sec:recoSoft}.
+from all the particles from the SPS spill without dead time. The data
+is processed offline as described in \cref{sec:recoSoft}.
 
 
 %% --------------------------------------------- %%
@@ -152,20 +151,21 @@ rotations of the telescope planes, the thickness of the sensors and
 the pixel pitch. 
 
 The mechanical support for the telescope planes is implemented using
-the material as described in
-\cref{tab:TPX3TelescopeMaterial}. \textsc{Geant4} provides the class
-\textsc{G4Material} which describes the macroscopic properties of the
-material used in simulations and contains all the relevant information
-on its constituent elements. The density and the radiation length of
-the material are the two main properties to be considered for the
-simulations. \textsc{Geant4} already provides a material database for
-all the standard material such as copper and silicon. For the Isola
-IS410, the material G4\_BONE\_COMPACT\_ICRU has the closest radiation
-length and density. For the sensor covers in ABS plastic, their
-constituent elements
-(C\textsubscript{8}H\textsubscript{8}~C\textsubscript{4}H\textsubscript{6}~C\textsubscript{3}H\textsubscript{3}N)
-have been implemented as a \textsc{G4Material} in the simulations to
-obtain the correct density and radiation length.
+the material as described in \cref{tab:TPX3TelescopeMaterial}.
+
+% \textsc{Geant4} provides the class \textsc{G4Material} which describes
+% the macroscopic properties of the material used in simulations and
+% contains all the relevant information on its constituent elements. The
+% density and the radiation length of the material are the two main
+% properties to be considered for the simulations. \textsc{Geant4}
+% already provides a material database for all the standard material
+% such as copper and silicon. For the Isola IS410, the material
+% G4\_BONE\_COMPACT\_ICRU has the closest radiation length and
+% density. For the sensor covers in ABS plastic, their constituent
+% elements
+% (C\textsubscript{8}H\textsubscript{8}~C\textsubscript{4}H\textsubscript{6}~C\textsubscript{3}H\textsubscript{3}N)
+% have been implemented as a \textsc{G4Material} in the simulations to
+% obtain the correct density and radiation length.
 
 \begin{figure}[htbp]
   \centering
@@ -211,11 +211,53 @@ calculating the diffusion at each \textsc{Geant4} step as described in
 \cref{sec:allpix_digitisation}. The contribution of the generated
 charge by diffusion in the hit pixel and all its direct neighbouring
 pixels is calculated for each step. All the contributions add-up and
-finally the charge in each pixel is calculated. Finally a threshold is
-applied to each pixel and the electronic noise of the Timepix3 ASIC
-also adds up to the charge in each pixel. And finally, the TOT value
-is calculated by applying the calibration to each assembly.
+the charge in each pixel is calculated. The electronic noise of the
+Timepix3 ASIC sums up to the charge in each pixel. Finally a threshold
+is applied to each pixel and finally, the pixel-by-pixel TOT
+calibration (c.f.~\cref{sec:EnergyCalibration}) is applied.
 
+\textsc{Geant4} General Particle Source (GPS) is used for the
+simulation of $120\,\gev$ pions. The GPS generates a parallel beam
+with a transverse (radial) standard deviation of 5~mm.
+
+The spread of the tracks used in simulations due to the multiple
+scatterings is shown in \cref{fig:MCbeamAngleDistr}. A scattering of
+0.1~mrad can cause a displacement of up to $\sim3\,\micron$. The
+angles $\phi$ and $\theta$ are given as:
+
+\begin{equation}
+  \phi=arctan{{x_2-x_{DUT}} \over {z_2-z_{DUT}}} \; ,
+  \label{eq:beamAnglePhi}
+\end{equation}
+
+\begin{equation}
+  \theta=arctan{{y_2-y_{DUT}} \over {z_2-z_{DUT}}} \; ,
+  \label{eq:beamAngleTheta}
+\end{equation}
+
+where $x, y$ and $z$ are the MC positions of the hits on the planes 2
+and the DUT.
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Telescope/MC_trackAnglePhi_planes_302_50.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Telescope/MC_trackAngleTheta_planes_302_50.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Track angular distribution in \textsc{Geant4} simulations
+    comparing the global MC positions on the telescope plane 2 and on
+    the DUT.}
+  \label{fig:MCbeamAngleDistr}
+\end{figure}
+
+The EUTelescope software framework (c.f. \cref{sec:EUTelescope}) is
+used to reconstruct the hits on the telescope planes using the
+$\eta$-correction method~\cite{Belau:1983eh} and fit the tracks.
+
+%% --------------------------------------------- %%
 \subsection{Single-hit resolution on the telescope planes}
 
 \cref{tab:AllPixTelescopePlanesParams} shows the parameters used for
@@ -241,7 +283,10 @@ the sensors.
 
 \cref{fig:TelescopeCluSize_data_simu} compares the cluster size
 distribution and the charge of the clusters in data and simulations
-for the first telescope plane (plane 0).
+for the first telescope plane (plane 0). There is a good agreement
+between the cluster-size distributions in data and simulations. In
+data, there is less single-pixel clusters due to slight imperfections
+in the rotations of the planes.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.3\textwidth}
@@ -256,18 +301,31 @@ for the first telescope plane (plane 0).
     \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/clusterSignal_telescope0_data_simu.pdf}
     \caption{}
   \end{subfigure}
-  \caption{For the telescope plane 0, the cluster-size distribution in the (a) x direction and (b) y direction. (c) shows the sum of the charge in the cluster in units of TOT.} %data run 661, simulation run 54.
+  \caption{For the telescope plane 0, the cluster-size distribution in
+    the (a) x direction and (b) y direction. (c) shows the sum of the
+    charge in the cluster in units of
+    TOT.} %data run 661, simulation run 54.
   \label{fig:TelescopeCluSize_data_simu}
 \end{figure}
 
-The reconstructed hit on each telescope plane is compared to the Monte
-Carlo Truth position (x\textsubscript{MC} and y\textsubscript{MC})
-obtained by AllPix simulations. \cref{fig:TelPlane0_MC_hit} compares
-the hit resolution on the first telescope plane in x and y
-directions. These resolutions are in fact the intrinsic resolution of
-the telescope planes sensors and depend on their thickness, charge
-sharing and rotations. For this calculation, hits corresponding to
-tracks with the $10\%$ of highest $\chi^2$/NDF are ignored.
+The hit resolution of a telescope plane is given by comparing the
+reconstructed hit position with the Monte Carlo Truth position
+(x\textsubscript{MC} and y\textsubscript{MC}) obtained by AllPix
+simulations. \cref{fig:TelPlane0_MC_hit} shows the hit residuals of
+the first telescope plane in x and y directions in simulations which
+depend on their thickness, charge sharing and rotations. The standard
+deviation of a Gaussian fit on the residuals distributions gives a
+resolution of $\sim2.6\,\micron$. Since the residual distribution has
+a tail, the RMS of the distribution is $\sim5.8\,\micron$. The
+expected resolution of each telescope plane is expected to be
+$\sim3.5$. The large tail in the residuals distribution causes the
+discrepancy between the expected and the obtained resolution. The tail
+in the residuals distribution is due to the reconstruction of the hit
+positions of single-pixel clusters where the resolution is defined by
+the pixel pitch.
+
+% For this calculation, hits corresponding to tracks with the $10\%$ of
+% highest $\chi^2$/NDF are ignored.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -278,18 +336,19 @@ tracks with the $10\%$ of highest $\chi^2$/NDF are ignored.
     \includegraphics[width=\textwidth]{figures/Telescope/telescopePlane0_MC_vs_hit_y.pdf}
     \caption{}
   \end{subfigure}
-  \caption{The intrinsic resolution of a telescope plane in (a) x and
-    (b) y directions comparing the MC and the reconstructed
-    hit positions.}
+  \caption{The hit residuals of a telescope plane in (a) x and (b) y
+    directions given by comparing the MC and the reconstructed hit
+    positions.}
   \label{fig:TelPlane0_MC_hit}
 \end{figure}
 
 The residuals as a function of the x\textsubscript{MC} and
 y\textsubscript{MC} are shown in \cref{fig:TelPlane0_MC_hit_2D}. The
-intrinsic resolution does not depend on the position of the hit and
-stays the same for all positions. This confirms the coherence between
-the geometry description in the AllPix simulations and the EUTelescope
-reconstruction.
+intrinsic resolution does not depend on the position of the hit. This
+confirms the coherence between the geometry description in the AllPix
+simulations and the EUTelescope reconstruction. The shape of these
+distributions is due to the beam profile which is more focused in the
+middle of the sensors.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -300,29 +359,39 @@ reconstruction.
     \includegraphics[width=\textwidth]{figures/Telescope/telescopePlane0_MC_vs_hit_y_2D.pdf}
     \caption{}
   \end{subfigure}
-  \caption{The intrinsic resolution of a telescope plane in (a) x and
-    (b) y directions comparing the MC and the reconstructed
-    hit positions as a function of the MC position.}
+  \caption{The hit residuals of a telescope plane in (a) x and (b) y
+    directions comparing the MC and the reconstructed hit positions as
+    a function of the MC position.}
   \label{fig:TelPlane0_MC_hit_2D}
 \end{figure}
 
 
-\newpage
+%% --------------------------------------------- %%
 \subsection{Biased residuals on each telescope plane}
 
-The biased residual on each telescope plane is defined as the
-difference between the measured hit and the biased fitted track
-position. \cref{fig:telescopeBiasedRMS_data_simu} compares the RMS of
-the biased residuals in data and simulations (the original
-distributions are given in
+The tracks on the telescope planes are reconstructed using a
+$\chi^2$-minimisation method as described in
+\cref{sec:EUTelescope}. The tracks are reconstructed in a biased way
+since they include the hit information on each telescope plane. The
+biased residual on each telescope plane is defined as the difference
+between the measured hit and the biased fitted track position. It
+determines the precision with which the track is reconstructed and
+depends on the hit resolution of the telescope sensors, the number of
+measurements and their positions and finally on the amount of multiple
+scattering.
+
+\cref{fig:telescopeBiasedRMS_data_simu} compares the RMS of the biased
+residuals in data and simulations (the original distributions are
+given in
 \cref{fig:telescope_biasedResiduals_data_X,fig:telescope_biasedResiduals_data_Y}
 for data and
 \cref{fig:telescope_biasedResiduals_simu_X,fig:telescope_biasedResiduals_simu_Y}
-for simulation). For this calculation, a cut is applied to remove
+for simulation). For this calculation, a cut is applied to discard
 $10\%$ of tracks with the highest
-$\chi^2$/NDF. \cref{fig:chi2_data_simu} shows the $\chi^2$/NDF in data
-(a) and in simulations (b) with a cut applied illustrated in a red
-line.
+$\chi^2$/NDF. \cref{fig:chi2_data_simu} shows the $\chi^2$/NDF
+distributions in data (a) and in simulations (b) with the cut on the
+$\chi^2$/NDF as illustrated with a red line.
+
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/RMSX_simu_vs_data.pdf}
@@ -332,10 +401,10 @@ line.
     \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/RMSY_simu_vs_data.pdf}
     \caption{}
   \end{subfigure}
-  \caption{The RMS of the biased residuals in the (a) x and (b) y directions
-    comparing the data and simulation for the telescope planes. A cut
-    is applied to remove the $10\%$ of tracks with highest
-    $\chi^2$/NDF.}
+  \caption{The RMS of the biased residuals in the (a) x and (b) y
+    directions comparing the data and simulation for the telescope
+    planes. A cut is applied to remove $10\%$ of the tracks with the
+    highest $\chi^2$/NDF.}
   \label{fig:telescopeBiasedRMS_data_simu}
 \end{figure}
 
@@ -351,9 +420,15 @@ line.
   \end{subfigure}
   \caption{$\chi^2$/NDF distributions for (a) data and (b)
     simulation. A cut is applied to remove the $10\%$ of tracks with
-    highest $\chi^2$/NDF (at the position of the red line).}
+    highest $\chi^2$/NDF (illustrated with the red line).}
   \label{fig:chi2_data_simu}
 \end{figure}
+
+The simulation is in good agreement with data in terms of biased
+residuals. This means that the hit resolution of the telescope planes
+and the amount of the multiple scatterings in the simulation are close
+to reality and the simulation can be used to get a good estimation of
+the tracking resolution on the DUT.
 
 The width of the biased residuals increases with the distance (in z
 direction). In fact, the uncertainty on the deflection angle due to
@@ -363,11 +438,11 @@ telescope planes.
 
 
 \subsection{Tracking resolution on the DUT}
-The tracking resolution on the DUT ($100\,\micron$ thick sensor) in
-the x and y directions is shown in \cref{fig:DUT_MC_track}. This value
-can be only obtained in simulations as the MC position is needed. For
-this calculation, hits corresponding to tracks with the $10\%$ of
-highest $\chi^2$/NDF are ignored.
+The tracking residuals on the DUT in the x and y directions is shown
+in \cref{fig:DUT_MC_track}. This value can be only obtained in
+simulations as the MC position is needed. For this calculation, the
+same cut on the $\chi^2$/NDF as shown in \cref{fig:chi2_data_simu} is
+applied for the track selection.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -378,17 +453,24 @@ highest $\chi^2$/NDF are ignored.
     \includegraphics[width=\textwidth]{figures/Telescope/Unbiased_trackRes_DUT_y.pdf}
     \caption{}
   \end{subfigure}
-  \caption{The tracking resolution on the DUT comparing the
-    reconstructed track position to the true position of the particles
-    obtained from \textsc{Geant4} in AllPix simulations in (a) x and
-    (b) y directions.}
+  \caption{The track residuals on the DUT comparing the reconstructed
+    track position to the true position of the particles obtained from
+    \textsc{Geant4} in AllPix simulations in (a) x and (b) y
+    directions.}
   \label{fig:DUT_MC_track}
 \end{figure}
 
 
 The tracking resolution on the DUT as a function of the
 x\textsubscript{MC} and y\textsubscript{MC} positions is shown in
-\cref{fig:DUT_MC_track_2D}.
+\cref{fig:DUT_MC_track_2D}. In the y-direction, the residuals show a
+shift of $\sim1\,\micron$. This can be explained to the fact that in
+the y-direction, the three planes before the DUT are rotated in an
+asymmetric way compared to the three other planes after the DUT in the
+Timepix3 telescope. 
+
+The standard deviation of the distributions is less than $2\,\micron$
+which allows for in-pixel studies.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -405,44 +487,6 @@ x\textsubscript{MC} and y\textsubscript{MC} positions is shown in
 \end{figure}
 
 
-%% --------------------------------------------- %%
-\subsection{Beam angle}
-
-The beam angle affects largely the resolutions calculated in previous
-sections. \cref{eq:beamAnglePhi,eq:beamAngleTheta} describe the
-angular calculation in $\phi$ and $\theta$ with taking the hit
-position on the telescope plane 2 and on the DUT.
-
-
-\begin{equation}
-  \phi=arctan{{x_2-x_{DUT}} \over {z_2-z_{DUT}}} \; ,
-  \label{eq:beamAnglePhi}
-\end{equation}
-
-\begin{equation}
-  \theta=arctan{{y_2-y_{DUT}} \over {z_2-z_{DUT}}} \; ,
-  \label{eq:beamAngleTheta}
-\end{equation}
-
-\cref{fig:MCbeamAngleDistr} shows the beam angular distribution in
-$\theta$ and $\phi$ angles for the simulations. In the simulations,
-the beam is perpendicular to the DUT with a slight spread in $\theta$
-and $\phi$ angles.
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Telescope/MC_trackAnglePhi_planes_302_100.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Telescope/MC_trackAngleTheta_planes_302_100.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{Beam angular distribution in \textsc{Geant4} simulations
-    (comparing the global positions on the telescope plane 2 and on
-    the DUT).}
-  \label{fig:MCbeamAngleDistr}
-\end{figure}
 
 
 %% --------------------------------------------- %%
@@ -450,8 +494,8 @@ and $\phi$ angles.
 obtained in the simulations. The simulations confirm that the Timepix3
 telescope allows for a high resolution track reconstruction on the DUT
 ($\sim2\,\micron$) as expected by~\cite{Akiba:2013yxa}. This telescope
-is adapted for testing the DUTs with high resolution constraints as
-expected for CLIC.
+is adapted for in-pixel studies and testing the DUTs with high
+resolution constraints as expected for CLIC.
 
 In \cref{ch:ThinSensorsStudies} the Timepix3 telescope is used to
 precisely measure the resolution of thin sensors.

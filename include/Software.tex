@@ -326,6 +326,7 @@ pyEudetanalysis is used (it can be found as a GitHub
 directory~\cite{pyeudet}).
 
 \subsection{EUTelescope}
+\label{sec:EUTelescope}
 The EUTelescope software is based on the ILCSoft
 framework~\cite{Aplin:2009zz}. This latter provides the basic building
 blocks such as the LCIO (Linear Collider Input Output) data model, the
@@ -410,12 +411,23 @@ the following steps:
   telescope planes with respect to each other. It consists of a least
   squares minimisation problem ($\chi^2$minimisation). A proper
   definition of the geometry is important for this step.
-\item Track finding: fits the tracks based on the hits on the
-  telescope planes by taking into account the multiple scatterings
-  (radiation length of the material for the described geometry) and
-  the positions of the planes. The \texttt{EUTelTestFitter} algorithm
-  is used for the analysis of the test-beam. The tracks are then
-  extrapolated on the DUT.
+\item Track finding: the \texttt{EUTelTestFitter} algorithm
+  implemented as a Marlin processor is used for finding and fitting
+  the tracks. This track fitting method is based on a
+  $\chi2$-minimisation as described in~\cite{Zarnecki:2007yu}. Due to
+  the multiple scatterings in the telescope planes, the tracks are
+  displaced in the order of few micrometers and can not be neglected
+  since it is comparable with the expected resolution of the telescope
+  layers. This method can be separately considered for the horizontal
+  (x) and vertical (y) planes.
+
+  The goal of this method is to determine the position of the tracks
+  on each telescope plane and the DUT from the measured positions on
+  the telescope planes. The $\chi^2$ of the fit uses the additional
+  constraint on the angles of the multiple scatterings. The track
+  positions correspond to the positions minimising the $\chi^2$
+  distribution.
+
 \end{enumerate} 
 
 \subsection{pyEudetAnalysis}
