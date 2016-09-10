@@ -101,10 +101,10 @@ TOT than would be expected from simply scaling the charge. The
 calibrated energy distribution aligns for different cluster sizes
 since the calibration takes into account the non-linearities of the
 chip as shown in \cref{sec:testBeamDataCalibrated_Edep}. For the
-$50\,\micron$ thick sensor, the calibrated distributions do not
-align. This is due to the low energy deposition in thin sensors
-especially for multi-pixel clusters where the energy deposition per
-pixel is close to the threshold.
+$50\,\micron$ thick sensor, the calibrated distributions do not align
+since higher deposited energies tend to give higher cluster sizes and
+the distributions for larger cluster sizes are biased towards larger
+energy depositions.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.33\textwidth}
@@ -149,18 +149,18 @@ For all assemblies, the energy deposition in electrons is given in
 
 
 %% --------------------------------------------- %%
-\section{Experimental results for thin sensors}
+\section{Experimental and simulated results for thin sensors}
 
+%% --------------------------------------------- %%
 \subsection{Measurement of the depletion voltage}
 \label{sec:ThinSensors_depletionVoltage}
 
 The depletion voltage corresponds to the voltage at which the sensor
 is fully depleted and the charge of the full thickness of the sensor
 is collected. This can be measured in test beams by scanning the bias
-voltage. Lowering the bias voltage causes the under-depletion of the
-sensor and therefore the collected charge is also reduced. The
-depletion voltage and the depletion width are related by
-\cref{eq:depletionVoltage}.
+voltage. For lower bias voltages the sensor is under depleted and
+therefore the collected charge is also reduced. The depletion voltage
+and the depletion depth are related by \cref{eq:depletionVoltage}.
 
 To obtain the depletion voltage, the total measured TOT is calculated
 by summing up the TOT in the clusters considering all cluster
@@ -170,11 +170,11 @@ and an example is given in \cref{fig:W2_J5_DepletionVoltage_TOTdistr}.
 \cref{fig:W2_J5_DepletionVoltage_chargeVSbiasVoltage} shows the most
 probable value (MPV) of the measured TOT as a function of the square
 root of the bias voltage. The TOT MPV shows two distinct regions: a
-sloped region and a plateau region. The intersection of these two
-regions gives the depletion voltage of the assembly. This is obtained
-by calculating the intersection of a linear fit performed on the both
-regions. The calculated depletion voltages for all the assemblies is
-summarised in \cref{tab:depletionVoltage,fig:depletionVoltage}.
+sloped region and a plateau region. The depletion voltage of the
+assembly is obtained by calculating the intersection of a linear fit
+performed on both regions (defined by eye). The calculated depletion
+voltages for all assemblies is summarised in
+\cref{tab:depletionVoltage,fig:depletionVoltage}.
 
 \begin{figure}[htbp]\centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -219,7 +219,117 @@ summarised in \cref{tab:depletionVoltage,fig:depletionVoltage}.
   \end{tabular}
 \end{table}
 
+%% --------------------------------------------- %%
+\subsection{Cluster size distribution}
+The cluster size distribution is an indication on the amount of charge
+sharing in a sensor. For thicker sensors, more charge sharing is
+expected since the charge drifts in a longer distance and diffuses
+across a larger transverse area. The threshold of the readout
+electronics has a large impact on the detection of the charge
+sharing. The threshold should be as low as possible to avoid
+undetected energy deposits.
 
+In this analysis, the hit pixels form a cluster with a distance
+criterion of $\sqrt{2}$: pixels sharing common corners or edges are
+considered as clusters. For sensor thicknesses in the range of
+$50\,\micron$-$300\,\micron$, clusters of size one to four are
+expected due to the charge sharing. Larger clusters are expected due
+to other effects such as $\delta$-rays.
+
+The most common cluster shapes are illustrated in
+\cref{tab:clusizeShapes}.
+
+\begin{table}
+  \centering
+  \caption{Most common cluster shapes.}
+  \label{tab:clusizeShapes}
+  \begin{tabular}{ccccc}
+    \toprule
+    Shape & Cluster size & Size in $x$ & Size in $y$ & Name \\
+    \midrule
+    \begin{tikzpicture}
+      \draw (0,0) rectangle (0.5,-0.5);
+    \end{tikzpicture}
+    & 1 & 1 & 1 & size 1 ($1\times1$) \\
+    \begin{tikzpicture}
+      \draw (0.0,0.0) rectangle (0.5,-0.5);
+      \draw (0.5,0.0) rectangle (1.0,-0.5);
+    \end{tikzpicture}
+    & 2 & 2 & 1 & size 2 ($2\times1$) \\
+    \begin{tikzpicture}
+      \draw (0.0,0.0) rectangle (0.5,-0.5);
+      \draw (0.0,0.5) rectangle (0.5,0.0);
+    \end{tikzpicture}
+    & 2 & 1 & 2 & size 2 ($1\times2$) \\
+    \begin{tikzpicture}
+      \draw (0.0,0.0) rectangle (0.5,-0.5);
+      \draw (0.5,-0.5) rectangle (1.0,-1.0);
+      \draw (0.5,0.0) rectangle (1.0,-0.5);
+    \end{tikzpicture}
+    & 3 & 2 & 2 & size 3 ($2\times2$)\\
+    \begin{tikzpicture}
+      \draw (0.0,0.0) rectangle (0.5,-0.5);
+      \draw (0.5,-0.5) rectangle (1.0,-1.0);
+      \draw (0.5,0.0) rectangle (1.0,-0.5);
+      \draw (0.0,-0.5) rectangle (0.5,-1.0);
+    \end{tikzpicture}
+    & 4 & 2 & 2 & size 4 ($2\times2$) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The fraction of different cluster sizes depends on the operating
+conditions of the assemblies like the bias voltage and the threshold
+of the readout ASICs. \cref{fig:cluSize_operatingConditions} shows the
+cluster size fraction for a $150\,\micron$ thick sensor (assembly
+W5\_F1) operated at different bias voltages and thresholds.  
+
+Higher bias voltages reduce the amount of charge sharing since the
+drift time is lowered in a stronger electric field and the charges
+diffuse less in the transverse direction. For very low bias voltages,
+the sensor is under-depleted. An increase in bias voltage in this
+regime increases the charge sharing. The pixel neighbouring a hit
+pixel is more likely to be over threshold as more charge is
+collected. The results for other assemblies are shown in
+\cref{fig:clusterSize_vs_biasVoltage}.
+
+Lowering the threshold leads to an increase in the average cluster
+size fraction distribution. Results for all assemblies are shown in
+\cref{fig:clusterSize_vs_THLscan}.
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/cluSize_biasScan_W0005_F01.pdf}
+    \caption{}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/cluSize_THLscan_W0005_F01.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Cluster-size distribution as a function of (a) bias voltage
+    and (b) threshold for the assembly W5\_F1 with a $150\,\micron$
+    thick sensor.}
+  \label{fig:cluSize_operatingConditions}
+\end{figure}
+
+
+The cluster size fraction as a function of the sensor thickness for
+data recorded at the nominal operating conditions is shown in
+\cref{fig:cluSize_thickness}. Charge sharing increases with sensor
+thickness. The fraction of $1\times2$ and $2\times1$-pixel clusters are
+very similar for square pixels and 2-pixel clusters combine these two
+cluster geometries.
+
+\begin{figure}[htbp] 
+  \centering
+  \includegraphics[width=0.5\textwidth]{./figures/TestBeam/cluSize_vs_thickness.pdf}
+  \caption{Cluster-size distribution as a function of sensor thickness
+    for runs recorded under nominal operating conditions.}
+  \label{fig:cluSize_thickness}
+\end{figure}
+
+%% --------------------------------------------- %%
 \subsection{Charge sharing as a function of the track position}
 
 The charge sharing is studied by extrapolating the track position
@@ -274,73 +384,6 @@ sensors.
   \label{fig:chargeSharing_2PC}
 \end{figure}
 
-\subsection{Cluster size distribution}
-The cluster size distribution is a straight indication on the amount
-of charge sharing in a sensor. For thicker sensors, more charge
-sharing is expected since the charge drifts in a longer distance and
-diffuses across a larger transverse area. The threshold of the readout
-electronics has a large impact on the detection of the charge
-sharing. The threshold should be as low as possible to avoid
-undetected energy deposits.
-
-In this analysis, the hit pixels form a cluster with a distance
-criterion of $\sqrt{2}$: pixels sharing common corners or edges are
-considered as clusters. For sensor thicknesses in the range of
-$50\,\micron$-$300\,\micron$, clusters of size one to four are
-expected due to the charge sharing. Larger clusters are due to other
-factors such as the $\delta$-rays.
-
-The fraction of different cluster sizes depends on the operating
-conditions of the assemblies like the bias voltage and the threshold
-of the readout ASICs. \cref{fig:cluSize_operatingConditions} shows the
-cluster size fraction for a $150\,\micron$ thick sensor (assembly
-W5\_F1) operated at different bias voltages and thresholds.  
-
-Higher bias voltages reduce the amount of charge sharing since the
-drift time is lowered in a stronger electric field and the charges
-diffuse less in the transverse direction. For very low bias voltages,
-the sensor is under-depleted. An increase in bias voltage in this
-regime increases the charge sharing. In fact, the pixel neighbouring a
-hit pixel is more likely to be over threshold as more charge is
-collected. The results for other assemblies are shown in
-\cref{fig:clusterSize_vs_biasVoltage}.
-
-Lowering the threshold leads to an increase in the cluster size
-fraction distribution and thus a higher detection of the charge
-sharing. Results for all the assemblies are shown in
-\cref{fig:clusterSize_vs_THLscan}.
-
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/TestBeam/cluSize_biasScan_W0005_F01.pdf}
-    \caption{}
-  \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/TestBeam/cluSize_THLscan_W0005_F01.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{Fraction of cluster sizes as a function of (a) bias voltage
-    and (b) threshold for the assembly W5\_F1 with a $150\,\micron$
-    thick sensor.}
-  \label{fig:cluSize_operatingConditions}
-\end{figure}
-
-
-The cluster size fraction as a function of the sensor thickness for
-data recorded at the nominal operating conditions is shown in
-\cref{fig:cluSize_thickness}. Charge sharing increases with sensor
-thickness. The fraction of $1\times2$ and $2\times1$-pixel clusters are
-very similar for square pixels and 2-pixel clusters combine these two
-cluster geometries.
-
-\begin{figure}[htbp] 
-  \centering
-  \includegraphics[width=0.5\textwidth]{./figures/TestBeam/cluSize_vs_thickness.pdf}
-  \caption{Fraction of different cluster sizes as a function of sensor
-    thickness for runs recorded under nominal operating conditions.}
-  \label{fig:cluSize_thickness}
-\end{figure}
 
 \subsection{Single-point resolution}
 
@@ -354,18 +397,20 @@ single-point (or hit) and the track resolutions:
   \label{eq:residualEq}
 \end{equation}
 
-In the following, the tracking resolution is not unfolded from the
-residual measurements presented. For the estimation of the
-single-point resolution, the tracking resolution of $\sim2\,\micron$
-at the SPS test beam should be unfolded (c.f.~\cref{ch:Telescope}).
+In the following, the tracking resolution of $\sim2\,\micron$ is not
+unfolded from the residual measurements presented. 
+% For the estimation
+% of the single-point resolution, the tracking resolution of
+% $\sim2\,\micron$ at the SPS test beam should be unfolded
+% (c.f.~\cref{ch:Telescope}).
 
 The residuals depend highly on the cluster sizes since the
 reconstructed hit position takes into account the number of the hit
 pixels in a cluster and the charge information in each
-pixel. \cref{fig:residuals_cluSize} illustrates the residuals for the
-a $50\,\micron$ thick sensor (assembly W19\_G7) for different cluster
+pixel. \cref{fig:residuals_cluSize} illustrates the residuals for a
+$50\,\micron$ thick sensor (assembly W19\_G7) for different cluster
 sizes. For single-pixel clusters, the hit position corresponds to the
-geometric center of the pixel and therefore a resolution of pixel
+geometric center of the pixel and therefore a resolution of
 pitch$/\sqrt{12}$ is expected (as explained in
 \cref{sec:binaryReadout}). For multi-pixel clusters, by using the
 charge information, a more accurate interpolation of the hit position
@@ -394,63 +439,18 @@ information (by using the $\eta$-correction method as described in
     W19\_G7) for different cluster sizes: (a) Cluster size 1
     ($1\times1$), (b) Cluster size 2 ($2\times1$), (c) Cluster size 3
     ($2\times2$) and (d) Cluster size 4 ($2\times2$). The track
-    resolution is not unfolded.}
+    resolution of $\sim2\,\micron$ is not unfolded.}
   \label{fig:residuals_cluSize}
 \end{figure}
 
-The overall residual is defined by the average of the residual of each
-cluster size weighted by the relative fractions of different cluster
-sizes. The factors affecting the fraction of different cluster sizes
-such as the sensor thickness and the operating conditions of the
-assembly (threshold and bias voltage) affect as well the
-residuals. \cref{fig:Residuals_bias_threshold} shows the RMS of the
-residuals in the x and y directions for a $50\,\micron$ thick sensor
-(assembly W19\_G7) as a function of the bias voltage and the
-threshold. For other assemblies, these plots are shown in
-\cref{fig:Residuals_vs_biasVoltage,fig:Residuals_vs_Threshold}. The
-residuals follow the same trend as the cluster size distributions:
-higher fractions of single-pixel clusters result in higher residuals.
-
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/TestBeam/W19_G7_Residual_vs_bias.pdf}
-    \caption{}
-  \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/TestBeam/residuals_W0019_G07_THLscan.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{The RMS of the residuals in x and y directions as a
-    function of (a) bias voltage and (b) threshold for a $50\,\micron$
-    thick sensor (assembly W19\_G7). The track resolution is not
-    unfolded.}
-  \label{fig:Residuals_bias_threshold}
-\end{figure}
-
-
-For the assemblies operated at the nominal operating conditions, the
-RMS of the residuals in the x and y directions as a function of the
-sensor thickness are shown in \cref{fig:residuals_thickness}. For
-thicker sensors the fraction of multi-pixel clusters is higher and
-results in lower residuals. The distribution of the residuals for
-different sensor thicknesses operated at the nominal conditions is
-shown in \cref{fig:residualsHist_thickness}. The wider component in
-the residual distributions corresponds to the single-pixel
-clusters. For thicker sensors, the fraction of multi-pixel clusters
-increases. This leads to a higher fraction of more precisely
-reconstructed hits and therefore the residual distribution gets
-narrower.
-
-\begin{figure}[htbp] 
-  \centering
-  \includegraphics[width=0.5\textwidth]{./figures/TestBeam/residuals_vs_thickness.pdf}
-  \caption{The RMS of the residuals in x and y directions as a
-    function of the sensor thickness for assemblies operated at the
-    nominal condition. The track resolution is not unfolded.}
-  \label{fig:residuals_thickness}
-\end{figure}
-
+The overall residual is defined by the RMS of the residual of all
+tracks combined. The distribution of the residuals for different
+sensor thicknesses operated at the nominal conditions is shown in
+\cref{fig:residualsHist_thickness}. The wider component in the
+residual distributions corresponds to the single-pixel clusters. For
+thicker sensors, the fraction of multi-pixel clusters increases. This
+leads to a higher fraction of more precisely reconstructed hits and
+therefore the residual distribution gets narrower.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.23\textwidth}
@@ -474,6 +474,54 @@ narrower.
     track resolution is not unfolded.}
   \label{fig:residualsHist_thickness}
 \end{figure}
+
+
+The factors affecting the fraction of different cluster sizes such as
+the sensor thickness and the operating conditions of the assembly
+(threshold and bias voltage) affect as well the
+residuals. \cref{fig:Residuals_bias_threshold} shows the RMS of the
+residuals in the x and y directions for a $50\,\micron$ thick sensor
+(assembly W19\_G7) as a function of the bias voltage and the
+threshold. For other assemblies, these plots are shown in
+\cref{fig:Residuals_vs_biasVoltage,fig:Residuals_vs_Threshold}. The
+residuals follow the same trend as the cluster size distributions:
+higher fractions of single-pixel clusters result in larger residuals.
+
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/W19_G7_Residual_vs_bias.pdf}
+    \caption{}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/residuals_W0019_G07_THLscan.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{The RMS of the residuals in x and y directions as a
+    function of (a) bias voltage and (b) threshold for a $50\,\micron$
+    thick sensor (assembly W19\_G7). The track resolution of
+    $\sim2\,\micron$ is not unfolded.}
+  \label{fig:Residuals_bias_threshold}
+\end{figure}
+
+
+For the assemblies operated at the nominal operating conditions, the
+RMS of the residuals in the x and y directions as a function of the
+sensor thickness are shown in \cref{fig:residuals_thickness}. For
+thicker sensors the fraction of multi-pixel clusters is higher and
+results in lower residuals. 
+
+\begin{figure}[htbp] 
+  \centering
+  \includegraphics[width=0.5\textwidth]{./figures/TestBeam/residuals_vs_thickness.pdf}
+  \caption{The RMS of the residuals in x and y directions as a
+    function of the sensor thickness for assemblies operated at the
+    nominal condition. The track resolution is not unfolded.}
+  \label{fig:residuals_thickness}
+\end{figure}
+
+
+
 %% --------------------------------------------- %%
 \subsection{Global detection efficiency}
 
