@@ -334,13 +334,12 @@ cluster geometries.
 
 The charge sharing is studied by extrapolating the track position
 obtained from the Timepix3 telescope to the DUT. The size of the
-clusters depends on the track position within the pixel. For the
-perpendicular tracks to the DUT, multi-pixel clusters are created when
-the track hits the edges or the corners of a pixel, leading to the
-charge sharing between the pixel and its neighbouring pixels. The
-charge sharing is also affected by the operating threshold of the
-readout ASIC in addition to the track
-position. \cref{fig:chargeSharingTrack} illustrates the track position
+clusters depends on the track position within the pixel. For
+perpendicular tracks, multi-pixel clusters are created when the track
+hits the edges or the corners of a pixel, leading to the charge
+sharing between the pixel and its neighbouring pixels. The charge
+sharing is also affected by the operating threshold of the readout
+ASIC. \cref{fig:chargeSharingTrack} illustrates the track position
 within the pixel for 1 to 4-pixel cluster sizes for a $50\,\micron$
 sensor. For other thicknesses, the track position within the pixel is
 shown in
@@ -363,17 +362,17 @@ shown in
     \includegraphics[width=\textwidth]{./figures/TestBeam/TrackPosWPixel_4hit_runW19_G7.pdf}
     \caption{Cluster size 4}
   \end{subfigure}
-  \caption{Extrapolated track position within the pixel for 1 to 4-pixel
-    cluster sizes for a $50\,\micron$ sensor (assembly W19\_G7). The
-    assembly is operated at the nominal conditions.}
+  \caption{Extrapolated track position within the pixel for 1 to
+    4-pixel cluster sizes for a $50\,\micron$ sensor (assembly
+    W19\_G7). The assembly is operated at nominal conditions.}
   \label{fig:chargeSharingTrack}
 \end{figure}
 
 \cref{fig:chargeSharing_2PC} compares the track position within the
 pixel for two-pixel clusters in a one-dimensional profile for
-different sensor thicknesses. The track position is closer to the
-edges of the pixels to create a two-pixel clusters for thinner
-sensors.
+different sensor thicknesses. For thinner sensors, the track position
+should be closer to the edges of the pixels to create two-pixel
+clusters.
 
 \begin{figure}[htbp] 
   \centering
