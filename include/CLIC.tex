@@ -134,7 +134,7 @@ H$\nu_{e}\bar{\nu_{e}}$ mechanism dominates.
   \caption{Cross sections for the main Higgs production mechanisms for
     a $M_H~=~126\,\gev$ Higgs boson as a function of the e$^+$e$^-$
     center-of-mass energy in a lepton collider. These values
-    correspond to unpolarised beam and the effect of beamstrahlung is
+    correspond to unpolarised beams and the effect of beamstrahlung is
     not included~\cite{Felzmann:2157041}.}
   \label{fig:corssSectionH125}
 \end{figure}
@@ -142,9 +142,9 @@ H$\nu_{e}\bar{\nu_{e}}$ mechanism dominates.
 The schematic layout of the CLIC accelerator complex at $3\,\tev$ is
 shown in \cref{fig:CLIC_accelerator}. The electron and positron beams
 are accelerated on a linear trajectory and collide in the central
-region of the machine (in the interaction point), where the CLIC
-detector is placed. At this stage, each linac is fed by a drive-beam
-generation complex.
+region (in the interaction point), where the CLIC detector is
+placed. At this stage, each linac is fed by a drive-beam generation
+complex.
 
 \begin{figure}[htbp]
   \centering
@@ -231,7 +231,7 @@ single-point resolution of $\approx3\,\micron$ operating in a magnetic
 field of 4~T are required.
 
 In the innermost layers, an occupancy of $\approx3\%$ due to the
-beam-induced backgrounds are expected~\cite{Dannheim:1443516}. To
+beam-induced backgrounds is expected~\cite{Dannheim:1443516}. To
 separate these backgrounds from physics events, a time slicing of the
 hits with an accuracy of $\approx10$~ns is required.
 
@@ -244,7 +244,7 @@ ionising dose of less than 1~kGy are expected~\cite{Dannheim:1443516}.
 The aim of the R\&D is to achieve the required single-point resolution
 with pixels of size $\approx25\,\micron\times25\,\micron$ with
 $50\,\micron$ thick sensors coupled to $50\,\micron$ thick analogue
-readout ASICs. The constraint on the material budge implies no active
+readout ASICs. The constraint on the material budget implies no active
 cooling elements can be placed inside the vertex detector. To limit
 the maximum power dissipation of the readout electronics to
 $\approx50~\text{mW/cm}^2$ forced air-flow cooling and power pulsing
@@ -256,14 +256,15 @@ $\approx50~\text{mW/cm}^2$ forced air-flow cooling and power pulsing
 
 The precision physics measurements require excellent flavour-tagging
 performance of the CLIC vertex detector. The flavour-tagging
-performance is being investigated in simulations. The multi-variate
-LCFIPlus flavour-tagging package~\cite{website:LCFIPlus} is used to
-assign each jet category with a beauty (b) and charm (c) probability.
+performance is studied in simulations. The multi-variate LCFIPlus
+flavour-tagging package~\cite{website:LCFIPlus} is used to assign each
+jet category with a beauty (b) and charm (c) probability. The fake
+rates of recognising the charm and beauty jets from each other and
+from light flavour (LF) jets are being investigated.
 
-The detector models in simulations considers the single-point
-resolution of the sensors ($\sim3\,\micron$), constraints from the
-mechanical support and the cooling
-system~\cite{AlipourTehrani:1742993}.
+The detector models in simulation consider the single-point resolution
+of the sensors ($\sim3\,\micron$), constraints from the mechanical
+support and the cooling system~\cite{AlipourTehrani:1742993}.
 
 As illustrated in Figure~\ref{fig:cooling}, a spiral arrangement for
 the modules in the endcap regions can be used instead of disks,
@@ -273,7 +274,7 @@ and illustrated in Figure~\ref{fig:geometries} have been studied in
 simulations.
 
 \begin{table}[htbp]
-  \caption{Geometries implemented in simulations.}
+  \caption{Vertex detector geometries implemented in simulations.}
   \begin{center}
     \begin{tabular}{ l c c c }
       \hline
@@ -333,7 +334,7 @@ flavour tagging.
 
 The flavour-tagging performance for the above-mentioned geometries is
 summarised in \cref{fig:performance} where the fake rate of
-recognising charm and light flavour (LF) jets as beauty jets is
+recognising charm and light flavour jets as beauty jets is
 plotted versus the b-tag efficiency.
 
 The \emph{spirals} and \emph{disks} have a similar flavour-tagging
@@ -343,8 +344,8 @@ between the vertex endcaps and the barrel region, where the
 beauty-tagging performance is up to $20\%$ worse using the
 \emph{spirals} geometry (compared to disks). With the spiral
 configuration, the number of sensitive layers becomes dependent on the
-azimuthal angle $\phi$ and less layers can be hit in certain ranges of
-$\phi$. The performance of the \emph{spirals} and the
+azimuthal angle $\phi$ and fewer layers can be hit in certain ranges
+of $\phi$. The performance of the \emph{spirals} and the
 \emph{double\_spirals} is very similar as shown in
 Figure~\ref{fig:spiral_doubleSpirals}.  The \emph{double\_spirals\_v2}
 geometry is a more realistic version of the \emph{double\_spirals}
@@ -389,9 +390,11 @@ probability increases by $\sim$35\% due to the increased material.
     beauty-tagging performance between the \emph{spirals} and
     \emph{double\_spirals} geometries. (c)~Comparison of the
     beauty-tagging performance between the \emph{double\_spirals} and
-    \emph{double\_spirals\_v2} geometries. For (b) and (c), dijet
-    events with a mixture of polar angles between \SI{10}{\degree} and
-    \SI{90}{\degree} are considered.}
+    \emph{double\_spirals\_v2} geometries. For (a) the
+    misidentification ration for each polar angle is shown
+    separately. For (b) and (c), dijet events with a mixture of polar
+    angles between \SI{10}{\degree} and \SI{90}{\degree} are
+    considered.}
   \label{fig:performance}
 \end{figure}
 
