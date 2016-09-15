@@ -12,8 +12,8 @@ height=4em]
 One of the key components of the detector systems is the readout
 electronics. Each experiment, depending on the requirements, has its
 own specific electronics. But the basic principles of the electronics
-and optimisations of the signal-to-noise remain similar between
-different applications.
+and optimisations of the signal-to-noise remain similar for different
+applications.
 
 In this chapter, we will review the basic principles and requirements
 of the Timepix3 hybrid pixel readout chip which are used to study thin
@@ -26,14 +26,13 @@ measurements are explored in this chapter.
 \label{sec:TimepixChip}
 
 The hybrid readout chip acquires the short ionisation current pulses
-generated in the sensor by the passing of a high energetic
-particle. The electronics are responsible for shaping the time
-response of the system in order to optimise the minimum detectable
-signal, energy deposition in detector measurement, event rate,
-time-of-arrival and insensitivity to the pulse shape. Finally, the
-signal is digitised and stored. Robustness to radiation and low power
-consumption are other important considerations to be addressed amongst
-others.
+generated in the sensor by the passing of a highly energetic
+particle. The electronics is responsible for shaping the time response
+of the system in order to optimise the minimum detectable signal,
+energy deposition in detector measurement, event rate, time-of-arrival
+and insensitivity to the pulse shape. Finally, the signal is digitised
+and stored. Robustness to radiation and low power consumption are
+other important considerations to be addressed amongst others.
 
 
 %% Timepix3 description
@@ -55,14 +54,14 @@ digital circuitry are combined.
 The incident radiation deposits energy in the sensor and it is
 converted to an electrical signal. A high rate of particles can be
 handled in a semiconductor detector because the sensor pulse is very
-short (few nanoseconds). Since the magnitude of the signal charge is
+short (few nanoseconds). Since the amount of the signal charge is
 small and subject to statistical fluctuations (\cref{sec:chargeInSi}),
 a charge sensitive preamplifier is needed to amplify the signal. The
-preamplifier should be designed in such a way to minimise the
-electronic noise. The sensor capacitance and the input capacitance of
-the amplifier are the critical parameters to increase the
-signal-to-noise ratio (SNR): the lower the capacitance, the higher the
-SNR. The amplification is done with a tunable discharge current of the
+preamplifier should be designed in a way to minimise the electronic
+noise. The sensor capacitance and the input capacitance of the
+amplifier are the critical parameters to increase the signal-to-noise
+ratio (SNR): the lower the capacitance, the higher the SNR. The
+amplification is done with a tunable discharge current of the
 Krummenacher amplifier architecture
 (I\textsubscript{krum})~\cite{KRUMMENACHER1991527}.
 
@@ -70,11 +69,10 @@ After the preamplifier, the pulse shaper is responsible for the
 improvement of the SNR. It modifies the frequency response of the
 signal to improve the signal and attenuate the noise. Since this
 operation reduces the bandwidth of the signal, the duration of the
-pulse will increase. A detector must cope with a high rate of pulses,
-the width of the pulse must be optimised in a way to reduce the
-pile-up. I\textsubscript{krum} affects the slope of the pulse
-discharge after shaping: the higher its value, the shorter the
-pulse.
+pulse will increase. As a detector must cope with a high rate of
+pulses, the width of the pulse must be optimised in a way to reduce
+the pile-up. I\textsubscript{krum} affects the slope of the pulse
+discharge after shaping: the higher its value, the shorter the pulse.
 
 The discriminator is used to compare the signal level to a
 threshold (a voltage) and to discriminate a signal from a background
@@ -233,11 +231,11 @@ as the timing information for the hits.
 
 \subsection{SPIDR readout system for Timepix3}\label{sec:TimepixReadout}
 
-The SPIDR (Speedy PIxel Detector Readout) readout system has been
-developed by NIKHEF and CERN is used~\cite{Visser:2015bsa} for the
-Timepix3 data acquisition. This system is able to handle high rates of
-data sent by the Timepix3 ASIC at full speed. This is achieved with
-Xilinx Virtex-7 FPGA~\cite{XilinxVirtex7} and a 10~Gb Ethernet link.
+The SPIDR (Speedy PIxel Detector Readout) readout system, developed by
+NIKHEF and CERN, is used~\cite{Visser:2015bsa} for the Timepix3 data
+acquisition. This system is able to handle high rates of data sent by
+the Timepix3 ASIC at full speed. This is achieved with Xilinx Virtex-7
+FPGA~\cite{XilinxVirtex7} and a 10~Gb Ethernet link.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.3\textwidth}
@@ -298,7 +296,7 @@ chips.
 \section{Electronic noise}\label{sec:noise}
 
 Electronic noise places a limit on the minimum detectable signal
-level, defines the ability to distinguish signal levels and their
+level. It defines the ability to distinguish signal levels and their
 precision of measurement. Thermal excitations and sensor leakage
 currents are important sources for the noise. The electronic noise can
 be measured as explained further in
@@ -312,9 +310,9 @@ The electronic noise is an important parameter to determine the
 operating threshold of the readout chip. In fact, the operating
 threshold for the Timepix3 chip is set to 6 times the electronic noise
 RMS. This threshold significantly reduces the detection of noisy
-hits. Sometimes at this threshold few pixels show a high rate of hits
-in absence of incident radiation (hot pixels) and they are manually
-masked to be able to operate the chip at the lowest possible
+hits. Sometimes, at this threshold a few pixels show a high rate of
+hits in absence of incident radiation (hot pixels) and they are
+manually masked to be able to operate the chip at the lowest possible
 threshold.
 
 The operating threshold affects significantly the spatial resolution
@@ -360,13 +358,14 @@ more uniform even though some dispersion remains.
   \label{fig:THLequalisation}
 \end{figure}
 
-\section{Calibration} \label{sec:calibration} The aim of the
-calibration is to parametrise the measurements done by the readout
-chip, namely the relationship between the threshold DAC and the TOT
-with the energy deposited in the sensor (in number of collected
-charge) as well as the relation between the TOA measurement and the
-time of arrival of the particle (in seconds). In this work we focus on
-the threshold DAC and the TOT calibration.
+\section{Calibration} \label{sec:calibration} 
+
+The aim of the calibration is to parametrise the measurements done by
+the readout chip, namely the relationship between the threshold DAC
+and the TOT for the energy deposited in the sensor (in number of
+collected charge) as well as the relation between the TOA measurement
+and the time of arrival of the particle (in seconds). In this work we
+focus on the threshold DAC and the TOT calibration.
 
 The threshold DAC and TOT calibration can be achieved using two main
 methods. The first one consists of the use of photons from radioactive
@@ -411,9 +410,9 @@ called a \textit{surrogate function} and is defined as:
   \label{eq:TOTsurrogateFunction}
 \end{equation}
 
-where TOT denotes Time-Over-Threshold, $E$ the energy and $a, b, c, t$
-are the parameters to be found~\cite{Jakubek2008155}. The inverse of
-the surrogate function is defined as:
+where TOT denotes Time-Over-Threshold, $E$ the deposited energy and
+$a, b, c, t$ are the parameters to be found~\cite{Jakubek2008155}. The
+inverse of the surrogate function is defined as:
 
 \begin{equation}
   E = { {t \cdot a - \text{TOT} -b + \sqrt{\left(b+t \cdot a -\text{TOT}\right)^2+4\cdot a \cdot c}} \over {2a} } \; ,
@@ -480,7 +479,7 @@ the slope (parameter $a$) remains the same.
   \label{fig:TOTcalib_55GNDGR100}
 \end{figure}
 
-The calibration for the other assemblies are given in
+The calibration results for the other assemblies are shown in
 \cref{sec:appendixFE_electronics}.
 
 

@@ -464,13 +464,13 @@ By joining a p-type with an n-type material, a pn-junction is
 obtained. The p and n-type regions are electrically neutral. Due to
 thermal diffusion, the holes and the electrons are driven across the
 junction. This implies that electrons move from the n-type material to
-the p-regions leaving a positive net charge in n-regions. The same
-applies to the p-type region which is negatively charged. A potential
-is built up when the electrons diffuse to the p-region. This potential
-limits the diffusion depth when it exceeds the available energy for
-thermal diffusion and is called the built-in potential $V_{bi}$
-between the p and n-regions. The built-in potential depends
-logarithmically on the doping levels~\cite{Spieler2005}:
+the p-regions leaving a positive net charge in n-regions, while the
+p-type region gets negatively charged. A potential is built up when
+the electrons diffuse to the p-region. This potential limits the
+diffusion depth when it exceeds the available energy for thermal
+diffusion and is called the built-in potential $V_{bi}$ between the p
+and n-regions. The built-in potential depends logarithmically on the
+doping levels~\cite{Spieler2005}:
 
 \begin{equation}
   V_{bi}= {{kT}\over e} \text{log}\left({N_a N_d} \over {n_i^2} \right)\; ,
@@ -503,8 +503,8 @@ The reverse-biased pn-junction is crucial in detection of radiation in
 silicon detectors as it increases the depletion width. This forms a
 capacitor empty of charge carriers where the undepleted p and
 n-regions are the electrodes and the depletion region is the
-dielectric. The electric field in the depletion region the mobile
-carriers to the electrodes.  The electric field due to the bias
+dielectric. The electric field in the depletion region attracts the
+mobile carriers to the electrodes.  The electric field due to the bias
 voltage allows the charge carriers to drift towards the readout chip
 and also to suppress the leakage current which can be an important
 source of noise.
@@ -808,9 +808,9 @@ electrodes, which can be n or p-type, are introduced through a mask to
 form a pixel matrix with ion implantation. Each pixel forms an
 independent pn-junction and the gaps between the pixels are
 electrically controlled to isolate a pixel from its neighbouring
-diodes. With an aluminum layer deposited on the electrodes provides
-the external bias voltage and signal path to the readout electronics
-with a low resistance.
+diodes. An aluminum layer deposited on the electrodes provides the
+external bias voltage and signal path to the readout electronics with
+a low resistance.
 
 
 %\subsection{Silicon sensors types}
@@ -1221,9 +1221,9 @@ case, for multi-hit clusters the $\eta$-function~\cite{Belau:1983eh}
 (c.f.~\cref{sec:EtaCorrection}) is used to reconstruct the hit
 position within the pixels using the charge information. In the region
 where only one pixel fires, the resolution is still limited to
-$(p-s)\over \sqrt{12}$. In this case, the readout threshold is wished
-to be as low as possible in order to detect the smallest amounts of
-charge.
+$(p-s)\over \sqrt{12}$. Therefore the readout threshold should be as
+low as possible in order to detect the smallest amounts of charge
+reaching neighbouring pixels.
 
 %% The charge carriers follow the field lines to end-up on a certain
 %% electrode. They are also subject to thermal diffusion which spreads
@@ -1289,8 +1289,8 @@ charge.
 
 Due to the charge sharing, particle tracks create multi-pixel
 clusters. The hit position within the pixel is reconstructed by using
-the charges of the hit pixels as weights. This also takes into account
-non-linearities in the charge sharing between
+the charges of the hit pixels as weights. The method also takes into
+account non-linearities in the charge sharing between
 pixels~\cite{Belau:1983eh}.
 
 The $\eta$-correction method calculates the distance with which the
@@ -1303,9 +1303,9 @@ cluster.
 \end{equation}
 
 where $\sigma_{EC}$ is a parameter to be determined and depends on
-several factors such as the thickness of the silicon sensor, the
-operating conditions of the assembly. The inverse error function
-defined as erf\textsuperscript{-1} (z) where:
+several factors such as the thickness of the silicon sensor and the
+operating conditions of the assembly. The inverse error function is
+defined as erf\textsuperscript{-1} (z) with:
 
 \begin{equation}
 \text{erf(z)}={2\over\sqrt{\pi}} \int_{0}^{z} e^{-t^2} dt \; .
@@ -1314,7 +1314,7 @@ defined as erf\textsuperscript{-1} (z) where:
 
 In \cref{eq:EtaCorrectionShift}, $Q_{rel}$ is the maximum charge of
 the cluster divided by the total charge of the cluster
-($Q_{max}/Q_{rel}$).
+($Q_{max}/Q_{tot}$).
 
 
 %% --------- Recycle text --------- %%
