@@ -139,26 +139,14 @@ H$\nu_{e}\bar{\nu_{e}}$ mechanism dominates.
   \label{fig:corssSectionH125}
 \end{figure}
 
-
-The CLIC accelerator uses copper cavities at room
-temperature. Klystrons connected to the cavities provide the RF power
-used by the acceleration cavities. The klystrons are not directly used
-to accelerate the main beam at CLIC since a large number of them would
-be needed and their efficiency would be too low. A two-beam
-acceleration scheme is used to reach the nominal collision energy. A
-drive beam with a low energy of $2.4\,\gev$ and a high current of
-100~A is used to transfer the energy of the klystrons to the main beam
-which has a lower current and higher energy. The drive beam is
-decelerated over a distance of 878~m and the extracted energy is
-provided to the main beam with a series of Power Extraction and
-Transfer Systems (PETSs).
+\section{Two-beam acceleration scheme}
 
 The schematic layout of the CLIC accelerator complex at
 $\sqrt{s}=3\,\tev$ is shown in \cref{fig:CLIC_accelerator}. The
 electron and positron beams are accelerated on a linear trajectory and
 collide in the central region (in the interaction point), where the
 CLIC detector is placed. At this stage, each linac is fed by a
-drive-beam generation complex.
+drive-beam generation complex. 
 
 \begin{figure}[htbp]
   \centering
@@ -168,6 +156,64 @@ drive-beam generation complex.
     drive-beam generation complex~\cite{Felzmann:2157041}.}
   \label{fig:CLIC_accelerator}
 \end{figure}
+
+To limit the length of the accelerator, the accelerating field has to
+be as high as possible. The accelerating gradient is chosen to be
+100~MV/m. This leads to the use of copper cavities at room temperature
+instead of superconducting cavities since their intrinsic maximum
+field is limited. The copper cavities are fed with very high radio
+frequency (RF) power with a frequency of $12\,\gigahertz$ to generate
+the high accelerating field. This lead to a total RF peak power of
+9.2~TW for both linacs. Since maintaining such high power levels is
+not possible for very long, the duration of the bunch train is limited
+to 156~ns long with a repetition frequency of 50~Hz. The feeding RF
+pulse is 244~ns (with a longer duration than the bunch train) since it
+takes into account the filling time of the acceleration structures.
+
+Klystrons are foreseen to provide the RF power used by the
+acceleration cavities. The klystrons are not directly used to
+accelerate the main beam at CLIC since a large number of them would be
+needed and their efficiency would be too low. A two-beam acceleration
+scheme is used to reach the nominal collision energy. A drive beam
+with a low energy of $2.4\,\gev$ and a high current of 100~A is used
+to transfer the energy of the klystrons to the main beam which has a
+lower current and higher energy. The drive beam is decelerated over a
+distance of 878~m and the extracted energy is provided to the main
+beam with a series of Power Extraction and Transfer Systems (PETS).
+
+
+\cref{tab:NominalMachineParams} summarises the nominal beam parameters
+for the $3\,\tev$ CLIC and $14\,\tev$ LHC. An instantaneous luminosity
+$\mathcal{L}$ of a few $10^{34}$~\inversecmsquaredsec insures a
+sufficient amount of statistical samples collected in a reasonable
+amount of time. The instantaneous luminosity depends on the transverse
+beam sizes in x and y directions, the number of bunches per train, the
+train repetition frequency, to name a few parameters among others. The
+RF pulse duration limits the number of bunches and the bunch-crossing
+separation. CLIC and LHC have similar luminosity despite the
+differences in beam parameters. At CLIC, the high luminosity is
+achieved with the very small bunch sizes.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Nominal beam parameters for CLIC at $\sqrt{s}=3\,\tev$ and
+    LHC at $\sqrt{s}=13\,\tev$.}
+  \label{tab:NominalMachineParams}
+  \begin{tabular}{l c c}
+    \toprule
+    & CLIC at $\sqrt{s}=3\,\tev$ & LHC at $\sqrt{s}=13\,\tev$\\
+    \midrule
+    Colliding particles & electron-positron & proton-proton \\
+    Instantaneous luminosity $\mathcal{L}$ & $6\times10^{34}$ \inversecmsquaredsec & $1\times10^{34}$ \inversecmsquaredsec \\
+    Bunch-crossing separation & 0.5~ns & 25~ns \\
+    Bunches per train & 312 & 2808 \\
+    Train duration & 156~ns & $90\,\microsecond$ \\
+    Train repetition & 50~Hz & $11\,\kilohertz$ \\
+    IP size in x / y / z directions & 45~nm / 1~nm / $44\,\micron$ & $16.7\,\micron$ / $16.7\,\micron$ / 7.55~cm \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
 
 
 \section{Requirements for the CLIC vertex-detector}
