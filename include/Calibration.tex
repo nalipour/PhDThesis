@@ -16,7 +16,7 @@ and optimisations of the signal-to-noise remain similar for different
 applications.
 
 In this chapter, we will review the basic principles and requirements
-of the Timepix3 hybrid pixel readout chip which are used to study thin
+of the Timepix3 hybrid pixel readout chip which is used to study thin
 and active-edge sensors as described in the following chapters. The
 calibration method for the Timepix3 ASICs and also the noise
 measurements are explored in this chapter.
@@ -27,25 +27,26 @@ measurements are explored in this chapter.
 
 The hybrid readout chip acquires the short ionisation current pulses
 generated in the sensor by the passing of a highly energetic
-particle. The electronics is responsible for shaping the time response
-of the system in order to optimise the minimum detectable signal,
-energy deposition in detector measurement, event rate, time-of-arrival
-and insensitivity to the pulse shape. Finally, the signal is digitised
-and stored. Robustness to radiation and low power consumption are
-other important considerations to be addressed amongst others.
+particle. For acquiring this short pulse, the time response of the
+readout must be tailored to optimise the minimum detectable signal,
+the measurement of energy deposition in the detector, the event rate
+capability, timing measurement of the signal and the insensitivity of
+the system to the pulse shape. Finally, the signal is digitised and
+stored. Robustness to radiation and low power consumption are other
+important considerations to be addressed amongst others.
 
 
 %% Timepix3 description
 %% \section{The Timepix readout chip families}\label{sec:TimepixReadout}
 The Timepix~\cite{art:tmpx,Timepix3Poikela} hybrid pixel detector
-readout chip family, designed by the Medipix collaboration, is a
-general purpose front-end electronics and can measure precisely the
-energy deposited in the sensor and also provides accurate timing
-information. This chip is used in a wide range of applications such as
-high energy physics and medical imaging. The Timepix3 ASICs are
-deployed for the CLIC vertex detector R\&D to study the feasibility of
-thin sensors and also active-edge sensors as described in the coming
-chapters. 
+readout chip family, designed by the Medipix
+collaboration~\cite{medipixCollaboration}, is a general purpose
+front-end electronics and can measure precisely the energy deposited
+in the sensor and also provides accurate timing information. This chip
+is used in a wide range of applications such as high energy physics
+and medical imaging. The Timepix3 ASICs are deployed for the CLIC
+vertex detector R\&D to study the feasibility of thin sensors and also
+active-edge sensors as described in the coming chapters.
 
 \cref{fig:detectorFunctions} schematically shows the basic signal flow
 in a Timepix3-like hybrid pixel detector. Both analogue and
@@ -55,14 +56,14 @@ The incident radiation deposits energy in the sensor and it is
 converted to an electrical signal. A high rate of particles can be
 handled in a semiconductor detector because the sensor pulse is very
 short (few nanoseconds). Since the amount of the signal charge is
-small and subject to statistical fluctuations (\cref{sec:chargeInSi}),
-a charge sensitive preamplifier is needed to amplify the signal. The
-preamplifier should be designed in a way to minimise the electronic
-noise. The sensor capacitance and the input capacitance of the
-amplifier are the critical parameters to increase the signal-to-noise
-ratio (SNR): the lower the capacitance, the higher the SNR. The
-amplification is done with a tunable discharge current of the
-Krummenacher amplifier architecture
+small and subject to statistical fluctuations
+(c.f.~\cref{sec:chargeInSi}), a charge sensitive preamplifier is
+needed to amplify the signal. The preamplifier should be designed in a
+way to minimise the electronic noise. The sensor capacitance and the
+input capacitance of the amplifier are the critical parameters to
+increase the signal-to-noise ratio (SNR): the lower the capacitance,
+the higher the SNR. The amplification is done with a tunable discharge
+current of the Krummenacher amplifier architecture
 (I\textsubscript{krum})~\cite{KRUMMENACHER1991527}.
 
 After the preamplifier, the pulse shaper is responsible for the
@@ -79,10 +80,10 @@ threshold (a voltage) and to discriminate a signal from a background
 noise. Both polarities (electrons and holes collection) are accepted
 by the front end.
 
-The analogue-to-digital converter (ADC) converts a continuously varying
-amplitude to discrete steps. When the pulse height passes a threshold
-in a comparator, counters are incremented to measure the energy and
-the timing of the signal for example.
+The analogue-to-digital converter (ADC) converts a continuously
+varying amplitude to discrete steps. When the pulse height passes the
+threshold in the discriminator, counters are incremented to measure
+the energy and the timing of the signal.
 
 \begin{figure}[htbp]
   \centering
@@ -123,56 +124,62 @@ the timing of the signal for example.
     integrated in the preamplifier, shaped by the pulse shaper and
     compared to a programmable threshold by the discriminator. The
     analogue-to-digital converter (ADC) digitises the signal for
-    storage and analysis.}  
+    storage and analysis.}
   \label{fig:detectorFunctions}
 \end{figure}
 
 
 An overview on the Timepix3 readout chip is given
 in~\cref{tab:timepixOverview}. It consists of a $256\times256$ pixel
-matrix with pixels pitch of $55\,\micron$. This chip allows for three
+matrix with a pitch of $55\,\micron$. This chip allows for three
 operation modes: photon counting (PC), Time-over-threshold (TOT) and
 Time-of-Arrival (TOA) measurements. In addition, Timepix3 allows for
-simultaneous measurement of the TOT and the TOA.
+simultaneous measurement of the TOT and the TOA. In the photon
+counting mode, a counter is incremented each time a photon hits the
+pixel and deposits an energy higher than the programmable threshold.
+
+The electronic noise of the Timepix3 chip is very low ($<70$
+e\textsuperscript{-} RMS without sensor) which allows for operating
+this chip at the low threshold of 500 electrons and the detection of
+small signals.
 
 \begin{table}[htbp]
   \centering
   \caption{Overview of the Timepix3 readout ASICs.}
   \label{tab:timepixOverview}
-  \begin{tabular}{l c}
+  \begin{tabular}{l l}
     \toprule
     Pixel Matrix& $256\times256$\\
-    Pixel Pitch [\micron] & 55\\
+    Pixel Pitch & $55\,\micron$\\
     Technology & 130~nm CMOS\\
-    Counter Depth & 10 bit TOT and 18
-                            bit TOA \\
-    Clock speed & up to 40~\megahertz for TOT and 640~\megahertz for
-                  TOA \\
-    Readout Type & Data driven \& frame based \\
-    Electronic Noise without sensor & $<70$ e\textsuperscript{-} RMS\\
+    Measurement Modes & 10 bit TOT and 18 bit TOA \\
+                & 18 bit TOA only \\
+                & 10 bit PC and 14 bit integral TOT \\
+    Clock speed & up to 40~\megahertz for TOT and general TOA \\
+                & 640~\megahertz for FTOA \\
+    Readout Type & Data driven \\
+                & frame based \\
+    Electronic Noise (without sensor) & $<70$ e\textsuperscript{-} RMS\\
     \bottomrule
   \end{tabular}
 \end{table}
 
 
-In the photon counting mode, a counter is incremented each time a
-photon hits the pixel and deposits an energy higher than the
-programmable threshold.
- 
 \cref{fig:TOT_TOA_concept} schematically shows the energy and the
-timing measurement of the signal. The Time-over-threshold (TOT) allows
-for the measurement of the energy deposited in a pixel. The pulse is
-amplified and the pulse shaper integrates the signal to form a step
-pulse with a long approximately linear decay. The time above the
-programmable threshold is proportional to the energy deposited and
+timing measurements of the signal. The Time-over-threshold (TOT)
+allows for the measurement of the energy deposited in a pixel. The
+pulse is amplified and the pulse shaper integrates the signal to form
+a step pulse with a long approximately linear decay. The time above
+the programmable threshold is proportional to the energy deposited and
 during this time, the TOT counter is incremented.
 
 The Time-of-Arrival (TOA) measures the arrival time of a hit and
 therefore is used as a time stamping of the hits. When the amplifier
 output exceeds the pixel threshold, the discriminator output rises and
 the fast TOA (FTOA) counter counts until the rising edge of the
-general clock. A combination of the TOA and the FTOA counters is used
-as the timing information for the hits.
+general clock. A combination of the global TOA counter operating at
+40~MHz and the FTOA counters is used as the timing information for the
+hits.
 
 \begin{figure}[htbp]
   \centering
@@ -231,19 +238,20 @@ as the timing information for the hits.
 
 \subsection{SPIDR readout system for Timepix3}\label{sec:TimepixReadout}
 
-The SPIDR (Speedy PIxel Detector Readout) readout system, developed by
-NIKHEF and CERN, is used~\cite{Visser:2015bsa} for the Timepix3 data
-acquisition. This system is able to handle high rates of data sent by
-the Timepix3 ASIC at full speed. This is achieved with Xilinx Virtex-7
-FPGA~\cite{XilinxVirtex7} and a 10~Gb Ethernet link.
+The SPIDR (Speedy PIxel Detector Readout) readout
+system~\cite{Visser:2015bsa}, developed by NIKHEF and CERN, is used
+for the Timepix3 data acquisition. This system is able to handle high
+rates of data sent by the Timepix3 ASIC at full speed. This is
+achieved with Xilinx Virtex-7 FPGA~\cite{XilinxVirtex7} and a 10~Gb
+Ethernet link.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Timepix3board.jpg}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Timepix3board2.jpg}
     \caption{}\label{fig:Timepix3board_PCB}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.65\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/SPIDRboard.png}
+    \includegraphics[width=\textwidth]{./figures/Calibration/SPIDRboard}
     \caption{}
   \end{subfigure}
   \caption{(a) Timepix3 chip board and (b) SPIDR readout board.}
@@ -255,8 +263,9 @@ readout mode which can reach higher readout rates than the frame based
 mode. In the data driven mode, after a hit is processed by the pixel,
 a data packet containing the TOT and the TOA information is
 immediately sent off the chip. This reduces significantly the dead
-time of the pixels and allows to reach very high readout rates of up
-to 40~Mhits/s/\cmsquared.
+time of the pixels hit while the other pixels stay active and allows
+to reach very high readout rates of up to
+40~Mhits/(s~$\cdot$~\cmsquared).
 
 The different settings of the chip are controlled externally using
 programmable DACs such as the I\textsubscript{krum}, threshold,
@@ -362,7 +371,7 @@ more uniform even though some dispersion remains.
 
 The aim of the calibration is to parametrise the measurements done by
 the readout chip, namely the relationship between the threshold DAC
-and the TOT for the energy deposited in the sensor (in number of
+and the TOT with the energy deposited in the sensor (in number of
 collected charge) as well as the relation between the TOA measurement
 and the time of arrival of the particle (in seconds). In this work we
 focus on the threshold DAC and the TOT calibration.
@@ -390,12 +399,13 @@ injected is given by
 where Q is the injected charge, C the injection capacitance and
 $\Delta V$ the voltage applied. A priori, the injection capacitance is
 unknown and its value varies from pixel to pixel, but its value can be
-measured. For the capacitance, $20.2$~e\textsuperscript{-}/mV is a
-good approximation.
+measured. For the Timepix3 readout chip a capacitance of
+$20.2$~e\textsuperscript{-}/mV is a good approximation.
 
 In \cref{fig:detectorFunctions}, the injection capacitance replaces
 the sensor. For the calibration if the chip is bump-bonded to a
-sensor, the sensor is fully depleted with a bias voltage.
+sensor, the sensor is fully depleted with a bias voltage to reduce the
+possible noise and leakage current due to an undepleted sensor.
 
 \subsection{TOT-energy calibration} \label{sec:EnergyCalibration}
 
@@ -415,7 +425,7 @@ $a, b, c, t$ are the parameters to be found~\cite{Jakubek2008155}. The
 inverse of the surrogate function is defined as:
 
 \begin{equation}
-  E = { {t \cdot a - \text{TOT} -b + \sqrt{\left(b+t \cdot a -\text{TOT}\right)^2+4\cdot a \cdot c}} \over {2a} } \; ,
+  E = { {t \cdot a - \text{TOT} -b + \sqrt{\left(b+t \cdot a -\text{TOT}\right)^2+4\cdot a \cdot c}} \over {2a} } \; .
   \label{eq:inverseTOTsurrogateFunction}
 \end{equation}
 
@@ -502,10 +512,18 @@ resulting in an S-shaped curve as shown in
 \cref{fig:scurve_example}. The readout electronics noise smears the
 ideal sharp turn on and generates the S-curve. At the maximum gradient
 of the S-curve, the threshold DAC corresponds to the pulse
-amplitude. The derivative of the S-curve is a Gaussian as shown in
-\cref{fig:deriv_example} with a mean at the maximum gradient of the
-S-curve. The derivative at each point of the S-curve corresponds to
-the slope of the line connecting it to its neighbour.
+amplitude. The S-curve is fitted with a sigmoid function defined as:
+
+\begin{equation}
+f(x)= {1 \over {1+e^{-x}}} \; .
+\end{equation}
+
+The derivative of the S-curve or the sigmoid function is a Gaussian as
+shown in \cref{fig:deriv_example} with a mean at the maximum gradient
+of the S-curve.
+
+% The derivative at each point of the S-curve corresponds to
+% the slope of the line connecting it to its neighbour.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -527,12 +545,12 @@ the slope of the line connecting it to its neighbour.
     \caption{Derivative of the S-curve}
     \label{fig:deriv_example}
   \end{subfigure}
-  \caption{An example of a measured S-curve (a) and its derivative
-    fitted with a Gaussian function (b) for the assembly W5\_E2 using
-    a pulse height of 1000 electrons for the pixel (0, 0). This
-    measurement is performed for all the pixels on the diagonal of the
-    matrix for each assembly. The threshold DAC is scanned with a step
-    size of 2.}
+  \caption{(a) An example of a measured S-curve fitted with a sigmoid
+    function and (b) the sigmoid's derivative fitted with a Gaussian
+    function for the assembly W5\_E2 using a pulse height of 1000
+    electrons for the pixel (0, 0). This measurement is performed for
+    all the pixels on the diagonal of the matrix for each
+    assembly. The threshold DAC is scanned with a step size of 2.}
   \label{fig:scurve_deriv_example}
 \end{figure}
 
@@ -549,9 +567,10 @@ corresponding energy (in number of electrons).
 \cref{fig:THLcalib_55-GNDGR-100} shows an example of the threshold
 calibration obtained for the assembly W5\_E2. Each point used for the
 fit corresponds to the mean of the Gaussian fitted to the derivative
-of the S-curve for each pulse height. The error on each point
-corresponds to the error on the mean of the fitted Gaussians of all
-diagonal pixels combined using the propagation of errors.
+of the sigmoid function fitting the S-curve for each pulse height. The
+error on each point corresponds to the error on the mean of the fitted
+Gaussians of all diagonal pixels combined using the propagation of
+errors.
 
 \begin{figure}[htbp]
   \centering
@@ -578,7 +597,7 @@ The operating threshold DAC for each assembly was converted to an
 energy by solving \cref{eq:THLDAC} for $THL_{e-}$ with
 $THL_{DAC}=THL_{DAC}^{op}$. The error on the evaluated threshold in energy
 ($THL_{e-}^{op}$) is obtained by the propagation of errors for the
-inverse of \ref{eq:THLDAC}:
+inverse of \cref{eq:THLDAC}:
 \begin{equation}
   \sigma_{THL_{e-}}^2(THL_{DAC})={{{(THL_{DAC}-q)^2} \over {p^4}} \sigma_{p}^2} +
         {\frac{1}{p^2} \sigma_{q}^2}+
@@ -625,13 +644,12 @@ Without any test-pulse injection, the threshold scan results in a
 Gaussian distribution. The mean of the Gaussian distribution defines
 the baseline of the chip and its width, the electronic noise. For all
 assemblies the noise varies between 6 to 7 DAC values which
-corresponds to 70 to 80 electrons, again in agreement
-with~\cite{art:tmpx} (the error is obtained by error propagation of
-\cref{eq:THLDAC}). Except for the assembly W2\_J5 which appears to be
-noisy. \cref{tab:THLcalibration_noise} summarises the baseline mean,
-the threshold DAC step, the electronic noise and its conversion into
-energy deposition for the assemblies listed in
-\cref{tab:THLcalibration}.
+corresponds to 70 to 80 electrons and in agreement
+with~\cite{art:tmpx}. The error on the noise is obtained by the error
+propagation of \cref{eq:THLDAC}. \cref{tab:THLcalibration_noise}
+summarises the baseline mean, the threshold DAC step, the electronic
+noise and its conversion into energy deposition for the assemblies
+listed in \cref{tab:THLcalibration}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

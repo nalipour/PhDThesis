@@ -758,27 +758,36 @@ drift time for n and p-type carriers in a $50\,\micron$ thick silicon
 sensor with a depletion voltage of |V\textsubscript{D}|=4~V and biased
 at |V\textsubscript{B}|=15~V as a function of the depth. The electrons
 have a higher drift time and therefore are faster for readout. But
-diffusion does not depend on the carrier type.
-
-\cref{fig:Efield_n_vs_p} shows the electric field and the mobility
-distribution as a function of the depth in silicon.
+diffusion does not depend on the carrier type as it can be seen in
+\cref{eq:sigmaDiffusion}. \cref{fig:Diffusion_n_vs_p} shows the
+standard deviation for the diffusion at different bias voltages for
+the n and p-type carriers.
 
 \begin{figure}[htbp]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{figures/ChargeSharing/DriftTime_n_vs_p_carrier.pdf}
-    \caption{}
+    \caption{}\label{fig:Drift_n_vs_p}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/ChargeSharing/Diffusion_n_vs_p_carrier.pdf}
-    \caption{}
+    % \includegraphics[width=\textwidth]{figures/ChargeSharing/Diffusion_n_vs_p_carrier.pdf}
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/Diffusion_vs_Bias.pdf}
+    \caption{}\label{fig:Diffusion_n_vs_p}
   \end{subfigure}
   \caption{(a) Drift time (b) diffusion standard deviation for n and
-    p-type carriers as a function of the depth in the
-    sensor. Diffusion does not depend on the carrier type. The
-    depletion voltage is |V\textsubscript{D}|=4~V and the bias voltage
-    is |V\textsubscript{B}|=15~V.}\label{fig:Drift_n_vs_p}
+    p-type carriers as a function of the depth in the sensor for
+    different bias voltages. Diffusion does not depend on the carrier
+    type. The depletion voltage is |V\textsubscript{D}|=4~V and the
+    drift time is calculated considering a bias voltage of
+    |V\textsubscript{B}|=15~V.}
 \end{figure}
+
+\cref{fig:Efield_n_vs_p} shows the electric field and the mobility
+distribution as a function of the depth in a $50\,\micron$ thick
+silicon sensor with a depletion voltage of |V\textsubscript{D}|=4~V
+and biased at |V\textsubscript{B}|=15~V. The mobility in this case
+stays almost constant and is not a function of the electric field
+since in this case the electric field stays quite low.
 
 \begin{figure}[htbp]
   \centering
@@ -810,7 +819,33 @@ independent pn-junction and the gaps between the pixels are
 electrically controlled to isolate a pixel from its neighbouring
 diodes. An aluminum layer deposited on the electrodes provides the
 external bias voltage and signal path to the readout electronics with
-a low resistance.
+a low resistance. 
+
+This thesis focuses on hybrid pixel detectors where the electronics
+for the readout and sensors are produced separately and mated using
+bumps. Matrices of pixel detectors can be put together to cover larger
+surfaces. \cref{fig:pixelCell} illustrates schematically the basic
+building block of a hybrid pixel detector with only one pixel. An
+ionising particle traversing the detector, creates charges in the
+depletion region of the sensor. The charge carriers move under the
+action of the applied electric field. The signal produced is acquired
+by an electronics chip.
+
+\begin{figure}[htbp]
+  % \begin{wrapfigure}{r}{0.5\textwidth} 
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/PixelCell.png}
+  \caption{Schematic layout of one pixel cell in a hybrid pixel
+    detector. From~\cite{Rossi:976471}.}
+  \label{fig:pixelCell}
+  % \end{wrapfigure}
+\end{figure}
+
+In the following sections, we introduce Ramo's theorem which describes
+how the charge carriers are collected by the readout electrodes. Also,
+an introduction to in-pixel studies done with pixel detectors is given
+later when studying the spatial resolution for different readout chip
+configurations.
 
 
 %\subsection{Silicon sensors types}
@@ -841,7 +876,7 @@ law, for a surface $S$ surrounding the charge is expressed as:
 \end{equation}
 
 The induced charge obtained by integrating over a Gaussian surface
-enclosing only the electrode is $-q$. Considering two parallel
+enclosing only the electrode is $-q$. Now, let's consider two parallel
 electrodes with a charge $q$ in between as showin in
 \cref{fig:InducedCharge_parallelPlates}. If the charge is placed
 midway between the two parallel plates, it induces equal charge of
@@ -876,48 +911,75 @@ moves along any path from position $z_0$ to $z_p$:
    \label{eq:RamoCharge} 
   \end{equation}
 
-It is important to note that the weighting potential (field) is
-different than the electric potential (field). The electric field
-determines the drift trajectory and velocity of the charge carriers
-whereas the weighting field depends only on the geometry of the
-electrodes and defines how the charge motion induces a charge to a
-specific electrode. In the specific case of two-electrode
-configuration the electric and the weighting fields are the same.
+  It is important to note that the weighting potential (field) is
+  different from the electric potential (field). The electric field
+  determines the drift trajectory and velocity of the charge carriers
+  whereas the weighting field depends only on the geometry of the
+  electrodes and defines how the charge motion induces a charge to a
+  specific electrode. In the specific case of two-electrode
+  configuration the electric and the weighting fields are the same.
 
 
-\cref{fig:RamoTCAD} shows the weighting field and potential
-distributions calculated using TCAD simulations~\cite{synopsysTCAD}
-(c.f. \cref{sec:TCAD}). For this study, we consider a silicon sensor
-with 5 pixels, having a thickness of 200~\micron and over-depleted
-with a bias voltage of \SI{50}{\volt} on the back-side. First,
-\SI{0}{\volt} is applied to all the electrodes and then \SI{1}{\volt}
-is applied to the electrode~$k$. By taking the difference between the
-two configurations, the weighting potential and field are obtained.
+  \cref{fig:RamoTCAD} shows the weighting field and potential
+  distributions calculated using TCAD simulations~\cite{synopsysTCAD}
+  (c.f. \cref{sec:TCAD}). For this study, we consider a silicon sensor
+  with 5 pixels (marked out with dashed lines), having a thickness of
+  200~\micron and over-depleted with a bias voltage of \SI{50}{\volt}
+  on the back-side. First, \SI{0}{\volt} is applied to all the
+  electrodes and then \SI{1}{\volt} is applied to the
+  electrode~$k$. By taking the difference between the two
+  configurations, the weighting potential and field are obtained.
 
 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.49\textwidth}
+  \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at (0,0){\includegraphics[width=\textwidth]{figures/Ramo/EfieldY_Ramo.png}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
         \node[above, color=black] at (0.35, 1) {electrode $k$};
+
+        \draw[->, thick] (0, 1)--(0, -0.1) node[below]{Depth
+          $z$~$[\micron]$};
+        \draw[-] (-0.01, 0.01) -- (0.01, 0.01) node[left] {200};
+        \draw[-] (-0.01, 0.97) -- (0.01, 0.97) node[left] {0};
+
+        \draw[-, dashed] (0.11, 0.95)--(0.11, 0.02);
+        \draw[-, dashed] (0.27, 0.95)--(0.27, 0.02);
+        \draw[-, dashed] (0.45, 0.95)--(0.45, 0.02);
+        \draw[-, dashed] (0.62, 0.95)--(0. 62, 0.02);
+
+        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+
       \end{scope}
     \end{tikzpicture} 
     \caption{Weighting field}\label{fig:WeightingFieldRamo}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.49\textwidth}
+  \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at (0,0){\includegraphics[width=\textwidth]{figures/Ramo/RamoPotential.png}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
         \node[above, color=black] at (0.35, 1) {electrode $k$};
+
+        \draw[->, thick] (0, 1)--(0, -0.1) node[below]{Depth
+          $z$~$[\micron]$};
+        \draw[-] (-0.01, 0.01) -- (0.01, 0.01) node[left] {200};
+        \draw[-] (-0.01, 0.97) -- (0.01, 0.97) node[left] {0};
+
+        \draw[-, dashed] (0.11, 0.95)--(0.11, 0.02);
+        \draw[-, dashed] (0.27, 0.95)--(0.27, 0.02);
+        \draw[-, dashed] (0.45, 0.95)--(0.45, 0.02);
+        \draw[-, dashed] (0.62, 0.95)--(0. 62, 0.02);
+
       \end{scope}
     \end{tikzpicture} 
     \caption{Weighting potential}\label{fig:WeightingPotentialRamo}
   \end{subfigure} 
-  \caption{The weighting field and potential.}\label{fig:RamoTCAD}
+  \caption{The weighting field and potential on electrode $k$.}\label{fig:RamoTCAD}
 \end{figure}
 
 The weighting potential for different hit positions on the x-axis is
@@ -964,7 +1026,7 @@ electric field distribution and the diffusion causes multi-pixel hits.
 \end{figure}
 
 
-\section{Spatial resolution}
+\subsection{Spatial resolution}
 
 The spatial resolution of a pixel detector is mainly determined by the
 pixel pitch. But this can be improved by the readout choice (binary or
@@ -1045,7 +1107,7 @@ assumptions.
 
 
 
-\subsection{Binary readout} \label{sec:binaryReadout}
+\subsubsection{Binary readout} \label{sec:binaryReadout}
 The simplest case for the resolution computation is to consider a
 binary readout with single threshold for signal and noise
 discrimination. For a pixel centered at 0 and having a pitch $p$ with
@@ -1112,7 +1174,9 @@ pixel can be fired which is called a \textit{cluster} of pixels. The
 resolution is therefore improved as described in
 \cref{sec:resolutionBinarySharing,sec:resolutionAnalogSharing}.
 
-\subsection{Binary readout and charge sharing}\label{sec:resolutionBinarySharing}
+\subsubsection{Binary readout and charge sharing}
+\label{sec:resolutionBinarySharing}
+
 The threshold of the readout electronics is usually set as low as
 possible which can result in more than one pixel hit per particle
 track. In this case, the charge is shared between two or more pixels
@@ -1188,31 +1252,35 @@ given by:
 \end{equation}
 
 The optimal average spatial resolution is obtained for $s=p/2$ as
-shown in \cref{fig:sigmaTotal} for two pixel pitches of is
-$p=25\,\micron$ and $p=55\,\micron$. This means that the number of
-single-hit and multi-hit clusters is the same. But, in this situation
-one is not able to distinguish between one track triggering two pixels
-and two tracks hitting the sensor within $2p$.
+shown in \cref{fig:sigmaTotal} for three pixel pitches of
+$p=15\,\micron$, $p=25\,\micron$ and $p=55\,\micron$. This means that
+the number of single-hit and multi-hit clusters is the same. But, in
+this situation one is not able to distinguish between one track
+triggering two pixels and two tracks hitting the sensor within $2p$.
 
 \begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/ChargeSharing/resolution_binary_chargeSharing_s_15mupitch.pdf}
+    \caption{$15\,\micron$ pitch}
+  \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{figures/ChargeSharing/resolution_binary_chargeSharing_s_25mupitch.pdf}
     \caption{$25\,\micron$ pitch}
   \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{figures/ChargeSharing/resolution_binary_chargeSharing_s.pdf}
     \caption{$55\,\micron$ pitch}
   \end{subfigure}
   \caption{$\sigma_{\text{Total}}$ calculated using
     \cref{eq:spatialResChargeSharingTotal} with a pixel pitch of (a)
-    $p=25\,\micron$ and (b) $p=55\,\micron$ where $s$ is the width of
-    the charge sharing region as shown in
+    $p=15\,\micron$, (b) $p=25\,\micron$ and (c) $p=55\,\micron$ where
+    $s$ is the width of the charge sharing region as shown in
     \cref{fig:SpatResBinaryChargeSharing}.}
   \label{fig:sigmaTotal}
 \end{figure}
 
 %% --------------------------------------------------- %%
-\subsection{Analogue readout and charge sharing}
+\subsubsection{Analogue readout and charge sharing}
 \label{sec:resolutionAnalogSharing}
 The spatial resolution can be significantly improved with an analogue
 readout which delivers a signal proportional to the collected charge
