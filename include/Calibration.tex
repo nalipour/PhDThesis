@@ -1,7 +1,7 @@
-%==============================================================================    
+% ==============================================================================    
 \chapter{Pixel chip electronics and calibration}
 \label{ch:FE_electronics}
-%==============================================================================    
+% ==============================================================================    
 
 % ----------------------------- %
 \tikzstyle{block} = [rectangle, draw, text width=5em, text centered, rounded corners, minimum
@@ -80,10 +80,10 @@ threshold (a voltage) and to discriminate a signal from a background
 noise. Both polarities (electrons and holes collection) are accepted
 by the front end.
 
-The analogue-to-digital converter (ADC) converts a continuously
-varying amplitude to discrete steps. When the pulse height passes the
-threshold in the discriminator, counters are incremented to measure
-the energy and the timing of the signal.
+The digital part of the readout chip converts a continuously varying
+amplitude to discrete steps using different counters. When the pulse
+height passes the threshold in the discriminator, counters are
+incremented to measure the energy and the timing of the signal.
 
 \begin{figure}[htbp]
   \centering
@@ -95,7 +95,7 @@ the energy and the timing of the signal.
       \node [block, right of=sens] (preamp) {Preamplifier};
       \node [block, right of=preamp] (pulse) {Pulse shaping};
       \node [block, right of=pulse] (discr) {Discriminator};
-      \node [block, right of=discr] (conv) {ADC converter};
+      \node [block, right of=discr] (conv) {TOT/TOA counters};
       \coordinate[right of=conv] (output);
 
       \draw[arrows=->] (input) -- node [text
@@ -123,8 +123,8 @@ the energy and the timing of the signal.
     radiation is converted to an electrical signal. The signal is
     integrated in the preamplifier, shaped by the pulse shaper and
     compared to a programmable threshold by the discriminator. The
-    analogue-to-digital converter (ADC) digitises the signal for
-    storage and analysis.}
+    digital part of the readout chip digitises the signal for storage
+    and analysis using counters for timing and energy measurements.}
   \label{fig:detectorFunctions}
 \end{figure}
 
@@ -388,8 +388,8 @@ The second method consists of the use of an internal analogue test
 pulse generator. The Timepix3 readout ASICs provide an internal test
 pulse generator which can be used for calibration as well as
 equalisation of the readout chip. In each pixel, a capacitor allows
-for injecting a charge by switching a voltage over it. The charge
-injected is given by
+for injecting a charge by applying a voltage over it. The injected
+charge is given by:
 
 \begin{equation}
   Q = C \cdot \Delta V \; ,
@@ -398,9 +398,11 @@ injected is given by
 
 where Q is the injected charge, C the injection capacitance and
 $\Delta V$ the voltage applied. A priori, the injection capacitance is
-unknown and its value varies from pixel to pixel, but its value can be
-measured. For the Timepix3 readout chip a capacitance of
-$20.2$~e\textsuperscript{-}/mV is a good approximation.
+roughly known and its value varies from pixel to pixel, but its value
+can be measured. For the Timepix3 readout chip a capacitance of
+$20.2$~e\textsuperscript{-}/mV is a good approximation (its value can
+be estimated more precisely for each chip by using radioactive source
+measurements).
 
 In \cref{fig:detectorFunctions}, the injection capacitance replaces
 the sensor. For the calibration if the chip is bump-bonded to a
@@ -456,9 +458,10 @@ energy calibration of the assembly is determined.
 operation of the Timepix3 assemblies in test beams. The same settings
 are as well used for the calibration. \cref{fig:TOTcalib_55GNDGR100}
 shows the pixel-by-pixel calibration for assembly W5\_E2 operated at
-two different threshold DACs of 1160 and 1190. For a higher threshold,
-the curves are shifted towards higher energy values on the x-axis but
-the slope (parameter $a$) remains the same.
+two different threshold DACs of 1160 (561 electrons) and 1190 (878
+electrons). For a higher threshold, the curves are shifted towards
+higher energy values on the x-axis but the slope (parameter $a$)
+remains the same.
 
 \begin{table}[htbp]
   \centering
@@ -485,7 +488,8 @@ the slope (parameter $a$) remains the same.
     \caption{}
   \end{subfigure}
   \caption{Pixel-by-pixel calibration of the TOT for assembly W5\_E2
-    operated at the threshold DACs of (a) THL=1160 and (b) THL=1190.}
+    operated at the threshold DACs of (a) THL=1160 (561 electrons) and
+    (b) THL=1190 (878 electrons).}
   \label{fig:TOTcalib_55GNDGR100}
 \end{figure}
 
