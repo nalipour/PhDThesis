@@ -546,19 +546,14 @@ TCAD simulations are used to study the charge collection in the edge
 region. The process flow as described in \cref{sec:processFlowTCAD} is
 used to simulate two pixels and the edge region in a 2D
 configuration. The transient simulation of the active edge devices is
-done by a charge deposition of $10^{-5}\,\picocoulomb/\micron$ along
-the particle track. This corresponds to an energy deposition of
-$\sim80\,\text{e-}/\micron$ as expected for the MIP in
-silicon. \cref{fig:TCAD_transientSimu} illustrates an example of a MIP
-traversing the sensor at a distance of $10\,\micron$ from the left
-edge 6~ns after the particle hit. The electron density is shown in
-this figure. 
+done by a constant charge deposition corresponding to the peak of the
+straggling function along the particle track
+(c.f. \cref{sec:SiliconEnergyLossSpectrum}). \cref{fig:TCAD_transientSimu}
+illustrates an example of a MIP traversing the sensor at a distance of
+$10\,\micron$ from the left edge 6~ns after the particle hit. The
+electron density is shown in this figure.
 
-In simulation, hits are generated at different positions. The
-electrodes collect the signal created by the electrons since the
-sensor is of type n-in-p. The signal is integrated over 15~ns. The
-peaking time of the signal is usually less than 5~ns therefore the
-integration time is enough to collect most of the signal.
+
 
 \begin{figure}[htbp]
   \centering
@@ -582,6 +577,12 @@ integration time is enough to collect most of the signal.
   \label{fig:TCAD_transientSimu}
 \end{figure}
 
+In simulation, hits are generated at different positions along the
+edge. The electrodes collect the signal created by the electrons since
+the sensor is of type n-in-p. The signal is integrated over 15~ns. The
+peaking time of the signal is usually less than 5~ns therefore the
+integration time is enough to collect most of the signal.
+
 
 
 %% --------------------------------------------- %%
@@ -594,9 +595,9 @@ track position. The collected charge at the edge is also simulated (as
 described in \cref{sec:TCAD_Simu_ActiveEdge}) and compared to the
 data. The convention as illustrated in \cref{fig:Layout20_NGR} is used
 to show the performance of the different assemblies in
-\cref{fig:20-NGR_eff_TOT,fig:23-FGR_eff_TOT,fig:28-GNDGR_eff_TOT,fig:55-GNDGR_eff_TOT,fig:55-GNDGR-100_eff_TOT,fig:55-GNDGR-150_eff_TOT}. The
-border of the last pixel (at 0~mm) is indicated with a dashed line and
-the physical sensor edge is shown as a continuous line. The detection
+\cref{sec:EdgePerformance_50,sec:EdgePerformance_100_150}. The border
+of the last pixel (at 0~mm) is indicated with a dashed line and the
+physical sensor edge is shown as a continuous line. The detection
 efficiency is calculated by counting the number of tracks matched to
 hits on the DUT divided by the total number of tracks projected on the
 DUT. The efficiency within the pixels is then mapped into a grid of
@@ -604,9 +605,9 @@ $2\times2$ pixels. The x-axis shows the track position relative to the
 last pixel. The y-axis combines the tracks for the even rows (in the
 coordinates between 0~mm and 0.055~mm) and the odd rows (in the
 coordinates between 0.055~mm and 0.11~mm). The z-axis shows the
-efficiency for the plots on the left. To increase the statistics, the
-beam was focused on only one of the edges during the data taking. The
-hits for the assembly 20-NGR-50 are shown in \cref{fig:hitMapW19G7}.
+efficiency. To increase the statistics, the beam was focused on only
+one of the edges during the data taking. An example of a hitmap for
+the assembly 20-NGR-50 is shown in \cref{fig:hitMapW19G7}.
 
 \begin{figure}[htbp]
   \centering
@@ -631,12 +632,13 @@ collected charge obtained in the TCAD simulations. In the TCAD
 simulations, a fixed amount of charge is deposited and, unlike the
 data, the fluctuations of the deposited charge are not considered. The
 tracking resolution of $\sim2\,\micron$ is applied to the hit position
-in TCAD simulations. This can explain the minor discrepancies on the
-amount of the collected charge between simulation and data. The border
-of the last pixel (at 0~mm) is indicated with a dashed line and the
-physical sensor edge is shown in continuous line with the convention
-as illustrated in \cref{fig:Layout20_NGR}.
+in TCAD simulations. The border of the last pixel (at 0~mm) is
+indicated with a dashed line and the physical sensor edge is shown in
+continuous line with the convention as illustrated in
+\cref{fig:Layout20_NGR}.
 
+% This can explain the minor discrepancies on the
+% amount of the collected charge between simulation and data. 
 
 % The collected charge at the edge as a function of the track position
 % is also investigated. The pixel-by-pixel calibration as described in
@@ -645,10 +647,11 @@ as illustrated in \cref{fig:Layout20_NGR}.
 
 %% --------------------------------------------- %%
 \subsection{The performance of $50\,\micron$ thick sensors}
+\label{sec:EdgePerformance_50}
 
-The efficiency at the edge of the assemblies with a $50\,\micron$
-thick sensors is shown in \cref{fig:EdgeEfficiency_50micron}. The
-results are presented using the conventions as described in
+The efficiency at the edge of the assemblies with $50\,\micron$ thick
+sensors is shown in \cref{fig:EdgeEfficiency_50micron}. The results
+are presented using the conventions as described in
 \cref{sec:activeEdge_convention}.
 
 \begin{figure}[htbp]
@@ -672,8 +675,9 @@ results are presented using the conventions as described in
     \includegraphics[width=\textwidth, page=12]{figures/TestBeam/edge_bcp.pdf}
   \caption{55-GNDGR-50}\label{fig:EdgeEfficiency_55GNDGR50}
   \end{subfigure}
-  \caption{The efficiency at the edge as a function of the positions
-    for the assemblies having a sensor thickness of $50\,\micron$.}
+  \caption{The efficiency at the edge as a function of the track
+    positions for the assemblies having a sensor thickness of
+    $50\,\micron$.}
   \label{fig:EdgeEfficiency_50micron}
 \end{figure}
 
@@ -687,6 +691,13 @@ charge is fully collected by the last pixel for 20-NGR-50. For
 23-FGR-50, a loss of the charge near the edge is observed (charge lost
 in the guard ring).
 
+For 20-NGR-50, the TCAD simulation agrees well with the data
+observation as shown in \cref{fig:ChargeCollection20NGR}.
+
+To simulate a floating guard ring for 23-FGR-50 in TCAD, the current
+and the potential on the electrode of the guard ring are set to zero
+as initial conditions. In data, more charge is collected by the guard
+ring than in simulation as shown in \cref{fig:ChargeCollection23FGR}.
 
 \begin{figure}[htbp]
   \begin{subfigure}[b]{0.45\textwidth}
@@ -705,26 +716,21 @@ in the guard ring).
   \label{fig:ChargeCollectionNGRFGR}
 \end{figure}
 
-For 20-NGR, the TCAD simulation agrees well with the data observation
-as shown in \cref{fig:ChargeCollection20NGR}.
 
-To simulate a floating guard ring for 23-FGR, in TCAD, the electrode
-on the guard ring is forced to have no current and the potential is
-set to zero as initial condition. The agreement seems good but in data
-it seems that more charge is collected by the guard ring than in
-simulation as shown in \cref{fig:ChargeCollection23FGR}.
 
 The grounded guard ring degrades significantly the detection
 efficiency at the edge. For 28-GNDGR-50, the efficiency drops between
 pixels as shown in \cref{fig:EdgeEfficiency_28GNDGR50}. A large part
 of the charge is collected by the guard ring. For 55-GNDGR-50, as
-shown in \cref{fig:EdgeEfficiency_55GNDGR50}, the edge is not efficient
-anymore due to the reduced amount of detected charge in thin sensors
-and its low sharing to the neighbouring pixels (lower than the
-threshold of the readout chip). All of the charge created in the edge
-is collected by the guard ring.
+shown in \cref{fig:EdgeEfficiency_55GNDGR50}, the edge is not
+efficient anymore. All of the charge created in the edge is collected
+by the guard ring.
 
-
+In the TCAD simulations for the grounded guard ring configurations,
+the potential on the electrode of the guard ring is 0~V. For
+28-GNDGR-50 and 55-GNDGR-50, the TCAD simulations show a drop in the
+collected charge at the edge as shown in
+\cref{fig:ChargeCollectionNGRFGR_50}.
 
 \begin{figure}[htbp]
   \begin{subfigure}[b]{0.45\textwidth}
@@ -742,16 +748,6 @@ is collected by the guard ring.
     TCAD simulations.}
   \label{fig:ChargeCollectionNGRFGR_50}
 \end{figure}
-
-In the TCAD simulations for the grounded guard ring configurations,
-the electrode of the guard ring is forced to have no current and the
-potential is forced to be 0~V. For 28-GNDGR and 55-GNDGR, the TCAD
-simulations show a drop in the collected charge but less than in data
-as shown in \cref{fig:ChargeCollectionNGRFGR_50}. For 55-GNDGR, in
-TCAD simulations charges are collected by the pixel even for hit
-positions which are very close to the physical edge since no threshold
-was applied in simulation. In data and in TCAD simulations a threshold
-of $\sim$500 electrons is applied.
 
 
 Streamlines define a family of curves instantaneously tangent to the
@@ -800,14 +796,18 @@ and an acceptable breakdown behaviour
 needed to confirm this observation.
 
 %% --------------------------------------------- %%
+\newpage
 \subsection{The performance of $100\,\micron$ and $150\,\micron$ thick
   sensors}
+\label{sec:EdgePerformance_100_150}
 
 For the thicker sensors of $100\,\micron$ and $150\,\micron$, the
 grounded guard ring is a suitable solution. The assemblies
-55-GNDGR-100 and 55-GNDGR-150 are efficient up to the edge even with a
-loss of the charge near the edge as shown in
-\cref{fig:EdgeEfficiency_100_150micron}.
+55-GNDGR-100 and 55-GNDGR-150 are efficient up to the edge as shown in
+\cref{fig:EdgeEfficiency_100_150micron}. A slight loss of the charge
+near the edge in data and simulations can be observed for these
+assemblies as shown in \cref{fig:ChargeCollectionThickGNDGR}.
+
 
 \begin{figure}[htbp]
   \begin{subfigure}[b]{0.45\textwidth}
@@ -844,27 +844,40 @@ loss of the charge near the edge as shown in
 \end{figure}
 
 
-For 55-GNDGR-100 and 55-GNDGR-150 a good agreement between data and
-simulation is observed as shown in
-\cref{fig:ChargeCollectionThickGNDGR}.
+
 
 
 
 
 
 %% --------------------------------------------- %%
+\newpage
 \section{Summary}
 \label{sec:summary_activeEdge}
-\cref{fig:EdgeEff_2D} summarises the edge efficiency as a function of
-the track position relative to the edge projected in one direction for
-the different assemblies.
+This chapter gives an overview on the test-beam results and also TCAD
+simulations of the active-edge assemblies tested for
+CLIC. \cref{fig:EdgeEff_2D} summarises the edge efficiency as a
+function of the track position relative to the edge projected in one
+direction for the different assemblies in data.
+
+For thin sensors ($50\,\micron$ thick), the grounded guard ring is not
+a suitable solution since the guard ring collects most of the charge
+in the edge and therefore lowers the efficiency. A floating guard ring
+appears to be the most suitable solution, as it shows a high detection
+efficiency at the edge and an acceptable breakdown behaviour.
+
+For thicker sensors ($100\,\micron$ and $150\,\micron$), the grounded
+guard ring is a suitable solution as a larger amount of charge is
+deposited by the passage of MIPs. Some of the deposited charge is
+collected by the guard ring but these assemblies remain efficient up
+to the physical edge.
 
 \begin{figure}[htbp]
   \centering
   %EdgeEfficiency_2D.py
   \includegraphics[width=0.7\textwidth]{figures/ActiveEdge/edgeEff_2D.pdf}
-  \caption{The edge efficiency as a function of the track position
-    relative to the edge projected in one direction.}
+  \caption{The edge efficiency in data as a function of the track
+    position relative to the edge projected in one direction.}
   \label{fig:EdgeEff_2D}
 \end{figure}
 
