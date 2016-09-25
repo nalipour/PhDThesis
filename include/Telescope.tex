@@ -17,9 +17,9 @@ Device Under Test (DUT). This allows to compare the position of the
 hit on the DUT with the reconstructed track and extract the position
 and time resolutions as well as the efficiency of the device.
 
-For the CLIC vertex detector R\&D, the Timepix3 telescope is used as a
-beam reference. This chapter gives an overview of the components of
-the CLICdp Timepix3 telescope and its tracking performance. The
+For the CLIC vertex detector R\&D, the CLICdp Timepix3 telescope is
+used as a beam reference. This chapter gives an overview of the
+components of the Timepix3 telescope and its tracking performance. The
 Timepix3 telescope is implemented in AllPix simulations
 (c.f. \cref{sec:AllPix}) and its performance is compared to the data
 taken at the CERN SPS~\cite{SPS}. Finally, the tracking resolution on
@@ -48,16 +48,20 @@ the up direction.
 
 %% --------------------------------------------- %%
 \subsection{Sensors and mechanics}
+\label{sec:Telescope_sensors_mechanics}
+
 The Timepix3 telescope consists of six planes of Timepix3
 ASICs~\cite{Timepix3Poikela} bump bonded to $300\,\micron$ thick
-p-in-n planar sensors as shown in \cref{fig:TPX3Telescope}. The planes
-are rotated by $9\degrees$ around the x axis (perpendicular to the
-beam axis) and the z axis (parallel to the beam axis)
-\cite{Akiba:2013yxa}. Given the pixel pitch and the sensor thickness,
-this angle mainly leads to clusters of three-hit pixels. Combining the
-TOT information, the reconstructed hit position provides sub-pixel
-resolution. A tracking resolution of $\sim$$2\,\micron$
-on the DUT can be obtained.
+p-in-n planar sensors as shown in \cref{fig:TPX3Telescope}. The
+sensors are depleted at a voltage of 30~V and a bias voltage of 50~V
+is applied. The Timepix3 readout chip threshold is set to $\sim1000$
+electrons. The planes are rotated by $9\degrees$ around the x axis
+(perpendicular to the beam axis) and the z axis (parallel to the beam
+axis) \cite{Akiba:2013yxa}. Given the pixel pitch and the sensor
+thickness, this angle mainly leads to clusters of three-hit
+pixels. Combining the TOT information, the reconstructed hit position
+provides sub-pixel resolution. A tracking resolution of
+$\sim$$2\,\micron$ on the DUT can be obtained.
 
 
 \begin{figure}[htbp]
@@ -97,8 +101,8 @@ the material (with their thicknesses and radiation lengths) seen by
 the particles for each telescope plane which contributes to the
 multiple scatterings. The PCB stacks up eight layers of copper
 interlacing with Isola IS410 type material with an average fill factor
-of $75\%$ for copper. Behind the PCB a layer of Copper is used for the
-cooling of the chip. The total material of a telescope plane is
+of $75\%$ for copper. Behind the PCB, a layer of Copper is used for
+the cooling of the chip. The total material of a telescope plane is
 estimated to correspond to $\sim4\%$~X\textsubscript{0}.
 
 \begin{table}[htbp]
@@ -129,7 +133,8 @@ is used for the data acquisition of the Timepix3 telescope planes. The
 Timepix3 readout ASICs are operated with the data-driven
 zero-suppressed readout mode. This system allows to record the data
 from all the particles from the SPS spill without dead time. The data
-is processed offline as described in \cref{sec:recoSoft}.
+is processed offline using the EUTelescope framework as described in
+\cref{sec:recoSoft}.
 
 
 %% --------------------------------------------- %%
@@ -148,7 +153,8 @@ position with the reconstructed track or hit positions.
 In the simulations, the geometry of the telescope is defined as
 realistic as possible by taking into account the positions and the
 rotations of the telescope planes, the thickness of the sensors and
-the pixel pitch. 
+the pixel pitch. \cref{fig:Timepix3Telescope_Allpix} shows the
+geometry of the telescope as implemented in AllPix.
 
 The mechanical support for the telescope planes is implemented using
 the material as described in \cref{tab:TPX3TelescopeMaterial}.
@@ -199,8 +205,9 @@ the material as described in \cref{tab:TPX3TelescopeMaterial}.
   \caption{The Timepix3 beam reference telescope implemented in AllPix
     with six planes for the tracking and the DUT in the middle
     inserted perpendicular to the beam direction. The sensor covers
-    and the chip cooling are shown. The telescope planes numbering
-    convention is also shown.}
+    and the chip cooling are illustrated in black and yellow
+    respectively. The telescope planes numbering convention is also
+    shown in this figure.}
   \label{fig:Timepix3Telescope_Allpix}
 \end{figure}
 
@@ -241,15 +248,16 @@ and the DUT.
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/Telescope/MC_trackAnglePhi_planes_302_50.pdf}
-    \caption{}
+    \caption{Track angle in $\phi$}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/Telescope/MC_trackAngleTheta_planes_302_50.pdf}
-    \caption{}
+    \caption{Track angle in $\theta$}
   \end{subfigure}
   \caption{Track angular distribution in \textsc{Geant4} simulations
-    comparing the global MC positions on the telescope plane 2 and on
-    the DUT.}
+    due to multiple scatterings between the telescope plane 2 and the
+    DUT obtained by comparing the global MC positions on the both
+    planes.}
   \label{fig:MCbeamAngleDistr}
 \end{figure}
 
@@ -262,25 +270,25 @@ based on a $\chi^2$-minimisation method as described in
 %% --------------------------------------------- %%
 \subsection{Single-hit resolution on the telescope planes}
 
-\cref{tab:AllPixTelescopePlanesParams} shows the parameters used for
-the AllPix simulations of the sensors of the telescope planes. The
-bias and the depletion voltages, the sensor type and the threshold
-values are the parameters defining the charge sharing and the cluster
-size distribution. Therefore they define the intrinsic resolution of
-the sensors.
+The parameters as described in \cref{sec:Telescope_sensors_mechanics}
+are used for the AllPix simulations of the sensors of the telescope
+planes. The bias and the depletion voltages, the sensor type and the
+threshold values are the parameters defining the charge sharing and
+the cluster size distribution. Therefore they define the intrinsic
+resolution of the sensors.
 
-\begin{table}[htbp]
-  \centering
-  \caption{Parameters used for the simulation of the telescope planes in AllPix.}
-  \label{tab:AllPixTelescopePlanesParams}
-  \begin{tabular}{cccc}
-    \toprule
-    Bias voltage [V] & Depletion voltage [V] & Sensor type & Threshold [e-] \\
-    \midrule
-    50 & 30 & p-in-n & 1000 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+% \begin{table}[htbp]
+%   \centering
+%   \caption{Parameters used for the simulation of the telescope planes in AllPix.}
+%   \label{tab:AllPixTelescopePlanesParams}
+%   \begin{tabular}{cccc}
+%     \toprule
+%     Bias voltage [V] & Depletion voltage [V] & Sensor type & Threshold [e-] \\
+%     \midrule
+%     50 & 30 & p-in-n & 1000 \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
 
 
 \cref{fig:TelescopeCluSize_data_simu} compares the cluster size
@@ -288,7 +296,8 @@ distribution and the charge of the clusters in data and simulations
 for the first telescope plane (plane 0). There is a good agreement
 between the cluster-size distributions in data and simulations. In
 data, there is less single-pixel clusters due to slight imperfections
-in the rotations of the planes.
+in the rotations of the planes while placing the telescope whereas the
+simulation assumes a perfect placement of the telescope planes.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.3\textwidth}
@@ -380,7 +389,25 @@ between the measured hit and the biased fitted track position. It
 determines the precision with which the track is reconstructed and
 depends on the hit resolution of the telescope sensors, the number of
 measurements and their positions and finally on the amount of multiple
-scattering.
+scattering. 
+
+The biased residual width for tracks at all positions $z=z_i$ is the
+distance between the reconstructed hit and the biased track fit and
+defined as~\cite{Jansen:2016bkd}:
+
+\begin{equation}
+r_b^2(z)=\sigma_{int}^2(z)-\sigma_{t,b}^2(z) \; , 
+\end{equation}
+
+where $\sigma_{int}$ is the intrinsic resolution of sensors and
+$\sigma_{t,b}$ is the biased track resolution. $\sigma_{t,b}$
+determines the precision with which the particle trajectory is defined
+with a biased track. For the inner planes of the telescope, since more
+measurement points are available, $\sigma_{t,b}$ decreases which leads
+to higher values for the biased residuals. Whereas, for outer planes
+where less measurement points are available (planes 0 and 6),
+$\sigma_{t,b}$ gets worse (increases) and gets closer to the intrinsic
+resolution of the sensors.
 
 \cref{fig:telescopeBiasedRMS_data_simu} compares the RMS of the biased
 residuals in data and simulations (the original distributions are
@@ -432,10 +459,6 @@ and the amount of the multiple scatterings in the simulation are close
 to reality and the simulation can be used to get a good estimation of
 the tracking resolution on the DUT.
 
-The width of the biased residuals increases with the distance (in z
-direction). In fact, the uncertainty on the deflection angle due to
-the multiple scatterings increases with larger distances of the
-telescope planes.
 
 
 
@@ -514,3 +537,8 @@ precisely measure the resolution of thin sensors.
     \bottomrule
   \end{tabular}
 \end{table}
+
+
+%% --------------------------------------------- %%
+\section{Summary}
+\label{sec:Summary_Telescope}

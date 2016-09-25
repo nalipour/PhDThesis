@@ -205,15 +205,15 @@ the simulation scenario and also the particle tracks in the detectors.
 \textsc{Geant4}, for each simulation step (\texttt{G4Step}) through
 the matter, provides the energy deposited in the sensitive
 material. The step length can be customised. For thin sensors
-simulations a step of $2\,\micron$ is selected and provides a precise
+simulations, a step of $2\,\micron$ is selected and provides a precise
 energy deposition. The semiconductor physics in a Silicon detector is
 then defined in the digitiser. The drift and diffusion are performed
 at each step (using \cref{eq:sigmaDiffusion}) to simulate the
-electron-hole pair movement in the electric and magnetic fields. The
-digitiser also defines the parameters of the readout chip. The
-electronic noise is added and the chip threshold are applied to the
-hits. The hit energy is converted to the digital value TOT
-(time-over-threshold) using the readout ASICs calibrations.
+electron-hole pair movement in the electric field. The digitiser also
+defines the parameters of the readout chip. The electronic noise is
+added and the chip threshold are applied to the hits. The hit energy
+is converted to the digital value TOT (time-over-threshold) using the
+readout ASICs calibrations.
 
 \cref{fig:digitisation} schematically illustrates the digitisation in
 a sensor. Each \textsc{Geant4} step is shown in a circle. At each
