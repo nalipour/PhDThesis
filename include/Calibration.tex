@@ -12,8 +12,8 @@ height=4em]
 One of the key components of the detector systems is the readout
 electronics. Each experiment, depending on the requirements, has its
 own specific electronics. But the basic principles of the electronics
-and optimisations of the signal-to-noise remain similar for different
-applications.
+and optimisations of the signal-to-noise ratio remain similar for
+different applications.
 
 In this chapter, we will review the basic principles and requirements
 of the Timepix3 hybrid pixel readout chip which is used to study thin
@@ -42,15 +42,15 @@ The Timepix~\cite{art:tmpx,Timepix3Poikela} hybrid pixel detector
 readout chip family, designed by the Medipix
 collaboration~\cite{medipixCollaboration}, is a general purpose
 front-end electronics and can measure precisely the energy deposited
-in the sensor and also provides accurate timing information. This chip
-is used in a wide range of applications such as high energy physics
-and medical imaging. The Timepix3 ASICs are deployed for the CLIC
-vertex detector R\&D to study the feasibility of thin sensors and also
-active-edge sensors as described in the coming chapters.
+in the sensor and also provides accurate timing information. These
+chips is used in a wide range of applications such as high energy
+physics and medical imaging. The Timepix3 ASIC is deployed for the
+CLIC vertex detector R\&D to study the feasibility of thin sensors and
+also active-edge sensors as described in the coming chapters.
 
 \cref{fig:detectorFunctions} schematically shows the basic signal flow
-in a Timepix3-like hybrid pixel detector. Both analogue and
-digital circuitry are combined. 
+in a Timepix3-like hybrid pixel detector. Both analogue and digital
+circuitry are combined for signal processing.
 
 The incident radiation deposits energy in the sensor and it is
 converted to an electrical signal. A high rate of particles can be
@@ -60,11 +60,15 @@ small and subject to statistical fluctuations
 (c.f.~\cref{sec:chargeInSi}), a charge sensitive preamplifier is
 needed to amplify the signal. The preamplifier should be designed in a
 way to minimise the electronic noise. The sensor capacitance and the
-input capacitance of the amplifier are the critical parameters to
-increase the signal-to-noise ratio (SNR): the lower the capacitance,
-the higher the SNR. The amplification is done with a tunable discharge
-current of the Krummenacher amplifier architecture
-(I\textsubscript{krum})~\cite{KRUMMENACHER1991527}.
+input capacitance of the amplifier play a critical role in the
+optimisation of the signal-to-noise ratio (SNR): the lower the
+capacitance, the higher the SNR.
+
+The preamplifier is implemented as a Krummenacher
+topology~\cite{KRUMMENACHER1991527}, where the return to the baseline
+of the amplified signal is done with a tunable current
+(I\textsubscript{krum}). The higher I\textsubscript{krum}, the faster
+the return or, in another words, the shorter the pulse.
 
 After the preamplifier, the pulse shaper is responsible for the
 improvement of the SNR. It modifies the frequency response of the
@@ -72,17 +76,20 @@ signal to improve the signal and attenuate the noise. Since this
 operation reduces the bandwidth of the signal, the duration of the
 pulse will increase. As a detector must cope with a high rate of
 pulses, the width of the pulse must be optimised in a way to reduce
-the pile-up. I\textsubscript{krum} affects the slope of the pulse
-discharge after shaping: the higher its value, the shorter the pulse.
+the pile-up. The analog processing chain of the Timepix readout chips
+family is somehow simplified and does not include an explicit pulse
+shaper. The pulse shaping is embedded in the preamplifier, which
+outputs a triangular-like pulse shape where the rising edge is imposed
+by the time response of the preamplifier and the falling edge dictated
+by the I\textsubscript{krum} current.
 
 The discriminator is used to compare the signal level to a
 threshold (a voltage) and to discriminate a signal from a background
 noise. Both polarities (electrons and holes collection) are accepted
 by the front end.
 
-The digital part of the readout chip converts a continuously varying
-amplitude to discrete steps using different counters. When the pulse
-height passes the threshold in the discriminator, counters are
+When the pulse height passes the threshold in the discriminator,
+different counters in the digital part of the readout chip are
 incremented to measure the energy and the timing of the signal.
 
 \begin{figure}[htbp]
@@ -112,9 +119,12 @@ incremented to measure the energy and the timing of the signal.
       node[below,below] (bracket) {Analogue}
       (discr.south);
 
-      \draw[decorate,decoration={brace, mirror}, thick] (conv.south west) to
-      node[below,below] (bracket) {Digital}
-      (conv.south east);
+      \draw[decorate,decoration={brace, mirror}, thick] (conv.south
+      west) to node[below,below] (bracket) {Digital} (conv.south
+      east);
+
+      \draw[decorate,decoration={brace}, thick] (preamp.north) to
+      node[above, above] (bracket) {Readout chip} (conv.north);
 
     \end{scope}
   \end{tikzpicture}
@@ -155,10 +165,10 @@ small signals.
     Measurement Modes & 10 bit TOT and 18 bit TOA \\
                 & 18 bit TOA only \\
                 & 10 bit PC and 14 bit integral TOT \\
-    Clock speed & up to 40~\megahertz for TOT and general TOA \\
+    Clock speed & Up to 40~\megahertz for TOT and general TOA \\
                 & 640~\megahertz for FTOA \\
     Readout Type & Data driven \\
-                & frame based \\
+                & Frame based \\
     Electronic Noise (without sensor) & $<70$ e\textsuperscript{-} RMS\\
     \bottomrule
   \end{tabular}
@@ -168,10 +178,10 @@ small signals.
 \cref{fig:TOT_TOA_concept} schematically shows the energy and the
 timing measurements of the signal. The Time-over-threshold (TOT)
 allows for the measurement of the energy deposited in a pixel. The
-pulse is amplified and the pulse shaper integrates the signal to form
-a step pulse with a long approximately linear decay. The time above
-the programmable threshold is proportional to the energy deposited and
-during this time, the TOT counter is incremented.
+sensor pulse is amplified to form a triangular-like pulse with a long
+approximately linear decay. The time above the programmable threshold
+is proportional to the energy deposited and during this time, the TOT
+counter is incremented.
 
 The Time-of-Arrival (TOA) measures the arrival time of a hit and
 therefore is used as a time stamping of the hits. When the amplifier
@@ -335,23 +345,25 @@ electronic noise.
 
 
 In semiconductor electronics, manufacturing imperfections cause
-variations in the performance within the device. The programmable
-global threshold of the chip is one of the most affected
-parameters. In fact, the global threshold is programmed through a
-programmable DAC (Digital-to-Analogue) and is translated to the voltage
-applied at the discriminator. The signal level is compared to this
-voltage. For the same global threshold value, the voltage on the
-discriminator can vary highly from one pixel to another. To overcome
-this dispersion, a 4-bit local threshold adjustment is applied to each
-pixel in order to make a uniform global threshold. The photon counting
-mode is then employed. The equalisation consists of adjusting this
-local threshold. First it is set to its minimum value (mask 0000). The
-global threshold DAC (THL) is scanned and the number of pixels
-responding are counted. Then the adjustment bit is set to its maximum
-value (mask 1111) and THL is scanned again. For each pixel, the
-operation range is thus known. Assuming a linear relationship between
-the two points, the adjustment threshold is adjusted in such a way
-that the global threshold will remain uniform across the matrix.
+variations in the performance of the devices within the same chip. In
+this regard, the programmable global threshold of the chip is one of
+the most affected parameters. 
+
+A global threshold voltage generated by a programmable DAC
+(Digital-to-Analogue Converter) in the periphery of the chip is
+applied to the all the pixel discriminators. But, in reality, the
+effective threshold of each discriminator varies highly from one pixel
+to another. To overcome this dispersion, a 4-bit local threshold
+adjustment is applied to each pixel in order to make a uniform global
+threshold. The photon counting mode is then employed. The equalisation
+consists of adjusting this local threshold. First it is set to its
+minimum value (mask 0000). The global threshold DAC (THL) is scanned
+and the number of pixels responding are counted. Then the adjustment
+bits are set to their maximum value (mask 1111) and THL is scanned
+again. For each pixel, the operation range is thus known. Assuming a
+linear relationship between the two points, the adjustment threshold
+is adjusted in such a way that the global threshold will remain
+uniform across the matrix.
 
 \cref{fig:THLequalisation} shows the threshold equalisation for the
 assembly W2\_J5. After equalisation the response of the chip becomes
@@ -388,8 +400,8 @@ The second method consists of the use of an internal analogue test
 pulse generator. The Timepix3 readout ASICs provide an internal test
 pulse generator which can be used for calibration as well as
 equalisation of the readout chip. In each pixel, a capacitor allows
-for injecting a charge by applying a voltage over it. The injected
-charge is given by:
+for injecting a charge by applying a voltage step over it. The
+injected charge is given by:
 
 \begin{equation}
   Q = C \cdot \Delta V \; ,
@@ -397,12 +409,12 @@ charge is given by:
 \end{equation}
 
 where Q is the injected charge, C the injection capacitance and
-$\Delta V$ the voltage applied. A priori, the injection capacitance is
-roughly known and its value varies from pixel to pixel, but its value
-can be measured. For the Timepix3 readout chip a capacitance of
-$20.2$~e\textsuperscript{-}/mV is a good approximation (its value can
-be estimated more precisely for each chip by using radioactive source
-measurements).
+$\Delta V$ the voltage difference applied. A priori, the injection
+capacitance is roughly known and its value varies from pixel to pixel,
+but its value can be estimated. For the Timepix3 readout chip a
+capacitance of $20.2$~e\textsuperscript{-}/mV (or about 3.2~fF) is a
+good approximation (its value can be estimated more precisely for each
+chip by using radioactive source measurements).
 
 In \cref{fig:detectorFunctions}, the injection capacitance replaces
 the sensor. For the calibration if the chip is bump-bonded to a
@@ -442,10 +454,10 @@ and the boundary between low energy (non-linear response) and high
 energy (linear response) depend on the clock frequency, the threshold
 and the I\textsubscript{krum} value.
 
-For the calibration of the assemblies, the Timepix3 ASICs is operated
+For the calibration of the assemblies, the Timepix3 ASICs are operated
 in the TOT mode and the test-pulse injection is used
 (\cref{eq:testpulseCharge}). Test pulses with heights ranging from
-$0\,\mv$ to $800\,\mv$ (corresponding to 0 electrons to 14000
+$0\,\mv$ to $800\,\mv$ (corresponding to 0 electrons to 16000
 electrons) are sent to each pixel. For each pulse height, 100
 test-pulses are sent. The sum of the TOTs and also the sum of the
 squared of the TOTs for each pulse height is recorded. The mean of the
@@ -641,8 +653,8 @@ number of electrons for all the assemblies listed in
 
 For further verification of these results, the Timepix3 DAC step gain
 for each assembly is calculated to be around
-11~$\pm$e\textsuperscript{-}/step, in agreement
-with~\cite{Timepix3Poikela}. 
+$\pm11$~e\textsuperscript{-}/step, in agreement
+with~\cite{Timepix3Poikela}.
 
 Without any test-pulse injection, the threshold scan results in a
 Gaussian distribution. The mean of the Gaussian distribution defines
