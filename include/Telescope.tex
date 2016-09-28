@@ -324,16 +324,16 @@ reconstructed hit position with the Monte Carlo Truth position
 (x\textsubscript{MC} and y\textsubscript{MC}) obtained by AllPix
 simulations. \cref{fig:TelPlane0_MC_hit} shows the hit residuals of
 the first telescope plane in x and y directions in simulations which
-depend on their thickness, charge sharing and rotations. The standard
-deviation of a Gaussian fit on the residuals distributions gives a
-resolution of $\sim2.6\,\micron$. Since the residual distribution has
-a tail, the RMS of the distribution is $\sim5.8\,\micron$. The
-expected resolution of each telescope plane is expected to be
-$\sim3.5$. The large tail in the residuals distribution causes the
-discrepancy between the expected and the obtained resolution. The tail
+depend on their thickness, charge sharing and rotations. The hit
+resolution is also considered as the intrinsic resolution of the
+sensors. The standard deviation of a Gaussian fit on the center
+$95.5\%$ of the residuals distribution gives a resolution of
+$\sim2.7\,\micron$. Since the residual distribution has a large tail,
+the RMS of the distribution higher and is $\sim5.4\,\micron$. The tail
 in the residuals distribution is due to the reconstruction of the hit
 positions of single-pixel clusters where the resolution is defined by
-the pixel pitch.
+the pixel pitch and the charge sharing can not be used to improved the
+reconstructed position.
 
 % For this calculation, hits corresponding to tracks with the $10\%$ of
 % highest $\chi^2$/NDF are ignored.
@@ -391,16 +391,16 @@ depends on the hit resolution of the telescope sensors, the number of
 measurements and their positions and finally on the amount of multiple
 scattering. 
 
-The biased residual width for tracks at all positions $z=z_i$ is the
-distance between the reconstructed hit and the biased track fit and
-defined as~\cite{Jansen:2016bkd}:
+The biased residual width $r_b^2(z)$, for tracks at all positions
+$z=z_i$, is the distance between the reconstructed hit and the biased
+track fit and defined as~\cite{Jansen:2016bkd}:
 
 \begin{equation}
 r_b^2(z)=\sigma_{int}^2(z)-\sigma_{t,b}^2(z) \; , 
 \end{equation}
 
-where $\sigma_{int}$ is the intrinsic resolution of sensors and
-$\sigma_{t,b}$ is the biased track resolution. $\sigma_{t,b}$
+where $\sigma_{int}$ is the intrinsic (or hit) resolution of sensors
+and $\sigma_{t,b}$ is the biased track resolution. $\sigma_{t,b}$
 determines the precision with which the particle trajectory is defined
 with a biased track. For the inner planes of the telescope, since more
 measurement points are available, $\sigma_{t,b}$ decreases which leads
@@ -409,17 +409,39 @@ where less measurement points are available (planes 0 and 6),
 $\sigma_{t,b}$ gets worse (increases) and gets closer to the intrinsic
 resolution of the sensors.
 
+The biased residuals depend highly on the quality of the tracks. The
+tracks with high $\chi^2$/NDF go through more multiple scatterings and
+therefore contribute to the tails of the biased residuals. For the
+in-pixel analysis done in \cref{ch:ThinSensorsStudies}, the tracks
+with a $\chi^2$/NDF higher than 100 are discarded.
+
+\cref{fig:chi2_data_simu} shows the $\chi^2$/NDF distributions in data
+(a) and in simulations (b) with the cut at 100 on the $\chi^2$/NDF as
+illustrated with a red line.
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/chi2_run661.pdf}
+    \caption{Data}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/chi2_run77.pdf}
+    \caption{Simulation}
+  \end{subfigure}
+  \caption{$\chi^2$/NDF distributions for (a) data and (b)
+    simulation. A cut is applied to discard the tracks with
+    $\chi^2$/NDF higher than 100 (illustrated with the red line).}
+  \label{fig:chi2_data_simu}
+\end{figure}
+
 \cref{fig:telescopeBiasedRMS_data_simu} compares the RMS of the biased
 residuals in data and simulations (the original distributions are
 given in
 \cref{fig:telescope_biasedResiduals_data_X,fig:telescope_biasedResiduals_data_Y}
 for data and
 \cref{fig:telescope_biasedResiduals_simu_X,fig:telescope_biasedResiduals_simu_Y}
-for simulation). For this calculation, a cut is applied to discard
-$10\%$ of tracks with the highest
-$\chi^2$/NDF. \cref{fig:chi2_data_simu} shows the $\chi^2$/NDF
-distributions in data (a) and in simulations (b) with the cut on the
-$\chi^2$/NDF as illustrated with a red line.
+for simulation). For this calculation, a cut is applied the tracks
+with $\chi^2$/NDF higher than 100 are discarded.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -432,32 +454,17 @@ $\chi^2$/NDF as illustrated with a red line.
   \end{subfigure}
   \caption{The RMS of the biased residuals in the (a) x and (b) y
     directions comparing the data and simulation for the telescope
-    planes. A cut is applied to remove $10\%$ of the tracks with the
-    highest $\chi^2$/NDF.}
+    planes. A cut is applied to discard the tracks with $\chi^2$/NDF
+    higher than 100.}
   \label{fig:telescopeBiasedRMS_data_simu}
 \end{figure}
 
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/chi2_run661.pdf}
-    \caption{Data}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/Telescope/biasedResiduals/chi2_run77.pdf}
-    \caption{Simulation}
-  \end{subfigure}
-  \caption{$\chi^2$/NDF distributions for (a) data and (b)
-    simulation. A cut is applied to remove the $10\%$ of tracks with
-    highest $\chi^2$/NDF (illustrated with the red line).}
-  \label{fig:chi2_data_simu}
-\end{figure}
-
-The simulation is in good agreement with data in terms of biased
-residuals. This means that the hit resolution of the telescope planes
-and the amount of the multiple scatterings in the simulation are close
-to reality and the simulation can be used to get a good estimation of
-the tracking resolution on the DUT.
+As expected, the inner planes show a higher biased resolution than the
+outer ones. The simulation is in good agreement with data in terms of
+biased residuals. This means that the hit resolution of the telescope
+planes and the amount of the multiple scatterings in the simulation
+are close to reality and the simulation can be used to get a good
+estimation of the tracking resolution on the DUT.
 
 
 
@@ -488,14 +495,20 @@ applied for the track selection.
 
 The tracking resolution on the DUT as a function of the
 x\textsubscript{MC} and y\textsubscript{MC} positions is shown in
-\cref{fig:DUT_MC_track_2D}. In the y-direction, the residuals show a
-shift of $\sim1\,\micron$. This can be explained to the fact that in
-the y-direction, the three planes before the DUT are rotated in an
-asymmetric way compared to the three other planes after the DUT in the
-Timepix3 telescope. 
+\cref{fig:DUT_MC_track_2D}. The standard deviation of the
+distributions is less than $2\,\micron$ when fitted by a Gaussian on
+the $95.5\%$ of the residual distribution. The RMS of the residuals is
+slightly higher than $2\,\micron$ and this is due to the tails of the
+distribution. A more strict cut on the $\chi^2$/NDF discards tracks in
+the tails and reduces the RMS of the distribution.
 
-The standard deviation of the distributions is less than $2\,\micron$
-which allows for in-pixel studies.
+In the y-direction, the residuals show a shift of
+$\sim1\,\micron$. This can be explained to the fact that in the
+y-direction, the three planes before the DUT are rotated in an
+asymmetric way compared to the three other planes after the DUT in the
+Timepix3 telescope and can be corrected while aligning the DUT.
+
+
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -515,30 +528,29 @@ which allows for in-pixel studies.
 
 
 %% --------------------------------------------- %%
-\cref{tab:SummaryOfResolutions} summarises the telescope performance
-obtained in the simulations. The simulations confirm that the Timepix3
-telescope allows for a high resolution track reconstruction on the DUT
-($\sim2\,\micron$) as expected by~\cite{Akiba:2013yxa}. This telescope
-is adapted for in-pixel studies and testing the DUTs with high
-resolution constraints as expected for CLIC.
+\section{Summary}
+\label{sec:Summary_Telescope}
 
-In \cref{ch:ThinSensorsStudies} the Timepix3 telescope is used to
-precisely measure the resolution of thin sensors.
+The simulations confirm that the Timepix3 telescope allows for a high
+resolution track reconstruction on the DUT ($\sim2\,\micron$) as
+expected by~\cite{Akiba:2013yxa}. This telescope is adapted for
+in-pixel studies and testing the DUTs with high resolution constraints
+as expected for CLIC. In \cref{ch:ThinSensorsStudies} the Timepix3
+telescope is used to precisely measure the resolution of thin sensors.
 
-\begin{table}[htbp]
-  \centering
-  \caption{A summary of the measured telescope performance.}
-  \label{tab:SummaryOfResolutions}
-  \begin{tabular}{ccc}
-    \toprule
-    $\sigma$\textsubscript{int} [$\micron$] & $\sigma$\textsubscript{x,DUT} [$\micron$] & $\sigma$\textsubscript{y,DUT} [$\micron$]\\
-    \midrule
-    2.6 & 1.94 & 1.80 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+%% \begin{table}[htbp]
+%%   \centering
+%%   \caption{A summary of the measured telescope performance.}
+%%   \label{tab:SummaryOfResolutions}
+%%   \begin{tabular}{ccc}
+%%     \toprule
+%%     $\sigma$\textsubscript{int} [$\micron$] & $\sigma$\textsubscript{x,DUT} [$\micron$] & $\sigma$\textsubscript{y,DUT} [$\micron$]\\
+%%     \midrule
+%%     2.6 & 1.94 & 1.80 \\
+%%     \bottomrule
+%%   \end{tabular}
+%% \end{table}
 
 
 %% --------------------------------------------- %%
-\section{Summary}
-\label{sec:Summary_Telescope}
+
