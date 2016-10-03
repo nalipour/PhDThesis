@@ -4,14 +4,15 @@
 % ============================================================================== 
 
 The energy loss due to the synchrotron radiation in a circular
-accelerator limits the center-of-mass energy $\sqrt{s}$ reached by
-electron beams. The energy loss is inversely proportional to the
-bending radius of the accelerator and the particle mass. The proposed
-Compact Linear Collider
+accelerator limits the center-of-mass energy $\sqrt{s}$ reached with
+electron beams. The synchrotron power loss is inversely proportional
+to the square of the bending radius of the accelerator and the forth
+power of the particle mass. The proposed Compact Linear Collider
 (CLIC)~\cite{Aicheler:1500095,Linssen:1425915}, as a future linear
 particle collider for electrons (e$^-$) and positrons (e$^+$), can
-avoid synchrotron radiation losses and attain higher center-of-mass
-energies than the Large Electron-Positron Collider (LEP).
+avoid synchrotron radiation losses and therefore attain higher
+center-of-mass energies than the Large Electron-Positron Collider
+(LEP).
 
 Today, the Large Hadron Collider (LHC) is the largest particle
 accelerator being able to collide two opposing particle beams of
@@ -30,7 +31,7 @@ accelerator, detector and its components are described. The focus is
 put on the vertex detector, its requirements and its flavour-tagging
 performance.
 
-\section{Physics potential at CLIC} 
+\section{Physics potential of CLIC}
 
 In particle physics, the Standard Model (SM) is a theoretical
 framework that describes how the interaction between elementary
@@ -59,16 +60,16 @@ in 2012 by the LHC experiments.
 The weak and the electromagnetic forces are closely related to each
 other and can be unified as the \begin{it}electroweak\end{it} force
 and the equations describing the unification predict the
-force-carrying particles (the photon, the W and Z bosons). The only
-problem is that all the force-carrying particles are described as
-being massless which is true for the photon, but the W and Z bosons
-have a mass about 100 times larger than that of the proton. To solve
-this problem, the Brout-Englert-Higgs mechanism was introduced which
-suggests that the Higgs boson gives the mass to the W and Z boson by
-interaction with a Higgs field.
+force-carrying particles (the photon, the W and Z bosons). All
+force-carrying particles are described as being massless which is true
+for the photon, but the W and Z bosons have a mass about 100 times
+larger than that of the proton. To solve this problem, the
+Brout-Englert-Higgs mechanism was introduced which suggests that the
+Higgs boson gives the mass to the W and Z boson by interaction with a
+Higgs field.
 
-The Higgs particle can be produced in a particle collider by the
-collision between highly energetic particles. Heavy particles, like
+The Higgs particle can be produced in a particle collider by
+collisions between highly energetic particles. Heavy particles, like
 the Higgs boson, are occasionally produced and then detected by a
 particle detector. The Standard Model predicts different mechanisms to
 produce the Higgs boson and the probability to produce it is very
@@ -76,11 +77,11 @@ small. For example, in LHC only 1 Higgs boson is produced per 10
 billion collisions.
 
 An electron-positron collider allows to perform precision measurements
-by colliding beams made of elementary particles. In fact, with
-elementary particles, the center-of-mass energy and the polarisation
-of the colliding particles can be selected precisely. Unlike
-proton-proton collisions at the LHC experiments, there is no
-underlying event from proton remnants.
+by colliding beams made of elementary particles. With elementary
+particles, the center-of-mass energy and the polarisation of the
+colliding particles can be selected precisely. Unlike proton-proton
+collisions at the LHC experiments, there is no underlying event from
+proton remnants.
 
 
 CLIC is foreseen to be built and operated in three stages with
@@ -115,9 +116,35 @@ to new physics, the double-Higgs production allowing for improving the
 measurements of the Higgs self-coupling and HHWW quartic
 coupling. \cref{fig:HiggsProductionMechanisms} shows different
 mechanisms to produce the Higgs boson at CLIC.
+
 \begin{figure}[htbp]
   \centering
-  \includegraphics[page=43, trim=30mm 235mm 10mm 30mm, clip, width=0.7\textwidth]{figures/CLIC/clicCDR.pdf}
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at
+    (0,0){\includegraphics[page=43, trim=30mm 235mm 25mm 30mm, clip,
+      width=\textwidth]{figures/CLIC/clicCDR.pdf}};
+    
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+      
+      \node[below, color=black] at (0.1, 0.1)
+      {e\textsuperscript{+}e\textsuperscript{-}$\rightarrow$ZH};
+
+      \node[below, color=black] at (0.4, 0.1)
+      {e\textsuperscript{+}e\textsuperscript{-}$\rightarrow$H$\nu_{e}\bar{\nu_{e}}$};
+
+      \node[below, color=black] at (0.6, 0.1)
+      {e\textsuperscript{+}e\textsuperscript{-}$\rightarrow$t\={t}H};
+
+      \node[below, color=black] at (0.87, 0.1)
+      {e\textsuperscript{+}e\textsuperscript{-}$\rightarrow$ZHH};
+      
+      % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+      % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+      % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+      
+    \end{scope}
+    
+  \end{tikzpicture}
   \caption{Standard Model Higgs boson production mechanisms at
     CLIC~\cite{Linssen:1425915}.}
   \label{fig:HiggsProductionMechanisms}
@@ -140,7 +167,7 @@ H$\nu_{e}\bar{\nu_{e}}$ mechanism dominates.
   \label{fig:corssSectionH125}
 \end{figure}
 
-\section{Two-beam acceleration scheme}
+\section{The CLIC accelerator}
 
 The schematic layout of the CLIC accelerator complex at
 $\sqrt{s}=3\,\tev$ is shown in \cref{fig:CLIC_accelerator}. The
@@ -167,9 +194,8 @@ frequency (RF) power with a frequency of $12\,\gigahertz$ to generate
 the high accelerating field. This lead to a total RF peak power of
 9.2~TW for both linacs. Since maintaining such high power levels is
 not possible for very long, the duration of the bunch train is limited
-to 156~ns long with a repetition frequency of 50~Hz. The feeding RF
-pulse is 244~ns (with a longer duration than the bunch train) since it
-takes into account the filling time of the acceleration structures.
+to 156~ns long with a repetition frequency of 50~Hz.
+
 
 Klystrons are foreseen to provide the RF power used by the
 acceleration cavities. The klystrons are not directly used to
@@ -180,20 +206,18 @@ with a low energy of $2.4\,\gev$ and a high current of 100~A is used
 to transfer the energy of the klystrons to the main beam which has a
 lower current and higher energy. The drive beam is decelerated over a
 distance of 878~m and the extracted energy is provided to the main
-beam with a series of Power Extraction and Transfer Systems (PETS).
+beam with a series of Power Extraction and Transfer Structures (PETS).
 
 
 \cref{tab:NominalMachineParams} summarises the nominal beam parameters
 for the $3\,\tev$ CLIC and $13\,\tev$ LHC. An instantaneous luminosity
 $\mathcal{L}$ of a few $10^{34}$~\inversecmsquaredsec insures a
-sufficient amount of statistical samples collected in a reasonable
-amount of time. The instantaneous luminosity depends on the transverse
-beam sizes in x and y directions, the number of bunches per train, the
-train repetition frequency, to name a few parameters among others. The
-RF pulse duration limits the number of bunches and the bunch-crossing
+sufficient amount of data collected in a reasonable amount of
+time. The beam sizes at the interaction point have to be extremely
+small in order to achieve the desired luminosity. The RF pulse
+duration limits the number of bunches and the bunch-crossing
 separation. CLIC and LHC have similar luminosity despite the
-differences in beam parameters. At CLIC, the high luminosity is
-achieved with the very small bunch sizes.
+differences in beam parameters.
 
 \begin{table}[htbp]
   \centering
