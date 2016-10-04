@@ -3,26 +3,27 @@
 \label{ch:CLIC}
 % ============================================================================== 
 
-The energy loss due to the synchrotron radiation in a circular
-accelerator limits the center-of-mass energy $\sqrt{s}$ reached with
-electron beams. The synchrotron power loss is inversely proportional
-to the square of the bending radius of the accelerator and the forth
-power of the particle mass. The proposed Compact Linear Collider
-(CLIC)~\cite{Aicheler:1500095,Linssen:1425915}, as a future linear
-particle collider for electrons (e$^-$) and positrons (e$^+$), can
-avoid synchrotron radiation losses and therefore attain higher
-center-of-mass energies than the Large Electron-Positron Collider
-(LEP).
-
 Today, the Large Hadron Collider (LHC) is the largest particle
 accelerator being able to collide two opposing particle beams of
 protons with a center-of-mass energy up to $13\,\tev$. So far, the
 main result of the LHC is the observation of the Higgs boson and the
 determination of its mass in 2012. However, the experiments at the LHC
-can not fully answer the questions on the nature of this particle. In
-the post-LHC era, CLIC will allow to determine the properties of the
-Higgs boson with a very high precision. CLIC can measure collisions
-with center-of-mass energies from $380\,\gev$ up to $3\,\tev$.
+can not fully answer the questions on the nature of this particle. A
+lepton collider can provide complementary precision measurements.
+
+However, the energy loss due to the synchrotron radiation in a
+circular accelerator limits the center-of-mass energy $\sqrt{s}$
+reached with electron beams. The synchrotron power loss is inversely
+proportional to the square of the bending radius of the accelerator
+and the forth power of the particle mass. The proposed Compact Linear
+Collider (CLIC)~\cite{Aicheler:1500095,Linssen:1425915}, as a future
+linear particle collider for electrons (e$^-$) and positrons (e$^+$),
+can avoid synchrotron radiation losses and therefore attain higher
+center-of-mass energies than the Large Electron-Positron Collider
+(LEP). In the post-LHC era, CLIC will allow to determine the
+properties of the Higgs boson with a very high precision. CLIC can
+measure collisions with center-of-mass energies from $380\,\gev$ up to
+$3\,\tev$.
 
 In this chapter, we will briefly discuss the standard model of
 particle physics and attempt to understand how CLIC can determine more
@@ -108,12 +109,15 @@ new physics potentially discovered at the $13\,\tev$ LHC.
 
 The first energy stage allows for studying the Standard Model Higgs
 physics and top-quark physics with the possibility to perform a t\={t}
-threshold scan. The second energy stage provides direct sensitivity to
-many physics beyond the SM (BSM) models. With higher Higgs statistics,
-rare decays such as t\={t}H and double Higgs productions can be
-measured. Finally the third energy stage provides the best sensitivity
-to new physics, the double-Higgs production allowing for improving the
-measurements of the Higgs self-coupling and HHWW quartic
+threshold scan. This stage gives the possibility to perform
+model-independent cross-section
+measurements~\cite{Abramowicz:2016zbo}. The second energy stage
+provides direct sensitivity to many physics beyond the SM (BSM)
+models. With higher Higgs statistics, rare decays such as t\={t}H and
+double Higgs productions can be measured. Finally the third energy
+stage provides the best sensitivity to new physics, the double-Higgs
+production allowing for improving the measurements of the Higgs
+self-coupling and HHWW quartic
 coupling. \cref{fig:HiggsProductionMechanisms} shows different
 mechanisms to produce the Higgs boson at CLIC.
 
@@ -166,6 +170,13 @@ H$\nu_{e}\bar{\nu_{e}}$ mechanism dominates.
     not included~\cite{Felzmann:2157041}.}
   \label{fig:corssSectionH125}
 \end{figure}
+
+Final states with heavy quark flavours are important in many physics
+channels, such as the Higgs and the top. The identification of the
+heavy quarks is performed through the measurement of the displaced
+vertices. The vertex detector has a crucial role in these measurements
+as described in the following chapters.
+
 
 \section{The CLIC accelerator}
 
@@ -239,21 +250,56 @@ differences in beam parameters.
   \end{tabular}
 \end{table}
 
+\subsection{Beam-induced backgrounds}
+\label{sec:beamInducedBackgrounds}
 
+The small beam sizes at CLIC cause strong electromagnetic radiation
+(Beamstrahlung) from the electron and positron bunches in the field of
+the opposite beam. The generation of Beamstrahlung photons leads to
+the reduction of the available centre-of-mass energy $\sqrt{s}$ of the
+e\textsuperscript{+}e\textsuperscript{-} collisions. Their
+interactions produce lepton pairs and hadrons at very low polar angles
+which are mostly contained in the beam-pipe due to the effect of the
+axial magnetic field~\cite{Dannheim:1443516}. In the inner detector
+layers, incoherently produced electron-positron pairs ($\sim60$
+particles per bunch crossing) and $\gamma\gamma\rightarrow$hadrons
+events ($\sim54$ particles per bunch crossing) are the dominant
+backgrounds.
 
-\section{Requirements for the CLIC vertex-detector}
-\label{sec:VXD_requirements}
+The electron-positron pairs produced at low polar angles have very
+small transverse momenta. The occupancies in the innermost layers of
+the detector can be reduced to an acceptable level by optimising the
+inner and forward detector regions. The beam-pipe has to be placed
+outside of the high-rate region. The inner detectors have to be
+shielded from the backscattered particles which originate from the
+forward region.
+
+The $\gamma\gamma\rightarrow$hadrons interactions produce particles
+with a harder transverse momentum spectrum and a more central
+polar-angle distribution. This results in large rates of background
+particles reaching the outer detector layers.
+
+In each train, at most one interesting physics event is expected along
+with $\sim1000$ hadronic background events. Hit time stamping is
+needed in order to separate the physics from the background events.
+
+The exposure to radiation of the main detector elements is expected to
+be small compared to high-energy hadron-colliders.
+
+\section{The CLIC detector}
+\label{sec:CLICdetector}
 
 To cover the CLIC physics potential, a detector concept using
-cutting-edge technology is under development. The physics goals, set
+cutting-edge technology is under development. The physics goals set
 challenging requirements on the design of the detector. Simulation
 tools are crucial for the design, development as well as the
-optimisation of the detector model. 
+optimisation of the detector model.
 
-The experimental conditions due to the beam and backgrounds effect set
-the most demanding requirements at the highest collision
-energy. Therefore, the detector model is focused mainly on the
-$3\,\tev$ CLIC.
+The experimental conditions due to the beam-induced background
+(c.f.~\cref{sec:beamInducedBackgrounds}) set the most demanding
+requirements at the highest collision energy. They are the major
+design constraint for the vertex detector. Therefore, the detector
+model is mainly optimised for the $3\,\tev$ CLIC.
 
 \cref{fig:CLIC_detector_concept} shows the CLIC detector model as
 implemented in simulations. The overall length and height of the
@@ -263,14 +309,18 @@ consists of pixelated silicon detectors. It is followed by the main
 tracker which is as also a silicon-based detector. After the tracking
 systems, fine grained calorimeters are used: the silicon-tungsten
 electromagnetic calorimeter (ECAL) and the hadronic calorimeter
-(HCAL). The ECAL is used for the measurement of the energy of
-particles interacting via the electromagnetic interactions and the
-HCAL for measuring particles interacting via the strong nuclear
-force. The superconducting coil surrounds the calorimeters to provide
+(HCAL). The superconducting coil surrounds the calorimeters to provide
 a magnetic field of 4~T to deflect the trajectory of charged particles
 and the tracking detectors use the radius of curvature to measure the
-momenta of charged particles. Finally the iron yoke surrounds the
-whole detector for the identification of the muons.
+momenta of charged particles. In the very forward region the
+luminosity calorimeter (LumiCal) is used to reconstruct precisely the
+energy and angle of electrons and positrons obtained from Bhabha
+events and employed for the luminosity
+measurements~\cite{Abramowicz:2010bg}. The beam calorimeter (BeamCal)
+is used for electron tagging by the identification of high energy
+electrons~\cite{Abramowicz:2004me}. Finally the iron yoke surrounds
+the whole detector and is instrumented for the identification of
+muons.
 
 
 \begin{figure}[htbp]
@@ -292,24 +342,36 @@ whole detector for the identification of the muons.
       \node[draw, text width=2cm] at (-0.2, 0.5) {Forward region with LumiCal \& BeamCal};
       \draw[->,line width=1pt, color=black](-0.02, 0.45) -- (0.25, 0.49);
 
-      \node[draw, text width=2cm] at (-0.2, 0.2) {Fine grained calorimetry used in Particle Flow (PFA)};
+      \node[draw, text width=2cm] at (-0.2, 0.2) {Fine grained
+        calorimetry optimised for Particle Flow Analysis (PFA)};
       \draw[->,line width=1pt, color=black](-0.02, 0.2) -- (0.3, 0.3);
 
       \node[draw, text width=2cm] at (1.15, 0.15) {Return yoke (Fe) with detectors for muon ID};
       \draw[->,line width=1pt, color=black](1, 0.1) -- (0.8, 0.1);
 
-      \node[draw, text width=2cm] at (1.15, 0.5) {Solenoid magnet: B=4~T};
-      \draw[->,line width=1pt, color=black](1, 0.45) -- (0.7, 0.21);
+      \node[draw, text width=2cm] at (1.15, 0.79) {Solenoid magnet: B=4~T};
+      \draw[->,line width=1pt, color=black](1, 0.79) -- (0.8, 0.79);
       
 
       \node[color=black] at (0.5, 0.05) {11.4~m};
-      \draw[<->,line width=1pt, color=black](0.03, 0.02) -- (0.97, 0.02);
+      \draw[<->,line width=1pt, color=black](0.03, 0.02) -- (0.97,
+      0.02);
+
+      \node[color=black] at (1.1, 0.5) {12.9~m};
+      \draw[<->,line width=1pt, color=black](0.99, 0.01) -- (0.99, 0.99);
+      
+      % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+      % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+      % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
       
     \end{scope}
   \end{tikzpicture} 
   \caption{Schematic layout of the CLIC detector concept.}
   \label{fig:CLIC_detector_concept}
 \end{figure}
+
+\subsection{Requirements for the vertex-detector}
+\label{sec:VXD_requirements}
 
 A broad detector R\&D program at CLIC is addressing the challenging
 experimental conditions and the demands for precision physics. This
@@ -352,35 +414,38 @@ ionising dose of less than 1~kGy are expected~\cite{Dannheim:1443516}.
 
 The aim of the R\&D is to achieve the required single-point resolution
 with pixels of size $\approx25\,\micron\times25\,\micron$ with
-$50\,\micron$ thick sensors coupled to $50\,\micron$ thick analogue
-readout ASICs. The constraint on the material budget implies no active
-cooling elements can be placed inside the vertex detector. To limit
-the maximum power dissipation of the readout electronics to
-$\approx50~\text{mW/cm}^2$ forced air-flow cooling and power pulsing
-(i.e. turning off most components on the readout chips during the
-20~ms gaps between bunch trains) are foreseen.
+$50\,\micron$ thick sensors coupled to $50\,\micron$ thick readout
+ASICs with pulse-height measurement capability. The constraint on the
+material budget implies no active cooling elements can be placed
+inside the vertex detector. To limit the maximum power dissipation of
+the readout electronics to $\approx50~\text{mW/cm}^2$, forced air-flow
+cooling and power pulsing (i.e. turning off most components on the
+readout chips during the 20~ms gaps between bunch trains) are
+foreseen.
 
 \section{Flavour-tagging performance at CLIC}
 \label{sec:flavourTagging}
 
 The precision physics measurements require excellent flavour-tagging
 performance of the CLIC vertex detector. The flavour-tagging
-performance is studied in simulations. The multi-variate LCFIPlus
-flavour-tagging package~\cite{website:LCFIPlus} is used to assign each
-jet category with a beauty (b) and charm (c) probability. The fake
-rates of recognising the charm and beauty jets from each other and
-from light flavour (LF) jets are being investigated.
+performance is studied in simulations for different detector
+geometries. The multi-variate LCFIPlus flavour-tagging
+package~\cite{website:LCFIPlus} is used to assign each jet category
+with a beauty (b) and charm (c) probability. The fake rates of
+separating the charm and beauty jets from each other and from light
+flavour (LF) jets are being investigated.
 
 The detector models in simulation consider the single-point resolution
-of the sensors ($\sim3\,\micron$), constraints from the mechanical
-support and the cooling system~\cite{AlipourTehrani:1742993}.
+of the sensors ($\sim3\,\micron$) and include layer thicknesses based
+on constraints from an engineering model of the mechanical support and
+the air cooling system~\cite{AlipourTehrani:1742993}.
 
 As illustrated in Figure~\ref{fig:cooling}, a spiral arrangement for
-the modules in the endcap regions can be used instead of disks,
-allowing the air to flow through the vertex detector. The physics
-performance of the geometries described in Table~\ref{tab:geometries}
-and illustrated in Figure~\ref{fig:geometries} have been studied in
-simulations.
+the modules in the endcap regions has been implemented instead of
+disks, allowing the air to flow through the vertex detector. The
+physics performance of the geometries described in
+Table~\ref{tab:geometries} and illustrated in
+Figure~\ref{fig:geometries} have been studied in simulations.
 
 \begin{table}[htbp]
   \caption{Vertex detector geometries implemented in simulations.}
@@ -430,16 +495,17 @@ simulations.
 
 The performance of the flavour tagging depends on the jet energy and
 polar angle: dijet events with different center-of-mass energies,
-$\sqrt{s}$, having polar angles of $10^{\circ} \leq \theta \leq
-90^{\circ}$ with a uniform distribution in $\phi$ angles are
-considered. Initial state radiation (ISR) and beamstrahlung (BS) were
-switched off during the event generation and hence the final-state
-quarks are in a back-to-back configuration. For each jet flavour,
-energy and angle, 80000 events are used for the following processes:
-e$^+$e$^-$ $\rightarrow$ b\={b}, c\={c}, u\={u}, d\={d}, s\={s}. The
-boosted decision trees (BDTs) are trained using 50\% of the generated
-events and the other 50\% are used for testing the performance of the
-flavour tagging.
+$\sqrt{s}$, having polar angles of
+$10^{\circ} \leq \theta \leq 90^{\circ}$ with a uniform distribution
+in azimuthal $\phi$ angles are considered. Initial state radiation
+(ISR) and beamstrahlung (BS) were switched off during the event
+generation and hence the final-state quarks are in a back-to-back
+configuration. For each jet flavour, energy and angle, 80000 events
+are used for the following processes: e$^+$e$^-$ $\rightarrow$ b\={b},
+c\={c}, u\={u}, d\={d}, s\={s}. The boosted decision tree (BDT)
+classifiers are trained using 50\% of the generated events and the
+other 50\% are used for testing the performance of the flavour
+tagging.
 
 The flavour-tagging performance for the above-mentioned geometries is
 summarised in \cref{fig:performance} where the fake rate of
@@ -454,14 +520,18 @@ beauty-tagging performance is up to $20\%$ worse using the
 \emph{spirals} geometry (compared to disks). With the spiral
 configuration, the number of sensitive layers becomes dependent on the
 azimuthal angle $\phi$ and fewer layers can be hit in certain ranges
-of $\phi$. The performance of the \emph{spirals} and the
-\emph{double\_spirals} is very similar as shown in
-Figure~\ref{fig:spiral_doubleSpirals}.  The \emph{double\_spirals\_v2}
-geometry is a more realistic version of the \emph{double\_spirals}
-geometry, taking into account the material used for the mechanical
-support of the sensors and also for the cables. As shown in
-Figure~\ref{fig:doubleSpirals_doubleSpirals}, the misidentification
-probability increases by $\sim$35\% due to the increased material.
+of $\phi$. The performance degradation caused by this $\phi$
+dependence can be mitigated by increased $\phi$ overlap in future
+geometry implementations.
+
+The performance of the \emph{spirals} and the \emph{double\_spirals}
+is very similar as shown in Figure~\ref{fig:spiral_doubleSpirals}.
+The \emph{double\_spirals\_v2} geometry is a more realistic version of
+the \emph{double\_spirals} geometry, taking into account the material
+used for the mechanical support of the sensors and also for the
+cables. As shown in Figure~\ref{fig:doubleSpirals_doubleSpirals}, the
+misidentification probability increases by $\sim$35\% due to the
+increased material.
 
 
 \begin{figure}[htbp]
@@ -508,16 +578,16 @@ probability increases by $\sim$35\% due to the increased material.
 \end{figure}
 
 
-\section{Summary}
-\label{sec:summary_CLIC}
+% \section{Summary}
+% \label{sec:summary_CLIC}
 
-The CLIC detector model for simulations is under development with the
-requirements set by the precision physics to be measured. With these
-requirements, it allows for identification of beauty and charm quarks
-and this is possible with a vertex detector with a high spatial
-resolution and very low material budget to limit the multiple
-scatterings. This thesis focuses on the R\&D of the pixel detectors in
-the vertex detector with high-resolution and very low material budget.
+% The CLIC detector model for simulations is under development with the
+% requirements set by the precision physics to be measured. With these
+% requirements, it allows for identification of beauty and charm quarks
+% and this is possible with a vertex detector with a high spatial
+% resolution and very low material budget to limit the multiple
+% scatterings. This thesis focuses on the R\&D of the pixel detectors in
+% the vertex detector with high-resolution and very low material budget.
 
 % ============================================================================== 
 % planning for the chapter
