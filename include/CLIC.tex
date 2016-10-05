@@ -82,7 +82,14 @@ by colliding beams made of elementary particles. With elementary
 particles, the center-of-mass energy and the polarisation of the
 colliding particles can be selected precisely. Unlike proton-proton
 collisions at the LHC experiments, there is no underlying event from
-proton remnants.
+proton remnants. The complicated environment of a hadron machine makes
+the measurements of the fundamental properties of the Higgs boson very
+hard or almost impossible. The added value of an electron-positron
+collider would be to measure in great details the Higgs mass and its
+total decay width, its spin-parity quantum numbers, its couplings to
+fermions and gauge bosons and also its self couplings that allows for
+the reconstruction of the scalar potential that is responsible of
+electroweak symmetry breaking~\cite{Linssen:1425915}.
 
 
 CLIC is foreseen to be built and operated in three stages with
@@ -174,8 +181,8 @@ H$\nu_{e}\bar{\nu_{e}}$ mechanism dominates.
 Final states with heavy quark flavours are important in many physics
 channels, such as the Higgs and the top. The identification of the
 heavy quarks is performed through the measurement of the displaced
-vertices. The vertex detector has a crucial role in these measurements
-as described in the following chapters.
+vertices and the vertex detector has a crucial role in these
+measurements as described in the following chapters.
 
 
 \section{The CLIC accelerator}
@@ -242,10 +249,10 @@ differences in beam parameters.
     Colliding particles & electron-positron & proton-proton \\
     Instantaneous luminosity $\mathcal{L}$ & $6\times10^{34}$ \inversecmsquaredsec & $1\times10^{34}$ \inversecmsquaredsec \\
     Bunch-crossing separation & 0.5~ns & 25~ns \\
-    Bunches per train & 312 & 2808 \\
-    Train duration & 156~ns & $90\,\microsecond$ \\
-    Train repetition & 50~Hz & $11\,\kilohertz$ \\
-    IP size in x / y / z directions & 45~nm / 1~nm / $44\,\micron$ & $16.7\,\micron$ / $16.7\,\micron$ / 7.55~cm \\
+    Bunches per train & 312 & Not applicable \\
+    Train duration & 156~ns & Not applicable \\
+    Train repetition & 50~Hz & Not applicable \\
+    IP size in x / y / z directions & 45~nm / 1~nm / $44\,\micron$ & $15\,\micron$ / $15\,\micron$ / 50~cm \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -433,7 +440,7 @@ geometries. The multi-variate LCFIPlus flavour-tagging
 package~\cite{website:LCFIPlus} is used to assign each jet category
 with a beauty (b) and charm (c) probability. The fake rates of
 separating the charm and beauty jets from each other and from light
-flavour (LF) jets are being investigated.
+flavour (LF) jets are being investigated. 
 
 The detector models in simulation consider the single-point resolution
 of the sensors ($\sim3\,\micron$) and include layer thicknesses based
@@ -507,10 +514,42 @@ classifiers are trained using 50\% of the generated events and the
 other 50\% are used for testing the performance of the flavour
 tagging.
 
-The flavour-tagging performance for the above-mentioned geometries is
-summarised in \cref{fig:performance} where the fake rate of
-recognising charm and light flavour jets as beauty jets is
-plotted versus the b-tag efficiency.
+\cref{fig:DisksPerformance} shows the dependence of the
+flavour-tagging performance on the jet polar angle in the
+\textit{disks} geometry for jets in dijet events at
+$\sqrt{s}=200\,\gev$. \cref {fig:DisksPerformance_btag} shows the fake
+rate of recognising beauty jets as charm jets versus the
+beauty-tagging efficiency. For dijet events at $\theta=40^{\circ}$,
+for a b-tagging efficiency of $80\%$, the probability to misidentify
+charm quarks as beauty quarks is
+$\sim5\%$. \cref{fig:DisksPerformance_ctag} shows the fake rate of
+recognising charm jets as beauty jets versus the charm-tagging
+efficiency. As expected, the b-tagging performance is better than the
+c-tagging performance. However, CLIC allows for a higher charm tagging
+performance compared to the LHC experiments.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/CLIC/allAngles_CLIC_SiD_CDR_Beauty_Charm_200.pdf}
+    \caption{}\label{fig:DisksPerformance_btag}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/CLIC/allAngles_CLIC_SiD_CDR_Charm_Beauty_200.pdf}
+    \caption{}\label{fig:DisksPerformance_ctag}
+  \end{subfigure} 
+  \caption{(a) b-tag and (b) c-tag efficiency for jets in dijet events
+    at $\sqrt{s}=200\,\gev$ with different polar angles for the
+    \textit{disks} geometry.}
+  \label{fig:DisksPerformance}
+\end{figure}
+
+The flavour-tagging performance for the different vertex detector
+geometries as shown in \cref{fig:geometries} is summarised in
+\cref{fig:performance} where the fake rate of recognising charm and
+light flavour jets as beauty jets is plotted versus the b-tag
+efficiency.
 
 The \emph{spirals} and \emph{disks} have a similar flavour-tagging
 performance except for jets at $\theta=40^{\circ}$ (see
@@ -576,6 +615,23 @@ increased material.
     considered.}
   \label{fig:performance}
 \end{figure}
+
+A detector model for CLIC is under development which takes into
+account the progressing engineering studies. The spiral arrangement of
+the modules in the vertex endcaps allows to use airflow cooling which
+has the potential to reduce the material budget
+significantly. Double-sided modules provide more sensitive layers with
+the same amount of support material as single-sided modules. The
+overall results show that the implemented geometries are similar in
+terms of the flavour-tagging performance for simulated dijet
+events. The amount of material, on the other hand, was found to have a
+large impact on the performance. 
+
+The following chapters focus on the R\&D of the pixel detectors in the
+vertex detector with high-resolution and very low material budget in
+order to achieve high flavour-tagging performance as required by the
+precision physics to be measured.
+
 
 
 % \section{Summary}
