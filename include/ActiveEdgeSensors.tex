@@ -127,17 +127,17 @@ described as follows~\cite{AdvacamProcessFlow}.
 
 \begin{enumerate}
 \item First, the backside implantation is done by doping the detector
-  wafer with phosphorus.
+  wafer with borons.
 \item The wafer is then bonded to a support wafer to perform the next
   steps.
 \item By grinding and CMP (Chemical-mechanical planarisation)
   polishing the final detector thickness is obtained.
-\item The doping for the pixels and also the guard rings are
-  implanted.
+\item The doping for the pixels and also the guard rings are implanted
+  with phosphorus ions.
 \item The DRIE etching is performed to uncover the edges of the
   detector.
-\item Ions are implanted to the sidewalls of the sensor to activate
-  the edges.
+\item Phosphorus ions are implanted to the sidewalls of the sensor to
+  activate the edges.
 \item Annealing of the sensor in order to activate the dopants and
   oxidation of the edges.
 \item The opening of the contacts for the Aluminum patterning and the
@@ -273,12 +273,11 @@ implementation of the sensors in TCAD simulations.
   \end{subfigure}~
   \caption{Sensor layouts for different guard-ring solutions for the
     assemblies described in \cref{tab:Timepix3Assemblies}. (a) shows
-    the convention used in
-    \cref{fig:20-NGR_eff_TOT,fig:23-FGR_eff_TOT,fig:28-GNDGR_eff_TOT,fig:55-GNDGR_eff_TOT,fig:55-GNDGR-100_eff_TOT,fig:55-GNDGR-150_eff_TOT}
-    to express the efficiency and the charge distribution at the edge
-    as a function of the track position. The border of the last pixel
-    before the edge is indicated by a dashed line (at position 0 mm)
-    and the physical sensor edge with a continuous line.}
+    the convention used in the following sections to express the
+    efficiency and the charge distribution at the edge as a function
+    of the track position. The border of the last pixel before the
+    edge is indicated by a dashed line (at position 0 mm) and the
+    physical sensor edge with a continuous line.}
   \label{fig:Layout_guard_ring}
 \end{figure}
 
@@ -308,7 +307,7 @@ implementation of the sensors in TCAD simulations.
       3 & implant \\
       8 & implant \\
       9 & UBM \\
-      15 & passivation \\
+      15 & passivation opening \\
       5 & contact to connect Al to Si \\
       \bottomrule
     \end{tabular}
@@ -365,21 +364,23 @@ The fabrication process of the sensors is simulated as follows:
   meshing with the command \texttt{refinebox}.
 \item The silicon region is then defined for two pixels, the edge
   region and an extra silicon edge which will be etched later (to make
-  the process more realistic). 
+  the process more realistic). From the bias scan, the depletion
+  voltage is measured for the assemblies
+  (c.f. \cref{sec:ThinSensors_depletionVoltage}) and therefore the
+  resistivity is adjusted accordingly.
   %The silicon is doped with borons (p-type material) with the initial resistivity of $\rho=10~\text{k}\Omega\text{cm}$ ($4.41\times 10^{11}\,\inversecmcubic$).
 \item First a layer of $0.2\,\micron$ thick oxide and then a layer of
   $0.2\,\micron$ thick nitride are deposited on the top of the sensor.
-\item From the bias scan, the depletion voltage is measured for the
-  assemblies (c.f. \cref{sec:ThinSensors_depletionVoltage}). Thus the
-  silicon is doped with borons at a concentration of
-  $1\times10^{12}\,\inversecmcubic$. The implantation is done with an
-  energy of $180\,\kev$.
+\item The p-spray isolation technique is used to isolate the pixels
+  from each other. Thus the silicon is doped with borons at a
+  concentration of $1\times10^{12}\,\inversecmsquared$. The
+  implantation is done with an energy of $180\,\kev$.
 \item The nitride is then etched at the positions of the implants for
   the pixels and the guard ring if the assembly contains one. First a
   mask is put on the positions where the nitride is going to
   stay. Then the etching is done at the implantation
   positions. Phosphorus (n-type material) is implanted with a
-  concentration of $1\times10^{15}\,\inversecmcubic$ with an energy of
+  concentration of $1\times10^{15}\,\inversecmsquared$ with an energy of
   $120\,\kev$. Masks limit the etching and the deposition to a certain
   window and provide the possibility to imitate the lithographic
   patterning.
@@ -389,7 +390,7 @@ The fabrication process of the sensors is simulated as follows:
   etched.
 \item The sensor is then flipped and a layer of oxide is deposited on
   the backside with a thickness of $0.04\,\micron$. Borons with a
-  concentration of $1\times10^{15}\,\inversecmcubic$ and an energy of
+  concentration of $1\times10^{15}\,\inversecmsquared$ and an energy of
   $60\,\kev$ are implanted. Then the oxide is etched from the backside
   and the sensor is flipped again to the initial position.
 \item The oxide is then etched at the contact positions.
@@ -398,7 +399,7 @@ The fabrication process of the sensors is simulated as follows:
 \item A photoresist is deposited on the top of the sensor with a
   thickness of $2\,\micron$.
 \item Borons are implanted to the edge with a concentration of
-  $1\times10^{15}\,\inversecmcubic$, an energy of $60\,\kev$ and a
+  $1\times10^{15}\,\inversecmsquared$, an energy of $60\,\kev$ and a
   tilt of $15\degrees$.
 \item The photoresist is then removed.
 \item To activate the dopants, the sensor is annealed at a constant
@@ -429,8 +430,9 @@ none of the assemblies are operated beyond the breakdown voltage.
 \cref{fig:IVmeasurements_TCAD} shows the leakage current obtained from
 the TCAD simulations. The current calculated from the 2D simulation is
 scaled to obtain the current in the total matrix. In TCAD simulations,
-the sensor is simulated and the effect of the readout chip is not
-included on the leakage current.
+only the sensor is simulated and the effect of the readout chip and
+the bump bonding are not included. The readout chip can increase the
+temperature and increase the leakage current.
 
 \begin{figure}[htbp]
   \centering
@@ -626,16 +628,19 @@ resolution of $\sim2\,\micron$). The charge deposited is obtained by
 applying the test-pulse calibrations to the data
 (c.f. \cref{sec:EnergyCalibration}). For each track position, the
 deposited charge is projected as a one-dimensional histogram and
-fitted with a Landau function convoluted with a Gaussian. The most
-probable value (MPV) of the Landau fit is then compared to the
-collected charge obtained in the TCAD simulations. In the TCAD
-simulations, a fixed amount of charge is deposited and, unlike the
-data, the fluctuations of the deposited charge are not considered. The
-tracking resolution of $\sim2\,\micron$ is applied to the hit position
-in TCAD simulations. The border of the last pixel (at 0~mm) is
-indicated with a dashed line and the physical sensor edge is shown in
-continuous line with the convention as illustrated in
-\cref{fig:Layout20_NGR}.
+fitted with a Landau function convoluted with a Gaussian. For a better
+compatibility with the simulation, only tracks within $\pm30\%$ of the
+pixel pitch are considered. The most probable value (MPV) of the
+Landau fit is then compared to the collected charge obtained in the
+TCAD simulations. In the TCAD simulations, a fixed amount of charge is
+deposited and, unlike the data, the fluctuations of the deposited
+charge are not considered. The tracking resolution of $\sim2\,\micron$
+is applied to the hit position in TCAD simulations. This is done by
+convoluting a Gaussian function with a standard deviation of
+$2\,\micron$ with the simulated hit position. The border of the last
+pixel (at 0~mm) is indicated with a dashed line and the physical
+sensor edge is shown in continuous line with the convention as
+illustrated in \cref{fig:Layout20_NGR}.
 
 % This can explain the minor discrepancies on the
 % amount of the collected charge between simulation and data. 
@@ -649,10 +654,11 @@ continuous line with the convention as illustrated in
 \subsection{The performance of $50\,\micron$ thick sensors}
 \label{sec:EdgePerformance_50}
 
-The efficiency at the edge of the assemblies with $50\,\micron$ thick
-sensors is shown in \cref{fig:EdgeEfficiency_50micron}. The results
-are presented using the conventions as described in
-\cref{sec:activeEdge_convention}.
+Exploiting the high tracking capabilities of the Timepix3 telescope,
+the efficiency at the edge of the assemblies with $50\,\micron$ thick
+sensors is shown in two dimensions in
+\cref{fig:EdgeEfficiency_50micron}. The results are presented using
+the conventions as described in \cref{sec:activeEdge_convention}.
 
 \begin{figure}[htbp]
   \begin{subfigure}[b]{0.24\textwidth}
@@ -696,8 +702,14 @@ observation as shown in \cref{fig:ChargeCollection20NGR}.
 
 To simulate a floating guard ring for 23-FGR-50 in TCAD, the current
 and the potential on the electrode of the guard ring are set to zero
-as initial conditions. In data, more charge is collected by the guard
-ring than in simulation as shown in \cref{fig:ChargeCollection23FGR}.
+as initial conditions. The charge drop in the edge is explained by the
+capacitive coupling between the guard ring and the surrounding
+implants. To have a more accurate definition of the capacitive
+coupling in TCAD simulations, for this guard ring configuration, the
+area factor is set to the pixel size in order to multiply the currents
+in the electrodes by this factor. This defines the third dimension in
+a 2D simulation. A good agreement between data and TCAD simulations
+can be seen in \cref{fig:ChargeCollection23FGR}.
 
 \begin{figure}[htbp]
   \begin{subfigure}[b]{0.45\textwidth}
@@ -753,16 +765,16 @@ collected charge at the edge as shown in
 Streamlines define a family of curves instantaneously tangent to the
 velocity vector of the flow. \cref{fig:TCAD_streamlines} compares the
 distribution of the streamlines in the edge for different
-configurations of guard rings. The generated charge follows the
-streamlines and gets collected by the implants. In the case where
-there is no guard ring, all the streamlines reach the first pixel. As
-confirmed by the data, all the charge in the edge is collected without
-any loss. In the case of a floating guard ring, few streamlines reach
-the guard ring. This means some charge is lost in the guard ring
-instead of being collected by the first pixel. Finally, in the case of
-a grounded guard ring more streamlines end up in the guard ring. This
-explains also the high drop in the collected charge in the edge
-region.
+configurations of guard rings in TCAD simulations. The generated
+charge follows the streamlines and gets collected by the implants. In
+the case where there is no guard ring, all the streamlines reach the
+first pixel. As confirmed by the data, all the charge in the edge is
+collected without any loss. In the case of a floating guard ring, few
+streamlines reach the guard ring. This means some charge is lost in
+the guard ring instead of being collected by the first pixel. Finally,
+in the case of a grounded guard ring more streamlines end up in the
+guard ring. This explains also the high drop in the collected charge
+and efficiency in the edge region.
 
 \begin{figure}[htbp]
   \centering
@@ -806,7 +818,10 @@ grounded guard ring is a suitable solution. The assemblies
 55-GNDGR-100 and 55-GNDGR-150 are efficient up to the edge as shown in
 \cref{fig:EdgeEfficiency_100_150micron}. A slight loss of the charge
 near the edge in data and simulations can be observed for these
-assemblies as shown in \cref{fig:ChargeCollectionThickGNDGR}.
+assemblies as shown in \cref{fig:ChargeCollectionThickGNDGR}. However,
+due to the large amount of the ionisation charge, the signal does not
+drop below the detection threshold and therefore remains efficient up
+to the physical edge of the sensors.
 
 
 \begin{figure}[htbp]
@@ -868,9 +883,9 @@ efficiency at the edge and an acceptable breakdown behaviour.
 
 For thicker sensors ($100\,\micron$ and $150\,\micron$), the grounded
 guard ring is a suitable solution as a larger amount of charge is
-deposited by the passage of MIPs. Some of the deposited charge is
-collected by the guard ring but these assemblies remain efficient up
-to the physical edge.
+deposited by the passage of MIP particles. Some of the deposited
+charge is collected by the guard ring but these assemblies remain
+efficient up to the physical edge.
 
 \begin{figure}[htbp]
   \centering
