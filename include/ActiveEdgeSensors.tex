@@ -305,7 +305,7 @@ implementation of the sensors in TCAD simulations.
       \midrule
       6 & metal\\
       3 & implant \\
-      8 & implant \\
+      8 & implant (to control the leakage current) \\
       9 & UBM \\
       15 & passivation opening \\
       5 & contact to connect Al to Si \\
@@ -552,7 +552,7 @@ done by a constant charge deposition corresponding to the peak of the
 straggling function along the particle track
 (c.f. \cref{sec:SiliconEnergyLossSpectrum}). \cref{fig:TCAD_transientSimu}
 illustrates an example of a MIP traversing the sensor at a distance of
-$10\,\micron$ from the left edge 6~ns after the particle hit. The
+$10\,\micron$ from the left edge 1~ns after the particle hit. The
 electron density is shown in this figure.
 
 
@@ -572,10 +572,10 @@ electron density is shown in this figure.
     \end{scope}
   \end{tikzpicture}
   \caption{Transient simulation of a particle track traversing the
-    sensor at a distance of $10\,\micron$ from the edge (illustrated
-    as an arrow). The electron density 6~ns after the particle hit is
-    shown. The region shown with a white line is the depletion
-    region.}
+    sensor with a floating guard ring at a distance of $10\,\micron$
+    from the edge (illustrated as an arrow). The electron density 1~ns
+    after the particle hit is shown. The region shown with a white
+    line is the depletion region.}
   \label{fig:TCAD_transientSimu}
 \end{figure}
 
