@@ -367,7 +367,8 @@ The fabrication process of the sensors is simulated as follows:
   the process more realistic). From the bias scan, the depletion
   voltage is measured for the assemblies
   (c.f. \cref{sec:ThinSensors_depletionVoltage}) and therefore the
-  resistivity is adjusted accordingly.
+  resistivity is adjusted accordingly to
+  $\rho=10~\text{k}\Omega\text{cm}$.
   %The silicon is doped with borons (p-type material) with the initial resistivity of $\rho=10~\text{k}\Omega\text{cm}$ ($4.41\times 10^{11}\,\inversecmcubic$).
 \item First a layer of $0.2\,\micron$ thick oxide and then a layer of
   $0.2\,\micron$ thick nitride are deposited on the top of the sensor.
@@ -778,26 +779,28 @@ and efficiency in the edge region.
 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=0.8\textwidth]{figures/ActiveEdge/streamlines_NGR.pdf}
-    \caption{No guard ring}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=0.8\textwidth]{figures/ActiveEdge/streamlines_20-NGR-50.png}
+    \caption{20-NGR-50}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=0.8\textwidth]{figures/ActiveEdge/streamlines_23-FGR-50.png}
+    \caption{23-FGR-50}
   \end{subfigure}\\
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=0.8\textwidth]{figures/ActiveEdge/streamlines_FGR.pdf}
-    \caption{Floating guard ring}
-  \end{subfigure}\\
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=0.8\textwidth]{figures/ActiveEdge/streamlines_GNDGR.pdf}
-    \caption{Grounded guard ring}
-  \end{subfigure}\\
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=0.6\textwidth]{figures/ActiveEdge/streamlines_55-GNDGR-50}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=0.8\textwidth]{figures/ActiveEdge/streamlines_28-GNDGR-50.png}
+    \caption{28-GNDGR-50}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/streamlines_55-GNDGR-50.png}
     \caption{55-GNDGR-50}
   \end{subfigure}
-  \caption{Streamlines for different configurations of guard ring. The
-    generated charges follow the streamlines. The streamlines which
-    end up in the guard ring means that those charges are not
-    collected by the first pixel and thus lost.}
+  \caption{The electric field and the streamlines distributions for
+    different configurations of guard ring for $50\,\micron$ thick
+    sensors. The generated charges follow the streamlines. The
+    streamlines which end up in the guard ring means that those
+    charges are not collected by the first pixel and thus lost. The
+    depletion region is indicated by solid white lines.}
   \label{fig:TCAD_streamlines}
 \end{figure}
 
@@ -859,8 +862,33 @@ to the physical edge of the sensors.
 \end{figure}
 
 
+For further investigation, \cref{fig:TCAD_streamlines_100_150} shows
+the electric field and the streamline distributions for the
+$100\,\micron$ and $150\,\micron$ thick sensors. For thicker devices,
+some streamlines are collected by the guard ring but most of the
+charge is collected by the pixels due to the high amount of the
+generated charge. The devices remain still efficient up to $100\%$
+even very close to the physical edge.
 
 
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=0.8\textwidth]{figures/ActiveEdge/streamlines_55-GNDGR-100.png}
+    \caption{55-GNDGR-100}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=0.8\textwidth]{figures/ActiveEdge/streamlines_55-GNDGR-150.png}
+    \caption{55-GNDGR-150}
+  \end{subfigure}
+  \caption{The electric field and the streamlines distributions for
+    different configurations of guard ring for $100\,\micron$ and
+    $150\,\micron$ thick sensors. The generated charges follow the
+    streamlines. The streamlines which end up in the guard ring means
+    that those charges are not collected by the first pixel and thus
+    lost. The depletion region is indicated by solid white lines.}
+  \label{fig:TCAD_streamlines_100_150}
+\end{figure}
 
 
 
