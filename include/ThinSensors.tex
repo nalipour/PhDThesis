@@ -70,8 +70,8 @@ the bias voltages are scanned.
     W19\_L8 & 50 & -15 & 1133 & $568.5\pm0.5$ \\
     W19\_C7 & 50 & -15 & 1148 & $608.7\pm0.5$ \\ \hline
     W5\_E2 & 100 & -20 & 1160 & $561.0\pm0.7$ \\ \hline
-    W5\_F1 & 150 & -30 & 1153 & $554.9\pm0.5$ \\ \hline
-    W2\_J5 & 300 & 100 & 1170 & $565.7\pm1.6$ \\
+    W5\_F1 & 150 & -30 & 1153 & $554.9\pm0.5$ \\ %%\hline
+    %% W2\_J5 & 300 & 100 & 1170 & $565.7\pm1.6$ \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -213,7 +213,14 @@ sloped region and a plateau region. The depletion voltage of the
 assembly is obtained by calculating the intersection of a linear fit
 performed on both regions (defined by eye). The calculated depletion
 voltages for all assemblies is summarised in
-\cref{tab:depletionVoltage,fig:depletionVoltage}.
+\cref{tab:depletionVoltage,fig:depletionVoltage}. The $50\,\micron$
+thick sensor is depleted at a low bias voltage of $\sim$2~V. However
+the measurement was done with a bias step size of $1$~V and the fits
+give a higher depletion voltage of $\sim7$~V. From the depletion
+voltage, the concentration of the dopants in the bulk is calculated to
+be around $N_{bulk}\approx1.3\,\inversemetercubic$ and corresponds to
+a resistivity of $\rho\approx10\text{k}\Omega\text{cm}$ for all the
+assemblies.
 
 \begin{figure}[htbp]\centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -221,7 +228,7 @@ voltages for all assemblies is summarised in
   \caption{}\label{fig:W2_J5_DepletionVoltage_TOTdistr}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0002_J05.pdf}
+    \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0005_F01_Edep.pdf}
     \caption{}\label{fig:W2_J5_DepletionVoltage_chargeVSbiasVoltage}
   \end{subfigure}
   \caption{(a) The measured TOT distribution in a $300\,\micron$ thick
@@ -247,13 +254,13 @@ voltages for all assemblies is summarised in
     \toprule
     Assembly & Depletion voltage [V] \\
     \midrule
-    W19\_G7 & $<$-9.47 \\
-    W19\_F7 & $<$-6.32 \\
-    W19\_L8 & $<$-7.19\\
-    W19\_C7 & $<$-5.43\\ \hline
-    W5\_E2 & -10.82 \\ \hline
-    W5\_F1 & -14.86 \\ \hline
-    W2\_J5 & 63.23 \\ 
+    W19\_G7 & -7 \\
+    W19\_F7 & -7\\
+    W19\_L8 & -7\\
+    W19\_C7 & -7\\ \hline
+    W5\_E2 & -12 \\ \hline
+    W5\_F1 & -15 \\ %\hline
+%    W2\_J5 & 63.23 \\ 
     \bottomrule
   \end{tabular}
 \end{table}
