@@ -18,7 +18,7 @@
 As part of the R\&D programme for the CLIC vertex detector, the
 performance of thin silicon sensors is quantified using the Timepix3
 readout chip with $55\,\micron$ pixel pitch. $50\,\micron$ to
-$300\,\micron$ thick planar sensors are bump-bonded to $750\,\micron$
+$150\,\micron$ thick planar sensors are bump-bonded to $750\,\micron$
 thick Timepix3 ASICs. These assemblies are tested in test beams using
 the CLICdp Timepix3 telescope.
 
@@ -34,7 +34,7 @@ extrapolated for smaller pixels of $25\,\micron$ pitch.
 
 %% --------------------------------------------- %%
 \section{Thin-sensor assemblies}
-A summary of thin sensors ($50-300\,\micron$ thick) bump-bonded to the
+A summary of thin sensors ($50-150\,\micron$ thick) bump-bonded to the
 CLICdp Timepix3 readout ASICs is shown in
 \cref{tab:Timepix3Assemblies}. These assemblies are tested using the
 Timepix3 pixel beam reference telescope at the CERN SPS with the
@@ -115,15 +115,15 @@ the distributions for larger cluster sizes are biased towards larger
 energy depositions.
 
 \begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.33\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/TOT_Clusters_W0019_C07.pdf}
     \caption{W19\_C7}
   \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.33\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/TOT_Clusters_W0005_E02.pdf}
     \caption{W5\_E2}
   \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.33\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./figures/Calibration/TOT_Clusters_W0005_F01.pdf}
     \caption{W5\_F1}
   \end{subfigure}
@@ -161,22 +161,23 @@ width of the distributions in data and simulation agree. Therefore the
 calibration is validated.
 
 \begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.23\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{figures/TestBeam/50micron_Edep.pdf}
     \caption{$50\,\micron$}
   \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.23\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{figures/TestBeam/100micron_Edep.pdf}
     \caption{$100\,\micron$}
   \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.23\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{figures/TestBeam/150micron_Edep.pdf}
     \caption{$150\,\micron$}
-  \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.23\textwidth}
+  \end{subfigure} 
+  %% \hfill
+  %% \begin{subfigure}[b]{0.23\textwidth}
 
-    \caption{$300\,\micron$}
-  \end{subfigure}
+  %%   \caption{$300\,\micron$}
+  %% \end{subfigure}
   \caption{The energy deposition for all cluster sizes in simulation
     and data for (a) W19\_G7, (b) W5\_E2 and (c) W5\_F1. The
     assemblies are operated at nominal conditions.}
@@ -205,7 +206,7 @@ To obtain the depletion voltage, the total measured TOT is calculated
 by summing up the TOT in the clusters considering all cluster
 sizes. The distribution is fitted with a landau function convoluted
 with a Gaussian. The fit is done using RooFit~\cite{Cranmer:2012sba}
-and an example is given in \cref{fig:W2_J5_DepletionVoltage_TOTdistr}.
+and an example is given in \cref{fig:W5_F1_DepletionVoltage_TOTdistr}.
 \cref{fig:W2_J5_DepletionVoltage_chargeVSbiasVoltage} shows the most
 probable value (MPV) of the measured TOT as a function of the square
 root of the bias voltage. The TOT MPV shows two distinct regions: a
@@ -224,23 +225,24 @@ assemblies.
 
 \begin{figure}[htbp]\centering
   \begin{subfigure}[b]{0.45\textwidth}
-  \includegraphics[width=\textwidth]{./figures/TestBeam/W2_J5_totalTOT_Langau_run1998.pdf}
-  \caption{}\label{fig:W2_J5_DepletionVoltage_TOTdistr}
+  \includegraphics[width=\textwidth]{./figures/TestBeam/W5_F1_totalTOT_Langau_run761.pdf}
+  % W2_J5_totalTOT_Langau_run1998.pdf}
+  \caption{}\label{fig:W5_F1_DepletionVoltage_TOTdistr}
   \end{subfigure} \hfill
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{./figures/TestBeam/depletionVoltage_W0005_F01_Edep.pdf}
     \caption{}\label{fig:W2_J5_DepletionVoltage_chargeVSbiasVoltage}
   \end{subfigure}
-  \caption{(a) The measured TOT distribution in a $300\,\micron$ thick
-    silicon sensor (W2\_J5) with a bias voltage of 95~V fitted with a
-    Landau function convoluted with a Gaussian function. (b) The most
-    probable value of the measured TOT as a function of the bias
-    voltage for W2\_J5. Straight lines are used to fit the slope and
-    the plateau regions. The depletion voltage corresponds to the
-    intersection of these two regions and shown in a red dashed
-    line. The continuous red line shows the nominal operating bias
-    voltage.}
-  \label{fig:W2_J5_DepletionVoltage}
+  \caption{(a) The measured energy deposition distribution in a
+    $150\,\micron$ thick silicon sensor (W5\_F1) with a bias voltage
+    of -30~V fitted with a Landau function convoluted with a Gaussian
+    function. (b) The most probable value of the measured energy
+    deposition as a function of the bias voltage for W5\_F1. Straight
+    lines are used to fit the slope and the plateau regions. The
+    depletion voltage corresponds to the intersection of these two
+    regions and shown in a red dashed line. The continuous red line
+    shows the nominal operating bias voltage.}
+  \label{fig:W5_F1_DepletionVoltage}
 \end{figure}
 
 \begin{table}[htbp]

@@ -11,7 +11,10 @@ timing, while the effective thickness can be adapted to the
 requirements of the applications. Though, they show some limitations
 for smaller sizes and their performance can degrade from radiation
 induced damages. Among semiconductor materials, silicon detectors are
-predominant for charged particle spectroscopy.
+predominant for tracking systems in modern particle physics
+experiments. The energy deposited by high energetic particles in
+silicon detectors can be used for the track position reconstruction
+and provide high tracking resolutions.
 
 In this chapter, we will review the basic properties of semiconductor
 material, charge generation in silicon and the transport of charge
@@ -23,10 +26,11 @@ through pn-junctions.
 Due to the periodic lattice of crystalline structure of semiconductor
 material, electrons within the solid have allowed energy bands. The
 energy of the electrons is confined to one of the energy bands and the
-bands may be separated by gaps of forbidden
-energies.\\ \cref{fig:energyBands} schematically illustrates the bands
-in insulators, semiconductors and metals. In the \textit{valence
-  band}, the electrons are bonded to specific lattice sites within the
+bands may be separated by gaps of forbidden energies.
+
+\cref{fig:energyBands} schematically illustrates the bands in
+insulators, semiconductors and metals. In the \textit{valence band},
+the electrons are bonded to specific lattice sites within the
 crystal. The electrons in the \textit{conduction band} are free to
 move through the crystal and contribute to the electrical
 conductivity. The \textit{bandgap} (E\textsubscript{g}) separates the
@@ -126,8 +130,8 @@ required to produce an electron-hole pair is $3.6\,\ev$.
 \subsection{Doping}
 \label{sec:doping}
 
-By introducing special impurities, the conductivity of semiconductors
-can be controlled. Typical concentration ranges between
+By introducing impurities, the conductivity of semiconductors can be
+controlled. Typical concentration ranges between
 $10^{12}-10^{18}\,\inversecmcubic$. In semiconductors, the
 conductivity comes from either electrons (n-type) or holes (p-type).
 
@@ -154,7 +158,7 @@ introduced. In this section, we focus on the amount of charge
 generated due to an incident radiation.
 
 \subsection{Bethe-Bloch formula}
-In silicon, free charge careers are generated due to thermal effects
+In silicon, free charge carriers are generated due to thermal effects
 and lead to leakage current. A current is also generated due to the
 interaction of charged particles with silicon and can be
 detected. Part of the absorbed energy generates electron-hole pairs
@@ -214,13 +218,16 @@ the readout electronics.
     40mm 20mm, clip]{Articles/rpp2009-rev-passage-particles-matter.pdf}
   \caption{Straggling function in silicon for 500 MeV pions,
     normalized to unity at the most probable value $\Delta_{p}$. $w$
-    is the full-width-at-half-maximum~\cite{Beringer:1900zz}.}
+    is the full-width-at-half-maximum~\cite{Beringer:1900zz}. This
+    calculation is based on Bichsel's method
+    (c.f. \cref{sec:bichsel}).}
   \label{fig:LandauDistribution}
 \end{figure}
 
 In literature, several approaches address the calculation of the
 straggling functions. The Landau and the Bichsel models, two of the
-most relevant models, are described in \cref{sec:landau,sec:bichsel}. 
+most widely used models, are described in
+\cref{sec:landau,sec:bichsel}.
 
 The probability of the occurrence of collisions and the probability
 for a particular energy loss $E$ are considered for the calculation of
@@ -229,9 +236,10 @@ accurate determination of the collision cross section as function of
 energy loss, $\sigma(E)$, is necessary.
 
 \subsection{The Landau distribution}\label{sec:landau}
-The most commonly used model in experiments, is a Landau distribution
-convoluted with a Gaussian. The most probable value $\Delta_p$ of the
-distribution is given by the Landau-Vavilov
+The most commonly used model in experiments for describing the
+ionisation spectrum, is a Landau distribution convoluted with a
+Gaussian. The most probable value $\Delta_p$ of the distribution is
+given by the Landau-Vavilov
 method~\cite{Landau:1944if,Vavilov:1957zz}:
 
 \begin{equation}
@@ -241,23 +249,24 @@ method~\cite{Landau:1944if,Vavilov:1957zz}:
 
 where $\xi=(K/2)\braket{Z/A}(x/\beta^2)$~\mev for a detector of
 moderate thickness $x$ in g~\inversecmsquared. All the other
-parameters are similar to the ones described for \cref{eq:BetheBloch}.
-
-Though the Landau-Vavilov calculation does not describe correctly the
-width of the energy distribution for thin silicon sensors. For thick
-material, the width of the distribution is $4\xi$.
+parameters are similar to the ones described for
+\cref{eq:BetheBloch}. For thick material, the width of the
+distribution is given as $4\xi$.
 
 For $\gamma\gg100$, \cref{eq:LandauVavilovMPV} is simplified to~\cite{Bichsel}
 
 \begin{equation}
-  \textsubscript{L}\Delta_{p} (\kev)=t \left(0.1791+0.01782 \ln\left(t\right)\right) \; ,
+  \Delta_{p} (\kev)=t \left(0.1791+0.01782 \ln\left(t\right)\right) \; ,
   \label{eq:LandauVavilovMPV_simplified}
 \end{equation}
 
-where $t$ (in \micron) is the thickness of the silicon.
+where $t$ (in \micron) is the thickness of the silicon sensor.
 
-When the Landau distribution is combined with a Gaussian, $\Delta_ p$
-increases and gives better agreement with data.
+The Landau-Vavilov calculation defines adequately the $\Delta_p$ but
+does not describe correctly the width of the energy-loss spectrum
+especially for thin silicon sensors where the distribution is more
+skewed. When the Landau distribution is combined with a Gaussian,
+$\Delta_ p$ increases and gives better agreement with data.
 
 \subsection{The Bichsel model}\label{sec:bichsel}
 The Bichsel model~\cite{Bichsel} takes into account the binding of
@@ -340,7 +349,7 @@ where the angle $\theta$ is in radians, the particle momentum $p$ in
 \mev, $z$ the charge number of the particle and $x/X_0$ the thickness of
 the absorption medium in units of the radiation length.
 
-In high-energy physics applications, the material budget of pixel
+In high-energy physics applications, the amount of material in pixel
 detectors is minimised in order to have the smallest scattering angles
 possible.
 
@@ -350,8 +359,8 @@ possible.
 \section{Silicon device physics and properties}
 
 
-In this section, we review the motion of the charge carriers in
-silicon. First the motion in an intrinsic silicon is studied. Then, a
+In this section, we review the motion of charge carriers in
+silicon. First the motion in intrinsic silicon is studied. Then, a
 pn-junction is described and the motion of charge carriers in silicon
 detectors is sketched.
 
@@ -373,39 +382,44 @@ current per unit area is given by~\cite{Rossi:976471}:
 
 \begin{equation}
   \begin{aligned}
-    J_{n, diff}=-{kT \over e} \mu_n \nabla n \qquad \textnormal{for electrons}
-    \; , \\
-    J_{p, diff}={kT \over e} \mu_p \nabla p \qquad \textnormal{for holes}
-    \; , 
-  \end{aligned}
+  & J_{n, diff}=-{kT \over e} \mu_n \nabla n \qquad \textnormal{for electrons}
+  \; , \\
+  & J_{p, diff}={kT \over e} \mu_p \nabla p \qquad \textnormal{for holes}
+  \; , 
   \label{eq:diffusionCurrent}
+  \end{aligned}
 \end{equation}
+
+
 where $k$ is the Boltzmann constant, $T$ the absolute temperature, $e$ the
 elementary charge, $\mu$ the mobility of the charge carriers, $\nabla
 n$ and $\nabla p$ are the gradients of the electron and hole
 concentrations.
 
 Charge carriers are accelerated between two random collisions in the
-presence of an external electric field in the direction of the field
-and leads to and average drift velocity given by~\cite{Rossi:976471}:
+presence of an external electric field in the direction of the field,
+leading to and average drift velocity given by~\cite{Rossi:976471}:
 
 \begin{equation}
   \begin{aligned}
-    v_{n}=-\mu_n \textbf{E} \qquad \textnormal{for electrons}
-    \; , \\
-    v_{p}=\mu_p \textbf{E} \qquad \textnormal{for holes}
-    \; , 
-  \end{aligned}
+  & v_{n}=-\mu_n \textbf{E} \qquad \textnormal{for electrons}
+  \; , \\
+  & v_{p}=\mu_p \textbf{E} \qquad \textnormal{for holes}
+  \; , 
   \label{eq:driftVelocity}
+  \end{aligned}
 \end{equation}
+
 where $v$ is the average drift velocity, $\textbf{E}$ the electric
 field and $\mu$ the mobility of the charge carriers. The mobility is a
 function of the electric field. For higher electric fields the charge
 carriers gain more acceleration and the number of collisions per unit
 time increases. This leads to a saturation of the drift velocity
-$v_s$. The mobility dependence on the electric field is described by~\cite{Jacoboni197777}:
+$v_s$. The dependence of the mobility on the electric field is
+described by~\cite{Jacoboni197777}:
+
 \begin{equation}
-  \mu=\frac{v_{s}/E_{c}}{\left[1+(E/E_{c})^{\beta}\right]^{1/\beta}}\; ,
+  \mu\left(E\right)=\frac{v_{s}/E_{c}}{\left[1+(E/E_{c})^{\beta}\right]^{1/\beta}}\; ,
   \label{eq:mobility}
 \end{equation}
 
@@ -415,7 +429,7 @@ where the parameters are described in \cref{tab:mobility_parameters}.
   \centering
   \caption{Parameters for the mobility as described in
     \cref{eq:mobility} with T the absolute temperature and E the
-    absolute electric field.}
+    absolute value of the electric field.}
   \label{tab:mobility_parameters}
   \begin{tabular}{c c c c}
     \toprule
@@ -434,8 +448,8 @@ and holes as a function of the electric field. For a low electric
 field, the mobility for intrinsic silicon at 300~K is:
 \begin{equation*}
   \begin{aligned}
-    \mu_n=1415 \pm 46 \qquad \textnormal{\cmsquared/(Vs)} \; , \\
-    \mu_p=480 \pm 17 \qquad \textnormal{\cmsquared/(Vs)} \; .
+    &\mu_n=1415 \pm 46 \qquad \textnormal{\cmsquared/(Vs)} \; , \\
+    &\mu_p=480 \pm 17 \qquad \textnormal{\cmsquared/(Vs)} \; .
   \end{aligned}
 \end{equation*}
 
@@ -443,13 +457,14 @@ field, the mobility for intrinsic silicon at 300~K is:
   \centering
   \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/Mobility_electron_holes.pdf}
   \caption{Mobility for electrons and holes as a function of an
-    applied electric field calculated with the \cref{eq:mobility}.}
+    applied electric field calculated with \cref{eq:mobility}.}
   \label{fig:Mobility_electron_holes}
 \end{figure}
 
 
 Holes are three times less mobile than electrons which make them more
-likely to be trapped in an irradiated material.
+likely to be trapped in impurities. This is of particular importance
+after radiation exposure~\cite{Rossi:976471}.
 
 %% --------------------------------------------- %%
 %\section{Pixel detectors: pn-junction}
@@ -462,16 +477,16 @@ likely to be trapped in an irradiated material.
 \subsection{pn-junction in thermal equilibrium}
 
 By joining a p-type with an n-type material, a pn-junction is
-obtained. The p and n-type regions are electrically neutral. Due to
-thermal diffusion, the holes and the electrons are driven across the
-junction. This implies that electrons move from the n-type material to
-the p-regions leaving a positive net charge in n-regions, while the
-p-type region gets negatively charged. A potential is built up when
-the electrons diffuse to the p-region. This potential limits the
-diffusion depth when it exceeds the available energy for thermal
-diffusion and is called the built-in potential $V_{bi}$ between the p
-and n-regions. The built-in potential depends logarithmically on the
-doping levels~\cite{Spieler2005}:
+obtained. The p and n-type regions are initially electrically
+neutral. Due to thermal diffusion, the holes and the electrons are
+driven across the junction. This implies that electrons move from the
+n-type material to the p-regions leaving a positive net charge in
+n-regions, while the p-type region gets negatively charged. A
+potential is built up when the electrons diffuse to the p-region. This
+potential limits the diffusion depth when it exceeds the available
+energy for thermal diffusion and is called the built-in potential
+$V_{bi}$ between the p and n-regions. The built-in potential depends
+logarithmically on the doping levels~\cite{Spieler2005}:
 
 \begin{equation}
   V_{bi}= {{kT}\over e} \text{log}\left({N_a N_d} \over {n_i^2} \right)\; ,
@@ -483,7 +498,7 @@ $n_i$ is the intrinsic silicon carrier concentration. For a typical
 detector diode $V_{bi}\approx0.5$~V.
 
 The diffusion of the holes and electrons across the junction to the
-oppositely-doped regions, leads to a region free of mobile carriers
+oppositely-doped regions leads to a region free of mobile carriers
 called the depletion region. As seen previously, $V_{bi}$ limits the
 diffusion depth and therefore the width of the depletion region.
 
@@ -493,22 +508,22 @@ p-region and positive potential to the n-region, the potential barrier
 and the depletion width are increased.
 
 Under a forward bias on the pn-junction, the diode current increases
-rapidly with the voltage. But a reverse bias causes a quick
-saturation of the current flow within the junction and the pn-diode
-can be used as a rectifier. This property is used for the detection of
-radiation in silicon detectors as described in the next section.
+rapidly with the voltage. A reverse bias, on the other hand, causes a
+quick saturation of the current flow within the junction. The pn-diode
+can therefore be used as a rectifier. The reverse bias mode with large
+depletion depth is used for the detection of radiation in silicon
+detectors as described in the next section.
 
-\subsection{reverse-biased pn-junction}
+\subsection{Reverse-biased pn-junction}
 
 The reverse-biased pn-junction is crucial in detection of radiation in
 silicon detectors as it increases the depletion width. This forms a
-capacitor empty of charge carriers where the undepleted p and
+capacitor depleted of charge carriers where the undepleted p and
 n-regions are the electrodes and the depletion region is the
-dielectric. The electric field in the depletion region attracts the
-mobile carriers to the electrodes.  The electric field due to the bias
-voltage allows the charge carriers to drift towards the readout chip
-and also to suppress the leakage current which can be an important
-source of noise.
+dielectric. The electric field due to the bias voltage allows the
+charge carriers in the depleted region which are generated by incident
+radiation to drift towards the readout chip.
+
 
 Here, we derive the depletion width, the electric field distribution,
 the drift and the diffusion within a pn-junction reverse-biased at a
@@ -533,7 +548,7 @@ E=-\text{grad }\varphi \; .
 
 
 To simplify, we assume an abrupt junction where the charge densities
-on the p and n-regions illustrated in \cref{fig:chargeDensity} and
+on the p and n-regions illustrated in \cref{fig:chargeDensity} are
 given by:
 \begin{equation}
   \rho(z)= 
@@ -580,19 +595,19 @@ given by:
 
 In one dimension, Poisson's equation is simplified to:
 \begin{equation}
-{{d^{2}  \varphi(z)} \over {dz^{2}}}=-{\rho(z) \over \epsilon}\; .
+  {{d^{2}  \varphi(z)} \over {dz^{2}}}=-{\rho(z) \over \epsilon} \; .
 \label{eq:poisson1D}
 \end{equation}
 
 First, considering the n-side, the first and second integrations of the Poisson equation give:
 \begin{equation}
-    {{d\phi(z)} \over {dz}}=-{{eN_{d}} \over \epsilon} (z-z_{n}) 
+    {{d\phi(z)} \over {dz}}=-{{eN_{d}} \over \epsilon} (z-z_{n}) \qquad \textnormal{for $0\leq z < z_{n}$}
     \; ,
     \label{eq:PoissonIntegration1}
   \end{equation}
 
 \begin{equation}
-  \phi(z)=-{{eN_{d}} \over \epsilon} {z^{2} \over 2}+{{eN_{d}zz_{n}}\over \epsilon}+Vj
+  \phi(z)=-{{eN_{d}} \over \epsilon} {z^{2} \over 2}+{{eN_{d}zz_{n}}\over \epsilon}+Vj \qquad \textnormal{for $0\leq z < z_{n}$}
   \; ,
   \label{eq:PoissonIntegration2}
 \end{equation}
