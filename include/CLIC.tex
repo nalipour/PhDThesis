@@ -131,13 +131,17 @@ mechanisms to produce the Higgs boson at CLIC.
 \begin{figure}[htbp]
   \centering
   \begin{tikzpicture}
+    % \node[anchor=south west,inner sep=0] (image) at
+    % (0,0){\includegraphics[page=43, trim=30mm 235mm 25mm 30mm, clip,
+    %   width=\textwidth]{figures/CLIC/clicCDR.pdf}};
+
     \node[anchor=south west,inner sep=0] (image) at
-    (0,0){\includegraphics[page=43, trim=30mm 235mm 25mm 30mm, clip,
-      width=\textwidth]{figures/CLIC/clicCDR.pdf}};
+    (0,0){\includegraphics[trim=50mm 210mm 50mm 40mm, clip,
+      width=\textwidth]{figures/CLIC/HiggsProductionMechanism.pdf}};
     
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
       
-      \node[below, color=black] at (0.1, 0.1)
+      \node[below, color=black] at (0.14, 0.1)
       {e\textsuperscript{+}e\textsuperscript{-}$\rightarrow$ZH};
 
       \node[below, color=black] at (0.4, 0.1)

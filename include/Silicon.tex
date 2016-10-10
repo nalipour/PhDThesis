@@ -102,7 +102,8 @@ constant and is \SI{5.34}{\angstrom} in silicon.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.5\textwidth]{figures/ChargeSharing/SiliconDiamondLattice.png}
+  \includegraphics[width=0.5\textwidth, trim =50mm 130mm 40mm 50mm,
+  clip]{figures/ChargeSharing/SiliconDiamondLattice.pdf}
   \caption{Lattice structure of silicon. The building block of the
     lattice is formed by a central atom bonded to four equidistant
     neighbours as shown in shaded
@@ -214,13 +215,17 @@ the readout electronics.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.7\textwidth, page=14, trim = 50mm 160mm
-    40mm 20mm, clip]{Articles/rpp2009-rev-passage-particles-matter.pdf}
-  \caption{Straggling function in silicon for 500 MeV pions,
-    normalized to unity at the most probable value $\Delta_{p}$. $w$
-    is the full-width-at-half-maximum~\cite{Beringer:1900zz}. This
-    calculation is based on Bichsel's method
-    (c.f. \cref{sec:bichsel}).}
+  % \includegraphics[width=0.7\textwidth, page=14, trim = 50mm 160mm
+  %   40mm 20mm,
+  %   clip]{Articles/rpp2009-rev-passage-particles-matter.pdf}
+  \includegraphics[width=\textwidth, trim = 50mm 140mm
+    50mm 40mm, clip]{figures/ChargeSharing/stragglingFunction_physicsReview.pdf}
+
+    \caption{Straggling function in silicon for 500 MeV pions,
+      normalized to unity at the most probable value $\Delta_{p}$. $w$
+      is the full-width-at-half-maximum~\cite{Beringer:1900zz}. This
+      calculation is based on the Bichsel method
+      (c.f. \cref{sec:bichsel}).}
   \label{fig:LandauDistribution}
 \end{figure}
 
@@ -630,7 +635,7 @@ where $V_B$ is the reverse bias voltage. In the p-region,
 The total potential is given by:
 
 \begin{equation}
-V_b={{e} \over {2 \epsilon}}(N_dz_n^2+N_az_p^2)
+V_B={{e} \over {2 \epsilon}}(N_dz_n^2+N_az_p^2)
   \; .
 \end{equation}
 
@@ -643,7 +648,7 @@ N_d z_n=N_a z_p
 the reverse bias potential can be expressed as:
 
 \begin{equation}
-V_b={e \over {2\epsilon}}\left(1+{N_a \over N_d}\right) N_a z_p^2={e \over {2\epsilon}}\left(1+{N_d \over N_a}\right) N_d z_n^2
+V_B={e \over {2\epsilon}}\left(1+{N_a \over N_d}\right) N_a z_p^2={e \over {2\epsilon}}\left(1+{N_d \over N_a}\right) N_d z_n^2
   \; .
 \end{equation}
 
@@ -651,8 +656,8 @@ The depletion widths on the n- and p-sides of the junction are
 
 \begin{equation}
   \begin{multlined}
-z_n=\sqrt{{2 \epsilon V_b} \over {eN_d(1+N_d/N_a)}} \\
-z_p=\sqrt{{2 \epsilon V_b} \over {eN_a(1+N_a/N_d)}} 
+z_n=\sqrt{{2 \epsilon V_B} \over {eN_d(1+N_d/N_a)}} \\
+z_p=\sqrt{{2 \epsilon V_B} \over {eN_a(1+N_a/N_d)}} 
 \; .
 \end{multlined}
 \end{equation}
@@ -660,7 +665,7 @@ z_p=\sqrt{{2 \epsilon V_b} \over {eN_a(1+N_a/N_d)}}
 The total depletion width is 
 
 \begin{equation}
-W=z_n+z_p=\sqrt{{2 \epsilon V_b \left(N_a+N_d\right)} \over {eN_aN_d} }
+W=z_n+z_p=\sqrt{{2 \epsilon V_B \left(N_a+N_d\right)} \over {eN_aN_d} }
 \; .
 \end{equation}
 
@@ -668,7 +673,7 @@ Considering an asymmetrical junction with $N_d \ll N_a$ for which the
 junction potential is equal to the potential of the p-contact:
 
 \begin{equation}
-V_j=\left(N_d \over N_a\right) {V_b \over \left(  1+N_d/N_a \right)} \stackrel{N_d \ll N_a}{\approx} {N_d \over N_a}V_b
+V_j=\left(N_d \over N_a\right) {V_B \over \left(  1+N_d/N_a \right)} \stackrel{N_d \ll N_a}{\approx} {N_d \over N_a}V_B
 \; .
 \end{equation}
 
@@ -684,7 +689,7 @@ bulk resistivity,
 where $\mu_b$ and $N_b$ are the mobility and the doping concentration
 of the bulk. The depletion width $W$ becomes,
 \begin{equation}
-W=\sqrt{2 \epsilon \mu_b \rho_bV_b}
+W=\sqrt{2 \epsilon \mu_b \rho_bV_B}
 \; .
 \label{eq:depletionWidth}
 \end{equation}
@@ -693,14 +698,14 @@ By taking into account the built-in reverse bias voltage,
 \cref{eq:depletionWidth} is written as,
 
 \begin{equation}
-W=\sqrt{2 \epsilon \mu_b \rho_b \left(V_b+V_{bi}\right)}=\sqrt{{2 \epsilon \left(V_b+V_{bi}\right)} \over {eN_b}}
+W=\sqrt{2 \epsilon \mu_b \rho_b \left(V_B+V_{bi}\right)}=\sqrt{{2 \epsilon \left(V_B+V_{bi}\right)} \over {eN_b}}
 \; .
 \label{eq:depletionWidth2}
 \end{equation}
 
 The electric field of \cref{eq:PoissonIntegration1}, by replacing the depletion width and $N_d$ by \cref{eq:depletionWidth2} can be expressed as
 \begin{equation}
-E(z)={{2\left(V_b+V_{bi}\right)} \over {W}} \left({z \over W}-1\right)
+E(z)={{2\left(V_B+V_{bi}\right)} \over {W}} \left({z \over W}-1\right)
 \; .
 \end{equation}
 
