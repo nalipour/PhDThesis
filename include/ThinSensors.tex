@@ -200,7 +200,7 @@ is fully depleted and the charge of the full thickness of the sensor
 is collected. This can be measured in test beams by scanning the bias
 voltage. For lower bias voltages the sensor is under depleted and
 therefore the collected charge is also reduced. The depletion voltage
-and the depletion depth are related by \cref{eq:depletionVoltage}.
+and the sensor thickness are related by \cref{eq:depletionVoltage}.
 
 To obtain the depletion voltage, the total measured TOT is calculated
 by summing up the TOT in the clusters considering all cluster
@@ -280,7 +280,7 @@ undetected energy deposits.
 In this analysis, the hit pixels form a cluster with a distance
 criterion of $\sqrt{2}$: pixels sharing common corners or edges are
 considered as clusters. For sensor thicknesses in the range of
-$50\,\micron$-$300\,\micron$, clusters of size one to four are
+$50\,\micron$-$150\,\micron$, clusters of size one to four are
 expected due to the charge sharing. Larger clusters are expected due
 to other effects such as $\delta$-rays.
 
@@ -332,25 +332,26 @@ conditions. There is a good agreement between simulation and data in
 terms of cluster-size distribution.
 
 \begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.23\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{figures/TestBeam/50micron_sizeX.pdf}
     \caption{$50\,\micron$ (W19\_G7)}
   \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.23\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{figures/TestBeam/100micron_sizeX.pdf}
     \caption{$100\,\micron$ (W5\_E2)}
   \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.23\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{figures/TestBeam/150micron_sizeX.pdf}
     \caption{$150\,\micron$ (W5\_F1)}
-  \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.23\textwidth}
+  \end{subfigure} 
+  %% \hfill
+  %% \begin{subfigure}[b]{0.23\textwidth}
 
-    \caption{$300\,\micron$ p-in-n}
-  \end{subfigure}
+  %%   \caption{$300\,\micron$ p-in-n}
+  %% \end{subfigure}
   \caption{The cluster size distribution in simulation and data for
-    $50\,\micron$, $100\,\micron$, $150\,\micron$ and $300\,\micron$
-    thick sensors. The assemblies are operated at nominal conditions.}
+    $50\,\micron$, $100\,\micron$ and $150\,\micron$ thick
+    sensors. The assemblies are operated at nominal conditions.}
   \label{fig:G4_simu_data_cluSize}
 \end{figure}
 
@@ -394,9 +395,9 @@ size fraction distribution. Results for all assemblies are shown in
 The cluster size fraction as a function of the sensor thickness for
 data recorded at the nominal operating conditions is shown in
 \cref{fig:cluSize_thickness}. Charge sharing increases with sensor
-thickness. The fraction of $1\times2$ and $2\times1$-pixel clusters are
-very similar for square pixels and 2-pixel clusters combine these two
-cluster geometries.
+thickness. The fraction of $1\times2$ and $2\times1$-pixel clusters
+are very similar for square pixels and the curve labeled 2-pixel
+clusters combine these two cluster geometries.
 
 \begin{figure}[htbp] 
   \centering
@@ -531,22 +532,23 @@ distribution gets narrower. There is a good agreement between
 simulation and data in terms of the residuals distribution.
 
 \begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.23\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{figures/TestBeam/50micron_resX.pdf}
     \caption{$50\,\micron$}
   \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.23\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{figures/TestBeam/100micron_resX.pdf}
     \caption{$100\,\micron$}
   \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.23\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{figures/TestBeam/150micron_resX.pdf}
     \caption{$150\,\micron$}
-  \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.23\textwidth}
+  \end{subfigure} 
+  %% \hfill
+  %% \begin{subfigure}[b]{0.23\textwidth}
 
-    \caption{$300\,\micron$ p-in-n}
-  \end{subfigure}
+  %%   \caption{$300\,\micron$ p-in-n}
+  %% \end{subfigure}
   \caption{The residuals distribution in the x direction in simulation
     and data for the assemblies (a) W19\_G7, (b) W5\_E2 and (c)
     W5\_F1. The assemblies are operated at nominal conditions. The
@@ -638,7 +640,7 @@ assemblies' inefficiencies.
 The detection efficiency is strongly related to the operating
 threshold of the readout ASIC. With a lower threshold, smaller energy
 depositions can be measured and it is more likely to detect a
-track. \cref{fig:efficiency_VS_Threshold} shows the detection
+particle. \cref{fig:efficiency_VS_Threshold} shows the detection
 efficiency for different sensor thicknesses. For thinner sensors, the
 energy deposition is lower and the efficiency drops more quickly by
 increasing the threshold than for thick sensors.
@@ -677,6 +679,13 @@ increasing the threshold than for thick sensors.
 
 %% --------------------------------------------- %%
 \section{Extrapolation to smaller pixels}
+
+The Timepix3 readout chip is used as a test vehicle for the
+characterisation of thin sensors. The test-beam measurements and the
+AllPix simulations show a good agreement. Although, the Timepix3
+readout chip has a pixel pitch of $55\,\micron$ and the goal for the
+CLIC vertex detector is to have pixels of pitch $25\,\micron$.
+
 
 Previously, we have seen a good agreement between the AllPix
 simulations and the data taken in the test beams for thin silicon
