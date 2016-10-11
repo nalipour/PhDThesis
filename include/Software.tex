@@ -30,7 +30,9 @@ tracking of particles through materials and external electromagnetic
 fields, the physics processes involved in the possible interaction of
 the particles with the materials they are passing through, the
 response of sensitive components. The simulations of the interaction
-between the particles and materials are mostly validated with data.
+between the particles and materials are mostly validated with data. In
+this thesis, all the studies using \textsc{Geant4} are done with
+version 10.1.2.
 
 \textsc{Geant4} provides physics models for different type of
 interactions called \textit{physics lists}. The \textit{emstandard}
@@ -52,18 +54,18 @@ ionisation cross-section, the mean number of ionising collisions as
 well as the mean ionisation energy loss for the selected material and
 the given Lorentz factor.
 
+
+
 \cref{fig:BichselVSG4} compares the energy loss due to ionisation in
 $50\,\micron$ and $450\,\micron$ thick silicon sensors for different
-\textsc{Geant4} physics lists and the Bichsel model
-(c.f. \cref{sec:bichsel}). \textsc{Geant4} version 10.1.2 is used to
-obtain these distributions. Version 9.6.2 also showed the same
-results. For $50\,\micron$ thick sensor, the \textit{emstandard\_opt3}
-physics list gives a reasonable value for the $\Delta_p$ but the width
-$w$ of the distribution is more narrow than the Bichsel
-distribution. The PAI model corrects for $w$ and the energy deposition
-is very similar to the Bichsel model. For the thick sensor of
-$450\,\micron$, both PAI and emstandard\_opt3 physics lists show
-similar distributions as the Bichsel model.
+\textsc{Geant4} physics lists and the Bichsel parametrisation
+(see~\cref{sec:bichsel}). For the $50\,\micron$ thick sensor, the
+\textit{emstandard\_opt3} physics list gives a reasonable value for
+the most probable value ($\Delta_p$) but the width ($w$) of the
+distribution is more narrow than the Bichsel distribution. The PAI
+model shows a very good agreement with the Bichsel model. For the
+thick sensor of $450\,\micron$, both PAI and emstandard\_opt3 physics
+lists show similar distributions as the Bichsel model.
 
 The energy deposition given by the PAI model is very close to the one
 calculated by Bichsel especially for the fluctuations around the most
@@ -91,18 +93,17 @@ requires more computation power.
 \section{AllPix simulation framework}
 \label{sec:AllPix}
 
-AllPix~\cite{allpix} is a \textsc{Geant4}-based simulation
-software. It is written in C/C++ and provides a flexible interface to
+AllPix~\cite{allpix} is a \textsc{Geant4}-based simulation software
+framework. It is written in C/C++ and provides a flexible interface to
 define any pixel detector geometry to simulate pixelated sensors and
 readout chips.
 
-The pixel detectors are placed in the world volume. \textsc{Geant4}
-provides the simulation of particles through the matter: it calculates
-the position of the hits (or the Monte Carlo Truth position)
-considering the multiple scatterings and the energy deposition in the
-sensitive volumes (sensors). The software user defines the
-semiconductor physics and readout chip properties in a digitiser as
-described here below.
+\textsc{Geant4} provides the simulation of particles through the
+matter: it calculates the position of the hits (or the Monte Carlo
+Truth position) considering the multiple scatterings and the energy
+deposition in the sensitive volumes (sensors). The software user
+defines the semiconductor physics and readout chip properties in a
+digitiser as described here below.
 
 \cref{fig:TPX3TelescopeAllpix} shows an example of the simulation for
 the Timepix3 telescope (described in \cref{ch:Telescope}) in AllPix
