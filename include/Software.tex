@@ -16,9 +16,9 @@ both data and simulation, is also presented.
 \section{\textsc{Geant4}}\label{sec:Silicon_Geant4}
 
 \textsc{Geant4}~\cite{Agostinelli:2002hh}, as an object-oriented
-simulation toolkit implemented in C++ programming language, is widely
-used in high energy, nuclear and accelerator physics, medical and
-space sciences. As the modern particle physics is going towards
+simulation toolkit implemented in the C++ programming language, is
+widely used in high energy, nuclear and accelerator physics, medical
+and space sciences. As modern particle physics is going towards
 large-scale detectors, more accurate simulations are needed in order
 to understand the complex situations. \textsc{Geant4} provides
 software components which can be used to study basic phenomena,
@@ -29,7 +29,8 @@ fundamental particles, the generation of primary particles, the
 tracking of particles through materials and external electromagnetic
 fields, the physics processes involved in the possible interaction of
 the particles with the materials they are passing through, the
-response of sensitive components and mostly validated with data.
+response of sensitive components. The simulations of the interaction
+between the particles and materials are mostly validated with data.
 
 \textsc{Geant4} provides physics models for different type of
 interactions called \textit{physics lists}. The \textit{emstandard}
@@ -43,12 +44,13 @@ used for the simulation of the energy loss in pixel detectors.
 \textsc{Geant4} provides as well the Photo-Absorption Ionisation (PAI)
 model~\cite{Apostolakis:2000yu} for the precise simulation of
 ionisation energy loss by relativistic charged particles in very thin
-absorbers. Since in very thin sensors the Landau model is not
-suitable, the PAI model is based on the photo-absorption cross-section
-tables obtained by experimental data. In practice several classes are
-used to calculate the integral ionisation cross-section, the mean
-number of ionising collisions as well as the mean ionisation energy
-loss for the selected material and the given Lorentz factor.
+absorbers. Since in very thin sensors the Landau model is not suitable
+(see \cref{sec:landau}), the PAI model is based on the
+photo-absorption cross-section tables obtained by experimental
+data. In practice several classes are used to calculate the integral
+ionisation cross-section, the mean number of ionising collisions as
+well as the mean ionisation energy loss for the selected material and
+the given Lorentz factor.
 
 \cref{fig:BichselVSG4} compares the energy loss due to ionisation in
 $50\,\micron$ and $450\,\micron$ thick silicon sensors for different
