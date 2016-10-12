@@ -364,42 +364,43 @@ software frameworks. The EUTelescope software
 package~\cite{Rubinskiy,EutelescopeWebsite} is used to reconstruct the
 tracks from the telescope and extrapolate their positions on the
 DUT. For the analysis of the DUT data, the python-based software
-pyEudetanalysis is used~\cite{pyeudet}.
+pyEudetAnalysis is used~\cite{pyeudet}.
 
 \subsection{EUTelescope}
 \label{sec:EUTelescope}
 The EUTelescope software is based on the ILCSoft
-framework~\cite{Aplin:2009zz}. This latter provides the basic building
+framework~\cite{Aplin:2009zz}. The latter provides the basic building
 blocks such as the LCIO (Linear Collider Input Output) data model, the
 geometry description toolkit GEAR and a modular application framework
 for event analysis, called Marlin~\cite{Gaede:2006pj}.
 
-A modular analysis and reconstruction chain can be defined using
-Marlin processors. Each processor implements algorithms for specific
-tasks. The input parameters for the algorithms can be configured and
-loaded at runtime using \textit{steering files} in XML format. For
-each event, the processors are called centrally by Marlin and this
-scheme offers flexibility to the users.
+A modular event-based analysis and reconstruction chain can be defined
+using Marlin processors. Each processor implements algorithms for
+specific tasks. The input parameters for the algorithms can be
+configured and loaded at runtime using \textit{steering files} in XML
+format. For each event, the processors are called centrally by Marlin.
 
-EUTelescope framework, originally developed for the EUDET/AIDA pixel
-beam telescope~\cite{Rubinskiy:2014kza}, provides Marlin processors
-for the track reconstruction and data analysis of test beam
+The EUTelescope framework, originally developed for the EUDET/AIDA
+pixel beam telescope~\cite{Rubinskiy:2014kza}, provides Marlin
+processors for the track reconstruction and data analysis of test beam
 experiments. \cref{fig:EUTelescope_EUDET_pipeline} schematically shows
-the analysis strategy in EUTelescope framework starting from the raw
-data recorded during the test beam to finally particle tracks
+the analysis workflow in the EUTelescope framework starting from the
+raw data recorded during the test beam to particle tracks
 reconstruction. Since each experiment has its own data format for the
-DUT, the format converter is defined by the user. This makes the
-framework more flexible for testing different chip families.
+DUT and also the telescope planes, the format converter is defined by
+the user. This makes the framework flexible for testing different chip
+families with different data formats.
 
 \begin{figure}[htbp]
   \centering
   \begin{tikzpicture}
     \node[anchor=south west,inner sep=0] (image) at
-    (0,0){\includegraphics[width=0.8\textwidth]{figures/Telescope/EUTelescope_pipeline.png}};
+    (0,0){\includegraphics[width=\textwidth, trim = 30mm 150mm 30mm
+      50mm, clip]{figures/Telescope/EUTelescope_pipeline.pdf}};
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
     \end{scope}
   \end{tikzpicture} 
-  \caption{Data reconstruction and analysis strategy using the
+  \caption{Data reconstruction and analysis workflow using the
     EUTelescope framework. From~\cite{Jansen:2016bkd}.}
   \label{fig:EUTelescope_EUDET_pipeline}
 \end{figure}
