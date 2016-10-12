@@ -25,14 +25,13 @@ software components which can be used to study basic phenomena,
 geometries and full-scale detector simulations for
 experiments. \textsc{Geant4} simulations take into account parameters
 such as: the geometry of the system, the materials involved, the
-fundamental particles, the generation of primary particles, the
-tracking of particles through materials and external electromagnetic
-fields, the physics processes involved in the possible interaction of
-the particles with the materials they are passing through, the
-response of sensitive components. The simulations of the interaction
-between the particles and materials are mostly validated with data. In
-this thesis, all the studies using \textsc{Geant4} are done with
-version 10.1.2.
+generation of primary particles, the tracking of particles through
+materials and external electromagnetic fields, the physics processes
+involved in the possible interaction of the particles with the
+materials they are passing through, the response of sensitive
+components. The simulations of the interaction between the particles
+and materials are mostly validated with data. In this thesis, all the
+studies using \textsc{Geant4} are done with version 10.1.2.
 
 \textsc{Geant4} provides physics models for different type of
 interactions called \textit{physics lists}. The \textit{emstandard}
@@ -93,21 +92,26 @@ requires more computation power.
 \section{AllPix simulation framework}
 \label{sec:AllPix}
 
-AllPix~\cite{allpix} is a \textsc{Geant4}-based simulation software
-framework. It is written in C/C++ and provides a flexible interface to
-define any pixel detector geometry to simulate pixelated sensors and
-readout chips.
+AllPix~\cite{Benoit:1474878,allpix,allpixTwiki} is a
+\textsc{Geant4}-based simulation software framework. It is written in
+C/C++ and provides a flexible interface to define a pixel detector
+geometry to simulate pixelated sensors and readout chips. It is widely
+used for the simulation of pixel detectors in different high energy
+physics experiments. It allows for defining an experimental setup with
+its surrounding environment as realistic as possible, such as the
+components of a test beam setup. It also allows for the simulation of
+more complexe geometries such as a full vertex detector.
 
 \textsc{Geant4} provides the simulation of particles through the
-matter: it calculates the position of the hits (or the Monte Carlo
-Truth position) considering the multiple scatterings and the energy
-deposition in the sensitive volumes (sensors). The software user
-defines the semiconductor physics and readout chip properties in a
-digitiser as described here below.
+matter: it calculates the position of the hits (the true Monte Carlo
+position) considering multiple scattering and the energy deposition in
+the sensitive volumes (sensors). The software user defines the
+semiconductor physics and readout chip properties in a digitiser as
+described below.
 
 \cref{fig:TPX3TelescopeAllpix} shows an example of the simulation for
 the Timepix3 telescope (described in \cref{ch:Telescope}) in AllPix
-with the device under test (DUT) in the middle of the rotated telescope
+with the device under test (DUT) in the middle of the tilted telescope
 planes.
 
 \begin{figure}[htbp]
@@ -119,21 +123,24 @@ planes.
       \node[above, color=white] at (0.45, 0.65) {\textbf{DUT}};
     \end{scope}
   \end{tikzpicture}
-  \caption{Simulation of the Timepix3 telescope with AllPix.}
+  \caption{Simulation of the Timepix3 telescope in AllPix with the six
+    tilted telescope planes and the device under test (DUT) in the
+    center as well as particle tracks from the beam entering the
+    telescope from the right.}
   \label{fig:TPX3TelescopeAllpix}
 \end{figure}
 
 %% --------------------------------------------- %%
 \subsection{Coordinate system}
 
-The convention used for the pixel detectors (in AllPix but also the
+The convention used for the pixel detectors (in AllPix and also in the
 reconstruction software as described in \cref{sec:recoSoft}) for a
 Timepix3-like matrix of $256\times256$ pixels is shown in
-\cref{fig:coordinateSystem}. The pixel coordinates (X, Y) and the
-\textcolor{blue}{local coordinates (x, y) in millimeters} of the
-center of the pixels in the corners of the matrix are shown. In this
-convention we are looking from the sensor side with the periphery on
-the top.
+\cref{fig:coordinateSystem}. The pixel coordinates (column, row) are
+shown in black and the local coordinates (x, y) in millimeters of the
+center of the pixels in the corners of the matrix are shown in
+blue. In this convention we are looking from the sensor side with the
+periphery at the bottom.
 
 \begin{figure}[htbp]
   \centering
@@ -141,61 +148,59 @@ the top.
     \begin{scope} 
 
       \draw (0, 0) rectangle (10, 10) node[pos=.5] {Sensor side};
-      \draw[fill=gray] (0, 10) rectangle (10, 11) node[pos=.5]
+      \draw[fill=gray] (0, -1) rectangle (10, 0) node[pos=.5]
       {Periphery};
 
-      \draw (0, 10) rectangle (3, 7) node[align=center, pos=.5] {(255, 0) \\ \textcolor{blue}{(7.0125, -7.0125)}};
-      \draw (7, 10) rectangle (10, 7) node[align=center, pos=.5] {(0, 0) \\ \textcolor{blue}{(-7.0125, -7.0125)}};
-      
-      \draw (0, 0) rectangle (3, 3) node[align=center, pos=.5] {(255,
+      \draw (0, 10) rectangle (3, 7) node[align=center, pos=.5] {(0, 255) \\ \textcolor{blue}{(-7.0125, 7.0125)}};
+      \draw (7, 10) rectangle (10, 7) node[align=center, pos=.5] {(255,
         255) \\ \textcolor{blue}{(7.0125, 7.0125)}};
-      \draw (7, 0) rectangle (10, 3) node[align=center, pos=.5] {(0, 255) \\ \textcolor{blue}{(-7.0125, 7.0125)}};
-      % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (10,10);
-      % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-      % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
-      %   {0.\y}; }
-
-    %   \draw[step=2cm,color=gray] (-5, -5) grid (5, 5);
-    %   \matrix[matrix of nodes,nodes={inner sep=0pt,text width=2cm,align=center,minimum height=2cm}]{
-    %     {(255, 0) \\ \textcolor{blue}{(7.0125, -7.0125)}} & &  & {(0,0) \\ \textcolor{blue}{(-7.0125, -7.0125)}} \\
-    %     &  &  &  \\
-    %     &  &  &  \\
-    %     {(255, 255) \\ \textcolor{blue}{(7.0125, 7.0125)}} &  &  & {(0, 255) \\ \textcolor{blue}{(-7.0125, 7.0125)}} \\};
+      
+      \draw (0, 0) rectangle (3, 3) node[align=center, pos=.5]{(0, 0) \\ \textcolor{blue}{(-7.0125, -7.0125)}};
+      \draw (7, 0) rectangle (10, 3) node[align=center, pos=.5] {(255, 0) \\ \textcolor{blue}{(7.0125, -7.0125)}};
     \end{scope}  
   \end{tikzpicture}
   \caption{The coordinates system for a matrix of $256\times256$
-    pixels. The pixel coordinates (X, Y) and the
-    \textcolor{blue}{local coordinates (x, y) in millimeters} of the
-    center of the pixels in the corners of the matrix are shown. In
-    this convention, we are looking from the sensor side with the
-    periphery on the top.}
+    pixels. The pixel coordinates (column, row) are shown in black and
+    the local coordinates (x, y) in millimeters of the center of the
+    pixels in the corners of the matrix are shown in blue. In this
+    convention, we are looking from the sensor side with the periphery
+    at the bottom.}
   \label{fig:coordinateSystem}
 \end{figure}
 %% --------------------------------------------- %%
 \subsection{Geometry of the pixel detector}
 
 In AllPix, the pixel detector geometry can be defined by the pitch
-size, the thickness of the sensor and the readout chip, the PCB
-properties, the mechanical support and other geometry properties
-related to an assembly. These parameters are usually defined in an XML
-file format called the \texttt{pixeldetector.xml}. Each detector is
-identified by a unique ID. This facilitates the running of the
-simulation with different parameters by only changing the
-\texttt{pixeldetector.xml} file without any need of re-compiling the
-code. It is also possible to define the parameters of the digitiser in
-this XML file.
+size, the thickness of the sensor and the readout chip for a hybrid
+configuration, the PCB properties, the mechanical support and other
+geometry properties related to an assembly. These parameters are
+usually defined in an XML file. Each detector is identified by a
+unique ID number. This facilitates the running of the simulation with
+different parameters by only changing the XML file without the need of
+re-compiling the code. It is also possible to define the parameters of
+the digitiser in this XML file.
 %% --------------------------------------------- %%
 \subsection{Geometry of the simulation scenario}
 
-The simulation scenario is defined in the file \texttt{macro.in}. The
-position of the detectors in the space is specified by the coordinates
-(x, y, z) and the rotations around the x, y and z axes of the centre
-of the detectors. The physics list used by \textsc{Geant4} is
-specified. The General Particle Source (GPS), which is the
-\textsc{Geant4} toolkit for Monte-Carlo of the high-energy particle
-transport is also described in the macro. The particle type, the beam
-energy, the position and distributions are customisable. The
-simulation is done based on frames.
+The simulation scenario is defined in a macro file. The position of
+the detectors in space is specified by the coordinates (x, y, z) and
+the rotations around the x, y and z axes of the centre of the
+detectors. The physics list used by \textsc{Geant4} is specified. The
+General Particle Source (GPS), which is the \textsc{Geant4} toolkit
+for the generation of high-energy particles, is also described in the
+macro file. The particle type, the beam energy, the position and
+distributions are customisable. The simulation is done based on
+frames. The frame can be related to the integration time of the
+detectors during which the shutter is open and all the particles are
+detected in this specific lapse of time. For a Timepix3-like detector
+which is operated based on a data-driven readout (see
+\cref{sec:TimepixReadout}), the frame length is not fully defined. In
+this case, in a frame we define the number of particles to hit the
+detectors without causing pile-ups. During test beams, the particle
+rate is also adjusted to avoid pile-ups. Since we are mostly
+interested in the physics of the detector and not testing the timing
+capabilities of the readout system, this definition of a frame is
+plausible.
 
 Visualisation parameters are also given in the macro. Open
 Inventor~\cite{OpenInventor} can be, for example, used to visualise
@@ -205,11 +210,11 @@ the simulation scenario and also the particle tracks in the detectors.
 \subsection{Digitisation}
 \label{sec:allpix_digitisation}
 
-\textsc{Geant4}, for each simulation step (\texttt{G4Step}) through
-the matter, provides the energy deposited in the sensitive
+For each simulation step (\texttt{G4Step}) through the matter,
+\textsc{Geant4} provides the energy deposited in the sensitive
 material. The step length can be customised. For thin sensors
 simulations, a step of $2\,\micron$ is selected and provides a precise
-energy deposition. The semiconductor physics in a Silicon detector is
+energy deposition. The semiconductor physics in a silicon detector is
 then defined in the digitiser. The drift and diffusion are performed
 at each step (using \cref{eq:sigmaDiffusion}) to simulate the
 electron-hole pair movement in the electric field. The digitiser also
@@ -299,20 +304,54 @@ and the total charge deposited in a pixel is calculated.
 %% --------------------------------------------- %%
 \section{TCAD simulations}
 \label{sec:TCAD}
-Technology Computer-Aided Design (TCAD) as a powerful simulation tool
-is used to optimise and develop semiconductor processing technologies
-as well as the device operation~\cite{synopsysTCAD}. TCAD uses the
-finite element method to numerically solve the solutions to the
-physical partial differential equations in semiconductor, such as the
-continuity and diffusion equations. This allows for the modeling of
-the structural properties and the electrical behaviour of
-semiconductor devices.
+Technology Computer-Aided Design (TCAD) as a simulation tool is used
+to optimise and develop semiconductor processing technologies as well
+as the device operation~\cite{synopsysTCAD}. TCAD uses a finite
+element method to numerically solve the physical partial differential
+equations in semiconductors, such as the continuity and diffusion
+equations. This allows for the modeling of the structural properties
+and the electrical behaviour of semiconductor devices.
 
-For this study Synopsys TCAD version I-2013.12 is used for several
-purposes. First to understand the movement of charge carriers in
-silicon and the coupling to the readout in as described in
-\cref{sec:RamoTheorem}. Also it is used to simulate active-edge
-devices and understand the measurements later in
+The TCAD simulations are performed in different steps. First, the
+sensor geometry is defined in a 2D or a 3D configuration. The doping
+profiles for the specific regions of the simulation are defined. In
+this step, the wafer processing is imitated as it is done in a
+foundry. The silicon bulk is doped to obtain the desired
+resistivity. The pixel implants are deposited to form
+pn-junctions. The aluminum contacts are placed to apply the high
+voltage on the backside of the sensor and the ground on the
+pixels. The simulation mesh is then described. The mesh divides the
+surfaces and volumes into small triangles. The simulation is solved
+numerically on this grid by respecting the boundary conditions and
+continuity equations between the mesh points. The number of the mesh
+points defines the accuracy and therefore the computation time for
+solving the equations. An optimised definition of the mesh is crucial
+for obtaining the solutions. Too coarse meshes may result in a poor
+accuracy of the solutions or even the calculations might not
+converge. For this reason, fine mesh points are described in regions
+with high gradients in the doping profiles and close to the pixel
+implants. Coarser mesh points are defined for the bulk of the sensor
+where the doping concentration is almost constant.
+
+The stationary solution at a certain bias voltage is obtained after
+defining the geometry, the doping profiles and the mesh points. The
+voltage on the backside contact is ramped up in small steps. The
+electric field within the sensor is calculated and the depletion
+volume is delimited.
+
+Finally, a transient simulation can also be performed after a particle
+hit in the sensor. Charge carriers are generated in the sensor by the
+passing of ionising particles. The charge carriers are propagated for
+a given time period. During their drifts towards the readout
+electrodes, an induced current is also generated in the contacts. The
+charge signal in the readout electrodes is integrated over the
+integration time and the signal to get the signal the readout chip
+would obtain.
+
+For this study Synopsys TCAD version I-2013.12 is used to simulate the
+movement of charge carriers in silicon and the coupling to the readout
+as described in \cref{sec:RamoTheorem}. Also it is used to simulate
+active-edge devices and compare with the measurements in
 \cref{ch:ActiveEdgeSensors}.
 %% --------------------------------------------- %%
 
@@ -325,8 +364,7 @@ software frameworks. The EUTelescope software
 package~\cite{Rubinskiy,EutelescopeWebsite} is used to reconstruct the
 tracks from the telescope and extrapolate their positions on the
 DUT. For the analysis of the DUT data, the python-based software
-pyEudetanalysis is used (it can be found as a GitHub
-directory~\cite{pyeudet}).
+pyEudetanalysis is used~\cite{pyeudet}.
 
 \subsection{EUTelescope}
 \label{sec:EUTelescope}
