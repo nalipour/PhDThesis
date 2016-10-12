@@ -405,73 +405,134 @@ families with different data formats.
   \label{fig:EUTelescope_EUDET_pipeline}
 \end{figure}
 
-The EUTelescope framework is adapted for the reconstruction of the
+The EUTelescope framework was adapted for the reconstruction of the
 data from the Timepix3 telescope. The framework is originally written
 for a frame-based readout mode and had to be adapted to the
 data-driven readout mode which was used during the data taking. This
-affects mainly the definition of an event. In a frame-based mode, an
-event corresponds to a frame where the shutter of the detectors are
-opened and all the hits are integrated during an exposure time. When
-the shutter is closed, there is a dead-time where no data is acquired
-and all the hits are read out from the readout chips and recorded in a
-raw data file. Whereas in the data-driven mode, the data are acquired
-as soon as a pixel is hit (there is no shutter and almost no
-dead-time). The hits are written in the raw file with their
-time-stamps coming from a combination of the TOA and the FPGA timing
-from the SPIDR readout. They are not ordered in time in the raw file
-since the readout chip does not send them in the order they are
-produced. Some pre-processing is needed to order the hits by their TOA
-and create events.
+affects mainly the definition of an event. In the frame-based mode, an
+event corresponds to a time frame where the shutter of the detectors
+are opened and all hits are integrated. When the shutter is closed,
+there is a dead-time where no data is acquired and all the hits are
+read out from the readout chips and recorded in a raw data
+file. Whereas in the data-driven mode, the data are acquired as soon
+as a pixel is hit (there is no shutter and almost no dead-time). The
+hits are written in the raw file with their time-stamps coming from a
+combination of the TOA and the FPGA timing from the SPIDR readout (see
+\cref{sec:TimepixReadout}). They are not ordered in time in the raw
+file since the readout chip does not send them in the order they are
+produced. Pre-processing is needed to order the hits by their TOA and
+create events as described below.
 
-The reconstruction chain for the Timepix3 telescope is described in
+The reconstruction chain for the Timepix3 telescope is performed in
 the following steps:
 
 \begin{enumerate}
 \item Converter: converts the raw files written by each telescope
   planes and the DUT in a binary format to an LCIO event. The
-  data-driven zero-suppressed mode is used for the data acquisition of
-  the Timepix3 readout ASICs. This mode allows for a very low
-  dead-time and all the particles at the SPS spill are recorded. Every
-  hit is written with a 64-bit time-stamp (\texttt{long long int})
-  related to the TOA of the hits and a time-stamp from the FPGA. The
-  hits written in the raw file are not necessarily ordered in time. In
-  the converter processor, the hits within a timing window of 3~ms are
-  read and filled into a vector. The hits in the vector are ordered in
-  time according to their time-stamps. An LCIO event is built by
-  choosing the hits in the six telescope planes and the DUT with time
-  stamps differing by $2.5\,\microsecond$. With this constraint, most
-  probably one track per event is obtained and all the hits belong to
-  the same track. Hot pixels (with the maximum allowed frequency of
-  0.1 i.e. pixels firing at minimum once every 10 events) are as well
-  calculated and also the $\eta$-correction~\cite{Belau:1983eh}
-  values.
+  converter also defines the event for the data-driven zero-suppressed
+  readout mode and orders the hits.
+
+  In the converter processor, the hits within a time window of 3~ms
+  are read and filled into a vector. This time window is large enough
+  to acquire all the hits belonging to many tracks. The hits in the
+  vector are ordered in time according to their time-stamps. An LCIO
+  event is built by choosing the hits in the six telescope planes and
+  the DUT with time stamps differing by at most
+  $2.5\,\microsecond$. With this constraint, in most cases one track
+  per event is obtained (for particle rates of $\sim1$~million per
+  second) and all hits belong to the same track. Only around half of
+  the 3~ms time window is used to reconstruct the events. The other
+  half is combined with the next 3~ms time window in order to avoid
+  the loss of the hits in-between the time windows.
+
+\item Hot pixels remover: hot pixels with the maximum allowed
+  frequency of 0.1~Hz are discarded from the analysis. 
 \item Clustering: the clusters in each telescope plane is found.
 \item Hit making: reconstruction of the hit position for each cluster
-  with the $\eta$-correction method.
-\item Alignment: by assuming straight tracks, the alignment processor
-  uses Millepede~II algorithm~\cite{Blobel20065} to align the
-  telescope planes with respect to each other. It consists of a least
-  squares minimisation problem ($\chi^2$minimisation). A proper
-  definition of the geometry is important for this step.
+  with the $\eta$-correction method~\cite{Belau:1983eh}.
+\item Alignment: the alignment processor uses the Millepede~II
+  algorithm~\cite{Blobel20065} to align the telescope planes with
+  respect to each other. It assumes straight tracks and consists of a
+  least squares minimisation method. A proper definition of the
+  geometry is important for this step.
 \item Track finding: the \texttt{EUTelTestFitter} algorithm
   implemented as a Marlin processor is used for finding and fitting
   the tracks. This track fitting method is based on a
-  $\chi2$-minimisation as described in~\cite{Zarnecki:2007yu}. Due to
+  $\chi^2$-minimisation as described in~\cite{Zarnecki:2007yu}. Due to
   the multiple scatterings in the telescope planes, the tracks are
-  displaced in the order of few micrometers and can not be neglected
-  since it is comparable with the expected resolution of the telescope
-  layers. This method can be separately considered for the horizontal
-  (x) and vertical (y) planes.
+  displaced in the order of a few micrometers, which can not be
+  neglected since it is comparable with the expected resolution of the
+  telescope layers. This method is separately considered for the
+  horizontal (x) and vertical (y) planes. The goal is to determine the
+  position of the tracks on each telescope plane and the DUT from the
+  measured positions on the telescope planes. The $\chi^2$ of the fit
+  uses the additional constraint on the angles of the multiple
+  scatterings. The track positions correspond to the positions
+  minimising the $\chi^2$ distribution.
 
-  The goal of this method is to determine the position of the tracks
-  on each telescope plane and the DUT from the measured positions on
-  the telescope planes. The $\chi^2$ of the fit uses the additional
-  constraint on the angles of the multiple scatterings. The track
-  positions correspond to the positions minimising the $\chi^2$
-  distribution.
-
+  The track positions on the DUT can be written in a ROOT
+  tree~\cite{BRUN199781} and saved in a ROOT file. The raw data from
+  the DUT is also written in the same file to be processed separately
+  with the pyEudetAnalysis framework (see \cref{sec:pyEudetAnalysis}).
 \end{enumerate} 
 
 \subsection{pyEudetAnalysis}
-For the analysis of the DUT data, the python-based software
-\texttt{pyEudetanalysis} is used. It can be found as a GitHub directory~\cite{pyeudet}.
+\label{sec:pyEudetAnalysis}
+
+Once the telescope tracks are reconstructed using the EUTelescope
+framework, the analysis of the DUT can be done separately within the
+python-based pyEudetAnalysis framework~\cite{pyeudet}. Separating the
+telescope and the DUT analyses, provides more flexibility on the
+analysis of the DUT. The tracks are reconstructed once and rerunning
+of the analysis on the DUT does not require to reconstruct the tracks
+one more time.
+
+The pyEudetAnalysis reads the reconstructed track position and the
+list of the pixels hit on the DUT from the ROOT file generated by
+EUTelescope.
+ 
+The workflow for pyEudetAnalysis is very similar to
+EUTelescope. Except for the track reconstruction step which is not
+needed in pyEudetAnalysis. The workflow is described
+in~\cite{AlipourTehrani:2133128} and briefly summarised below:
+
+\begin{enumerate}
+\item Reading the output of the EUTelescope: the tracks and the pixels
+  hit on the DUT are read from the ROOT file and stored in specified
+  structures to be used for the analysis.
+
+\item Hot pixel remover: noisy pixels on the DUT with a firing
+  frequency higher than 0.01~Hz are removed from the analysis.
+
+\item Clustering: the pixels hit on the DUT are clustered using the
+  SciPy hierarchical \texttt{fclusterdata}
+  algorithm~\cite{scipyClustering}.
+
+\item Hit position reconstruction: pyEudetAnalysis provides several
+  algorithms to reconstruct the position of the hits within the
+  cluster. The $\eta$-correction method (see \cref{sec:EtaCorrection})
+  is as well implemented which uses the TOT (charge) information to
+  compensate for the non-linearities due to the charge sharing.
+
+\item Track-hit alignment: the reconstructed tracks are compared to
+  the reconstructed hit on the DUT. The hits are brought into lines
+  with the tracks by defining translations in x and y directions
+  during the pre-alignment procedure. The main alignment method
+  consists of defining precisely the translation and rotations to
+  precisely match the tracks to the matched hits. A metric defined as
+  the radial distance between each track and the closest hit within a
+  distance of less than 0.5mm. The Nelder-Mead method of SciPy
+  \texttt{optimize.minimize}~\cite{SciPyOptimizeMinimize} is used to
+  minimise the total distance. This function automatically varies the
+  rotation about z and the x and y translations simultaneously to find
+  the optimal alignment.
+
+\item Track-hit matching: the alignment constants found previously are
+  applied to the hits. The hits on the DUT are then matched to the
+  tracks. This is done by taking the closest hit to each track, within
+  a radial distance of 0.1~mm. The hits which are not connected to the
+  tracks most probably belong to the electronics noise and are not
+  related to the passing of particles and therefore discarded in the
+  analysis. The DUT efficiency can be studied by using this track-hit
+  matching.
+\end{enumerate}
