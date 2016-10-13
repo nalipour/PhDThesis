@@ -849,7 +849,7 @@ since in this case the electric field stays quite low.
 %% \subsection{TCAD simulations}
 
 %%\newpage
-\section{Pixelated silicon sensors properties}
+\section{Pixelated silicon sensors}
 
 Previously, we have reviewed the properties of a pn-junction as it is
 the building block of pixel detectors. By segmenting the electrodes on
@@ -858,24 +858,25 @@ electrodes, which can be n or p-type, are introduced through a mask to
 form a pixel matrix with ion implantation. Each pixel forms an
 independent pn-junction and the gaps between the pixels are
 electrically controlled to isolate a pixel from its neighbouring
-diodes. An aluminum layer deposited on the electrodes provides the
-external bias voltage and signal path to the readout electronics with
-a low resistance. 
+diodes. An aluminum layer deposited on the electrodes provides a
+signal path to the readout electronics with a low resistance. The
+backside metallisation, on the bulk side, supplies the external bias
+voltage.
 
 This thesis focuses on hybrid pixel detectors where the electronics
 for the readout and sensors are produced separately and mated using
-bumps. Matrices of pixel detectors can be put together to cover larger
-surfaces. \cref{fig:pixelCell} illustrates schematically the basic
-building block of a hybrid pixel detector with only one pixel. An
-ionising particle traversing the detector, creates charges in the
-depletion region of the sensor. The charge carriers move under the
+bump bonds. Matrices of pixel detectors can be put together to cover
+larger surfaces. \cref{fig:pixelCell} illustrates schematically the
+basic building block of a hybrid pixel detector with only one
+pixel. An ionising particle traversing the detector creates charges in
+the depletion region of the sensor. The charge carriers move under the
 action of the applied electric field. The signal produced is acquired
-by an electronics chip.
+by an integrated circuit for amplification and digitisation.
 
 \begin{figure}[htbp]
   % \begin{wrapfigure}{r}{0.5\textwidth} 
   \centering
-  \includegraphics[width=\textwidth, trim = 30mm 90mm 30mm 45mm,
+  \includegraphics[width=\textwidth, trim = 30mm 100mm 30mm 45mm,
   clip]{figures/ChargeSharing/PixelCell.pdf}
   \caption{Schematic layout of one pixel cell in a hybrid pixel
     detector. From~\cite{Rossi:976471}.}
@@ -887,7 +888,8 @@ In the following sections, we introduce Ramo's theorem which describes
 how the charge carriers are collected by the readout electrodes. Also,
 an introduction to in-pixel studies done with pixel detectors is given
 later when studying the spatial resolution for different readout chip
-configurations.
+configurations. We also explain how pixel detectors can be used for
+position reconstruction.
 
 
 %\subsection{Silicon sensors types}
@@ -929,14 +931,23 @@ charge will be higher for the closer plate.
 
 The induced charge can not be observed directly but its change can be
 measured when the two electrodes are connected in a closed circuit
-(like a pixel detector) as it produces an induced current.
+(like in a pixel detector) as it produces an induced current.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth, trim = 50mm 200mm 50mm 45mm,
-  clip]{figures/Ramo/InducedCharge_parallelPlates.pdf}
-  \caption{The charge induced on two parallel plates depending on the
-    position of the charge $q$. From~\cite{Spieler2005}.}
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,0){\includegraphics[width=\textwidth, trim = 50mm 200mm 50mm 45mm,
+      clip]{figures/Ramo/InducedCharge_parallelPlates.pdf}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+      \node[] at (0.33, 0.43) {$q$};
+      \node[] at (0.78, 0.22) {$q$};
+      
+    \end{scope}
+  \end{tikzpicture} 
+  \caption{The charge induced on two parallel plates for two
+    configurations of the position of a charge
+    $q$. From~\cite{Spieler2005}.}
   \label{fig:InducedCharge_parallelPlates}
 \end{figure}
 
