@@ -524,8 +524,8 @@ detectors as described in the next section.
 
 \subsection{Reverse-biased pn-junction}
 
-The application of a reverse bias voltage in pn-junction is crucial in
-the detection of radiation in silicon detectors. It increases the
+The application of a reverse bias voltage to a pn-junction is crucial
+in the detection of radiation in silicon detectors. It increases the
 depletion width. This forms a capacitor depleted of charge carriers
 where the undepleted p and n-regions are the electrodes and the
 depletion region is the dielectric. An electric field due to the bias
@@ -547,7 +547,7 @@ equation~\cite{Knoll2010}:
 \end{equation}
 
 where $\epsilon$ is the dielectric constant of the medium and $\rho$
-the net charge density. The electric field E due to the electric
+the net charge density. The electric field $E$ due to the electric
 potential is obtained by:
 
 \begin{equation}
@@ -622,42 +622,47 @@ First, considering the n-side, the first and second integrations of the Poisson 
   \label{eq:PoissonIntegration2}
 \end{equation}
 
-where $V_j$ is the potential at the interface where the n- and the p-sides join. At the boundary of the depletion region $z=z_{n}$:
+where $V_j$ is the potential at the interface where the n- and the
+p-sides join. At the boundary of the depletion region $z=z_{n}$ the
+bias voltage $V_B$ is applied:
 
 \begin{equation}
   \phi(z_{n})=V_{B}={{eN_{d}z_{n}^{2}} \over \epsilon}+V_j 
-  \; ,
+  \; .
   \label{eq:BounderyPotential}
 \end{equation}
 
-where $V_B$ is the reverse bias voltage. In the p-region,
+At the p-side, the external bias voltage is 0~V. Using this constraint
+in the p-region, the $V_j$ is given by:
 
 \begin{equation}
   V_j={{eN_az_p^2} \over {2\epsilon}}
   \; .
 \end{equation}
 
-The total potential is given by:
+The total potential across the pn-junction is given by:
 
 \begin{equation}
 V_B={{e} \over {2 \epsilon}}(N_dz_n^2+N_az_p^2)
   \; .
 \end{equation}
 
-Since the overall charge neutrality is maintained,
+The charge density in the p- and n-regions should be the same to
+maintain the overall charge neutrality:
 \begin{equation}
 N_d z_n=N_a z_p
-  \; ,
+  \; .
 \end{equation}
 
-the reverse bias potential can be expressed as:
+Using the neutrality condition, the reverse bias potential can be
+expressed as:
 
 \begin{equation}
 V_B={e \over {2\epsilon}}\left(1+{N_a \over N_d}\right) N_a z_p^2={e \over {2\epsilon}}\left(1+{N_d \over N_a}\right) N_d z_n^2
   \; .
 \end{equation}
 
-The depletion widths on the n- and p-sides of the junction are
+The depletion widths on the n- and p-sides of the junction are given by:
 
 \begin{equation}
   \begin{multlined}
@@ -667,7 +672,7 @@ z_p=\sqrt{{2 \epsilon V_B} \over {eN_a(1+N_a/N_d)}}
 \end{multlined}
 \end{equation}
 
-The total depletion width is 
+The total depletion width $W$ is given by:
 
 \begin{equation}
 W=z_n+z_p=\sqrt{{2 \epsilon V_B \left(N_a+N_d\right)} \over {eN_aN_d} }
@@ -686,7 +691,7 @@ V_j=\left(N_d \over N_a\right) {V_B \over \left(  1+N_d/N_a \right)} \stackrel{N
 For a pixel detector with asymmetric junction with a highly doped
 surface $N_c$ concentration and a lightly doped bulk $N_b$
 ($N_b \ll N_c$), the doping concentration is expressed in terms of the
-bulk resistivity:
+bulk resistivity $\rho_b$:
 \begin{equation}
 \rho_b = {1 \over {e\mu_{b}N_{b}}}
 \; ,
@@ -708,25 +713,31 @@ W=\sqrt{2 \epsilon \mu_b \rho_b \left(V_B+V_{bi}\right)}=\sqrt{{2 \epsilon \left
 \label{eq:depletionWidth2}
 \end{equation}
 
-The electric field of \cref{eq:PoissonIntegration1}, by replacing the depletion width and $N_d$ by \cref{eq:depletionWidth2} can be expressed as:
+The electric field of \cref{eq:PoissonIntegration1}, by replacing the
+depletion width and $N_d$ by \cref{eq:depletionWidth2} can be
+expressed as:
 \begin{equation}
 E(z)={{2\left(V_B+V_{bi}\right)} \over {W}} \left({z \over W}-1\right)
 \; .
 \end{equation}
 
-The depletion voltage (for $W=d$) can be expressed as:
+The bulk of the detector becomes fully depleted of charge carriers
+when the depletion width $W$ equals the thickness of the detector $d$
+($W=d$). The depletion $V_D$ voltage can be expressed as:
+
 \begin{equation}
 V_D={{eN_bd^2} \over {2 \epsilon}}-V_{bi}
-\; ,
+\; .
 \label{eq:depletionVoltage}
 \end{equation}
-where $d$ is the detector thickness. \\
+
 
 The electric field drops linearly from its maximum value at the
 junction to zero at the opposite contact. Increasing the bias voltage
 beyond the needed bias to completely deplete the detector adds a
 uniform field. By neglecting the built-in voltage (as the bias voltage
-is much higher), the electric field is written as,
+is much higher), the electric field is written as:
+
 \begin{equation}
 E(z)={{V_B-V_D} \over d}+\left(1-{z \over d}\right)2{V_D \over d}
 \; .
@@ -734,19 +745,21 @@ E(z)={{V_B-V_D} \over d}+\left(1-{z \over d}\right)2{V_D \over d}
 \end{equation}
 
 The charge carriers, under the influence of the electric field, drift
-through the silicon detector with a velocity as defined by,
+through the silicon detector with a velocity as defined by:
 
 \begin{equation}
   \vec{v}_{drift}=\mu_c \cdot \vec{E}\; .
 \end{equation}
 
-In one-dimension, and considering $\mu_c$ constant, the drift velocity is written as
+In one-dimension, and considering $\mu_c$ constant, the drift velocity is written as:
+
 \begin{equation}
 v_{drift}={{dz} \over {dt}}=\mu_c \cdot E(z)
 \; .
 \end{equation}
 
-The time required for a charge originating at point $z_0$ to reach a point $z$ is
+The time required for a charge originating at point $z_0$ to reach a point $z$ is:
+
 \begin{equation} 
   t(z)=\int_{z_0}^{z} {{ds} \over {\mu_c \cdot E(s)}}
   \; .
