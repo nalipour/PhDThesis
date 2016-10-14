@@ -138,17 +138,40 @@ $10^{12}-10^{18}\,\inversecmcubic$. In semiconductors, the
 conductivity comes from either electrons (n-type) or holes (p-type).
 
 In \textit{n-type doping}, a silicon atom is replaced with an atom
-having five valence electrons, for example phosphorus. This creates an
-excess in electrons into the lattice and is called a donor. The donor
-electron is lightly bound to the impurity atom. As a consequence, the
-ionisation probability is increased and mobile electrons are
-introduced into the conduction band.
+having five valence electrons, for example phosphorus as illustrated
+in \cref{fig:doping_n}. This creates an excess in electrons into the
+lattice and is called a donor. The donor electron is lightly bound to
+the impurity atom. As a consequence, the ionisation probability is
+increased and mobile electrons are introduced into the conduction
+band.
 
 In \textit{p-type doping}, by introducing a group three atom into the
 silicon lattice such as the boron, one impurity valence electron is
-left. This type of dopant is called an acceptor: the dopant borrows an
-electron from a neighbouring atom and the holes can move freely
-throughout the crystal.
+left as schematically shown in \cref{fig:doping_p}. This type of
+dopant is called an acceptor: the dopant borrows an electron from a
+neighbouring atom and the holes can move freely throughout the
+crystal.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth, trim = 65mm 192mm
+      65mm 40mm, clip]{figures/ChargeSharing/doping_ntype.pdf}
+    \caption{}\label{fig:doping_n}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth, trim = 65mm 190mm
+      65mm 40mm, clip]{figures/ChargeSharing/doping_ptype.pdf}
+    \caption{}\label{fig:doping_p}
+  \end{subfigure}
+    \caption{(a) Introducing a group five impurity, such as
+      phosphorus, creates a lightly bound electron that can move under
+      the influence of an electric field. (b) Introducing a group
+      three impurity, such as boron, creates an unpaired silicon bond
+      which can attract a neighbouring electron and results in a hole
+      moving throughout the silicon lattice. From \cite{Spieler2005}.}
+  \label{fig:doping}
+\end{figure}
  
 %% --------------------------------------------- %%
 \section{Charge generation and recombination in silicon}
@@ -219,7 +242,7 @@ the readout electronics.
   % \includegraphics[width=0.7\textwidth, page=14, trim = 50mm 160mm
   %   40mm 20mm,
   %   clip]{Articles/rpp2009-rev-passage-particles-matter.pdf}
-  \includegraphics[width=\textwidth, trim = 50mm 140mm
+  \includegraphics[width=0.7\textwidth, trim = 50mm 140mm
     50mm 40mm, clip]{figures/ChargeSharing/stragglingFunction_physicsReview.pdf}
 
     \caption{Straggling function in silicon for 500 MeV pions,
@@ -597,7 +620,9 @@ given by:
 
     \end{scope}
   \end{tikzpicture}
-  \caption{Charge density distribution for a simplified pn-junction.}
+  \caption{Charge density distribution for a simplified pn-junction
+    where $N_a$ and $N_d$ are the acceptor and the donor
+    concentrations.}
   \label{fig:chargeDensity}
 \end{figure}
 
@@ -688,10 +713,12 @@ V_j=\left(N_d \over N_a\right) {V_B \over \left(  1+N_d/N_a \right)} \stackrel{N
 \end{equation}
 
 
-For a pixel detector with asymmetric junction with a highly doped
-surface $N_c$ concentration and a lightly doped bulk $N_b$
-($N_b \ll N_c$), the doping concentration is expressed in terms of the
-bulk resistivity $\rho_b$:
+Let's consider a pixel detector with asymmetric junction with a highly
+doped surface $N_c$ concentration and a lightly doped bulk $N_b$ ($N_b
+\ll N_c$). $N_c$ and $N_b$ are used for a more generalisation of the
+doping regions and they can consist of both donors or acceptors. The
+doping concentration is expressed in terms of the bulk resistivity
+$\rho_b$:
 \begin{equation}
 \rho_b = {1 \over {e\mu_{b}N_{b}}}
 \; ,
@@ -714,7 +741,7 @@ W=\sqrt{2 \epsilon \mu_b \rho_b \left(V_B+V_{bi}\right)}=\sqrt{{2 \epsilon \left
 \end{equation}
 
 The electric field of \cref{eq:PoissonIntegration1}, by replacing the
-depletion width and $N_d$ by \cref{eq:depletionWidth2} can be
+depletion width and $N_d$ by \cref{eq:depletionWidth2}, can be
 expressed as:
 \begin{equation}
 E(z)={{2\left(V_B+V_{bi}\right)} \over {W}} \left({z \over W}-1\right)
@@ -744,6 +771,13 @@ E(z)={{V_B-V_D} \over d}+\left(1-{z \over d}\right)2{V_D \over d}
 \label{eq:Efield_drift}
 \end{equation}
 
+The electric field, as calculated in \cref{eq:Efield_drift}, is valid
+for the depleted region where $0<z<d(V_B+V_D)/(2 \cdot V_D)$. If the
+bias voltage is lower than the depletion voltage, the electric field
+is 0 in the undepleted region. For this model, the charge generated in
+the undepleted region is not collected in the by the readout placed at
+$z=0$ and is lost.
+
 The charge carriers, under the influence of the electric field, drift
 through the silicon detector with a velocity as defined by:
 
@@ -751,38 +785,46 @@ through the silicon detector with a velocity as defined by:
   \vec{v}_{drift}=\mu_c \cdot \vec{E}\; .
 \end{equation}
 
-In one-dimension, and considering $\mu_c$ constant, the drift velocity is written as:
+In one-dimension, and considering $\mu_c$ constant by neglecting the
+saturation effect at high electric fields, the drift velocity is
+written as:
 
 \begin{equation}
 v_{drift}={{dz} \over {dt}}=\mu_c \cdot E(z)
 \; .
 \end{equation}
 
-The time required for a charge originating at point $z_0$ to reach a point $z$ is:
+The drift time required for a charge originating at point $z$ to reach
+the point $z_0$ where the charge is collected is:
 
 \begin{equation} 
-  t(z)=\int_{z_0}^{z} {{ds} \over {\mu_c \cdot E(s)}}
+  t_{drift}(z)=\int_{z}^{z_0} {{ds} \over {\mu_c \cdot E(s)}}
   \; .
   \label{eq:driftTimeIntegral}
 \end{equation}
 
-By integrating \cref{eq:driftTimeIntegral} and replacing the electric
-field by \cref{eq:Efield} one obtains:
+With the assumptions on the electric field and the mobility, the
+integral above can be solved analytically. Assuming $z_0=0$
+corresponds to the readout electrode, one obtains the drift time as:
 
-\begin{equation} 
-  t(z, z_0)={{d^2} \over {2 \mu_c V_D}} ln\left( {{d(V_B+V_D)-2V_Dz_0} \over {d(V_B+V_D)-2V_Dz}} \right)
-  \; .
-  \label{eq:driftTimeIntegratedz0}
-\end{equation}
+%% \begin{equation} 
+%%   t(z, z_0)={{d^2} \over {2 \mu_c V_D}} ln\left( {{d(V_B+V_D)-2V_Dz_0} \over {d(V_B+V_D)-2V_Dz}} \right)
+%%   \; .
+%%   \label{eq:driftTimeIntegratedz0}
+%% \end{equation}
 
-In \cref{eq:driftTimeIntegratedz0}, by replacing $z_0=0$, we obtain:
+%% In \cref{eq:driftTimeIntegratedz0}, by replacing $z_0=0$, we obtain:
 \begin{equation} 
-  t(z)={{d^2} \over {2 \mu_c V_D}} ln\left( {{V_B+V_D} \over {V_B+V_D-2V_Dz/d}} \right)
+  t_{drift}(z)={{d^2} \over {2 \mu_c V_D}} ln\left( {{V_B+V_D} \over {V_B+V_D-2V_Dz/d}} \right)
   \; .
   \label{eq:driftTimeIntegrated}
 \end{equation}
 
-The standard deviation of the diffusion is given by:
+During the drift, the charge carriers do not exactly follow the
+electric field lines. They also diffuse due to the random thermal
+motion in the crystal lattice. The spread of the charge carriers on
+the readout ($z=0$) and produced at a position $z$ can be expressed as
+a Gaussian distribution with a standard deviation of the diffusion of:
 
 \begin{equation} 
   \sigma_{diffusion}\left(z\right)=\sqrt{2 D_{b} t_{c}}=\sqrt{{{kTd^2}\over{eV_D}}ln\left({{V_B+V_D}\over{V_B+V_D-2V_Dz/d}}\right)}
@@ -793,13 +835,14 @@ The standard deviation of the diffusion is given by:
 where $D_b$ is the diffusion constant and related to the mobility via
 the Einstain equation $D_b=\mu_{c} \cdot k_{b} \cdot T/e$.
 
-The drift time depends on the charge carrier as shown in
+The drift time depends on the charge carriers as shown in
 \cref{eq:driftTimeIntegrated}. \cref{fig:Drift_n_vs_p} compares the
 drift time for n and p-type carriers in a $50\,\micron$ thick silicon
 sensor with a depletion voltage of |V\textsubscript{D}|=4~V and biased
-at |V\textsubscript{B}|=15~V as a function of the depth. The electrons
-have a higher drift time and therefore are faster for readout. But
-diffusion does not depend on the carrier type as it can be seen in
+at |V\textsubscript{B}|=15~V for a charge created at a position
+$z$=depth. The electrons have a higher drift time and therefore are
+faster for readout. Diffusion does not depend on the carrier type
+as it can be seen in
 \cref{eq:sigmaDiffusion}. \cref{fig:Diffusion_n_vs_p} shows the
 standard deviation for the diffusion at different bias voltages for
 the n and p-type carriers.
@@ -815,20 +858,21 @@ the n and p-type carriers.
     \includegraphics[width=\textwidth]{figures/ChargeSharing/Diffusion_vs_Bias.pdf}
     \caption{}\label{fig:Diffusion_n_vs_p}
   \end{subfigure}
-  \caption{(a) Drift time (b) diffusion standard deviation for n and
-    p-type carriers as a function of the depth in the sensor for
-    different bias voltages. Diffusion does not depend on the carrier
-    type. The depletion voltage is |V\textsubscript{D}|=4~V and the
-    drift time is calculated considering a bias voltage of
-    |V\textsubscript{B}|=15~V.}
+  \caption{(a) Drift time and (b) diffusion standard deviation for n
+    and p-type carriers for a charge created at the depth $z$ in the
+    sensor. The diffusion is shown for different bias voltages and
+    does not depend on the carrier type. The depletion voltage is
+    |V\textsubscript{D}|=4~V and the drift time is calculated
+    considering a bias voltage of |V\textsubscript{B}|=15~V.}
 \end{figure}
 
 \cref{fig:Efield_n_vs_p} shows the electric field and the mobility
 distribution as a function of the depth in a $50\,\micron$ thick
 silicon sensor with a depletion voltage of |V\textsubscript{D}|=4~V
 and biased at |V\textsubscript{B}|=15~V. The mobility in this case
-stays almost constant and is not a function of the electric field
-since in this case the electric field stays quite low.
+stays almost constant and does not reach the saturation effects due to
+the electric field since in this case the electric field stays quite
+low.
 
 \begin{figure}[htbp]
   \centering
