@@ -1,5 +1,5 @@
 % ==============================================================================    
-\chapter{Pixel chip electronics and calibration}
+\chapter{Pixel readout ASICs and hybrid-assembly calibration}
 \label{ch:FE_electronics}
 % ==============================================================================    
 
@@ -16,34 +16,32 @@ and optimisations of the signal-to-noise ratio remain similar for
 different applications.
 
 In this chapter, we will review the basic principles and requirements
-of the Timepix3 hybrid pixel readout chip which is used to study thin
-and active-edge sensors as described in the following chapters. The
-calibration method for the Timepix3 ASICs and also the noise
-measurements are explored in this chapter.
+of the Timepix3 hybrid pixel readout chip which is used as a test
+vehicle to study thin and active-edge sensors as described in the
+following chapters. The calibration method for the Timepix3 assemblies
+and also the noise measurements are explored in this chapter.
 
 %\section{Generic pixel chip properties}
 \section{The Timepix3 hybrid readout ASICs}
 \label{sec:TimepixChip}
 
 The hybrid readout chip acquires the short ionisation current pulses
-generated in the sensor by the passing of a highly energetic
-particle. For acquiring this short pulse, the time response of the
-readout must be tailored to optimise the minimum detectable signal,
-the measurement of energy deposition in the detector, the event rate
-capability, timing measurement of the signal and the insensitivity of
-the system to the pulse shape. Finally, the signal is digitised and
-stored. Robustness to radiation and low power consumption are other
-important considerations to be addressed amongst others.
+generated in the sensor by the passing of a high-energy particle. For
+acquiring this short pulse, the time response of the readout must be
+tailored to optimise the minimum detectable signal, the measurement of
+energy deposition in the detector, the event rate capability, timing
+measurement of the signal and the insensitivity of the system to the
+pulse shape. Finally, the signal is digitised and stored. Robustness
+to radiation and low power consumption are other important
+considerations to be addressed amongst others.
 
 
-%% Timepix3 description
-%% \section{The Timepix readout chip families}\label{sec:TimepixReadout}
 The Timepix~\cite{art:tmpx,Timepix3Poikela} hybrid pixel detector
 readout chip family, designed by the Medipix
 collaboration~\cite{medipixCollaboration}, is a general purpose
 front-end electronics and can measure precisely the energy deposited
 in the sensor and also provides accurate timing information. These
-chips is used in a wide range of applications such as high energy
+chips are used in a wide range of applications such as high energy
 physics and medical imaging. The Timepix3 ASIC is deployed for the
 CLIC vertex detector R\&D to study the feasibility of thin sensors and
 also active-edge sensors as described in the coming chapters.
@@ -52,45 +50,46 @@ also active-edge sensors as described in the coming chapters.
 in a Timepix3-like hybrid pixel detector. Both analogue and digital
 circuitry are combined for signal processing.
 
-The incident radiation deposits energy in the sensor and it is
+The incident radiation deposits energy in the sensor which is
 converted to an electrical signal. A high rate of particles can be
 handled in a semiconductor detector because the sensor pulse is very
-short (few nanoseconds). Since the amount of the signal charge is
-small and subject to statistical fluctuations
-(c.f.~\cref{sec:chargeInSi}), a charge sensitive preamplifier is
-needed to amplify the signal. The preamplifier should be designed in a
-way to minimise the electronic noise. The sensor capacitance and the
-input capacitance of the amplifier play a critical role in the
-optimisation of the signal-to-noise ratio (SNR): the lower the
-capacitance, the higher the SNR.
+short (few nanoseconds). Since the amount of signal charge is small
+and subject to statistical fluctuations (as seen in
+\cref{sec:chargeInSi}), a charge sensitive preamplifier is needed to
+amplify the signal. The preamplifier should be designed in a way to
+minimise the electronics noise (see \cref{sec:noise} for a discussion
+of the noise sources). The sensor capacitance and the input
+capacitance of the amplifier play a critical role in the optimisation
+of the signal-to-noise ratio (SNR): the lower the capacitance, the
+higher the SNR.
 
-The preamplifier is implemented as a Krummenacher
+The preamplifier is implemented in a Krummenacher
 topology~\cite{KRUMMENACHER1991527}, where the return to the baseline
 of the amplified signal is done with a tunable current
 (I\textsubscript{krum}). The higher I\textsubscript{krum}, the faster
-the return or, in another words, the shorter the pulse.
+the return or, in other words, the shorter the pulse.
 
 After the preamplifier, the pulse shaper is responsible for the
 improvement of the SNR. It modifies the frequency response of the
 signal to improve the signal and attenuate the noise. Since this
 operation reduces the bandwidth of the signal, the duration of the
 pulse will increase. As a detector must cope with a high rate of
-pulses, the width of the pulse must be optimised in a way to reduce
-the pile-up. The analog processing chain of the Timepix readout chips
-family is somehow simplified and does not include an explicit pulse
-shaper. The pulse shaping is embedded in the preamplifier, which
-outputs a triangular-like pulse shape where the rising edge is imposed
-by the time response of the preamplifier and the falling edge dictated
-by the I\textsubscript{krum} current.
+pulses, the width of the pulse must be optimised to reduce the
+pile-up. The analogue processing chain of the Timepix readout chip
+family does not include an explicit pulse shaper. The pulse shaping is
+embedded in the preamplifier, which outputs a triangular-like pulse
+shape where the rising edge is imposed by the time response of the
+preamplifier and the falling edge dictated by the
+I\textsubscript{krum} current.
 
-The discriminator is used to compare the signal level to a
-threshold (a voltage) and to discriminate a signal from a background
-noise. Both polarities (electrons and holes collection) are accepted
-by the front end.
+A discriminator is used to compare the signal level to a tunable
+threshold (a voltage) and to discriminate signal from background
+noise. Both polarities (electrons and holes) are accepted by the front
+end.
 
 When the pulse height passes the threshold in the discriminator,
-different counters in the digital part of the readout chip are
-incremented to measure the energy and the timing of the signal.
+counters in the digital part of the readout chip are incremented to
+measure the energy and the arrival time of the signal.
 
 \begin{figure}[htbp]
   \centering
@@ -99,28 +98,28 @@ incremented to measure the energy and the timing of the signal.
 
       \coordinate (input);
       \node [block, right of=input] (sens) {Sensor};
-      \node [block, right of=sens] (preamp) {Preamplifier};
-      \node [block, right of=preamp] (pulse) {Pulse shaping};
-      \node [block, right of=pulse] (discr) {Discriminator};
+      \node [block, right of=sens] (preamp) {Preamplifier/ Shaper};
+      %% \node [block, right of=preamp] (pulse) {Pulse shaping};
+      \node [block, right of=preamp] (discr) {Discriminator};
       \node [block, right of=discr] (conv) {TOT/TOA counters};
       \coordinate[right of=conv] (output);
 
       \draw[arrows=->] (input) -- node [text
       width=2cm,midway] {Incident radiation} (sens);
       \draw[arrows=->] (sens) -- (preamp);
-      \draw[arrows=->] (preamp) -- (pulse);
-      \draw[arrows=->] (pulse) -- (discr);
+      \draw[arrows=->] (preamp) -- (discr);
+      %\draw[arrows=->] (pulse) -- (discr);
       \draw[arrows=->] (discr) -- (conv);
       \draw[arrows=->] (conv) -- node [text width=1.5cm,midway]
       {Digital data bus} (output);
 
       % \draw[] (sens) -- (discr.south);
       \draw[decorate,decoration={brace, mirror}, thick] (sens.south) to
-      node[below,below] (bracket) {Analogue}
+      node[below,below] (bracket) {Analogue domain}
       (discr.south);
 
       \draw[decorate,decoration={brace, mirror}, thick] (conv.south
-      west) to node[below,below] (bracket) {Digital} (conv.south
+      west) to node[below,below] (bracket) {Digital domain} (conv.south
       east);
 
       \draw[decorate,decoration={brace}, thick] (preamp.north) to
@@ -128,34 +127,32 @@ incremented to measure the energy and the timing of the signal.
 
     \end{scope}
   \end{tikzpicture}
-  \caption{Schematic overview of basic signal flow in a hybrid pixel
-    detector. The energy deposited in the sensor by the incident
-    radiation is converted to an electrical signal. The signal is
-    integrated in the preamplifier, shaped by the pulse shaper and
-    compared to a programmable threshold by the discriminator. The
-    digital part of the readout chip digitises the signal for storage
-    and analysis using counters for timing and energy measurements.}
+  \caption{Schematic overview of basic signal flow in a Timepix-like
+    hybrid pixel detector. The energy deposited in the sensor by the
+    incident radiation is converted to an electrical signal. The
+    signal is integrated in the preamplifier, shaped by the pulse
+    shaper and compared to a programmable threshold by the
+    discriminator. The digital part of the readout chip digitises the
+    signal for storage and analysis using counters for timing and
+    energy measurements.}
   \label{fig:detectorFunctions}
 \end{figure}
 
 
-An overview on the Timepix3 readout chip is given
-in~\cref{tab:timepixOverview}. It consists of a $256\times256$ pixel
-matrix with a pitch of $55\,\micron$. This chip allows for three
+An overview of the main parameters of the Timepix3 readout chip is
+given in~\cref{tab:timepixOverview}. It consists of a $256\times256$
+pixel matrix with a pitch of $55\,\micron$. This chip allows for three
 operation modes: photon counting (PC), Time-over-threshold (TOT) and
 Time-of-Arrival (TOA) measurements. In addition, Timepix3 allows for
 simultaneous measurement of the TOT and the TOA. In the photon
 counting mode, a counter is incremented each time a photon hits the
 pixel and deposits an energy higher than the programmable threshold.
 
-The electronic noise of the Timepix3 chip is very low ($<70$
-e\textsuperscript{-} RMS without sensor) which allows for operating
-this chip at the low threshold of 500 electrons and the detection of
-small signals.
+
 
 \begin{table}[htbp]
   \centering
-  \caption{Overview of the Timepix3 readout ASICs.}
+  \caption{Overview of the main parameters of the Timepix3 readout ASIC.}
   \label{tab:timepixOverview}
   \begin{tabular}{l l}
     \toprule
@@ -165,10 +162,9 @@ small signals.
     Measurement Modes & 10 bit TOT and 18 bit TOA \\
                 & 18 bit TOA only \\
                 & 10 bit PC and 14 bit integral TOT \\
-    Clock speed & Up to 40~\megahertz for TOT and general TOA \\
-                & 640~\megahertz for FTOA \\
-    Readout Type & Data driven \\
-                & Frame based \\
+    Clock speed & Up to $40\,\megahertz$ for TOT and general TOA \\
+                & $640\,\megahertz$ for FTOA \\
+    Readout Type & Data driven or Frame based \\
     Electronic Noise (without sensor) & $<70$ e\textsuperscript{-} RMS\\
     \bottomrule
   \end{tabular}
@@ -178,105 +174,27 @@ small signals.
 \cref{fig:TOT_TOA_concept} schematically shows the energy and the
 timing measurements of the signal. The Time-over-threshold (TOT)
 allows for the measurement of the energy deposited in a pixel. The
-sensor pulse is amplified to form a triangular-like pulse with a long
-approximately linear decay. The time above the programmable threshold
-is proportional to the energy deposited and during this time, the TOT
-counter is incremented.
+time above the programmable threshold of the triangular-like signal
+pulse is proportional to the energy deposited and during this time,
+the TOT counter is incremented.
 
-The Time-of-Arrival (TOA) measures the arrival time of a hit and
-therefore is used as a time stamping of the hits. When the amplifier
-output exceeds the pixel threshold, the discriminator output rises and
-the fast TOA (FTOA) counter counts until the rising edge of the
-general clock. A combination of the global TOA counter operating at
-40~MHz and the FTOA counters is used as the timing information for the
-hits.
+The Time-of-Arrival (TOA) measures the arrival time of a hit and is
+used for a time stamping of the hits. A general TOA counter runs with
+the general $40\,\megahertz$ clock. When the amplifier output exceeds
+the pixel threshold, the discriminator output rises and the fast TOA
+(FTOA) $640\,\megahertz$ counter runs until the rising edge of the
+general clock. A combination of the global TOA counter and the FTOA
+counters is used to calculate the arrival time of the hits (or the
+pixel TOA). The FTOA counter is also used to increase the precision of
+the TOT measurement.
 
 \begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.7\textwidth, page=8, trim = 50mm 190mm 60mm
-  30mm, clip]{Articles/Timepix3_JINST.pdf}
+  \centering \includegraphics[width=0.7\textwidth, trim = 50mm 140mm
+    60mm 50mm, clip]{figures/Calibration/TOT_TOA_explanation.pdf}
   \caption{Schematic overview of the Time-over-Threshold (TOT) and
     Time-of-Arrival (TOA) measurements for the Timepix3 readout
     chips. From~\cite{Timepix3Poikela}.}
   \label{fig:TOT_TOA_concept}
-\end{figure}
-
-% \begin{figure}[htbp]
-%   \centering
-%   \begin{tikzpicture}
-%     \begin{scope}[x={(image.south east)},y={(image.north west)}]
-%       % pulse
-%       \draw[-, thick] (0.1, 0.8) -- (0.2, 0.8);
-%       \draw[-, thick] (0.2, 0.8) -- (0.21, 0.98);
-%       \draw[-, thick] (0.21, 0.98) -- (0.22, 0.8);
-%       \draw[-, thick] (0.22, 0.8) -- (1, 0.8);
-
-%       % shaper
-%       \draw[-, thick] (0.1, 0.5) -- (0.2, 0.5);
-%       \draw[-, thick] (0.2, 0.5) -- (0.22, 0.7);
-%       \draw[-, thick] (0.22, 0.7) -- (0.8, 0.5);
-%       \draw[-, thick, dashed, green] (0.1, 0.55) -- (0.8, 0.55);
-%       \draw[-, thick] (0.8, 0.5) -- (1, 0.5);
-
-%       % comparator
-%       \draw[-, thick] (0.1, 0.3) -- (0.21, 0.3);
-%       \draw[-, thick] (0.21, 0.3) -- (0.21, 0.4);
-%       \draw[-, thick] (0.21, 0.4) -- (0.65, 0.4);
-%       \draw[-, thick] (0.65, 0.4) -- (0.65, 0.3);
-%       \draw[-, thick] (0.65, 0.3) -- (1, 0.3);
-
-%       \timing [] at (0.11, 0.2) {HLLHHLLHHLLHHLLHHLLHHLLHH};
-%       \draw[arrows=<->, thick](0.21, 0.15)--(0.65, 0.15) node [pos=0.5, below]
-%       {\textbf{TOT (3 counts)}};
-
-%       \timing [] at (0.1,0.0) {llllllhlhlhlhllllllllllllllllllllllllllllllllllllll};
-
-%       \draw[-, thick, dashed, blue] (0.21, 0.55) -- (0.21, 0.0);
-%       \draw[-, thick, dashed, blue] (0.65, 0.55) -- (0.65, 0.0);
-
-%       \draw[-, thick, dashed, red] (0.355, 0.2) -- (0.355, 0.0);
-
-%       \draw[arrows=<->, thick](0.21, -0.05)--(0.35, -0.05) node [pos=0.5, below]
-%       {\textbf{FTOA (4 counts)}};
-
-
-%       \node[left] at (0.1, 0.8) {Sensor pulse};
-%       \node[left, green] at (0.1, 0.6) {Threshold};
-%       \node[left] at (0.1, 0.5) {Pulse after shaping};
-%       \node[left] at (0.1, 0.3) {Discriminator output};
-%       \node[left] at (0.1, 0.2) {General clock}; %$40\,\megahertz$ Clk}
-%       \node[left] at (0.1, 0.0) {FTOA clock}; %$640\,\megahertz$ Clk (FTOA)     
-
-
-%     \end{scope}
-%   \end{tikzpicture}
-%   \caption{Schematic overview of the Time-over-Threshold (TOT) and
-%     Time-of-Arrival (TOA) measurements for the Timepix3 readout chips.}
-%   \label{fig:TOT_TOA_concept}
-% \end{figure}
-
-
-\subsection{SPIDR readout system for Timepix3}\label{sec:TimepixReadout}
-
-The SPIDR (Speedy PIxel Detector Readout) readout
-system~\cite{Visser:2015bsa}, developed by NIKHEF and CERN, is used
-for the Timepix3 data acquisition. This system is able to handle high
-rates of data sent by the Timepix3 ASIC at full speed. This is
-achieved with Xilinx Virtex-7 FPGA~\cite{XilinxVirtex7} and a 10~Gb
-Ethernet link.
-
-\begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/Timepix3board2.jpg}
-    \caption{}\label{fig:Timepix3board_PCB}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.65\textwidth}
-    \includegraphics[width=\textwidth]{./figures/Calibration/SPIDRboard}
-    \caption{}
-  \end{subfigure}
-  \caption{(a) Timepix3 chip board and (b) SPIDR readout board
-    from~\cite{Timepix3Poikela}.}
-  \label{fig:Timepix3board_SPIDR}
 \end{figure}
 
 The Timepix3 readout chip allows for a data-driven zero-suppressed
@@ -292,9 +210,39 @@ The different settings of the chip are controlled externally using
 programmable DACs such as the I\textsubscript{krum}, threshold,
 polarity of the sensor and the clock speed.
 
+
+
+\subsection{SPIDR readout system for Timepix3}
+\label{sec:TimepixReadout}
+
+The SPIDR (Speedy PIxel Detector Readout) readout
+system~\cite{Visser:2015bsa} is used for the Timepix3 data
+acquisition. This system is able to handle high rates of data sent by
+the Timepix3 ASIC at full speed. This is achieved with Xilinx Virtex-7
+FPGA~\cite{XilinxVirtex7} and a 10~Gb Ethernet link.
+
+\cref{fig:Timepix3board_SPIDR} shows the Timepix3 chip board which
+allows to control the programmable DACs and the SPIDR readout board.
+
+\begin{figure}[htbp] \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./figures/Calibration/Timepix3board2.jpg}
+    \caption{}\label{fig:Timepix3board_PCB}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.65\textwidth}
+    \includegraphics[width=\textwidth, trim = 50mm 170mm 40mm 50mm,
+      clip]{./figures/Calibration/SPIDRboard.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{(a) Timepix3 chip board and (b) SPIDR readout board
+    from~\cite{Timepix3Poikela}.}
+  \label{fig:Timepix3board_SPIDR}
+\end{figure}
+
+
 %% --------------------------------------------- %%
 \section{Timepix3 assemblies}\label{sec:Timepix3Assemblies}
-A summary of the Timepix3 assemblies is shown in
+A summary of the Timepix3 assemblies used in this study is shown in
 \cref{tab:Timepix3Assemblies}. Advacam sensors~\cite{AdvacamRef} of
 thickness $50$-$300\,\micron$ are bump-bonded to Timepix3 readout
 chips.
@@ -305,7 +253,7 @@ chips.
     bump-bonded to Timepix3 readout ASICs and studied in calibration
     and test beams. For active-edge sensors, the edge distance is
     defined by the distance between the last pixel implant and the
-    physical sensor edge.}
+    physical sensor edge (see \cref{ch:ActiveEdgeSensors}).}
   \label{tab:Timepix3Assemblies}
   \resizebox{\textwidth}{!}{\begin{tabular}{lccccc}
     \toprule
@@ -316,8 +264,8 @@ chips.
      W19\_L8 & 50 & n-in-p & 28 & Grounded & 28-GNDGR-50 \\
      W19\_C7 & 50 & n-in-p & 55 & Grounded & 55-GNDGR-50 \\ \hline
      W5\_E2 & 100 & n-in-p & 55 & Grounded & 55-GNDGR-100 \\ \hline
-     W5\_F1 & 150 & n-in-p & 55 & Grounded & 55-GNDGR-150 \\ \hline
-     W2\_J5 & 300 & p-in-n & - & - & - \\
+     W5\_F1 & 150 & n-in-p & 55 & Grounded & 55-GNDGR-150 \\ %% \hline
+     %% W2\_J5 & 300 & p-in-n & - & - & - \\
     \bottomrule
   \end{tabular}}
 \end{table}
@@ -337,18 +285,21 @@ $\sim80$~e\textsuperscript{-} RMS due to the capacitance of the sensor
 and its leakage current.
 
 The electronic noise is an important parameter to determine the
-operating threshold of the readout chip. In fact, the operating
-threshold for the Timepix3 chip is set to 6 times the electronic noise
-RMS. This threshold significantly reduces the detection of noisy
-hits. Sometimes, at this threshold a few pixels show a high rate of
-hits in absence of incident radiation (hot pixels) and they are
-manually masked to be able to operate the chip at the lowest possible
-threshold.
+operating threshold of the readout chip. The operating threshold for
+the Timepix3 chip is set to 6 times the electronic noise RMS. This
+threshold significantly reduces the detection of noisy hits. The very
+low noise of the Timepix3 chip allows for operating the chip at a low
+threshold of approximately 500 electrons and thereby the detection of
+small signals. Sometimes, at this threshold a few pixels show a high
+rate of hits in absence of incident radiation (hot pixels) and they
+are manually masked to be able to operate the chip at the lowest
+possible threshold.
 
 The operating threshold affects significantly the spatial resolution
 of the device. A lower threshold allows for a higher detection of the
 charge sharing. For this reason, it is important to minimise the
 electronic noise.
+
 
 %% --------------------------------------------- %%
 \section{Threshold dispersion and equalisation} 
@@ -362,28 +313,32 @@ the most affected parameters.
 
 A global threshold voltage generated by a programmable DAC
 (Digital-to-Analogue Converter) in the periphery of the chip is
-applied to the all the pixel discriminators. But, in reality, the
-effective threshold of each discriminator varies highly from one pixel
-to another. To overcome this dispersion, a 4-bit local threshold
-adjustment is applied to each pixel in order to make a uniform global
-threshold. The photon counting mode is then employed. The equalisation
-consists of adjusting this local threshold. First it is set to its
-minimum value (mask 0000). The global threshold DAC (THL) is scanned
-and the number of pixels responding are counted. Then the adjustment
-bits are set to their maximum value (mask 1111) and THL is scanned
-again. For each pixel, the operation range is thus known. Assuming a
-linear relationship between the two points, the adjustment threshold
-is adjusted in such a way that the global threshold will remain
-uniform across the matrix.
+applied to the all the pixel discriminators. But the effective
+threshold of each discriminator varies from one pixel to another. To
+overcome this dispersion, a 4-bit local threshold adjustment is
+applied to each pixel in order to achieve a uniform global
+threshold. The photon counting mode is used in the procedure. The
+equalisation consists of adjusting this local threshold as shown in
+\cref{fig:THLequalisation} for the assembly W19\_L8.
 
-\cref{fig:THLequalisation} shows the threshold equalisation for the
-assembly W2\_J5. After equalisation the response of the chip becomes
-more uniform even though some dispersion remains.
+First, the local threshold is set to its minimum value (mask
+0000). The global threshold DAC (THL) is scanned and the number of
+pixels responding are counted. Then the adjustment bits are set to
+their maximum value (mask 1111) and THL is scanned again. For each
+pixel, the operation range is thus known. Assuming a linear
+relationship between the two points, the adjustment threshold is set
+in such a way that the global threshold will remain uniform across the
+matrix. After equalisation the response of the chip becomes more
+uniform even though some dispersion remains.
+
+%% \cref{fig:THLequalisation} shows the threshold equalisation for the
+%% assembly W19\_L8. After equalisation the response of the chip becomes
+%% more uniform even though some dispersion remains.
 
 \begin{figure}[htbp] 
   \centering
-  \includegraphics[width=0.6\textwidth]{./figures/Calibration/THLequalisation_W2_J5.pdf}
-  \caption{Spread of pixel responses for the assembly W2\_J5 during
+  \includegraphics[width=0.6\textwidth]{./figures/Calibration/THLequalisation_W19_L8.pdf}
+  \caption{Spread of pixel responses for the assembly W19\_L8 during
     equalisation for the local threshold set at its minimum value
     (mask 0000), to its maximum value (mask 1111) and after
     equalisation.}
@@ -655,7 +610,7 @@ number of electrons for all the assemblies listed in
     W19\_C7 & $0.091\pm0.000$ & $1092.887\pm0.005$ & 1148 & $608.700\pm0.488$ \\
     W5\_E2 &  $0.095\pm0.000$ & $1106.921\pm0.004$ & 1160 & $561.019\pm0.712$ \\
     W5\_F1 & $0.089\pm0.000$ & $1103.618\pm0.004$ & 1153 & $554.885\pm0.493$ \\
-    W2\_J5 & $-0.109\pm0.000$& $1232.643\pm0.034$ & 1170 & $565.723\pm1.560$\\
+%    W2\_J5 & $-0.109\pm0.000$& $1232.643\pm0.034$ & 1170 & $565.723\pm1.560$\\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -696,7 +651,7 @@ listed in \cref{tab:THLcalibration}.
     W19\_C7 & $1092.825\pm0.005$ & $11.044\pm0.000$ & $7.413\pm0.005$ & $81.870\pm0.051$ \\
     W5\_E2  & $1106.895\pm0.004$ & $10.570\pm0.000$ & $7.155\pm0.004$ & $75.628\pm0.046$ \\
     W5\_F1  & $1103.591\pm0.004$ & $11.237\pm0.000$ & $6.711\pm0.004$ & $75.408\pm0.046$ \\
-    W2\_J5  & $1231.70\pm0.034$ & $-9.177\pm0.000$ & $11.826\pm0.041$ & $108.53\pm0.379$ \\
+%    W2\_J5  & $1231.70\pm0.034$ & $-9.177\pm0.000$ & $11.826\pm0.041$ & $108.53\pm0.379$ \\
     \bottomrule
   \end{tabular}}
 \end{table}
@@ -765,3 +720,59 @@ listed in \cref{tab:THLcalibration}.
 %     \bottomrule
 %   \end{tabular}
 % \end{table}
+
+
+
+% \begin{figure}[htbp]
+%   \centering
+%   \begin{tikzpicture}
+%     \begin{scope}[x={(image.south east)},y={(image.north west)}]
+%       % pulse
+%       \draw[-, thick] (0.1, 0.8) -- (0.2, 0.8);
+%       \draw[-, thick] (0.2, 0.8) -- (0.21, 0.98);
+%       \draw[-, thick] (0.21, 0.98) -- (0.22, 0.8);
+%       \draw[-, thick] (0.22, 0.8) -- (1, 0.8);
+
+%       % shaper
+%       \draw[-, thick] (0.1, 0.5) -- (0.2, 0.5);
+%       \draw[-, thick] (0.2, 0.5) -- (0.22, 0.7);
+%       \draw[-, thick] (0.22, 0.7) -- (0.8, 0.5);
+%       \draw[-, thick, dashed, green] (0.1, 0.55) -- (0.8, 0.55);
+%       \draw[-, thick] (0.8, 0.5) -- (1, 0.5);
+
+%       % comparator
+%       \draw[-, thick] (0.1, 0.3) -- (0.21, 0.3);
+%       \draw[-, thick] (0.21, 0.3) -- (0.21, 0.4);
+%       \draw[-, thick] (0.21, 0.4) -- (0.65, 0.4);
+%       \draw[-, thick] (0.65, 0.4) -- (0.65, 0.3);
+%       \draw[-, thick] (0.65, 0.3) -- (1, 0.3);
+
+%       \timing [] at (0.11, 0.2) {HLLHHLLHHLLHHLLHHLLHHLLHH};
+%       \draw[arrows=<->, thick](0.21, 0.15)--(0.65, 0.15) node [pos=0.5, below]
+%       {\textbf{TOT (3 counts)}};
+
+%       \timing [] at (0.1,0.0) {llllllhlhlhlhllllllllllllllllllllllllllllllllllllll};
+
+%       \draw[-, thick, dashed, blue] (0.21, 0.55) -- (0.21, 0.0);
+%       \draw[-, thick, dashed, blue] (0.65, 0.55) -- (0.65, 0.0);
+
+%       \draw[-, thick, dashed, red] (0.355, 0.2) -- (0.355, 0.0);
+
+%       \draw[arrows=<->, thick](0.21, -0.05)--(0.35, -0.05) node [pos=0.5, below]
+%       {\textbf{FTOA (4 counts)}};
+
+
+%       \node[left] at (0.1, 0.8) {Sensor pulse};
+%       \node[left, green] at (0.1, 0.6) {Threshold};
+%       \node[left] at (0.1, 0.5) {Pulse after shaping};
+%       \node[left] at (0.1, 0.3) {Discriminator output};
+%       \node[left] at (0.1, 0.2) {General clock}; %$40\,\megahertz$ Clk}
+%       \node[left] at (0.1, 0.0) {FTOA clock}; %$640\,\megahertz$ Clk (FTOA)     
+
+
+%     \end{scope}
+%   \end{tikzpicture}
+%   \caption{Schematic overview of the Time-over-Threshold (TOT) and
+%     Time-of-Arrival (TOA) measurements for the Timepix3 readout chips.}
+%   \label{fig:TOT_TOA_concept}
+% \end{figure}
