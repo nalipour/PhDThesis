@@ -420,13 +420,23 @@ in Figure~\ref{fig:TCAD_dopingConcentration}.
 \newpage
 \section{Electrical measurements in laboratory and simulations}
 
-\cref{fig:IVmeasurements} shows the measured leakage current in the
+\cref{fig:IVmeasurements_real} shows the measured leakage current in the
 different assemblies as a function of the bias voltage at the room
 temperature of $22^{\circ}$~C. The breakdown occurs earlier for the
 assembly without guard ring (20-NGR-50) compared to the other
 assemblies. For the nominal operation (at -15~V for $50\,\micron$,
 -20~V for $100\,\micron$ and -30~V for $150\,\micron$ thick sensors),
 none of the assemblies are operated beyond the breakdown voltage.
+
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/ActiveEdge/IVCurve_Andreas.pdf}
+  \caption{Measured leakage current at the room temperature of
+    $22^{\circ}$~C for active-edge assemblies listed in
+    \cref{tab:Timepix3Assemblies}.}
+  \label{fig:IVmeasurements_real}
+\end{figure}
 
 \cref{fig:IVmeasurements_TCAD} shows the leakage current obtained from
 the TCAD simulations. The current calculated from the 2D simulation is
@@ -435,25 +445,42 @@ only the sensor is simulated and the effect of the readout chip and
 the bump bonding are not included. The readout chip can increase the
 temperature and increase the leakage current.
 
+
 \begin{figure}[htbp]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/ActiveEdge/IVCurve.pdf}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/IVCurve_TCAD_50_micron.pdf}
     \caption{}
-    \label{fig:IVmeasurements}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/ActiveEdge/IVCurve_TCAD.pdf}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/IVCurve_TCAD_55_GNDGR.pdf}
     \caption{}
-    \label{fig:IVmeasurements_TCAD}
   \end{subfigure}
-  \caption{(a) Measured leakage current at the room temperature of
-    $22^{\circ}$~C and (b) leakage current in TCAD simulations as a
-    function of bias voltage for the active-edge assemblies listed in
-    \cref{tab:Timepix3Assemblies}.}
-  \label{fig:IVmeasurements_realANDtcad}
+  \caption{Leakage current in TCAD simulations as a function of bias
+    voltage for (a) $50\,\micron$ thick sensors and for (b) assemblies
+    with a grounded guard ring (refer to \cref{tab:Timepix3Assemblies}
+    for the details on the assemblies).}
+  \label{fig:IVmeasurements_TCAD}
 \end{figure}
 
+In simulations, the grounded guard ring and the assembly without guard
+ring show a breakdown of the junction at around 150~V. In these
+sensors, the distance between the edge implant (with high voltage) and
+the ground implant (either the pixel or the guard ring) is similar
+which leads to a similar potential gradient and breakdown voltage. As
+expected, the floating guard ring shows a higher breakdown voltage of
+240~V. The fact that the guard ring is not forced to a ground
+potential, the voltage drop in the silicon bulk close to the surface
+is smoothened. This leads to a higher breakdown voltage.
+
+In data, the assembly without guard ring reaches breakdown much
+earlier than the grounded guard ring. Even, the floating guard ring
+leads to an early breakdown in laboratory measurements. This does not
+agree with the expectations. One of the reasons can explained by the
+fact that Timepix3 provides an extra row of pixels giving the
+possibility to connect the guard ring to the ground. The floating
+guard ring may touch this extra row and this makes a floating guard
+ring similar to a grounded one.
 
 %% --------------------------------------------- %%
 %% \subsection{Electric field distribution in simulations}
@@ -468,9 +495,7 @@ to a breakdown of the sensor. In TCAD simulations, the electric field
 distribution for the sensors operated at nominal conditions are shown
 in \cref{fig:TCAD_Efield2D}. In any case, for the nominal conditions
 (c.f.~\cref{tab:nominalBiasThreshold}), the breakdown electric field
-is never reached and in the laboratory measurements, this can be seen
-through the measurement of the leakage current as shown in
-\cref{fig:IVmeasurements}.
+is never reached and in the laboratory measurements.
 
 \begin{figure}[htbp]
   \centering
