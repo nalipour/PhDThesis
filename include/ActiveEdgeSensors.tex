@@ -439,12 +439,14 @@ none of the assemblies are operated beyond the breakdown voltage.
 \end{figure}
 
 \cref{fig:IVmeasurements_TCAD} shows the leakage current obtained from
-the TCAD simulations. The current calculated from the 2D simulation is
-scaled to obtain the current in the total matrix. In TCAD simulations,
-only the sensor is simulated and the effect of the readout chip and
-the bump bonding are not included. The readout chip can increase the
-temperature and increase the leakage current.
+the TCAD simulations for the simulated pixel cell. In TCAD
+simulations, only the sensor is simulated and the effect of the
+readout chip and the bump bonding are not included. The readout chip
+can increase the temperature and increase the leakage current.
 
+
+%% The current calculated from the 2D simulation is scaled to obtain the
+%% current in the total matrix.
 
 \begin{figure}[htbp]
   \centering
@@ -456,10 +458,10 @@ temperature and increase the leakage current.
     \includegraphics[width=\textwidth]{figures/ActiveEdge/IVCurve_TCAD_55_GNDGR.pdf}
     \caption{}
   \end{subfigure}
-  \caption{Leakage current in TCAD simulations as a function of bias
-    voltage for (a) $50\,\micron$ thick sensors and for (b) assemblies
-    with a grounded guard ring (refer to \cref{tab:Timepix3Assemblies}
-    for the details on the assemblies).}
+  \caption{Leakage current in TCAD simulations for the pixel cell as a
+    function of bias voltage for (a) $50\,\micron$ thick sensors and
+    for (b) assemblies with a grounded guard ring (refer to
+    \cref{tab:Timepix3Assemblies} for the details on the assemblies).}
   \label{fig:IVmeasurements_TCAD}
 \end{figure}
 
