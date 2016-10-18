@@ -920,10 +920,10 @@ by an integrated circuit for amplification and digitisation.
 \begin{figure}[htbp]
   % \begin{wrapfigure}{r}{0.5\textwidth} 
   \centering
-  \includegraphics[width=\textwidth, trim = 30mm 100mm 30mm 45mm,
+  \includegraphics[width=\textwidth, trim = 30mm 180mm 30mm 45mm,
   clip]{figures/ChargeSharing/PixelCell.pdf}
   \caption{Schematic layout of one pixel cell in a hybrid pixel
-    detector. From~\cite{Rossi:976471}.}
+    detector. From~\cite{Spieler2005}.}%\cite{Rossi:976471}.}
   \label{fig:pixelCell}
   % \end{wrapfigure}
 \end{figure}
@@ -1148,15 +1148,26 @@ electric field distribution and the diffusion causes multi-pixel hits.
 
 A pixel detector is obtained by segmenting the electrodes of a silicon
 sensor. This provides a two-dimensional information on the position of
-particle track. Depending on the
+particle tracks. The magnitude of the signal measured by an electrode
+depends on the track position within a pixel. If the particle hits
+close to the edges or corners of a pixel, multiple pixels can detect
+signals and result in clusters.
+
+% The ratio of charge deposition between the pixels allows to
+% reconstruct the track position within the pixel and achieve higher
+% resolution than by just using the geometrical positions.
 
 The spatial resolution of a pixel detector is mainly determined by the
 pixel pitch. But this can be improved by the readout choice (binary or
-analogue), the threshold value, the charge sharing, thickness of the
-detector and the reconstruction algorithm. The effect of the readout
-is studied in the sections here-below.
+analogue with pulse-height information), the threshold detection
+threshold of the readout, the charge sharing in the sensor, thickness
+of the detector and the reconstruction algorithm. The effect of the
+readout is studied in the sections here-below.
 
-The spatial resolution is defined by:
+In the following, the calculations are only done in one-dimension and
+we assume that tracks pass through the center of the pixel in the
+other dimension. The spatial resolution is therefore defined by:
+
 \begin{equation}
 \sigma_{position}^2={{\int_{-p/2}^{p/2} \left(x_r-x_m\right)^2
     D\left(x_r\right) dx_r } \over { \int_{-p/2}^{p/2}
@@ -1169,9 +1180,9 @@ impact position $x_r$ and the measured position $x_m$ of the particle
 in a pixel. $D\left(x\right)$ is the hit probability density function
 in a pixel. $p$ represents the pixel pitch size.
 
-In the coming sections, the spatial resolution defined by
-\cref{eq:spatialRes} is studied for different scenarios and
-assumptions.
+% In the coming sections, the spatial resolution defined by
+% \cref{eq:spatialRes} is studied for different scenarios and
+% assumptions.
 
 %% \begin{figure}[htbp]
 %%   \centering
@@ -1229,11 +1240,13 @@ assumptions.
 
 
 
-\subsubsection{Binary readout} \label{sec:binaryReadout}
-The simplest case for the resolution computation is to consider a
-binary readout with single threshold for signal and noise
-discrimination. For a pixel centered at 0 and having a pitch $p$ with
-a probability density function as illustrated in
+\subsubsection{Binary readout} 
+\label{sec:binaryReadout} 
+
+The simplest (and unrealistic) case for the resolution computation is
+to consider a binary readout with single readout threshold for signal
+and noise discrimination. For a pixel centered at 0 and having a pitch
+$p$ with a hit probability density function as illustrated in
 \cref{fig:SpatResBinary}, the following assumptions are considered:
 
 \begin{itemize}
@@ -1288,13 +1301,12 @@ which results in a spatial resolution of:
   \label{fig:SpatResBinary}
 \end{figure}
 
-This simple model shows the worst resolution achieved and is only
-dependent on the pitch size (geometry of the pixels). In reality, with
-charge sharing, the signal of a particle track is shared between
-several pixels and depending on the readout threshold more than one
-pixel can be fired which is called a \textit{cluster} of pixels. The
-resolution is therefore improved as described in
-\cref{sec:resolutionBinarySharing,sec:resolutionAnalogSharing}.
+In this simple model, the resolution achieved is only dependent on the
+pitch size (geometry of the pixels). In reality, the signal of a
+particle track is shared between several pixels and depending on the
+readout threshold more than one pixel can be fired which is called a
+\textit{cluster} of pixels. The resolution is therefore improved as
+described in the following.
 
 \subsubsection{Binary readout and charge sharing}
 \label{sec:resolutionBinarySharing}
@@ -1302,13 +1314,13 @@ resolution is therefore improved as described in
 The threshold of the readout electronics is usually set as low as
 possible which can result in more than one pixel hit per particle
 track. In this case, the charge is shared between two or more pixels
-(called a cluster). Multi-hit clusters improve the resolution of
+(called a cluster). Multi-hit clusters can improve the resolution of
 \cref{eq:sigmaposBinary}. \cref{fig:SpatResBinaryChargeSharing}
 illustrates the charge sharing between two pixels. If a track passes
 close to the edge of a pixel (within a distance of $s\over 2$ close to
-the edge), then the neighbouring pixel is also fired. For events
-triggering single-hit events, the spatial resolution in pixel 0 for
-1-hit clusters is given by:
+the edge), the neighbouring pixel is also fired. For events triggering
+single-hit events, the spatial resolution in pixel 0 for 1-hit
+clusters is given by:
 
 \begin{equation}
 \sigma_{position}^2={{\int_{-(p/2-s/2)}^{(p/2-s/2)} \left(x_r\right)^2
@@ -1360,9 +1372,8 @@ For two-hit clusters, the spatial resolution is given by:
   \caption{The hit probability density function for two neighbouring
     pixels (pixel 0 and pixel 1) considering charge sharing between
     the two pixels when a binary readout is used to acquire the sensor
-    pulse. For a track passing in the edge of the two pixels, within a
-    distance of $s$/2 close to the edge, pixel 0 and pixel 1 are
-    fired.}\label{fig:SpatResBinaryChargeSharing}
+    pulse as explained in the text.}
+  \label{fig:SpatResBinaryChargeSharing}
   % Binary readout with charge sharing.
 \end{figure}
 
@@ -1376,9 +1387,10 @@ given by:
 The optimal average spatial resolution is obtained for $s=p/2$ as
 shown in \cref{fig:sigmaTotal} for three pixel pitches of
 $p=15\,\micron$, $p=25\,\micron$ and $p=55\,\micron$. This means that
-the number of single-hit and multi-hit clusters is the same. But, in
-this situation one is not able to distinguish between one track
-triggering two pixels and two tracks hitting the sensor within $2p$.
+the number of single-hit and multi-hit clusters is the same. Note
+that, in this situation one is not able to distinguish between one
+track triggering two pixels and two tracks hitting the sensor within
+$2p$ for very high rate hits.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.3\textwidth}
