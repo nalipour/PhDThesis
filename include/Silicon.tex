@@ -929,11 +929,11 @@ by an integrated circuit for amplification and digitisation.
 \end{figure}
 
 In the following sections, we introduce Ramo's theorem which describes
-how the charge carriers are collected by the readout electrodes. Also,
-an introduction to in-pixel studies done with pixel detectors is given
-later when studying the spatial resolution for different readout chip
-configurations. We also explain how pixel detectors can be used for
-position reconstruction.
+the induced current on the readout electrode due to the movement of
+the charge carriers. Also, an introduction to in-pixel studies done
+with pixel detectors is given later when studying the spatial
+resolution for different readout chip configurations. We also explain
+how pixel detectors can be used for position reconstruction.
 
 
 %\subsection{Silicon sensors types}
@@ -943,19 +943,19 @@ position reconstruction.
 
 Previously, we have seen that due to incident radiation, a signal is
 produced by the motion of charge carriers in the detector. We can
-naively interpret this statement as the signal is formed with a delay
-when the charge carriers are collected by the electrodes. But in
-reality, such a delay does not exist and a signal pulse is created
-immediately after a charge carrier starts its motion to the
+naively interpret this statement such that the signal is formed with a
+delay when the charge carriers are collected by the electrodes. But in
+reality, such a delay does not exist and an induction signal pulse is
+created immediately after a charge carrier starts its motion to the
 electrodes. When the last charge carriers arrive at the collecting
 electrodes, the charge induction process ends and the signal pulse is
 fully developed. The timing evolution of the signal is important in
 understanding the timing properties of detectors. In the following, we
 derive the induced charge in a pixel detector.
 
-For the calculation of the induced charge, first, consider the simple
-example of a charge $q$ near an infinitely large electrode with all
-the electric field lines terminating on the electrode. The Gauss's
+For the calculation of the induced charge, we first consider the
+simple example of a charge $q$ near an infinitely large electrode with
+all the electric field lines terminating on the electrode. Gauss's
 law, for a surface $S$ surrounding the charge is expressed as:
 
 \begin{equation}
@@ -999,23 +999,35 @@ Ramo's theorem~\cite{Ramo:1939vr} describes the time evolution of the
 induced current created in a detector. The induced current on the
 electrodes is described as a function of the weighting potential
 $\Phi$ which describes the coupling of a charge to an electrode. The
-weighting potential is defined for a specific electrode. In Ramo's
-theorem, it is obtained by setting the potential of the electrode to 1
-and setting all other electrodes to potential 0. \cref{eq:RamoCharge}
-describes the induced charge $Q_k$ on electrode $k$ if a charge q
-moves along any path from position $z_0$ to $z_p$:
+weighting potential is defined for a specific electrode
+configuration. In Ramo's theorem, it is obtained by setting the
+potential of the electrode to unit potential and setting all other
+electrodes to zero potential. \cref{eq:RamoCharge} describes the
+induced charge $Q_k$ on electrode $k$ if a charge q moves along any
+path from the originating point $z_0$ to the readout electrode
+position $z_p$:
 \begin{equation}
     Q_{k}=q \cdot [\Phi_k(z_p)-\Phi_k(z_0)] \; .
    \label{eq:RamoCharge} 
   \end{equation}
+
+The instantaneous current on the electrode k is given by: 
+\begin{equation}
+    i_{k}=q \,\ v \cdot E_k \; ,
+   \label{eq:RamoCurrent} 
+  \end{equation}
+
+  where $v$ is the velocity of the charge carrier and $E_k$ the
+  weighting field.
 
   It is important to note that the weighting potential (field) is
   different from the electric potential (field). The electric field
   determines the drift trajectory and velocity of the charge carriers
   whereas the weighting field depends only on the geometry of the
   electrodes and defines how the charge motion induces a charge to a
-  specific electrode. In the specific case of two-electrode
-  configuration the electric and the weighting fields are the same.
+  specific electrode. The induced charge is independent of the
+  trajectory. In the specific case of a two-electrode configuration
+  the electric and the weighting fields are the same.
 
 
   \cref{fig:RamoTCAD} shows the weighting field and potential
@@ -1025,8 +1037,16 @@ moves along any path from position $z_0$ to $z_p$:
   200~\micron and over-depleted with a bias voltage of \SI{50}{\volt}
   on the back-side. First, \SI{0}{\volt} is applied to all the
   electrodes and then \SI{1}{\volt} is applied to the
-  electrode~$k$. By taking the difference between the two
-  configurations, the weighting potential and field are obtained.
+  electrode~$k$. By subtracting the electric field and the
+  electrostatic potential in the two configurations, the weighting
+  field and potential are obtained. 
+
+  The gradient of the weighting potential gets higher by getting
+  closer to the pixel. This indicates that the pixel is more sensitive
+  to the charges drifting close by. While the gradient of the
+  weighting potential is relatively flat in the bulk implying that the
+  charges drifting far from the pixel contribute less to the induced
+  signal.
 
 
 \begin{figure}[htbp]
@@ -1081,7 +1101,7 @@ moves along any path from position $z_0$ to $z_p$:
 \end{figure}
 
 The weighting potential for different hit positions on the x-axis is
-shown in \cref{fig:RamoTCADCuts}. Since, the total charge collected by
+shown in \cref{fig:RamoTCADCuts}. Since the total charge collected by
 the electrode $k$ depends only on the depth positions $z_0$ and $z_p$,
 in the absence of the radiation-induced damages (which would affect
 the distributions of the electric and weighting fields), the Ramo
