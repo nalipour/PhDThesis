@@ -230,10 +230,22 @@ generated at a given Step\textsubscript{z} is described as a Gaussian
 distribution with standard deviation as given in
 \cref{eq:sigmaDiffusion}. \cref{fig:digitisation} schematically
 illustrates the digitisation in a sensor in one direction. Each
-\textsc{Geant4} step is shown in a circle. At each step, the
-contribution of the diffusion is calculated in the hit and its
-neighbouring pixels. For each pixel, all contributions sum up and the
-total charge deposited in a pixel is calculated.
+\textsc{Geant4} step is shown in a circle. In 2D, at each step, the
+contribution of the diffusion is calculated in the hit pixel and its
+neighbouring pixels using:
+
+\begin{equation}
+Q(z)=q_i(z) \cdot {1\over{\sqrt{2\,\pi}\sigma(z)}} \int_{x_{1}}^{x_{2}} e^{-({{x-x_{hit}}\over{\sqrt{2}\,\sigma(z)}})^2} dx \cdot {1\over{\sqrt{2\,\pi}\sigma(z)}} \int_{y_{1}}^{y_{2}} e^{-({{y-y_{hit}}\over{\sqrt{2}\,\sigma(z)}})^2} dy 
+\end{equation}
+
+where $q_i(z)$ is the energy deposited at step i at the depth $z$,
+$\sigma(z)$ the diffusion standard deviation at $z$, $x_{hit}$ and
+$y_{hit}$ is the coordinates where the track hits a pixel, $x_1$ and
+$x_2$ the x-coordinates and $y_1$ and $y_2$ the y-coordinates of the
+pixel where the contribution of the charge is being calculated.
+
+For each pixel, all contributions sum up and the total charge
+deposited in a pixel is calculated.
 
 \begin{figure}[htbp]
   \centering
@@ -254,7 +266,7 @@ total charge deposited in a pixel is calculated.
       \draw[green, thick] (0.45, 0.2) -- (0.36, 0.6);  
       \draw[green, thick] (0.45, 0.2) -- (0.54, 0.6);
       \draw[green, thick, <->] (0.36, 0.62) -- (0.54, 0.62);
-      \node[above, color=green] at (0.36, 0.62) {$\sigma_{1}$};
+      \node[above, color=green] at (0.36, 0.62) {$\sigma(z1)$};
 
       \draw[red, thick] (0.473, 0.3) circle (0.5mm);
       \node[right, color=red] at (0.473, 0.32) {Step 2};
@@ -282,6 +294,10 @@ total charge deposited in a pixel is calculated.
       \draw[black, thick, ->] (0.1, 0.2) -- (0.1, 0.6);  
       \node[left, color=black] at (0.1, 0.4) {E\textsubscript{field}};
 
+      \draw[black, thick, ->] (0.9, 0.7) -- (0.9, 0.1);  
+      \node[below, color=black] at (0.9, 0.1) {z};
+      \draw[-] (0.89, 0.6) -- (0.91, 0.6) node[right] {0};
+
       \node[below, color=black] at (0.3, 0.15) {Pixel 1};
       \node[below, color=black] at (0.5, 0.15) {Pixel 2};
       \node[below, color=black] at (0.7, 0.15) {Pixel 3};
@@ -289,9 +305,9 @@ total charge deposited in a pixel is calculated.
       %% \node at (4.5,4) 
       %% {some text spanning three lines with automatic line breaks};
 
-      %% \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-      %% \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-      %% \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+      % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+      % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+      % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
     \end{scope}
   \end{tikzpicture}
   \caption{Illustration of the digitisation in a sensor. Each
@@ -303,9 +319,12 @@ total charge deposited in a pixel is calculated.
 \end{figure}
 
 The digitiser also defines the parameters of the readout chip. The
-electronic noise is added and the chip threshold are applied to the
-hits. The hit energy is converted to the digital value TOT
-(time-over-threshold) using the readout ASICs calibrations.
+electronic noise (Gaussian distribution as described in
+\cref{sec:noise}) is added. The readout threshold is applied to
+eliminate the pixels where the charge deposition is less than the
+threshold. The hit energy is converted to the digital value TOT
+(time-over-threshold) using the readout calibrations (see
+\cref{sec:EnergyCalibration}).
 
 
 %% --------------------------------------------- %%
