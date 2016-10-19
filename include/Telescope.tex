@@ -58,15 +58,16 @@ the up direction.
 
 The telescope consists of six planes of Timepix3
 ASICs~\cite{Timepix3Poikela} bump bonded to $300\,\micron$ thick
-p-in-n planar sensors as shown in \cref{fig:TPX3Telescope}. The
-sensors are depleted at a bias voltage of 30~V and nominally operated
-at 50~V. The Timepix3 readout chip threshold is set to $\sim1000$
-electrons. The planes are tilted by $9\degrees$ around the x and y
-axes~\cite{Akiba:2013yxa}. Given the pixel pitch and the sensor
-thickness, this angle mainly leads to clusters of three
-pixels. Combining the TOT information, the reconstructed hit position
-provides sub-pixel resolution on the telescope planes. This leads to a
-tracking resolution of $\sim$$2\,\micron$ on the DUT.
+p-in-n planar sensors (produced by Canberra) as shown in
+\cref{fig:TPX3Telescope}. The sensors are depleted at a bias voltage
+of 30~V and nominally operated at 50~V. The Timepix3 readout chip
+threshold is set to $\sim1000$ electrons. The planes are tilted by
+$9\degrees$ around the x and y axes~\cite{Akiba:2013yxa}. Given the
+pixel pitch and the sensor thickness, this angle mainly leads to
+clusters of three pixels. Combining the TOT information, the
+reconstructed hit position provides sub-pixel resolution on the
+telescope planes. This leads to a tracking resolution of
+$\sim$$2\,\micron$ on the DUT.
 
 
 \begin{figure}[htbp]
@@ -337,10 +338,15 @@ the sensors.
 \cref{fig:TelescopeCluSize_data_simu} compares the cluster size
 distribution and the charge of the clusters in data and simulations
 for the first telescope plane (plane 0). There is a good agreement
-between the cluster-size distributions in data and simulations. In
-data, there are less single-pixel clusters due to slight imperfections
-in the rotations of the planes while placing the telescope whereas the
-simulation assumes a perfect placement of the telescope planes.
+between the cluster-size distributions in data and simulations. The
+small discrepancy might be due to the assumption on the un-calibrated
+threshold value used in data which affects largely the cluster-size
+distribution.
+
+%% In
+%% data, there are less single-pixel clusters due to slight imperfections
+%% in the rotations of the planes while placing the telescope whereas the
+%% simulation assumes a perfect placement of the telescope planes.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.3\textwidth}
@@ -369,13 +375,12 @@ simulations. \cref{fig:TelPlane0_MC_hit} shows the hit residuals of
 the first telescope plane in x and y directions in simulations. The
 hit resolution is also considered as the intrinsic resolution of the
 sensors. The standard deviation of a Gaussian fit to the center
-$95.5\%$ of the residual distribution (which corresponds to $2\sigma$)
-gives a resolution of $\sim2.7\,\micron$. Since the residual
-distribution has a large tail, the RMS of the distribution is higher
-($\sim5.4\,\micron$). The tail in the residuals distribution is due to
-the reconstruction of the hit positions of single-pixel clusters where
-the charge sharing can not be used to improved the reconstructed
-position.
+$95.5\%$ of the residual distribution gives a resolution of
+$\sim2.7\,\micron$. Since the residual distribution has a large tail,
+the RMS of the distribution is higher ($\sim5.4\,\micron$). The tail
+in the residuals distribution is due to the reconstruction of the hit
+positions of single-pixel clusters where the charge sharing can not be
+used to improved the reconstructed position.
 
 % For this calculation, hits corresponding to tracks with the $10\%$ of
 % highest $\chi^2$/NDF are ignored.
@@ -543,21 +548,21 @@ $2\,\micron$ due to the tails of the distribution. A more strict cut
 on the $\chi^2$/NDF discards tracks in the tails and reduces the RMS
 of the distribution but also causes loss of statistics.
 
-In the y-direction, the residuals show a shift of
-$\sim1\,\micron$. This can be explained to the fact that in the
-y-direction, the three planes before the DUT are rotated in an
-asymmetric way compared to the three other planes after the DUT in the
-Timepix3 telescope. Due to the rotation of the planes, the
-reconstructed hit is biased towards higher y values for the planes
-before and after the DUT. Therefore, the reconstructed track is also
-biased towards higher y values. In the x-direction, the telescope
-planes are rotated in a symmetric way. For the planes before the DUT,
-the reconstructed hits are biased towards higher x values whereas for
-the telescope planes after the DUT, the reconstructed hits are biased
-towards lower x values. At the DUT position, the shift in the track
-position is annihilated and no disalignement is observed at the
-position of the DUT in the x direction. The shift in y-direction can
-be corrected while aligning the DUT.
+I%% n the y-direction, the residuals show a shift of
+%% $\sim1\,\micron$. This can be explained to the fact that in the
+%% y-direction, the three planes before the DUT are rotated in an
+%% asymmetric way compared to the three other planes after the DUT in the
+%% Timepix3 telescope. Due to the rotation of the planes, the
+%% reconstructed hit is biased towards higher y values for the planes
+%% before and after the DUT. Therefore, the reconstructed track is also
+%% biased towards higher y values. In the x-direction, the telescope
+%% planes are rotated in a symmetric way. For the planes before the DUT,
+%% the reconstructed hits are biased towards higher x values whereas for
+%% the telescope planes after the DUT, the reconstructed hits are biased
+%% towards lower x values. At the DUT position, the shift in the track
+%% position is annihilated and no disalignement is observed at the
+%% position of the DUT in the x direction. The shift in y-direction can
+%% be corrected while aligning the DUT.
 
 
 The tracking resolution on the DUT as a function of the
