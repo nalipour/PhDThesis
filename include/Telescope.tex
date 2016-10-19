@@ -255,18 +255,18 @@ A digitiser for the Timepix3 readout chips bump-bonded to planar
 sensors is defined in AllPix. It simulates the silicon physics by
 calculating the drift and diffusion at each \textsc{Geant4} step as
 described in \cref{sec:allpix_digitisation}. The contribution of the
-generated charge by drift and diffusion in the hit pixel and all its
-direct neighbouring pixels is calculated for each step. All
-contributions add-up and the charge in each pixel is calculated. The
-electronic noise of the Timepix3 ASIC defined by a Gaussian
-distribution of width $\sim80$ electrons sums up to the charge in each
-pixel. The readout threshold as obtained from the threshold
-calibration for the corresponding device is applied to each pixel and
-finally, the pixel-by-pixel TOT calibration (see
-\cref{sec:EnergyCalibration}) is applied to convert the energy
-deposition in TOT. The operation parameters as described in
-\cref{sec:Telescope_sensors_mechanics} are used for the AllPix
-simulations of the sensors of the telescope planes.
+generated charge by drift and diffusion in the hit pixel and its
+neighbouring pixels is calculated for each step. All contributions
+add-up and the charge in each pixel is calculated. The electronic
+noise of the Timepix3 ASIC defined by a Gaussian distribution of width
+$\sim80$ electrons sums up to the charge in each pixel. The readout
+threshold as obtained from the threshold calibration for the
+corresponding device is applied to each pixel and finally, the
+pixel-by-pixel TOT calibration (see \cref{sec:EnergyCalibration}) is
+applied to convert the energy deposition in TOT. The operation
+parameters as described in \cref{sec:Telescope_sensors_mechanics} are
+used for the AllPix simulations of the sensors of the telescope
+planes.
 
 The \textsc{Geant4} General Particle Source (GPS) is used for the
 simulation of $120\,\gev$ pions. The GPS generates a parallel beam

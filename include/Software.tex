@@ -120,7 +120,7 @@ planes.
     \node[anchor=south west,inner sep=0] (image) at
     (0,0){\includegraphics[width=0.8\textwidth]{figures/ActiveEdge/Allpix_telescope_withParticles.png}};
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
-      \node[above, color=white] at (0.45, 0.65) {\textbf{DUT}};
+      \node[above, color=white] at (0.53, 0.65) {\textbf{DUT}};
     \end{scope}
   \end{tikzpicture}
   \caption{Simulation of the Timepix3 telescope in AllPix with the six
@@ -212,28 +212,34 @@ the simulation scenario and also the particle tracks in the detectors.
 
 For each simulation step (\texttt{G4Step}) through the matter,
 \textsc{Geant4} provides the energy deposited in the sensitive
-material. The step length can be customised. For thin sensors
-simulations, a step of $2\,\micron$ is selected and provides a precise
-energy deposition. The semiconductor physics in a silicon detector is
-then defined in the digitiser. The drift and diffusion are performed
-at each step (using \cref{eq:sigmaDiffusion}) to simulate the
-electron-hole pair movement in the electric field. The digitiser also
-defines the parameters of the readout chip. The electronic noise is
-added and the chip threshold are applied to the hits. The hit energy
-is converted to the digital value TOT (time-over-threshold) using the
-readout ASICs calibrations.
+material. The step length can be customised and for thin sensors
+simulations, a step of $2\,\micron$ provides a good precision for the
+calculations. 
 
-\cref{fig:digitisation} schematically illustrates the digitisation in
-a sensor. Each \textsc{Geant4} step is shown in a circle. At each
-step, the contribution of the diffusion is calculated in the hit and
-its neighbouring pixels. For each pixel, all the contributions sum up
-and the total charge deposited in a pixel is calculated.
+The semiconductor physics in a silicon detector is defined in the
+digitiser. The drift and diffusion are performed at each step to
+simulate the electron-hole pair movement in the electric field. The
+simplified model as described in \cref{sec:reversedBiasedPNjunction}
+is used for the simulation of silicon physics. In practice at each
+\texttt{G4Step}, where the energy deposition is given by
+\textsc{Geant4}, the amount of the charges drifting towards the
+readout electrode is known. These charges diffuse due to the random
+thermal motion in the crystal lattice and do not exactly follow the
+electric field lines. The spread of the arrival position of a charge
+generated at a given Step\textsubscript{z} is described as a Gaussian
+distribution with standard deviation as given in
+\cref{eq:sigmaDiffusion}. \cref{fig:digitisation} schematically
+illustrates the digitisation in a sensor in one direction. Each
+\textsc{Geant4} step is shown in a circle. At each step, the
+contribution of the diffusion is calculated in the hit and its
+neighbouring pixels. For each pixel, all contributions sum up and the
+total charge deposited in a pixel is calculated.
 
 \begin{figure}[htbp]
   \centering
   \begin{tikzpicture}[node distance = 2.5cm, auto]
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
-
+      
       \draw[thick] (0.2, 0.6) -- (0.8, 0.6);
       \draw[thick] (0.2, 0.2) -- (0.8, 0.2);
 
@@ -242,9 +248,6 @@ and the total charge deposited in a pixel is calculated.
 
       \draw[thick] (0.4, 0.2) -- (0.4, 0.6);  
       \draw[thick] (0.6, 0.2) -- (0.6, 0.6);  
-
- 
-
 
       \draw[green, thick] (0.45, 0.2) circle (0.5mm);
       \node[right, color=green] at (0.45, 0.22) {Step 1};
@@ -298,6 +301,11 @@ and the total charge deposited in a pixel is calculated.
     calculated.}
   \label{fig:digitisation}
 \end{figure}
+
+The digitiser also defines the parameters of the readout chip. The
+electronic noise is added and the chip threshold are applied to the
+hits. The hit energy is converted to the digital value TOT
+(time-over-threshold) using the readout ASICs calibrations.
 
 
 %% --------------------------------------------- %%
