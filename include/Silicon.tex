@@ -1160,10 +1160,10 @@ signals and result in clusters.
 
 The spatial resolution of a pixel detector is mainly determined by the
 pixel pitch. But this can be improved by the readout choice (binary or
-analogue with pulse-height information), the threshold detection
-threshold of the readout, the charge sharing in the sensor, thickness
-of the detector and the reconstruction algorithm. The effect of the
-readout is studied in the sections here-below.
+analogue with pulse-height information), the detection threshold of
+the readout, the charge sharing in the sensor, thickness of the
+detector and the reconstruction algorithm. The effect of the readout
+on the spatial resolution is studied in this section.
 
 In the following, the calculations are only done in one-dimension and
 we assume that tracks pass through the center of the pixel in the
@@ -1179,66 +1179,7 @@ other dimension. The spatial resolution is therefore defined by:
 where $\sigma_{position}$ is the average distance between the real
 impact position $x_r$ and the measured position $x_m$ of the particle
 in a pixel. $D\left(x\right)$ is the hit probability density function
-in a pixel. $p$ represents the pixel pitch size.
-
-% In the coming sections, the spatial resolution defined by
-% \cref{eq:spatialRes} is studied for different scenarios and
-% assumptions.
-
-%% \begin{figure}[htbp]
-%%   \centering
-%%   \begin{subfigure}[b]{0.3\textwidth}
-%%     \centering
-%%     \begin{tikzpicture}
-%%       \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
-%%       \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
-      
-%%       \draw[-] (-1.5, 1) -- (-1.5, 0) node[below]{${-p \over 2}$};
-%%       \draw[-] (-1.5, 1) -- (1.5, 1);
-%%       \draw[-] (1.5, 1) -- (1.5, 0) node[below]{${p \over 2}$};
-%%       \node[] at (0.2, 1.2) {1};
-%%     \end{tikzpicture}
-%%     \caption{}\label{fig:SpatResBinary}
-%%   \end{subfigure}\hfill
-%%   \begin{subfigure}[b]{0.3\textwidth}
-%%     \centering
-%%     \begin{tikzpicture}
-%%       \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
-%%       \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
-      
-%%       \draw[-] (-0.7, 1) -- (-0.7, 0) node[below]{\tiny ${{-(p-s)}\over 2}$};
-%%       \draw[-] (-0.7, 1) -- (0.7, 1);
-%%       \draw[-] (0.7, 1) -- (0.7, 0) node[below]{\tiny ${(p-s)\over 2}$};
-%%       \node[] at (0.2, 1.2) {1};
-%%       \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
-%%       \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
-%%     \end{tikzpicture}
-%%     \caption{}\label{fig:SpatResBinaryChargeSharing}
-%%   \end{subfigure}\hfill
-%%   \begin{subfigure}[b]{0.3\textwidth}
-%%     \centering
-%%     \begin{tikzpicture}
-%%       \draw[->, thick] (-2,0)--(2,0) node[right]{$x$};
-%%       \draw[->, thick] (0, -0.5)--(0, 2) node[above]{$D\left(x\right)$};
-      
-%%       \draw (-1.5,0) to[out=0, in=-120] (-0.9,0.2) to[out=60, in=180](-0.3, 1)--(0,1);
-%%       \draw (0,1)--(0.3, 1) to [out=-20, in=120] (0.9,0.2) to[out=-60,
-%%       in=0] (1.5,0);
-
-%%       \draw[-] (-1.5, 0.1) -- (-1.5, 0) node[below] {${-p \over 2}$};
-%%       \draw[-] (1.5, 0.1) -- (1.5, 0) node[below] {${p \over 2}$};
-
-%%       \draw[-] (-0.5, 0.1) -- (-0.5, 0) node[below] {\tiny ${-(p-s) \over 2}$};
-%%       \draw[-] (0.5, 0.1) -- (0.5, 0) node[below] {\tiny ${(p-s) \over 2}$};
-
-%%       \node[] at (0.2, 1.2) {1};
-%%     \end{tikzpicture}
-%%     \caption{}\label{fig:SpatResAnaglogChargeSharing}
-%%   \end{subfigure}
-%%   \caption{(a) Binary readout. (b) Binary readout with charge
-%%     sharing. (c) Analog readout with charge sharing.}\label{fig:SpatialResolution}
-%% \end{figure}
-
+in a pixel and $p$ represents the pixel pitch.
 
 
 \subsubsection{Binary readout} 
@@ -1258,6 +1199,9 @@ $p$ with a hit probability density function as illustrated in
 \item A uniform density of particles hit the detector ($D\left(x\right)=1$).
 \end{itemize}
 
+In these assumptions, the readout electronic noise, the readout
+threshold dispersion, the diffusion and the energy deposition
+fluctuations are neglected.
 
 The average difference between the real position ($x_r$) and the
 measured position ($x_m=0$) of the particle in a pixel is calculated
@@ -1315,12 +1259,12 @@ described in the following.
 The threshold of the readout electronics is usually set as low as
 possible which can result in more than one pixel hit per particle
 track. In this case, the charge is shared between two or more pixels
-(called a cluster). Multi-hit clusters can improve the resolution of
+(called a cluster). Multi-pixel clusters can improve the resolution of
 \cref{eq:sigmaposBinary}. \cref{fig:SpatResBinaryChargeSharing}
 illustrates the charge sharing between two pixels. If a track passes
 close to the edge of a pixel (within a distance of $s\over 2$ close to
 the edge), the neighbouring pixel is also fired. For events triggering
-single-hit events, the spatial resolution in pixel 0 for 1-hit
+single-pixel events, the spatial resolution in pixel 0 for 1-pixel
 clusters is given by:
 
 \begin{equation}
@@ -1330,7 +1274,7 @@ clusters is given by:
 \label{eq:spatialResCharge sharing_1hit}
 \end{equation}
 
-For two-hit clusters, the spatial resolution is given by:
+For two-pixel clusters, the spatial resolution is given by:
 \begin{equation}
 \sigma_{position}={s \over \sqrt{12}} \; .
 \label{eq:spatialResChargeSharing_2hit}
@@ -1378,41 +1322,47 @@ For two-hit clusters, the spatial resolution is given by:
   % Binary readout with charge sharing.
 \end{figure}
 
-The average resolution considering single and multi-hit clusters is
+The average resolution considering single and multi-pixel clusters is
 given by:
 \begin{equation}
-{\sigma_{Total}^{2}}={{\left(p-s\right)^{2}} \over 12}+{{s^2}\over12} \; .
+{\sigma_{Total}^{2}}={{p^2-3ps+3s^2}\over{12}} \; .
 \label{eq:spatialResChargeSharingTotal}
 \end{equation}
 
 The optimal average spatial resolution is obtained for $s=p/2$ as
-shown in \cref{fig:sigmaTotal} for three pixel pitches of
-$p=15\,\micron$, $p=25\,\micron$ and $p=55\,\micron$. This means that
-the number of single-hit and multi-hit clusters is the same. Note
-that, in this situation one is not able to distinguish between one
-track triggering two pixels and two tracks hitting the sensor within
-$2p$ for very high rate hits.
+shown in \cref{fig:sigmaTotal} for two pixel pitches of
+$p=25\,\micron$ and $p=55\,\micron$. This means that the number of
+single-pixel and multi-pixel clusters is the same. Note that, in this
+situation one is not able to distinguish between one track triggering
+two pixels and two tracks hitting the sensor within $2p$ for very high
+rate hits.
 
 \begin{figure}[htbp] \centering
-  \begin{subfigure}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{figures/ChargeSharing/resolution_binary_chargeSharing_s_15mupitch.pdf}
-    \caption{$15\,\micron$ pitch}
-  \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.3\textwidth}
+  %% \begin{subfigure}[b]{0.3\textwidth}
+  %%   \includegraphics[width=\textwidth]{figures/ChargeSharing/resolution_binary_chargeSharing_s_15mupitch.pdf}
+  %%   \caption{$15\,\micron$ pitch}
+  %% \end{subfigure} \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{figures/ChargeSharing/resolution_binary_chargeSharing_s_25mupitch.pdf}
     \caption{$25\,\micron$ pitch}
   \end{subfigure} \hfill
-  \begin{subfigure}[b]{0.3\textwidth}
+  \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{figures/ChargeSharing/resolution_binary_chargeSharing_s.pdf}
     \caption{$55\,\micron$ pitch}
   \end{subfigure}
   \caption{$\sigma_{\text{Total}}$ calculated using
     \cref{eq:spatialResChargeSharingTotal} with a pixel pitch of (a)
-    $p=15\,\micron$, (b) $p=25\,\micron$ and (c) $p=55\,\micron$ where
-    $s$ is the width of the charge sharing region as shown in
+    $p=25\,\micron$ and (b) $p=55\,\micron$ where $s$ is the width of
+    the charge sharing region as shown in
     \cref{fig:SpatResBinaryChargeSharing}.}
   \label{fig:sigmaTotal}
 \end{figure}
+
+For the CLIC pixel detector, the aim is to achieve a resolution of
+$3\,\micron$ with a pixel pitch of $25\,\micron$. With this simple
+example we see that, in the optimal case of $s=p/2$, the resolution
+achieved would be $\sim3.6\,\micron$. For this pitch, charge sharing
+is crucial in order to achieve such a challenging resolution.
 
 %% --------------------------------------------------- %%
 \subsubsection{Analogue readout and charge sharing}
@@ -1420,37 +1370,13 @@ $2p$ for very high rate hits.
 The spatial resolution can be significantly improved with an analogue
 readout which delivers a signal proportional to the collected charge
 as illustrated in \cref{fig:SpatResAnaglogChargeSharing}. In this
-case, for multi-hit clusters the $\eta$-function~\cite{Belau:1983eh}
+case, for multi-pixel clusters the $\eta$-function~\cite{Belau:1983eh}
 (c.f.~\cref{sec:EtaCorrection}) is used to reconstruct the hit
 position within the pixels using the charge information. In the region
 where only one pixel fires, the resolution is still limited to
 $(p-s)\over \sqrt{12}$. Therefore the readout threshold should be as
 low as possible in order to detect the smallest amounts of charge
 reaching neighbouring pixels.
-
-%% The charge carriers follow the field lines to end-up on a certain
-%% electrode. They are also subject to thermal diffusion which spreads
-%% the charge cloud as it drifts through the silicon. The width of the
-%% diffusion $\sigma_{diffusion}(z)$ (for simplicity called $\sigma(z)$)
-%% at depth $z$ is given by \cref{eq:driftTimeIntegrated}. The charge
-%% distribution at position $x_{hit}$ for a pixel extending from $x_1$ to
-%% $x_2$ is:
-%% \begin{equation}
-%% Q(x_{hit}, z)= Q(z) {1\over{\sqrt{2 \pi \sigma^2(z)}}}
-%% {\int_{x_1}^{x_2} e^{-({{x-x_{hit}}\over{\sqrt{2} \sigma(z)}})^2} } dx\; .
-%% \label{eq:ChargeDistribution}
-%% \end{equation}
-
-%% By integrating \cref{eq:ChargeDistribution} over the whole
-%% thickness of the detector, the charge deposited in a pixel at
-%% coordinate $x_{hit}$ having coordinates $x_1$ and $x_2$ is given by:  
-%% \begin{equation}
-%% Q(x_{hit})= \int_{x_1}^{x_2}  \int_{0}^{d} {Q(z) \over {\sqrt{2 \pi
-%%       \sigma^2(z)}} } e^{-({{x-x_{hit}}\over{\sqrt{2} \sigma(z)}})^2}
-%%   dz \; dx\; .
-%% \label{eq:ChargeDistribution_integrated_z}
-%% \end{equation}
-
 
 \begin{figure}[htbp]
   \centering
@@ -1482,9 +1408,32 @@ reaching neighbouring pixels.
   \end{tikzpicture}
   \caption{The hit probability density function for two neighbouring
     pixels (pixel 0 and pixel 1) considering charge sharing between
-    the two pixels using an analogue to acquire the sensor
+    the two pixels using an analogue readout to acquire the sensor
     pulse.}\label{fig:SpatResAnaglogChargeSharing}
 \end{figure}
+
+
+This case is closer to the reality in hybrid pixel detectors with
+analogue readout. But, there is no analytic solution for the
+calculation of the resolution. The proportionality between the spatial
+resolution with the signal-to-noise ration is given
+by~\cite{Turchetta:1993vu}:
+
+\begin{equation}
+\sigma \propto {p \over {S/N}} \; ,
+\end{equation}
+
+where the signal $S$ is measured as the most-probable-value of the
+MIPs distribution of clusters and $N$ the noise of a pixel.
+
+Simulations can be done to calculate numerically the spatial
+resolution in this case. \cref{sec:AllPix} presents the simulation
+framework which allows for computing the charge sharing and the
+spatial resolution.
+
+%% They take into account also the fluctuations due to the energy
+%% deposition of MIPs as explained
+
 
 %% --------------------------------------------------- %%
 \section{The $\eta$-correction method}
