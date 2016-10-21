@@ -188,19 +188,19 @@ the rotations around the x, y and z axes of the centre of the
 detectors. The physics list used by \textsc{Geant4} is specified. The
 General Particle Source (GPS), which is the \textsc{Geant4} toolkit
 for the generation of high-energy particles, is also described in the
-macro file. The particle type, the beam energy, the position and
+macro file. The particle type, the beam energy, position and
 distributions are customisable. The simulation is done based on
 frames. The frame can be related to the integration time of the
 detectors during which the shutter is open and all the particles are
 detected in this specific lapse of time. For a Timepix3-like detector
 which is operated based on a data-driven readout (see
-\cref{sec:TimepixReadout}), the frame length is not fully defined. In
-this case, in a frame we define the number of particles to hit the
-detectors without causing pile-ups. During test beams, the particle
-rate is also adjusted to avoid pile-ups. Since we are mostly
-interested in the physics of the detector and not testing the timing
-capabilities of the readout system, this definition of a frame is
-plausible.
+\cref{sec:TimepixReadout}), the frame length is not fully defined. For
+the simulation of such a readout, the beam profile is defined in such
+a way that pile-ups are avoided and a pixel is hit by particles only
+once during one simulation frame. During test beams, the particle rate
+is also adjusted to avoid pile-ups. Since we are mostly interested in
+the physics of the detector and not testing the timing capabilities of
+the readout system, this definition of a frame is plausible.
 
 Visualisation parameters are also given in the macro. Open
 Inventor~\cite{OpenInventor} can be, for example, used to visualise

@@ -1,5 +1,5 @@
 % ==============================================================================    
-\chapter{Hybrid pixel readout ASICs and calibration}
+\chapter{Pixel readout ASICs and assembly calibration}
 \label{ch:FE_electronics}
 % ==============================================================================    
 
@@ -398,12 +398,13 @@ over it. The injected charge is given by:
 \end{equation}
 
 where Q is the injected charge, C the injection capacitance and
-$\Delta V$ the voltage difference applied. A priori, the injection
-capacitance is roughly known and its value varies from pixel to pixel,
-but its value can be estimated. For the Timepix3 readout chip a
-capacitance of $20.2$~e\textsuperscript{-}/mV (or about 3.2~fF) is a
-good approximation (its value can be estimated more precisely for each
-chip by using radioactive source measurements).
+$\Delta V$ the voltage difference applied. The injection capacitance
+can vary from pixel to pixel and also from chip to chip. From chip
+design simulations, the metal-to-metal capacitance can be
+extracted. For the Timepix3 readout chip a capacitance of
+$20.2$~e\textsuperscript{-}/mV (or about 3.2~fF) is expected. This
+value has also been cross-checked with X-ray sources and the expected
+value has been validated~\cite{MedipixCapa}.
 
 For calibration with the chip bump-bonded to a sensor, the sensor is
 biased to full depletion to reduce the capacitive noise.
