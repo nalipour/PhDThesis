@@ -637,13 +637,13 @@ In one dimension, Poisson's equation is simplified to:
 
 First, considering the n-side, the first and second integrations of the Poisson equation give:
 \begin{equation}
-    {{d\phi(z)} \over {dz}}=-{{eN_{d}} \over \epsilon} (z-z_{n}) \qquad \textnormal{for $0\leq z < z_{n}$}
+    {{d\varphi(z)} \over {dz}}=-{{eN_{d}} \over \epsilon} (z-z_{n}) \qquad \textnormal{for $0\leq z < z_{n}$}
     \; ,
     \label{eq:PoissonIntegration1}
   \end{equation}
 
 \begin{equation}
-  \phi(z)=-{{eN_{d}} \over \epsilon} {z^{2} \over 2}+{{eN_{d}zz_{n}}\over \epsilon}+Vj \qquad \textnormal{for $0\leq z < z_{n}$}
+  \varphi(z)=-{{eN_{d}} \over \epsilon} {z^{2} \over 2}+{{eN_{d}zz_{n}}\over \epsilon}+Vj \qquad \textnormal{for $0\leq z < z_{n}$}
   \; ,
   \label{eq:PoissonIntegration2}
 \end{equation}
@@ -653,7 +653,7 @@ p-sides join. At the boundary of the depletion region $z=z_{n}$ the
 bias voltage $V_B$ is applied:
 
 \begin{equation}
-  \phi(z_{n})=V_{B}={{eN_{d}z_{n}^{2}} \over \epsilon}+V_j 
+  \varphi(z_{n})=V_{B}={{eN_{d}z_{n}^{2}} \over {2\epsilon}}+V_j 
   \; .
   \label{eq:BounderyPotential}
 \end{equation}
@@ -716,10 +716,9 @@ V_j=\left(N_d \over N_a\right) {V_B \over \left(  1+N_d/N_a \right)} \stackrel{N
 
 Let's consider a pixel detector with asymmetric junction with a highly
 doped surface $N_c$ concentration and a lightly doped bulk $N_b$ ($N_b
-\ll N_c$). $N_c$ and $N_b$ are used for a more generalisation of the
-doping regions and they can consist of both donors or acceptors. The
-doping concentration is expressed in terms of the bulk resistivity
-$\rho_b$:
+\ll N_c$). $N_c$ and $N_b$ are used for a generalisation of the doping
+regions and they can consist of both donors or acceptors. The doping
+concentration is expressed in terms of the bulk resistivity $\rho_b$:
 \begin{equation}
 \rho_b = {1 \over {e\mu_{b}N_{b}}}
 \; ,
@@ -759,12 +758,13 @@ V_D={{eN_bd^2} \over {2 \epsilon}}-V_{bi}
 \label{eq:depletionVoltage}
 \end{equation}
 
-
-The electric field drops linearly from its maximum value at the
-junction to zero at the opposite contact. Increasing the bias voltage
-beyond the needed bias to completely deplete the detector adds a
-uniform field. By neglecting the built-in voltage (as the bias voltage
-is much higher), the electric field is written as:
+The built-in voltage has a typical value of
+$V_{bi}\approx0.5$~V. Since $V_B$ is much higher than $V_{bi}$, then
+$V_{bi}$ can be neglected. The electric field drops linearly from its
+maximum value at the junction to zero at the opposite
+contact. Increasing the bias voltage beyond the needed bias to
+completely deplete the detector adds a uniform field. The electric
+field can be written as:
 
 \begin{equation}
 E(z)={{V_B-V_D} \over d}+\left(1-{z \over d}\right)2{V_D \over d}
@@ -834,15 +834,15 @@ a Gaussian distribution with a standard deviation of the diffusion of:
 \end{equation}
 
 where $D_b$ is the diffusion constant and related to the mobility via
-the Einstain equation $D_b=\mu_{c} \cdot k_{b} \cdot T/e$.
+the Einstein equation $D_b=\mu_{c} \cdot k_{b} \cdot T/e$.
 
-The drift time depends on the charge carriers as shown in
-\cref{eq:driftTimeIntegrated}. \cref{fig:Drift_n_vs_p} compares the
+The drift time depends on the mobility of the charge carriers as shown
+in \cref{eq:driftTimeIntegrated}. \cref{fig:Drift_n_vs_p} compares the
 drift time for n and p-type carriers in a $50\,\micron$ thick silicon
 sensor with a depletion voltage of |V\textsubscript{D}|=4~V and biased
 at |V\textsubscript{B}|=15~V for a charge created at a position
-$z$=depth. The electrons have a higher drift time and therefore are
-faster for readout. Diffusion does not depend on the carrier type
+$z$=depth. The electrons have a higher drift velocity and therefore
+are faster for readout. Diffusion does not depend on the carrier type
 as it can be seen in
 \cref{eq:sigmaDiffusion}. \cref{fig:Diffusion_n_vs_p} shows the
 standard deviation for the diffusion at different bias voltages for
