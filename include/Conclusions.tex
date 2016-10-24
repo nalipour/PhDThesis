@@ -6,62 +6,75 @@
 
 The vertex detector plays a key role to fully exploit the physics
 potential at CLIC. To meet the challenging demands on the precision
-physics, pixel detectors with high spatial and timing resolutions with
-low material are required.
+physics, pixel detectors with high spatial resolution and low material
+content are required.
 
 In this thesis, an overview on the R\&D of planar pixel sensors for
-CLIC is given. Prototypes are designed to characterise thin and
-active-edge sensors. During this thesis, we span a large set of
-activities for this characterisation in test-beam, laboratory
+CLIC is given. Prototypes with thin and active-edge sensors are
+designed. During this thesis, we span a large set of activities for
+the characterisation of these assemblies in test-beam, laboratory
 measurements and simulations. A summary is given in the following.
 
 \cref{ch:CLIC} gives an overview on the CLIC experiment. The
 accelerator is briefly described and the physics potential of the
 experiment is given. The requirements on the CLIC detector are
 presented with a focus of the vertex detector which is the main
-subject of the work presented.
+subject of the work presented. The flavour-tagging performance of the
+CLIC vertex detector is studied in full detector simulations. The
+conclusions show that the material budget of the detector must be as
+low as possible to achieve higher flavour-tagging efficiencies.
 
 \cref{sec:SiliconTheory} gives an introduction to semiconductor
 material with an accent on silicon which is predominant in tracking
 detectors in particle physics experiments. Theoretical concepts are
 introduced and later used for the simulation and understanding of the
 test-beam data. Different methods modeling the energy deposition
-spectrum of high-energy particles are given. The Bichsel model gives
-the most accurate energy spectrum for thin sensors. The charge
-transport in a pn-junction is studied. Drift and diffusion are
-calculated in a pn-junction and used in the next chapters for
-simulations. The position measurement and ways to improve the spatial
-resolution are investigated.
+spectrum of high-energy particles in silicon are presented. The
+Bichsel model gives the most accurate energy spectrum for thin
+sensors. The charge transport in a pn-junction is studied. Drift and
+diffusion are calculated in a pn-junction and used in the next
+chapters for simulations. The position measurement and ways to improve
+the spatial resolution are investigated and the crucial role of charge
+sharing in improving the pointing resolution of pixel detectors is
+shown.
 
-The Timepix3 pixel readout ASIC is used in the CLICdp Timepix3
-telescope as well as for the study of thin and active-edge
+The Timepix3 pixel readout ASIC is used as the tracking planes for the
+Timepix3 telescope as well as for the study of thin and active-edge
 sensors. \cref{ch:FE_electronics} introduces this pixel readout
-ASIC. The calibration methods to convert the threshold DAC and the TOT
-into energy is explained. The calibration is applied to the test-beam
-data and the energy spectrum in data agrees well with simulations and
-the calibration is therefore validated.
+ASIC. The test-pulse calibration method is chosen to convert the
+threshold DAC and the TOT into energy. The calibration is applied to
+the test-beam data and the energy spectrum in data agrees well with
+simulations. The calibration is therefore validated.
 
 The reconstruction software frameworks used for the analysis of data
 and simulations are described in \cref{ch:Software}. The AllPix
-reconstruction framework and TCAD simulation tools are explored as
-well.
+reconstruction framework and TCAD simulation tools are also
+introduced. Both simulation frameworks are powerfull tools for
+understanding the data. AllPix is a \textsc{Geant4}-based simulation
+frameworks which allows for reproducing the energy-deposition spectrum
+and the charge sharing in thin silicon sensors. The test-beam setup is
+also implemented in this framework and the beam telescope is
+simulated. The finite-element TCAD simulations allow for modeling the
+processing of a silicon detector and the device operation. It is
+mainly used to investigate the performance of the active-edge
+technology in thin silicon sensors.
 
 The CLICdp Timepix3 telescope is presented in \cref{ch:Telescope}. It
-allows for the reconstruction of the tracks with a high
-resolution. The telescope is implemented in \textsc{Geant}-4 based
-AllPix simulations. The tracking resolution of $\sim2\,\micron$ is
-extracted in simulations. This is in agreement with the expectations.
+allows for the reconstruction of the tracks with a high resolution and
+in-pixel studies on the devices under test (DUT). The telescope is
+implemented in AllPix simulations. The tracking resolution of the
+telescope on the DUT of $\sim2\,\micron$ is extracted from the
+simulation. This is in agreement with the expectations.
 
 Test-beam measurements and Allpix simulations for $50-150\,\micron$
 thin planar sensors are described in \cref{ch:ThinSensorsStudies}. The
-studies are done with a pixel pitch of $55\,\micron$. The simulations
-are in good agreement with data. For the CLIC vertex detector a hit
-resolution of $\sim3\,\micron$ is wished to be achieved with pixel
-detectors of $25\,\micron$ pitch and a thickness of
-$50\,\micron$. Since data is still not available for such pixel
-detectors, the simulations are extrapolated for such small pixels. The
-simulations show that achieving this resolution with $25\,\micron$
-pixels is not possible.
+pointing resolution of the assemblies are studied and the simulations
+are in good agreement with data. For the CLIC vertex detector, a hit
+resolution of $\sim3\,\micron$ is wished to be achieved with pixels of
+$25\,\micron$ pitch and a thickness of $50\,\micron$. Since data is
+still not available for such pixel detectors, the simulations are
+extrapolated for such small pixels. The simulations show that
+achieving this resolution with $25\,\micron$ pixels is not possible.
 
 \cref{ch:ActiveEdgeSensors} investigates the efficiency of active-edge
 sensors. Different edge widths and guard-ring configurations are
@@ -70,24 +83,27 @@ which allows for better understanding of the operation of such
 devices. In simulations, as expected, the floating guard-ring seems to
 be the best solution as it shows a higher breakdown voltage and a
 small loss of energy deposition in the guard ring and therefore a high
-efficiency up to the trench of the sensor. Test-beam data are in
-general in good agreement with simulations. However few discrepancies
-in terms of breakdown behaviour and the charge collected at the edge
-between simulations and data are observed. During the test-beam, we
-only had one assembly per configuration at our disposal. More
-assemblies are needed to be tested in order to draw final conclusions
-on their operation.
+efficiency up to the trench of the sensor. The grounded guard ring is
+however not recommended for thin sensors of $50\,\micron$ since the
+guard ring collects most of the charge deposition at the edge and the
+edge is inefficient in this case. Test-beam data are in general in
+good agreement with simulations. However few discrepancies in terms of
+breakdown behaviour and the charge collected at the edge between
+simulations and data are observed. During the test-beam, we only had
+one assembly per configuration at our disposal. More assemblies are
+needed to be tested in order to draw final conclusions, especially, to
+confirm that the floating guard ring is the most suitable solution for
+$50\,\micron$ thick sensors.
 
 Miniaturisation of pixels is necessary for achieving a high spatial
 resolution of $3\,\micron$ as required by the CLIC vertex
 detector. But combined with thin planar sensors of $50\,\micron$, does
 not provide enough information through charge sharing in order to
-reach the required resolution. Also, downscaling in a hybrid pixel
-detectors makes complications for bump-bonding of sensors to the
-readout ASICs. Other sensors solutions with High-Voltage (HV) CMOS
-process are considered for CLIC which can be glued to the readout
-ASICs (instead of bump-bonding) and also provides information through
-charge sharing.
+reach the required resolution. Also, bump-bonding of sensors to the
+readout ASICs becomes more complicated for downscaling pixel
+sizes. Other sensors solutions with High-Voltage (HV) CMOS process are
+considered for CLIC, which can be glued to the readout ASICs (instead
+of bump-bonding), and provide information through charge sharing.
 
 Up to now, the full detector simulations for CLIC were done with a
 $3\,\micron$ hit resolution for the vertex detector. The extrapolation
