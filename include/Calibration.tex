@@ -11,9 +11,12 @@ height=4em]
 
 One of the key components of the detector systems is the readout
 electronics. Each experiment, depending on the requirements, has its
-own specific electronics. But the basic principles of the electronics
-and optimisations of the signal-to-noise ratio remain similar for
-different applications.
+own specific electronics. 
+
+
+% But the basic principles of the electronics
+% and optimisations of the signal-to-noise ratio remain similar for
+% different applications.
 
 In this chapter, we will review the basic principles and requirements
 of the Timepix3 hybrid pixel readout chip which is used as a test
@@ -26,7 +29,7 @@ and also the noise measurements are explored in this chapter.
 \label{sec:TimepixChip}
 
 The hybrid readout chip acquires the short ionisation current pulses
-generated in the sensor by the passing of a high-energy particle. For
+generated in the sensor by the passing of a charged particle. For
 acquiring this short pulse, the time response of the readout must be
 tailored to optimise the minimum detectable signal, the measurement of
 energy deposition in the detector, the event rate capability, timing
@@ -53,37 +56,41 @@ circuitry are combined for signal processing.
 The incident radiation deposits energy in the sensor which is
 converted to an electrical signal. A high rate of particles can be
 handled in a semiconductor detector because the sensor pulse is very
-short (few nanoseconds). Since the amount of signal charge is small
-and subject to statistical fluctuations (as seen in
-\cref{sec:chargeInSi}), a charge sensitive preamplifier is needed to
-amplify the signal. The preamplifier should be designed in a way to
-minimise the electronics noise (see \cref{sec:noise} for a discussion
-of the noise sources). The sensor capacitance and the input
-capacitance of the amplifier play a critical role in the optimisation
-of the signal-to-noise ratio (SNR): the lower the capacitance, the
-higher the SNR.
+short (few nanoseconds). A charge sensitive preamplifier is needed to
+amplify the short signal pulse. As seen in \cref{sec:chargeInSi}, the
+amount of signal charge is small and subject to statistical
+fluctuations. The preamplifier should be designed in a way to minimise
+the electronics noise (see \cref{sec:noise} for a discussion of the
+noise sources). The sensor capacitance and the input capacitance of
+the amplifier play a critical role in the optimisation of the
+signal-to-noise ratio (SNR): the lower the capacitance, the higher the
+SNR.
 
 The preamplifier is implemented in a Krummenacher
 topology~\cite{KRUMMENACHER1991527}, where the return to the baseline
 of the amplified signal is done with a tunable current
 (I\textsubscript{krum}). The higher I\textsubscript{krum}, the faster
-the return or, in other words, the shorter the pulse.
+the return and the shorter the pulse. For the Timepix readout chip
+family, a pulse shaper is embedded in the preamplifier which outputs a
+triangular-like pulse shape where the rising edge is imposed by the
+time response of the preamplifier and the slope of the falling edge
+dictated by the I\textsubscript{krum} current.
 
-After the preamplifier, the pulse shaper is responsible for the
-improvement of the SNR. It modifies the frequency response of the
-signal to improve the signal and attenuate the noise. Since this
-operation reduces the bandwidth of the signal, the duration of the
-pulse will increase. As a detector must cope with a high rate of
-pulses, the width of the pulse must be optimised to reduce the
-pile-up. The analogue processing chain of the Timepix readout chip
-family does not include an explicit pulse shaper. The pulse shaping is
-embedded in the preamplifier, which outputs a triangular-like pulse
-shape where the rising edge is imposed by the time response of the
-preamplifier and the falling edge dictated by the
-I\textsubscript{krum} current.
+% After the preamplifier, the pulse shaper is responsible for the
+% improvement of the SNR. It modifies the frequency response of the
+% signal to improve the signal and attenuate the noise. Since this
+% operation reduces the bandwidth of the signal, the duration of the
+% pulse will increase. As a detector must cope with a high rate of
+% pulses, the width of the pulse must be optimised to reduce the
+% pile-up. The analogue processing chain of the Timepix readout chip
+% family does not include an explicit pulse shaper. The pulse shaping is
+% embedded in the preamplifier, which outputs a triangular-like pulse
+% shape where the rising edge is imposed by the time response of the
+% preamplifier and the falling edge dictated by the
+% I\textsubscript{krum} current.
 
 A discriminator is used to compare the signal level to a tunable
-threshold (a voltage) and to discriminate signal from background
+threshold voltage and to discriminate signal from background
 noise. Both polarities (electrons and holes) are accepted by the front
 end.
 
@@ -206,9 +213,9 @@ time of the pixels hit while the other pixels stay active and allows
 to reach very high readout rates of up to
 40~Mhits/(s~$\cdot$~\cmsquared).
 
-The different settings of the chip are controlled externally using
-programmable DACs such as the I\textsubscript{krum}, threshold,
-polarity of the sensor and the clock speed.
+The different settings of the chip are controlled using programmable
+DACs such as the I\textsubscript{krum}, threshold, polarity of the
+sensor and the clock speed.
 
 
 
@@ -221,8 +228,9 @@ acquisition. This system is able to handle high rates of data sent by
 the Timepix3 ASIC at full speed. This is achieved with Xilinx Virtex-7
 FPGA~\cite{XilinxVirtex7} and a 10~Gb Ethernet link.
 
-\cref{fig:Timepix3board_SPIDR} shows the Timepix3 chip board which
-allows to control the programmable DACs and the SPIDR readout board.
+\cref{fig:Timepix3board_SPIDR} shows the Timepix3 chip and the SPIDR
+readout board. Voltage regulators on the Timepix3 chip board, allow to
+set the voltage of the programmable DACs.
 
 \begin{figure}[htbp] \centering
   \begin{subfigure}[b]{0.3\textwidth}
@@ -244,7 +252,7 @@ allows to control the programmable DACs and the SPIDR readout board.
 \section{Timepix3 assemblies}\label{sec:Timepix3Assemblies}
 A summary of the Timepix3 assemblies used in this study is shown in
 \cref{tab:Timepix3Assemblies}. Advacam sensors~\cite{AdvacamRef} of
-thickness $50$-$300\,\micron$ are bump-bonded to Timepix3 readout
+thickness $50$-$150\,\micron$ are bump-bonded to Timepix3 readout
 chips.
 
 \begin{table}[htbp]
