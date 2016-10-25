@@ -645,33 +645,39 @@ the assembly 20-NGR-50 is shown in \cref{fig:hitMapW19G7}.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.7\textwidth]{figures/ActiveEdge/hitMap_W19_G7.pdf}
-  \caption{The pixel hits on the assembly 20-NGR-50: the beam is
+  \caption{The pixels hit on the assembly 20-NGR-50: the beam is
     focused on the edge of the assembly in order to increase the
     statistics for the edge performance studies.}
   \label{fig:hitMapW19G7}
 \end{figure}
 
 
-The charge collected as a function of the track position is compared
-in data and TCAD simulations. In data, the charge deposited is plotted
+The collected charge as a function of the track position is compared
+in data and TCAD simulations. In data, the deposited charge is plotted
 versus the track position given by the Timepix3 telescope (with a
-resolution of $\sim2\,\micron$). The charge deposited is obtained by
-applying the test-pulse calibrations to the data (see
-\cref{sec:EnergyCalibration}). For each track position, the deposited
-charge is projected as a one-dimensional histogram and fitted with a
-Landau function convoluted with a Gaussian. For a better compatibility
-with the simulation, only tracks within $\pm30\%$ of the pixel pitch
-are considered. The most probable value (MPV) of the Landau fit is
-then compared to the collected charge obtained in the TCAD
-simulations. In the TCAD simulations, a fixed amount of charge is
-deposited and, unlike the data, the fluctuations of the deposited
-charge are not considered. The tracking resolution of $\sim2\,\micron$
-is applied to the hit position in TCAD simulations. This is done by
-convoluting a Gaussian function with a standard deviation of
-$2\,\micron$ with the simulated hit position. The border of the last
-pixel (at 0~mm) is indicated with a dashed line and the physical
-sensor edge is shown in continuous line with the convention as
-illustrated in \cref{fig:Layout20_NGR}.
+resolution of $\sim2\,\micron$). The deposited charge is obtained by
+applying the test-pulse calibrations to the TOTs measured in data (see
+\cref{sec:EnergyCalibration}). The most-probable-value (MPV) of the
+charge deposition in data is compared to the TCAD simulations.
+
+To calculate the MPV of the energy deposition in data, only tracks
+within the central $40\%$ of the pixel cell area are considered for
+all assemblies except for 28-GNDGR-50 where only the central $\pm7\%$
+of the pixel is considered. This provides a better compatibility with
+the 2D simulations. To calculate the MPV in data, the deposited charge
+is projected as a one-dimensional histogram at some track positions
+and fitted with a Landau function convoluted with a Gaussian. The most
+probable value (MPV) of the Landau fit is then compared to the
+collected charge obtained in the TCAD simulations. In the TCAD
+simulations, a fixed amount of charge is deposited and, unlike the
+data, the fluctuations of the deposited charge are not considered. 
+
+The tracking resolution of $\sim2\,\micron$ is applied to the hit
+position in TCAD simulations. This is done by convoluting a Gaussian
+function with a standard deviation of $2\,\micron$ with the simulated
+hit position. The border of the last pixel (at 0~mm) is indicated with
+a dashed line and the physical sensor edge is shown in continuous line
+with the convention as illustrated in \cref{fig:Layout20_NGR}.
 
 % This can explain the minor discrepancies on the
 % amount of the collected charge between simulation and data. 
