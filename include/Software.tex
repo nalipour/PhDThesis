@@ -236,6 +236,7 @@ neighbouring pixels using:
 
 \begin{equation}
 Q(z)=q_i(z) \cdot {1\over{\sqrt{2\,\pi}\sigma(z)}} \int_{x_{1}}^{x_{2}} e^{-({{x-x_{hit}}\over{\sqrt{2}\,\sigma(z)}})^2} dx \cdot {1\over{\sqrt{2\,\pi}\sigma(z)}} \int_{y_{1}}^{y_{2}} e^{-({{y-y_{hit}}\over{\sqrt{2}\,\sigma(z)}})^2} dy 
+\label{eq:digitisationCharge}
 \end{equation}
 
 where $q_i(z)$ is the energy deposited at step i at the depth $z$,
@@ -312,14 +313,17 @@ deposited in a pixel is calculated.
   \end{tikzpicture}
   \caption{Illustration of the digitisation in a sensor. Each
     \textsc{Geant4} step (\texttt{G4Step}) is shown with a circle. The
-    contribution of the diffusion ($\sigma_1$, $\sigma_2$, $\sigma_3$
-    and $\sigma_4$) in the hit and its neighbouring pixels is
-    calculated.}
+    spread of the arrival position of a charge generated at the steps
+    1, 2, 3 and 4 is described as a Gaussian distribution with
+    standard deviations $\sigma_1$, $\sigma_2$, $\sigma_3$ and
+    $\sigma_4$. The contribution of the diffusion in the hit and its
+    neighbouring pixels is calculated using
+    \cref{eq:digitisationCharge}.}
   \label{fig:digitisation}
 \end{figure}
 
 The digitiser also defines the parameters of the readout chip. The
-electronic noise (Gaussian distribution as described in
+electronic noise (with a Gaussian distribution as described in
 \cref{sec:noise}) is added. The readout threshold is applied to
 eliminate the pixels where the charge deposition is less than the
 threshold. The hit energy is converted to the digital value TOT
