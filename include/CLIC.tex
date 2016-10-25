@@ -27,9 +27,9 @@ $3\,\tev$.
 
 In this chapter, we will briefly discuss the standard model of
 particle physics and attempt to understand how CLIC can determine more
-precisely the properties of the Higgs boson. Subsequently the CLIC
+precisely the properties of the Higgs boson. Subsequently, the CLIC
 accelerator, detector and its components are described. The focus is
-put on the vertex detector, its requirements and its flavour-tagging
+set on the vertex detector, its requirements and its flavour-tagging
 performance.
 
 \section{Physics potential of CLIC}
@@ -121,9 +121,9 @@ model-independent cross-section
 measurements~\cite{Abramowicz:2016zbo}. The second energy stage
 provides direct sensitivity to many physics beyond the SM (BSM)
 models. With higher Higgs statistics, rare decays such as t\={t}H and
-double Higgs productions can be measured. Finally the third energy
+double Higgs productions can be measured. Finally, the third energy
 stage provides the best sensitivity to new physics, the double-Higgs
-production allowing for improving the measurements of the Higgs
+production and allows for improving the measurements of the Higgs
 self-coupling and HHWW quartic
 coupling. \cref{fig:HiggsProductionMechanisms} shows different
 mechanisms to produce the Higgs boson at CLIC.
@@ -231,8 +231,9 @@ drive beam has a low energy of $2.4\,\gev$ and a high current of
 beam which has a lower current and higher energy. Power Extraction and
 Transfer Structures (PETS) are special RF devices which extract the
 power of the drive beam by decelerating the beam. The extracted energy
-is then provided to the main beam. About 3000 accelerating structures,
-each being on average 878~m long, are used in CLIC.
+is then provided to the main beam. The average length of an
+accelerating structure is 878~m long and accelerates the main beam by
+$\approx62\,\gev$.
 
 
 \cref{tab:NominalMachineParams} summarises the nominal beam parameters
@@ -310,10 +311,10 @@ challenging requirements on the design of the detector. Simulation
 tools are crucial for the design, development as well as the
 optimisation of the detector model.
 
-The experimental conditions due to the beam-induced background
-(c.f.~\cref{sec:beamInducedBackgrounds}) set the most demanding
+The experimental conditions due to the beam-induced background (see
+\cref{sec:beamInducedBackgrounds}), set the most demanding
 requirements at the highest collision energy. They are the major
-design constraint for the vertex detector. Therefore, the detector
+design constraints for the vertex detector. Therefore, the detector
 model is mainly optimised for the $3\,\tev$ CLIC.
 
 \cref{fig:CLIC_detector_concept} shows the CLIC detector model as
@@ -420,9 +421,8 @@ In the innermost layers, an occupancy of $\approx3\%$ due to the
 beam-induced backgrounds is expected~\cite{Dannheim:1443516}. To
 separate these backgrounds from physics events, a time slicing of the
 hits with an accuracy of $\approx10$~ns is required. To achieve this
-precise time stamping, hybrid solutions for the vertex detector are
-considered first as the readout chips have more advanced timing
-measurements technologies.
+precise time stamping, hybrid solutions are preferred since they
+provide more advanced timing measurement technologies.
 
 In comparison to the current pixel detectors in the LHC experiments,
 the exposure to radiation of the CLIC vertex detector is moderate. For
@@ -430,40 +430,58 @@ the inner-detector layers a total $1\,\mev$ neutron-equivalent fluence
 of less than $10^{11}$~neq/cm\textsuperscript{2}/year and a total
 ionising dose of less than 1~kGy are expected~\cite{Dannheim:1443516}.
 
-The aim of the R\&D is to achieve the required single-point resolution
-with pixels of size $\approx25\,\micron\times25\,\micron$ with
-$50\,\micron$ thick sensors coupled to $50\,\micron$ thick readout
-ASICs with pulse-height measurement capability. The constraint on the
-material budget implies no active cooling elements can be placed
-inside the vertex detector. To limit the maximum power dissipation of
-the readout electronics to $\approx50~\text{mW/cm}^2$, forced air-flow
-cooling and power pulsing (i.e. turning off most components on the
-readout chips during the 20~ms gaps between bunch trains) are
-foreseen.
+The aim of the vertex detector R\&D is to achieve the required
+single-point resolution with pixels of size
+$\approx25\,\micron\times25\,\micron$ with $50\,\micron$ thick sensors
+coupled to $50\,\micron$ thick readout ASICs with pulse-height
+measurement capability. The constraint on the material budget implies
+no active cooling elements can be placed inside the vertex
+detector. To limit the maximum power dissipation of the readout
+electronics to $\approx50~\text{mW/cm}^2$, forced air-flow cooling and
+power pulsing (i.e. turning off most components on the readout chips
+during the 20~ms gaps between bunch trains) are foreseen.
 
 \section{Flavour-tagging performance at CLIC}
 \label{sec:flavourTagging}
 
 The precision physics measurements require excellent flavour-tagging
-performance of the CLIC vertex detector. The flavour-tagging
-performance is studied in simulations for different detector
-geometries. The multi-variate LCFIPlus flavour-tagging
+performance of the CLIC vertex detector. Different vertex detector
+geometries have been studied for CLIC. This section presents the
+impact of the geometry on the flavour-tagging performance in
+simulations.
+
+A first geometry designed for the CLIC vertex detector is shown in
+\cref{fig:disksGeom}. It contains 5 layers in the barrel and 4 disks
+in the endcap region. Since, forced airflow cooling is foreseen for
+CLIC as illustrated in Figure~\cref{fig:cooling}, a spiral arrangement
+for the modules in the endcap regions has been implemented instead of
+disks, allowing the air to flow through the vertex detector.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/CLIC/cdr.png}
+  \caption{The schematic view of the disks geometry with 5
+    single-sided layers in the barrel region and 4 single-sided disks
+    in the endcap region.}
+  \label{fig:disksGeom}
+\end{figure}
+
+The physics performance of the geometries described in
+Table~\ref{tab:geometries} and illustrated in
+Figure~\ref{fig:geometries} have been studied in simulations.
+
+
+The multi-variate LCFIPlus flavour-tagging
 package~\cite{website:LCFIPlus} is used to assign each jet category
 with a beauty (b) and charm (c) probability. The fake rates of
 separating the charm and beauty jets from each other and from light
-flavour (LF) jets are being investigated. 
+flavour (LF) jets are being investigated.
 
 The detector models in simulation consider the single-point resolution
 of the sensors ($\sim3\,\micron$) and include layer thicknesses based
 on constraints from an engineering model of the mechanical support and
 the air cooling system~\cite{AlipourTehrani:1742993}.
 
-As illustrated in Figure~\ref{fig:cooling}, a spiral arrangement for
-the modules in the endcap regions has been implemented instead of
-disks, allowing the air to flow through the vertex detector. The
-physics performance of the geometries described in
-Table~\ref{tab:geometries} and illustrated in
-Figure~\ref{fig:geometries} have been studied in simulations.
 
 \begin{table}[htbp]
   \caption{Vertex detector geometries implemented in simulations.}
@@ -635,13 +653,14 @@ significantly. Double-sided modules provide more sensitive layers with
 the same amount of support material as single-sided modules. The
 overall results show that the implemented geometries are similar in
 terms of the flavour-tagging performance for simulated dijet
-events. The amount of material, on the other hand, was found to have a
-large impact on the performance. 
+events. The impact of a spiral arrangement of the modules in the
+endcap region remains similar to the disks. The amount of material, on
+the other hand, was found to have a large impact on the performance.
 
 The following chapters focus on the R\&D of the pixel detectors in the
 vertex detector with high-resolution and very low material budget in
 order to achieve high flavour-tagging performance as required by the
-precision physics to be measured.
+precision physics to be measured at CLIC.
 
 
 
