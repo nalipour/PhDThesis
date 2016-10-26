@@ -206,7 +206,14 @@ the TOT measurement.
 
 The Timepix3 readout chip allows for a data-driven zero-suppressed
 readout mode which can reach higher readout rates than the frame based
-mode. In the data driven mode, after a hit is processed by the pixel,
+mode. 
+
+In the frame based mode, pixels record hits during the time the
+shutter is open. After this time, the information of the whole matrix
+is read at once. During the time the information is being read, the
+chip is not able to process any hits.
+ 
+In the data driven mode, after a hit is processed by the pixel,
 a data packet containing the TOT and the TOA information is
 immediately sent off the chip. This reduces significantly the dead
 time of the pixels hit while the other pixels stay active and allows

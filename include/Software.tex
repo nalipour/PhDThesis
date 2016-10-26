@@ -28,10 +28,10 @@ such as: the geometry of the system, the materials involved, the
 generation of primary particles, the tracking of particles through
 materials and external electromagnetic fields, the physics processes
 involved in the possible interaction of the particles with the
-materials they are passing through, the response of sensitive
+materials they are passing through and the response of sensitive
 components. The simulations of the interaction between the particles
-and materials are mostly validated with data. In this thesis, all the
-studies using \textsc{Geant4} are done with version 10.1.2.
+and materials are mostly validated with data. In this thesis,
+\textsc{Geant4} version 10.1.2 is employed for the simulations.
 
 \textsc{Geant4} provides physics models for different type of
 interactions called \textit{physics lists}. The \textit{emstandard}
@@ -82,9 +82,10 @@ requires more computation power.
     \caption{}
   \end{subfigure}
   \caption{Energy-loss distribution in (a) $50\,\micron$ and (b)
-    $450\,\micron$ thick silicon sensors by $120\,\gev$ $\pi^{+}$
-    comparing the Bichsel model and \textsc{Geant4} using the PAI and
-    the emstandard\_opt3 physics lists.}
+    $450\,\micron$ thick silicon sensors due to the passing of
+    $120\,\gev$ pions ($\pi^{+}$) comparing the Bichsel model and
+    \textsc{Geant4} using the PAI and the emstandard\_opt3 physics
+    lists.}
   \label{fig:BichselVSG4}
 \end{figure}
 
@@ -109,10 +110,11 @@ the sensitive volumes (sensors). The software user defines the
 semiconductor physics and readout chip properties in a digitiser as
 described below.
 
-\cref{fig:TPX3TelescopeAllpix} shows an example of the simulation for
-the Timepix3 telescope (described in \cref{ch:Telescope}) in AllPix
-with the device under test (DUT) in the middle of the tilted telescope
-planes.
+AllPix is used for the simulations done in \cref{ch:Telescope} and
+\cref{ch:ThinSensorsStudies}. \cref{fig:TPX3TelescopeAllpix} shows an
+example of the simulation for the Timepix3 telescope (described in
+\cref{ch:Telescope}) in AllPix with the device under test (DUT) in the
+middle of the tilted telescope planes.
 
 \begin{figure}[htbp]
   \centering
@@ -194,13 +196,13 @@ frames. The frame can be related to the integration time of the
 detectors during which the shutter is open and all the particles are
 detected in this specific lapse of time. For a Timepix3-like detector
 which is operated based on a data-driven readout (see
-\cref{sec:TimepixReadout}), the frame length is not fully defined. For
+\cref{sec:TimepixChip}), the frame length is not fully defined. For
 the simulation of such a readout, the beam profile is defined in such
 a way that pile-ups are avoided and a pixel is hit by particles only
 once during one simulation frame. During test beams, the particle rate
 is also adjusted to avoid pile-ups. Since we are mostly interested in
 the physics of the detector and not testing the timing capabilities of
-the readout system, this definition of a frame is plausible.
+the readout system, this definition of a frame is reasonable.
 
 Visualisation parameters are also given in the macro. Open
 Inventor~\cite{OpenInventor} can be, for example, used to visualise
@@ -210,15 +212,22 @@ the simulation scenario and also the particle tracks in the detectors.
 \subsection{Digitisation}
 \label{sec:allpix_digitisation}
 
+The digitisation step in AllPix is responsible for the full simulation
+of the detector including the sensor and the readout chip. Each user
+defines the simulation parameters in the digitiser. This provides
+flexibility for the simulation of different sensor technologies and
+readout chip families. In this section, we describe the digitiser we
+use for the simulation for thin sensors.
+
 For each simulation step (\texttt{G4Step}) through the matter,
 \textsc{Geant4} provides the energy deposited in the sensitive
 material. The step length can be customised and for thin sensors
 simulations, a step of $2\,\micron$ provides a good precision for the
-calculations. 
+calculations of the energy deposition.
 
-The semiconductor physics in a silicon detector is defined in the
-digitiser. The drift and diffusion are performed at each step to
-simulate the electron-hole pair movement in the electric field. The
+The semiconductor physics in a silicon detector is defined by the user
+in the digitiser. The drift and diffusion are performed at each step
+to simulate the electron-hole pair movement in the electric field. The
 simplified model as described in \cref{sec:reversedBiasedPNjunction}
 is used for the simulation of silicon physics. In practice at each
 \texttt{G4Step}, where the energy deposition is given by
@@ -231,8 +240,8 @@ distribution with standard deviation as given in
 \cref{eq:sigmaDiffusion}. \cref{fig:digitisation} schematically
 illustrates the digitisation in a sensor in one direction. Each
 \textsc{Geant4} step is shown in a circle. In 2D, at each step, the
-contribution of the diffusion is calculated in the hit pixel and its
-neighbouring pixels using:
+charge collected in the hit pixel and its neighbouring pixels is
+calculated by:
 
 \begin{equation}
 Q(z)=q_i(z) \cdot {1\over{\sqrt{2\,\pi}\sigma(z)}} \int_{x_{1}}^{x_{2}} e^{-({{x-x_{hit}}\over{\sqrt{2}\,\sigma(z)}})^2} dx \cdot {1\over{\sqrt{2\,\pi}\sigma(z)}} \int_{y_{1}}^{y_{2}} e^{-({{y-y_{hit}}\over{\sqrt{2}\,\sigma(z)}})^2} dy 
@@ -240,13 +249,15 @@ Q(z)=q_i(z) \cdot {1\over{\sqrt{2\,\pi}\sigma(z)}} \int_{x_{1}}^{x_{2}} e^{-({{x
 \end{equation}
 
 where $q_i(z)$ is the energy deposited at step i at the depth $z$,
-$\sigma(z)$ the diffusion standard deviation at $z$, $x_{hit}$ and
-$y_{hit}$ is the coordinates where the track hits a pixel, $x_1$ and
-$x_2$ the x-coordinates and $y_1$ and $y_2$ the y-coordinates of the
-pixel where the contribution of the charge is being calculated.
+$\sigma(z)$ the standard deviation of the diffusion for a charge
+generated at $z$, $x_{hit}$ and $y_{hit}$ is the coordinates where the
+track hits a pixel, $x_1$ and $x_2$ the x-coordinates and $y_1$ and
+$y_2$ the y-coordinates of the pixel where the contribution of the
+charge is being calculated.
 
-For each pixel, all contributions sum up and the total charge
-deposited in a pixel is calculated.
+For each pixel, at each step a charge deposition is calculated. All
+contributions due to all the steps sum up and the total charge
+deposited in a pixel is finally calculated.
 
 \begin{figure}[htbp]
   \centering
@@ -267,7 +278,7 @@ deposited in a pixel is calculated.
       \draw[green, thick] (0.45, 0.2) -- (0.36, 0.6);  
       \draw[green, thick] (0.45, 0.2) -- (0.54, 0.6);
       \draw[green, thick, <->] (0.36, 0.62) -- (0.54, 0.62);
-      \node[above, color=green] at (0.36, 0.62) {$\sigma(z1)$};
+      \node[above, color=green] at (0.36, 0.62) {$\sigma_1$};
 
       \draw[red, thick] (0.473, 0.3) circle (0.5mm);
       \node[right, color=red] at (0.473, 0.32) {Step 2};
@@ -321,6 +332,20 @@ deposited in a pixel is calculated.
     \cref{eq:digitisationCharge}.}
   \label{fig:digitisation}
 \end{figure}
+
+In this digitiser, the effect of the weighting field as described in
+\cref{sec:RamoTheorem} is neglected. As it has been studied, the
+weighting field is the strongest close to the pixel. Also, the drift
+velocity is the highest close to the pixel. For a charge $q_i$
+drifting towards a pixel, the induced current on the pixel can be
+approximated by a very short pulse, which integrates to charge $q_i$,
+and it is produced when the charge actually reaches the pixel (after
+its drift). For a neighbouring pixel, where $q_i$ does not terminate
+on its measurement electrode, a signal current is induced but the
+current changes sign and integrates to zero. This approximation is
+validated with data later in \cref{ch:ThinSensorsStudies}. However, in
+the presence of radiation damage in the sensor, this approximation is
+not valid anymore. This case is not studied for CLIC.
 
 The digitiser also defines the parameters of the readout chip. The
 electronic noise (with a Gaussian distribution as described in
@@ -380,10 +405,9 @@ integration time and the signal to get the signal the readout chip
 would obtain.
 
 For this study Synopsys TCAD version I-2013.12 is used to simulate the
-movement of charge carriers in silicon and the coupling to the readout
-as described in \cref{sec:RamoTheorem}. Also it is used to simulate
-active-edge devices and compare with the measurements in
-\cref{ch:ActiveEdgeSensors}.
+movement of charge carriers in silicon and the coupling to the
+readout. Also, it is used to simulate active-edge devices and results
+are compared with measurements in \cref{ch:ActiveEdgeSensors}.
 %% --------------------------------------------- %%
 
 %% --------------------------------------------- %%
@@ -443,7 +467,7 @@ data-driven readout mode which was used during the data taking. This
 affects mainly the definition of an event. In the frame-based mode, an
 event corresponds to a time frame where the shutter of the detectors
 are opened and all hits are integrated. When the shutter is closed,
-there is a dead-time where no data is acquired and all the hits are
+there is a dead-time where no data are acquired and all the hits are
 read out from the readout chips and recorded in a raw data
 file. Whereas in the data-driven mode, the data are acquired as soon
 as a pixel is hit (there is no shutter and almost no dead-time). The
@@ -498,7 +522,8 @@ the following steps:
   position of the tracks on each telescope plane and the DUT from the
   measured positions on the telescope planes. The $\chi^2$ of the fit
   uses the additional constraint on the angles of the multiple
-  scatterings. The track positions correspond to the positions
+  scatterings (refer to \cite{Zarnecki:2007yu} for the definition of
+  the $\chi^2$). The track positions correspond to the positions
   minimising the $\chi^2$ distribution.
 
   The track positions on the DUT can be written in a ROOT
@@ -516,7 +541,7 @@ python-based pyEudetAnalysis framework~\cite{pyeudet}. Separating the
 telescope and the DUT analyses, provides more flexibility on the
 analysis of the DUT. The tracks are reconstructed once and rerunning
 of the analysis on the DUT does not require to reconstruct the tracks
-one more time.
+once more.
 
 The pyEudetAnalysis reads the reconstructed track position and the
 list of the pixels hit on the DUT from the ROOT file generated by

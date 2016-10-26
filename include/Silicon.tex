@@ -1139,52 +1139,52 @@ The instantaneous current on the electrode k is given by:
   \caption{The weighting field and potential on electrode $k$.}\label{fig:RamoTCAD}
 \end{figure}
 
-The weighting potential for different hit positions on the x-axis is
-shown in \cref{fig:RamoTCADCuts}. The total charge collected by the
-electrode $k$ depends only on the depth positions $z_0$ and $z_p$. In
-the absence of the radiation-induced damages (which would affect the
-distributions of the electric and weighting fields), the weighting
-field does not affect the total charge collected by an electrode and
-does not contribute to the diffusion of the charges. The charge
-carriers drift following the electric field distribution and due to
-the diffusion several electrodes can collect charges.
+% The weighting potential for different hit positions on the x-axis is
+% shown in \cref{fig:RamoTCADCuts}. The total charge collected by the
+% electrode $k$ depends only on the depth positions $z_0$ and $z_p$. In
+% the absence of the radiation-induced damages (which would affect the
+% distributions of the electric and weighting fields), the weighting
+% field does not affect the total charge collected by an electrode and
+% does not contribute to the diffusion of the charges. The charge
+% carriers drift following the electric field distribution and due to
+% the diffusion several electrodes can collect charges.
 
-\begin{figure}[htbp]
-  \centering
-  \begin{subfigure}[b]{0.48\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \node[anchor=south west,inner sep=0] (image) at
-      (0,0){\includegraphics[width=\textwidth]{figures/Ramo/RamoPotential_cuts.png}};
-      \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \draw[->, thick] (-0.1, 1)--(0.73, 1) node[right]{$x$~$[\micron]$};
-        \draw[->, thick] (0, 1.1)--(0, -0.1) node[below]{Depth $z$~$[\micron]$};
-        \draw[-] (0.355, 1.01) -- (0.355, 0.99) node[above] {0};
-        \draw[-] (0.445, 1.01) -- (0.445, 0.99) node[above] {27.5};
-        \draw[-] (0.533, 1.01) -- (0.533, 0.99) node[above] {55};
-        \draw[-] (0.69, 1.01) -- (0.69, 0.99) node[above] {109};
+% \begin{figure}[htbp]
+%   \centering
+%   \begin{subfigure}[b]{0.48\textwidth}
+%     \centering
+%     \begin{tikzpicture}
+%       \node[anchor=south west,inner sep=0] (image) at
+%       (0,0){\includegraphics[width=\textwidth]{figures/Ramo/RamoPotential_cuts.png}};
+%       \begin{scope}[x={(image.south east)},y={(image.north west)}]
+%         \draw[->, thick] (-0.1, 1)--(0.73, 1) node[right]{$x$~$[\micron]$};
+%         \draw[->, thick] (0, 1.1)--(0, -0.1) node[below]{Depth $z$~$[\micron]$};
+%         \draw[-] (0.355, 1.01) -- (0.355, 0.99) node[above] {0};
+%         \draw[-] (0.445, 1.01) -- (0.445, 0.99) node[above] {27.5};
+%         \draw[-] (0.533, 1.01) -- (0.533, 0.99) node[above] {55};
+%         \draw[-] (0.69, 1.01) -- (0.69, 0.99) node[above] {109};
 
 
-        \draw[-] (-0.01, 0.01) -- (0.01, 0.01) node[left] {200};
-        \draw[-] (-0.01, 0.97) -- (0.01, 0.97) node[left] {0};
-        %% \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-        %% \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-        %% \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+%         \draw[-] (-0.01, 0.01) -- (0.01, 0.01) node[left] {200};
+%         \draw[-] (-0.01, 0.97) -- (0.01, 0.97) node[left] {0};
+%         %% \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+%         %% \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%         %% \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
 
-      \end{scope}
-    \end{tikzpicture} 
-    \caption{}\label{fig:RamoPotentialCuts}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.49\textwidth}
-    \centering
-    \includegraphics[width=0.9\textwidth]{figures/Ramo/WeightingPotential_1D.pdf}
-    \caption{}\label{fig:RamoPotentialCuts1D}
-  \end{subfigure} 
-  \caption{The weighting potential for different positions on the
-    x-axis using TCAD simulations. The detector has a thickness of
-    $200\,\micron$.}
-  \label{fig:RamoTCADCuts}
-\end{figure}
+%       \end{scope}
+%     \end{tikzpicture} 
+%     \caption{}\label{fig:RamoPotentialCuts}
+%   \end{subfigure}\hfill
+%   \begin{subfigure}[b]{0.49\textwidth}
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{figures/Ramo/WeightingPotential_1D.pdf}
+%     \caption{}\label{fig:RamoPotentialCuts1D}
+%   \end{subfigure} 
+%   \caption{The weighting potential for different positions on the
+%     x-axis using TCAD simulations. The detector has a thickness of
+%     $200\,\micron$.}
+%   \label{fig:RamoTCADCuts}
+% \end{figure}
 
 
 \subsection{Position measurement}
