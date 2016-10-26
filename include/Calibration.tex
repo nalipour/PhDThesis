@@ -150,7 +150,7 @@ An overview of the main parameters of the Timepix3 readout chip is
 given in~\cref{tab:timepixOverview}. It consists of a $256\times256$
 pixel matrix with a pitch of $55\,\micron$. This chip allows for three
 operation modes: photon counting (PC), Time-over-threshold (TOT) and
-Time-of-Arrival (TOA) measurements. In addition, Timepix3 allows for
+Time-of-arrival (TOA) measurements. In addition, Timepix3 allows for
 simultaneous measurement of the TOT and the TOA. In the photon
 counting mode, a counter is incremented each time a photon hits the
 pixel and deposits an energy higher than the programmable threshold.
@@ -185,7 +185,7 @@ time above the programmable threshold of the triangular-like signal
 pulse is proportional to the energy deposited and during this time,
 the TOT counter is incremented.
 
-The Time-of-Arrival (TOA) measures the arrival time of a hit and is
+The Time-of-arrival (TOA) measures the arrival time of a hit and is
 used for a time stamping of the hits. A general TOA counter runs with
 the general $40\,\megahertz$ clock. When the amplifier output exceeds
 the pixel threshold, the discriminator output rises and the fast TOA
@@ -198,8 +198,8 @@ the TOT measurement.
 \begin{figure}[htbp]
   \centering \includegraphics[width=0.7\textwidth, trim = 50mm 140mm
     60mm 50mm, clip]{figures/Calibration/TOT_TOA_explanation.pdf}
-  \caption{Schematic overview of the Time-over-Threshold (TOT) and
-    Time-of-Arrival (TOA) measurements for the Timepix3 readout
+  \caption{Schematic overview of the Time-over-threshold (TOT) and
+    Time-of-arrival (TOA) measurements for the Timepix3 readout
     chips. From~\cite{Timepix3Poikela}.}
   \label{fig:TOT_TOA_concept}
 \end{figure}
@@ -284,14 +284,18 @@ chips.
 
 Electronic noise places a limit on the minimum detectable signal
 level. It defines the ability to distinguish signal levels and their
-precision of measurement. Thermal excitations and sensor leakage
-currents are important sources for the noise. The electronic noise can
-be measured as explained further in
-\cref{sec:thresholdCalibration}. For Timepix3 readout chips, the
-electronic noise before bonding to any sensor is less than
-70~e\textsuperscript{-} RMS and after bonding it increases to
-$\sim80$~e\textsuperscript{-} RMS due to the capacitance of the sensor
-and its leakage current.
+precision of measurement. The signal in the detector is overlaid with
+the front-end electronic noise, during the amplification and pulse
+shaping. Thermal excitations and sensor leakage currents are important
+sources for the noise. We do not make a separation between the
+different sources of noise in this work. The electronic noise can be
+measured as explained further in \cref{sec:thresholdCalibration}. For
+Timepix3 readout chips, the electronic noise before bonding to any
+sensor is less than 70~e\textsuperscript{-} RMS and after bonding it
+increases to $\sim80$~e\textsuperscript{-} RMS due to the capacitance
+of the sensor and its leakage current.
+
+
 
 %% --------------------------------------------- %%
 \section{Threshold dispersion and equalisation} 
@@ -309,26 +313,24 @@ applied to the all the pixel discriminators. But the effective
 threshold of each discriminator varies from one pixel to another. To
 overcome this dispersion, a 4-bit local threshold adjustment is
 applied to each pixel in order to achieve a uniform global
-threshold. The photon counting mode is used in the procedure. The
-equalisation consists of adjusting this local threshold as shown in
-\cref{fig:THLequalisation} for the assembly W19\_L8.
+threshold. The equalisation consists of adjusting this local
+threshold. \cref{fig:THLequalisation} shows the spread of the
+threshold before and after equalisation for the assembly W19\_L8.
 
-First, the local threshold is set to its minimum value
+The chip is operated in a photon counting mode in the
+procedure. First, the local threshold is set to its minimum value
 (mask~0000). For each pixel, the global threshold DAC (THL) is scanned
 from a level of no counts (threshold above the chip noise) to a level
 where all the pixels count (threshold close to the noise level). This
-results in an S-shaped curve (an example is shown later in
-\cref{fig:scurve_example}). The middle of this curve, where the
+results in an S-shaped curve. The middle of this curve, where the
 curvature changes, corresponds to the mean value of the noise. The
-mean value of the noise is measured for all pixels and filled into the
-histogram for mask~0000 as shown in \cref{fig:THLequalisation}. The
 same measurement is then repeated by setting the adjustment bits to
-their maximum value (mask~1111) and THL is scanned again. 
+their maximum value (mask~1111) and THL is scanned again.
 
 For each pixel, the operation range is thus known. Assuming a linear
 relationship between the two points, the adjustment threshold is set
 in such a way that the global threshold will remain uniform across the
-matrix. After equalisation the response of the chip becomes more
+matrix. After equalisation, the response of the chip becomes more
 uniform even though some dispersion remains ($\sim40$ electrons).
 
 %% \cref{fig:THLequalisation} shows the threshold equalisation for the
@@ -354,8 +356,8 @@ The electronic noise and the threshold dispersion are important
 parameters to determine the operating threshold of the readout
 ASIC. The operating threshold for the Timepix3 chip is set to 6 times
 the electronic noise RMS added in quadrature to the threshold
-dispersion. This threshold significantly reduces the detection of
-noisy hits. The very low noise of the Timepix3 chip allows for
+dispersion. This threshold level significantly reduces the detection
+of noisy hits. The very low noise of the Timepix3 chip allows for
 operating the chip at a low threshold of approximately 500 electrons
 and thereby the detection of small signals. Sometimes, at this
 threshold a few pixels show a high rate of hits in absence of incident
@@ -363,9 +365,10 @@ radiation (hot pixels) and they are manually masked to be able to
 operate the chip at the lowest possible threshold.
 
 The operating threshold affects significantly the spatial resolution
-of the device. A lower threshold allows for a higher detection of the
-charge sharing. For this reason, it is important to minimise the
-electronic noise and the threshold dispersion.
+of the device. A lower threshold allows for detecting most of the
+signal deposited by a charged particle. For this reason, it is
+important to minimise the electronic noise and the threshold
+dispersion.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -374,12 +377,11 @@ electronic noise and the threshold dispersion.
 
 The aim of the calibration is to parametrise the measurements done by
 the readout chip, namely the relationship between the threshold DAC
-and the TOT with the energy deposited in the sensor as well as the
-relation between the TOA measurement and the time of arrival of the
-particle (in seconds). The unit to describe the energy deposited in
-the sensor can be in $\kev$ or the number of electron-hole pairs
-produced knowing that the average energy required to produce an
-electron-hole pair is $\sim3.6\,\ev$ (see \cref{sec:silicon}).
+and the TOT with the energy deposited in the sensor. The unit to
+describe the energy deposited in the sensor can be in $\kev$ or the
+number of electron-hole pairs produced knowing that the average energy
+required to produce an electron-hole pair is $\sim3.6\,\ev$ (see
+\cref{sec:silicon}).
 
 In this work we focus on the threshold DAC and the TOT calibration and
 the unit to describe the energy deposition is chosen to be the number
@@ -387,9 +389,10 @@ of electron-hole pairs generated (or to simplify in number of
 electrons).
 
 The threshold DAC and TOT calibration can be achieved using two
-methods. The first one consists of the use of photons from radioactive
-sources with a characteristic decay energy or photons from X-ray
-fluorescence (XRF) with a characteristic emission
+methods. The first one consists of the use of photons with a well
+defined energy. These photons can either come from radioactive sources
+with a characteristic decay energy or from X-ray fluorescence (XRF)
+with a characteristic emission
 energy~\cite{AlipourTehrani:2054922}. The photon being stopped in the
 sensor, it deposits its full energy. Since the energy of the photon is
 known, its relation to the threshold DAC or TOT can be characterised.
@@ -415,30 +418,32 @@ value has also been cross-checked with X-ray sources and the expected
 value has been validated~\cite{MedipixCapa}.
 
 For calibration with the chip bump-bonded to a sensor, the sensor is
-biased to full depletion to reduce the capacitive noise.
-
-
+biased to full depletion to reduce the capacitive noise. In this
+thesis, the calibrations are performed using the test pulse generator
+as it provides good results and the calibration is later validated
+using the test-beam data (see \cref{sec:calibrated_test_beam_data}).
 
 %% --------------------------------------------- %%
 \subsection{Threshold-energy calibration} 
 \label{sec:thresholdCalibration}
 
 \cref{sec:operatingThreshold} describes the selection of the operating
-threshold DAC (Digital-to-Analogue Converter) for a Timepix3 readout
-chip. This threshold can be translated into an effective energy. The
-counting mode is used for this measurement.
+threshold DAC setting for a Timepix3 readout chip. This threshold can
+be translated into an effective energy. The counting mode is used for
+this measurement.
 
 For Timepix3 assemblies, the threshold is calibrated using test pulses
 at four different heights corresponding to 0, 1000, 3000 and 6000
 electrons. For each pulse height, 200 pulses are sent to the pixels in
-the diagonal of the matrix and the threshold DAC is scanned with a
-step size of 2 from a level of no counts (threshold above the signal)
-to a level where all the pixels count (threshold close to the noise
-level) resulting in an S-shaped curve as shown in
-\cref{fig:scurve_example}. The readout electronics noise smears the
-ideal sharp turn on and generates the S-curve. At the maximum gradient
-of the S-curve, the threshold DAC corresponds to the pulse
-amplitude. The S-curve is fitted with a sigmoid function defined as:
+the diagonal of the matrix. For each pixel, the threshold DAC is
+scanned with a step size of 2 from a level of no counts (threshold
+above the signal) to a level where the pixel counts all the pulses (or
+close to the noise level when no pulse is sent) resulting in an
+S-shaped curve as shown in \cref{fig:scurve_example}. The readout
+electronics noise smears the ideal sharp turn on and generates the
+S-curve. At the maximum gradient of the S-curve, the threshold DAC
+corresponds to the pulse amplitude. The S-curve is fitted with a
+sigmoid function defined as:
 
 \begin{equation}
 f(x)= {1 \over {1+e^{-x}}} \; .
@@ -481,12 +486,14 @@ of the S-curve.
 \end{figure}
 
 A linear fit is used to parametrise the relationship between the pulse
-height and the threshold DAC given by the mean of the derivative of
-the S-curves:
+height and the threshold DAC value given by the mean of the derivative
+of the S-curves for the pixels in the diagonal of the chip:
+
 \begin{equation}
   THL_{DAC}=p \; THL_{e-} + q \; ,
   \label{eq:THLDAC}
 \end{equation}
+
 where $THL_{DAC}$ is the threshold DAC setting and $THL_{e-}$ the
 corresponding energy (in number of electrons). 
 
@@ -543,7 +550,7 @@ number of electrons for all the assemblies listed in
 \begin{table}[htbp]
   \centering
   \caption{Threshold fit parameters p and q, the operating threshold
-    DAC and its conversion into energy deposition.}
+    DAC setting and its conversion into energy deposition.}
   \label{tab:THLcalibration}
   \begin{tabular}{lcccc}
     \toprule
@@ -566,17 +573,18 @@ for each assembly is calculated to be around
 $\pm11$~e\textsuperscript{-}/step, in agreement
 with~\cite{Timepix3Poikela}.
 
-The mean of the Gaussian distribution with no input test-pulse
-injection defines the baseline of the chip and its width the
-electronic noise. The error on the mean corresponds to the threshold
-dispersion across the full matrix. For all assemblies the noise varies
-between 6 to 7 DAC values which corresponds to 70 to 80 electrons and
-in agreement with~\cite{art:tmpx}. The error on the noise is obtained
-by the error propagation of
-\cref{eq:THLDAC}. \cref{tab:THLcalibration_noise} summarises the
-baseline mean, the threshold DAC step, the electronic noise and its
-conversion into energy deposition for the assemblies listed in
-\cref{tab:THLcalibration}.
+Without test-pulse injection, the mean of the derivative of the
+S-curve defines the baseline of the chip and its width the electronic
+noise. The standard deviation of the baseline for the pixels in the
+diagonal of the matrix corresponds to the threshold dispersion.
+
+For all assemblies, the noise varies between 6 to 7 DAC values which
+corresponds to 70 to 80 electrons and in agreement
+with~\cite{Timepix3Poikela}. The error on the noise is obtained by the
+error propagation of \cref{eq:THLDAC}. \cref{tab:THLcalibration_noise}
+summarises the baseline mean, the threshold DAC step, the electronic
+noise and its conversion into energy deposition for the assemblies
+listed in \cref{tab:THLcalibration}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -601,6 +609,7 @@ conversion into energy deposition for the assemblies listed in
   \end{tabular}}
 \end{table}
 
+
 %% --------------------------------------------- %%
 \subsection{TOT-energy calibration}
 \label{sec:EnergyCalibration}
@@ -616,7 +625,7 @@ hyperbola. The function used to fit the data points is called a
   \label{eq:TOTsurrogateFunction}
 \end{equation}
 
-where TOT denotes Time-Over-Threshold, $E$ the deposited energy and
+where TOT denotes Time-over-threshold, $E$ the deposited energy and
 $a, b, c, t$ are the parameters to be found~\cite{Jakubek2008155}. The
 inverse of the surrogate function is defined as:
 
