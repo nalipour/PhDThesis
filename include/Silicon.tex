@@ -1140,12 +1140,14 @@ The instantaneous current on the electrode k is given by:
 \end{figure}
 
 The weighting potential for different hit positions on the x-axis is
-shown in \cref{fig:RamoTCADCuts}. Since the total charge collected by
-the electrode $k$ depends only on the depth positions $z_0$ and $z_p$,
-in the absence of the radiation-induced damages (which would affect
-the distributions of the electric and weighting fields), the Ramo
-theorem can be neglected. The charge carriers drift following the
-electric field distribution and the diffusion causes multi-pixel hits.
+shown in \cref{fig:RamoTCADCuts}. The total charge collected by the
+electrode $k$ depends only on the depth positions $z_0$ and $z_p$. In
+the absence of the radiation-induced damages (which would affect the
+distributions of the electric and weighting fields), the weighting
+field does not affect the total charge collected by an electrode and
+does not contribute to the diffusion of the charges. The charge
+carriers drift following the electric field distribution and due to
+the diffusion several electrodes can collect charges.
 
 \begin{figure}[htbp]
   \centering
@@ -1178,7 +1180,9 @@ electric field distribution and the diffusion causes multi-pixel hits.
     \includegraphics[width=0.9\textwidth]{figures/Ramo/WeightingPotential_1D.pdf}
     \caption{}\label{fig:RamoPotentialCuts1D}
   \end{subfigure} 
-  \caption{The weighting potential for different positions on the x-axis using TCAD simulations. The detector has a thickness of $200\,\micron$.}
+  \caption{The weighting potential for different positions on the
+    x-axis using TCAD simulations. The detector has a thickness of
+    $200\,\micron$.}
   \label{fig:RamoTCADCuts}
 \end{figure}
 
@@ -1197,9 +1201,9 @@ signals and result in clusters.
 % resolution than by just using the geometrical positions.
 
 The spatial resolution of a pixel detector is mainly determined by the
-pixel pitch. But this can be improved by the readout choice (binary or
+pixel pitch. But it can be improved by the readout choice (binary or
 analogue with pulse-height information), the detection threshold of
-the readout, the charge sharing in the sensor, thickness of the
+the readout, the charge sharing in the sensor, the thickness of the
 detector and the reconstruction algorithm. The effect of the readout
 on the spatial resolution is studied in this section.
 
@@ -1287,24 +1291,23 @@ which results in a spatial resolution of:
 In this simple model, the resolution achieved is only dependent on the
 pitch size (geometry of the pixels). In reality, the signal of a
 particle track is shared between several pixels and depending on the
-readout threshold more than one pixel can be fired which is called a
-\textit{cluster} of pixels. The resolution is therefore improved as
-described in the following.
+readout threshold more than one pixel can be fired. The resolution is
+therefore improved as described in the following.
 
 \subsubsection{Binary readout and charge sharing}
 \label{sec:resolutionBinarySharing}
 
 The threshold of the readout electronics is usually set as low as
-possible which can result in more than one pixel hit per particle
+possible which can result in more than one pixels hit per particle
 track. In this case, the charge is shared between two or more pixels
-(called a cluster). Multi-pixel clusters can improve the resolution of
+and result in clusters. Multi-pixel clusters can improve the
+resolution of
 \cref{eq:sigmaposBinary}. \cref{fig:SpatResBinaryChargeSharing}
 illustrates the charge sharing between two pixels. If a track passes
 close to the edge of a pixel (within a distance of $s\over 2$ close to
 the edge), the neighbouring pixel is also fired. For events triggering
 single-pixel events, the spatial resolution in pixel 0 for 1-pixel
 clusters is given by:
-
 \begin{equation}
 \sigma_{position}^2={{\int_{-(p/2-s/2)}^{(p/2-s/2)} \left(x_r\right)^2
     1 dx_r } \over { \int_{-(p/2-s/2)}^{(p/2-s/2)}
@@ -1452,11 +1455,10 @@ reaching neighbouring pixels.
 
 
 This case is closer to the reality in hybrid pixel detectors with
-analogue readout. But, there is no analytic solution for the
-calculation of the resolution. The proportionality between the spatial
-resolution with the signal-to-noise ration is given
-by~\cite{Turchetta:1993vu}:
-
+analogue readout. The readout noise plays an important role in the
+spatial resolution as it affects the operating threshold. The spatial
+resolution is proportional to the signal-to-noise
+ratio~\cite{Turchetta:1993vu}:
 \begin{equation}
 \sigma \propto {p \over {S/N}} \; ,
 \end{equation}
@@ -1464,10 +1466,12 @@ by~\cite{Turchetta:1993vu}:
 where the signal $S$ is measured as the most-probable-value of the
 MIPs distribution of clusters and $N$ the noise of a pixel.
 
-Simulations can be done to calculate numerically the spatial
-resolution in this case. \cref{sec:AllPix} presents the simulation
-framework which allows for computing the charge sharing and the
-spatial resolution.
+For this realistic case, there is no analytic solution for the
+calculation of the resolution. Simulations can be done to calculate
+the spatial resolution numerically. \cref{sec:AllPix} presents the
+simulation framework which allows for the simulation of a sensor and
+its readout in a pixel detector and therefore obtain the spatial
+resolution.
 
 %% They take into account also the fluctuations due to the energy
 %% deposition of MIPs as explained
@@ -1483,16 +1487,16 @@ sharing, particle tracks create multi-pixel clusters. The amount of
 charge deposited in each pixel can be measured using an analogue
 readout. The $\eta$-correction method uses the charges in the hit
 pixels as weights to reconstruct the particle hit position within a
-pixel. This method also takes into account non-linearities in the
-charge sharing between pixels~\cite{Belau:1983eh}.
+pixel. This method takes into account non-linearities in the charge
+sharing between pixels~\cite{Belau:1983eh}.
 
-This method can be implemented in different ways for the hit
-reconstruction. In this thesis, the method as described
-in~\cite{AlipourTehrani:2133128} is used for the data and simulations
-reconstruction and summarised in the following. The $\eta$-correction
-method calculates the distance with which the hit position moves from
-the geometric centre of two pixels in a cluster. This shift is
-calculated as:
+This method can be implemented in different ways for the
+reconstruction of the particle hit within a pixel. In this thesis, the
+method as described in~\cite{AlipourTehrani:2133128} is used for the
+data and simulations reconstruction and summarised in the
+following. The $\eta$-correction method calculates the distance with
+which the hit position moves from the geometric centre of two pixels
+in a cluster. This shift is calculated as:
 
 \begin{equation}
   \text{shift}=\sigma_{EC} \times \text{erf}^{-1}(2\times Q_{rel}-1) \; ,
