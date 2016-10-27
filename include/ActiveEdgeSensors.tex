@@ -11,13 +11,13 @@ consists of extending the backside implantation to the edge.
 
 This technology is particularly interesting for the CLIC vertex
 detector where the material budget is constrained to be only
-$0.2\%$~X\textsubscript{0}. The ladders of pixel detectors can be made
-without overlaps and with a high coverage.
+$0.2\%$~X\textsubscript{0} per layer. Ladders of pixel detectors can
+be made without overlaps and with a high coverage.
 
 In this chapter, the fabrication process for active edge sensors is
 described. Planar sensors produced by Advacam~\cite{AdvacamRef} and
 bump bonded to Timepix3 ASICs are tested in test beams. The signal
-collection and the efficiency on the edge are presented. The test beam
+collection and the efficiency at the edge are presented. Test beam
 results are compared to TCAD simulations.
 
 %% --------------------------------------------- %%
@@ -34,14 +34,42 @@ the sensor. A guard ring (GR) consists of an n-implant with a metallic
 contact on top of it surrounding the pixel matrix close to the edge
 and thereby smoothening the potential transition between the edge and
 the neighbouring pixels. The guard ring can be kept floating or
-grounded by connecting it to the ground of the readout ASIC.
+grounded by connecting it to the ground potential of the readout ASIC.
 
 The active-edge sensors are bump bonded to Timepix3 readout chips
 ($55\,\micron$ pixel pitch) and studied in test beams and
-simulations. Timepix3 ASICs provide an extra row of bumped pixels
-allowing to connect the guard ring to ground
+simulations. A list of produced assemblies is given in
+\cref{tab:ActiveEdgeAssemblies}. These assemblies are the same as the
+ones studied in \cref{ch:FE_electronics} and
+\cref{ch:ThinSensorsStudies}. In this chapter we focus on their edges.
+
+Timepix3 ASICs provide an extra row of grounded pixels allowing to
+connect the guard ring to ground
 potential. Figure~\ref{fig:activeedge} shows a cross section of an
 active-edge sensor with and without guard ring.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Details of different Advacam planar pixel sensors
+    bump-bonded to Timepix3 readout ASICs. The edge distance is
+    defined by the distance between the last pixel implant and the
+    physical sensor edge.}
+  \label{tab:ActiveEdgeAssemblies}
+  \resizebox{\textwidth}{!}{\begin{tabular}{lccccc}
+    \toprule
+    Assembly & Thickness [\micron] & Type & Edge distance [\micron] &
+                                                                      Guard-ring potential & Timepix3 ID \\
+    \midrule
+      20-NGR-50 & 50 & n-in-p & 20 & Without GR & W19\_G7 \\
+     23-FGR-50  & 50 & n-in-p & 23 & Floating & W19\_F7 \\
+     28-GNDGR-50  & 50 & n-in-p & 28 & Grounded & W19\_L8 \\
+     55-GNDGR-50 & 50 & n-in-p & 55 & Grounded & W19\_C7 \\ \hline
+     55-GNDGR-100 & 100 & n-in-p & 55 & Grounded & W5\_E2 \\ \hline
+     55-GNDGR-150  & 150 & n-in-p & 55 & Grounded & W5\_F1 \\ %% \hline
+     %% W2\_J5 & 300 & p-in-n & - & - & - \\
+    \bottomrule
+  \end{tabular}}
+\end{table}
 
 
 \begin{figure}[htbp]
@@ -193,7 +221,7 @@ described as follows~\cite{AdvacamProcessFlow}.
   \end{subfigure}
 
   \caption{Schematic illustration of the process flow for the
-    fabrication of active edge n-in-p sensors by
+    fabrication of planar n-in-p active edge sensors by
     Advacam~\cite{AdvacamRef}.}
   \label{fig:AdvacamProcessFlow}
 \end{figure}
@@ -205,7 +233,7 @@ described as follows~\cite{AdvacamProcessFlow}.
 \label{sec:AEgeometry}
 
 The produced assemblies by Advacam and tested in test beams are listed
-in \cref{tab:Timepix3Assemblies}. The edge distance is defined by the
+in \cref{tab:ActiveEdgeAssemblies}. The edge distance is defined by the
 distance between the last pixel implant and the physical sensor
 edge. The layouts of the assemblies are shown in
 \cref{fig:Layout_guard_ring} and the colors defining the different
@@ -272,7 +300,7 @@ implementation of the sensors in TCAD simulations.
     \label{fig:Layout50_GNDGR}
   \end{subfigure}~
   \caption{Sensor layouts for different guard-ring solutions for the
-    assemblies described in \cref{tab:Timepix3Assemblies}. (a) shows
+    assemblies described in \cref{tab:ActiveEdgeAssemblies}. (a) shows
     the convention used in the following sections to express the
     efficiency and the charge distribution at the edge as a function
     of the track position. The border of the last pixel before the
@@ -317,15 +345,17 @@ implementation of the sensors in TCAD simulations.
 \begin{table}
   \centering
   \captionof{table}{The dimensions of the different implants in for
-    the sensors listed in \cref{tab:Timepix3Assemblies}. The
+    the sensors listed in \cref{tab:ActiveEdgeAssemblies}. The
     edge distance is the distance between the last pixel implant to
     the physical edge of the sensor as illustrated in
     \cref{fig:Layout20_NGR}. The metal width
     is the diameter of the metal layer for the pixels. The doping width is the
     diameter of the pixel implant. The contact width is the diameter of
-    the contact between silicon and the metal. The GR offset is the
+    the contact between silicon and metal. The GR offset is the
     distance between the physical edge of the sensor and the implant
-    of the guard ring.}
+    of the guard ring. GR doping width, contact width and metal with
+    are respectively the width of the implant, the contact and the
+    metal layer for the guard ring.}
   \label{tab:DimensionsForAssemblies}
   \begin{tabular}{l c c c c}
     \toprule
@@ -361,9 +391,9 @@ The fabrication process of the sensors is simulated as follows:
 \begin{enumerate}
 \item The dimensions of the pixels, implants, contacts and metal
   layers are defined.
-\item The meshing is refined at the borders of the sensor and around the
-  implants based on the concentration of the dopants using an adaptive
-  meshing with the command \texttt{refinebox}.
+% \item The meshing is refined at the borders of the sensor and around the
+%   implants based on the concentration of the dopants using an adaptive
+%   meshing with the command \texttt{refinebox}.
 \item The silicon region is then defined for two pixels, the edge
   region and an extra silicon edge which will be etched later (to make
   the process more realistic). From the bias scan, the depletion
@@ -375,7 +405,7 @@ The fabrication process of the sensors is simulated as follows:
 \item First a layer of $0.2\,\micron$ thick oxide and then a layer of
   $0.2\,\micron$ thick nitride are deposited on the top of the sensor.
 \item The p-spray isolation technique is used to isolate the pixels
-  from each other. Thus the silicon is doped with borons at a
+  from each other. Thus the silicon is implanted with borons at a
   concentration of $1\times10^{12}\,\inversecmsquared$. The
   implantation is done with an energy of $180\,\kev$.
 \item The nitride is then etched at the positions of the implants for
@@ -384,10 +414,12 @@ The fabrication process of the sensors is simulated as follows:
   stay. Then the etching is done at the implantation
   positions. Phosphorus (n-type material) is implanted with a
   concentration of $1\times10^{15}\,\inversecmsquared$ with an energy of
-  $120\,\kev$. Masks limit the etching and the deposition to a certain
-  window and provide the possibility to imitate the lithographic
-  patterning.
-\item The extra edge (as explained in point 3) is etched to achieve
+  $120\,\kev$. 
+
+  % Masks limit the etching and the deposition to a certain
+  % window and provide the possibility to imitate the lithographic
+  % patterning.
+\item The extra edge (as explained in point 2) is etched to achieve
   the edge distance of the assembly. In this process, first the
   nitride layer, then the oxide and finally the silicon layers are
   etched.
@@ -422,21 +454,37 @@ in Figure~\ref{fig:TCAD_dopingConcentration}.
 \newpage
 \section{Electrical measurements in laboratory and simulations}
 
-\cref{fig:IVmeasurements_real} shows the measured leakage current in the
-different assemblies as a function of the bias voltage at the room
-temperature of $22^{\circ}$~C. The breakdown occurs earlier for the
-assembly without guard ring (20-NGR-50) compared to the other
-assemblies. For the nominal operation (at -15~V for $50\,\micron$,
--20~V for $100\,\micron$ and -30~V for $150\,\micron$ thick sensors),
-none of the assemblies are operated beyond the breakdown voltage.
+In silicon, the breakdown occurs for electric fields exceeding
+$\sim3\times10^5$~\voltpercm~\cite{Sze:100213}. In active-edge
+sensors, since the back-side implantation as well as the bias voltage
+are extended to the edge of the sensor, the gradient of potential
+between the edge and the last pixel can be very high. This could lead
+to a breakdown of the sensor.
 
+\cref{fig:IVmeasurements_real} shows the measured leakage current in
+the different assemblies as a function of the bias voltage at the room
+temperature of $22^{\circ}$~C. For the nominal operation (at -15~V for
+$50\,\micron$, -20~V for $100\,\micron$ and -30~V for $150\,\micron$
+thick sensors), none of the assemblies are operated beyond the
+breakdown voltage. The breakdown occurs earlier for the assembly
+without guard ring (20-NGR-50) compared to the other assemblies. The
+$50\,\micron$ thick assemblies with the floating guard ring
+(23-FGR-50) and the grounded guard ring (28-GNDGR-50 and 28-GNDGR-50)
+lead to a similar breakdown. However, the floating guard ring is
+expected to smoothen the potential transition between the edge of the
+sensor and the first pixel and result in a later breakdown
+voltage. This could be explained by the fact that Timepix3 provides an
+extra row of pixels giving the possibility to connect the guard ring
+to the ground potential. The floating guard ring may touch this extra
+row and this makes a floating guard ring similar to a grounded one in
+terms of leakage current. The thicker sensors show a later breakdown.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.6\textwidth]{figures/ActiveEdge/IVCurve_Andreas.pdf}
   \caption{Measured leakage current at the room temperature of
     $22^{\circ}$~C for active-edge assemblies listed in
-    \cref{tab:Timepix3Assemblies}.}
+    \cref{tab:ActiveEdgeAssemblies}.}
   \label{fig:IVmeasurements_real}
 \end{figure}
 
@@ -444,8 +492,15 @@ none of the assemblies are operated beyond the breakdown voltage.
 the TCAD simulations for the simulated pixel cell. In TCAD
 simulations, only the sensor is simulated and the effect of the
 readout chip and the bump bonding are not included. The readout chip
-can increase the temperature and increase the leakage current.
+can increase the temperature and increase the leakage current. 
 
+In simulations, the assemblies with grounded guard ring (including all
+sensor thicknesses) and without guard ring show a breakdown of the
+junction at around 150~V. In these sensors, the distance between the
+edge implant (with high voltage) and the ground implant (either the
+pixel or the guard ring) is similar which leads to a similar potential
+gradient and breakdown voltage. As expected, the floating guard ring
+shows a higher breakdown voltage of 240~V.
 
 %% The current calculated from the 2D simulation is scaled to obtain the
 %% current in the total matrix.
@@ -463,44 +518,17 @@ can increase the temperature and increase the leakage current.
   \caption{Leakage current in TCAD simulations for the pixel cell as a
     function of bias voltage for (a) $50\,\micron$ thick sensors and
     for (b) assemblies with a grounded guard ring (refer to
-    \cref{tab:Timepix3Assemblies} for the details on the assemblies).}
+    \cref{tab:ActiveEdgeAssemblies} for the details on the assemblies).}
   \label{fig:IVmeasurements_TCAD}
 \end{figure}
 
-In simulations, the assemblies with grounded guard ring (including all
-sensor thicknesses) and without guard ring show a breakdown of the
-junction at around 150~V. In these sensors, the distance between the
-edge implant (with high voltage) and the ground implant (either the
-pixel or the guard ring) is similar which leads to a similar potential
-gradient and breakdown voltage. As expected, the floating guard ring
-shows a higher breakdown voltage of 240~V. The fact that the guard
-ring is not forced to a ground potential, the voltage drop in the
-silicon bulk close to the surface is smoothened. This leads to a
-higher breakdown voltage.
 
-In data, the assembly without guard ring reaches breakdown much
-earlier than the grounded guard ring. Even, the floating guard ring
-leads to an early breakdown in laboratory measurements. This does not
-agree with the expectations. One of the reasons can explained by the
-fact that Timepix3 provides an extra row of pixels giving the
-possibility to connect the guard ring to the ground. The floating
-guard ring may touch this extra row and this makes a floating guard
-ring similar to a grounded one in terms of leakage current.
-
-%% --------------------------------------------- %%
-%% \subsection{Electric field distribution in simulations}
-%% \label{sec:TCAD_Efield_activeEdge}
-
-In silicon, the breakdown occurs for electric fields exceeding
-$\sim3\times10^5$~\voltpercm~\cite{Sze:100213}. In active-edge
-sensors, since the back-side implantation as well as the bias voltage
-are extended to the edge of the sensor, the gradient of potential
-between the edge and the last pixel can be very high. This could lead
-to a breakdown of the sensor. In TCAD simulations, the electric field
-distribution for the sensors operated at nominal conditions are shown
-in \cref{fig:TCAD_Efield2D}. In any case, for the nominal conditions
-(see \cref{tab:nominalBiasThreshold}), the breakdown electric field is
-never reached and in the laboratory measurements.
+In TCAD simulations, the electric field distribution for the sensors
+operated at nominal conditions are shown in
+\cref{fig:TCAD_Efield2D}. In any case, for the nominal conditions (see
+\cref{tab:nominalBiasThreshold}), the breakdown electric field is
+never reached (this behaviour was also seen in
+\cref{fig:IVmeasurements_TCAD}).
 
 \begin{figure}[htbp]
   \centering
@@ -528,7 +556,9 @@ never reached and in the laboratory measurements.
     \includegraphics[width=\textwidth]{figures/ActiveEdge/Efield_55_GNDGR_150.png}
     \caption{55-GNDGR-150}
   \end{subfigure}
-  \caption{Electric field distribution in TCAD simulations.}
+  \caption{Electric field distribution in TCAD simulations for the
+    assemblies listed in \cref{tab:ActiveEdgeAssemblies}. The
+    depletion region is shown with the white line.}
   \label{fig:TCAD_Efield2D}
 \end{figure}
 
@@ -537,11 +567,9 @@ The electric field and the electrostatic potential in TCAD simulations
 for a cut close to the n-implants ($0.2\,\micron$ from the sensor
 surface) are shown in
 \cref{fig:TCAD_Efield_EPotential_sensorSurface}. Position $0\,\micron$
-corresponds to the position of the first pixel. At the surface, the
-breakdown electric field is never reached for the nominal
-conditions. The floating guard-ring (23-FGR-50) results in a smoother
-potential transition between the edge of the sensor and the first
-pixel.
+corresponds to the position of the first pixel. The floating
+guard-ring (23-FGR-50) results in a smoother potential transition
+between the edge of the sensor and the first pixel.
 
 
 \begin{figure}[htbp]
@@ -569,13 +597,13 @@ pions (see \cref{sec:CERN_SPS}), making use of the CLICdp Timepix3
 beam reference telescope as described in \cref{ch:Telescope}. The edge
 performance is investigated in terms of the efficiency of detecting a
 track and the amount of collected charge as a function of the track
-position on the edge.
+position at the edge.
 
 %% --------------------------------------------- %%
 \subsection{TCAD simulation of the detector response}
 \label{sec:TCAD_Simu_ActiveEdge}
 
-TCAD simulations are used to study the charge collection in the edge
+TCAD simulations are used to study the charge collection at the edge
 region. The process flow as described in \cref{sec:processFlowTCAD} is
 used to simulate two pixels and the edge region in a 2D
 configuration. The transient simulation of the active edge devices is
@@ -583,8 +611,8 @@ done by a constant charge deposition corresponding to the peak of the
 straggling function along the particle track (see
 \cref{sec:SiliconEnergyLossSpectrum}). \cref{fig:TCAD_transientSimu}
 illustrates an example of a MIP traversing the sensor at a distance of
-$10\,\micron$ from the left edge 1~ns after the particle hit. The
-electron density is shown in this figure.
+$10\,\micron$ from the left edge. The electron density 1~ns after the
+particle hits the sensor is shown.
 
 
 
@@ -611,10 +639,10 @@ electron density is shown in this figure.
 \end{figure}
 
 In simulation, hits are generated at different positions along the
-edge. The electrodes collect the signal created by the electrons since
-the sensor is of type n-in-p. The signal is integrated over 15~ns. The
-peaking time of the signal is usually less than 5~ns therefore the
-integration time is enough to collect most of the signal.
+edge. The electrodes collect the signal pulse and integrate it over
+15~ns. The peaking time of the signal is usually less than 5~ns
+therefore the integration time is enough to collect most of the
+signal.
 
 
 
@@ -638,16 +666,17 @@ $2\times2$ pixels. The x-axis shows the track position relative to the
 last pixel. The y-axis combines the tracks for the even rows (in the
 coordinates between 0~mm and 0.055~mm) and the odd rows (in the
 coordinates between 0.055~mm and 0.11~mm). The z-axis shows the
-efficiency. To increase the statistics, the beam was focused on only
-one of the edges during the data taking. An example of a hitmap for
-the assembly 20-NGR-50 is shown in \cref{fig:hitMapW19G7}.
+efficiency. To increase the number of tracks close to the sensor edge,
+the beam was focused on only one of the edges during the data
+taking. An example of the tracks impact points for the assembly
+20-NGR-50 is shown in \cref{fig:hitMapW19G7}.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.7\textwidth]{figures/ActiveEdge/hitMap_W19_G7.pdf}
-  \caption{The pixels hit on the assembly 20-NGR-50: the beam is
-    focused on the edge of the assembly in order to increase the
-    statistics for the edge performance studies.}
+  \caption{The tracks impact points on the assembly 20-NGR-50: the
+    beam is focused on the edge of the assembly in order to increase
+    the statistics for the edge performance studies.}
   \label{fig:hitMapW19G7}
 \end{figure}
 
@@ -738,15 +767,16 @@ For 20-NGR-50, the TCAD simulation agrees well with the data
 observation as shown in \cref{fig:ChargeCollection20NGR}.
 
 To simulate a floating guard ring for 23-FGR-50 in TCAD, the current
-and the potential on the electrode of the guard ring are set to zero
-as initial conditions. The charge drop in the edge is explained by the
-capacitive coupling between the guard ring and the surrounding
-implants. To have a more accurate definition of the capacitive
-coupling in TCAD simulations, for this guard ring configuration, the
-area factor is set to the pixel size in order to multiply the currents
-in the electrodes by this factor. This defines the third dimension in
-a 2D simulation. A good agreement between data and TCAD simulations
-can be seen in \cref{fig:ChargeCollection23FGR}.
+on the electrode of the guard ring is set to zero. The charge drop in
+the edge is explained by the capacitive coupling between the guard
+ring and the surrounding implants. Data shows a higher charge drop in
+the edge than the TCAD simulations.
+
+% To have a more accurate definition
+% of the capacitive coupling in TCAD simulations, for this guard ring
+% configuration, the area factor is set to the pixel size in order to
+% multiply the currents in the electrodes by this factor. This defines
+% the third dimension in a 2D simulation.
 
 \begin{figure}[htbp]
   \begin{subfigure}[b]{0.45\textwidth}
@@ -761,7 +791,8 @@ can be seen in \cref{fig:ChargeCollection23FGR}.
   \end{subfigure}
   \caption{Charge collected as a function of the track position at the
     edge for the assemblies (a) 20-NGR-50 and (b) 23-FGR-50 in data
-    and TCAD simulations.}
+    and TCAD simulations. In data, only tracks within the central
+    $40\%$ of the pixel cell area are considered.}
   \label{fig:ChargeCollectionNGRFGR}
 \end{figure}
 
@@ -773,14 +804,13 @@ efficiency at the edge for thin sensors of $50\,\micron$. For
 \cref{fig:EdgeEfficiency_28GNDGR50}. A large part of the charge is
 collected by the guard ring. For 55-GNDGR-50, as shown in
 \cref{fig:EdgeEfficiency_55GNDGR50}, the edge is not efficient
-anymore. All of the charge created in the edge is collected by the
-guard ring.
+anymore. 
 
-In the TCAD simulations for the grounded guard ring configurations,
-the potential on the electrode of the guard ring is 0~V. For
-28-GNDGR-50 and 55-GNDGR-50, the TCAD simulations show a drop in the
-collected charge at the edge as shown in
-\cref{fig:ChargeCollectionNGRFGR_50}.
+
+For 28-GNDGR-50 and 55-GNDGR-50, both data and TCAD simulations show a
+drop in the collected charge at the edge as shown in
+\cref{fig:ChargeCollectionNGRFGR_50}. Most of the charge created in the
+edge is collected by the guard ring.
 
 \begin{figure}[htbp]
   \begin{subfigure}[b]{0.45\textwidth}
@@ -795,7 +825,9 @@ collected charge at the edge as shown in
   \end{subfigure}
   \caption{Charge collected as a function of the track position at the
     edge for the assemblies (a) 28-GNDGR-50 and (b) 55-GNDGR-50 in
-    data and TCAD simulations.}
+    data and TCAD simulations. In data, only tracks within the central
+    $7\%$ for 28-GNDGR-50 and $40\%$ for 55-GNDGR-50 of the pixel cell
+    area are considered.}
   \label{fig:ChargeCollectionNGRFGR_50}
 \end{figure}
 
@@ -836,9 +868,9 @@ region.
   \caption{The electric field and the streamlines distributions for
     different configurations of guard ring for $50\,\micron$ thick
     sensors. The generated charges follow the streamlines. The
-    streamlines which end up in the guard ring means that those
-    charges are not collected by the first pixel and thus lost. The
-    depletion region is indicated by solid white lines.}
+    streamlines which end up in the guard ring correspond to the
+    charges that are not collected by the first pixel and thus
+    lost. The depletion region is indicated by solid white lines.}
   \label{fig:TCAD_streamlines}
 \end{figure}
 
@@ -860,8 +892,8 @@ grounded guard ring is a suitable solution. The assemblies
 near the edge in data and simulations can be observed for these
 assemblies as shown in \cref{fig:ChargeCollectionThickGNDGR}. However,
 due to the large amount of the ionisation charge, the signal does not
-drop below the detection threshold and therefore remains efficient up
-to the physical edge of the sensors.
+drop below the detection threshold and therefore the assembly remains
+efficient up to the physical edge of the sensors.
 
 
 \begin{figure}[htbp]
@@ -894,7 +926,8 @@ to the physical edge of the sensors.
   \end{subfigure}
   \caption{Charge collected as a function of the track position at the
     edge for the assemblies (a) 55-GNDGR-100 and (b) 55-GNDGR-150 in
-    data and TCAD simulations.}
+    data and TCAD simulations. In data, only tracks within the central
+    $40\%$ of the pixel cell area are considered.}
   \label{fig:ChargeCollectionThickGNDGR}
 \end{figure}
 
@@ -902,10 +935,10 @@ to the physical edge of the sensors.
 For further investigation, \cref{fig:TCAD_streamlines_100_150} shows
 the electric field and the streamline distributions for the
 $100\,\micron$ and $150\,\micron$ thick sensors. For thicker devices,
-some streamlines are collected by the guard ring but most of the
-charge is collected by the pixels due to the high amount of the
-generated charge. The devices remain still efficient up to $100\%$
-even very close to the physical edge.
+some streamlines are reaching the guard ring but most of the charge is
+collected by the pixels due to the thicker silicon bulk. The devices
+remain still efficient up to $100\%$ even very close to the physical
+edge.
 
 
 \begin{figure}[htbp]
@@ -921,9 +954,10 @@ even very close to the physical edge.
   \caption{The electric field and the streamlines distributions for
     different configurations of guard ring for $100\,\micron$ and
     $150\,\micron$ thick sensors. The generated charges follow the
-    streamlines. The streamlines which end up in the guard ring means
-    that those charges are not collected by the first pixel and thus
-    lost. The depletion region is indicated by solid white lines.}
+    streamlines. The streamlines which end up in the guard ring
+    correspond to the charges that do not get collected by the first
+    pixel and thus lost. The depletion region is indicated by solid
+    white lines.}
   \label{fig:TCAD_streamlines_100_150}
 \end{figure}
 
@@ -937,8 +971,8 @@ even very close to the physical edge.
 This chapter gives an overview on the test-beam results and also TCAD
 simulations of the active-edge assemblies tested for
 CLIC. \cref{fig:EdgeEff_2D} summarises the edge efficiency as a
-function of the track position relative to the edge projected in one
-direction for the different assemblies in data.
+function of the track position relative to the last pixel projected in
+one direction for the different assemblies.
 
 \begin{figure}[htbp]
   \centering
@@ -968,15 +1002,13 @@ expectations for the operation of these devices: the floating guard
 ring has the highest breakdown voltage since the guard ring smoothens
 the potential drop between the physical edge and the first pixel.
 
-The active-edge assemblies produced by Advacam do not fully operate as
-expected. Especially, the floating guard ring shows an early
-breakdown. This can be explained by the fact that the guard-ring might
-be in touch with the last pixel row in the Timepix3 which provides the
-ground potential and in reality this guard ring is grounded instead of
-being floating. Also, this assembly shows more of charge loss at the
-edge than expected by simulations. Also, for each configuration, only
-one assembly was available and tested. More assemblies are needed to
-be tested for more conclusive results.
+The active-edge assemblies with the floating guard ring produced by
+Advacam shows an early breakdown. This can be explained by the fact
+that the guard-ring might be in touch with the last pixel row in the
+Timepix3 which provides the ground potential and in reality this guard
+ring might be grounded instead of being floating. Also, this assembly
+shows more of charge loss at the edge than expected by
+simulations. 
 
 In general, a good agreement between data and TCAD simulations is
 observed. The few discrepancies observed can be explained by the
@@ -984,16 +1016,15 @@ following. The TCAD model is only implemented in 2D and the coupling
 to other pixels is not simulated. A 3D model could help more in
 modeling of the capacitive coupling between the guard ring and the
 different pixels. The doping profiles used by Advacam are not known
-and the TCAD simulations are done based on some guesses. This might
-lead to some differences between reality and simulations in the
-operation of the device. The depletion voltage measured during bias
-scans in test beam (see \cref{sec:ThinSensors_depletionVoltage}), is
-not very precise. This can lead to a depletion region in simulations
-which can be different than the reality. This affects the charge
-collected in the edge. The energy loss fluctuations are also not
-considered in the simulations. The Timepix3 chip has a very non-linear
-behaviour for low energy depositions. Therefore the calibration also
-has an impact on the agreement between data and simulations.
+for the TCAD simulations. This might lead to some differences between
+reality and simulations in the operation of the device. The depletion
+region in simulations can therefore be slightly different than the
+reality. This affects the collected charge at the edge. The energy
+loss fluctuations are also not considered in the simulations. Finally,
+the Timepix3 chip has a very non-linear behaviour for low energy
+depositions. Therefore the calibration also has an impact on the
+agreement between data and simulations especially for low-energy
+depositions.
 
 
 
