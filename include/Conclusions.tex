@@ -9,12 +9,6 @@ potential at CLIC. To meet the challenging demands on the precision
 physics, pixel detectors with high spatial resolution and low material
 content are required.
 
-In this thesis, an overview on the R\&D of planar pixel sensors for
-CLIC is given. Prototypes with thin and active-edge sensors are
-studied. We span a large set of activities for the characterisation of
-these assemblies in test-beam and laboratory measurements. All studies
-are accompanied by simulations.
-
 The physics goals set challenging requirements on the design of the
 CLIC detector. The vertex detector is responsible for the efficient
 tagging of heavy quarks through the precise measurement of the
@@ -22,105 +16,113 @@ displaced vertices. For achieving high efficiencies, a low material
 content of $\sim0.2\%$~X\textsubscript{0} per vertex layer and a high
 single-point resolution of $3\,\micron$ for pixels are required. The
 flavour-tagging performance of the CLIC vertex detector in full
-detector simulations have shown that the material budget of the
+detector simulations, have shown that the material budget of the
 detector must be as low as possible to achieve higher flavour-tagging
 efficiencies. To attain both requirements on the material content and
 the resolution, hybrid solutions with $50\,\micron$ thick sensors are
 foreseen to be coupled to $50\,\micron$ thick readout ASICs with
 $25\,\micron$ pixel pitch.
 
-We have focused on the performance of thin planar silicon sensors for
-the CLIC vertex detector. The Timepix3 pixel readout ASIC is chosen as
-a test-vehicle for thin sensors. With its low front-end noise of
-$\sim80$ electrons, it allows for operating the chip at the low
-thresholds of $\sim500$ electrons. This ASIC provides internal
-test-pulse injections for the calibration of the threshold DAC value
-and the TOT into energy depositions and validated with simulations.
+In this thesis, an overview on the R\&D of planar pixel sensors for
+CLIC is given. Thin and active-edge sensors with thicknesses varying
+between $50\,\micron$ to $150\,\micron$ are studied. The single point
+resolution of thin sensors, with low material content, is being
+investigated. Another solution to reduce the material content of the
+vertex detector is to prevent overlaps between pixel detectors while
+tiling them into ladders. The active-edge technology, allows for
+growing the depletion volume up to the physical edges of silicon
+sensors and mount them side-by-side and minimise inactive regions. We
+span a large set of activities for the characterisation of these
+assemblies in test-beam and laboratory measurements. All studies are
+accompanied by simulations.
 
-The CLICdp Timepix3 telescope is used for the reconstruction of the
-tracks with a high resolution and in-pixel studies on the devices
-under test (DUT). The telescope is implemented in AllPix
-simulations. The tracking resolution of the telescope on the DUT of
-$\sim2\,\micron$ is extracted from the simulation. This is in
-agreement with the expectations.
+The Timepix3 pixel readout ASIC is chosen as a test-vehicle for thin
+and active-edge sensors. The devices under test (DUTs) are integrated
+within the CLICdp Timepix3 telescope to obtain a high tracking
+resolution. The tracking planes of the telescope also employ the
+Timepix3 readout ASIC.
+
+The Timepix3 pixel readout ASIC, with $55\,\micron$ pitch, is a
+powerful readout for our studies. With its low noise at the front-end
+of $\sim80$ electrons, it allows for operating the chip at the low
+thresholds of $\sim500$ electrons. It provides an accurate test-pulse
+injection functionality allowing for the calibration of the chip. The
+threshold DAC value and the TOT can be therefore converted into energy
+depositions.
 
 First, we have investigated on the spatial resolutions achieved with
-thin sensors. Assemblies with $50\,\micron$ to $150\,\micron$ thick
-sensors bump-bonded to Timepix3 readout ASICs are measured during
-test-beam campaigns at the CERN SPS.
+thin sensors. The DUTs were tested with the CLICdp Timepix3 telescope
+during test-beam campaigns at the CERN SPS. The track position allows
+for in-pixel studies. The results show that the charge sharing and the
+energy deposition in such thin sensors are very low. This results-in
+mostly single-pixel clusters. Multi-pixel clusters are generated when
+the tracks hit the corners and the edges of the pixels. For a better
+hit reconstruction, the energy deposited in the pixels of a cluster
+are reconstructed with the $\eta$-correction method and the spatial
+resolution can be improved.
 
-  
+For further investigation, the test-beam setup with the devices under
+test have been implemented in the \textsc{Geant4}-based simulation
+framework, AllPix. A digitiser, describing the physics in silicon
+sensors and the Timepix3 readout ASIC, has been developed. The full
+test-beam setup with the Timepix3 telescope and the DUTs have been
+modeled. First, the tracking resolution of the telescope on the DUT of
+$\sim2\,\micron$ is extracted from the simulation. This value can be
+obtained only in simulation where the Monte Carlo true position is
+available and is in agreement with the expectations on the
+tracking. Then, the different assemblies with different thicknesses
+have been simulated. A good agreement in data and simulation is seen
+between the cluster-size distribution, the position resolution and the
+energy deposition spectrum. The charge sharing model as described in
+the digitiser of the simulations is validated with data. From the
+agreement between the energy deposition in data and simulation we can
+conclude that the test-pulse calibration is validated and provides
+enough precision for our purposes. The \textsc{Geant4} PAI physics
+list to simulate the energy deposition in thin sensors, which provides
+a similar spectrum as the Bichsel model, is in agreement with data.
 
-\cref{sec:SiliconTheory} gives an introduction to semiconductor
-material with an accent on silicon which is predominant in tracking
-detectors in particle physics experiments. Theoretical concepts are
-introduced and later used for the simulation and understanding of the
-test-beam data. Different methods modeling the energy deposition
-spectrum of high-energy particles in silicon are presented. The
-Bichsel model gives the most accurate energy spectrum for thin
-sensors. The charge transport in a pn-junction is studied. Drift and
-diffusion are calculated in a pn-junction and used in the next
-chapters for simulations. The position measurement and ways to improve
-the spatial resolution are investigated and the crucial role of charge
-sharing in improving the pointing resolution of pixel detectors is
-shown.
+For the CLIC vertex detector, a hit resolution of $\sim3\,\micron$ is
+wished to be achieved with pixels of $25\,\micron$ pitch and a
+thickness of $50\,\micron$. Since data is still not available for such
+pixel detectors, the simulations are extrapolated for such small
+pixels. The simulations show that achieving this resolution with
+$25\,\micron$ pixels is not possible.
 
-The Timepix3 pixel readout ASIC is used as the tracking planes for the
-Timepix3 telescope as well as for the study of thin and active-edge
-sensors. \cref{ch:FE_electronics} introduces this pixel readout
-ASIC. The test-pulse calibration method is chosen to convert the
-threshold DAC and the TOT into energy. The calibration is applied to
-the test-beam data and the energy spectrum in data agrees well with
-simulations. The calibration is therefore validated.
 
-The reconstruction software frameworks used for the analysis of data
-and simulations are described in \cref{ch:Software}. The AllPix
-reconstruction framework and TCAD simulation tools are also
-introduced. Both simulation frameworks are powerfull tools for
-understanding the data. AllPix is a \textsc{Geant4}-based simulation
-frameworks which allows for reproducing the energy-deposition spectrum
-and the charge sharing in thin silicon sensors. The test-beam setup is
-also implemented in this framework and the beam telescope is
-simulated. The finite-element TCAD simulations allow for modeling the
-processing of a silicon detector and the device operation. It is
-mainly used to investigate the performance of the active-edge
-technology in thin silicon sensors.
+Finally, the efficiency of active-edge sensors is studied. Assemblies
+with different edge widths and guard ring configurations are
+investigated in test-beam. A 2D TCAD simulation of the edge is as well
+implemented which allows for a better understanding of the operation
+of such devices.
 
-The CLICdp Timepix3 telescope is presented in \cref{ch:Telescope}. It
-allows for the reconstruction of the tracks with a high resolution and
-in-pixel studies on the devices under test (DUT). The telescope is
-implemented in AllPix simulations. The tracking resolution of the
-telescope on the DUT of $\sim2\,\micron$ is extracted from the
-simulation. This is in agreement with the expectations.
+In simulations, as expected, the floating guard ring seems to be the
+best solution. It shows a higher breakdown voltage and a small loss of
+energy deposition in the guard ring and therefore a high efficiency up
+to the trench of the sensor. The grounded guard ring is however not
+recommended for thin sensors of $50\,\micron$ since the guard ring
+collects most of the charge deposition at the edge and the edge is
+inefficient in this case. But for sensors with higher thicknesses of
+$100\,\micron$ and $150\,\micron$, the grounded guard ring is a
+suitable solution due to the high energy deposition in such sensors.
 
-Test-beam measurements and Allpix simulations for $50-150\,\micron$
-thin planar sensors are described in \cref{ch:ThinSensorsStudies}. The
-pointing resolution of the assemblies are studied and the simulations
-are in good agreement with data. For the CLIC vertex detector, a hit
-resolution of $\sim3\,\micron$ is wished to be achieved with pixels of
-$25\,\micron$ pitch and a thickness of $50\,\micron$. Since data is
-still not available for such pixel detectors, the simulations are
-extrapolated for such small pixels. The simulations show that
-achieving this resolution with $25\,\micron$ pixels is not possible.
+In data, the assembly without guard ring has the most efficient edge
+among all the assemblies but the breakdown happens at low bias
+voltages. The floating guard ring shows an early breakdown (almost
+like a grounded guard ring). The edge remains efficient up to the
+trench but the signal drops more than what was expected by the
+simulations. The grounded guard ring is not efficient for
+$50\,\micron$ thick sensors but they become fully efficient for
+thicker sensors of $100\,\micron$ and $150\,\micron$.
 
-\cref{ch:ActiveEdgeSensors} investigates the efficiency of active-edge
-sensors. Different edge widths and guard-ring configurations are
-investigated. A TCAD simulation of the edge is as well implemented
-which allows for better understanding of the operation of such
-devices. In simulations, as expected, the floating guard-ring seems to
-be the best solution as it shows a higher breakdown voltage and a
-small loss of energy deposition in the guard ring and therefore a high
-efficiency up to the trench of the sensor. The grounded guard ring is
-however not recommended for thin sensors of $50\,\micron$ since the
-guard ring collects most of the charge deposition at the edge and the
-edge is inefficient in this case. Test-beam data are in general in
-good agreement with simulations. However few discrepancies in terms of
-breakdown behaviour and the charge collected at the edge between
-simulations and data are observed. During the test-beam, we only had
-one assembly per configuration at our disposal. More assemblies are
-needed to be tested in order to draw final conclusions, especially, to
-confirm that the floating guard ring is the most suitable solution for
-$50\,\micron$ thick sensors.
+In general a good agreement was seen between data and simulation for
+the different guard ring solutions. The implemented 2D simulation is a
+powerful tool to understand the behaviour of the edge in such
+technology. However few discrepancies in terms of breakdown behaviour
+and the charge collected at the edge between simulations and data are
+observed. During the test-beam, we only had one assembly per
+configuration at our disposal. More assemblies are needed to be
+tested. But we still can conclude that the floating guard ring is the
+most suitable solution for $50\,\micron$ thick sensors.
 
 \section{Outlook}
 
@@ -150,7 +152,44 @@ detection efficiency at the edge and an acceptable breakdown
 behaviour. In the future, a three-dimensional simulation can provide
 more precision on the capacitive coupling between the guard ring and
 the pixels. In data, new assemblies are needed to be tested in order
-to confirm the best option of guard ring for thin sensors.
+to have more statistics on the results.
+
+
+%%%-------------------------\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \cref{sec:SiliconTheory} gives an introduction to semiconductor
+% material with an accent on silicon which is predominant in tracking
+% detectors in particle physics experiments. Theoretical concepts are
+% introduced and later used for the simulation and understanding of the
+% test-beam data. Different methods modeling the energy deposition
+% spectrum of high-energy particles in silicon are presented. The
+% Bichsel model gives the most accurate energy spectrum for thin
+% sensors. The charge transport in a pn-junction is studied. Drift and
+% diffusion are calculated in a pn-junction and used in the next
+% chapters for simulations. The position measurement and ways to improve
+% the spatial resolution are investigated and the crucial role of charge
+% sharing in improving the pointing resolution of pixel detectors is
+% shown.
+
+
+
+% The reconstruction software frameworks used for the analysis of data
+% and simulations are described in \cref{ch:Software}. The AllPix
+% reconstruction framework and TCAD simulation tools are also
+% introduced. Both simulation frameworks are powerfull tools for
+% understanding the data. AllPix is a \textsc{Geant4}-based simulation
+% frameworks which allows for reproducing the energy-deposition spectrum
+% and the charge sharing in thin silicon sensors. The test-beam setup is
+% also implemented in this framework and the beam telescope is
+% simulated. The finite-element TCAD simulations allow for modeling the
+% processing of a silicon detector and the device operation. It is
+% mainly used to investigate the performance of the active-edge
+% technology in thin silicon sensors.
+
+
+
+
 
 % \begin{itemize}
 % \item Thin planar sensors reaching their limits: other solutions such
