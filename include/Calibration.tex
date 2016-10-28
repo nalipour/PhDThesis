@@ -370,22 +370,16 @@ and thereby the detection of small signals. Sometimes, at this
 threshold a few pixels show a high rate of hits in absence of incident
 radiation (hot pixels) and they are manually masked to be able to
 operate the chip at the lowest possible
-threshold. \cref{tab:numberOfMaskedPixels} shows the number of pixels
-masked for the tested assemblies. They were masked either after the
+threshold. \cref{tab:numberOfMaskedPixels} shows the number of masked
+pixels for the tested assemblies. They were masked either after the
 equalisation due to their baseline which was very different than other
 pixels or manually since they were noisy at the nominal operating
-threshold.
-
-The operating threshold affects significantly the spatial resolution
-of the device. A lower threshold allows for detecting most of the
-signal deposited by a charged particle. For this reason, it is
-important to minimise the electronic noise and the threshold
-dispersion.
-
+threshold. In total, the number of masked pixels is less than $1\%$ of
+the matrix.
 
 \begin{table}[htbp]
   \centering
-  \caption{The number of masked pixel after the equalisation and the
+  \caption{The number of masked pixels after the equalisation and the
     manual adjustment of the threshold.}
   \label{tab:numberOfMaskedPixels}
   \begin{tabular}{lc}
@@ -397,10 +391,16 @@ dispersion.
     W19\_L8 & 14 \\
     W19\_C7 & 33 \\
     W5\_E2 & 41 \\
-    W5\_F1 & 42\\
+    W5\_F1 & 42 \\
     \bottomrule
   \end{tabular}
 \end{table}
+
+The operating threshold affects significantly the spatial resolution
+of the device. A lower threshold allows for detecting most of the
+signal deposited by a charged particle. For this reason, it is
+important to minimise the electronic noise and the threshold
+dispersion.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Calibration} 
