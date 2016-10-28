@@ -1,80 +1,71 @@
 % ==============================================================================
-\chapter{Conclusions and outlook}
+\chapter{Conclusions}
 \label{ch:conclusions}
 % ==============================================================================    
 
 
 The vertex detector plays a key role to fully exploit the physics
 potential at CLIC. To meet the challenging demands on the precision
-physics, pixel detectors with high spatial resolution and low material
-content are required.
+physics, pixel detectors with high spatial resolution of $3\,\micron$
+and low material content of $\sim0.2\%$~X\textsubscript{0} per vertex
+layer are required. Full detector simulations have shown that the
+material budget of the detector must be as low as possible to achieve
+a high flavour-tagging performance. To attain both requirements on the
+resolution and the material content, hybrid pixel-detector solutions
+with $50\,\micron$ thick sensors coupled to $50\,\micron$ thick
+readout ASICs and $25\,\micron$ pixel pitch are foreseen.
 
-The physics goals set challenging requirements on the design of the
-CLIC detector. The vertex detector is responsible for the efficient
-tagging of heavy quarks through the precise measurement of the
-displaced vertices. For achieving high efficiencies, a low material
-content of $\sim0.2\%$~X\textsubscript{0} per vertex layer and a high
-single-point resolution of $3\,\micron$ for pixels are required. The
-flavour-tagging performance of the CLIC vertex detector in full
-detector simulations, have shown that the material budget of the
-detector must be as low as possible to achieve higher flavour-tagging
-efficiencies. To attain both requirements on the material content and
-the resolution, hybrid solutions with $50\,\micron$ thick sensors are
-foreseen to be coupled to $50\,\micron$ thick readout ASICs with
-$25\,\micron$ pixel pitch.
+In the scope of this thesis, the prospects of planar silicon pixel
+sensors to meet the challenging requirements in the vertex detector in
+terms of spatial resolution and material budget have been
+assessed. Thin active-edge sensors with thicknesses varying between
+$50\,\micron$ to $150\,\micron$ have been studied in test-beam and
+laboratory measurements. All studies are accompanied by simulations.
 
-In this thesis, an overview on the R\&D of planar pixel sensors for
-CLIC is given. Thin and active-edge sensors with thicknesses varying
-between $50\,\micron$ to $150\,\micron$ are studied. The single point
-resolution of thin sensors, with low material content, is being
-investigated. Another solution to reduce the material content of the
-vertex detector is to prevent overlaps between pixel detectors while
-tiling them into ladders. The active-edge technology, allows for
-growing the depletion volume up to the physical edges of silicon
-sensors and mount them side-by-side and minimise inactive regions. We
-span a large set of activities for the characterisation of these
-assemblies in test-beam and laboratory measurements. All studies are
-accompanied by simulations.
+The high-performance Timepix3 pixel readout ASIC, with $55\,\micron$
+pitch, was chosen as a test vehicle for the sensors
+characterisations. With its low noise at the front-end of $\sim80$
+electrons, it allows for operating the chip at low thresholds of
+$\sim500$ electrons. It provides an accurate test-pulse injection
+functionality that was used for the energy calibration of the chip and
+thereby allowed for an absolute measurement of the energy deposited in
+the sensors.
 
-The Timepix3 pixel readout ASIC is chosen as a test-vehicle for thin
-and active-edge sensors. The devices under test (DUTs) are integrated
-within the CLICdp Timepix3 telescope to obtain a high tracking
-resolution. The tracking planes of the telescope also employ the
-Timepix3 readout ASIC.
+%% The threshold DAC value and the TOT can be therefore converted into
+%% energy depositions.
 
-The Timepix3 pixel readout ASIC, with $55\,\micron$ pitch, is a
-powerful readout for our studies. With its low noise at the front-end
-of $\sim80$ electrons, it allows for operating the chip at the low
-thresholds of $\sim500$ electrons. It provides an accurate test-pulse
-injection functionality allowing for the calibration of the chip. The
-threshold DAC value and the TOT can be therefore converted into energy
-depositions.
+%% The devices under test (DUTs) are integrated within the
+%% CLICdp Timepix3 telescope to obtain a high tracking resolution. The
+%% tracking planes of the telescope also employ the Timepix3 readout
+%% ASIC.
 
-First, we have investigated on the spatial resolutions achieved with
-thin sensors. The DUTs were tested with the CLICdp Timepix3 telescope
-during test-beam campaigns at the CERN SPS. The track position allows
-for in-pixel studies. The results show that the charge sharing and the
-energy deposition in such thin sensors are very low. This results-in
-mostly single-pixel clusters. Multi-pixel clusters are generated when
-the tracks hit the corners and the edges of the pixels. For a better
-hit reconstruction, the energy deposited in the pixels of a cluster
-are reconstructed with the $\eta$-correction method and the spatial
-resolution can be improved.
 
-For further investigation, the test-beam setup with the devices under
-test have been implemented in the \textsc{Geant4}-based simulation
-framework, AllPix. A digitiser, describing the physics in silicon
-sensors and the Timepix3 readout ASIC, has been developed. The full
-test-beam setup with the Timepix3 telescope and the DUTs have been
-modeled. First, the tracking resolution of the telescope on the DUT of
-$\sim2\,\micron$ is extracted from the simulation. This value can be
-obtained only in simulation where the Monte Carlo true position is
-available and is in agreement with the expectations on the
-tracking. Then, the different assemblies with different thicknesses
-have been simulated. A good agreement in data and simulation is seen
-between the cluster-size distribution, the position resolution and the
-energy deposition spectrum. The charge sharing model as described in
-the digitiser of the simulations is validated with data. From the
+First, the spatial resolution achievable with thin sensors was
+investigated. The DUTs were tested in a Timepix3-based beam telescope
+during test-beam campaigns at the CERN SPS. For a better hit-position
+reconstruction, the energy deposited in the pixels of a cluster were
+reconstructed with the $\eta$-correction method, improving the spatial
+resolution. The results however show that the amount of charge sharing
+in such thin sensors is very low, limiting the achievable
+resolution.
+
+For a deeper understanding of the test-beam results, the telescope
+setup with the devices under test (DUT) has been implemented in the
+\textsc{Geant4}-based simulation framework AllPix. A digitiser,
+describing the charge transport in planar silicon sensors, has been
+developed. The tracking resolution of the telescope on the DUT of
+$\sim2\,\micron$ has been extracted from the simulation and validated
+by comparing the observed residuals on the telescope planes with the
+corresponding simulation results. The validated simulation framework
+has then been used to simulate the different assemblies with different
+thicknesses.
+
+
+
+Then, A good agreement in data and simulation is seen between the
+cluster-size distribution, the position resolution and the energy
+deposition spectrum. The charge sharing model as described in the
+digitiser of the simulations is validated with data. From the
 agreement between the energy deposition in data and simulation we can
 conclude that the test-pulse calibration is validated and provides
 enough precision for our purposes. The \textsc{Geant4} PAI physics

@@ -1002,29 +1002,29 @@ expectations for the operation of these devices: the floating guard
 ring has the highest breakdown voltage since the guard ring smoothens
 the potential drop between the physical edge and the first pixel.
 
-The active-edge assemblies with the floating guard ring produced by
-Advacam shows an early breakdown. This can be explained by the fact
-that the guard-ring might be in touch with the last pixel row in the
-Timepix3 which provides the ground potential and in reality this guard
-ring might be grounded instead of being floating. Also, this assembly
-shows more of charge loss at the edge than expected by
-simulations. 
+The active-edge assembly with the floating guard ring produced by
+Advacam shows an early breakdown (almost like a grounded guard
+ring). This can be explained by the fact that the guard-ring might be
+in touch with the last pixel row in the Timepix3 which provides the
+ground potential and in reality this guard ring might be grounded
+instead of being floating. Also, this assembly shows more of charge
+loss at the edge than expected by simulations.
 
 In general, a good agreement between data and TCAD simulations is
 observed. The few discrepancies observed can be explained by the
-following. The TCAD model is only implemented in 2D and the coupling
-to other pixels is not simulated. A 3D model could help more in
-modeling of the capacitive coupling between the guard ring and the
-different pixels. The doping profiles used by Advacam are not known
-for the TCAD simulations. This might lead to some differences between
-reality and simulations in the operation of the device. The depletion
-region in simulations can therefore be slightly different than the
+following. The doping profiles used by Advacam are not known for the
+TCAD simulations. This might lead to some differences between reality
+and simulations in the operation of the device. The depletion region
+in simulations can therefore be slightly different than the
 reality. This affects the collected charge at the edge. The energy
-loss fluctuations are also not considered in the simulations. Finally,
+loss fluctuations are also not considered in the simulations. Also,
 the Timepix3 chip has a very non-linear behaviour for low energy
 depositions. Therefore the calibration also has an impact on the
 agreement between data and simulations especially for low-energy
-depositions.
+depositions. Finally, the TCAD model is only implemented in 2D and the
+coupling to other pixels is not simulated. A 3D model could help with
+a more precise modeling of the capacitive coupling between the guard
+ring and the neighbouring pixels.
 
 
 
