@@ -70,77 +70,65 @@ provides enough precision for tracking purposes.
 
 For the CLIC vertex detector, a hit resolution of $\sim3\,\micron$ is
 wished to be achieved with pixels of $25\,\micron$ pitch and a
-thickness of $50\,\micron$. Since was not available for such a
+thickness of $50\,\micron$. Since data was not available for such a
 configuration, the simulations were extrapolated to small pixels. The
 results show that achieving high resolution with such thin sensors is
 very challenging. New detector concepts with enhanced charge sharing
-or even smaller pixel pitch will therefore be required. 
+or even smaller pixel pitch will therefore be required.
 
 
 Finally, the efficiency of active-edge sensors was studied. Assemblies
 with different edge widths and guard ring configurations were
-investigated in test-beam. A 2D TCAD simulation of the edge is as well
-implemented which allows for a better understanding of the operation
-of such devices.
+investigated in test-beam. A two-dimensional TCAD simulation of the
+edge was implemented which allowed for a better understanding of the
+fabrication process and the operation of such devices.
 
-In simulations, as expected, the floating guard ring seems to be the
-best solution. It shows a higher breakdown voltage and a small loss of
-energy deposition in the guard ring and therefore a high efficiency up
-to the trench of the sensor. The grounded guard ring is however not
-recommended for thin sensors of $50\,\micron$ since the guard ring
-collects most of the charge deposition at the edge and the edge is
-inefficient in this case. But for sensors with higher thicknesses of
-$100\,\micron$ and $150\,\micron$, the grounded guard ring is a
-suitable solution due to the high energy deposition in such sensors.
+At the nominal operating conditions, none of the assemblies were
+operated beyond the breakdown voltage. Most of the assemblies were
+found to be efficient up the physical edge of the sensor. For thin
+sensors of $50\,\micron$, the configurations without guard ring or
+with floating guard ring were the most suitable designs. A grounded
+guard ring was disfavoured due to the loss of efficiency close to the
+edge for thin sensors. However, for thicker sensors of $100\,\micron$
+and $150\,\micron$, the grounded guard ring was showing high
+efficiencies up to the sensor trench due to the thicker silicon bulk.
 
-In data, the assembly without guard ring has the most efficient edge
-among all the assemblies but the breakdown happens at low bias
-voltages. The floating guard ring shows an early breakdown (almost
-like a grounded guard ring). The edge remains efficient up to the
-trench but the signal drops more than what was expected by the
-simulations. The grounded guard ring is not efficient for
-$50\,\micron$ thick sensors but they become fully efficient for
-thicker sensors of $100\,\micron$ and $150\,\micron$.
+The two-dimensional TCAD simulations have shown a good description of
+the trends and were in agreement with data. The remaining
+discrepancies in terms of breakdown behaviour and the charge collected
+at the edge between simulations and data are attributed to the
+simplifications due to the two-dimensional simulations.
 
-In general a good agreement was seen between data and simulation for
-the different guard ring solutions. The implemented 2D simulation is a
-powerful tool to understand the behaviour of the edge in such
-technology. However few discrepancies in terms of breakdown behaviour
-and the charge collected at the edge between simulations and data are
-observed. During the test-beam, we only had one assembly per
-configuration at our disposal. More assemblies are needed to be
-tested. But we still can conclude that the floating guard ring is the
-most suitable solution for $50\,\micron$ thick sensors.
 
-\section{Outlook}
+% \section{Outlook}
 
-Miniaturisation of pixels to $25\,\micron$ pitch is necessary to
-achieve a high spatial resolution of $3\,\micron$ as required by the
-CLIC vertex detector. But thin planar sensors of $50\,\micron$, do not
-provide enough information through charge sharing in order to reach
-the required resolution. Also, bump-bonding of sensors to readout
-ASICs becomes more complicated for such small pixel sizes. Other
-sensors technologies, such as the High-Voltage (HV) CMOS
-process~\cite{Tehrani:2016ogb}, are under investigation for CLIC,
-which can be glued to the readout ASICs (instead of bump-bonding), and
-provide some information through charge sharing.
+% Miniaturisation of pixels to $25\,\micron$ pitch is necessary to
+% achieve a high spatial resolution of $3\,\micron$ as required by the
+% CLIC vertex detector. But thin planar sensors of $50\,\micron$, do not
+% provide enough information through charge sharing in order to reach
+% the required resolution. Also, bump-bonding of sensors to readout
+% ASICs becomes more complicated for such small pixel sizes. Other
+% sensors technologies, such as the High-Voltage (HV) CMOS
+% process~\cite{Tehrani:2016ogb}, are under investigation for CLIC,
+% which can be glued to the readout ASICs (instead of bump-bonding), and
+% provide some information through charge sharing.
 
-Up to now, the full detector simulations for CLIC were done with a
-$3\,\micron$ hit resolution for the vertex detector. The extrapolation
-done in this thesis for $25\,\micron$ pitch and $50\,\micron$ thick
-planar sensors can be taken as input for the digitisers in full
-simulations. The effect of a worse resolution on flavour-tagging can
-be studied and this might change the requirements on the spatial
-resolutions of the CLIC vertex detector.
+% Up to now, the full detector simulations for CLIC were done with a
+% $3\,\micron$ hit resolution for the vertex detector. The extrapolation
+% done in this thesis for $25\,\micron$ pitch and $50\,\micron$ thick
+% planar sensors can be taken as input for the digitisers in full
+% simulations. The effect of a worse resolution on flavour-tagging can
+% be studied and this might change the requirements on the spatial
+% resolutions of the CLIC vertex detector.
 
-The two-dimensional TCAD simulation of active-edge sensors gives
-promising results and fulfills the expectations. The floating guard
-ring appears to be the most suitable solution, as it shows a high
-detection efficiency at the edge and an acceptable breakdown
-behaviour. In the future, a three-dimensional simulation can provide
-more precision on the capacitive coupling between the guard ring and
-the pixels. In data, new assemblies are needed to be tested in order
-to have more statistics on the results.
+% The two-dimensional TCAD simulation of active-edge sensors gives
+% promising results and fulfills the expectations. The floating guard
+% ring appears to be the most suitable solution, as it shows a high
+% detection efficiency at the edge and an acceptable breakdown
+% behaviour. In the future, a three-dimensional simulation can provide
+% more precision on the capacitive coupling between the guard ring and
+% the pixels. In data, new assemblies are needed to be tested in order
+% to have more statistics on the results.
 
 
 %%%-------------------------\\

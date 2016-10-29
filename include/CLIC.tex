@@ -56,7 +56,7 @@ Today, the Standard Model is the best theory describing the subatomic
 world. However, it does not answer questions like the nature of dark
 matter. This theory also predicts the existence of the Higgs boson
 which gives the mass to all particles. It was experimentally observed
-in 2012 by the LHC experiments.
+in 2012 by ATLAS and CMS.
 
 The weak and the electromagnetic forces are closely related to each
 other and can be unified as the \begin{it}electroweak\end{it} force
@@ -72,8 +72,16 @@ Higgs field.
 The Higgs particle can be produced in a particle collider by
 collisions between highly energetic particles. Heavy particles, like
 the Higgs boson, are occasionally produced and then detected by a
-particle detector. The Standard Model predicts different mechanisms to
-produce the Higgs boson and the probability to produce it is very
+particle detector. The most important parameters of a particle
+collider are its center-of-mass energy, determining the types of
+particles that can be studied or discovered, and its instantaneous
+luminosity, determining the event rates. For a given process, the
+cross section is a measure of quantum mechanical probability for
+interaction and it depends on the fundamental physics. Therefore, the
+observed number of events for a given process depends on the
+integrated luminosity over the operation time of the collider and the
+cross section of the process. The Standard Model predicts different
+mechanisms to produce the Higgs boson and the cross section is very
 small. For example, in LHC only 1 Higgs boson is produced per 10
 billion collisions.
 
@@ -136,8 +144,7 @@ mechanisms to produce the Higgs boson at CLIC.
     %   width=\textwidth]{figures/CLIC/clicCDR.pdf}};
 
     \node[anchor=south west,inner sep=0] (image) at
-    (0,0){\includegraphics[trim=50mm 210mm 50mm 40mm, clip,
-      width=\textwidth]{figures/CLIC/HiggsProductionMechanism.pdf}};
+    (0,0){\includegraphics[width=\textwidth]{figures/CLIC/HiggsProductionMechanism.pdf}};
     
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
       
@@ -212,12 +219,12 @@ be as high as possible. The accelerating gradient is chosen to be
 100~MV/m. This leads to the use of copper cavities at room temperature
 instead of superconducting cavities since the latter have an
 intrinsically limited maximum field. The copper cavities are fed with
-very high radio frequency (RF) power at a frequency of
+radio frequency (RF) power at a very high frequency of
 $12\,\gigahertz$ to generate the high accelerating field. This leads
 to a total RF peak power of 9.2~TW for both linacs. Since maintaining
 such high power levels is not possible for very long, the duration of
-the bunch train is limited to 156~ns long with a repetition frequency
-of 50~Hz.
+the bunch train is limited to 156~ns with a repetition frequency of
+50~Hz.
 
 
 Traditionally, klystrons are used in accelerators to provide the RF
@@ -231,8 +238,8 @@ drive beam has a low energy of $2.4\,\gev$ and a high current of
 beam which has a lower current and higher energy. Power Extraction and
 Transfer Structures (PETS) are special RF devices which extract the
 power of the drive beam by decelerating the beam. The extracted energy
-is then provided to the main beam. The average length of an
-accelerating structure is 878~m long and accelerates the main beam by
+is then provided to the main beam. CLIC is divided into sectors with
+an average length of 878~m and accelerates the main beam by
 $\approx62\,\gev$.
 
 
@@ -240,9 +247,9 @@ $\approx62\,\gev$.
 for the $3\,\tev$ CLIC and $13\,\tev$ LHC. An instantaneous luminosity
 $\mathcal{L}$ of a few $10^{34}$~\inversecmsquaredsec insures a
 sufficient amount of data collected in a reasonable amount of
-time. The beam sizes at the interaction point have to be extremely
-small in order to achieve the desired luminosity. The RF pulse
-duration limits the number of bunches and the bunch-crossing
+time. The beam sizes at the interaction point of CLIC have to be
+extremely small in order to achieve the desired luminosity. The RF
+pulse duration limits the number of bunches and the bunch-crossing
 separation. CLIC and LHC have similar luminosity despite the
 differences in beam parameters.
 
@@ -282,7 +289,7 @@ bunch crossing) and $\gamma\gamma\rightarrow$hadrons events ($\sim54$
 particles per bunch crossing) are the dominant backgrounds.
 
 The electron-positron pairs produced at low polar angles have very
-small transverse momenta. The occupancies in the innermost layers of
+small transverse momentum. The occupancies in the innermost layers of
 the detector can be reduced to an acceptable level by optimising the
 inner and forward detector regions. The beam-pipe has to be placed
 outside of the high-rate region. The inner detectors have to be
@@ -305,16 +312,14 @@ be small compared to high-energy hadron-colliders.
 \section{The CLIC detector}
 \label{sec:CLICdetector}
 
-To cover the CLIC physics potential, a detector concept using
-cutting-edge technology is under development. The physics goals set
-challenging requirements on the design of the detector. Simulation
-tools are crucial for the design, development as well as the
-optimisation of the detector model.
+To cover the CLIC physics potential, a detector concept is under
+development. The physics goals set challenging requirements on the
+design of the detector. Simulation tools are crucial for the design,
+development as well as the optimisation of the detector model.
 
 The experimental conditions due to the beam-induced background (see
 \cref{sec:beamInducedBackgrounds}), set the most demanding
-requirements at the highest collision energy. They are the major
-design constraints for the vertex detector. Therefore, the detector
+requirements at the highest collision energy. Therefore, the detector
 model is mainly optimised for the $3\,\tev$ CLIC.
 
 \cref{fig:CLIC_detector_concept} shows the CLIC detector model as
@@ -324,13 +329,13 @@ sub detectors. The vertex detector is the closest to the IP and
 consists of pixelated silicon detectors. It is followed by the main
 tracker which is as also a silicon-based detector. After the tracking
 systems, fine grained calorimeters are used: the silicon-tungsten
-electromagnetic calorimeter (ECAL) and the hadronic calorimeter
+electromagnetic calorimeter (ECAL) and the steel hadronic calorimeter
 (HCAL). The superconducting coil surrounds the calorimeters to provide
-a magnetic field of 4~T to deflect the trajectory of charged particles
-and the tracking detectors use the radius of curvature to measure the
-momenta of charged particles. In the very forward region the
-luminosity calorimeter (LumiCal) is used to reconstruct precisely the
-energy and angle of electrons and positrons obtained from Bhabha
+a magnetic field of 4~T to deflect the trajectory of charged
+particles. The tracking detectors use the radius of curvature to
+measure the momentum of charged particles. In the very forward region,
+the luminosity calorimeter (LumiCal) is used to reconstruct precisely
+the energy and angle of electrons and positrons obtained from Bhabha
 events and employed for the luminosity
 measurements~\cite{Abramowicz:2010bg}. The beam calorimeter (BeamCal)
 is used for electron tagging by the identification of high energy
@@ -389,15 +394,12 @@ muons.
 \subsection{Requirements for the vertex-detector}
 \label{sec:VXD_requirements}
 
-A broad detector R\&D program at CLIC is addressing the challenging
-experimental conditions and the demands for precision physics. This
-thesis focuses on the vertex-detector R\&D.
-
 The main goal of the CLIC vertex detector is the efficient tagging of
 heavy quarks through the precise measurement of the displaced
-vertices. To achieve this goal, Monte Carlo simulations have shown
-that a high-momentum term in the transverse impact-parameter
-resolution of $a\approx5\,\micron$ and a multiple-scattering term of
+vertices. To achieve this goal, Monte Carlo
+simulations~\cite{Linssen:1425915} have shown that a high-momentum
+term in the transverse impact-parameter resolution of
+$a\approx5\,\micron$ and a multiple-scattering term of
 $b\approx15\,\micron$ are needed using the canonical parametrisation:
 
 \begin{equation}
@@ -409,7 +411,7 @@ where $p$ is the momentum of the particle and $\theta$ is the polar
 angle with respect to the beam axis.
 
 To meet these requirements, a multi-layer barrel and endcap pixel
-detectors with an inner radius of $\approx$30~mm with a geometrical
+detector with an inner radius of $\approx$30~mm with a geometrical
 coverage extending down to low polar angles
 ($\theta_{min}\approx8^{\circ}$) is needed. For the beam-pipe and for
 each of the detection layers a material budget of $\approx0.2\%$ of a
@@ -425,10 +427,11 @@ precise time stamping, hybrid solutions are preferred since they
 provide more advanced timing measurement technologies.
 
 In comparison to the current pixel detectors in the LHC experiments,
-the exposure to radiation of the CLIC vertex detector is moderate. For
-the inner-detector layers a total $1\,\mev$ neutron-equivalent fluence
-of less than $10^{11}$~neq/cm\textsuperscript{2}/year and a total
-ionising dose of less than 1~kGy are expected~\cite{Dannheim:1443516}.
+the expected radiation level in the region of the CLIC vertex detector
+is moderate. For the inner-detector layers a total $1\,\mev$
+neutron-equivalent fluence of less than
+$10^{11}$~neq/cm\textsuperscript{2}/year and a total ionising dose of
+less than 1~kGy are expected~\cite{Dannheim:1443516}.
 
 The aim of the vertex detector R\&D is to achieve the required
 single-point resolution with pixels of size
@@ -446,9 +449,10 @@ during the 20~ms gaps between bunch trains) are foreseen.
 
 The precision physics measurements require excellent flavour-tagging
 performance of the CLIC vertex detector. Different vertex detector
-geometries have been studied for CLIC. This section presents the
-impact of the geometry on the flavour-tagging performance in
-simulations.
+geometries have been studied for
+CLIC~\cite{AlipourTehrani:1742993,Tehrani:2015tla}. This section
+presents the impact of the geometry on the flavour-tagging performance
+in simulations.
 
 A first geometry designed for the CLIC vertex detector is shown in
 \cref{fig:disksGeom}. It contains 5 layers in the barrel and 4 disks

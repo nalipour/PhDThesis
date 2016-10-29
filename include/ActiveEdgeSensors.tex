@@ -139,19 +139,19 @@ active-edge sensor with and without guard ring.
     considered in the analysis is indicated with dashed lines. The
     electric field distribution obtained from a TCAD simulation with a
     bias voltage of 15~V is also illustrated. (a) does not contain any
-    guard ring (GR) and (b) contains a guard ring in the edge which
-    consists of an n-implant with a metallic contact on top of it.}
+    guard ring (GR) and (b) contains a guard ring at the edge.}
   \label{fig:activeedge}
 \end{figure}
 
 %% --------------------------------------------- %%
 \newpage
-\subsection{Process flow for sensor production by Advacam}
+\subsection{Process flow for sensor production by the manufacturer}
 \label{sec:AdvacamProcessFlow}
 
-The process flow used by Advacam to produce active-edge n-in-p sensors
-is schematically illustrated in \cref{fig:AdvacamProcessFlow} and
-described as follows~\cite{AdvacamProcessFlow}.
+The process flow used by the manufacturer to produce active-edge
+n-in-p sensors is schematically illustrated in
+\cref{fig:AdvacamProcessFlow} and described as
+follows~\cite{AdvacamProcessFlow}.
 
 \begin{enumerate}[label=(\alph*)]
 \item First, the backside implantation is done by doping the detector
@@ -221,8 +221,8 @@ described as follows~\cite{AdvacamProcessFlow}.
   \end{subfigure}
 
   \caption{Schematic illustration of the process flow for the
-    fabrication of planar n-in-p active edge sensors by
-    Advacam~\cite{AdvacamRef}.}
+    fabrication of planar n-in-p active edge sensors by the
+    manufacturer~\cite{AdvacamRef}.}
   \label{fig:AdvacamProcessFlow}
 \end{figure}
 
@@ -232,9 +232,10 @@ described as follows~\cite{AdvacamProcessFlow}.
 \subsection{Layout parameters of produced assemblies}
 \label{sec:AEgeometry}
 
-The produced assemblies by Advacam and tested in test beams are listed
-in \cref{tab:ActiveEdgeAssemblies}. The edge distance is defined by the
-distance between the last pixel implant and the physical sensor
+
+\cref{tab:ActiveEdgeAssemblies} shows the assemblies tested in
+test-beam campaigns at the CERN SPS. The edge distance is defined by
+the distance between the last pixel implant and the physical sensor
 edge. The layouts of the assemblies are shown in
 \cref{fig:Layout_guard_ring} and the colors defining the different
 sensor layers are described in
@@ -269,7 +270,7 @@ implementation of the sensors in TCAD simulations.
 
       \end{scope}
     \end{tikzpicture}
-    \caption{20-NGR}
+    \caption{20-NGR-50}
     \label{fig:Layout20_NGR}
   \end{subfigure}~
   \begin{subfigure}[t]{0.5\textwidth}
@@ -278,7 +279,7 @@ implementation of the sensors in TCAD simulations.
       \node[anchor=south west,inner sep=0] at
       (0,0){\includegraphics[width=0.8\textwidth]{figures/ActiveEdge/geometry_23FGR.png}};
     \end{tikzpicture}
-    \caption{23-FGR}
+    \caption{23-FGR-50}
     \label{fig:Layout20_FGR}
   \end{subfigure}
   \begin{subfigure}[t]{0.5\textwidth}
@@ -287,7 +288,7 @@ implementation of the sensors in TCAD simulations.
       \node[anchor=south west,inner sep=0] at
       (0,0){\includegraphics[width=0.55\textwidth]{figures/ActiveEdge/geometry_28GNDGR.png}};
     \end{tikzpicture}
-    \caption{28-GNDGR}
+    \caption{28-GNDGR-50}
     \label{fig:Layout20_GNDGR}
   \end{subfigure}~
   \begin{subfigure}[t]{0.5\textwidth}
@@ -296,7 +297,7 @@ implementation of the sensors in TCAD simulations.
       \node[anchor=south west,inner sep=0] at
       (0,0){\includegraphics[width=0.55\textwidth]{{figures/ActiveEdge/geometry_55GNDGR.png}}};
     \end{tikzpicture}
-    \caption{55-GNDGR, 55-GNDGR-100, 55-GNDGR-150}
+    \caption{55-GNDGR-50, 55-GNDGR-100, 55-GNDGR-150}
     \label{fig:Layout50_GNDGR}
   \end{subfigure}~
   \caption{Sensor layouts for different guard-ring solutions for the
@@ -408,13 +409,12 @@ The fabrication process of the sensors is simulated as follows:
   from each other. Thus the silicon is implanted with borons at a
   concentration of $1\times10^{12}\,\inversecmsquared$. The
   implantation is done with an energy of $180\,\kev$.
-\item The nitride is then etched at the positions of the implants for
-  the pixels and the guard ring if the assembly contains one. First a
-  mask is put on the positions where the nitride is going to
-  stay. Then the etching is done at the implantation
-  positions. Phosphorus (n-type material) is implanted with a
-  concentration of $1\times10^{15}\,\inversecmsquared$ with an energy of
-  $120\,\kev$. 
+\item The nitride is etched at the positions of the implants for the
+  pixels and the guard ring if the assembly contains one. First a mask
+  is put on the positions where the nitride is going to stay. Then the
+  etching is done at the implantation positions. Phosphorus (n-type
+  material) is implanted with a concentration of
+  $1\times10^{15}\,\inversecmsquared$ with an energy of $120\,\kev$.
 
   % Masks limit the etching and the deposition to a certain
   % window and provide the possibility to imitate the lithographic
@@ -423,20 +423,20 @@ The fabrication process of the sensors is simulated as follows:
   the edge distance of the assembly. In this process, first the
   nitride layer, then the oxide and finally the silicon layers are
   etched.
-\item The sensor is then flipped and a layer of oxide is deposited on
-  the backside with a thickness of $0.04\,\micron$. Borons with a
-  concentration of $1\times10^{15}\,\inversecmsquared$ and an energy of
-  $60\,\kev$ are implanted. Then the oxide is etched from the backside
-  and the sensor is flipped again to the initial position.
-\item The oxide is then etched at the contact positions.
-\item The meshing of the edge is then refined adaptively depending
-  on the concentration of the ions and for a thickness of $1\,\micron$.
+\item The sensor is flipped and a layer of oxide is deposited on the
+  backside with a thickness of $0.04\,\micron$. Borons with a
+  concentration of $1\times10^{15}\,\inversecmsquared$ and an energy
+  of $60\,\kev$ are implanted. Then the oxide is etched from the
+  backside and the sensor is flipped again to the initial position.
+\item The oxide is etched at the contact positions.
+\item The meshing of the edge is refined adaptively depending on the
+  concentration of the ions and for a thickness of $1\,\micron$.
 \item A photoresist is deposited on the top of the sensor with a
   thickness of $2\,\micron$.
 \item Borons are implanted to the edge with a concentration of
   $1\times10^{15}\,\inversecmsquared$, an energy of $60\,\kev$ and a
   tilt of $15\degrees$.
-\item The photoresist is then removed.
+\item The photoresist is removed.
 \item To activate the dopants, the sensor is annealed at a constant
   temperature of $940\degrees$C during 240 minutes.
 \item The pixels and guard ring metal layer is deposited using an
@@ -452,7 +452,7 @@ in Figure~\ref{fig:TCAD_dopingConcentration}.
 
 %% --------------------------------------------- %%
 \newpage
-\section{Electrical measurements in laboratory and simulations}
+\section{Electrical measurements and simulations}
 
 In silicon, the breakdown occurs for electric fields exceeding
 $\sim3\times10^5$~\voltpercm~\cite{Sze:100213}. In active-edge
@@ -473,11 +473,17 @@ $50\,\micron$ thick assemblies with the floating guard ring
 lead to a similar breakdown. However, the floating guard ring is
 expected to smoothen the potential transition between the edge of the
 sensor and the first pixel and result in a later breakdown
-voltage. This could be explained by the fact that Timepix3 provides an
-extra row of pixels giving the possibility to connect the guard ring
-to the ground potential. The floating guard ring may touch this extra
-row and this makes a floating guard ring similar to a grounded one in
-terms of leakage current. The thicker sensors show a later breakdown.
+voltage. This can be explained by the fact that the Timepix3 chip
+provides an extra row of pixels giving the possibility to connect the
+guard ring to the ground potential. The edge of 23-FGR-50 might get
+too close to the extra row of pixels leading to a high potential
+gradient in that region. The thicker sensors show a later breakdown.
+
+% This could be explained by the fact that Timepix3 provides an
+% extra row of pixels giving the possibility to connect the guard ring
+% to the ground potential. The floating guard ring may touch this extra
+% row and this makes a floating guard ring similar to a grounded one in
+% terms of leakage current. 
 
 \begin{figure}[htbp]
   \centering
@@ -525,9 +531,9 @@ shows a higher breakdown voltage of 240~V.
 
 In TCAD simulations, the electric field distribution for the sensors
 operated at nominal conditions are shown in
-\cref{fig:TCAD_Efield2D}. In any case, for the nominal conditions (see
-\cref{tab:nominalBiasThreshold}), the breakdown electric field is
-never reached (this behaviour was also seen in
+\cref{fig:TCAD_Efield2D}. In all cases, for the nominal conditions
+(see \cref{tab:nominalBiasThreshold}), the breakdown electric field is
+not reached in agreement with the simulated currents (see
 \cref{fig:IVmeasurements_TCAD}).
 
 \begin{figure}[htbp]
@@ -583,7 +589,7 @@ between the edge of the sensor and the first pixel.
     \caption{}
   \end{subfigure}
   \caption{(a) The electric field and (b) the electrostatic potential
-    for nominal bias voltage at a distance of $0.2\,\micron$ from the
+    for nominal bias voltage at a distance of $0.2\,\micron$ below the
     sensor surface. Position $0\,\micron$ corresponds to the position
     of the first pixel.}
   \label{fig:TCAD_Efield_EPotential_sensorSurface}
