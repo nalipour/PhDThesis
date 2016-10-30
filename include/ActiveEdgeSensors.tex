@@ -600,7 +600,9 @@ between the edge of the sensor and the first pixel.
 \section{Edge performance in data and simulations}
 The active-edge assemblies are tested at the CERN SPS with $120\,\gev$
 pions (see \cref{sec:CERN_SPS}), making use of the CLICdp Timepix3
-beam reference telescope as described in \cref{ch:Telescope}. The edge
+beam reference telescope as described in \cref{ch:Telescope}. The
+collected charge at the edge is also simulated (as described in
+\cref{sec:TCAD_Simu_ActiveEdge}) and compared to the data. The edge
 performance is investigated in terms of the efficiency of detecting a
 track and the amount of collected charge as a function of the track
 position at the edge.
@@ -656,12 +658,8 @@ signal.
 \subsection{Conventions used for the presentation of the results}
 \label{sec:activeEdge_convention}
 
-The performance of the edge is studied in data in terms of the
-efficiency and the collected charge at the edge as a function of the
-track position. The collected charge at the edge is also simulated (as
-described in \cref{sec:TCAD_Simu_ActiveEdge}) and compared to the
-data. The convention as illustrated in \cref{fig:Layout20_NGR} is used
-to show the performance of the different assemblies in
+The convention as illustrated in \cref{fig:Layout20_NGR} is used to
+show the performance of the different assemblies in
 \cref{sec:EdgePerformance_50,sec:EdgePerformance_100_150}. The border
 of the last pixel (at 0~mm) is indicated with a dashed line and the
 physical sensor edge is shown as a continuous line. The detection
@@ -674,15 +672,15 @@ coordinates between 0~mm and 0.055~mm) and the odd rows (in the
 coordinates between 0.055~mm and 0.11~mm). The z-axis shows the
 efficiency. To increase the number of tracks close to the sensor edge,
 the beam was focused on only one of the edges during the data
-taking. An example of the tracks impact points for the assembly
+taking. An example of the track impact points for the assembly
 20-NGR-50 is shown in \cref{fig:hitMapW19G7}.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.7\textwidth]{figures/ActiveEdge/hitMap_W19_G7.pdf}
-  \caption{The tracks impact points on the assembly 20-NGR-50: the
-    beam is focused on the edge of the assembly in order to increase
-    the statistics for the edge performance studies.}
+  \caption{The track impact points on the assembly 20-NGR-50: the beam
+    is focused on the edge of the assembly in order to increase the
+    statistics for the edge performance studies.}
   \label{fig:hitMapW19G7}
 \end{figure}
 
@@ -691,28 +689,30 @@ The collected charge as a function of the track position is compared
 in data and TCAD simulations. In data, the deposited charge is plotted
 versus the track position given by the Timepix3 telescope (with a
 resolution of $\sim2\,\micron$). The deposited charge is obtained by
-applying the test-pulse calibrations to the TOTs measured in data (see
-\cref{sec:EnergyCalibration}). The most-probable-value (MPV) of the
-charge deposition in data is compared to the TCAD simulations.
+applying the test-pulse calibrations to the TOT values measured in
+data (see \cref{sec:EnergyCalibration}). The most-probable-value (MPV)
+of the charge deposition in data is compared to the TCAD simulations.
 
-To calculate the MPV of the energy deposition in data, only tracks
-within the central $40\%$ of the pixel cell area are considered for
-all assemblies except for 28-GNDGR-50 where only the central $\pm7\%$
-of the pixel is considered. This provides a better compatibility with
-the 2D simulations. To calculate the MPV in data, the deposited charge
-is projected as a one-dimensional histogram at some track positions
-and fitted with a Landau function convoluted with a Gaussian. The most
-probable value (MPV) of the Landau fit is then compared to the
-collected charge obtained in the TCAD simulations. In the TCAD
-simulations, a fixed amount of charge is deposited and, unlike the
-data, the fluctuations of the deposited charge are not considered. 
+To obtain the MPV of the energy deposition in data, only tracks within
+the central $40\%$ of the pixel cell area are considered for all
+assemblies except for 28-GNDGR-50 where only the central $7\%$ of the
+pixel is considered. This reduces the influence of the regions between
+the pixel implants in the row direction, which are not modeled in the
+2D simulation. In these regions a larger loss of charge to the guard
+ring is expected. To calculate the MPV in data, the distribution of
+the deposited charge for each position is fitted with a Landau
+function convoluted with a Gaussian. The most probable value (MPV) of
+the Landau fit is then compared to the collected charge obtained in
+the TCAD simulations. In the TCAD simulations, a fixed amount of
+charge is deposited and the fluctuations of the deposited charge are
+not considered.
 
 The tracking resolution of $\sim2\,\micron$ is applied to the hit
 position in TCAD simulations. This is done by convoluting a Gaussian
 function with a standard deviation of $2\,\micron$ with the simulated
 hit position. The border of the last pixel (at 0~mm) is indicated with
-a dashed line and the physical sensor edge is shown in continuous line
-with the convention as illustrated in \cref{fig:Layout20_NGR}.
+a dashed line and the physical sensor edge is shown as a continuous
+line with the convention as illustrated in \cref{fig:Layout20_NGR}.
 
 % This can explain the minor discrepancies on the
 % amount of the collected charge between simulation and data. 
@@ -766,8 +766,7 @@ shown in
 shows the charge collected at the edge as a function of the track
 position in data and TCAD simulations for 20-NGR-50 and 23-FGR-50. The
 charge is fully collected by the last pixel for 20-NGR-50. For
-23-FGR-50, a loss of the charge near the edge is observed (charge lost
-in the guard ring).
+23-FGR-50, a loss of the charge near the edge is observed.
 
 For 20-NGR-50, the TCAD simulation agrees well with the data
 observation as shown in \cref{fig:ChargeCollection20NGR}.
@@ -776,7 +775,9 @@ To simulate a floating guard ring for 23-FGR-50 in TCAD, the current
 on the electrode of the guard ring is set to zero. The charge drop in
 the edge is explained by the capacitive coupling between the guard
 ring and the surrounding implants. Data shows a higher charge drop in
-the edge than the TCAD simulations.
+the edge than the TCAD simulations. This is expected, as the 2D
+simulation does not include the capacitive coupling over the full
+length of the guard ring.
 
 % To have a more accurate definition
 % of the capacitive coupling in TCAD simulations, for this guard ring
@@ -808,15 +809,16 @@ The grounded guard ring degrades significantly the detection
 efficiency at the edge for thin sensors of $50\,\micron$. For
 28-GNDGR-50, the efficiency drops in-between pixels as shown in
 \cref{fig:EdgeEfficiency_28GNDGR50}. A large part of the charge is
-collected by the guard ring. For 55-GNDGR-50, as shown in
+collected by the guard ring. For the assembly with larger edge
+distance (55-GNDGR-50), as shown in
 \cref{fig:EdgeEfficiency_55GNDGR50}, the edge is not efficient
-anymore. 
+anymore.
 
 
 For 28-GNDGR-50 and 55-GNDGR-50, both data and TCAD simulations show a
 drop in the collected charge at the edge as shown in
-\cref{fig:ChargeCollectionNGRFGR_50}. Most of the charge created in the
-edge is collected by the guard ring.
+\cref{fig:ChargeCollectionNGRFGR_50}. Most of the charge created in
+the edge is collected by the guard ring.
 
 \begin{figure}[htbp]
   \begin{subfigure}[b]{0.45\textwidth}
@@ -838,20 +840,19 @@ edge is collected by the guard ring.
 \end{figure}
 
 
-Streamlines define a family of curves instantaneously tangent to the
-velocity vector of the charge carriers
+Electric field streamlines define a family of curves tangent to the
+velocity vector of the charge carrier
 flow. \cref{fig:TCAD_streamlines} compares the distribution of the
 streamlines in the edge for different configurations of guard rings in
 TCAD simulations. The generated charge follows the streamlines and
 gets collected by the implants. In the case where there is no guard
-ring, all the streamlines reach the first pixel. As confirmed by the
-data, all the charge in the edge is collected without any loss. In the
-case of a floating guard ring, few streamlines reach the guard
-ring. This means that some charge is lost in the guard ring instead of
-being collected by the first pixel. Finally, in the case of a grounded
-guard ring more streamlines end up in the guard ring. This explains
-also the high drop in the collected charge and efficiency in the edge
-region.
+ring, all streamlines reach the first pixel. As confirmed by the data,
+all the charge in the edge is collected without loss. In the case of a
+floating guard ring, some streamlines reach the guard ring. This means
+that some charge is lost in the guard ring instead of being collected
+by the first pixel. Finally, in the case of a grounded guard ring,
+more streamlines end up in the guard ring. This explains also the
+larger drop in the collected charge and efficiency in the edge region.
 
 \begin{figure}[htbp]
   \centering
@@ -874,16 +875,13 @@ region.
   \caption{The electric field and the streamlines distributions for
     different configurations of guard ring for $50\,\micron$ thick
     sensors. The generated charges follow the streamlines. The
-    streamlines which end up in the guard ring correspond to the
-    charges that are not collected by the first pixel and thus
-    lost. The depletion region is indicated by solid white lines.}
+    depletion region is indicated by solid white lines.}
   \label{fig:TCAD_streamlines}
 \end{figure}
 
 For thin sensors, a floating guard ring appears to be the most
 suitable solution, as it shows a high detection efficiency at the edge
-and an acceptable breakdown behaviour. Tests with additional
-assemblies will be needed to confirm this observation.
+and an acceptable breakdown behaviour.
 
 %% --------------------------------------------- %%
 \newpage
@@ -891,15 +889,14 @@ assemblies will be needed to confirm this observation.
   sensors}
 \label{sec:EdgePerformance_100_150}
 
-For the thicker sensors of $100\,\micron$ and $150\,\micron$, the
-grounded guard ring is a suitable solution. The assemblies
-55-GNDGR-100 and 55-GNDGR-150 are efficient up to the edge as shown in
-\cref{fig:EdgeEfficiency_100_150micron}. A slight loss of the charge
-near the edge in data and simulations can be observed for these
-assemblies as shown in \cref{fig:ChargeCollectionThickGNDGR}. However,
-due to the large amount of the ionisation charge, the signal does not
-drop below the detection threshold and therefore the assembly remains
-efficient up to the physical edge of the sensors.
+The assemblies 55-GNDGR-100 and 55-GNDGR-150 are efficient up to the
+edge as shown in \cref{fig:EdgeEfficiency_100_150micron}. A slight
+loss of the charge near the edge in data and simulations can be
+observed for these assemblies as shown in
+\cref{fig:ChargeCollectionThickGNDGR}. However, due to the large
+amount of the ionisation charge, the signal does not drop below the
+detection threshold and therefore the assembly remains efficient up to
+the physical edge of the sensors.
 
 
 \begin{figure}[htbp]
@@ -944,7 +941,8 @@ $100\,\micron$ and $150\,\micron$ thick sensors. For thicker devices,
 some streamlines are reaching the guard ring but most of the charge is
 collected by the pixels due to the thicker silicon bulk. The devices
 remain still efficient up to $100\%$ even very close to the physical
-edge.
+edge. Therefore, for the thicker sensors of $100\,\micron$ and
+$150\,\micron$, the grounded guard ring is a suitable solution.
 
 
 \begin{figure}[htbp]
@@ -960,10 +958,8 @@ edge.
   \caption{The electric field and the streamlines distributions for
     different configurations of guard ring for $100\,\micron$ and
     $150\,\micron$ thick sensors. The generated charges follow the
-    streamlines. The streamlines which end up in the guard ring
-    correspond to the charges that do not get collected by the first
-    pixel and thus lost. The depletion region is indicated by solid
-    white lines.}
+    streamlines. The depletion region is indicated by solid white
+    lines.}
   \label{fig:TCAD_streamlines_100_150}
 \end{figure}
 
@@ -974,11 +970,10 @@ edge.
 \newpage
 \section{Summary}
 \label{sec:summary_activeEdge}
-This chapter gives an overview on the test-beam results and also TCAD
-simulations of the active-edge assemblies tested for
-CLIC. \cref{fig:EdgeEff_2D} summarises the edge efficiency as a
-function of the track position relative to the last pixel projected in
-one direction for the different assemblies.
+
+\cref{fig:EdgeEff_2D} summarises the edge efficiency as a function of
+the track position relative to the last pixel projected in one
+direction for the different assemblies.
 
 \begin{figure}[htbp]
   \centering
@@ -1003,36 +998,35 @@ efficient up to the physical edge.
 
 The TCAD simulation model developed in this thesis for active edge
 sensors is a powerful tool which allows to understand better the
-functionality of these sensors. The simulations exactly fulfill the
+functionality of these sensors. The simulations fulfill the
 expectations for the operation of these devices: the floating guard
 ring has the highest breakdown voltage since the guard ring smoothens
 the potential drop between the physical edge and the first pixel.
 
-The active-edge assembly with the floating guard ring produced by
-Advacam shows an early breakdown (almost like a grounded guard
-ring). This can be explained by the fact that the guard-ring might be
-in touch with the last pixel row in the Timepix3 which provides the
-ground potential and in reality this guard ring might be grounded
-instead of being floating. Also, this assembly shows more of charge
-loss at the edge than expected by simulations.
+The active-edge assembly with the floating guard ring shows an early
+breakdown (almost like a grounded guard ring). This can be explained
+by the fact that the guard-ring might be in touch with the last pixel
+row in the Timepix3 which provides the ground potential and in reality
+this guard ring might be grounded instead of being floating. Also,
+this assembly shows more of charge loss at the edge than expected by
+simulations.
 
 In general, a good agreement between data and TCAD simulations is
-observed. The few discrepancies observed can be explained by the
-following. The doping profiles used by Advacam are not known for the
-TCAD simulations. This might lead to some differences between reality
-and simulations in the operation of the device. The depletion region
-in simulations can therefore be slightly different than the
-reality. This affects the collected charge at the edge. The energy
-loss fluctuations are also not considered in the simulations. Also,
-the Timepix3 chip has a very non-linear behaviour for low energy
-depositions. Therefore the calibration also has an impact on the
-agreement between data and simulations especially for low-energy
-depositions. Finally, the TCAD model is only implemented in 2D and the
-coupling to other pixels is not simulated. A 3D model could help with
-a more precise modeling of the capacitive coupling between the guard
-ring and the neighbouring pixels.
-
-
+observed. The discrepancies observed can be explained by the effects
+not modeled in the simulations. The doping profiles used by the
+manufacturer are not known for the TCAD simulations. This might affect
+the electric field distribution inside the sensors. The depletion
+region in simulations can therefore be slightly different than in
+reality and therefore affecting the collected charge at the edge. The
+energy loss fluctuations are also not considered in the
+simulations. In addition, the Timepix3 chip has a non-linear behaviour
+for low energy depositions. Therefore the quality of the calibration
+also has an impact on the agreement between data and simulations
+especially for low-energy depositions. Finally, the TCAD model is only
+implemented in 2D and the coupling to other pixels and the sensor edge
+is not fully simulated. A 3D simulation could help with a more precise
+modeling of the capacitive coupling between the guard ring and the
+neighbouring pixels.
 
 
 
