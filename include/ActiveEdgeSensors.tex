@@ -462,22 +462,22 @@ between the edge and the last pixel can be very high. This could lead
 to a breakdown of the sensor.
 
 \cref{fig:IVmeasurements_real} shows the measured leakage current in
-the different assemblies as a function of the bias voltage at the room
-temperature of $22^{\circ}$~C. For the nominal operation (at -15~V for
-$50\,\micron$, -20~V for $100\,\micron$ and -30~V for $150\,\micron$
-thick sensors), none of the assemblies are operated beyond the
-breakdown voltage. The breakdown occurs earlier for the assembly
-without guard ring (20-NGR-50) compared to the other assemblies. The
-$50\,\micron$ thick assemblies with the floating guard ring
-(23-FGR-50) and the grounded guard ring (28-GNDGR-50 and 28-GNDGR-50)
-lead to a similar breakdown. However, the floating guard ring is
-expected to smoothen the potential transition between the edge of the
-sensor and the first pixel and result in a later breakdown
-voltage. This can be explained by the fact that the Timepix3 chip
-provides an extra row of pixels giving the possibility to connect the
-guard ring to the ground potential. The edge of 23-FGR-50 might get
-too close to the extra row of pixels leading to a high potential
-gradient in that region. The thicker sensors show a later breakdown.
+the different assemblies as a function of the bias voltage. For the
+nominal operation (at -15~V for $50\,\micron$, -20~V for
+$100\,\micron$ and -30~V for $150\,\micron$ thick sensors), none of
+the assemblies are operated beyond the breakdown voltage. The
+breakdown occurs earlier for the assembly without guard ring
+(20-NGR-50) compared to the other assemblies. The $50\,\micron$ thick
+assemblies with the floating guard ring (23-FGR-50) and the grounded
+guard ring (28-GNDGR-50 and 55-GNDGR-50) lead to a similar
+breakdown. However, the floating guard ring is expected to smoothen
+the potential transition between the edge of the sensor and the first
+pixel and result in a later breakdown voltage. This can be explained
+by the fact that the Timepix3 chip provides an extra row of pixels
+giving the possibility to connect the guard ring to the ground
+potential. The edge of 23-FGR-50 might get too close to the extra row
+of pixels leading to a high potential gradient in that region. The
+thicker sensors show a later breakdown.
 
 % This could be explained by the fact that Timepix3 provides an
 % extra row of pixels giving the possibility to connect the guard ring
@@ -488,45 +488,13 @@ gradient in that region. The thicker sensors show a later breakdown.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.6\textwidth]{figures/ActiveEdge/IVCurve_Andreas.pdf}
-  \caption{Measured leakage current at the room temperature of
-    $22^{\circ}$~C for active-edge assemblies listed in
-    \cref{tab:ActiveEdgeAssemblies}.}
+  \caption{Measured leakage current for active-edge assemblies listed
+    in \cref{tab:ActiveEdgeAssemblies}. For all assemblies, the
+    measurements were done at the room temperature of $22^{\circ}$~C.}
   \label{fig:IVmeasurements_real}
 \end{figure}
 
-\cref{fig:IVmeasurements_TCAD} shows the leakage current obtained from
-the TCAD simulations for the simulated pixel cell. In TCAD
-simulations, only the sensor is simulated and the effect of the
-readout chip and the bump bonding are not included. The readout chip
-can increase the temperature and increase the leakage current. 
 
-In simulations, the assemblies with grounded guard ring (including all
-sensor thicknesses) and without guard ring show a breakdown of the
-junction at around 150~V. In these sensors, the distance between the
-edge implant (with high voltage) and the ground implant (either the
-pixel or the guard ring) is similar which leads to a similar potential
-gradient and breakdown voltage. As expected, the floating guard ring
-shows a higher breakdown voltage of 240~V.
-
-%% The current calculated from the 2D simulation is scaled to obtain the
-%% current in the total matrix.
-
-\begin{figure}[htbp]
-  \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/ActiveEdge/IVCurve_TCAD_50_micron.pdf}
-    \caption{}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/ActiveEdge/IVCurve_TCAD_55_GNDGR.pdf}
-    \caption{}
-  \end{subfigure}
-  \caption{Leakage current in TCAD simulations for the pixel cell as a
-    function of bias voltage for (a) $50\,\micron$ thick sensors and
-    for (b) assemblies with a grounded guard ring (refer to
-    \cref{tab:ActiveEdgeAssemblies} for the details on the assemblies).}
-  \label{fig:IVmeasurements_TCAD}
-\end{figure}
 
 
 In TCAD simulations, the electric field distribution for the sensors
@@ -593,6 +561,41 @@ between the edge of the sensor and the first pixel.
     sensor surface. Position $0\,\micron$ corresponds to the position
     of the first pixel.}
   \label{fig:TCAD_Efield_EPotential_sensorSurface}
+\end{figure}
+
+
+\cref{fig:IVmeasurements_TCAD} shows the leakage current obtained from
+the TCAD simulations for the simulated pixel cell. In TCAD
+simulations, only the sensor is simulated and the effect of the
+readout chip and the bump bonding are not included. The readout chip
+can increase the temperature and increase the leakage current. 
+
+In simulations, the assemblies with grounded guard ring (including all
+sensor thicknesses) and without guard ring show a breakdown of the
+junction at around 150~V. In these sensors, the distance between the
+edge implant (with high voltage) and the ground implant (either the
+pixel or the guard ring) is similar which leads to a similar potential
+gradient and breakdown voltage. As expected, the floating guard ring
+shows a higher breakdown voltage of 240~V.
+
+%% The current calculated from the 2D simulation is scaled to obtain the
+%% current in the total matrix.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/IVCurve_TCAD_50_micron.pdf}
+    \caption{}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/ActiveEdge/IVCurve_TCAD_55_GNDGR.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Leakage current in TCAD simulations for the pixel cell as a
+    function of bias voltage for (a) $50\,\micron$ thick sensors and
+    for (b) assemblies with a grounded guard ring (refer to
+    \cref{tab:ActiveEdgeAssemblies} for the details on the assemblies).}
+  \label{fig:IVmeasurements_TCAD}
 \end{figure}
 
 %% --------------------------------------------- %%
@@ -664,16 +667,16 @@ show the performance of the different assemblies in
 of the last pixel (at 0~mm) is indicated with a dashed line and the
 physical sensor edge is shown as a continuous line. The detection
 efficiency is calculated by counting the number of tracks matched to
-hits on the DUT divided by the total number of tracks projected on the
-DUT. The efficiency within the pixels is then mapped into a grid of
-$2\times2$ pixels. The x-axis shows the track position relative to the
-last pixel. The y-axis combines the tracks for the even rows (in the
-coordinates between 0~mm and 0.055~mm) and the odd rows (in the
-coordinates between 0.055~mm and 0.11~mm). The z-axis shows the
-efficiency. To increase the number of tracks close to the sensor edge,
-the beam was focused on only one of the edges during the data
-taking. An example of the track impact points for the assembly
-20-NGR-50 is shown in \cref{fig:hitMapW19G7}.
+hits on the DUT (with a distance criterion of $100\,\micron$) divided
+by the total number of tracks projected on the DUT. The efficiency
+within the pixels is then mapped into a grid of $2\times2$ pixels. The
+x-axis shows the track position relative to the last pixel. The y-axis
+combines the tracks for the even rows (in the coordinates between 0~mm
+and 0.055~mm) and the odd rows (in the coordinates between 0.055~mm
+and 0.11~mm). The z-axis shows the efficiency. To increase the number
+of tracks close to the sensor edge, the beam was focused on only one
+of the edges during the data taking. An example of the track impact
+points for the assembly 20-NGR-50 is shown in \cref{fig:hitMapW19G7}.
 
 \begin{figure}[htbp]
   \centering
@@ -1001,15 +1004,19 @@ sensors is a powerful tool which allows to understand better the
 functionality of these sensors. The simulations fulfill the
 expectations for the operation of these devices: the floating guard
 ring has the highest breakdown voltage since the guard ring smoothens
-the potential drop between the physical edge and the first pixel.
+the potential drop between the physical edge and the first
+pixel. However, for reproducing a simulation which would exactly
+describe the loss of charge at the edge for a floating guard ring, the
+capacitive coupling of the guard ring to all $\sim1000$ edge pixels is
+needed to be taken into account.
 
-The active-edge assembly with the floating guard ring shows an early
-breakdown (almost like a grounded guard ring). This can be explained
-by the fact that the guard-ring might be in touch with the last pixel
-row in the Timepix3 which provides the ground potential and in reality
-this guard ring might be grounded instead of being floating. Also,
-this assembly shows more of charge loss at the edge than expected by
-simulations.
+%% The active-edge assembly with the floating guard ring shows an early
+%% breakdown (almost like a grounded guard ring). This can be explained
+%% by the fact that the guard-ring might be in touch with the last pixel
+%% row in the Timepix3 which provides the ground potential and in reality
+%% this guard ring might be grounded instead of being floating. Also,
+%% this assembly shows more of charge loss at the edge than expected by
+%% simulations.
 
 In general, a good agreement between data and TCAD simulations is
 observed. The discrepancies observed can be explained by the effects
