@@ -6,30 +6,30 @@
 
 The vertex detector plays a key role to fully exploit the physics
 potential at CLIC. To meet the challenging demands on the precision
-physics, pixel detectors with high spatial resolution of $3\,\micron$
-and low material content of $\sim0.2\%$~X\textsubscript{0} per vertex
-layer are required. Full detector simulations have shown that the
-material budget of the detector must be as low as possible to achieve
-a high flavour-tagging performance. To attain both requirements on the
-resolution and the material content, hybrid pixel-detector solutions
-with $50\,\micron$ thick sensors coupled to $50\,\micron$ thick
-readout ASICs and $25\,\micron$ pixel pitch are foreseen.
+physics, pixel detectors with high spatial resolution of
+$\sim3\,\micron$ and low material content of
+$\sim0.2\%$~X\textsubscript{0} per vertex layer are required. Full
+detector simulations have shown that the material budget of the
+detector must be as low as possible to achieve a high flavour-tagging
+performance. To attain both requirements on the resolution and the
+material content, hybrid pixel-detector solutions with $50\,\micron$
+thick sensors coupled to $50\,\micron$ thick readout ASICs and
+$25\,\micron$ pixel pitch are foreseen.
 
 In the scope of this thesis, the prospects of planar silicon pixel
 sensors to meet the challenging requirements in the vertex detector in
 terms of spatial resolution and material budget have been
 assessed. Thin active-edge sensors with thicknesses varying between
 $50\,\micron$ to $150\,\micron$ have been studied in test-beam and
-laboratory measurements. All studies are accompanied by simulations.
+laboratory measurements. All studies were accompanied by simulations.
 
 The high-performance Timepix3 pixel readout ASIC, with $55\,\micron$
-pitch, was chosen as a test vehicle for the sensors
-characterisations. With its low noise at the front-end of $\sim80$
-electrons, it allows for operating the chip at low thresholds of
-$\sim500$ electrons. It provides an accurate test-pulse injection
-functionality that was used for the energy calibration of the chip and
-thereby allowed for an absolute measurement of the energy deposited in
-the sensors.
+pitch, was chosen as a test vehicle for the characterisation of the
+sensors. With its low noise at the front-end of $\sim80$ electrons, it
+allowed for operating the chip at low thresholds of $\sim500$
+electrons. It provided an accurate test-pulse injection functionality
+that was used for the energy calibration of the chip and thereby for
+an absolute measurement of the energy deposited in the thin sensors.
 
 %% The threshold DAC value and the TOT can be therefore converted into
 %% energy depositions.
@@ -41,17 +41,20 @@ the sensors.
 
 
 First, the spatial resolution achievable with thin sensors was
-investigated. The devices under test (DUT) were tested in a
+investigated. The devices under test (DUTs) were measured in a
 Timepix3-based beam telescope during test-beam campaigns at the CERN
-SPS. For a better hit-position reconstruction, the energy deposited in
-the pixels of a cluster were reconstructed with the $\eta$-correction
-method, improving the spatial resolution. The results however show
-that the amount of charge sharing in such thin sensors is very low,
-limiting the achievable resolution.
+SPS. All of the assemblies have shown an excellent detection
+efficiency. In general, a more precise reconstruction of the tracks
+passing point was possible for multi-pixel clusters by weighting the
+energy deposits in the involved pixels. The $\eta$-algorithm, gave
+better results by taking into account the non-linearities due to the
+charge sharing. The results however have shown that the amount of
+charge sharing in such thin sensors is very low, limiting the
+achievable resolution.
 
 For a deeper understanding of the test-beam results, the telescope
 setup with the DUTs has been implemented in the \textsc{Geant4}-based
-simulation framework AllPix. A digitiser, describing the charge
+simulation framework, AllPix. A digitiser, describing the charge
 transport in planar silicon sensors, has been developed. The tracking
 resolution of the telescope on the DUT of $\sim2\,\micron$ has been
 extracted from the simulation and validated by comparing the observed
@@ -61,23 +64,25 @@ simulate the different assemblies with different thicknesses. A good
 agreement between data and simulation was seen for cluster-size
 distribution, the position resolution and the energy deposition
 spectrum. The charge sharing model as described in the digitiser of
-the simulations is validated with data. The \textsc{Geant4} PAI
+the simulations has been validated with data. The \textsc{Geant4} PAI
 physics list to simulate the energy deposition in thin sensors, which
 provides a similar spectrum as the Bichsel model, was in agreement
 with the data. From the agreement between the energy deposition in
 data and simulation it was concluded that the test-pulse calibration
-provides enough precision for tracking purposes.
+provided enough precision for tracking purposes.
 
 For the CLIC vertex detector, a hit resolution of $\sim3\,\micron$ is
-wished to be achieved with pixels of $25\,\micron$ pitch and a
-thickness of $50\,\micron$. Since data was not available for such a
-configuration, the simulations were extrapolated to small pixels. The
-results show that achieving high resolution with such thin sensors is
-very challenging. New detector concepts with enhanced charge sharing
-or even smaller pixel pitch will therefore be required.
+wished to be achieved with pixels of $25\,\micron$ pitch and a sensor
+thickness of $50\,\micron$. Since data were not available for such a
+configuration, the simulations were extrapolated to small pixels. In
+the future, these results could be used as input for the digitiser in
+full detector simulations. The results show that achieving high
+resolution with such thin sensors is very challenging. New detector
+concepts with enhanced charge sharing or even smaller pixel pitch will
+therefore be required.
 
 
-Finally, the efficiency of active-edge sensors was studied. Assemblies
+Finally, the efficiency of active-edge sensors were studied. Assemblies
 with different edge widths and guard ring configurations were
 investigated in test-beam. A two-dimensional TCAD simulation of the
 edge was implemented which allowed for a better understanding of the
