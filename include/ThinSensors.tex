@@ -715,22 +715,25 @@ sensors. The simulation can be used to predict the performance of thin
 sensors and small pitches in terms of charge sharing.
 
 Figure~\ref{fig:cluSize25Pitch} shows the cluster-size distribution
-and the hit residuals for an extrapolation of the simulation to
-$25\,\micron$ pitch pixels with $50\,\micron$ thick sensors with a
-Timepix3-type readout ASIC operated at 500 electrons threshold with
-10-bit TOT measurement and an electronic noise of $\sim$80
-electrons. The same digitiser as the one used to validate the
-simulation is used for the extrapolation. Even with a small pitch, in
-such thin sensors, $\sim$70\% of clusters originating from minimum
+and the hit residuals for an extrapolation of the simulation to small
+pixels of size $10\,\micron$ to $25\,\micron$ with $50\,\micron$ thick
+sensors with a Timepix3-type readout ASIC operated at 500 electrons
+threshold with 10-bit TOT measurement and an electronic noise of
+$\sim~80$ electrons. The same digitiser as the one used to validate
+the simulation is used for the extrapolation. Even with a small pitch
+of $25\,\micron$ as foreseen for the CLIC vertex detector, in such
+thin sensors, $\sim~70\%$ of clusters originating from minimum
 ionising particles contain one pixel (the fraction of single-pixel
-clusters with a $55\,\micron$ pitch is $\sim 83\%$). The residual
+clusters with a $55\,\micron$ pitch is $\sim~83\%$). The residual
 distribution is therefore dominated by the broad peak from
 single-pixel clusters and the resulting resolution of
-$\sim6.4\,\micron$ (the tracking resolution of $\sim2\,\micron$ is not
+$\sim~6\,\micron$ (the tracking resolution of $\sim2\,\micron$ is not
 unfolded) is still significantly worse than the required
-$3\,\micron$. It can be concluded that the required resolution can not
-be achieved with planar sensors of $50\,\micron$ thick and
-$25\,\micron$ pitch. New sensor concepts with enhanced charge
+$3\,\micron$. Based on simulations, it can be concluded that the
+required resolution can not be achieved with planar sensors of
+$50\,\micron$ thick and $25\,\micron$ pitch. A pixel pitch of
+$10\,\micron$ allows for achieving a resolution of $\sim~3\,\micron$
+as required by CLIC. New sensor concepts with enhanced charge
 sharing~\cite{Jansen2016242} or integrated technologies with even
 smaller pixel pitch~\cite{Arai:2011ara} are therefore required.
 
@@ -739,22 +742,39 @@ smaller pixel pitch~\cite{Arai:2011ara} are therefore required.
 % other limiting factors. The CLIC pixel detector R\&D is considering
 % new solution where planar sensors are not used.
 
-
 \begin{figure}[htbp]\centering
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/TestBeam/ClusterSize_TPX3_CLICpix.pdf}
+    \includegraphics[width=\textwidth]{figures/TestBeam/ClusterSize_extrapolationSmallerPixels.pdf}
     \caption{}
   \end{subfigure}\hfill
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/TestBeam/ResolutionX_TPX3_CLICpix.pdf}
+    \includegraphics[width=\textwidth]{figures/TestBeam/RMS_extrapolationSmallerPixels.pdf}
     \caption{}
   \end{subfigure}
   \caption{(a) Cluster-size distribution and (b) hit residuals in
-    x-direction for the extrapolation of the simulation to
-    $25\,\micron$ pixel pitch with a $50\,\micron$ thick sensor and a
-    threshold of $\sim$500 electrons.}
+    x-direction for the extrapolation of the simulation to small pixel
+    sizes with a $50\,\micron$ thick sensor and a threshold of
+    $\sim~500$ electrons.}
   \label{fig:cluSize25Pitch}
 \end{figure}
+
+
+
+%% \begin{figure}[htbp]\centering
+%%   \begin{subfigure}[b]{0.45\textwidth}
+%%     \includegraphics[width=\textwidth]{figures/TestBeam/ClusterSize_TPX3_CLICpix.pdf}
+%%     \caption{}
+%%   \end{subfigure}\hfill
+%%   \begin{subfigure}[b]{0.45\textwidth}
+%%     \includegraphics[width=\textwidth]{figures/TestBeam/ResolutionX_TPX3_CLICpix.pdf}
+%%     \caption{}
+%%   \end{subfigure}
+%%   \caption{(a) Cluster-size distribution and (b) hit residuals in
+%%     x-direction for the extrapolation of the simulation to
+%%     $25\,\micron$ pixel pitch with a $50\,\micron$ thick sensor and a
+%%     threshold of $\sim$500 electrons.}
+%%   \label{fig:cluSize25Pitch}
+%% \end{figure}
 
 
 
