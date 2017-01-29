@@ -101,18 +101,18 @@ used for the simulation of pixel detectors in different high energy
 physics experiments. It allows for defining an experimental setup with
 its surrounding environment as realistic as possible, such as the
 components of a test beam setup. It also allows for the simulation of
-more complexe geometries such as a full vertex detector.
+more complex geometries such as a full vertex detector.
 
-\textsc{Geant4} provides the simulation of particles through the
-matter: it calculates the position of the hits (the true Monte Carlo
-position) considering multiple scattering and the energy deposition in
-the sensitive volumes (sensors). The software user defines the
+\textsc{Geant4} provides the simulation of particles through matter:
+it calculates the position of the hits (the true Monte Carlo position)
+considering multiple scattering and the energy deposition in the
+sensitive volumes (sensors). The software user defines the
 semiconductor physics and readout chip properties in a digitiser as
 described below.
 
-AllPix is used for the simulations done in \cref{ch:Telescope} and
-\cref{ch:ThinSensorsStudies}. \cref{fig:TPX3TelescopeAllpix} shows an
-example of the simulation for the Timepix3 telescope (described in
+AllPix is used for the simulations described in \cref{ch:Telescope}
+and \cref{ch:ThinSensorsStudies}. \cref{fig:TPX3TelescopeAllpix} shows
+an example of the simulation for the Timepix3 telescope (described in
 \cref{ch:Telescope}) in AllPix with the device under test (DUT) in the
 middle of the tilted telescope planes.
 
@@ -142,7 +142,7 @@ Timepix3-like matrix of $256\times256$ pixels is shown in
 shown in black and the local coordinates (x, y) in millimeters of the
 center of the pixels in the corners of the matrix are shown in
 blue. In this convention we are looking from the sensor side with the
-periphery at the bottom.
+chip periphery at the bottom.
 
 \begin{figure}[htbp]
   \centering
@@ -186,7 +186,7 @@ the digitiser in this XML file.
 
 The simulation scenario is defined in a macro file. The position of
 the detectors in space is specified by the coordinates (x, y, z) and
-the rotations around the x, y and z axes of the centre of the
+the rotations around the x, y and z axes through the centre of the
 detectors. The physics list used by \textsc{Geant4} is specified. The
 General Particle Source (GPS), which is the \textsc{Geant4} toolkit
 for the generation of high-energy particles, is also described in the
@@ -216,8 +216,8 @@ The digitisation step in AllPix is responsible for the full simulation
 of the detector including the sensor and the readout chip. Each user
 defines the simulation parameters in the digitiser. This provides
 flexibility for the simulation of different sensor technologies and
-readout chip families. In this section, we describe the digitiser we
-use for the simulation for thin sensors.
+readout chip families. In this section, we describe the digitiser used
+for the simulation of thin sensors.
 
 For each simulation step (\texttt{G4Step}) through the matter,
 \textsc{Geant4} provides the energy deposited in the sensitive
@@ -239,7 +239,7 @@ generated at a given Step\textsubscript{z} is described as a Gaussian
 distribution with standard deviation as given in
 \cref{eq:sigmaDiffusion}. \cref{fig:digitisation} schematically
 illustrates the digitisation in a sensor in one direction. Each
-\textsc{Geant4} step is shown in a circle. In 2D, at each step, the
+\textsc{Geant4} step is shown as a circle. In 2D, at each step, the
 charge collected in the hit pixel and its neighbouring pixels is
 calculated by:
 
@@ -250,9 +250,9 @@ Q(z)=q_i(z) \cdot {1\over{\sqrt{2\,\pi}\sigma(z)}} \int_{x_{1}}^{x_{2}} e^{-({{x
 
 where $q_i(z)$ is the energy deposited at step i at the depth $z$,
 $\sigma(z)$ the standard deviation of the diffusion for a charge
-generated at $z$, $x_{hit}$ and $y_{hit}$ is the coordinates where the
-track hits a pixel, $x_1$ and $x_2$ the x-coordinates and $y_1$ and
-$y_2$ the y-coordinates of the pixel where the contribution of the
+generated at $z$, $x_{hit}$ and $y_{hit}$ are the coordinates where
+the track hits a pixel, $x_1$ and $x_2$ the x-coordinates and $y_1$
+and $y_2$ the y-coordinates of the pixel where the contribution of the
 charge is being calculated.
 
 For each pixel, at each step a charge deposition is calculated. All
@@ -468,11 +468,11 @@ affects mainly the definition of an event. In the frame-based mode, an
 event corresponds to a time frame where the shutter of the detectors
 are opened and all hits are integrated. When the shutter is closed,
 there is a dead-time where no data are acquired and all the hits are
-read out from the readout chips and recorded in a raw data
-file. Whereas in the data-driven mode, the data are acquired as soon
-as a pixel is hit (there is no shutter and almost no dead-time). The
-hits are written in the raw file with their time-stamps coming from a
-combination of the TOA and the FPGA timing from the SPIDR readout (see
+read out from the readout chips and recorded in a raw data file. In
+the data-driven mode, the data are acquired as soon as a pixel is hit
+(there is no shutter and almost no dead-time). The hits are written in
+the raw file with their time-stamps coming from a combination of the
+TOA and the FPGA timing from the SPIDR readout (see
 \cref{sec:TimepixReadout}). They are not ordered in time in the raw
 file since the readout chip does not send them in the order they are
 produced. Pre-processing is needed to order the hits by their TOA and
@@ -483,9 +483,9 @@ the following steps:
 
 \begin{enumerate}
 \item Converter: converts the raw files written by each telescope
-  planes and the DUT in a binary format to an LCIO event. The
-  converter also defines the event for the data-driven zero-suppressed
-  readout mode and orders the hits.
+  plane and the DUT in a binary format to an LCIO event. The converter
+  also defines the event for the data-driven zero-suppressed readout
+  mode and orders the hits.
 
   In the converter processor, the hits within a time window of 3~ms
   are read and filled into a vector. This time window is large enough
@@ -502,7 +502,7 @@ the following steps:
 
 \item Hot pixels remover: hot pixels with the maximum allowed
   frequency of 0.1~Hz are discarded from the analysis. 
-\item Clustering: the clusters in each telescope plane is found.
+\item Clustering: the clusters in each telescope plane are found.
 \item Hit making: reconstruction of the hit position for each cluster
   with the $\eta$-correction method~\cite{Belau:1983eh}.
 \item Alignment: the alignment processor uses the Millepede~II
@@ -538,7 +538,7 @@ the following steps:
 Once the telescope tracks are reconstructed using the EUTelescope
 framework, the analysis of the DUT can be done separately within the
 python-based pyEudetAnalysis framework~\cite{pyeudet}. Separating the
-telescope and the DUT analyses, provides more flexibility on the
+telescope and the DUT analyses provides more flexibility on the
 analysis of the DUT. The tracks are reconstructed once and rerunning
 of the analysis on the DUT does not require to reconstruct the tracks
 once more.
@@ -547,9 +547,9 @@ The pyEudetAnalysis reads the reconstructed track position and the
 list of the pixels hit on the DUT from the ROOT file generated by
 EUTelescope.
  
-The workflow for pyEudetAnalysis is very similar to
-EUTelescope. Except for the track reconstruction step which is not
-needed in pyEudetAnalysis. The workflow is described
+The workflow for pyEudetAnalysis is very similar to EUTelescope,
+except for the track reconstruction step which is not needed in
+pyEudetAnalysis. The workflow is described
 in~\cite{AlipourTehrani:2133128} and briefly summarised below:
 
 \begin{enumerate}
@@ -574,10 +574,10 @@ in~\cite{AlipourTehrani:2133128} and briefly summarised below:
   the reconstructed hit on the DUT. The hits are brought into lines
   with the tracks by defining translations in x and y directions
   during the pre-alignment procedure. The main alignment method
-  consists of defining precisely the translation and rotations to
-  precisely match the tracks to the matched hits. A metric defined as
-  the radial distance between each track and the closest hit within a
-  distance of less than 0.5mm. The Nelder-Mead method of SciPy
+  consists of defining translations and rotations to precisely match
+  the tracks to the matched hits. A metric is defined as the radial
+  distance between each track and the closest hit within a distance of
+  less than 0.5mm. The Nelder-Mead method of SciPy
   \texttt{optimize.minimize}~\cite{SciPyOptimizeMinimize} is used to
   minimise the total distance. This function automatically varies the
   rotation about z and the x and y translations simultaneously to find
