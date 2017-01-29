@@ -8,7 +8,7 @@
 Testing in a high energy beam is a crucial step in the R\&D for the
 pixel detector sensors and readout chips. Test beam data are used at
 various stages of the development for evaluating the performance of a
-prototype in addition to simulations tools like TCAD and
+prototype in addition to simulation tools like TCAD and
 \textsc{Geant4}.
 
 A telescope is used to reconstruct the tracks of the particles going
@@ -108,8 +108,8 @@ $\sim$$2\,\micron$ on the DUT.
 
 The position of the telescope planes and the DUT along the beam axis
 using the convention as described in \cref{fig:TPX3Telescope} is given
-in \cref{tab:planePos}. The positions correspond the position of the
-center of the sensors.
+in \cref{tab:planePos}. The positions correspond to the position of
+the center of the sensors.
 
 \begin{table}[htbp]
   \centering
@@ -131,13 +131,14 @@ center of the sensors.
   \end{tabular}
 \end{table}
 
-The mechanical support for the telescope planes are optimised in order
-to reduce multiple scattering and therefore improve the tracking
+The mechanical supports for the telescope planes are optimised in
+order to reduce multiple scattering and therefore improve the tracking
 resolution. The Timepix3 assemblies are mounted on a PCB as shown in
 \cref{fig:Timepix3board_PCB}. An aluminum support frame is used to
 hold the PCB. To protect the sensors from light exposure, an ABS
-plastic cover is used with a thickness of 2~mm and placed at a
-distance of 10~mm away from the PCB (in black in
+plastic (acrylonitrile butadiene styrene) cover is used with a
+thickness of 2~mm and placed at a distance of 10~mm away from the PCB
+(in black in
 \cref{fig:TPX3Telescope}). \cref{tab:TPX3TelescopeMaterial} describes
 the material (with their thicknesses and radiation lengths) seen by
 the particles for each telescope plane. The PCB stacks up eight layers
@@ -279,16 +280,16 @@ angles $\phi$ (in horizontal direction) and $\theta$ (in vertical
 direction) are given as:
 
 \begin{equation}
-  \phi=arctan{{x_2-x_{DUT}} \over {z_2-z_{DUT}}} \; ,
+  \phi=\arctan{{x_2-x_{DUT}} \over {z_2-z_{DUT}}} \; ,
   \label{eq:beamAnglePhi}
 \end{equation}
 
 \begin{equation}
-  \theta=arctan{{y_2-y_{DUT}} \over {z_2-z_{DUT}}} \; ,
+  \theta=\arctan{{y_2-y_{DUT}} \over {z_2-z_{DUT}}} \; ,
   \label{eq:beamAngleTheta}
 \end{equation}
 
-where $x, y$ and $z$ are the MC positions of the hits on the planes 2
+where $x, y$ and $z$ are the MC positions of the hits on the plane 2
 and the DUT.
 
 \begin{figure}[htbp] \centering
@@ -302,8 +303,7 @@ and the DUT.
   \end{subfigure}
   \caption{Track angular distribution in \textsc{Geant4} simulations
     due to multiple scatterings between the telescope plane 2 and the
-    DUT obtained by comparing the global MC positions on the both
-    planes.}
+    DUT obtained by comparing the global MC positions on both planes.}
   \label{fig:MCbeamAngleDistr}
 \end{figure}
 
@@ -380,7 +380,7 @@ $\sim2.7\,\micron$. Since the residual distribution has a large tail,
 the RMS of the distribution is higher ($\sim5.4\,\micron$). The tail
 in the residuals distribution is due to the reconstruction of the hit
 positions of single-pixel clusters where the charge sharing can not be
-used to improved the reconstructed position.
+used to improve the reconstructed position.
 
 % For this calculation, hits corresponding to tracks with the $10\%$ of
 % highest $\chi^2$/NDF are ignored.
@@ -510,7 +510,7 @@ for simulation.
 As expected, the inner planes show a higher biased residual than the
 outer ones. The simulation is in good agreement with data
 ($\sim5-15\%$ deviation). This means that the hit resolution of the
-telescope planes and the amount of the multiple scatterings in the
+telescope planes and the amount of multiple scattering in the
 simulation are close to reality and the simulation can be used to get
 a good estimation of the tracking resolution on the DUT.
 
@@ -521,7 +521,7 @@ a good estimation of the tracking resolution on the DUT.
 \label{sec:TrackResOnDUT}
 
 The tracking residuals on the DUT in the x and y directions are shown
-in \cref{fig:DUT_MC_track}. This value can be only obtained in
+in \cref{fig:DUT_MC_track}. This value can only be obtained in
 simulations, as the MC position is needed. For this calculation, the
 cut of $\chi^2$/NDF$<100$ as shown in \cref{fig:chi2_data_simu} is
 applied for the track selection.
