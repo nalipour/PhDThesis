@@ -160,8 +160,8 @@ follows~\cite{AdvacamProcessFlow}.
   steps.
 \item By grinding and CMP (Chemical-mechanical planarisation)
   polishing the final detector thickness is obtained.
-\item The doping for the pixels and also the guard rings are implanted
-  with phosphorus ions.
+\item The dopings for the pixels and also the guard rings are
+  implanted with phosphorus ions.
 \item The DRIE etching is performed to uncover the edges of the
   detector.
 \item Phosphorus ions are implanted to the sidewalls of the sensor to
@@ -169,7 +169,8 @@ follows~\cite{AdvacamProcessFlow}.
 \item Annealing of the sensor in order to activate the dopants and
   oxidation of the edges.
 \item The opening of the contacts for the Aluminum patterning and the
-  deposition of the UBM layer for the pixels and guard rings.
+  deposition of the under bump metallisation (UBM) layer for the
+  pixels and guard rings.
 \item The support wafer is finally removed and the backside metal is
   deposited. The sensor is ready to be bump bonded to the readout
   chip.
@@ -326,7 +327,7 @@ implementation of the sensors in TCAD simulations.
     \centering
     \vspace{0pt}
     \captionof{table}{Layers in the geometry description used for the
-      sensor production (Picture from 23-FGR).}
+      sensor production (Picture from 23-FGR-50).}
     \label{tab:PixelStackDimensions}
     \begin{tabular}{l l}
       \toprule
@@ -345,8 +346,7 @@ implementation of the sensors in TCAD simulations.
 
 \begin{table}
   \centering
-  \captionof{table}{The dimensions of the different implants in for
-    the sensors listed in \cref{tab:ActiveEdgeAssemblies}. The
+  \captionof{table}{The dimensions of the different implants in the sensors listed in \cref{tab:ActiveEdgeAssemblies}. The
     edge distance is the distance between the last pixel implant to
     the physical edge of the sensor as illustrated in
     \cref{fig:Layout20_NGR}. The metal width
@@ -472,7 +472,7 @@ assemblies with the floating guard ring (23-FGR-50) and the grounded
 guard ring (28-GNDGR-50 and 55-GNDGR-50) lead to a similar
 breakdown. However, the floating guard ring is expected to smoothen
 the potential transition between the edge of the sensor and the first
-pixel and result in a later breakdown voltage. This can be explained
+pixel and result in a higher breakdown voltage. This can be explained
 by the fact that the Timepix3 chip provides an extra row of pixels
 giving the possibility to connect the guard ring to the ground
 potential. The edge of 23-FGR-50 might get too close to the extra row
@@ -729,9 +729,9 @@ line with the convention as illustrated in \cref{fig:Layout20_NGR}.
 \subsection{The performance of $50\,\micron$ thick sensors}
 \label{sec:EdgePerformance_50}
 
-Exploiting the high tracking capabilities of the Timepix3 telescope,
-the efficiency at the edge of the assemblies with $50\,\micron$ thick
-sensors is shown in two dimensions in
+Exploiting the excellent tracking capabilities of the Timepix3
+telescope, the efficiency at the edge of the assemblies with
+$50\,\micron$ thick sensors is shown in two dimensions in
 \cref{fig:EdgeEfficiency_50micron}. The results are presented using
 the conventions as described in \cref{sec:activeEdge_convention}.
 
@@ -1007,8 +1007,8 @@ ring has the highest breakdown voltage since the guard ring smoothens
 the potential drop between the physical edge and the first
 pixel. However, for reproducing a simulation which would exactly
 describe the loss of charge at the edge for a floating guard ring, the
-capacitive coupling of the guard ring to all $\sim1000$ edge pixels is
-needed to be taken into account.
+capacitive coupling of the guard ring to all $\sim1000$ edge pixels
+has to be taken into account.
 
 %% The active-edge assembly with the floating guard ring shows an early
 %% breakdown (almost like a grounded guard ring). This can be explained
