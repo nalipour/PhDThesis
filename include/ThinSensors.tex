@@ -66,13 +66,13 @@ The Timepix3 readout ASICs were operated with the optimised parameters
 as described in \cref{tab:timepix3Operation}. The nominal values for
 the threshold and the bias voltage are shown in
 \cref{tab:nominalBiasThreshold}. For the nominal bias voltage, the
-sensor is fully (or over) depleted. The nominal threshold set, insures
-that the readout chip is not operating in noisy conditions. The error
-on the threshold is due to the threshold dispersion after the chip
-equalisation. \cref{sec:operatingThreshold} describes the procedure
-for the selection of the nominal threshold value. These nominal values
-are held throughout the data taking except for the cases where the
-threshold or the bias voltages are scanned.
+sensor is fully (or over) depleted. The nominal threshold set insures
+that the readout chip is not operating under noisy conditions. The
+error on the threshold is due to the threshold dispersion after the
+chip equalisation. \cref{sec:operatingThreshold} describes the
+procedure for the selection of the nominal threshold value. These
+nominal values are held throughout the data taking except for the
+cases where the threshold or the bias voltages are scanned.
 
 
 
@@ -110,17 +110,18 @@ in units of the number of electrons generated.
 
 
 \cref{sec:testBeamDataCalibrated_TOT} shows the TOT distribution for
-one, two, three and four-pixel clusters. The MPV of the TOT
-distributions for different cluster sizes do not fully align due to
-the non-linear behaviour of the Timepix3, as sharing the same
-deposited charge amongst several pixels results in each pixel having a
-higher TOT than would be expected from simply scaling the charge. The
-calibrated energy distribution aligns for different cluster sizes
-since the calibration takes into account the non-linearities of the
-chip as shown in \cref{sec:testBeamDataCalibrated_Edep}. For the
-$50\,\micron$ thick sensor, the calibrated distributions do not align
-since higher deposited energies tend to give higher cluster sizes and
-the distributions for larger cluster sizes are biased towards larger
+one, two, three and four-pixel clusters. The most-probable-value (MPV)
+of the TOT distributions for different cluster sizes do not fully
+align due to the non-linear behaviour of the Timepix3, as sharing the
+same deposited charge amongst several pixels results in each pixel
+having a higher TOT than would be expected from simply scaling the
+charge. The calibrated energy distribution aligns for different
+cluster sizes since the calibration takes into account the
+non-linearities of the chip as shown in
+\cref{sec:testBeamDataCalibrated_Edep}. For the $50\,\micron$ thick
+sensor, the calibrated distributions do not align since higher
+deposited energies tend to give higher cluster sizes and the
+distributions for larger cluster sizes are biased towards larger
 energy depositions.
 
 \begin{figure}[htbp] \centering
@@ -168,10 +169,10 @@ energy depositions.
 cluster in data and simulation for all cluster sizes combined. The
 most-probable-value and the width of the distributions in data and
 simulation agree. Therefore the calibration is validated using the
-test-beam data. For the simulation, the PAI physics list, which
+test-beam data. For the simulation, the PAI physics list is used which
 provides an energy deposition spectrum similar to the Bichsel
-distribution, is used (see \cref{fig:BichselVSG4}). This confirms that
-the Bichsel model describes well the energy deposition in thin silicon
+distribution (see \cref{fig:BichselVSG4}). This confirms that the
+Bichsel model describes well the energy deposition in thin silicon
 sensors.
 
 \begin{figure}[htbp] \centering
@@ -206,25 +207,30 @@ sensors.
 \label{sec:ThinSensors_depletionVoltage}
 
 The depletion voltage corresponds to the voltage at which the sensor
-is fully depleted and the charge of the full thickness of the sensor
-is collected. This can be measured in test beams by scanning the bias
-voltage. For lower bias voltages the sensor is under depleted and
-therefore the collected charge is also reduced. The depletion voltage
-and the sensor thickness are related by \cref{eq:depletionVoltage}.
+is fully depleted and the charge is collected over the full thickness
+of the sensor. In normal operation, only the charge created in the
+depletion region can be detected. The sensor should be fully depleted
+to collect the maximal signal charge possible. The depletion voltage
+can be measured in test beams by scanning the bias voltage. The
+depletion voltage and the sensor thickness are related by
+\cref{eq:depletionVoltage}. For lower bias voltages the sensor is
+under depleted, therefore the collected charge is reduced and is
+proportional to the square root of the bias voltage. After reaching
+the depletion voltage, the collected charge displays a plateau.
 
 To obtain the depletion voltage, first, the distribution of the
 deposited energy in the sensor is fitted with a landau function
 convoluted with a Gaussian. The fit is done using
 RooFit~\cite{Cranmer:2012sba} and an example is given in
 \cref{fig:W5_F1_DepletionVoltage_TOTdistr}.
-\cref{fig:W2_J5_DepletionVoltage_chargeVSbiasVoltage} shows the most
-probable value (MPV) of the measured energy deposition as a function
-of the square root of the bias voltage. In this figure, two distinct
-regions can be seen: a sloped region and a plateau region. The
-depletion voltage of the assembly is obtained by calculating the
-intersection of a linear fit performed on both regions (defined by
-eye). The calculated depletion voltages for all assemblies is
-summarised in \cref{tab:depletionVoltage,fig:depletionVoltage}. 
+\cref{fig:W2_J5_DepletionVoltage_chargeVSbiasVoltage} shows the
+most-probable-value (MPV) of the measured energy deposition as a
+function of the square root of the bias voltage. In this figure, two
+distinct regions can be seen: a sloped region and a plateau
+region. The depletion voltage of the assembly is obtained by
+calculating the intersection of a linear fit performed on both regions
+(defined by eye). The calculated depletion voltages for all assemblies
+are summarised in \cref{tab:depletionVoltage,fig:depletionVoltage}.
 
 % The $50\,\micron$ thick sensor is depleted at a low bias voltage of
 % $\sim$2~V. However the measurement was done with a voltage step size
@@ -234,6 +240,11 @@ From the depletion voltage, the concentration of the dopants in the
 bulk is calculated to be around
 $N_{bulk}\approx1.3\,\inversemetercubic$ and corresponds to a
 resistivity of $\rho\approx10\,\text{k}\Omega\,\text{cm}$ for all
+assemblies. The assemblies are confirmed to have high-resistivity
+silicon sensors. They are optimal for tracking detectors since it is
+possible to fully deplete them and high electric fields provide fast
+and efficient charge collection. The depletion voltage and the doping
+concentration are used as input for the simulation of these
 assemblies.
 
 \begin{figure}[htbp]\centering
@@ -284,19 +295,21 @@ assemblies.
 \subsection{Cluster size distribution}
 The cluster size distribution is an indication for the amount of
 charge sharing in a sensor. For thicker sensors, more charge sharing
-is expected since the charge drifts in a longer distance and diffuses
-across a larger transverse area. The threshold of the readout
+is expected since the charge drifts over a longer distance and
+diffuses across a larger transverse area. The threshold of the readout
 electronics has a large impact on the detection of the charge
 sharing. The threshold should be as low as possible to avoid
 undetected energy deposits.
 
 In this analysis, the hit pixels form a cluster with a distance
-criterion of $\sqrt{2}$: pixels sharing common corners or edges are
-considered as clusters. For sensor thicknesses in the range of
-$50\,\micron$-$150\,\micron$, clusters of size one to four are
-expected due to diffusion. Larger clusters are expected due to other
-effects such as $\delta$-rays. The most common cluster shapes are
-illustrated in \cref{tab:clusizeShapes}.
+criterion of $\sqrt{2}\times$pitch\footnote{The distance between the
+  center of pixels sharing the same edges is $1\times$pitch and for
+  pixels sharing common corners is $\sqrt{2}\times$pitch.}: pixels
+sharing common corners or edges are considered as clusters. For sensor
+thicknesses in the range of $50\,\micron$-$150\,\micron$, clusters of
+size one to four are expected due to diffusion. Larger clusters are
+expected due to other effects such as $\delta$-rays. The most common
+cluster shapes are illustrated in \cref{tab:clusizeShapes}.
 
 \begin{table}
   \centering
@@ -409,7 +422,12 @@ data recorded at the nominal operating conditions is shown in
 thickness. The fraction of $1\times2$ and $2\times1$-pixel clusters
 are very similar for square pixels and the curve labeled 2-pixel
 clusters combine these two cluster geometries. The simulation is in
-good agreement with data. This validates the digitiser as described in
+good agreement with data. Reasonable agreement is observed for high
+cluster sizes at $50\,\micron$ sensors which can be explained by the
+non-linearity of the calibration curve for low energy deposition and
+close to the detection threshold resulting in high uncertainties in
+the detected charge measurements. The good agreement between data and
+simulation validates the digitiser as described in
 \cref{sec:allpix_digitisation}.
 
 \begin{figure}[htbp] 
@@ -636,7 +654,8 @@ simulation is observed (less than $4\%$ deviation).
   \includegraphics[width=0.5\textwidth]{./figures/TestBeam/residuals_vs_thickness.pdf}
   \caption{The RMS of the residuals in x and y directions as a
     function of the sensor thickness for assemblies operated at the
-    nominal condition.}
+    nominal condition. The y-axis is zero-suppressed and the deviation
+    between data and simulation is less than $4\%$.}
   \label{fig:residuals_thickness}
 \end{figure}
 
@@ -731,7 +750,7 @@ $\sim~6\,\micron$ (the tracking resolution of $\sim2\,\micron$ is not
 unfolded) is still significantly worse than the required
 $3\,\micron$. Based on simulations, it can be concluded that the
 required resolution can not be achieved with planar sensors of
-$50\,\micron$ thick and $25\,\micron$ pitch. A pixel pitch of
+$50\,\micron$ thickness and $25\,\micron$ pitch. A pixel pitch of
 $10\,\micron$ allows for achieving a resolution of $\sim~3\,\micron$
 as required by CLIC. New sensor concepts with enhanced charge
 sharing~\cite{Jansen2016242} or integrated technologies with even
