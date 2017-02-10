@@ -1,0 +1,158 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[hyperref={colorlinks=true,pdfpagelabels=false,linkcolor=black}, xcolor=dvipsnames,10pt]{beamer}
+\hypersetup{pdftex=true, colorlinks=true, breaklinks=true, linkcolor=black, menucolor=blue, pagecolor=blue, urlcolor=cyan}
+
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{xcolor, color}% ,colortbl}
+\usepackage{tikz} % nalipour
+\usetikzlibrary{tikzmark} % nalipour
+\usepackage{hyperref}
+\usetikzlibrary{shapes,arrows, decorations.pathreplacing} %nilou
+\usetikzlibrary{decorations.markings} %nilou
+\usetikzlibrary{trees}%nilou
+\usetikzlibrary{decorations.pathmorphing}%nilou 
+\usepackage{siunitx}%nilou
+\usepackage{framed}%nilou
+\usetikzlibrary{backgrounds} %nilou
+\usepackage[framemethod=tikz]{mdframed}%nilou
+\usepackage{adjustbox} %nilou for adjusting the table
+\usepackage{amssymb} %nalipour for checkmark
+\usepackage{libertine} % For the font
+
+\usepackage{../CLICdp_definitions} % nalipour
+\usepackage{xspace}
+\usepackage{upgreek} % nalipour
+\usepackage{amsmath, mathtools} % nalipour
+\renewcommand{\thefootnote}{\fnsymbol{footnote}} % nalipour: symbols
+                                % for the footnote
+\usepackage{verbatim} % nalipour
+\usepackage{fixltx2e}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+\title[]{Test-beam measurements and simulation studies of thin pixel
+  sensors for the CLIC vertex detector} \author[Niloufar Alipour
+Tehrani]{Niloufar Alipour Tehrani \vspace{0.3cm} }
+
+\institute[]{} \date[13 March 2017]{\scriptsize{PhD
+    defense \\ ETH Zurich, Switzerland\\ 13 March 2017}}
+
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\usetheme{Boadilla}%CambridgeUS}%Boadilla}%Pittsburgh}
+\usecolortheme{seahorse}
+
+% \usetheme{CambridgeUS}
+% \usecolortheme{seahorse}
+\usetheme{Boadilla}%CambridgeUS}%Boadilla}%Pittsburgh}
+\usecolortheme{seahorse}
+\definecolor{gold}{HTML}{FDD017}
+\definecolor{deep sky blue}{HTML}{3BB9FF}
+\definecolor{light sky blue}{HTML}{82CAFA}
+
+\definecolor{mybackground}{HTML}{82CAFA}
+\definecolor{myforeground}{HTML}{0000A0}
+
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=red}
+\setbeamercolor{example text}{fg=black}
+
+\setbeamercolor{background canvas}{fg=myforeground, bg=white}
+\setbeamercolor{background}{fg=myforeground, bg=mybackground}
+
+% \setbeamercolor{palette primary}{fg=black,
+% bg=blue!40!black!20!lightgray}%gray!30!white}
+% \setbeamercolor{palette secondary}{fg=black, bg=blue!40!black!20!white}%!80!white}
+% \setbeamercolor{palette tertiary}{fg=black, bg=blue!40!black!40!lightgray}%gray!40!white}
+
+
+\setbeamercolor{palette primary}{fg=white, bg=RoyalBlue}%gray!30!white}
+\setbeamercolor{palette secondary}{fg=black, bg=RoyalBlue!20}%!80!white}
+\setbeamercolor{palette tertiary}{fg=white, bg=RoyalBlue}%gray!40!white}
+% \setbeamercolor{itemize item}{bg=RoyalBlue}
+% \setbeamercolor{enumerate enum}{bg=RoyalBlue}
+\setbeamercolor{block title}{use=structure,fg=white,bg=RoyalBlue!80}
+\setbeamercolor{block body}{use=structure,fg=black,bg=RoyalBlue!20}
+
+% \usepackage{libertine} % For the font
+
+% \logo{%
+%   %\includegraphics[height=0.25cm]{../../logos/eth.pdf}
+%   \hspace{\dimexpr\paperwidth-3.5cm-5pt}%
+%   \includegraphics[height=0.7cm]{../../logos/logo_clic.pdf}~%
+%   \includegraphics[height=0.7cm]{../../logos/logo_cern.pdf}%
+% }
+
+% \titlegraphic{\includegraphics[width=2cm]{../../logos/logo_clic.pdf}\hspace*{0.5cm}~%
+%    \includegraphics[width=2cm]{../../logos/logo_cern.pdf}
+% }
+
+% \titlegraphic{\includegraphics[height=2cm]{../../logos/logo_clic.pdf}\hspace*{0.5cm}~%
+%    \includegraphics[height=2cm]{../../logos/logo_cern.pdf}
+% }
+
+\renewcommand{\inserttotalframenumber}{\ref{lastframe}} 
+\begin{document}
+\renewcommand{\inserttotalframenumber}{\pageref{lastslide}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+  %\usebackgroundtemplate{\includegraphics[width=1.0\paperwidth]{figures/vci2016_poster.jpg}}
+  \begin{frame}
+    \vspace{2.3cm}
+    \titlepage
+
+% \vspace{-1cm}
+%   \hbox to \textwidth{
+%     \includegraphics[width=0.1\textwidth]{../../logos/logo_clic.pdf}
+%     \hfill
+%     \includegraphics[width=0.1\textwidth]{../../logos/logo_cern.pdf}
+%   }
+  \end{frame}
+}
+
+\include{content}
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %         SLIDE             %
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \label{lastslide}
+%% \begin{frame}
+%%   \frametitle{Conclusions}
+
+%%   \begin{tikzpicture}
+%%     \node[anchor=south west,inner sep=0] (image) at (0,0)
+%%          {\includegraphics[width=\textwidth]{figures/CLIC_canvas_accelerator.jpg}};
+%%          \node[align=center, white, font={\Huge\bfseries}] at (image.center)
+%%               {Thanks for your attention!};
+%%   \end{tikzpicture}
+
+%% \end{frame}
+%----------------------------------------------------------------------------------------
+%	End of Document
+%----------------------------------------------------------------------------------------
+\end{document} 
