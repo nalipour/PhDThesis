@@ -277,6 +277,70 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Requirements for the vertex detector}
+
+  \begin{columns}
+    \column{0.75\textwidth}
+    \begin{itemize}
+    \item Efficient tagging of heavy quarks through a precise
+      determination of displaced vertices can be achieved by: 
+      \begin{itemize}
+      \item Multi-layer VXD: 6 layers in the barrel and 6 disks
+      \item B-field: \textcolor{Blue}{4~T}.
+      \item Single point resolution of
+        \textcolor{Blue}{$\sim$\SI{3}{\micro\meter}}:
+        \textcolor{Blue}{\SI{25}{\micro\meter}} pixel pitch \& analog readout.
+      \item Low material budget: $<0.2\%$~X\textsubscript{0}/layer and beam-pipe
+        \begin{itemize}
+        \item forced airflow cooling \& low-power electronics
+          ($\approx 50$~mW/cm\textsuperscript{2})
+        \end{itemize}
+      \end{itemize} 
+    \end{itemize}
+
+    \column{0.25\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/secondary_vertex.png}
+
+  \end{columns}
+
+  \vspace{-0.3cm}  
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{itemize}
+    \item Time slicing of \textcolor{Blue}{$\sim$\SI{10}{\nano\second}}
+      to reduce the impact of beam-induced backgrounds. \\
+      $\Rightarrow$ high-resistive \& depleted sensors, readout with precise timing.
+    \end{itemize}
+
+    \column{0.4\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,
+      0){\includegraphics[width=\textwidth]{figures/spiralVXD.pdf}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \draw[<->, Blue, thick](0.2, 0.0)--(0.84, 0.2);
+        \node[below, color=Blue] at (0.5, 0.05) {56 cm};
+
+        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
+        %   {0.\y}; }
+
+      \end{scope}
+    \end{tikzpicture}
+  \end{columns}
+
+  \begin{itemize}
+    \item Moderate radiation exposure of the vertex detector:
+      \begin{itemize}
+      \item Total ionising dose (TID): $<$1~kGy/yr
+      \item Non-ionising energy loss (NIEL): $10^{11}$~n\textsubscript{eq}/cm\textsuperscript{2}/yr (\textcolor{Blue}{ATLAS phase 1: $10^{15}$~n\textsubscript{eq}/cm\textsuperscript{2}/yr})
+      \end{itemize}
+  %% \item Time slicing of \textcolor{Blue}{$\sim$\SI{10}{\nano\second}}
+  %%   to reduce the impact of beam-induced backgrounds. \\
+  %%   $\Rightarrow$ high-resistive \& depleted sensors, readout with precise timing.
+  \end{itemize}
+
 \end{frame}
 
 
