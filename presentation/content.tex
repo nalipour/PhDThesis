@@ -165,6 +165,54 @@
 
 \end{frame}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+  \usebackgroundtemplate{
+    \begin{picture}(100, 265)
+      \includegraphics[width=\textwidth]{figures/CLIC_2beam_accel.pdf}
+    \end{picture}
+  }%
+  \begin{frame}
+    \frametitle{Two-beam acceleration scheme at CLIC}
+    
+    \vspace{-1.8cm}
+    \begin{itemize}
+    \item High-gradient acceleration of \textcolor{Red}{100~MV/m} at
+      \textcolor{Red}{12~GHz} \\
+      ($\rightarrow$ LHC: 5~MV/m and 400~MHz)
+      \begin{itemize}
+      \item Limit the length of the accelerator
+      \item Traditional klystrons ($\sim$1~GHz) accelerate the drive
+        beam (low energy \& high intensity)
+      \item Drive beam decelerated $\rightarrow$ energy is fed via an
+        RF field in a waveguide to the main beam.
+      \end{itemize}
+    \end{itemize}
+    
+    \begin{columns}
+      \column{0.5\textwidth}
+      \column{0.5\textwidth}
+      \begin{itemize}
+      \item \textcolor{blue}{Drive beam $\Rightarrow$ RF power}
+        \begin{itemize}
+        \item 12~GHz bunch structure
+        \item High current 100~A
+        \item Low energy $2.4\,\gev$ - $240\,\gev$
+        \end{itemize}
+      \item \textcolor{red}{Main beam $\Rightarrow$ physics}
+        \begin{itemize}
+        \item Lower current 1.2~A
+        \item High energy $9\,\gev$ - $1.5\,\tev$
+        \end{itemize}
+      \end{itemize}
+    \end{columns}
+
+  \end{frame}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -173,61 +221,114 @@
   \frametitle{Beam profile for CLIC}
 
  \begin{columns}
-    \column{0.5\textwidth}
-    \begin{tikzpicture}
-      \node[anchor=south west,inner sep=0] (image) at (0,
-      0){\includegraphics[width=\textwidth]{figures/CLICbeam.png}};
-      \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \node[above, color=blue] at (0.5, 0.9) {\textbf{CLIC bunch
-            structure}};
-        % \node[above, color=Orange] at (0.65, 0.05) {\tiny{1 train=312 bunches
-        %     with 0.5~ns spacing}};
-      \end{scope}
-    \end{tikzpicture}
+   \column{0.6\textwidth}
 
+   \begin{itemize}
+   \item Limited train duration due to the duration of the high power levels.
+     \begin{itemize}
+     \item Bunch crossings (BX): every 0.5~ns.
+     \item Train duration: 156~ns (312 bunches).
+     \item Train repetition: 20~ms (50~Hz).
+     \end{itemize}
+   \end{itemize}
+
+   \column{0.4\textwidth}
+   \begin{tikzpicture}
+     \node[anchor=south west,inner sep=0] (image) at (0,
+     0){\includegraphics[width=\textwidth]{figures/CLICbeam.png}};
+     \begin{scope}[x={(image.south east)},y={(image.north west)}]
+       \node[above, color=blue] at (0.5, 0.9) {\textbf{CLIC bunch
+           structure}};
+     \end{scope}
+   \end{tikzpicture}
+ \end{columns}
+ 
+ \centering
+ \resizebox{0.9\columnwidth}{!}{\begin{tabular}{l c c} 
+                                  \toprule 
+                                  & CLIC at $\sqrt{s}=3\,\tev$ & LHC at $\sqrt{s}=13\,\tev$\\
+                                  \midrule
+                                  Instantaneous luminosity $\mathcal{L}$ & $6\times10^{34}$ \inversecmsquaredsec & $1\times10^{34}$ \inversecmsquaredsec \\
+                                  Bunch-crossing separation & 0.5~ns & 25~ns \\
+                                  IP size in x / y / z directions & 45~nm / 1~nm / $44\,\micron$ & $15\,\micron$ / $15\,\micron$ / 50~cm \\
+                                  \bottomrule
+                                \end{tabular}
+}
+                              
+                              % \column{0.5\textwidth}
+                              % \centering
+
+
+
+\begin{itemize}
+\item \textcolor{Red}{Bunch separation and train duration: drive
+    timing resolution requirements for the detectors.}
+\item \textcolor{Green}{Very small beam sizes at the interaction
+    point} $\Rightarrow$ beam-induced backgrounds
+\end{itemize}
+
+
+
+\begin{itemize}
+\item Short train duration implies:
+  \begin{itemize}
+  \item triggerless readout of the detectors.
+  \item power pulsing: allows to reduce the average power dissipation.
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Beam-induced backgrounds}
+  
+  \begin{columns}
+    \column{0.8\textwidth}
     \begin{itemize}
-    \item 1 train consists of \textcolor{blue}{312} bunches with \textcolor{blue}{0.5}~ns spacing.
-    \end{itemize}
-
-    \centering
-    \resizebox{0.9\columnwidth}{!}{\begin{tabular}{l c c} 
-                                     \toprule 
-                                     & CLIC at $\sqrt{s}=3\,\tev$ & LHC at $\sqrt{s}=13\,\tev$\\
-                                     \midrule
-                                     Colliding particles & electron-positron & proton-proton \\
-                                     Instantaneous luminosity $\mathcal{L}$ & $6\times10^{34}$ \inversecmsquaredsec & $1\times10^{34}$ \inversecmsquaredsec \\
-                                     Bunch-crossing separation & 0.5~ns & 25~ns \\
-                                     Bunches per train & 312 & Not applicable \\
-                                     Train duration & 156~ns & Not applicable \\
-                                     Train repetition & 50~Hz & Not applicable \\
-                                     IP size in x / y / z directions & 45~nm / 1~nm / $44\,\micron$ & $15\,\micron$ / $15\,\micron$ / 50~cm \\
-                                     \bottomrule
-                                   \end{tabular}}
-
-    \column{0.5\textwidth}
-    \centering
-    \begin{itemize}
-    \item \textcolor{Red}{Bunch separation and train duration: drive timing resolution requirements for the detectors.}
-    \item \textcolor{Green}{Very small beam sizes at the interaction
-        point} $\Rightarrow$ beam-induced backgrounds:
+    \item Backgrounds:
       \begin{itemize}
-      \item \textcolor{blue}{$e^{+}e^{-}$ pairs}: low \pT, forward peaked, limits the inner radius of the VXD.
-      \item \textcolor{blue}{$\gamma\gamma\rightarrow$hadrons}: larger \pT particles.
-      \end{itemize}      
+      \item \textcolor{blue}{$e^{+}e^{-}$ pairs}: low $p_{T}$, forward
+        peaked, limits the inner radius of the VXD.
+      \item \textcolor{blue}{$\gamma\gamma\rightarrow$hadrons}: larger
+        $p_{T}$ particles, main background in the calorimeters and
+        trackers.
+      \end{itemize}
+    \end{itemize}
+    
+    \column{0.2\textwidth}    
+    \centering
+    \includegraphics[width=\textwidth]{figures/beamstrahlung.png}
+  \end{columns}
+
+  \begin{columns}
+    \column{.5\textwidth}    
+    \begin{itemize}
+    \item Each train consists of:
+      \begin{itemize}
+      \item At most 1 interesting event.
+      \item $>$ 30000 background particles inside the detector.
+      \end{itemize}
     \end{itemize}
 
+    \column{0.5\textwidth}
+    \includegraphics[width=\textwidth]{figures/background_vertex.pdf}
   \end{columns}
 
   \begin{itemize}
-  \item Short train duration implies:
+    % \item At most 1 interesting event in each train, $\approx$ 1000 hadronic background events are produced.
+  \item Occupancy in the pixel detectors for each train (during \SI{156}{\nano\second}): $\sim$ 3\% for innermost layers.
+  \item Radiation exposure of the vertex detector is moderate:
     \begin{itemize}
-    \item triggerless readout of the detectors.
-    \item power pulsing: allows to reduce the average power dissipation.
+    \item Total ionising dose (TID): 200~Gy/yr
+    \item Non-ionising energy loss (NIEL): $10^{11} n_{eq}/cm^{2}/yr$ (\textcolor{blue}{for ATLAS phase 1: $10^{15} n_{eq}/cm^{2}/yr$})
     \end{itemize}
   \end{itemize}
 
 \end{frame}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
@@ -330,69 +431,162 @@
     \end{tikzpicture}
   \end{columns}
 
+  % \begin{itemize}
+  %   \item Moderate radiation exposure of the vertex detector:
+  %     \begin{itemize}
+  %     \item Total ionising dose (TID): $<$1~kGy/yr
+  %     \item Non-ionising energy loss (NIEL): $10^{11}$~n\textsubscript{eq}/cm\textsuperscript{2}/yr (\textcolor{Blue}{ATLAS phase 1: $10^{15}$~n\textsubscript{eq}/cm\textsuperscript{2}/yr})
+  %     \end{itemize}
+  % %% \item Time slicing of \textcolor{Blue}{$\sim$\SI{10}{\nano\second}}
+  % %%   to reduce the impact of beam-induced backgrounds. \\
+  % %%   $\Rightarrow$ high-resistive \& depleted sensors, readout with precise timing.
+  % \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Flavour-tagging at CLIC}
+
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{itemize}
+    \item At $\sqrt{s}=3\,\tev$ the production of the $126\,\gev$
+      Higgs
+      boson is dominated by the process: \\
+      e$^+$e$^- \rightarrow$H$\nu\bar{\nu}$
+    \item The Higgs boson decays to b\={b} and c\={c} quark pairs.
+    \end{itemize}
+
+    \column{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/feynman_higgs.png}
+  \end{columns}
+
   \begin{itemize}
-    \item Moderate radiation exposure of the vertex detector:
+  \item A high-precision vertex detector allows for beauty and
+    charm-tagging and to study such decay modes.
+  \end{itemize}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/Global_energies_CLIC_SiD_spirals_Beauty_Charm_.pdf}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/Global_energies_CLIC_SiD_spirals_Charm_Beauty_.pdf}
+  \end{columns}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{R\&D for pixel detectors at CLIC}
+
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{itemize}
+    \item Achieve $3\,\micron$ single-point resolution with:
       \begin{itemize}
-      \item Total ionising dose (TID): $<$1~kGy/yr
-      \item Non-ionising energy loss (NIEL): $10^{11}$~n\textsubscript{eq}/cm\textsuperscript{2}/yr (\textcolor{Blue}{ATLAS phase 1: $10^{15}$~n\textsubscript{eq}/cm\textsuperscript{2}/yr})
+      \item Low material: $50\,\micron$-thick sensor on
+        $50\,\micron$-thick ASIC. 
+      \item Small pitch: $25\,\micron$ pixel pitch.
       \end{itemize}
-  %% \item Time slicing of \textcolor{Blue}{$\sim$\SI{10}{\nano\second}}
-  %%   to reduce the impact of beam-induced backgrounds. \\
-  %%   $\Rightarrow$ high-resistive \& depleted sensors, readout with precise timing.
+    \end{itemize}
+
+    \column{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/hybridDet.pdf}
+  \end{columns}
+
+  \begin{itemize}
+  \item Thin-sensors R\&D:
+    \begin{itemize}
+    \item The feasibility of thin sensors studied using the Timepix3
+      readout ASIC with \textcolor{Red}{$55\,\micron$} pixel pitch.
+    \item Use simulations to extrapolate to pixels with a pitch of
+      \textcolor{Red}{$25\,\micron$}.
+    \end{itemize}
+  \end{itemize}
+
+  \begin{itemize}
+  \item Small-pitch ASIC R\&D:
+    \begin{itemize}
+    \item CLICpix readout ASIC demonstrator
+    \item Matrix of $64\times64$ pixels, $25\,\micron$ pixel pitch.
+    \item 65~nm CMOS technology
+    \item Simultaneous measurement of time (TOA) and energy (TOT) per
+      pixel.
+    \item Compatible with power pulsing scheme.
+    \end{itemize}
   \end{itemize}
 
 \end{frame}
 
-
-%-------------------------------------------------------
-%-------------------------------------------------------
-\section{R\&D on sensor and readout technologies}
-%-------------------------------------------------------
-\subsection{Thin planar sensors}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Thin planar sensors}
-\end{frame}
-%-------------------------------------------------------
-\subsection{The Timepix3 hybrid readout ASIC}
-\begin{frame}
-  \frametitle{The Timepix3 hybrid readout ASICs}
-\end{frame}
-%-------------------------------------------------------
-\begin{frame}
-  \frametitle{Assembly calibration}
-\end{frame}
+  \frametitle{Test-beam measurements of thin sensors}
 
-%-------------------------------------------------------
-%-------------------------------------------------------
-\section{Simulation}
-\begin{frame}
-  \frametitle{Simulation and reconstruction}
+  % \begin{itemize}
+  % \end{itemize}
+
 \end{frame}
+% %-------------------------------------------------------
+% %-------------------------------------------------------
+% \section{R\&D on sensor and readout technologies}
+% %-------------------------------------------------------
+% \subsection{Thin planar sensors}
+% \begin{frame}
+%   \frametitle{Thin planar sensors}
+% \end{frame}
+% %-------------------------------------------------------
+% \subsection{The Timepix3 hybrid readout ASIC}
+% \begin{frame}
+%   \frametitle{The Timepix3 hybrid readout ASICs}
+% \end{frame}
+% %-------------------------------------------------------
+% \begin{frame}
+%   \frametitle{Assembly calibration}
+% \end{frame}
+
+% %-------------------------------------------------------
+% %-------------------------------------------------------
+% \section{Simulation}
+% \begin{frame}
+%   \frametitle{Simulation and reconstruction}
+% \end{frame}
 
 
-%-------------------------------------------------------
-%-------------------------------------------------------
-\section{Timepix3 beam telescope}
-\begin{frame}
-  \frametitle{Timepix3 beam telescope}
-\end{frame}
+% %-------------------------------------------------------
+% %-------------------------------------------------------
+% \section{Timepix3 beam telescope}
+% \begin{frame}
+%   \frametitle{Timepix3 beam telescope}
+% \end{frame}
 
-%-------------------------------------------------------
-%-------------------------------------------------------
-\section{Thin sensors studies}
-\begin{frame}
-  \frametitle{Thin sensors studies}
-\end{frame}
+% %-------------------------------------------------------
+% %-------------------------------------------------------
+% \section{Thin sensors studies}
+% \begin{frame}
+%   \frametitle{Thin sensors studies}
+% \end{frame}
 
-%-------------------------------------------------------
-%-------------------------------------------------------
-\section{Active edge sensors}
-\begin{frame}
-  \frametitle{Active edge sensors}
-\end{frame}
+% %-------------------------------------------------------
+% %-------------------------------------------------------
+% \section{Active edge sensors}
+% \begin{frame}
+%   \frametitle{Active edge sensors}
+% \end{frame}
 
-%-------------------------------------------------------
-%-------------------------------------------------------
+% %-------------------------------------------------------
+% %-------------------------------------------------------
 \label{lastslide}
 \section{Conclusions}
 \begin{frame}
