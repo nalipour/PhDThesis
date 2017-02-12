@@ -99,7 +99,7 @@
       \item Low levels of radiation
       \end{itemize}
     \item Superior sensitivity for electro-weak states
-    \item High-energy $e^+e^-$ collisions ($\geq350\,\tev$) require
+    \item High-energy $e^+e^-$ collisions ($\geq350\,\gev$) require
       linear colliders
     \end{itemize}
 
@@ -534,8 +534,161 @@
 \begin{frame}
   \frametitle{Test-beam measurements of thin sensors}
 
-  % \begin{itemize}
-  % \end{itemize}
+  \begin{itemize}
+  \item Test-beam campaigns at the CERN SPS with $120\,\gev$ pion
+    beam.
+  \item CLICpix Timepix3 pixel-beam telescope $\Rightarrow$ track
+    reconstruction.
+  \end{itemize}
+
+
+  \begin{columns}
+    \column{0.6\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=\textwidth]{../figures/ActiveEdge/Timepix3Telescope.jpeg}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[above, color=white] at (0.5, 0.85) {Device Under Test};
+        \node[above, color=white] at (0.5, 0.78) {(\textbf{DUT})};
+
+        \draw[->, very thick, color=black](0.75, 0.38) -- (0.25, 0.44);
+        % \node[right, color=black] at (0.77, 0.42) {\textbf{Beam}};
+
+        \draw[<->, very thick, color=black](0.33, 0.25) -- (0.66, 0.25);
+        \node[below, color=black] at (0.5, 0.25) {\textbf{152~mm}};
+
+        \node[color=black] at (0.64, 0.32) {\textbf{0}};
+        \node[color=black] at (0.6, 0.32) {\textbf{1}};
+        \node[color=black] at (0.55, 0.32) {\textbf{2}};
+
+        \node[color=black] at (0.44, 0.32) {\textbf{3}};
+        \node[color=black] at (0.39, 0.32) {\textbf{4}};
+        \node[color=black] at (0.35, 0.32) {\textbf{5}};
+        
+
+        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.64, 0.4) {}; 
+        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.6, 0.4) {};
+        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.55, 0.4) {};
+        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.42, 0.42) {};
+        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.37, 0.43) {};
+        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.32, 0.43) {};
+
+        \node[star, fill, color=Green, inner sep=0pt, minimum size=8pt]
+        at (0.49, 0.41) {};
+
+        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+        
+      \end{scope}
+    \end{tikzpicture} 
+    \\
+    
+    \begin{tikzpicture}
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+        
+         \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.1, 0.9) {};
+        \node[right, color=black] at (0.1, 0.9) {: measured track
+          position};
+
+        \node[star, fill, color=Green, inner sep=0pt, minimum
+        size=8pt] at (0.1, 0.8) {}; \node[right, color=black] at (0.1,
+        0.8) {: reconstructed track position};
+      \end{scope}
+    \end{tikzpicture} 
+
+
+    \column{0.4\textwidth}
+
+    \begin{itemize}
+    \item Pointing resolution on the DUT:
+      \textcolor{Green}{$\sim2\,\micron$}
+    \item Time resolution per plane: \textcolor{Green}{$\sim$1~ns}
+    \end{itemize}
+
+    % \begin{tikzpicture}
+    %   \begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+    %     \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+    %     \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+    %     \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+        
+    %   \end{scope}
+    % \end{tikzpicture} 
+
+  \end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{AllPix simulation framework}
+
+  \begin{columns}
+    \column{0.6\textwidth}
+
+    \begin{itemize}
+    \item A general purpose pixel-detector simulation framework (in
+      C/C++) based on \textsc{Geant4}.
+    \item Fully customisable for detector geometry description:
+      \begin{itemize}
+      \item thickness, pixel-pitch, bump geometry, material
+      \end{itemize}
+    \item \textcolor{Green}{\textbf{Digitisation}}: responsible for the
+      full simulation of the detector including the sensor and the
+      readout chip. 
+      \begin{itemize}
+      \item Defined by the user.
+      \item Different for each sensor/ASIC technology.
+      \end{itemize}
+    \end{itemize}
+    
+    \column{0.4\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=\textwidth]{../figures/ActiveEdge/Timepix3Telescope.jpeg}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[above, color=white] at (0.5, 0.85) {The CLICpix Timepix3
+        telescope};
+      \end{scope}
+    \end{tikzpicture}
+
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=\textwidth]{../figures/Telescope/AllpixTelescope.png}};
+
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[above, color=white] at (0.5, 0.85) {The simulated
+          Timepix3 telescope};
+      \end{scope}
+    \end{tikzpicture}
+  \end{columns}
+
+  \begin{itemize}
+  \item \textcolor{Red}{Goal}:
+    \begin{itemize}
+    \item Simulate the test-beam setup.
+    \item Extrapolate results for small-pitch pixels (e.g.  CLICpix
+      with $25\,\micron$ pitch).
+    \item Improve digitisation models for full-detector simulation.
+    \end{itemize}
+  \end{itemize}
 
 \end{frame}
 % %-------------------------------------------------------
