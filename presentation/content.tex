@@ -787,17 +787,175 @@ height=4em]
   \frametitle{The Timepix3 telescope performance}
 
   \begin{itemize}
-  \item Extraction of the tracking resolution.
+  \item In simulation, extract the tracking resolution on the DUT
+    using the Monte Carlo (MC) hit position
   \end{itemize}
 
-\end{frame}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Biased residual: reconstructed track vs. hit on the
+      telescope planes.
+    \item Agreement between data and simulation \ding{51}
+    \end{itemize}
 
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../figures/Telescope/biasedResiduals/RMSX_simu_vs_data.pdf}
+  \end{columns}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Tracking resolution on the DUT: reconstructed track vs. MC
+      hit position
+    \item Excellent tracking resolution of
+      \textcolor{Green}{$\sim2\,\micron$} on the DUT
+      \\
+      $\Rightarrow$ In agreement with the expectations \ding{51}
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../figures/Telescope/Unbiased_trackRes_DUT_x.pdf}
+  \end{columns}
+
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Small pixel}
+  \frametitle{Thin sensors studies}
+
+  \begin{itemize}
+  \item Prototypes with Advacam planar n-in-p thin sensors
+    ($50 - 150\,\micron$ thick) bump-bonded to Timepix3 readout ASICs
+  \item Tested in test-beam measurements and compared with AllPix
+    simulations
+  \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Validation of the energy deposition}
+
+  \begin{itemize}
+  \item Validation of the calibration
+  \item Validation of the \textsc{Geant4} simulation: PAI physics list
+    (Bichsel model).
+  \end{itemize}
+
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+    \item $50\,\micron$
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/50micron_Edep.pdf}
+
+    \column{0.3\textwidth}
+    \begin{itemize}
+    \item $100\,\micron$
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/100micron_Edep.pdf}
+
+    \column{0.3\textwidth}
+    \begin{itemize}
+    \item $150\,\micron$
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/150micron_Edep.pdf}
+  \end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Charge sharing}
+
+  \begin{columns}[t]
+    \column{0.25\textwidth}
+    \begin{itemize}
+    \item 1-pixel cluster
+    \end{itemize}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle (0.5,-0.5);
+    \end{tikzpicture}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/TrackPosWPixel_1hit_runW19_G7.pdf}
+
+    \column{0.25\textwidth}
+    \begin{itemize}
+    \item 2-pixel cluster
+    \end{itemize}
+    \begin{tikzpicture}
+      \draw (0.0,0.0) rectangle (0.5,-0.5);
+      \draw (0.5,0.0) rectangle (1.0,-0.5);
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \draw (0.0,0.0) rectangle (0.5,-0.5);
+      \draw (0.0,0.5) rectangle (0.5,0.0);
+    \end{tikzpicture}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/TrackPosWPixel_2hit_runW19_G7.pdf}
+
+    \column{0.25\textwidth}
+    \begin{itemize}
+    \item 3-pixel cluster
+    \end{itemize}
+    \begin{tikzpicture}
+      \draw (0.0,0.0) rectangle (0.5,-0.5);
+      \draw (0.5,-0.5) rectangle (1.0,-1.0);
+      \draw (0.5,0.0) rectangle (1.0,-0.5);
+    \end{tikzpicture}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/TrackPosWPixel_3hit_runW19_G7.pdf}
+
+    \column{0.25\textwidth}
+    \begin{itemize}
+    \item 4-pixel cluster
+    \end{itemize}
+    \begin{tikzpicture}
+      \draw (0.0,0.0) rectangle (0.5,-0.5);
+      \draw (0.5,-0.5) rectangle (1.0,-1.0);
+      \draw (0.5,0.0) rectangle (1.0,-0.5);
+      \draw (0.0,-0.5) rectangle (0.5,-1.0);
+    \end{tikzpicture}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/TrackPosWPixel_4hit_runW19_G7.pdf}
+  \end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Cluster-sizes \& resolution}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/cluSize_vs_thickness.pdf}
+
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/residuals_vs_thickness.pdf}
+  \end{columns}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Small pitch R\&D and extrapolation}
 
 
   \begin{itemize}
@@ -811,6 +969,16 @@ height=4em]
     \item Compatible with power pulsing scheme.
     \end{itemize}
   \end{itemize}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/ClusterSize_extrapolationSmallerPixels.pdf}
+
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/RMS_extrapolationSmallerPixels.pdf}
+  \end{columns}
 
 \end{frame}
 % %-------------------------------------------------------
