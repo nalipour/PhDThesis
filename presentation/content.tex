@@ -981,6 +981,73 @@ height=4em]
   \end{columns}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Active-edge sensors}
+
+  The \textcolor{Blue}{DRIE} (Deep Reactive-Ion Etching) process is
+  used to cut an active-edge silicon sensor.
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Implantation on the sidewall of the sensor $\Rightarrow$
+      control the potential at the edge by creating an extension of the
+      backside electrode on the edge.
+    \item Guard-rings: metal and n-implants to establish a smooth voltage drop
+      between the edge and the last pixel.
+    \end{itemize}
+
+    \column{0.5\textwidth}
+
+    \begin{columns}
+      \column{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) at 
+        (0,0){\includegraphics[width=\textwidth]{figures/EdgeSchematicTCAD_cut.png}};
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+          \node[above, color=white] at (0.51, 0.1) {\small{\textbf{No guard-ring}}};
+        \end{scope}
+      \end{tikzpicture}
+      
+      \column{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) at 
+        (0,0){\includegraphics[width=0.85\textwidth]{figures/edgeSchematicTCAD_GuardRing_cut.png}};
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+          \node[above, color=white] at (0.51, 0.1) {\small{\textbf{With guard-ring}}};
+        \end{scope}
+      \end{tikzpicture}
+    \end{columns}
+  \end{columns}
+
+
+  \begin{itemize}
+  \item Advacam active-edge devices (n-in-p) bump-bonded to the Timepix3 ASICs:
+  \end{itemize}
+  \centering
+  \resizebox{\textwidth}{!}{\begin{tabular}{lccc}
+      \toprule
+      Assembly & Sensor thickness [\si{\micro\meter}] & Edge width
+      [\si{\micro\meter}] & Edge type\\
+      \midrule
+      20-NGR & 50 & 20 & No guard-ring \\ %20-256
+      20-FGR & 50 & 20 & Floating guard-ring \\ %20 G256
+      20-GNDGR & 50 & 20 & Grounded guard-ring \\ %20-GR257
+      50-GNDGR & 50 & 50 & Grounded guard-ring \\ %50-GR257
+      % \hline
+      % 50-GNDGR & 100 & 50 & Grounded guard-ring \\ %50-GR257
+      % \hline
+      % 50-GNDGR & 150 & 50 & Grounded guard-ring \\ %50-GR257
+      \bottomrule
+  \end{tabular}}
+
+\end{frame}
 % %-------------------------------------------------------
 % %-------------------------------------------------------
 % \section{R\&D on sensor and readout technologies}
