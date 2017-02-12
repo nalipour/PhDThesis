@@ -485,8 +485,52 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----------------------------- %
+\tikzstyle{block} = [rectangle, draw, text width=5em, text centered, rounded corners, minimum
+height=4em]
+\usetikzlibrary{backgrounds,fit,decorations.pathreplacing} 
+
+% ----------------------------- %
 \begin{frame}
-  \frametitle{R\&D for pixel detectors at CLIC}
+  \frametitle{R\&D for hybrid pixel detectors at CLIC}
+
+  \begin{itemize}
+  \item Hybrid pixel detector: \textcolor{Green}{sensor} \& \textcolor{blue}{readout ASIC}
+  \end{itemize}
+
+  \centering
+  \begin{adjustbox}{max totalsize={.9\textwidth}{.7\textheight},center}
+    \begin{tikzpicture}[node distance = 2.5cm, auto]
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        
+        \coordinate (input);
+        \node [block, right of=input, color=Green] (sens) {Sensor};
+        \node [block, right of=sens, color=blue] (preamp) {Preamplifier/ Shaper};
+        \node [block, right of=preamp, color=blue] (discr) {Discriminator};
+        \node [block, right of=discr, color=blue] (conv) {TOT/TOA counters};
+        \coordinate[right of=conv] (output);
+        
+        \draw[arrows=->] (input) -- node [text
+        width=4cm,midway] {Incident radiation} (sens);
+        \draw[arrows=->] (sens) -- (preamp);
+        \draw[arrows=->] (preamp) -- (discr);
+        \draw[arrows=->] (discr) -- (conv);
+        \draw[arrows=->] (conv) -- node [text width=1.5cm,midway]
+        {Digital data bus} (output);
+        
+        \draw[decorate,decoration={brace, mirror}, thick] (sens.south) to
+        node[below,below] (bracket) {Analogue domain}
+        (discr.south);
+        
+        \draw[decorate,decoration={brace, mirror}, thick] (conv.south
+        west) to node[below,below] (bracket) {Digital domain} (conv.south
+        east);
+        
+        \draw[decorate,decoration={brace}, thick, color=blue] (preamp.north) to
+        node[above, above] (bracket) {Readout chip} (conv.north);
+      \end{scope}
+    \end{tikzpicture}
+  \end{adjustbox}
 
   \begin{columns}
     \column{0.6\textwidth}
@@ -514,17 +558,60 @@
     \end{itemize}
   \end{itemize}
 
-  \begin{itemize}
-  \item Small-pitch ASIC R\&D:
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{The Timepix3 readout chip}
+
+  \begin{columns}
+    \column{0.6\textwidth}
     \begin{itemize}
-    \item CLICpix readout ASIC demonstrator
-    \item Matrix of $64\times64$ pixels, $25\,\micron$ pixel pitch.
-    \item 65~nm CMOS technology
-    \item Simultaneous measurement of time (TOA) and energy (TOT) per
-      pixel.
-    \item Compatible with power pulsing scheme.
+    \item Matrix of $256\times256$ pixels
+    \item $55\,\micron$ pixel pitch
+      \begin{itemize}
+      \item Simultaneous measurement:
+      \item Time-of-arrival (TOA) $\Rightarrow$
+        \textcolor{Green}{time}
+        \item Time-over-threshold (TOT) $\Rightarrow$
+          \textcolor{Green}{energy}
+      \end{itemize}
+    \item Data-driven mode readout:
+      \begin{itemize}
+      \item Low dead time
+      \item High readout rates: 40~Mhits/(s$\cdot$cm\textsuperscript{2})
+      \end{itemize}
     \end{itemize}
-  \end{itemize}
+
+    \column{0.4\textwidth}
+    \centering 
+    \includegraphics[width=\textwidth, trim = 50mm 140mm
+    60mm 50mm, clip]{../figures/Calibration/TOT_TOA_explanation.pdf}
+  \end{columns}
+
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item TOT - energy calibration:
+      \begin{itemize}
+      \item Non-linear relationship between the measured TOT and the
+        deposited energy.
+      \item Internal analogue test pulse generator \\
+        Q=C$\cdot \Delta$V
+      \end{itemize}
+    \item Preferred operation in the linear regime
+    \end{itemize}
+
+
+
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/Calibration/TOTcalibration_W0005_E02_thresh1160.pdf}
+  \end{columns}
 
 \end{frame}
 
@@ -632,6 +719,7 @@
 
 \end{frame}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -687,6 +775,40 @@
     \item Extrapolate results for small-pitch pixels (e.g.  CLICpix
       with $25\,\micron$ pitch).
     \item Improve digitisation models for full-detector simulation.
+    \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{The Timepix3 telescope performance}
+
+  \begin{itemize}
+  \item Extraction of the tracking resolution.
+  \end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Small pixel}
+
+
+  \begin{itemize}
+  \item Small-pitch ASIC R\&D:
+    \begin{itemize}
+    \item CLICpix readout ASIC demonstrator
+    \item Matrix of $64\times64$ pixels, $25\,\micron$ pixel pitch.
+    \item 65~nm CMOS technology
+    \item Simultaneous measurement of time (TOA) and energy (TOT) per
+      pixel.
+    \item Compatible with power pulsing scheme.
     \end{itemize}
   \end{itemize}
 
