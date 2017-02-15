@@ -1046,19 +1046,26 @@ height=4em]
       % 50-GNDGR & 150 & 50 & Grounded guard-ring \\ %50-GR257
       \bottomrule
   \end{tabular}}
-
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{20-NGR}
+  \frametitle{20-NGR-50}
 
   \begin{columns}
     \column{0.5\textwidth}
 
-    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Efficient up to the physical edge.
+    \item All the streamlines reach the pixel.
+    \end{itemize}
+
+    \centering
+    \reflectbox{\includegraphics[width=0.3\textwidth]{../figures/ActiveEdge/streamlines_20-NGR-50.png}}
+
+    \column{0.3\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at
@@ -1081,18 +1088,22 @@ height=4em]
     \end{tikzpicture}
   \end{columns}
 
-  \begin{columns}
-    \column{0.3\textwidth}
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    
+    \begin{itemize}
+    \item Efficiency vs. track position
+    \end{itemize}
     \centering
-    \includegraphics[width=\textwidth, page=3]{../figures/TestBeam/edge_bcp.pdf}
+    \includegraphics[width=0.8\textwidth, page=3]{../figures/TestBeam/edge_bcp.pdf}
+    
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Energy deposition vs. track position
+    \end{itemize}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../figures/ActiveEdge/20_NGR_Edep_TCAD_data.pdf}
 
-    \column{0.3\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{../figures/ActiveEdge/20_NGR_Edep_TCAD_data.pdf}
-
-    \column{0.3\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{../figures/ActiveEdge/streamlines_20-NGR-50.png}
   \end{columns}
 
 \end{frame}
