@@ -1048,6 +1048,54 @@ height=4em]
   \end{tabular}}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{20-NGR}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+
+    \column{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/Layout2Pixels2.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[above, color=Blue, rotate=90] at (0.1, 0.5)
+        {\small{\textbf{20-NGR}}};
+        \node[above, color=Blue, rotate=90] at (0.25, 0.5) {\small{(no GR)}};
+        \node[above] at (0.8, 0.7) {\small{\SI{15}{\micro\meter}}};
+        \draw[Blue, thick](0.765, 0.05)--(0.765, 0.95);
+        \draw[Blue, thick, dashed](0.7, 0.05)--(0.7, 0.95);
+        \draw[Blue, thick](0.38, 0.05)--(0.38, 0.95);
+        \draw[Blue, thick](0.98, 0.05)--(0.98, 0.95);
+        \draw[Blue, thick](0.38, 0.05)--(0.98, 0.05);
+        \draw[Blue, thick](0.38, 0.95)--(0.98, 0.95);
+        \node[below, color=Blue] at (0.38, 0.055) {-0.055};
+        \node[below, color=Blue] at (0.7, 0.055) {0};
+        \node[below, color=Blue] at (0.98, 0.055) {0.055};
+      \end{scope}
+    \end{tikzpicture}
+  \end{columns}
+
+  \begin{columns}
+    \column{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, page=3]{../figures/TestBeam/edge_bcp.pdf}
+
+    \column{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/ActiveEdge/20_NGR_Edep_TCAD_data.pdf}
+
+    \column{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/ActiveEdge/streamlines_20-NGR-50.png}
+  \end{columns}
+
+\end{frame}
 % %-------------------------------------------------------
 % %-------------------------------------------------------
 % \section{R\&D on sensor and readout technologies}
