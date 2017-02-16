@@ -988,43 +988,39 @@ height=4em]
 \begin{frame}
   \frametitle{Active-edge sensors}
 
-  The \textcolor{Blue}{DRIE} (Deep Reactive-Ion Etching) process is
-  used to cut an active-edge silicon sensor.
+  \begin{itemize}
+  \item The \textcolor{Blue}{DRIE} (Deep Reactive-Ion Etching) process
+    is used to cut an active-edge silicon sensor.
+  \item Implantation on the sidewall of the sensor $\Rightarrow$
+    control the potential at the edge by creating an extension of the
+    backside electrode on the edge.
+  \item Guard-rings: metal and n-implants to establish a smooth
+    voltage drop between the edge and the last pixel.
+  \end{itemize}
 
   \begin{columns}
-    \column{0.5\textwidth}
-    \begin{itemize}
-    \item Implantation on the sidewall of the sensor $\Rightarrow$
-      control the potential at the edge by creating an extension of the
-      backside electrode on the edge.
-    \item Guard-rings: metal and n-implants to establish a smooth voltage drop
-      between the edge and the last pixel.
-    \end{itemize}
 
     \column{0.5\textwidth}
-
-    \begin{columns}
-      \column{0.5\textwidth}
-      \centering
-      \begin{tikzpicture}
-        \node[anchor=south west,inner sep=0] (image) at 
-        (0,0){\includegraphics[width=\textwidth]{figures/EdgeSchematicTCAD_cut.png}};
-        \begin{scope}[x={(image.south east)},y={(image.north west)}]
-          \node[above, color=white] at (0.51, 0.1) {\small{\textbf{No guard-ring}}};
-        \end{scope}
-      \end{tikzpicture}
-      
-      \column{0.5\textwidth}
-      \centering
-      \begin{tikzpicture}
-        \node[anchor=south west,inner sep=0] (image) at 
-        (0,0){\includegraphics[width=0.85\textwidth]{figures/edgeSchematicTCAD_GuardRing_cut.png}};
-        \begin{scope}[x={(image.south east)},y={(image.north west)}]
-          \node[above, color=white] at (0.51, 0.1) {\small{\textbf{With guard-ring}}};
-        \end{scope}
-      \end{tikzpicture}
-    \end{columns}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at 
+      (0,0){\includegraphics[width=\textwidth]{figures/EdgeSchematicTCAD_cut.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[above, color=white] at (0.51, 0.1) {\small{\textbf{No guard-ring}}};
+      \end{scope}
+    \end{tikzpicture}
+    
+    \column{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at 
+      (0,0){\includegraphics[width=0.85\textwidth]{figures/edgeSchematicTCAD_GuardRing_cut.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[above, color=white] at (0.51, 0.1) {\small{\textbf{With guard-ring}}};
+      \end{scope}
+    \end{tikzpicture}
   \end{columns}
+
 
 
   \begin{itemize}
@@ -1040,10 +1036,6 @@ height=4em]
       20-FGR & 50 & 20 & Floating guard-ring \\ %20 G256
       20-GNDGR & 50 & 20 & Grounded guard-ring \\ %20-GR257
       50-GNDGR & 50 & 50 & Grounded guard-ring \\ %50-GR257
-      % \hline
-      % 50-GNDGR & 100 & 50 & Grounded guard-ring \\ %50-GR257
-      % \hline
-      % 50-GNDGR & 150 & 50 & Grounded guard-ring \\ %50-GR257
       \bottomrule
   \end{tabular}}
 \end{frame}
@@ -1107,6 +1099,38 @@ height=4em]
   \end{columns}
 
 \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{lastslide}
+\section{Conclusions}
+\begin{frame}
+  \frametitle{Conclusions}
+
+  \begin{itemize}
+  \item The vertex detector plays a key role to fully exploit the
+    physics potential at CLIC.
+    \begin{itemize}
+    \item High spatial resolution (\textcolor{Blue}{$\sim3\,\micron$})
+      and low material content (\textcolor{Blue}{$\sim$2\%
+        X\textsubscript{0}}) $\Rightarrow$ achieve high
+      flavour-tagging performance
+    \end{itemize} 
+    \item Characterisation of thin and active-edge planar silicon
+      pixel sensors
+      \begin{itemize}
+      \item \textsc{Geant4} and TCAD simulations validated with
+        test-beam data
+      \item Extrapolation to small pixels sizes using simulations
+      \item Most suitable design for active-edge designs have been
+        chosen
+      \end{itemize}
+
+  \end{itemize}
+
+\end{frame}
 % %-------------------------------------------------------
 % %-------------------------------------------------------
 % \section{R\&D on sensor and readout technologies}
@@ -1156,8 +1180,3 @@ height=4em]
 
 % %-------------------------------------------------------
 % %-------------------------------------------------------
-\label{lastslide}
-\section{Conclusions}
-\begin{frame}
-  \frametitle{Conclusions}
-\end{frame}
