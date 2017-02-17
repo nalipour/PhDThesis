@@ -982,6 +982,96 @@ height=4em]
 
 \end{frame}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Active-edge sensors}
+
+
+  \begin{columns}
+    \column{0.5\textwidth}
+
+    \column{0.5\textwidth}
+    \vspace{-0.8cm}
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,
+      0){\includegraphics[width=\textwidth]{figures/CLIC_detector_2016_2.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        
+        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
+        % {0.\y}; }
+
+        \draw[<->,line width=0.5pt] (0.15, 0.95) -- (0.7, 0.99);
+        \node[color=black] at (0.45, 1) {11.4~m};
+        
+        % \draw[<->,line width=0.5pt] (0.04, 0.17) -- (0.04, 0.9);
+        % \node[color=black, rotate=90] at (0.01, 0.5) {12.9~m};
+        
+        \node[color=white] at (0.45, 0.9) {\textbf{CLIC detector}};
+        \draw[->,line width=1.7pt] (0.5, 0.5) -- (0.5, 0.33);
+%        \vspace{-0.8cm}
+        \node[color=black] at (0.58, 0.43) {\textbf{VXD}};
+        \includegraphics[width=\textwidth]{figures/spiralVXD_2.png}
+
+        
+      \end{scope}
+    \end{tikzpicture}
+
+    \begin{adjustbox}{max totalsize={.9\textwidth}{.4\textheight},center}
+      \begin{tikzpicture}[node distance = 2.5cm, auto]
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+          
+          % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+          % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+          % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
+          %   {0.\y}; }
+          
+          \draw[->,line width=1.7pt] (0.5, 1.2) -- (0.5, 1);
+          \node[color=black] at (0.65, 1.1) {\textbf{Ladders}};
+
+          \draw[thick, fill=Orange] (0.0, 0.4) rectangle (1, 1);
+
+          \draw[very thick, fill=gray] (0.1, 0.7) rectangle (0.3, 0.9);
+
+          \draw[-,line width=0.1pt] (0.15, 0.7) -- (0.15, 0.9);
+          \draw[-,line width=0.1pt] (0.2, 0.7) -- (0.2, 0.9);
+          \draw[-,line width=0.1pt] (0.25, 0.7) -- (0.25, 0.9);
+          \draw[-,line width=0.1pt] (0.1, 0.8) -- (0.3, 0.8);
+          \draw[-,line width=0.1pt] (0.1, 0.85) -- (0.3, 0.85);
+          \draw[-,line width=0.1pt] (0.1, 0.75) -- (0.3, 0.75);
+
+          \draw[very thick, fill=gray] (0.1, 0.5) rectangle (0.3,
+          0.7);
+
+
+          \draw[-,line width=0.1pt] (0.15, 0.5) -- (0.15, 0.7);
+          \draw[-,line width=0.1pt] (0.2, 0.5) -- (0.2, 0.7);
+          \draw[-,line width=0.1pt] (0.25, 0.5) -- (0.25, 0.7);
+          \draw[-,line width=0.1pt] (0.1, 0.65) -- (0.3, 0.65);
+          \draw[-,line width=0.1pt] (0.1, 0.6) -- (0.3, 0.6);
+          \draw[-,line width=0.1pt] (0.1, 0.55) -- (0.3, 0.55);
+
+
+          \draw[very thick, fill=gray] (0.3, 0.7) rectangle (0.5, 0.9);
+          \draw[very thick, fill=gray] (0.3, 0.5) rectangle (0.5, 0.7);
+          \draw[very thick, fill=gray] (0.5, 0.7) rectangle (0.7, 0.9);
+          \draw[very thick, fill=gray] (0.5, 0.5) rectangle (0.7, 0.7);
+          \draw[very thick, fill=gray] (0.7, 0.7) rectangle (0.9, 0.9);
+          \draw[very thick, fill=gray] (0.7, 0.5) rectangle (0.9, 0.7);
+
+        \end{scope}
+      \end{tikzpicture}
+    \end{adjustbox}
+    
+  \end{columns}
+
+
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1078,6 +1168,8 @@ height=4em]
         \node[below, color=Blue] at (0.98, 0.055) {0.055};
       \end{scope}
     \end{tikzpicture}
+
+
   \end{columns}
 
   \begin{columns}[t]
