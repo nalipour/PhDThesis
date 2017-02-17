@@ -989,9 +989,16 @@ height=4em]
 \begin{frame}
   \frametitle{Active-edge sensors}
 
-
   \begin{columns}
     \column{0.5\textwidth}
+
+    \begin{itemize}
+    \item Seamless tiling of pixel sensors for high coverage:
+      \begin{itemize}
+      \item Avoid overlaps between the pixel sensors
+      \item Reduce the material content in the detector
+      \end{itemize}
+    \end{itemize}
 
     \column{0.5\textwidth}
     \vspace{-0.8cm}
@@ -1013,8 +1020,8 @@ height=4em]
         
         \node[color=white] at (0.45, 0.9) {\textbf{CLIC detector}};
         \draw[->,line width=1.7pt] (0.5, 0.5) -- (0.5, 0.33);
-%        \vspace{-0.8cm}
         \node[color=black] at (0.58, 0.43) {\textbf{VXD}};
+
         \includegraphics[width=\textwidth]{figures/spiralVXD_2.png}
 
         
@@ -1033,7 +1040,7 @@ height=4em]
           \draw[->,line width=1.7pt] (0.5, 1.2) -- (0.5, 1);
           \node[color=black] at (0.65, 1.1) {\textbf{Ladders}};
 
-          \draw[thick, fill=Orange] (0.0, 0.4) rectangle (1, 1);
+          \draw[thick, fill=Orange] (0.05, 0.45) rectangle (0.95, 0.95);
 
           \draw[very thick, fill=gray] (0.1, 0.7) rectangle (0.3, 0.9);
 
@@ -1076,7 +1083,7 @@ height=4em]
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Active-edge sensors}
+  \frametitle{Active-edge sensors: fabrication process}
 
   \begin{itemize}
   \item The \textcolor{Blue}{DRIE} (Deep Reactive-Ion Etching) process
@@ -1088,46 +1095,89 @@ height=4em]
     voltage drop between the edge and the last pixel.
   \end{itemize}
 
-  \begin{columns}
+  % \begin{columns}
 
+   %  \column{0.5\textwidth}
+  %   \centering
+  %   \begin{tikzpicture}
+  %     \node[anchor=south west,inner sep=0] (image) at 
+  %     (0,0){\includegraphics[width=\textwidth]{figures/EdgeSchematicTCAD_cut.png}};
+  %     \begin{scope}[x={(image.south east)},y={(image.north west)}]
+  %       \node[above, color=white] at (0.51, 0.1) {\small{\textbf{No guard-ring}}};
+  %     \end{scope}
+  %   \end{tikzpicture}
+    
+  %   \column{0.5\textwidth}
+  %   \centering
+  %   \begin{tikzpicture}
+  %     \node[anchor=south west,inner sep=0] (image) at 
+  %     (0,0){\includegraphics[width=0.85\textwidth]{figures/edgeSchematicTCAD_GuardRing_cut.png}};
+  %     \begin{scope}[x={(image.south east)},y={(image.north west)}]
+  %       \node[above, color=white] at (0.51, 0.1) {\small{\textbf{With guard-ring}}};
+  %     \end{scope}
+  %   \end{tikzpicture}
+  % \end{columns}
+
+  \begin{columns}
     \column{0.5\textwidth}
-    \centering
+
     \begin{tikzpicture}
-      \node[anchor=south west,inner sep=0] (image) at 
-      (0,0){\includegraphics[width=\textwidth]{figures/EdgeSchematicTCAD_cut.png}};
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.78\textwidth]{figures/Efield_20_NGR.png}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \node[above, color=white] at (0.51, 0.1) {\small{\textbf{No guard-ring}}};
+        \draw[-, dashed, line width=.7pt, color=white](0.1, 0.05) -- (0.1, 0.92);
+        % \draw[-, dashed, line width=.7pt, color=white](0.54, 0.05) -- (0.54, 0.92);
+        
+        \draw[<->, line width=.7pt, color=black](0.01, 1) -- (0.32, 1); % edge width
+        \node[above, color=black] at (0.1, 1) {edge};
+        
+        \draw[<->, thick, color=black](0.33, 1) -- (0.8, 1); % n-implant
+        \node[above, color=black] at (0.6, 1) {n-implant};
+
+        \node[above, color=white] at (0.5, 0.5) {\textbf{p-substrate}};
+        
+        \draw[-, line width=3pt, color=violet](0.0, 0.05) -- (0.98, 0.05); % p+ backside contact
+        \node[below, color=violet] at (0.5, 0.0) {p+ backside contact};
+        \draw[-, line width=3pt, color=violet](0.0, 0.045) -- (0.0, 0.93); % p+ active-edge contact
+        \node[left, color=violet, rotate=90] at (-0.05, 0.7) {p+ active edge};
+        % \node[left, color=white, rotate=90] at (0.08, 0.9) {\textbf{final pixel edge}};
+
+        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
       \end{scope}
     \end{tikzpicture}
-    
+
     \column{0.5\textwidth}
-    \centering
     \begin{tikzpicture}
-      \node[anchor=south west,inner sep=0] (image) at 
-      (0,0){\includegraphics[width=0.85\textwidth]{figures/edgeSchematicTCAD_GuardRing_cut.png}};
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/Efield_23_FGR.png}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \node[above, color=white] at (0.51, 0.1) {\small{\textbf{With guard-ring}}};
+        \draw[-, dashed, line width=.7pt, color=white](0.14, 0.05) -- (0.14, 0.92);
+        % \draw[-, dashed, line width=.7pt, color=white](0.54, 0.05) -- (0.54, 0.92);
+        \draw[<->, line width=.7pt, color=black](0.01, 1) -- (0.35, 1); % edge width
+        
+        \node[above, color=black] at (0.2, 1) {edge};
+        \node[above, color=white] at (0.2, 0.75) {\textbf{GR}};
+        \node[above, color=white] at (0.55, 0.5) {\textbf{p-substrate}};
+        \draw[<->, line width=.4pt, color=black](0.13, 0.0) -- (0.98, 0.0); % pixel width
+        \node[below, color=black] at (0.5, 0.0) {\small{pixel (55
+            \micron)}};
+
+        \draw[<->, thick, color=black](0.36, 1) -- (0.81, 1); % n-implant
+        \node[above, color=black] at (0.6, 1) {n-implant};
+        
+        \draw[-, line width=3pt, color=violet](0.01, 0.05) -- (0.99, 0.05); % p+ backside contact
+        \draw[-, line width=3pt, color=violet](0.01, 0.045) -- (0.01,
+        0.95); % p+ active-edge contact
+
+        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
       \end{scope}
     \end{tikzpicture}
   \end{columns}
 
-
-
-  \begin{itemize}
-  \item Advacam active-edge devices (n-in-p) bump-bonded to the Timepix3 ASICs:
-  \end{itemize}
-  \centering
-  \resizebox{\textwidth}{!}{\begin{tabular}{lccc}
-      \toprule
-      Assembly & Sensor thickness [\si{\micro\meter}] & Edge width
-      [\si{\micro\meter}] & Edge type\\
-      \midrule
-      20-NGR & 50 & 20 & No guard-ring \\ %20-256
-      20-FGR & 50 & 20 & Floating guard-ring \\ %20 G256
-      20-GNDGR & 50 & 20 & Grounded guard-ring \\ %20-GR257
-      50-GNDGR & 50 & 50 & Grounded guard-ring \\ %50-GR257
-      \bottomrule
-  \end{tabular}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
