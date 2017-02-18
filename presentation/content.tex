@@ -1,28 +1,32 @@
 
-\begin{frame}{Content}{}
+\begin{frame}{Overview}{}
 \tableofcontents
 \end{frame}
 
-%-------------------------------------------------------
-%-------------------------------------------------------
 \section{Introduction}
-%-------------------------------------------------------
-%-------------------------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Particle physics: today and future}
+  \frametitle{Particle physics: its present and future}
 
-  \begin{itemize}
-  \item The Large Hadron Collider (LHC) is today's largest particle
-    accelerator at CERN (European Organisation for Nuclear Research)
+  \begin{columns}
+    \column{0.6\textwidth}
     \begin{itemize}
-    \item Proton-proton collisions
-    \item Center-of-mass energy: $\sqrt{s}=13\,\tev$
-    \item Observation of the Higgs boson in 2012
+    \item The Large Hadron Collider (LHC) is today's largest particle
+      accelerator at CERN (European Organisation for Nuclear Research)
+      \begin{itemize}
+      \item Proton-proton collisions
+      \item Center-of-mass energy: $\sqrt{s}=13\,\tev$
+      \item Observation of the Higgs boson in 2012
+      \end{itemize}
     \end{itemize}
+    \column{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/LHC.jpg}
+  \end{columns}
 
+      \begin{itemize}
   \item Still open questions in particles physics remain unanswered:
     \begin{itemize}
     \item Full understanding of the Higgs boson
@@ -48,22 +52,29 @@
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Hadron vs. Lepton colliders $\Rightarrow$ Discovery to Precision}
-  
-  % \begin{block}{}
-  %   \centering
-  %   Discovery to Precision
-  % \end{block}
+  \frametitle{Hadron vs. Lepton colliders}
 
   \begin{columns}[t]
     \column{0.5\textwidth}
     \centering
-    \includegraphics[width=0.6\textwidth]{figures/hadronColliders.pdf}
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,
+      0){\includegraphics[width=0.6\textwidth]{figures/hadronColliders.pdf}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[above, color=Green, rotate=90] at (0.0, 0.5) {\textbf{Discovery}};
+      \end{scope}
+    \end{tikzpicture}
+    
 
     \column{0.5\textwidth}
     \centering
-    \includegraphics[width=0.6\textwidth]{figures/leptonColliders.pdf}
-
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,
+      0){\includegraphics[width=0.6\textwidth]{figures/leptonColliders.pdf}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[above, color=Green, rotate=-90] at (1.0, 0.5) {\textbf{Precision}};
+      \end{scope}
+    \end{tikzpicture}
   \end{columns}
 
 
