@@ -1459,6 +1459,68 @@ height=4em]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Active-edge sensor with grounded GR (55-GNDGR-50)}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+
+    \begin{itemize}
+    \item The edge is not efficient.
+    \item Most of the charge at the edge is collected by the guard
+      ring.
+    \end{itemize}
+
+
+    \column{0.5\textwidth}
+
+    \begin{columns}
+      \column{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) at
+        (0,0){\includegraphics[width=0.9\textwidth]{{figures/50_edge_GRND_GR_2.png}}};
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+          \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
+          \draw[Blue, thick, dashed](0.55, 0.05)--(0.55, 0.95);
+          \draw[Blue, thick](0.25, 0.05)--(0.25, 0.95);
+          \draw[Blue, thick](0.9, 0.05)--(0.9, 0.95);
+          \draw[Blue, thick](0.25, 0.05)--(0.9, 0.05);
+          \draw[Blue, thick](0.25, 0.95)--(0.9, 0.95);
+          \node[below, color=Blue] at (0.25, 0.055) {-0.055};
+          \node[below, color=Blue] at (0.55, 0.055) {0};
+          \node[below, color=Blue] at (0.9, 0.055) {0.055};
+        \end{scope}
+      \end{tikzpicture}
+
+      \column{0.5\textwidth}
+      \centering
+      \reflectbox{\includegraphics[width=\textwidth]{../figures/ActiveEdge/streamlines_55-GNDGR-50.png}}
+    \end{columns}
+  \end{columns}
+
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    
+    \begin{itemize}
+    \item Efficiency vs. track position
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth, page=12]{../figures/TestBeam/edge_bcp.pdf}
+    
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Energy deposition vs. track position
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/ActiveEdge/55_GNDGR_Edep_TCAD_data.pdf}
+  \end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{lastslide}
 \section{Conclusions}
 \begin{frame}
