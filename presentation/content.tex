@@ -993,6 +993,14 @@ height=4em]
     \column{0.5\textwidth}
 
     \begin{itemize}
+    \item Sawing sensors edges:
+      \begin{itemize}
+      \item Undefined edge
+      \item Dangling bonds
+      \item Short between surfaces
+      \end{itemize}
+    \item Maximise the sensitive region of detectors with active-edge
+      sensors
     \item Seamless tiling of pixel sensors for high coverage:
       \begin{itemize}
       \item Avoid overlaps between the pixel sensors
@@ -1022,12 +1030,13 @@ height=4em]
         \draw[->,line width=1.7pt] (0.5, 0.5) -- (0.5, 0.33);
         \node[color=black] at (0.58, 0.43) {\textbf{VXD}};
 
-        \includegraphics[width=\textwidth]{figures/spiralVXD_2.png}
-
-        
       \end{scope}
     \end{tikzpicture}
 
+    \vspace{-1.5cm}
+    \includegraphics[width=\textwidth]{figures/spiralVXD_2.png}\\
+
+    \vspace{-0.8cm}
     \begin{adjustbox}{max totalsize={.9\textwidth}{.4\textheight},center}
       \begin{tikzpicture}[node distance = 2.5cm, auto]
         \begin{scope}[x={(image.south east)},y={(image.north west)}]
@@ -1037,7 +1046,7 @@ height=4em]
           % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
           %   {0.\y}; }
           
-          \draw[->,line width=1.7pt] (0.5, 1.2) -- (0.5, 1);
+          \draw[->,line width=1.7pt] (0.5, 1.15) -- (0.5, 1);
           \node[color=black] at (0.65, 1.1) {\textbf{Ladders}};
 
           \draw[thick, fill=Orange] (0.05, 0.45) rectangle (0.95, 0.95);
@@ -1094,29 +1103,6 @@ height=4em]
   \item Guard-rings: metal and n-implants to establish a smooth
     voltage drop between the edge and the last pixel.
   \end{itemize}
-
-  % \begin{columns}
-
-   %  \column{0.5\textwidth}
-  %   \centering
-  %   \begin{tikzpicture}
-  %     \node[anchor=south west,inner sep=0] (image) at 
-  %     (0,0){\includegraphics[width=\textwidth]{figures/EdgeSchematicTCAD_cut.png}};
-  %     \begin{scope}[x={(image.south east)},y={(image.north west)}]
-  %       \node[above, color=white] at (0.51, 0.1) {\small{\textbf{No guard-ring}}};
-  %     \end{scope}
-  %   \end{tikzpicture}
-    
-  %   \column{0.5\textwidth}
-  %   \centering
-  %   \begin{tikzpicture}
-  %     \node[anchor=south west,inner sep=0] (image) at 
-  %     (0,0){\includegraphics[width=0.85\textwidth]{figures/edgeSchematicTCAD_GuardRing_cut.png}};
-  %     \begin{scope}[x={(image.south east)},y={(image.north west)}]
-  %       \node[above, color=white] at (0.51, 0.1) {\small{\textbf{With guard-ring}}};
-  %     \end{scope}
-  %   \end{tikzpicture}
-  % \end{columns}
 
   \begin{columns}
     \column{0.5\textwidth}
@@ -1176,6 +1162,103 @@ height=4em]
         % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
       \end{scope}
     \end{tikzpicture}
+  \end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Guard-ring designs for $50\,\micron$ sensors}
+
+  \begin{columns}[t]
+    \column{0.25\textwidth}
+    \begin{itemize}
+    \item 20-NGR-50
+    \end{itemize}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/Layout2Pixels2.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        % \node[above] at (0.8, 0.7) {\small{\SI{15}{\micro\meter}}};
+        \draw[Blue, thick](0.765, 0.05)--(0.765, 0.95);
+        \draw[Blue, thick, dashed](0.7, 0.05)--(0.7, 0.95);
+        \draw[Blue, thick](0.38, 0.05)--(0.38, 0.95);
+        \draw[Blue, thick](0.98, 0.05)--(0.98, 0.95);
+        \draw[Blue, thick](0.38, 0.05)--(0.98, 0.05);
+        \draw[Blue, thick](0.38, 0.95)--(0.98, 0.95);
+        \node[below, color=Blue] at (0.38, 0.055) {-0.055};
+        \node[below, color=Blue] at (0.7, 0.055) {0};
+        \node[below, color=Blue] at (0.98, 0.055) {0.055};
+      \end{scope}
+    \end{tikzpicture}
+
+    \column{0.25\textwidth}
+    \begin{itemize}
+    \item 23-FGR-50
+    \end{itemize}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_float_GR_3.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        % \node[above] at (0.8, 0.7) {\small{\SI{20}{\micro\meter}}};
+        \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
+        \draw[Blue, thick, dashed](0.7, 0.05)--(0.7, 0.95);
+        \draw[Blue, thick](0.4, 0.05)--(0.4, 0.95);
+        \draw[Blue, thick](1, 0.05)--(1, 0.95);
+        \draw[Blue, thick](0.4, 0.05)--(1, 0.05);
+        \draw[Blue, thick](0.4, 0.95)--(1, 0.95);
+        \node[below, color=Blue] at (0.4, 0.055) {-0.055};
+        \node[below, color=Blue] at (0.7, 0.055) {0};
+        \node[below, color=Blue] at (1, 0.055) {0.055};
+      \end{scope}
+    \end{tikzpicture}
+
+    \column{0.27\textwidth}
+    \begin{itemize}
+    \item 28-GNDGR-50
+    \end{itemize}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=\textwidth]{figures/20_edge_GRND_GR_2.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \draw[Blue, thick](0.68, 0.05)--(0.68, 0.95);
+        \draw[Blue, thick, dashed](0.55, 0.05)--(0.55, 0.95);
+        \draw[Blue, thick](0.3, 0.05)--(0.3, 0.95);
+        \draw[Blue, thick](0.9, 0.05)--(0.9, 0.95);
+        \draw[Blue, thick](0.3, 0.05)--(0.9, 0.05);
+        \draw[Blue, thick](0.3, 0.95)--(0.9, 0.95);
+        \node[below, color=Blue] at (0.3, 0.055) {-0.055};
+        \node[below, color=Blue] at (0.55, 0.055) {0};
+        \node[below, color=Blue] at (0.9, 0.055) {0.055};
+      \end{scope}
+    \end{tikzpicture}
+
+    \column{0.27\textwidth}
+    \begin{itemize}
+    \item 55-GNDGR-50
+    \end{itemize}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.9\textwidth]{{figures/50_edge_GRND_GR_2.png}}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
+        \draw[Blue, thick, dashed](0.55, 0.05)--(0.55, 0.95);
+        \draw[Blue, thick](0.25, 0.05)--(0.25, 0.95);
+        \draw[Blue, thick](0.9, 0.05)--(0.9, 0.95);
+        \draw[Blue, thick](0.25, 0.05)--(0.9, 0.05);
+        \draw[Blue, thick](0.25, 0.95)--(0.9, 0.95);
+        \node[below, color=Blue] at (0.25, 0.055) {-0.055};
+        \node[below, color=Blue] at (0.55, 0.055) {0};
+        \node[below, color=Blue] at (0.9, 0.055) {0.055};
+      \end{scope}
+    \end{tikzpicture}
+
   \end{columns}
 
 \end{frame}
