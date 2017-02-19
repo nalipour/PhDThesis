@@ -128,11 +128,11 @@
   \begin{columns}
     \column{0.6\textwidth}
     \begin{itemize}
-    \item The Compact LInear Collider (CLIC)
+    \item The Compact LInear Collider (CLIC):
       \begin{itemize}
       \item An $e^{+}e^{-}$ linear collider for the post HL-LHC period.
-      \item Energy range $\sqrt{s}$ : \textcolor{blue}{$380\,\gev$} to
-        \textcolor{blue}{$3\,\tev$}
+      \item Energy range $\sqrt{s}$ : \textcolor{Green}{$380\,\gev$} to
+        \textcolor{Green}{$3\,\tev$}
         \begin{itemize} 
         \item Two-beam acceleration scheme with gradients of $\sim$100~MV/m.
         \end{itemize}
@@ -143,17 +143,13 @@
         \item Search for new physics: unique sensitivity to particles with
           electroweak charge.
         \end{itemize}
+      \item 48~km tunnel at 3~TeV stage
       \end{itemize}
     \end{itemize}
 
     \column{0.4\textwidth}
-    \begin{tikzpicture}
-      \node[anchor=south west,inner sep=0] (image) at (0,
-      0){\includegraphics[width=\textwidth]{../figures/CLIC/staging.pdf}};
-      \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \node[above, color=white] at (0.5, 0.001) {\textbf{48 km tunnel at 3 TeV stage}};
-      \end{scope}
-    \end{tikzpicture}
+    \centering
+    \includegraphics[width=1.1\textwidth]{../figures/CLIC/staging.pdf}
   \end{columns}
   
   \begin{columns}
@@ -189,10 +185,10 @@
   \begin{frame}
     \frametitle{Two-beam acceleration scheme at CLIC}
     
-    \vspace{-1.8cm}
+    \vspace{-1.5cm}
     \begin{itemize}
     \item High-gradient acceleration of \textcolor{Red}{100~MV/m} at
-      \textcolor{Red}{12~GHz} \\
+      \textcolor{Red}{12~GHz} with copper cavities at room temperature\\
       ($\rightarrow$ LHC: 5~MV/m and 400~MHz)
       \begin{itemize}
       \item Limit the length of the accelerator
@@ -230,12 +226,12 @@
 \subsection{CLIC beam profile}
 \begin{frame}
   \frametitle{Beam profile for CLIC}
-
+  
  \begin{columns}
    \column{0.6\textwidth}
 
    \begin{itemize}
-   \item Limited train duration due to the duration of the high power levels.
+   \item The RF pulse duration limits the number of bunches and the bunch-crossing separation
      \begin{itemize}
      \item Bunch crossings (BX): every 0.5~ns.
      \item Train duration: 156~ns (312 bunches).
@@ -510,7 +506,7 @@ height=4em]
   \end{itemize}
 
   \centering
-  \begin{adjustbox}{max totalsize={.9\textwidth}{.7\textheight},center}
+  \begin{adjustbox}{max totalsize={1.1\textwidth}{.7\textheight},center}
     \begin{tikzpicture}[node distance = 2.5cm, auto]
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
         
@@ -562,8 +558,12 @@ height=4em]
   \begin{itemize}
   \item Thin-sensors R\&D:
     \begin{itemize}
-    \item The feasibility of thin sensors studied using the Timepix3
-      readout ASIC with \textcolor{Red}{$55\,\micron$} pixel pitch.
+    \item Characterisation of thin sensors using the Timepix3 readout
+      ASIC with \textcolor{Red}{$55\,\micron$} pixel pitch:
+      \begin{itemize}
+      \item Spatial resolution
+      \item Detection efficiency
+      \end{itemize}
     \item Use simulations to extrapolate to pixels with a pitch of
       \textcolor{Red}{$25\,\micron$}.
     \end{itemize}
