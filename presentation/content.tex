@@ -384,44 +384,53 @@
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Requirements for the vertex detector}
+  \frametitle{The CLIC vertex detector}
 
   \begin{columns}
     \column{0.75\textwidth}
-    \begin{itemize}
-    \item Efficient tagging of heavy quarks through a precise
-      determination of displaced vertices can be achieved by: 
-      \begin{itemize}
-      \item Multi-layer VXD: 6 layers in the barrel and 6 disks
-      \item Inner radius of $\sim30$~mm and $θ_{min}\sim8^{\circ}$
-      \item B-field: \textcolor{Blue}{4~T}.
-      \item Single point resolution of
-        \textcolor{Blue}{$\sim$\SI{3}{\micro\meter}}:
-        \textcolor{Blue}{\SI{25}{\micro\meter}} pixel pitch \& analog readout.
-      \item Low material budget: $<0.2\%$~X\textsubscript{0}/layer and beam-pipe
-        \begin{itemize}
-        \item forced airflow cooling \& low-power electronics
-          ($\approx 50$~mW/cm\textsuperscript{2})
-        \end{itemize}
-      \end{itemize} 
-    \end{itemize}
+    \textcolor{Red}{\textbf{Goal}}: Efficient tagging of heavy quarks
+    through a precise determination of displaced vertices.
 
     \column{0.25\textwidth}
+
     \centering
     \includegraphics[width=\textwidth]{figures/secondary_vertex.png}
-
   \end{columns}
 
-  \vspace{-0.3cm}  
+  \begin{itemize}
+  \item Requirements:
+  \end{itemize}
+
   \begin{columns}
-    \column{0.6\textwidth}
+    \column{0.75\textwidth}
+
     \begin{itemize}
+    \item Multi-layer: 6 layers in the barrel and 6 disks
+    \item High coverage: $\sim30$~mm of inner radius and
+      $\theta_{min}\sim8^{\circ}$
+    \item B-field: \textcolor{Blue}{4~T}
+    \item Single point resolution of
+      \textcolor{Blue}{$\sim$\SI{3}{\micro\meter}}
+      \begin{itemize}
+      \item Pixel detectors
+      \end{itemize}
+    \item Low material budget: $<0.2\%$~X\textsubscript{0}/layer and
+      beam-pipe:
+      \begin{itemize}
+      \item Forced airflow cooling
+      \item Low-power electronics
+        ($\approx 50$~mW/cm\textsuperscript{2})
+      \end{itemize}
     \item Time slicing of \textcolor{Blue}{$\sim$\SI{10}{\nano\second}}
-      to reduce the impact of beam-induced backgrounds. \\
-      $\Rightarrow$ high-resistive \& depleted sensors, readout with precise timing.
+      to reduce the impact of beam-induced backgrounds.
+      \begin{itemize}
+      \item high-resistive \& depleted sensors
+      \item readout with precise timing.
+      \end{itemize}
     \end{itemize}
 
-    \column{0.4\textwidth}
+
+    \column{0.25\textwidth}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at (0,
@@ -429,26 +438,21 @@
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
         \draw[<->, Blue, thick](0.2, 0.0)--(0.84, 0.2);
         \node[below, color=Blue] at (0.5, 0.05) {56 cm};
-
-        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
-        %   {0.\y}; }
-
       \end{scope}
     \end{tikzpicture}
+
   \end{columns}
 
-  % \begin{itemize}
-  %   \item Moderate radiation exposure of the vertex detector:
-  %     \begin{itemize}
-  %     \item Total ionising dose (TID): $<$1~kGy/yr
-  %     \item Non-ionising energy loss (NIEL): $10^{11}$~n\textsubscript{eq}/cm\textsuperscript{2}/yr (\textcolor{Blue}{ATLAS phase 1: $10^{15}$~n\textsubscript{eq}/cm\textsuperscript{2}/yr})
-  %     \end{itemize}
-  % %% \item Time slicing of \textcolor{Blue}{$\sim$\SI{10}{\nano\second}}
-  % %%   to reduce the impact of beam-induced backgrounds. \\
-  % %%   $\Rightarrow$ high-resistive \& depleted sensors, readout with precise timing.
-  % \end{itemize}
+  % \vspace{-0.3cm}  
+  % \begin{columns}
+  %   \column{0.6\textwidth}
+  %   \begin{itemize}
+
+  %   \end{itemize}
+
+  %   \column{0.4\textwidth}
+
+  % \end{columns}
 
 \end{frame}
 
@@ -489,6 +493,14 @@
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Pixel detectors in high-energy physics}
+
+
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
@@ -596,6 +608,8 @@ height=4em]
       \item Low dead time
       \item High readout rates: 40~Mhits/(s$\cdot$cm\textsuperscript{2})
       \end{itemize}
+    \item Low noise (80 electrons) $\Rightarrow$ allows for operation
+      at a low threshold of 500 electrons.
     \end{itemize}
 
     \column{0.4\textwidth}
@@ -840,12 +854,30 @@ height=4em]
 \begin{frame}
   \frametitle{Thin sensors studies}
 
-  \begin{itemize}
-  \item Prototypes with Advacam planar n-in-p thin sensors
-    ($50 - 150\,\micron$ thick) bump-bonded to Timepix3 readout ASICs
-  \item Tested in test-beam measurements and compared with AllPix
-    simulations
-  \end{itemize}
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{itemize}
+    \item Planar \textcolor{Green}{n-in-p} sensors produced by Advacam
+      \begin{itemize}
+      \item Thickness: \textcolor{Green}{$50 - 150\,\micron$}
+      \item Bump-bonded to Timepix3 readout ASICs of
+        \textcolor{Green}{$700\,\micron$} thick
+      \end{itemize}
+    \item Put a picture of bump-bonding
+    \end{itemize}
+
+    \column{0.4\textwidth}
+    \begin{itemize}
+    \item Hybrid pixel detector prototype:
+      \begin{itemize}
+      \item $50\,\micron$ sensor
+      \item $700\,\micron$ Timepix ASIC
+      \end{itemize}
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth]{figures/Advacam-50um-assembly.jpeg}
+  \end{columns}
+
 
 \end{frame}
 
@@ -1017,6 +1049,7 @@ height=4em]
       \begin{itemize}
       \item Avoid overlaps between the pixel sensors
       \item Reduce the material content in the detector
+      \item High coverage
       \end{itemize}
     \end{itemize}
 
@@ -1096,8 +1129,6 @@ height=4em]
     \end{adjustbox}
     
   \end{columns}
-
-
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
