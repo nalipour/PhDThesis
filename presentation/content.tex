@@ -504,11 +504,14 @@
     \begin{itemize}
     \item Hybrid detectors:
       \begin{itemize}
-      \item Planar silicon sensor
+      \item Planar silicon sensor (High resistive \& Full depletion)
       \item Mixed-signal readout chip
         \begin{itemize}
         \item Possibility for complexe signal processing
+        \item High timing resolution
         \end{itemize}
+      \item Bump-bonding/flip chip
+      \item Widely used at the LHC experiments
       \end{itemize}
     \end{itemize}
 
@@ -522,7 +525,9 @@
     \begin{itemize}
     \item Monolithic pixel devices:
       \begin{itemize}
-      \item 
+      \item Sensitive region: epi-layer
+      \item Integrates sensor and front-end chip
+      \item Handles low rates
       \end{itemize}
     \end{itemize}
 
@@ -531,7 +536,20 @@
     \includegraphics[width=\textwidth]{figures/monolithic.pdf}
   \end{columns}
 
+  \begin{columns}
+    \column{0.7\textwidth}
+    \begin{itemize}
+    \item Capacitive coupled pixel detector:
+      \begin{itemize}
+      \item Depletion layer with fast signal collection through drift.
+      \item No bump-bonding $\Rightarrow$ glue
+      \end{itemize}
+    \end{itemize}
 
+    \column{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/HVCMOS_2stageAmpl.png}
+  \end{columns}
 
 \end{frame}
 
