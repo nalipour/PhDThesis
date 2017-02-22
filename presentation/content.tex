@@ -1036,23 +1036,39 @@ height=4em]
   \frametitle{Charge sharing}
 
   \begin{itemize}
-  \item 
+  \item Spread of the charge carriers at the readout due to their
+    diffusion within the detector volume.
+  \item Cluster-size distribution $\Rightarrow$ indication of charge
+    sharing.
+  \item Cluster size vs. track position within pixel:
   \end{itemize}
 
   \begin{columns}[t]
     \column{0.25\textwidth}
     \begin{itemize}
-    \item 1-pixel cluster
+    \item 1-pixel
     \end{itemize}
     \begin{tikzpicture}
       \draw (0,0) rectangle (0.5,-0.5);
     \end{tikzpicture}
     \centering
-    \includegraphics[width=\textwidth]{../figures/TestBeam/TrackPosWPixel_1hit_runW19_G7.pdf}
+
+    \vspace{0.5cm}
+
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=\textwidth]{../figures/TestBeam/TrackPosWPixel_1hit_runW19_G7.pdf}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+        \draw[<->, very thick, color=Blue](0.18, 0) -- (0.82, 0);
+        \node[below, color=Blue] at (0.5, 0.0) {pitch};
+      \end{scope}
+    \end{tikzpicture}
+    
 
     \column{0.25\textwidth}
     \begin{itemize}
-    \item 2-pixel cluster
+    \item 2-pixel
     \end{itemize}
     \begin{tikzpicture}
       \draw (0.0,0.0) rectangle (0.5,-0.5);
@@ -1067,7 +1083,7 @@ height=4em]
 
     \column{0.25\textwidth}
     \begin{itemize}
-    \item 3-pixel cluster
+    \item 3-pixel
     \end{itemize}
     \begin{tikzpicture}
       \draw (0.0,0.0) rectangle (0.5,-0.5);
@@ -1079,7 +1095,7 @@ height=4em]
 
     \column{0.25\textwidth}
     \begin{itemize}
-    \item 4-pixel cluster
+    \item 4-pixel
     \end{itemize}
     \begin{tikzpicture}
       \draw (0.0,0.0) rectangle (0.5,-0.5);
@@ -1091,23 +1107,96 @@ height=4em]
     \includegraphics[width=\textwidth]{../figures/TestBeam/TrackPosWPixel_4hit_runW19_G7.pdf}
   \end{columns}
 
+  \begin{itemize}
+  \item Factors affecting the charge sharing:
+    \begin{itemize}
+    \item Sensor thickness
+    \item Bias voltage
+    \item Readout threshold 
+    \end{itemize}
+  \end{itemize}
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Cluster-sizes \& resolution}
+  \frametitle{Hit resolution}
+
+  \begin{itemize}
+  \item The overall resolution depends on the cluster-size
+    distribution
+    \begin{itemize}
+    \item 1-pixel clusters: hit reconstructed at the geometric center
+      of the pixel
+    \item Multi-pixel clusters: $\eta$-correction method takes into
+      account the non-linearity of charge sharing for the hit
+      reconstruction.
+    \end{itemize}
+  \item For $150\,\micron$ sensor
+  \end{itemize}
+
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at
+    (0,0){\includegraphics[width=0.5\textwidth]{../figures/TestBeam/150micron_resX.pdf}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+      % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+      % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+      % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
+      %   {0.\y}; }
+      
+
+      \node[below, color=black] at (0.55, 0.3) {Single-pixel};
+      \node[below, color=black] at (0.35, 0.7) {Multi-pixel};
+    \end{scope}
+  \end{tikzpicture}
+  
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Thin sensors: validation of simulation}
+
+  \begin{itemize}
+  \item For assemblies operated at nominal conditions:
+    \begin{itemize}
+    \item Threshold: $\sim$500 electrons
+    \item Fully depleted
+    \end{itemize}
+  \item AllPix simulation
+    \begin{itemize}
+    \item Digitiser for planar sensors bump-bonded to the Timepix3
+      ASIC
+    \end{itemize}
+  \end{itemize}
 
   \begin{columns}
     \column{0.5\textwidth}
+    \begin{itemize}
+    \item Cluster-size distribution
+    \end{itemize}
     \centering
     \includegraphics[width=\textwidth]{../figures/TestBeam/cluSize_vs_thickness.pdf}
 
     \column{0.5\textwidth}
+    \begin{itemize}
+    \item Resolution
+    \end{itemize}
     \centering
     \includegraphics[width=\textwidth]{../figures/TestBeam/residuals_vs_thickness.pdf}
   \end{columns}
+
+  \begin{itemize}
+  \item Good agreement between data and simulation \ding{51}
+    \begin{itemize}
+    \item Simulation can be used for the extrapolation to smaller
+      pixels
+    \end{itemize}
+  \end{itemize}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
