@@ -612,54 +612,15 @@ height=4em]
   \item Thin-sensors R\&D:
     \begin{itemize}
     \item Characterisation of thin sensors using the Timepix3 readout
-      ASIC with \textcolor{Red}{$55\,\micron$} pixel pitch:
+      ASIC with \textcolor{Blue}{$55\,\micron$} pixel pitch:
       \begin{itemize}
       \item Spatial resolution
       \item Detection efficiency
       \end{itemize}
     \item Use simulations to extrapolate to pixels with smaller
-      pitches.
+      pitches (i.e. $25\,\micron$).
     \end{itemize}
   \end{itemize}
-
-  \begin{itemize}
-  \item Hybrid pixel detector: \textcolor{Green}{sensor} \&
-    \textcolor{blue}{Timepix readout ASIC}
-  \end{itemize}
-
-  \centering
-  \begin{adjustbox}{max totalsize={1.1\textwidth}{.7\textheight},center}
-    \begin{tikzpicture}[node distance = 2.5cm, auto]
-      \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        
-        \coordinate (input);
-        \node [block, right of=input, color=Green] (sens) {Sensor};
-        \node [block, right of=sens, color=blue] (preamp) {Preamplifier/ Shaper};
-        \node [block, right of=preamp, color=blue] (discr) {Discriminator};
-        \node [block, right of=discr, color=blue] (conv) {TOT/TOA counters};
-        \coordinate[right of=conv] (output);
-        
-        \draw[arrows=->] (input) -- node [text
-        width=4cm,midway] {Incident radiation} (sens);
-        \draw[arrows=->] (sens) -- (preamp);
-        \draw[arrows=->] (preamp) -- (discr);
-        \draw[arrows=->] (discr) -- (conv);
-        \draw[arrows=->] (conv) -- node [text width=1.5cm,midway]
-        {Digital data bus} (output);
-        
-        \draw[decorate,decoration={brace, mirror}, thick] (sens.south) to
-        node[below,below] (bracket) {Analogue domain}
-        (discr.south);
-        
-        \draw[decorate,decoration={brace, mirror}, thick] (conv.south
-        west) to node[below,below] (bracket) {Digital domain} (conv.south
-        east);
-        
-        \draw[decorate,decoration={brace}, thick, color=blue] (preamp.north) to
-        node[above, above] (bracket) {Readout chip} (conv.north);
-      \end{scope}
-    \end{tikzpicture}
-  \end{adjustbox}
 
 
 
@@ -669,36 +630,96 @@ height=4em]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{The Timepix3 readout chip}
+{
+  \usebackgroundtemplate{
+    \begin{picture}(0, 270)
+      \includegraphics[width=0.6\textwidth]{figures/TOT_TOA_explanation.pdf}
+    \end{picture}
+  }%
+  \begin{frame}
+    \frametitle{The Timepix3 readout chip}
 
-  \begin{columns}
-    \column{0.6\textwidth}
     \begin{itemize}
-    \item Matrix of $256\times256$ pixels
-    \item $55\,\micron$ pixel pitch
-      \begin{itemize}
-      \item Simultaneous measurement:
-      \item Time-of-arrival (TOA) $\Rightarrow$
-        \textcolor{Green}{time}
-        \item Time-over-threshold (TOT) $\Rightarrow$
-          \textcolor{Green}{energy}
-      \end{itemize}
-    \item Data-driven mode readout:
-      \begin{itemize}
-      \item Low dead time
-      \item High readout rates: 40~Mhits/(s$\cdot$cm\textsuperscript{2})
-      \end{itemize}
-    \item Low noise (80 electrons) $\Rightarrow$ allows for operation
-      at a low threshold of 500 electrons.
+    \item Hybrid pixel detector: \textcolor{Green}{sensor} \&
+      \textcolor{blue}{Timepix3 readout ASIC}
     \end{itemize}
 
-    \column{0.4\textwidth}
-    \centering 
-    \includegraphics[width=\textwidth, trim = 50mm 140mm
-    60mm 50mm, clip]{../figures/Calibration/TOT_TOA_explanation.pdf}
-  \end{columns}
+    \centering
+    \begin{adjustbox}{max totalsize={1.1\textwidth}{.7\textheight},center}
+      \begin{tikzpicture}[node distance = 2.5cm, auto]
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+          
+          \coordinate (input);
+          \node [block, right of=input, color=Green] (sens) {Sensor};
+          \node [block, right of=sens, color=blue] (preamp) {Preamplifier/ Shaper};
+          \node [block, right of=preamp, color=blue] (discr) {Discriminator};
+          \node [block, right of=discr, color=blue] (conv) {TOT/TOA counters};
+          \coordinate[right of=conv] (output);
+          
+          \draw[arrows=->] (input) -- node [text
+          width=4cm,midway] {Incident radiation} (sens);
+          \draw[arrows=->] (sens) -- (preamp);
+          \draw[arrows=->] (preamp) -- (discr);
+          \draw[arrows=->] (discr) -- (conv);
+          \draw[arrows=->] (conv) -- node [text width=1.5cm,midway]
+          {Digital data bus} (output);
+          
+          \draw[decorate,decoration={brace, mirror}, thick] (sens.south) to
+          node[below,below] (bracket) {Analogue domain}
+          (discr.south);
+          
+          \draw[decorate,decoration={brace, mirror}, thick] (conv.south
+          west) to node[below,below] (bracket) {Digital domain} (conv.south
+          east);
+          
+          \draw[decorate,decoration={brace}, thick, color=blue] (preamp.north) to
+          node[above, above] (bracket) {Readout chip} (conv.north);
+        \end{scope}
+      \end{tikzpicture}
+    \end{adjustbox}
 
+
+    \vspace{-0.2cm}
+    \begin{columns}
+      \column{0.5\textwidth}
+      \column{0.5\textwidth}
+      \begin{itemize}
+      \item Matrix of $256\times256$ pixels
+      \item $55\,\micron$ pixel pitch (130~nm CMOS technology)
+      \item Simultaneous measurement:
+        \begin{itemize}
+        \item Time-over-threshold (TOT), 10 bit $\Rightarrow$
+          \textcolor{Green}{energy}
+        \item Time-of-arrival (TOA), 18 bit $\Rightarrow$
+          \textcolor{Green}{time}
+        \end{itemize}
+      \item Data-driven mode readout:
+        \begin{itemize}
+        \item Low dead time
+        \item High readout rates%: 40~Mhits/(s$\cdot$cm\textsuperscript{2})
+        \end{itemize}
+      \item Electronic noise: $\sim80$~e\textsuperscript{-} RMS
+        \begin{itemize}
+        \item Operating threshold: $\sim500$~e\textsuperscript{-}
+        \end{itemize}
+      \end{itemize}
+    \end{columns}
+  \end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Calibration of the Timepix3 readout chip}
+
+  \begin{itemize}
+  \item Parametrisation of the measurements done by the readout chip
+    \begin{itemize}
+    \item TOT, Threshold DAC $\Longleftrightarrow$ energy deposition in the sensor
+    %\item Threshold DAC $\Longleftrightarrow$ energy deposition in the sensor
+    \end{itemize}
+  \end{itemize}
 
   \begin{columns}
     \column{0.5\textwidth}
@@ -707,18 +728,24 @@ height=4em]
       \begin{itemize}
       \item Non-linear relationship between the measured TOT and the
         deposited energy.
-      \item Internal analogue test pulse generator \\
+      \item Internal analogue test pulse generator: \\
         Q=C$\cdot \Delta$V
       \end{itemize}
-    \item Preferred operation in the linear regime
     \end{itemize}
-
-
 
     \column{0.5\textwidth}
     \centering
     \includegraphics[width=\textwidth]{../figures/Calibration/TOTcalibration_W0005_E02_thresh1160.pdf}
   \end{columns}
+
+  \begin{itemize}
+  \item Preferred operation in the linear regime
+    \begin{itemize}
+    \item Clock: 40~MHz
+    \item I\textsubscript{krum}: 10
+    \end{itemize}
+  \end{itemize}
+
 
 \end{frame}
 
@@ -729,8 +756,8 @@ height=4em]
   \frametitle{Test-beam measurements of thin sensors}
 
   \begin{itemize}
-  \item Test-beam campaigns at the CERN SPS with $120\,\gev$ pion
-    beam.
+  \item Test-beam campaigns at the CERN SPS (Super Proton Synchrotron)
+    with $120\,\gev$ pion beam.
   \item CLICpix Timepix3 pixel-beam telescope $\Rightarrow$ track
     reconstruction.
   \end{itemize}
@@ -858,8 +885,7 @@ height=4em]
       \node[anchor=south west,inner sep=0] (image) at
       (0,0){\includegraphics[width=\textwidth]{../figures/ActiveEdge/Timepix3Telescope.jpeg}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \node[above, color=white] at (0.5, 0.85) {The CLICpix Timepix3
-        telescope};
+        \node[above, color=white] at (0.5, 0.85) {The telescope};
       \end{scope}
     \end{tikzpicture}
 
@@ -869,8 +895,7 @@ height=4em]
       (0,0){\includegraphics[width=\textwidth]{../figures/Telescope/AllpixTelescope.png}};
 
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \node[above, color=white] at (0.5, 0.85) {The simulated
-          Timepix3 telescope};
+        \node[above, color=white] at (0.5, 0.8) {The simulated telescope};
       \end{scope}
     \end{tikzpicture}
   \end{columns}
@@ -966,30 +991,35 @@ height=4em]
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Validation of the energy deposition}
+  \frametitle{Energy deposition in thin sensors}
 
   \begin{itemize}
-  \item Validation of the calibration
-  \item Validation of the \textsc{Geant4} simulation: PAI physics list
-    (Bichsel model).
+  \item Test-pulse calibration used for converting TOT values into
+    energy deposition (in electrons).
+  \item \textsc{Geant4} simulation:
+    \begin{itemize} 
+    \item PAI physics list (Bichsel model) adapted for thin
+      sensors (thickness$<300\,\micron$)
+    \item Agreement in width and most-probable-value (MPV) of the distributions \ding{51}
+    \end{itemize}
   \end{itemize}
 
   \begin{columns}
-    \column{0.3\textwidth}
+    \column{0.33\textwidth}
     \begin{itemize}
     \item $50\,\micron$
     \end{itemize}
     \centering
     \includegraphics[width=\textwidth]{../figures/TestBeam/50micron_Edep.pdf}
 
-    \column{0.3\textwidth}
+    \column{0.33\textwidth}
     \begin{itemize}
     \item $100\,\micron$
     \end{itemize}
     \centering
     \includegraphics[width=\textwidth]{../figures/TestBeam/100micron_Edep.pdf}
 
-    \column{0.3\textwidth}
+    \column{0.33\textwidth}
     \begin{itemize}
     \item $150\,\micron$
     \end{itemize}
@@ -1004,6 +1034,10 @@ height=4em]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Charge sharing}
+
+  \begin{itemize}
+  \item 
+  \end{itemize}
 
   \begin{columns}[t]
     \column{0.25\textwidth}
