@@ -1125,33 +1125,42 @@ height=4em]
   \frametitle{Hit resolution}
 
   \begin{itemize}
-  \item The overall resolution depends on the cluster-size
-    distribution
-    \begin{itemize}
-    \item 1-pixel clusters: hit reconstructed at the geometric center
-      of the pixel
-    \item Multi-pixel clusters: $\eta$-correction method takes into
-      account the non-linearity of charge sharing for the hit
-      reconstruction.
-    \end{itemize}
-  \item For $150\,\micron$ sensor
+  \item Without charge sharing and with a binary readout: \\
+    \begin{equation*}
+      \sigma={\text{pitch} \over \sqrt{12}}
+    \end{equation*}
   \end{itemize}
 
-  \begin{tikzpicture}
-    \node[anchor=south west,inner sep=0] (image) at
-    (0,0){\includegraphics[width=0.5\textwidth]{../figures/TestBeam/150micron_resX.pdf}};
-    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+    \begin{columns}[t]
+      \column{0.5\textwidth}
+      \begin{itemize}
+      \item The overall resolution depends on the cluster-size
+        distribution
+        \begin{itemize}
+        \item 1-pixel clusters: hit reconstructed at the geometric center
+          of the pixel
+        \item Multi-pixel clusters: $\eta$-correction method takes into
+          account the non-linearity of charge sharing for the hit
+          reconstruction.
+        \end{itemize}
+      \end{itemize}
 
-      % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-      % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-      % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
-      %   {0.\y}; }
-      
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item For $150\,\micron$ sensor
+    \end{itemize}
 
-      \node[below, color=black] at (0.55, 0.3) {Single-pixel};
-      \node[below, color=black] at (0.35, 0.7) {Multi-pixel};
-    \end{scope}
-  \end{tikzpicture}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=\textwidth]{../figures/TestBeam/150micron_resX.pdf}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+        \node[below, color=black] at (0.55, 0.3) {Single-pixel};
+        \node[below, color=black] at (0.35, 0.7) {Multi-pixel};
+      \end{scope}
+    \end{tikzpicture}
+  \end{columns}
   
 \end{frame}
 
@@ -1203,21 +1212,35 @@ height=4em]
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Small pitch R\&D and extrapolation}
+  \frametitle{Extrapolation of the simulation to smaller pixels}
 
+
+  % \begin{itemize}
+  % \item Small-pitch ASIC R\&D:
+  %   \begin{itemize}
+  %   \item CLICpix readout ASIC demonstrator
+  %   \item Matrix of $64\times64$ pixels, $25\,\micron$ pixel pitch.
+  %   \item 65~nm CMOS technology
+  %   \item Simultaneous measurement of time (TOA) and energy (TOT) per
+  %     pixel.
+  %   \item Compatible with power pulsing scheme.
+  %   \end{itemize}
+  % \end{itemize}
 
   \begin{itemize}
-  \item Small-pitch ASIC R\&D:
+  \item CLICpix readout ASIC demonstrator with $25\,\micron$ pitch
+    under investigation
     \begin{itemize}
-    \item CLICpix readout ASIC demonstrator
-    \item Matrix of $64\times64$ pixels, $25\,\micron$ pixel pitch.
-    \item 65~nm CMOS technology
-    \item Simultaneous measurement of time (TOA) and energy (TOT) per
-      pixel.
-    \item Compatible with power pulsing scheme.
+    \item Still, no data with $50\,\micron$ thick sensor is available
+    \end{itemize}
+  \item Extrapolation of the simulation to smaller pixels:
+    $10\,\micron$-$55\,\micron$ pitch
+    \begin{itemize}
+    \item For a $50\,\micron$ thick sensor and a Timepix3-like readout
+      chip:
     \end{itemize}
   \end{itemize}
-
+    
   \begin{columns}
     \column{0.5\textwidth}
     \centering
@@ -1227,6 +1250,17 @@ height=4em]
     \centering
     \includegraphics[width=\textwidth]{../figures/TestBeam/RMS_extrapolationSmallerPixels.pdf}
   \end{columns}
+
+  \begin{itemize}
+  \item For $25\,\micron$ pitch $\Rightarrow$ $\sim70\%$ single-pixel
+    clusters, $\sigma\sim6\,\micron$
+  \item $\sigma\sim3\,\micron$ can be achieved with:
+    \begin{itemize} 
+    \item Smaller pixels
+      ($<15\,\micron$ pitch)
+    \item New charge sharing solutions
+    \end{itemize}
+  \end{itemize}
 
 \end{frame}
 
