@@ -1381,7 +1381,7 @@ height=4em]
   \item Implantation on the sidewall of the sensor $\Rightarrow$
     control the potential at the edge by creating an extension of the
     backside electrode on the edge.
-  \item Guard-rings: metal and n-implants to establish a smooth
+  \item Guard rings (GR): metal and n-implants to establish a smooth
     voltage drop between the edge and the last pixel.
   \end{itemize}
 
@@ -1451,10 +1451,17 @@ height=4em]
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Guard-ring designs for $50\,\micron$ sensors}
+  \frametitle{Guard-ring designs and TCAD simulations}
+
+  \begin{itemize}
+  \item 4 assemblies with $50\,\micron$-thick sensors: No GR, floating
+    and grounded potentials GR.
+  \item 2 assemblies with grounded GR: $100\,\micron$ and
+    $150\,\micron$ thick sensors.
+  \end{itemize}
 
   \begin{columns}[t]
-    \column{0.25\textwidth}
+    \column{0.23\textwidth}
     \begin{itemize}
     \item 20-NGR-50
     \end{itemize}
@@ -1476,7 +1483,7 @@ height=4em]
       \end{scope}
     \end{tikzpicture}
 
-    \column{0.25\textwidth}
+    \column{0.23\textwidth}
     \begin{itemize}
     \item 23-FGR-50
     \end{itemize}
@@ -1505,7 +1512,7 @@ height=4em]
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at
-      (0,0){\includegraphics[width=\textwidth]{figures/20_edge_GRND_GR_2.png}};
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_GRND_GR_2.png}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
         \draw[Blue, thick](0.68, 0.05)--(0.68, 0.95);
         \draw[Blue, thick, dashed](0.55, 0.05)--(0.55, 0.95);
@@ -1526,7 +1533,7 @@ height=4em]
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at
-      (0,0){\includegraphics[width=0.9\textwidth]{{figures/50_edge_GRND_GR_2.png}}};
+      (0,0){\includegraphics[width=0.8\textwidth]{{figures/50_edge_GRND_GR_2.png}}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
         \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
         \draw[Blue, thick, dashed](0.55, 0.05)--(0.55, 0.95);
@@ -1540,6 +1547,34 @@ height=4em]
       \end{scope}
     \end{tikzpicture}
 
+  \end{columns}
+
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item TCAD simulations:
+      \begin{itemize}
+      \item Finite element methods to numerically solve continuity and
+        diffusion equations in semiconductors.
+      \item Simulation of \textcolor{Green}{semiconductor processing}
+        \& \textcolor{Green}{device operation}.
+      \end{itemize}
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Transient simulation of a particle track traversing the
+      sensor
+    \end{itemize}
+
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=\textwidth]{../figures/ActiveEdge/TCAD_transient_23FGR_hitpos_60.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \draw[->, very thick] (0.093, 0.0) -- (0.093, 1.05);
+      \end{scope}
+    \end{tikzpicture}
   \end{columns}
 
 \end{frame}
