@@ -1,9 +1,9 @@
 
-\begin{frame}{Overview}{}
-\tableofcontents
-\end{frame}
+% \begin{frame}{Overview}{}
+% \tableofcontents
+% \end{frame}
 
-\section{Introduction}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,11 +38,11 @@
   \item Several approaches of high-energy particle colliders to
     address the unanswered questions in the post-LHC era:
     \begin{itemize}
-    \item proton-proton ($p~p$) colliders
+    \item electron-positron ($e^+e^-$) colliders
       \\
       \textcolor{Red}{and/or}
       \\
-    \item electron-positron ($e^+e^-$) colliders
+    \item proton-proton ($p~p$) colliders
     \end{itemize}
   \end{itemize}
 
@@ -59,7 +59,7 @@
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at (0,
-      0){\includegraphics[width=0.6\textwidth]{figures/hadronColliders.pdf}};
+      0){\includegraphics[width=\textwidth]{figures/hadronColliders.pdf}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
         \node[above, color=Green, rotate=90] at (0.0, 0.5) {\textbf{Discovery}};
       \end{scope}
@@ -70,13 +70,14 @@
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at (0,
-      0){\includegraphics[width=0.6\textwidth]{figures/leptonColliders.pdf}};
+      0){\includegraphics[width=\textwidth]{figures/leptonColliders.pdf}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \node[above, color=Green, rotate=-90] at (1.0, 0.5) {\textbf{Precision}};
+        \node[above, color=Green, rotate=-90] at (0.9, 0.5) {\textbf{Precision}};
       \end{scope}
     \end{tikzpicture}
   \end{columns}
 
+  \vspace{-0.3cm}
 
   \begin{columns}[t]
     \column{0.5\textwidth}
@@ -110,7 +111,7 @@
       \item Low levels of radiation
       \end{itemize}
     \item Superior sensitivity for electro-weak states
-    \item High-energy $e^+e^-$ collisions ($\geq350\,\gev$) require
+    \item High-energy $e^+e^-$ collisions ($>350\,\gev$) require
       linear colliders
     \end{itemize}
 
@@ -133,15 +134,15 @@
       \item An $e^{+}e^{-}$ linear collider for the post HL-LHC period.
       \item Energy range $\sqrt{s}$ : \textcolor{Green}{$380\,\gev$} to
         \textcolor{Green}{$3\,\tev$}
-        \begin{itemize} 
-        \item Two-beam acceleration scheme with gradients of $\sim$100~MV/m.
-        \end{itemize}
+        % \begin{itemize} 
+        % \item Two-beam acceleration scheme with gradients of $\sim$100~MV/m.
+        % \end{itemize}
       \item Precision measurements of:
         \begin{itemize}
         \item Standard Model processes (Higgs, top).
         \item New physics potentially discovered at 13~TeV LHC.
-        \item Search for new physics: unique sensitivity to particles with
-          electroweak charge.
+        \item Search for new physics
+          % : unique sensitivity to particles with electroweak charge.
         \end{itemize}
       \item 48~km tunnel at 3~TeV stage
       \end{itemize}
@@ -159,7 +160,13 @@
     \item The Future Circular Collider (FCC-ee):
       \begin{itemize}
       \item Lepton collider in a new 80-100~km tunnel around CERN.
-      \item Energy range $\sqrt{s}$: from $90\,\gev$ to $350\,\gev$.
+      \item Energy range $\sqrt{s}$: $90\,\gev$ to $350\,\gev$
+        \begin{itemize}
+        \item $91\,\gev$: Z-pole
+        \item $160\,\gev$: W pair production threshold
+        \item $240\,\gev$: Higgs resonance
+        \item $350\,\gev$: t\={t} threshold
+        \end{itemize}
       \item FCC-hh: for proton-proton collisions $\sqrt{s}$ is up to $100\,\tev$.
       \end{itemize}
     \end{itemize}
@@ -185,7 +192,7 @@
   \begin{frame}
     \frametitle{Two-beam acceleration scheme at CLIC}
     
-    \vspace{-1.5cm}
+    \vspace{-1cm}
     \begin{itemize}
     \item High-gradient acceleration of \textcolor{Red}{100~MV/m} at
       \textcolor{Red}{12~GHz} with copper cavities at room temperature\\
@@ -193,12 +200,14 @@
       \begin{itemize}
       \item Limit the length of the accelerator
       \item Traditional klystrons ($\sim$1~GHz) accelerate the drive
-        beam (low energy \& high intensity)
-      \item Drive beam decelerated $\rightarrow$ energy is fed via an
-        RF field in a waveguide to the main beam.
+        beam 
+        % (low energy \& high intensity)
+      \item Drive beam decelerated and the energy is fed via an RF
+        field in a waveguide to the main beam.
       \end{itemize}
     \end{itemize}
     
+    \vspace{-0.3cm}
     \begin{columns}
       \column{0.5\textwidth}
       \column{0.5\textwidth}
@@ -223,7 +232,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{CLIC beam profile}
 \begin{frame}
   \frametitle{Beam profile for CLIC}
   
@@ -250,6 +258,7 @@
    \end{tikzpicture}
  \end{columns}
  
+ \vspace{0.5cm}
  \centering
  \resizebox{0.9\columnwidth}{!}{\begin{tabular}{l c c} 
                                   \toprule 
@@ -266,21 +275,17 @@
                               % \centering
 
 
+\vspace{0.3cm}
 
 \begin{itemize}
-\item \textcolor{Red}{Bunch separation and train duration: drive
-    timing resolution requirements for the detectors.}
-\item \textcolor{Green}{Very small beam sizes at the interaction
-    point} $\Rightarrow$ beam-induced backgrounds
-\end{itemize}
-
-
-
-\begin{itemize}
-\item Short train duration implies:
+\item Bunch separation and train duration drive timing resolution requirements for the detectors
   \begin{itemize}
-  \item triggerless readout of the detectors.
-  \item power pulsing: allows to reduce the average power dissipation.
+  \item Triggerless readout of the detectors.
+  \item Power pulsing: allows to reduce the average power dissipation.
+  \end{itemize}
+\item Very small beam sizes at the interaction point 
+  \begin{itemize}
+  \item beam-induced backgrounds
   \end{itemize}
 \end{itemize}
 
@@ -327,7 +332,11 @@
 
   \begin{itemize}
     % \item At most 1 interesting event in each train, $\approx$ 1000 hadronic background events are produced.
-  \item Occupancy in the pixel detectors for each train (during \SI{156}{\nano\second}): $\sim$ 3\% for innermost layers.
+  \item Occupancy in the pixel detectors for each train (during
+    \SI{156}{\nano\second})
+    \begin{itemize}
+    \item $\sim$ 3\% for innermost layers.
+    \end{itemize} \vspace{0.2cm}
   \item Radiation exposure of the vertex detector is moderate:
     \begin{itemize}
     \item Total ionising dose (TID): 200~Gy/yr
@@ -340,43 +349,62 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Requirements}
 \begin{frame}
   \frametitle{The CLIC detector}
 
-  \begin{columns}
-    \column{0.5\textwidth}
-    \begin{tikzpicture}
-      \node[anchor=south west,inner sep=0] (image) at (0,
-      0){\includegraphics[width=\textwidth]{figures/CLIC_detector_2016.jpg}};
-      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+  % \begin{columns}
+  %   \column{0.5\textwidth}
+  \centering
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,
+    0){\includegraphics[width=0.8\textwidth]{figures/CLIC_detector_2016.jpg}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
 
-        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
-        %   {0.\y}; }
+      % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+      % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+      % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
+      % {0.\y}; }
 
-        \draw[<->,line width=0.5pt] (0.32, 0.0) -- (0.8, 0.13);
-        \node[color=black] at (0.6, 0.02) {11.4~m};
+      \draw[<->,line width=0.5pt] (0.32, 0.0) -- (0.8, 0.13);
+      \node[color=black] at (0.6, 0.02) {11.4~m};
 
-        \draw[<->,line width=0.5pt] (0.04, 0.17) -- (0.04, 0.9);
-        \node[color=black, rotate=90] at (0.01, 0.5) {12.9~m};
-      \end{scope}
-    \end{tikzpicture}
+      \draw[<->,line width=0.5pt] (0.04, 0.17) -- (0.04, 0.9);
+      \node[color=black, rotate=90] at (0.01, 0.5) {12.9~m};
 
-    \column{0.5\textwidth}
-    \begin{itemize}
-    \item Composed of several sub-detectors.
-    \item Silicon-based and low mass tracking system.
-    \item Fine-grained calorimetry system (ECAL and HCAL) optimised
-      for particle flow analysis (PFA).
-    \item Superconducting solenoid magnet: B=4~T.
-    \item Return iron yoke with detectors for muon identification.
-    \item Forward region with LumiCal (luminosity monitoring) and
-      BeamCal (beam calorimeter).
-    \end{itemize}
+      \node[text width=2.5cm, color=black] at (0.95, 0.58)
+      {Silicon-based tracking system};
+      \draw[->,line width=0.7pt] (0.8, 0.6) -- (0.5, 0.6);
 
-  \end{columns}
+      \node[text width=3cm, color=black] at (1, 0.7) {Calorimetry
+        system: ECAL and HCAL};
+      \draw[->,line width=0.7pt] (0.8, 0.72) -- (0.5, 0.72);
+
+      \node[text width=4cm, color=black] at (1.05, 0.85) {Superconducting
+        solenoid magnet: B=4~T};
+      \draw[->,line width=0.7pt] (0.8, 0.85) -- (0.6, 0.8);
+
+      \node[text width=3cm, color=black] at (1.05, 0.2) {Forward
+        region: LumiCal \& BeamCal};
+      \draw[->,line width=0.7pt] (0.85, 0.2) -- (0.3, 0.55);
+
+      \node[text width=3cm, color=white] at (0.45, 0.25) {Return iron
+        yoke with detectors for muon identification};
+    \end{scope}
+  \end{tikzpicture}
+
+  %   \column{0.5\textwidth}
+  %   \begin{itemize}
+  %   \item Composed of several sub-detectors.
+  %   \item Silicon-based and low mass tracking system.
+  %   \item Fine-grained calorimetry system (ECAL and HCAL) optimised
+  %     for particle flow analysis (PFA).
+  %   \item Superconducting solenoid magnet: B=4~T.
+  %   \item Return iron yoke with detectors for muon identification.
+  %   \item Forward region with LumiCal (luminosity monitoring) and
+  %     BeamCal (beam calorimeter).
+  %   \end{itemize}
+
+  % \end{columns}
 
 \end{frame}
 
@@ -1874,7 +1902,6 @@ height=4em]
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{lastslide}
-\section{Conclusions}
 \begin{frame}
   \frametitle{Conclusions}
 
@@ -1901,52 +1928,3 @@ height=4em]
   \end{itemize}
 
 \end{frame}
-% %-------------------------------------------------------
-% %-------------------------------------------------------
-% \section{R\&D on sensor and readout technologies}
-% %-------------------------------------------------------
-% \subsection{Thin planar sensors}
-% \begin{frame}
-%   \frametitle{Thin planar sensors}
-% \end{frame}
-% %-------------------------------------------------------
-% \subsection{The Timepix3 hybrid readout ASIC}
-% \begin{frame}
-%   \frametitle{The Timepix3 hybrid readout ASICs}
-% \end{frame}
-% %-------------------------------------------------------
-% \begin{frame}
-%   \frametitle{Assembly calibration}
-% \end{frame}
-
-% %-------------------------------------------------------
-% %-------------------------------------------------------
-% \section{Simulation}
-% \begin{frame}
-%   \frametitle{Simulation and reconstruction}
-% \end{frame}
-
-
-% %-------------------------------------------------------
-% %-------------------------------------------------------
-% \section{Timepix3 beam telescope}
-% \begin{frame}
-%   \frametitle{Timepix3 beam telescope}
-% \end{frame}
-
-% %-------------------------------------------------------
-% %-------------------------------------------------------
-% \section{Thin sensors studies}
-% \begin{frame}
-%   \frametitle{Thin sensors studies}
-% \end{frame}
-
-% %-------------------------------------------------------
-% %-------------------------------------------------------
-% \section{Active edge sensors}
-% \begin{frame}
-%   \frametitle{Active edge sensors}
-% \end{frame}
-
-% %-------------------------------------------------------
-% %-------------------------------------------------------
