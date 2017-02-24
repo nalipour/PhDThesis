@@ -1837,6 +1837,42 @@ height=4em]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Grounded guard ring for thicker sensors}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Assemblies fully efficient up to the physical edge.
+    \item Slight loss of the charge near the edge.
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \centering
+      \reflectbox{\includegraphics[width=0.6\textwidth]{../figures/ActiveEdge/streamlines_55-GNDGR-100.png}}
+  \end{columns}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item $100\,\micron$-thick sensor
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/ActiveEdge/55_GNDGR_100_Edep_TCAD_data.pdf}
+
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item $150\,\micron$-thick sensor
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/ActiveEdge/55_GNDGR_150_Edep_TCAD_data.pdf}
+  \end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{lastslide}
 \section{Conclusions}
 \begin{frame}
@@ -1857,8 +1893,9 @@ height=4em]
       \item \textsc{Geant4} and TCAD simulations validated with
         test-beam data
       \item Extrapolation to small pixels sizes using simulations
-      \item Most suitable design for active-edge designs have been
-        chosen
+      \item For thin sensors of $50\,\micron$, the configurations
+        without guard ring or with floating guard ring are the most
+        suitable designs.
       \end{itemize}
 
   \end{itemize}
