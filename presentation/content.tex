@@ -548,14 +548,16 @@
     \includegraphics[width=\textwidth]{figures/hybridDet.pdf}
   \end{columns}
 
+  \vspace{-0.1cm}
   \begin{columns}
     \column{0.7\textwidth}
     \begin{itemize}
     \item Monolithic pixel devices:
       \begin{itemize}
-      \item Sensitive region: epi-layer
       \item Integrates sensor and front-end chip
-      \item Handles low rates
+      \item Sensitive region: epi-layer
+      \item Charge collection by diffusion
+      \item \textcolor{Red}{Handles low rates}
       \end{itemize}
     \end{itemize}
 
@@ -564,10 +566,11 @@
     \includegraphics[width=\textwidth]{figures/monolithic.pdf}
   \end{columns}
 
+  \vspace{-0.1cm}
   \begin{columns}
     \column{0.7\textwidth}
     \begin{itemize}
-    \item Capacitive coupled pixel detector:
+    \item Capacitive coupled pixel detector (CCPD):
       \begin{itemize}
       \item Depletion layer with fast signal collection through drift.
       \item No bump-bonding $\Rightarrow$ glue
@@ -578,6 +581,12 @@
     \centering
     \includegraphics[width=0.7\textwidth]{figures/HVCMOS_2stageAmpl.png}
   \end{columns}
+
+  \begin{block}{}
+    \centering For CLIC, \textcolor{Blue}{hybrid} and
+    \textcolor{Blue}{CCPD} solutions are under investigation.
+  \end{block}
+
 
 \end{frame}
 
