@@ -629,6 +629,7 @@ height=4em]
 
 
   \begin{columns}
+    \vspace{-1cm}
     \column{0.7\textwidth}
     \begin{itemize}
     \item Thin-sensors R\&D:
@@ -1015,10 +1016,8 @@ height=4em]
       \item Bump-bonded to Timepix3 readout ASICs of
         \textcolor{Green}{$700\,\micron$} thick
       \end{itemize}
-    \item Put a picture of bump-bonding
     \end{itemize}
 
-    \column{0.4\textwidth}
     \begin{itemize}
     \item Hybrid pixel detector prototype:
       \begin{itemize}
@@ -1027,7 +1026,18 @@ height=4em]
       \end{itemize}
     \end{itemize}
     \centering
-    \includegraphics[width=\textwidth]{figures/Advacam-50um-assembly.jpeg}
+    \includegraphics[width=0.9\textwidth]{figures/Advacam-50um-assembly.jpeg}
+
+
+
+    \column{0.4\textwidth}
+
+    \begin{itemize}
+    \item Global detection efficiency as a function of the threshold
+      of the readout ASIC.
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/Efficiency_vs_THL.pdf}
   \end{columns}
 
 
@@ -1170,26 +1180,25 @@ height=4em]
 \begin{frame}
   \frametitle{Hit resolution}
 
-  \begin{itemize}
-  \item Without charge sharing and with a binary readout: \\
-    \begin{equation*}
-      \sigma={\text{pitch} \over \sqrt{12}}
-    \end{equation*}
-  \end{itemize}
-
-    \begin{columns}[t]
-      \column{0.5\textwidth}
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Without charge sharing and with a binary readout: \\
+      \begin{equation*}
+        \sigma={\text{pitch} \over \sqrt{12}}
+      \end{equation*}
+    \item The overall resolution depends on the cluster-size
+      distribution
       \begin{itemize}
-      \item The overall resolution depends on the cluster-size
-        distribution
-        \begin{itemize}
-        \item 1-pixel clusters: hit reconstructed at the geometric center
-          of the pixel
-        \item Multi-pixel clusters: $\eta$-correction method takes into
-          account the non-linearity of charge sharing for the hit
-          reconstruction.
-        \end{itemize}
+      \item 1-pixel clusters: hit reconstructed at the geometric center
+        of the pixel
+      \item Multi-pixel clusters: $\eta$-correction method takes into
+        account the non-linearity of charge sharing for the hit
+        reconstruction.
       \end{itemize}
+    \end{itemize}
+
+  
 
     \column{0.5\textwidth}
     \begin{itemize}
@@ -1206,6 +1215,8 @@ height=4em]
         \node[below, color=black] at (0.35, 0.7) {Multi-pixel};
       \end{scope}
     \end{tikzpicture}
+
+
   \end{columns}
   
 \end{frame}
