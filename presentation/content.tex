@@ -602,8 +602,8 @@ height=4em]
 \begin{frame}
   \frametitle{R\&D for hybrid pixel detectors at CLIC}
 
-  \begin{columns}
-    \column{0.7\textwidth}
+  \begin{columns}[t]
+    \column{0.6\textwidth}
     \begin{itemize}
     \item \textcolor{Red}{\textbf{Goal}}: achieve $3\,\micron$ single-point resolution with:
       \begin{itemize}
@@ -616,50 +616,59 @@ height=4em]
         \begin{itemize}
         \item $25\,\micron$ pitch
         \end{itemize}
+      \item Analogue readout
       \end{itemize}
     \end{itemize}
 
-    \column{0.3\textwidth}
-    \begin{adjustbox}{max totalsize={.9\textwidth}{.9\textheight},center}
-      \begin{tikzpicture}[node distance = 2.5cm, auto]
-        \begin{scope}[x={(image.south east)},y={(image.north west)}]
-          
-          % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-          % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-          % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
-          %   {0.\y}; }
+    \column{0.4\textwidth}
 
-          \draw[very thick] (0.1, 0.1) rectangle (0.5, 0.9);
-          \draw[<->,line width=1pt] (0.1, 1) -- (0.5, 1);
-          \node[color=black] at (0.3, 1.2) {pitch};
+    \centering
+    \includegraphics[width=\textwidth]{figures/siliconSensorPrinciple.pdf}
 
-         \fill (0.35, 0.6) circle[radius=1pt];
-         \draw (0.35, 0.6) circle[radius=5pt];
-
-         \draw[<->] (0.35, 0.4) -- (0.42, 0.4);
-         \node[color=black] at (0.38, 0.28) {$\sigma$};
-
-        \end{scope}
-      \end{tikzpicture}
-    \end{adjustbox}
   \end{columns}
 
 
-  \begin{itemize}
-  \item Thin-sensors R\&D:
+  \begin{columns}
+    \column{0.7\textwidth}
     \begin{itemize}
-    \item Characterisation of thin sensors using the Timepix3 readout
-      ASIC with \textcolor{Blue}{$55\,\micron$} pixel pitch:
+    \item Thin-sensors R\&D:
       \begin{itemize}
-      \item Spatial resolution
-      \item Detection efficiency
+      \item Characterisation of thin sensors using the Timepix3 readout
+        ASIC with \textcolor{Blue}{$55\,\micron$} pixel pitch:
+        \begin{itemize}
+        \item Spatial resolution
+        \item Detection efficiency
+        \end{itemize}
+      \item Use simulations to extrapolate to pixels with smaller
+        pitches (i.e. $25\,\micron$).
       \end{itemize}
-    \item Use simulations to extrapolate to pixels with smaller
-      pitches (i.e. $25\,\micron$).
     \end{itemize}
-  \end{itemize}
 
+  \column{0.3\textwidth}
+  \centering
+  \begin{adjustbox}{max totalsize={.9\textwidth}{.9\textheight},center}
+    \begin{tikzpicture}[node distance = 2.5cm, auto]
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        
+        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
+        % {0.\y}; }
 
+        \draw[very thick] (0.1, 0.1) rectangle (0.5, 0.9);
+        \draw[<->,line width=1pt] (0.1, 1) -- (0.5, 1);
+        \node[color=black] at (0.3, 1.2) {pitch};
+
+        \fill (0.35, 0.6) circle[radius=1pt];
+        \draw (0.35, 0.6) circle[radius=5pt];
+
+        \draw[<->] (0.35, 0.4) -- (0.42, 0.4);
+        \node[color=black] at (0.38, 0.28) {$\sigma$};
+
+      \end{scope}
+    \end{tikzpicture}
+  \end{adjustbox}
+\end{columns}
 
 \end{frame}
 
