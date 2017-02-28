@@ -596,7 +596,7 @@ height=4em]
   \begin{columns}[t]
     \column{0.6\textwidth}
     \begin{itemize}
-    \item \textcolor{Red}{\textbf{Goal}}: achieve $3\,\micron$ single-point resolution with:
+    \item \textcolor{Red}{\textbf{Goal}}: achieve $3\,\micron$ hit resolution with:
       \begin{itemize}
       \item Low material
         \begin{itemize}
@@ -611,32 +611,6 @@ height=4em]
       \end{itemize}
     \end{itemize}
 
-    \column{0.4\textwidth}
-
-    \centering
-    \includegraphics[width=\textwidth]{figures/siliconSensorPrinciple.pdf}
-
-  \end{columns}
-
-
-  \begin{columns}
-    \vspace{-1cm}
-    \column{0.7\textwidth}
-    \begin{itemize}
-    \item Thin-sensors R\&D:
-      \begin{itemize}
-      \item Characterisation of thin sensors using the Timepix3 readout
-        ASIC with \textcolor{Blue}{$55\,\micron$} pixel pitch:
-        \begin{itemize}
-        \item Spatial resolution
-        \item Detection efficiency
-        \end{itemize}
-      \item Use simulations to extrapolate to pixels with smaller
-        pitches (i.e. $25\,\micron$).
-      \end{itemize}
-    \end{itemize}
-
-  \column{0.3\textwidth}
   \centering
   \begin{adjustbox}{max totalsize={.9\textwidth}{.9\textheight},center}
     \begin{tikzpicture}[node distance = 2.5cm, auto]
@@ -660,7 +634,28 @@ height=4em]
       \end{scope}
     \end{tikzpicture}
   \end{adjustbox}
-\end{columns}
+
+    \column{0.4\textwidth}
+
+    \centering
+    \includegraphics[width=\textwidth]{figures/siliconSensorPrinciple.pdf}
+
+  \end{columns}
+
+
+  \begin{itemize}
+  \item Thin-sensors R\&D:
+    \begin{itemize}
+    \item Characterisation of thin sensors using the Timepix3 readout
+      ASIC with \textcolor{Blue}{$55\,\micron$} pixel pitch:
+      \begin{itemize}
+      \item Spatial resolution
+      \item Detection efficiency
+      \end{itemize}
+    \item Use simulations to extrapolate to pixels with smaller
+      pitches (i.e. $25\,\micron$).
+    \end{itemize}
+  \end{itemize}
 
 \end{frame}
 
@@ -678,7 +673,7 @@ height=4em]
     \frametitle{The Timepix3 readout chip}
 
     \begin{itemize}
-    \item Hybrid pixel detector: \textcolor{Green}{sensor} \&
+    \item Test vehicle for thin sensors: \textcolor{Green}{sensor} \&
       \textcolor{blue}{Timepix3 readout ASIC}
     \end{itemize}
 
@@ -745,47 +740,7 @@ height=4em]
   \end{frame}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%         SLIDE             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Calibration of the Timepix3 readout chip}
 
-  \begin{itemize}
-  \item Parametrisation of the measurements done by the readout chip
-    \begin{itemize}
-    \item TOT, Threshold DAC $\Longleftrightarrow$ energy deposition in the sensor
-    %\item Threshold DAC $\Longleftrightarrow$ energy deposition in the sensor
-    \end{itemize}
-  \end{itemize}
-
-  \begin{columns}
-    \column{0.5\textwidth}
-    \begin{itemize}
-    \item TOT - energy calibration:
-      \begin{itemize}
-      \item Non-linear relationship between the measured TOT and the
-        deposited energy.
-      \item Internal analogue test pulse generator: \\
-        Q=C$\cdot \Delta$V
-      \end{itemize}
-    \end{itemize}
-
-    \column{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{../figures/Calibration/TOTcalibration_W0005_E02_thresh1160.pdf}
-  \end{columns}
-
-  \begin{itemize}
-  \item Preferred operation in the linear regime
-    \begin{itemize}
-    \item Clock: 40~MHz
-    \item I\textsubscript{krum}: 10
-    \end{itemize}
-  \end{itemize}
-
-
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
@@ -1033,15 +988,28 @@ height=4em]
 
 \end{frame}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Energy deposition in thin sensors}
 
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{itemize}
+    \item Energy deposition (E\textsubscript{dep}) in silicon sensors is
+      subject to statistical fluctuations
+    \item Chip calibration (internal test-pulse generation): parametrise
+      the relationship between the TOT measurement and the E\textsubscript{dep}
+    \end{itemize}
+
+    \column{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/Calibration/TOTcalibration_W0005_E02_thresh1160.pdf}
+  \end{columns}
+
   \begin{itemize}
-  \item Test-pulse calibration used for converting TOT values into
-    energy deposition (in electrons).
   \item \textsc{Geant4} simulation:
     \begin{itemize} 
     \item PAI physics list (Bichsel model) adapted for thin
@@ -2073,4 +2041,44 @@ height=4em]
     \end{itemize}
   \end{itemize}
 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Calibration of the Timepix3 readout chip}
+
+  \begin{itemize}
+  \item Parametrisation of the measurements done by the readout chip
+    \begin{itemize}
+    \item TOT, Threshold DAC $\Longleftrightarrow$ energy deposition in the sensor
+    %\item Threshold DAC $\Longleftrightarrow$ energy deposition in the sensor
+    \end{itemize}
+  \end{itemize}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item TOT - energy calibration:
+      \begin{itemize}
+      \item Non-linear relationship between the measured TOT and the
+        deposited energy.
+      \item Internal analogue test pulse generator: \\
+        Q=C$\cdot \Delta$V
+      \end{itemize}
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/Calibration/TOTcalibration_W0005_E02_thresh1160.pdf}
+  \end{columns}
+
+  \begin{itemize}
+  \item Preferred operation in the linear regime
+    \begin{itemize}
+    \item Clock: 40~MHz
+    \item I\textsubscript{krum}: 10
+    \end{itemize}
+  \end{itemize}
 \end{frame}
