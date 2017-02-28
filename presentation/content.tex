@@ -233,18 +233,20 @@
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Beam profile for CLIC}
+  \frametitle{Experimental conditions at CLIC}
   
  \begin{columns}
    \column{0.6\textwidth}
 
    \begin{itemize}
-   \item The RF pulse duration limits the number of bunches and the bunch-crossing separation
+   \item Beam profile:
      \begin{itemize}
      \item Bunch crossings (BX): every 0.5~ns.
      \item Train duration: 156~ns (312 bunches).
      \item Train repetition: 20~ms (50~Hz).
      \end{itemize}
+     $\Rightarrow$ \textcolor{blue}{Triggerless readout} \&
+     \textcolor{blue}{power pulsing}
    \end{itemize}
 
    \column{0.4\textwidth}
@@ -275,76 +277,38 @@
                               % \centering
 
 
-\vspace{0.3cm}
-
-\begin{itemize}
-\item Bunch separation and train duration drive timing resolution requirements for the detectors
-  \begin{itemize}
-  \item Triggerless readout of the detectors.
-  \item Power pulsing: allows to reduce the average power dissipation.
-  \end{itemize}
-\item Very small beam sizes at the interaction point 
-  \begin{itemize}
-  \item beam-induced backgrounds
-  \end{itemize}
-\end{itemize}
-
-\end{frame}
+%\vspace{0.3cm}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%         SLIDE             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Beam-induced backgrounds}
-  
+
   \begin{columns}
-    \column{0.8\textwidth}
+    \column{0.7\textwidth}
     \begin{itemize}
-    \item Backgrounds:
+    \item Beam-induced backgrounds (small beam sizes):
       \begin{itemize}
-      \item \textcolor{blue}{$e^{+}e^{-}$ pairs}: low $p_{T}$, forward
-        peaked, limits the inner radius of the VXD.
-      \item \textcolor{blue}{$\gamma\gamma\rightarrow$hadrons}: larger
-        $p_{T}$ particles, main background in the calorimeters and
-        trackers.
+      \item Beamstrahlung: $\gamma\gamma$ $\rightarrow$
+        $e^{+}e^{-}$/hadrons
+      \item Forward direction
+      \item Timing cuts to reduce the effect
       \end{itemize}
     \end{itemize}
     
-    \column{0.2\textwidth}    
+    \column{0.3\textwidth}    
     \centering
     \includegraphics[width=\textwidth]{figures/beamstrahlung.png}
   \end{columns}
 
-  \begin{columns}
-    \column{.5\textwidth}    
-    \begin{itemize}
-    \item Each train consists of:
-      \begin{itemize}
-      \item At most 1 interesting event.
-      \item $>$ 30000 background particles inside the detector.
-      \end{itemize}
-    \end{itemize}
-
-    \column{0.5\textwidth}
-    \includegraphics[width=\textwidth]{figures/background_vertex.pdf}
-  \end{columns}
-
   \begin{itemize}
-    % \item At most 1 interesting event in each train, $\approx$ 1000 hadronic background events are produced.
-  \item Occupancy in the pixel detectors for each train (during
-    \SI{156}{\nano\second})
+  \item Each train consists of:
     \begin{itemize}
-    \item $\sim$ 3\% for innermost layers.
-    \end{itemize} \vspace{0.2cm}
-  \item Radiation exposure of the vertex detector is moderate:
-    \begin{itemize}
-    \item Total ionising dose (TID): 200~Gy/yr
-    \item Non-ionising energy loss (NIEL): $10^{11} n_{eq}/cm^{2}/yr$ (\textcolor{blue}{for ATLAS phase 1: $10^{15} n_{eq}/cm^{2}/yr$})
+    \item At most 1 interesting event.
+    \item $>$ 30000 background particles inside the detector.
     \end{itemize}
+  \item Moderate exposure to radiation: by a factor of $10^4$ less
+    than the LHC.
   \end{itemize}
-
 \end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
@@ -425,44 +389,81 @@
     \includegraphics[width=\textwidth]{figures/secondary_vertex.png}
   \end{columns}
 
-  \begin{itemize}
-  \item Requirements:
-  \end{itemize}
+
 
   \begin{columns}
-    \column{0.75\textwidth}
+    \column{0.6\textwidth}
 
     \begin{itemize}
-    \item Multi-layer: 6 layers in the barrel and 6 disks
-    \item High coverage: $\sim30$~mm of inner radius and
-      $\theta_{min}\sim8^{\circ}$
-    \item B-field: \textcolor{Blue}{4~T}
-    \item Hit resolution of
-      \textcolor{Blue}{$\sim$\SI{3}{\micro\meter}}
+    \item Requirements:
       \begin{itemize}
-      \item Pixel detectors
-      \end{itemize}
-    \item Low material budget: $<0.2\%$~X\textsubscript{0}/layer and
-      beam-pipe
-      \begin{itemize}
-      \item Forced airflow cooling
-      \item Low-power electronics
-        ($\approx 50$~mW/cm\textsuperscript{2})
-      \end{itemize}
-    \item Time slicing of \textcolor{Blue}{$\sim$\SI{10}{\nano\second}}
-      to reduce the impact of beam-induced backgrounds.
-      \begin{itemize}
-      \item high-resistive \& depleted sensors
-      \item readout with precise timing.
+      \item Multi-layer: 
+        \begin{itemize}
+          \item 6 layers in the barrel and 6 disks
+          \end{itemize}
+      \item High coverage: 
+        \begin{itemize}
+        \item $\sim30$~mm of inner radius and
+          $\theta_{min}\sim8^{\circ}$
+        \end{itemize}
+      \item B-field: \textcolor{Blue}{4~T}
+      \item Hit resolution of
+        \textcolor{Blue}{$\sim$\SI{3}{\micro\meter}}
+        \begin{itemize}
+        \item Pixel detectors
+        \end{itemize}
+      \item Low material budget: 
+        \begin{itemize}
+        \item $<0.2\%$~X\textsubscript{0}/layer and beam-pipe
+        \item Forced airflow cooling
+        \item Low-power electronics
+          ($\approx 50$~mW/cm\textsuperscript{2})
+        \end{itemize}
+      \item Time slicing of \textcolor{Blue}{$\sim$\SI{10}{\nano\second}}
+        to reduce the impact of beam-induced backgrounds.
+        \begin{itemize}
+        \item high-resistive \& depleted sensors
+        \item readout with precise timing.
+        \end{itemize}
       \end{itemize}
     \end{itemize}
 
-
-    \column{0.25\textwidth}
+    \column{0.4\textwidth}
     \centering
+    % \begin{tikzpicture}
+    %   \node[anchor=south west,inner sep=0] (image) at (0,
+    %   0){\includegraphics[width=\textwidth]{figures/spiralVXD.pdf}};
+    %   \begin{scope}[x={(image.south east)},y={(image.north west)}]
+    %     \draw[<->, Blue, thick](0.2, 0.0)--(0.84, 0.2);
+    %     \node[below, color=Blue] at (0.5, 0.05) {56 cm};
+    %   \end{scope}
+    % \end{tikzpicture}
+
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at (0,
-      0){\includegraphics[width=\textwidth]{figures/spiralVXD.pdf}};
+      0){\includegraphics[width=\textwidth]{figures/CLIC_detector_2016_zoomVertex}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        
+        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
+        % {0.\y}; }
+
+        % \draw[<->,line width=0.5pt] (0.15, 0.95) -- (0.7, 0.99);
+        % \node[color=black] at (0.45, 1) {11.4~m};
+       
+        
+        % \node[color=white] at (0.45, 0.9) {\textbf{CLIC detector}};
+        \draw[->,line width=1.7pt] (0.5, 0.5) -- (0.5, -0.05);
+        % \node[color=black] at (0.58, 0.43) {\textbf{VXD}};
+
+      \end{scope}
+    \end{tikzpicture}
+
+    \vspace{-0.5cm}
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,
+      0){\includegraphics[width=\textwidth]{figures/spiralVXD_2.png}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
         \draw[<->, Blue, thick](0.2, 0.0)--(0.84, 0.2);
         \node[below, color=Blue] at (0.5, 0.05) {56 cm};
@@ -471,16 +472,6 @@
 
   \end{columns}
 
-  % \vspace{-0.3cm}  
-  % \begin{columns}
-  %   \column{0.6\textwidth}
-  %   \begin{itemize}
-
-  %   \end{itemize}
-
-  %   \column{0.4\textwidth}
-
-  % \end{columns}
 
 \end{frame}
 
@@ -1027,7 +1018,6 @@ height=4em]
     \end{itemize}
     \centering
     \includegraphics[width=0.9\textwidth]{figures/Advacam-50um-assembly.jpeg}
-
 
 
     \column{0.4\textwidth}
@@ -1954,6 +1944,133 @@ height=4em]
         suitable designs.
       \end{itemize}
 
+  \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \centering
+  \Huge{Backup slides}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Beam profile for CLIC}
+  
+ \begin{columns}
+   \column{0.6\textwidth}
+
+   \begin{itemize}
+   \item The RF pulse duration limits the number of bunches and the bunch-crossing separation
+     \begin{itemize}
+     \item Bunch crossings (BX): every 0.5~ns.
+     \item Train duration: 156~ns (312 bunches).
+     \item Train repetition: 20~ms (50~Hz).
+     \end{itemize}
+   \end{itemize}
+
+   \column{0.4\textwidth}
+   \begin{tikzpicture}
+     \node[anchor=south west,inner sep=0] (image) at (0,
+     0){\includegraphics[width=\textwidth]{figures/CLICbeam.png}};
+     \begin{scope}[x={(image.south east)},y={(image.north west)}]
+       \node[above, color=blue] at (0.5, 0.9) {\textbf{CLIC bunch
+           structure}};
+     \end{scope}
+   \end{tikzpicture}
+ \end{columns}
+ 
+ \vspace{0.5cm}
+ \centering
+ \resizebox{0.9\columnwidth}{!}{\begin{tabular}{l c c} 
+                                  \toprule 
+                                  & CLIC at $\sqrt{s}=3\,\tev$ & LHC at $\sqrt{s}=13\,\tev$\\
+                                  \midrule
+                                  Instantaneous luminosity $\mathcal{L}$ & $6\times10^{34}$ \inversecmsquaredsec & $1\times10^{34}$ \inversecmsquaredsec \\
+                                  Bunch-crossing separation & 0.5~ns & 25~ns \\
+                                  IP size in x / y / z directions & 45~nm / 1~nm / $44\,\micron$ & $15\,\micron$ / $15\,\micron$ / 50~cm \\
+                                  \bottomrule
+                                \end{tabular}
+}
+                              
+                              % \column{0.5\textwidth}
+                              % \centering
+
+
+\vspace{0.3cm}
+
+\begin{itemize}
+\item Bunch separation and train duration drive timing resolution requirements for the detectors
+  \begin{itemize}
+  \item Triggerless readout of the detectors.
+  \item Power pulsing: allows to reduce the average power dissipation.
+  \end{itemize}
+\item Very small beam sizes at the interaction point 
+  \begin{itemize}
+  \item beam-induced backgrounds
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Beam-induced backgrounds}
+  
+  \begin{columns}
+    \column{0.8\textwidth}
+    \begin{itemize}
+    \item Backgrounds:
+      \begin{itemize}
+      \item \textcolor{blue}{$e^{+}e^{-}$ pairs}: low $p_{T}$, forward
+        peaked, limits the inner radius of the VXD.
+      \item \textcolor{blue}{$\gamma\gamma\rightarrow$hadrons}: larger
+        $p_{T}$ particles, main background in the calorimeters and
+        trackers.
+      \end{itemize}
+    \end{itemize}
+    
+    \column{0.2\textwidth}    
+    \centering
+    \includegraphics[width=\textwidth]{figures/beamstrahlung.png}
+  \end{columns}
+
+  \begin{columns}
+    \column{.5\textwidth}    
+    \begin{itemize}
+    \item Each train consists of:
+      \begin{itemize}
+      \item At most 1 interesting event.
+      \item $>$ 30000 background particles inside the detector.
+      \end{itemize}
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \includegraphics[width=\textwidth]{figures/background_vertex.pdf}
+  \end{columns}
+
+  \begin{itemize}
+    % \item At most 1 interesting event in each train, $\approx$ 1000 hadronic background events are produced.
+  \item Occupancy in the pixel detectors for each train (during
+    \SI{156}{\nano\second})
+    \begin{itemize}
+    \item $\sim$ 3\% for innermost layers.
+    \end{itemize} \vspace{0.2cm}
+  \item Radiation exposure of the vertex detector is moderate:
+    \begin{itemize}
+    \item Total ionising dose (TID): 200~Gy/yr
+    \item Non-ionising energy loss (NIEL): $10^{11} n_{eq}/cm^{2}/yr$ (\textcolor{blue}{for ATLAS phase 1: $10^{15} n_{eq}/cm^{2}/yr$})
+    \end{itemize}
   \end{itemize}
 
 \end{frame}
