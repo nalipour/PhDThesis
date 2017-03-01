@@ -512,74 +512,7 @@
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%         SLIDE             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Pixel detectors in high-energy physics}
 
-  \begin{columns}
-    \column{0.7\textwidth}
-    \begin{itemize}
-    \item Hybrid detectors:
-      \begin{itemize}
-      \item Planar silicon sensor (High resistive \& Full depletion)
-      \item Mixed-signal readout chip
-        \begin{itemize}
-        \item Possibility for complexe signal processing
-        \item High timing resolution
-        \end{itemize}
-      \item Bump-bonding/flip chip
-      \item Widely used at the LHC experiments
-      \end{itemize}
-    \end{itemize}
-
-    \column{0.3\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/hybridDet.pdf}
-  \end{columns}
-
-  \vspace{-0.1cm}
-  \begin{columns}
-    \column{0.7\textwidth}
-    \begin{itemize}
-    \item Monolithic pixel devices:
-      \begin{itemize}
-      \item Integrates sensor and front-end chip
-      \item Sensitive region: epi-layer
-      \item Charge collection by diffusion
-      \item \textcolor{Red}{Handles low rates}
-      \end{itemize}
-    \end{itemize}
-
-    \column{0.3\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/monolithic.pdf}
-  \end{columns}
-
-  \vspace{-0.1cm}
-  \begin{columns}
-    \column{0.7\textwidth}
-    \begin{itemize}
-    \item Capacitive coupled pixel detector (CCPD):
-      \begin{itemize}
-      \item Depletion layer with fast signal collection through drift.
-      \item No bump-bonding $\Rightarrow$ glue
-      \end{itemize}
-    \end{itemize}
-
-    \column{0.3\textwidth}
-    \centering
-    \includegraphics[width=0.7\textwidth]{figures/HVCMOS_2stageAmpl.png}
-  \end{columns}
-
-  \begin{block}{}
-    \centering For CLIC, \textcolor{Blue}{hybrid} and
-    \textcolor{Blue}{CCPD} solutions are under investigation.
-  \end{block}
-
-
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
@@ -593,71 +526,314 @@ height=4em]
 \begin{frame}
   \frametitle{R\&D for hybrid pixel detectors at CLIC}
 
-  \begin{columns}[t]
-    \column{0.6\textwidth}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Planar silicon sensor: reverse-biased pn-junction
+      \begin{itemize}
+      \item Drift $\Rightarrow$ external electric field
+      \item Diffusion $\Rightarrow$ thermal motion
+      \item Segmentation \& diffusion $\Rightarrow$ position
+        information
+      \end{itemize}
+    \end{itemize}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/hybridDet.pdf}~
+    \includegraphics[width=0.5\textwidth]{figures/drift_sensor.pdf}
+  \end{columns}
+
+
+
+  \begin{columns}
+    \column{0.8\textwidth}
     \begin{itemize}
     \item \textcolor{Red}{\textbf{Goal}}: achieve $3\,\micron$ hit resolution with:
       \begin{itemize}
-      \item Low material
-        \begin{itemize}
-        \item $50\,\micron$-thick planar silicon sensor
-        \item $50\,\micron$-thick ASIC
-        \end{itemize} 
-      \item Small pixels
-        \begin{itemize}
-        \item $25\,\micron$ pitch
-        \end{itemize}
+      \item Low material $\Rightarrow$ $50\,\micron$-thick sensor \& $50\,\micron$-thick ASICß
+      \item Small pixels $\Rightarrow$ $25\,\micron$ pitch
       \item Analogue readout
       \end{itemize}
     \end{itemize}
 
-  \centering
-  \begin{adjustbox}{max totalsize={.9\textwidth}{.9\textheight},center}
-    \begin{tikzpicture}[node distance = 2.5cm, auto]
-      \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        
-        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
-        % {0.\y}; }
-
-        \draw[very thick] (0.1, 0.1) rectangle (0.5, 0.9);
-        \draw[<->,line width=1pt] (0.1, 1) -- (0.5, 1);
-        \node[color=black] at (0.3, 1.2) {pitch};
-
-        \fill (0.35, 0.6) circle[radius=1pt];
-        \draw (0.35, 0.6) circle[radius=5pt];
-
-        \draw[<->] (0.35, 0.4) -- (0.42, 0.4);
-        \node[color=black] at (0.38, 0.28) {$\sigma$};
-
-      \end{scope}
-    \end{tikzpicture}
-  \end{adjustbox}
-
-    \column{0.4\textwidth}
-
+    \column{0.2\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/siliconSensorPrinciple.pdf}
+    \begin{adjustbox}{max totalsize={.9\textwidth}{.9\textheight},center}
+      \begin{tikzpicture}[node distance = 2.5cm, auto]
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+          
+          % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+          % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+          % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
+          % {0.\y}; }
+
+          \draw[very thick] (0.1, 0.1) rectangle (0.5, 0.9);
+          \draw[<->,line width=1pt] (0.1, 1) -- (0.5, 1);
+          \node[color=black] at (0.3, 1.2) {pitch};
+
+          \fill (0.35, 0.6) circle[radius=1pt];
+          \draw (0.35, 0.6) circle[radius=5pt];
+
+          \draw[<->] (0.35, 0.4) -- (0.42, 0.4);
+          \node[color=black] at (0.38, 0.28) {$\sigma$};
+
+        \end{scope}
+      \end{tikzpicture}
+    \end{adjustbox}
+
+    % \centering
+    % \includegraphics[width=\textwidth]{figures/siliconSensorPrinciple.pdf}
 
   \end{columns}
 
 
-  \begin{itemize}
-  \item Thin-sensors R\&D:
+  \begin{columns}
+    \column{0.7\textwidth}
     \begin{itemize}
-    \item Characterisation of thin sensors using the Timepix3 readout
-      ASIC with \textcolor{Blue}{$55\,\micron$} pixel pitch:
+    \item Thin-sensors R\&D:
       \begin{itemize}
-      \item Spatial resolution
-      \item Detection efficiency
+      \item Characterisation of thin n-in-p sensors (Advacam) using the
+        Timepix3 readout ASIC with \textcolor{Blue}{$55\,\micron$} pixel
+        pitch:
+        \begin{itemize}
+        \item Sensor thicknesses: $50\,\micron$ - $150\,\micron$
+        \item Spatial resolution
+        \item Detection efficiency
+        \end{itemize}
+      \item Use simulations to extrapolate to pixels with smaller
+        pitches (i.e. $25\,\micron$).
       \end{itemize}
-    \item Use simulations to extrapolate to pixels with smaller
-      pitches (i.e. $25\,\micron$).
+    \end{itemize}
+
+    \column{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/Advacam-50um-assembly.jpeg}
+  \end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Test-beam measurements of thin sensors}
+
+  \begin{itemize}
+  \item Test-beam campaigns at the CERN SPS (Super Proton Synchrotron)
+    with $120\,\gev$ pion beam.
+  \item CLICpix Timepix3 pixel-beam telescope
+    \begin{itemize}
+    \item 6 planes of Timepix3 hybrid detectors
+    \item Track reconstruction.
+    \end{itemize}
+  \end{itemize}
+
+
+  \begin{columns}
+
+    \column{0.5\textwidth}
+    
+    \begin{itemize}
+    \item Telescope pointing resolution
+      \begin{itemize}
+      \item \textcolor{Green}{$\sim2\,\micron$}
+      \end{itemize}
+    \item Hit resolution for the DUT
+      \begin{itemize}
+      \item Measured hit position on the DUT
+        vs. reconstructed track.
+      \end{itemize}
+    \item Time resolution per plane
+      \begin{itemize}
+      \item \textcolor{Green}{$\sim$1~ns}
+      \end{itemize}
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=\textwidth]{../figures/ActiveEdge/Timepix3Telescope.jpeg}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[above, color=white] at (0.5, 0.85) {Device Under Test};
+        \node[above, color=white] at (0.5, 0.78) {(\textbf{DUT})};
+
+        \draw[->, very thick, color=black](0.75, 0.38) -- (0.25, 0.44);
+        \draw[<->, very thick, color=black](0.33, 0.25) -- (0.66, 0.25);
+        \node[below, color=black] at (0.5, 0.25) {\textbf{152~mm}};
+
+        \node[color=black] at (0.64, 0.32) {\textbf{0}};
+        \node[color=black] at (0.6, 0.32) {\textbf{1}};
+        \node[color=black] at (0.55, 0.32) {\textbf{2}};
+
+        \node[color=black] at (0.44, 0.32) {\textbf{3}};
+        \node[color=black] at (0.39, 0.32) {\textbf{4}};
+        \node[color=black] at (0.35, 0.32) {\textbf{5}};
+        
+
+        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.64, 0.4) {}; 
+        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.6, 0.4) {};
+        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.55, 0.4) {};
+        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.42, 0.42) {};
+        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.37, 0.43) {};
+        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.32, 0.43) {};
+
+        \node[star, fill, color=Green, inner sep=0pt, minimum size=8pt]
+        at (0.49, 0.41) {};
+
+        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+        
+      \end{scope}
+    \end{tikzpicture} 
+    \\
+    
+    \begin{tikzpicture}
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+        
+         \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
+        at (0.1, 0.9) {};
+        \node[right, color=black] at (0.1, 0.9) {: measured track
+          position};
+
+        \node[star, fill, color=Green, inner sep=0pt, minimum
+        size=8pt] at (0.1, 0.8) {}; \node[right, color=black] at (0.1,
+        0.8) {: reconstructed track position};
+      \end{scope}
+    \end{tikzpicture} 
+
+
+
+    % \begin{tikzpicture}
+    %   \begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+    %     \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
+    %     \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+    %     \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+        
+    %   \end{scope}
+    % \end{tikzpicture} 
+
+  \end{columns}
+
+\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{AllPix simulation framework}
+
+  \begin{columns}
+    \column{0.6\textwidth}
+
+    \begin{itemize}
+    \item A general purpose pixel-detector simulation framework (in
+      C/C++) based on \textsc{Geant4}.
+    \item Fully customisable for detector geometry description:
+      \begin{itemize}
+      \item thickness, pixel-pitch, bump geometry, material
+      \end{itemize}
+    \item \textcolor{Green}{\textbf{Digitisation}}: responsible for the
+      full simulation of the detector including the sensor and the
+      readout chip. 
+      \begin{itemize}
+      \item Defined by the user.
+      \item Different for each sensor/ASIC technology.
+      \end{itemize}
+    \end{itemize}
+    
+    \column{0.4\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=\textwidth]{../figures/ActiveEdge/Timepix3Telescope.jpeg}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[above, color=white] at (0.5, 0.85) {The telescope};
+      \end{scope}
+    \end{tikzpicture}
+
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=\textwidth]{../figures/Telescope/AllpixTelescope.png}};
+
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[above, color=white] at (0.5, 0.8) {The simulated telescope};
+      \end{scope}
+    \end{tikzpicture}
+  \end{columns}
+
+  \begin{itemize}
+  \item \textcolor{Red}{Goal}:
+    \begin{itemize}
+    \item Simulate the test-beam setup.
+    \item Extrapolate results for small-pitch pixels (e.g.  CLICpix
+      with $25\,\micron$ pitch).
+    \item Improve digitisation models for full-detector simulation.
     \end{itemize}
   \end{itemize}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{The Timepix3 telescope performance}
+
+  \begin{itemize}
+  \item In simulation, extract the telescope pointing resolution on
+    the DUT using the Monte Carlo (MC) hit position
+  \end{itemize}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Biased residual: reconstructed track vs. measured hit on the
+      telescope planes.
+    \item Agreement between data and simulation \ding{51}
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../figures/Telescope/biasedResiduals/RMSX_simu_vs_data.pdf}
+  \end{columns}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Tracking resolution on the DUT: reconstructed track vs. MC
+      hit position
+    \item Excellent tracking resolution of
+      \textcolor{Green}{$\sim2\,\micron$} on the DUT
+      \\
+      $\Rightarrow$ In agreement with the expectations \ding{51}
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../figures/Telescope/Unbiased_trackRes_DUT_x.pdf}
+  \end{columns}
+
+\end{frame}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -739,255 +915,6 @@ height=4em]
     \end{columns}
   \end{frame}
 }
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%         SLIDE             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Test-beam measurements of thin sensors}
-
-  \begin{itemize}
-  \item Test-beam campaigns at the CERN SPS (Super Proton Synchrotron)
-    with $120\,\gev$ pion beam.
-  \item CLICpix Timepix3 pixel-beam telescope $\Rightarrow$ track
-    reconstruction.
-  \end{itemize}
-
-
-  \begin{columns}
-    \column{0.6\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \node[anchor=south west,inner sep=0] (image) at
-      (0,0){\includegraphics[width=\textwidth]{../figures/ActiveEdge/Timepix3Telescope.jpeg}};
-      \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \node[above, color=white] at (0.5, 0.85) {Device Under Test};
-        \node[above, color=white] at (0.5, 0.78) {(\textbf{DUT})};
-
-        \draw[->, very thick, color=black](0.75, 0.38) -- (0.25, 0.44);
-        \draw[<->, very thick, color=black](0.33, 0.25) -- (0.66, 0.25);
-        \node[below, color=black] at (0.5, 0.25) {\textbf{152~mm}};
-
-        \node[color=black] at (0.64, 0.32) {\textbf{0}};
-        \node[color=black] at (0.6, 0.32) {\textbf{1}};
-        \node[color=black] at (0.55, 0.32) {\textbf{2}};
-
-        \node[color=black] at (0.44, 0.32) {\textbf{3}};
-        \node[color=black] at (0.39, 0.32) {\textbf{4}};
-        \node[color=black] at (0.35, 0.32) {\textbf{5}};
-        
-
-        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
-        at (0.64, 0.4) {}; 
-        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
-        at (0.6, 0.4) {};
-        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
-        at (0.55, 0.4) {};
-        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
-        at (0.42, 0.42) {};
-        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
-        at (0.37, 0.43) {};
-        \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
-        at (0.32, 0.43) {};
-
-        \node[star, fill, color=Green, inner sep=0pt, minimum size=8pt]
-        at (0.49, 0.41) {};
-
-        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-        
-      \end{scope}
-    \end{tikzpicture} 
-    \\
-    
-    \begin{tikzpicture}
-      \begin{scope}[x={(image.south east)},y={(image.north west)}]
-
-        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-        
-         \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
-        at (0.1, 0.9) {};
-        \node[right, color=black] at (0.1, 0.9) {: measured track
-          position};
-
-        \node[star, fill, color=Green, inner sep=0pt, minimum
-        size=8pt] at (0.1, 0.8) {}; \node[right, color=black] at (0.1,
-        0.8) {: reconstructed track position};
-      \end{scope}
-    \end{tikzpicture} 
-
-
-    \column{0.4\textwidth}
-
-    \begin{itemize}
-    \item Spatial resolution: position of the hit on the DUT
-      vs. reconstructed track.
-    \item Pointing resolution on the DUT:
-      \textcolor{Green}{$\sim2\,\micron$}
-    \item Time resolution per plane: \textcolor{Green}{$\sim$1~ns}
-    \end{itemize}
-
-    % \begin{tikzpicture}
-    %   \begin{scope}[x={(image.south east)},y={(image.north west)}]
-
-    %     \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-    %     \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-    %     \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-        
-    %   \end{scope}
-    % \end{tikzpicture} 
-
-  \end{columns}
-
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%         SLIDE             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{AllPix simulation framework}
-
-  \begin{columns}
-    \column{0.6\textwidth}
-
-    \begin{itemize}
-    \item A general purpose pixel-detector simulation framework (in
-      C/C++) based on \textsc{Geant4}.
-    \item Fully customisable for detector geometry description:
-      \begin{itemize}
-      \item thickness, pixel-pitch, bump geometry, material
-      \end{itemize}
-    \item \textcolor{Green}{\textbf{Digitisation}}: responsible for the
-      full simulation of the detector including the sensor and the
-      readout chip. 
-      \begin{itemize}
-      \item Defined by the user.
-      \item Different for each sensor/ASIC technology.
-      \end{itemize}
-    \end{itemize}
-    
-    \column{0.4\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \node[anchor=south west,inner sep=0] (image) at
-      (0,0){\includegraphics[width=\textwidth]{../figures/ActiveEdge/Timepix3Telescope.jpeg}};
-      \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \node[above, color=white] at (0.5, 0.85) {The telescope};
-      \end{scope}
-    \end{tikzpicture}
-
-    \centering
-    \begin{tikzpicture}
-      \node[anchor=south west,inner sep=0] (image) at
-      (0,0){\includegraphics[width=\textwidth]{../figures/Telescope/AllpixTelescope.png}};
-
-      \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \node[above, color=white] at (0.5, 0.8) {The simulated telescope};
-      \end{scope}
-    \end{tikzpicture}
-  \end{columns}
-
-  \begin{itemize}
-  \item \textcolor{Red}{Goal}:
-    \begin{itemize}
-    \item Simulate the test-beam setup.
-    \item Extrapolate results for small-pitch pixels (e.g.  CLICpix
-      with $25\,\micron$ pitch).
-    \item Improve digitisation models for full-detector simulation.
-    \end{itemize}
-  \end{itemize}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%         SLIDE             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{The Timepix3 telescope performance}
-
-  \begin{itemize}
-  \item In simulation, extract the tracking resolution on the DUT
-    using the Monte Carlo (MC) hit position
-  \end{itemize}
-
-  \begin{columns}
-    \column{0.5\textwidth}
-    \begin{itemize}
-    \item Biased residual: reconstructed track vs. hit on the
-      telescope planes.
-    \item Agreement between data and simulation \ding{51}
-    \end{itemize}
-
-    \column{0.5\textwidth}
-    \centering
-    \includegraphics[width=0.8\textwidth]{../figures/Telescope/biasedResiduals/RMSX_simu_vs_data.pdf}
-  \end{columns}
-
-  \begin{columns}
-    \column{0.5\textwidth}
-    \begin{itemize}
-    \item Tracking resolution on the DUT: reconstructed track vs. MC
-      hit position
-    \item Excellent tracking resolution of
-      \textcolor{Green}{$\sim2\,\micron$} on the DUT
-      \\
-      $\Rightarrow$ In agreement with the expectations \ding{51}
-    \end{itemize}
-
-    \column{0.5\textwidth}
-    \centering
-    \includegraphics[width=0.8\textwidth]{../figures/Telescope/Unbiased_trackRes_DUT_x.pdf}
-  \end{columns}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%         SLIDE             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Thin sensors studies}
-
-  \begin{columns}
-    \column{0.6\textwidth}
-    \begin{itemize}
-    \item Planar \textcolor{Green}{n-in-p} sensors produced by Advacam
-      \begin{itemize}
-      \item Thickness: \textcolor{Green}{$50 - 150\,\micron$}
-      \item Bump-bonded to Timepix3 readout ASICs of
-        \textcolor{Green}{$700\,\micron$} thick
-      \end{itemize}
-    \end{itemize}
-
-    \begin{itemize}
-    \item Hybrid pixel detector prototype:
-      \begin{itemize}
-      \item $50\,\micron$ sensor
-      \item $700\,\micron$ Timepix ASIC
-      \end{itemize}
-    \end{itemize}
-    \centering
-    \includegraphics[width=0.9\textwidth]{figures/Advacam-50um-assembly.jpeg}
-
-
-    \column{0.4\textwidth}
-
-    \begin{itemize}
-    \item Global detection efficiency as a function of the threshold
-      of the readout ASIC.
-    \end{itemize}
-    \centering
-    \includegraphics[width=\textwidth]{../figures/TestBeam/Efficiency_vs_THL.pdf}
-  \end{columns}
-
-
-\end{frame}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
@@ -1156,8 +1083,6 @@ height=4em]
       \end{itemize}
     \end{itemize}
 
-  
-
     \column{0.5\textwidth}
     \begin{itemize}
     \item For $150\,\micron$ sensor
@@ -1166,15 +1091,26 @@ height=4em]
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at
-      (0,0){\includegraphics[width=\textwidth]{../figures/TestBeam/150micron_resX.pdf}};
+      (0,0){\includegraphics[width=0.8\textwidth]{../figures/TestBeam/150micron_resX.pdf}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
 
         \node[below, color=black] at (0.55, 0.3) {Single-pixel};
         \node[below, color=black] at (0.35, 0.7) {Multi-pixel};
       \end{scope}
     \end{tikzpicture}
+  \end{columns}
 
+  \vspace{-1cm}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Global detection efficiency as a function of the threshold
+      of the readout ASIC.
+    \end{itemize}
+    \column{0.5\textwidth}
 
+    \centering
+    \includegraphics[width=0.8\textwidth]{../figures/TestBeam/Efficiency_vs_THL.pdf}
   \end{columns}
   
 \end{frame}
@@ -2081,4 +2017,115 @@ height=4em]
     \item I\textsubscript{krum}: 10
     \end{itemize}
   \end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Pixel detectors in high-energy physics}
+
+  \begin{columns}
+    \column{0.7\textwidth}
+    \begin{itemize}
+    \item Hybrid detectors:
+      \begin{itemize}
+      \item Planar silicon sensor (High resistive \& Full depletion)
+      \item Mixed-signal readout chip
+        \begin{itemize}
+        \item Possibility for complexe signal processing
+        \item High timing resolution
+        \end{itemize}
+      \item Bump-bonding/flip chip
+      \item Widely used at the LHC experiments
+      \end{itemize}
+    \end{itemize}
+
+    \column{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/hybridDet.pdf}
+  \end{columns}
+
+  \vspace{-0.1cm}
+  \begin{columns}
+    \column{0.7\textwidth}
+    \begin{itemize}
+    \item Monolithic pixel devices:
+      \begin{itemize}
+      \item Integrates sensor and front-end chip
+      \item Sensitive region: epi-layer
+      \item Charge collection by diffusion
+      \item \textcolor{Red}{Handles low rates}
+      \end{itemize}
+    \end{itemize}
+
+    \column{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/monolithic.pdf}
+  \end{columns}
+
+  \vspace{-0.1cm}
+  \begin{columns}
+    \column{0.7\textwidth}
+    \begin{itemize}
+    \item Capacitive coupled pixel detector (CCPD):
+      \begin{itemize}
+      \item Depletion layer with fast signal collection through drift.
+      \item No bump-bonding $\Rightarrow$ glue
+      \end{itemize}
+    \end{itemize}
+
+    \column{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/HVCMOS_2stageAmpl.png}
+  \end{columns}
+
+  \begin{block}{}
+    \centering For CLIC, \textcolor{Blue}{hybrid} and
+    \textcolor{Blue}{CCPD} solutions are under investigation.
+  \end{block}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Thin sensors studies}
+
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{itemize}
+    \item Planar \textcolor{Green}{n-in-p} sensors produced by Advacam
+      \begin{itemize}
+      \item Thickness: \textcolor{Green}{$50 - 150\,\micron$}
+      \item Bump-bonded to Timepix3 readout ASICs of
+        \textcolor{Green}{$700\,\micron$} thick
+      \end{itemize}
+    \end{itemize}
+
+    \begin{itemize}
+    \item Hybrid pixel detector prototype:
+      \begin{itemize}
+      \item $50\,\micron$ sensor
+      \item $700\,\micron$ Timepix ASIC
+      \end{itemize}
+    \end{itemize}
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/Advacam-50um-assembly.jpeg}
+
+
+    \column{0.4\textwidth}
+
+    \begin{itemize}
+    \item Global detection efficiency as a function of the threshold
+      of the readout ASIC.
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/Efficiency_vs_THL.pdf}
+  \end{columns}
+
+
 \end{frame}
