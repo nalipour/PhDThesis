@@ -1,9 +1,14 @@
 
-% \begin{frame}{Overview}{}
-% \tableofcontents
-% \end{frame}
+\begin{frame}{Overview}{}
+\tableofcontents
+\end{frame}
 
 
+\section{Introduction}
+\begin{frame}
+  \frametitle{}
+  \tableofcontents[currentsection]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -93,7 +98,7 @@
       \item Complex triggering schemes
       \item High levels of radiation
       \end{itemize}
-    \item High cross-sections for coloured-states
+    %\item High cross-sections for coloured-states
     \item High-energy circular pp colliders are feasible
     \end{itemize}
 
@@ -110,7 +115,7 @@
       \item Trigger-less readout
       \item Low levels of radiation
       \end{itemize}
-    \item Superior sensitivity for electro-weak states
+    %\item Superior sensitivity for electro-weak states
     \item High-energy $e^+e^-$ collisions ($>350\,\gev$) require
       linear colliders
     \end{itemize}
@@ -160,13 +165,10 @@
     \item The Future Circular Collider (FCC-ee):
       \begin{itemize}
       \item Lepton collider in a new 80-100~km tunnel around CERN.
-      \item Energy range $\sqrt{s}$: $90\,\gev$ to $350\,\gev$
-        \begin{itemize}
-        \item $91\,\gev$: Z-pole
-        \item $160\,\gev$: W pair production threshold
-        \item $240\,\gev$: Higgs resonance
-        \item $350\,\gev$: t\={t} threshold
-        \end{itemize}
+      \item Energy range $\sqrt{s}$: \textcolor{Green}{$90\,\gev$} to
+        \textcolor{Green}{$350\,\gev$} \\
+        $\Rightarrow$ Z-pole, W pair production threshold, Higgs
+        resonance, t\={t} threshold
       \item FCC-hh: for proton-proton collisions $\sqrt{s}$ is up to $100\,\tev$.
       \end{itemize}
     \end{itemize}
@@ -179,7 +181,11 @@
 
 \end{frame}
 
-
+\section{The Compact LInear Collider (CLIC)}
+\begin{frame}
+  \frametitle{}
+  \tableofcontents[currentsection]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -199,8 +205,7 @@
       ($\rightarrow$ LHC: 5~MV/m and 400~MHz)
       \begin{itemize}
       \item Limit the length of the accelerator
-      \item Traditional klystrons ($\sim$1~GHz) accelerate the drive
-        beam 
+      %\item Traditional klystrons ($\sim$1~GHz) accelerate the drive beam 
         % (low energy \& high intensity)
       \item Drive beam decelerated and the energy is fed via an RF
         field in a waveguide to the main beam.
@@ -335,7 +340,7 @@
       \draw[<->,line width=0.5pt] (0.04, 0.17) -- (0.04, 0.9);
       \node[color=black, rotate=90] at (0.01, 0.5) {12.9~m};
 
-      \node[text width=2.5cm, color=black] at (0.95, 0.58)
+      \node[text width=2.5cm, color=black] at (1, 0.58)
       {Silicon-based tracking system};
       \draw[->,line width=0.7pt] (0.8, 0.6) -- (0.5, 0.6);
 
@@ -344,11 +349,11 @@
       \draw[->,line width=0.7pt] (0.8, 0.72) -- (0.5, 0.72);
 
       \node[text width=4cm, color=black] at (1.05, 0.85) {Superconducting
-        solenoid magnet: B=4~T};
+        solenoid magnet};%: B=4~T};
       \draw[->,line width=0.7pt] (0.8, 0.85) -- (0.6, 0.8);
 
-      \node[text width=3cm, color=black] at (1.05, 0.2) {Forward
-        region: LumiCal \& BeamCal};
+      \node[text width=4cm, color=black] at (1.1, 0.2) {Forward
+        region: \\ LumiCal \& BeamCal};
       \draw[->,line width=0.7pt] (0.85, 0.2) -- (0.3, 0.55);
 
       \node[text width=3cm, color=white] at (0.45, 0.25) {Return iron
@@ -372,6 +377,11 @@
 
 \end{frame}
 
+\section{The CLIC vertex detector}
+\begin{frame}
+  \frametitle{}
+  \tableofcontents[currentsection]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -513,7 +523,11 @@
 \end{frame}
 
 
-
+\section{R\&D for hybrid pixel detectors at CLIC}
+\begin{frame}
+  \frametitle{}
+  \tableofcontents[currentsection]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -528,7 +542,7 @@ height=4em]
 
 
   \begin{columns}
-    \column{0.5\textwidth}
+    \column{0.7\textwidth}
     \begin{itemize}
     \item Planar silicon sensor: reverse-biased pn-junction
       \begin{itemize}
@@ -538,16 +552,16 @@ height=4em]
         information
       \end{itemize}
     \end{itemize}
-    \column{0.5\textwidth}
+    \column{0.3\textwidth}
     \centering
-    \includegraphics[width=0.5\textwidth]{figures/hybridDet.pdf}~
-    \includegraphics[width=0.5\textwidth]{figures/drift_sensor.pdf}
+
+    \includegraphics[width=\textwidth]{figures/drift_sensor.pdf}
   \end{columns}
 
-
+  \vspace{-0.5cm}
 
   \begin{columns}
-    \column{0.8\textwidth}
+    \column{0.6\textwidth}
     \begin{itemize}
     \item \textcolor{Red}{\textbf{Goal}}: achieve $3\,\micron$ hit resolution with:
       \begin{itemize}
@@ -557,30 +571,25 @@ height=4em]
       \end{itemize}
     \end{itemize}
 
-    \column{0.2\textwidth}
-    \centering
-    \begin{adjustbox}{max totalsize={.9\textwidth}{.9\textheight},center}
-      \begin{tikzpicture}[node distance = 2.5cm, auto]
-        \begin{scope}[x={(image.south east)},y={(image.north west)}]
-          
-          % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-          % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-          % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10)
-          % {0.\y}; }
+    \column{0.4\textwidth}
+    \includegraphics[width=\textwidth]{figures/hybridDet.pdf}
+    % \centering
+    % \begin{adjustbox}{max totalsize={.9\textwidth}{.9\textheight},center}
+    %   \begin{tikzpicture}[node distance = 2.5cm, auto]
+    %     \begin{scope}[x={(image.south east)},y={(image.north west)}]
+    %       \draw[very thick] (0.1, 0.1) rectangle (0.5, 0.9);
+    %       \draw[<->,line width=1pt] (0.1, 1) -- (0.5, 1);
+    %       \node[color=black] at (0.3, 1.2) {pitch};
 
-          \draw[very thick] (0.1, 0.1) rectangle (0.5, 0.9);
-          \draw[<->,line width=1pt] (0.1, 1) -- (0.5, 1);
-          \node[color=black] at (0.3, 1.2) {pitch};
+    %       \fill (0.35, 0.6) circle[radius=1pt];
+    %       \draw (0.35, 0.6) circle[radius=5pt];
 
-          \fill (0.35, 0.6) circle[radius=1pt];
-          \draw (0.35, 0.6) circle[radius=5pt];
+    %       \draw[<->] (0.35, 0.4) -- (0.42, 0.4);
+    %       \node[color=black] at (0.38, 0.28) {$\sigma$};
 
-          \draw[<->] (0.35, 0.4) -- (0.42, 0.4);
-          \node[color=black] at (0.38, 0.28) {$\sigma$};
-
-        \end{scope}
-      \end{tikzpicture}
-    \end{adjustbox}
+    %     \end{scope}
+    %   \end{tikzpicture}
+    % \end{adjustbox}
 
     % \centering
     % \includegraphics[width=\textwidth]{figures/siliconSensorPrinciple.pdf}
@@ -591,16 +600,13 @@ height=4em]
   \begin{columns}
     \column{0.7\textwidth}
     \begin{itemize}
-    \item Thin-sensors R\&D:
+    \item Characterisation of thin n-in-p sensors (Advacam) using the
+      Timepix3 readout ASIC with \textcolor{Blue}{$55\,\micron$} pixel
+      pitch:
       \begin{itemize}
-      \item Characterisation of thin n-in-p sensors (Advacam) using the
-        Timepix3 readout ASIC with \textcolor{Blue}{$55\,\micron$} pixel
-        pitch:
-        \begin{itemize}
-        \item Sensor thicknesses: $50\,\micron$ - $150\,\micron$
-        \item Spatial resolution
-        \item Detection efficiency
-        \end{itemize}
+      \item Sensor thicknesses: $50\,\micron$ - $150\,\micron$
+      \item Spatial resolution
+      \item Detection efficiency
       \item Use simulations to extrapolate to pixels with smaller
         pitches (i.e. $25\,\micron$).
       \end{itemize}
@@ -613,6 +619,11 @@ height=4em]
 
 \end{frame}
 
+\subsection{Setup for testing thin sensors}
+\begin{frame}
+  \frametitle{}
+  \tableofcontents[currentsubsection]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -644,10 +655,10 @@ height=4em]
       \item Measured hit position on the DUT
         vs. reconstructed track.
       \end{itemize}
-    \item Time resolution per plane
-      \begin{itemize}
-      \item \textcolor{Green}{$\sim$1~ns}
-      \end{itemize}
+    % \item Time resolution per plane
+    %   \begin{itemize}
+    %   \item \textcolor{Green}{$\sim$1~ns}
+    %   \end{itemize}
     \end{itemize}
 
     \column{0.5\textwidth}
@@ -657,19 +668,19 @@ height=4em]
       (0,0){\includegraphics[width=\textwidth]{../figures/ActiveEdge/Timepix3Telescope.jpeg}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
         \node[above, color=white] at (0.5, 0.85) {Device Under Test};
-        \node[above, color=white] at (0.5, 0.78) {(\textbf{DUT})};
+        \node[above, color=white] at (0.5, 0.75) {(\textbf{DUT})};
 
         \draw[->, very thick, color=black](0.75, 0.38) -- (0.25, 0.44);
-        \draw[<->, very thick, color=black](0.33, 0.25) -- (0.66, 0.25);
-        \node[below, color=black] at (0.5, 0.25) {\textbf{152~mm}};
+        \draw[<->, very thick, color=Blue](0.33, 0.25) -- (0.66, 0.25);
+        \node[below, color=Blue] at (0.5, 0.25) {\textbf{152~mm}};
 
-        \node[color=black] at (0.64, 0.32) {\textbf{0}};
-        \node[color=black] at (0.6, 0.32) {\textbf{1}};
-        \node[color=black] at (0.55, 0.32) {\textbf{2}};
+        % \node[color=black] at (0.64, 0.32) {\textbf{0}};
+        % \node[color=black] at (0.6, 0.32) {\textbf{1}};
+        % \node[color=black] at (0.55, 0.32) {\textbf{2}};
 
-        \node[color=black] at (0.44, 0.32) {\textbf{3}};
-        \node[color=black] at (0.39, 0.32) {\textbf{4}};
-        \node[color=black] at (0.35, 0.32) {\textbf{5}};
+        % \node[color=black] at (0.44, 0.32) {\textbf{3}};
+        % \node[color=black] at (0.39, 0.32) {\textbf{4}};
+        % \node[color=black] at (0.35, 0.32) {\textbf{5}};
         
 
         \node[circle, fill, color=Red, inner sep=0pt, minimum size=4pt]
@@ -686,12 +697,7 @@ height=4em]
         at (0.32, 0.43) {};
 
         \node[star, fill, color=Green, inner sep=0pt, minimum size=8pt]
-        at (0.49, 0.41) {};
-
-        % \draw[help lines,xstep=.1,ystep=.1] (0, 0) grid (1,1);
-        % \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-        % \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-        
+        at (0.49, 0.41) {};        
       \end{scope}
     \end{tikzpicture} 
     \\
@@ -731,9 +737,11 @@ height=4em]
 \end{frame}
 
 
-
-
-
+\subsection{Simulation framework}
+\begin{frame}
+  \frametitle{}
+  \tableofcontents[currentsubsection]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -792,6 +800,11 @@ height=4em]
 
 \end{frame}
 
+\subsection{The telescope performance}
+\begin{frame}
+  \frametitle{}
+  \tableofcontents[currentsubsection]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -835,7 +848,11 @@ height=4em]
 \end{frame}
 
 
-
+\subsection{The performance of thin sensors}
+\begin{frame}
+  \frametitle{}
+  \tableofcontents[currentsubsection]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1215,7 +1232,11 @@ height=4em]
 
 \end{frame}
 
-
+\section{Active-edge sensors}
+\begin{frame}
+  \frametitle{}
+  \tableofcontents[currentsection]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1821,6 +1842,11 @@ height=4em]
 
 \end{frame}
 
+\section{Conclusions}
+\begin{frame}
+  \frametitle{}
+  \tableofcontents[currentsection]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
