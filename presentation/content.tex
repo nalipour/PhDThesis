@@ -919,11 +919,11 @@ height=4em]
         \item Time-of-arrival (TOA), 18 bit $\Rightarrow$
           \textcolor{Green}{time}
         \end{itemize}
-      \item Data-driven mode readout:
-        \begin{itemize}
-        \item Low dead time
-        \item High readout rates%: 40~Mhits/(s$\cdot$cm\textsuperscript{2})
-        \end{itemize}
+      % \item Data-driven mode readout:
+      %   \begin{itemize}
+      %   \item Low dead time
+      %   \item High readout rates%: 40~Mhits/(s$\cdot$cm\textsuperscript{2})
+      %   \end{itemize}
       \item Electronic noise: $\sim80$~e\textsuperscript{-} RMS
         \begin{itemize}
         \item Operating threshold: $\sim500$~e\textsuperscript{-}
@@ -954,13 +954,9 @@ height=4em]
   \end{columns}
 
   \begin{itemize}
-  \item \textsc{Geant4} simulation:
-    \begin{itemize} 
-    \item PAI physics list (Bichsel model) adapted for thin
-      sensors (thickness$<300\,\micron$)
-    \item Agreement in width and most-probable-value (MPV) of the distributions \ding{51}
-    \end{itemize}
+  \item Good agreement between data and simulation \ding{51}
   \end{itemize}
+
 
   \begin{columns}
     \column{0.33\textwidth}
@@ -1085,16 +1081,16 @@ height=4em]
   \begin{columns}[t]
     \column{0.5\textwidth}
     \begin{itemize}
-    \item Without charge sharing and with a binary readout: \\
+    \item Hit resolution considering only geometrical information\\
       \begin{equation*}
         \sigma={\text{pitch} \over \sqrt{12}}
       \end{equation*}
     \item The overall resolution depends on the cluster-size
       distribution
       \begin{itemize}
-      \item 1-pixel clusters: hit reconstructed at the geometric center
-        of the pixel
-      \item Multi-pixel clusters: $\eta$-correction method takes into
+      \item Single-pixel clusters: hit reconstructed at the geometric
+        center of the pixel
+      \item Multi-pixel clusters: the reconstruction takes into
         account the non-linearity of charge sharing for the hit
         reconstruction.
       \end{itemize}
@@ -1117,15 +1113,15 @@ height=4em]
     \end{tikzpicture}
   \end{columns}
 
-  \vspace{-1cm}
+  \vspace{-1.3cm}
   \begin{columns}
     \column{0.5\textwidth}
     \begin{itemize}
     \item Global detection efficiency as a function of the threshold
       of the readout ASIC.
     \end{itemize}
-    \column{0.5\textwidth}
 
+    \column{0.5\textwidth}
     \centering
     \includegraphics[width=0.8\textwidth]{../figures/TestBeam/Efficiency_vs_THL.pdf}
   \end{columns}
@@ -1144,11 +1140,11 @@ height=4em]
     \item Threshold: $\sim$500 electrons
     \item Fully depleted
     \end{itemize}
-  \item AllPix simulation
-    \begin{itemize}
-    \item Digitiser for planar sensors bump-bonded to the Timepix3
-      ASIC
-    \end{itemize}
+  % \item AllPix simulation
+  %   \begin{itemize}
+  %   \item Digitiser for planar sensors bump-bonded to the Timepix3
+  %     ASIC
+  %   \end{itemize}
   \end{itemize}
 
   \begin{columns}
@@ -1161,7 +1157,7 @@ height=4em]
 
     \column{0.5\textwidth}
     \begin{itemize}
-    \item Resolution
+    \item Hit resolution
     \end{itemize}
     \centering
     \includegraphics[width=\textwidth]{../figures/TestBeam/residuals_vs_thickness.pdf}
@@ -1251,11 +1247,15 @@ height=4em]
       \begin{itemize}
       \item Undefined edge
       \item Dangling bonds
-      \item Short between surfaces
+      \item Short between surfaces 
       \end{itemize}
+
+%      \centering
+      \includegraphics[width=\textwidth]{figures/sawing_planarSensor.pdf}
+
     \item Maximise the sensitive region of detectors with active-edge
       sensors
-    \item Seamless tiling of pixel sensors for high coverage:
+    \item Seamless tiling of pixel sensors:
       \begin{itemize}
       \item Avoid overlaps between the pixel sensors
       \item Reduce the material content in the detector
@@ -1283,7 +1283,7 @@ height=4em]
         
         \node[color=white] at (0.45, 0.9) {\textbf{CLIC detector}};
         \draw[->,line width=1.7pt] (0.5, 0.5) -- (0.5, 0.33);
-        \node[color=black] at (0.58, 0.43) {\textbf{VXD}};
+        %\node[color=black] at (0.58, 0.43) {\textbf{VXD}};
 
       \end{scope}
     \end{tikzpicture}
@@ -1308,23 +1308,23 @@ height=4em]
 
           \draw[very thick, fill=gray] (0.1, 0.7) rectangle (0.3, 0.9);
 
-          \draw[-,line width=0.1pt] (0.15, 0.7) -- (0.15, 0.9);
-          \draw[-,line width=0.1pt] (0.2, 0.7) -- (0.2, 0.9);
-          \draw[-,line width=0.1pt] (0.25, 0.7) -- (0.25, 0.9);
-          \draw[-,line width=0.1pt] (0.1, 0.8) -- (0.3, 0.8);
-          \draw[-,line width=0.1pt] (0.1, 0.85) -- (0.3, 0.85);
-          \draw[-,line width=0.1pt] (0.1, 0.75) -- (0.3, 0.75);
+          % \draw[-,line width=0.1pt] (0.15, 0.7) -- (0.15, 0.9);
+          % \draw[-,line width=0.1pt] (0.2, 0.7) -- (0.2, 0.9);
+          % \draw[-,line width=0.1pt] (0.25, 0.7) -- (0.25, 0.9);
+          % \draw[-,line width=0.1pt] (0.1, 0.8) -- (0.3, 0.8);
+          % \draw[-,line width=0.1pt] (0.1, 0.85) -- (0.3, 0.85);
+          % \draw[-,line width=0.1pt] (0.1, 0.75) -- (0.3, 0.75);
 
           \draw[very thick, fill=gray] (0.1, 0.5) rectangle (0.3,
           0.7);
 
 
-          \draw[-,line width=0.1pt] (0.15, 0.5) -- (0.15, 0.7);
-          \draw[-,line width=0.1pt] (0.2, 0.5) -- (0.2, 0.7);
-          \draw[-,line width=0.1pt] (0.25, 0.5) -- (0.25, 0.7);
-          \draw[-,line width=0.1pt] (0.1, 0.65) -- (0.3, 0.65);
-          \draw[-,line width=0.1pt] (0.1, 0.6) -- (0.3, 0.6);
-          \draw[-,line width=0.1pt] (0.1, 0.55) -- (0.3, 0.55);
+          % \draw[-,line width=0.1pt] (0.15, 0.5) -- (0.15, 0.7);
+          % \draw[-,line width=0.1pt] (0.2, 0.5) -- (0.2, 0.7);
+          % \draw[-,line width=0.1pt] (0.25, 0.5) -- (0.25, 0.7);
+          % \draw[-,line width=0.1pt] (0.1, 0.65) -- (0.3, 0.65);
+          % \draw[-,line width=0.1pt] (0.1, 0.6) -- (0.3, 0.6);
+          % \draw[-,line width=0.1pt] (0.1, 0.55) -- (0.3, 0.55);
 
 
           \draw[very thick, fill=gray] (0.3, 0.7) rectangle (0.5, 0.9);
@@ -1858,19 +1858,34 @@ height=4em]
   \item The vertex detector plays a key role to fully exploit the
     physics potential at CLIC.
     \begin{itemize}
-    \item High spatial resolution: \textcolor{Blue}{$\sim3\,\micron$}
-    \item Low material content: \textcolor{Blue}{$\sim$2\%
-        X\textsubscript{0}} \\
+    \item High spatial resolution
+    \item Low material content
       $\Rightarrow$ achieve high flavour-tagging performance
     \end{itemize} 
-    \item Characterisation of thin and active-edge planar silicon
-      pixel sensors
+  \item Characterisation of thin and active-edge planar silicon pixel
+    sensors
       \begin{itemize}
-      \item \textsc{Geant4} and TCAD simulations validated with
-        test-beam data
-      \item Simulation studies of small pixel sizes
-      \item Most suitable solution of guard ring chosen for thin
-        sensors
+      \item Test-beam measurements using the Timepix3 telescope with
+        excellent pointing resolution
+      \item Thin sensors:
+        \begin{itemize}
+        \item Study of the energy deposition, charge sharing and hit
+          resolution in test-beam data
+        \item Validation of \textsc{Geant4}-based simulations with
+          data.
+        \item Extrapolation of the simulations for smaller pixels: the
+          required resolution of $\sigma\sim3\,\micron$ requires
+          smaller pixels ($<15\,\micron$) or new charge sharing
+          solutions.
+        \end{itemize}
+
+      \item Thin active-edge sensors:
+        \begin{itemize}
+        \item Investigation in data and TCAD simulation of different
+          edge and GR configurations.
+        \item The floating GR is the most suitable solution for thin
+          sensors of $50\,\micron$.
+        \end{itemize}
       \end{itemize}
 
   \end{itemize}
