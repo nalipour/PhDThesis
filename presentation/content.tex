@@ -124,17 +124,26 @@
 
 \end{frame}
 
-
+\section{The Compact Linear Collider (CLIC)}
+\begin{frame}
+  \frametitle{}
+  \tableofcontents[currentsection]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{High-energy $e^+e^-$ colliders studies at CERN}
+{
+  \usebackgroundtemplate{
+    \begin{picture}(100, 265)
+      \includegraphics[width=0.9\textwidth]{figures/CLIC_2beam_accel.pdf}
+    \end{picture}
+  }%
+  \begin{frame}
+    \frametitle{The Compact Linear Collider (CLIC)}
 
-  \begin{columns}
-    \column{0.6\textwidth}
-    \begin{itemize}
-    \item The Compact LInear Collider (CLIC):
+    \vspace{-1cm}
+    \begin{columns}
+      \column{0.6\textwidth}
       \begin{itemize}
       \item An $e^{+}e^{-}$ linear collider for the post HL-LHC period.
       \item Energy range $\sqrt{s}$ : \textcolor{Green}{$380\,\gev$} to
@@ -149,72 +158,20 @@
         \item Search for new physics
           % : unique sensitivity to particles with electroweak charge.
         \end{itemize}
-      \item 48~km tunnel at 3~TeV stage
+      \item 50~km tunnel at 3~TeV stage
       \end{itemize}
-    \end{itemize}
+      
+      \column{0.4\textwidth}
+      \centering
+      \includegraphics[width=1.1\textwidth]{../figures/CLIC/staging.pdf}
+    \end{columns}
 
-    \column{0.4\textwidth}
-    \centering
-    \includegraphics[width=1.1\textwidth]{../figures/CLIC/staging.pdf}
-  \end{columns}
-  
-  \begin{columns}
-    \column{0.7\textwidth}
-
-    \begin{itemize}
-    \item The Future Circular Collider (FCC-ee):
-      \begin{itemize}
-      \item Lepton collider in a new 80-100~km tunnel around CERN.
-      \item Energy range $\sqrt{s}$: \textcolor{Green}{$90\,\gev$} to
-        \textcolor{Green}{$350\,\gev$} \\
-        $\Rightarrow$ Z-pole, W pair production threshold, Higgs
-        resonance, t\={t} threshold
-      \item FCC-hh: for proton-proton collisions $\sqrt{s}$ is up to $100\,\tev$.
-      \end{itemize}
-    \end{itemize}
-
-    \column{0.3\textwidth}
-    \centering
-    \includegraphics[width=0.9\textwidth]{figures/FCC}
-
-  \end{columns}
-
-\end{frame}
-
-\section{The Compact LInear Collider (CLIC)}
-\begin{frame}
-  \frametitle{}
-  \tableofcontents[currentsection]
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%         SLIDE             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{
-  \usebackgroundtemplate{
-    \begin{picture}(100, 265)
-      \includegraphics[width=\textwidth]{figures/CLIC_2beam_accel.pdf}
-    \end{picture}
-  }%
-  \begin{frame}
-    \frametitle{Two-beam acceleration scheme at CLIC}
-    
-    \vspace{-1cm}
-    \begin{itemize}
-    \item High-gradient acceleration of \textcolor{Red}{100~MV/m} at
-      \textcolor{Red}{12~GHz} with copper cavities at room temperature\\
-      ($\rightarrow$ LHC: 5~MV/m and 400~MHz)
-      \begin{itemize}
-      \item Limit the length of the accelerator
-      %\item Traditional klystrons ($\sim$1~GHz) accelerate the drive beam 
-        % (low energy \& high intensity)
-      \item Drive beam decelerated and the energy is fed via an RF
-        field in a waveguide to the main beam.
-      \end{itemize}
-    \end{itemize}
-    
-    \vspace{-0.3cm}
-    \begin{columns}
+    %\vspace{-0.3cm}
+    \begin{columns}[t]
       \column{0.5\textwidth}
+      \begin{itemize}
+      \item Two-beam acceleration scheme
+      \end{itemize}
       \column{0.5\textwidth}
       \begin{itemize}
       \item \textcolor{blue}{Drive beam $\Rightarrow$ RF power}
@@ -233,6 +190,7 @@
 
   \end{frame}
 }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
@@ -273,7 +231,7 @@
                                   \midrule
                                   Instantaneous luminosity $\mathcal{L}$ & $6\times10^{34}$ \inversecmsquaredsec & $1\times10^{34}$ \inversecmsquaredsec \\
                                   Bunch-crossing separation & 0.5~ns & 25~ns \\
-                                  IP size in x / y / z directions & 45~nm / 1~nm / $44\,\micron$ & $15\,\micron$ / $15\,\micron$ / 50~cm \\
+                                  IP size in x / y / z directions & 45~nm / 1~nm / $44\,\micron$ & $15\,\micron$ / $15\,\micron$ / 5~cm \\
                                   \bottomrule
                                 \end{tabular}
 }
@@ -411,7 +369,7 @@
         \begin{itemize}
           \item 6 layers in the barrel and 6 disks
           \end{itemize}
-      \item High coverage: 
+      \item Large angular coverage: 
         \begin{itemize}
         \item $\sim30$~mm of inner radius and
           $\theta_{min}\sim8^{\circ}$
@@ -424,13 +382,16 @@
         \end{itemize}
       \item Low material budget: 
         \begin{itemize}
-        \item $<0.2\%$~X\textsubscript{0}/layer and beam-pipe
+        \item $<0.2\%$~X\textsubscript{0}/layer
         \item Forced airflow cooling
         \item Low-power electronics
           ($\approx 50$~mW/cm\textsuperscript{2})
         \end{itemize}
-      \item Time slicing of \textcolor{Blue}{$\sim$\SI{10}{\nano\second}}
-        to reduce the impact of beam-induced backgrounds.
+      \item Time slicing of
+        \textcolor{Blue}{$\sim$\SI{10}{\nano\second}}
+        \begin{itemize}
+        \item reject out of time background.
+        \end{itemize}
         % \begin{itemize}
         % \item high-resistive \& depleted sensors
         % \item readout with precise timing.
@@ -1192,7 +1153,7 @@ height=4em]
 
     \column{0.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{../figures/TestBeam/RMS_extrapolationSmallerPixels.pdf}
+    \includegraphics[width=\textwidth]{figures/extrapolation_resolution.pdf}
   \end{columns}
 
   \begin{itemize}
@@ -2255,3 +2216,77 @@ height=4em]
   \end{itemize}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{The Future Circular Collider (FCC-ee)}
+
+  \begin{columns}
+    \column{0.7\textwidth}
+
+    \begin{itemize}
+    \item Lepton collider in a new 80-100~km tunnel around CERN.
+    \item Energy range $\sqrt{s}$: \textcolor{Green}{$90\,\gev$} to
+      \textcolor{Green}{$350\,\gev$} \\
+      $\Rightarrow$ Z-pole, W pair production threshold, Higgs
+      resonance, t\={t} threshold
+    \item FCC-hh: for proton-proton collisions $\sqrt{s}$ is up to $100\,\tev$.
+    \end{itemize}
+
+    \column{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/FCC}
+
+  \end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+  \usebackgroundtemplate{
+    \begin{picture}(100, 265)
+      \includegraphics[width=\textwidth]{figures/CLIC_2beam_accel.pdf}
+    \end{picture}
+  }%
+  \begin{frame}
+    \frametitle{Two-beam acceleration scheme at CLIC}
+    
+    \vspace{-1cm}
+    \begin{itemize}
+    \item High-gradient acceleration of \textcolor{Red}{100~MV/m} at
+      \textcolor{Red}{12~GHz} with copper cavities at room temperature\\
+      ($\rightarrow$ LHC: 5~MV/m and 400~MHz)
+      \begin{itemize}
+      \item Limit the length of the accelerator
+      %\item Traditional klystrons ($\sim$1~GHz) accelerate the drive beam 
+        % (low energy \& high intensity)
+      \item Drive beam decelerated and the energy is fed via an RF
+        field in a waveguide to the main beam.
+      \end{itemize}
+    \end{itemize}
+    
+    \vspace{-0.3cm}
+    \begin{columns}
+      \column{0.5\textwidth}
+      \column{0.5\textwidth}
+      \begin{itemize}
+      \item \textcolor{blue}{Drive beam $\Rightarrow$ RF power}
+        \begin{itemize}
+        \item 12~GHz bunch structure
+        \item High current 100~A
+        \item Low energy $2.4\,\gev$ - $240\,\gev$
+        \end{itemize}
+      \item \textcolor{red}{Main beam $\Rightarrow$ physics}
+        \begin{itemize}
+        \item Lower current 1.2~A
+        \item High energy $9\,\gev$ - $1.5\,\tev$
+        \end{itemize}
+      \end{itemize}
+    \end{columns}
+
+  \end{frame}
+}
