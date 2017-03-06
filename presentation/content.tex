@@ -431,10 +431,10 @@
         \end{itemize}
       \item Time slicing of \textcolor{Blue}{$\sim$\SI{10}{\nano\second}}
         to reduce the impact of beam-induced backgrounds.
-        \begin{itemize}
-        \item high-resistive \& depleted sensors
-        \item readout with precise timing.
-        \end{itemize}
+        % \begin{itemize}
+        % \item high-resistive \& depleted sensors
+        % \item readout with precise timing.
+        % \end{itemize}
       \end{itemize}
     \end{itemize}
 
@@ -523,7 +523,7 @@
 \end{frame}
 
 
-\section{R\&D for planar pixel sensors at CLIC}
+\section{R\&D for hybrid pixel detectors at CLIC}
 \begin{frame}
   \frametitle{}
   \tableofcontents[currentsection]
@@ -538,7 +538,7 @@ height=4em]
 
 % ----------------------------- %
 \begin{frame}
-  \frametitle{R\&D for planar pixel sensors at CLIC}
+  \frametitle{R\&D for planar pixel detectors at CLIC}
 
 
   \begin{columns}
@@ -555,7 +555,7 @@ height=4em]
     \column{0.3\textwidth}
     \centering
 
-    \includegraphics[width=\textwidth]{figures/drift_sensor.pdf}
+    \includegraphics[width=0.8\textwidth]{figures/Diffusion.png}
   \end{columns}
 
   \vspace{-0.5cm}
@@ -606,7 +606,7 @@ height=4em]
       \begin{itemize}
       \item Sensor thicknesses: $50\,\micron$ - $150\,\micron$
       \item Spatial resolution
-      \item Detection efficiency
+      %\item Detection efficiency
       \item Use simulations to extrapolate to pixels with smaller
         pitches (i.e. $25\,\micron$).
       \end{itemize}
@@ -792,8 +792,8 @@ height=4em]
   \item \textcolor{Red}{Goal}:
     \begin{itemize}
     \item Simulate the test-beam setup.
-    \item Extrapolate results for small-pitch pixels (e.g.  CLICpix
-      with $25\,\micron$ pitch).
+    % \item Extrapolate results for small-pitch pixels (e.g.  CLICpix
+    %   with $25\,\micron$ pitch).
     \item Improve digitisation models for full-detector simulation.
     \end{itemize}
   \end{itemize}
@@ -990,12 +990,14 @@ height=4em]
   \frametitle{Charge sharing}
 
   \begin{itemize}
-  \item Spread of the charge carriers at the readout due to their
-    diffusion within the detector volume.
-  \item Cluster-size distribution $\Rightarrow$ indication of charge
-    sharing.
+  % \item Spread of the charge carriers at the readout due to their
+  %   diffusion within the detector volume.
+  % \item Cluster-size distribution $\Rightarrow$ indication of charge
+  %   sharing.
   \item Cluster size vs. track position within pixel:
   \end{itemize}
+
+  \vspace{-0.5cm}
 
   \begin{columns}[t]
     \column{0.25\textwidth}
@@ -1061,14 +1063,24 @@ height=4em]
     \includegraphics[width=\textwidth]{../figures/TestBeam/TrackPosWPixel_4hit_runW19_G7.pdf}
   \end{columns}
 
-  \begin{itemize}
-  \item Factors affecting the charge sharing:
+  \vspace{-0.5cm}
+  \begin{columns}
+    \column{0.5\textwidth}
     \begin{itemize}
-    \item Sensor thickness
-    \item Bias voltage
-    \item Readout threshold 
+    \item Factors affecting the charge sharing:
+      \begin{itemize}
+      \item Sensor thickness
+      \item Bias voltage
+      \item Readout threshold 
+      \end{itemize}
     \end{itemize}
-  \end{itemize}
+
+    $\Rightarrow$ Good agreement between data and simulation
+
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../figures/TestBeam/cluSize_vs_thickness.pdf}
+  \end{columns}
 
 \end{frame}
 
@@ -1088,11 +1100,11 @@ height=4em]
     \item The overall resolution depends on the cluster-size
       distribution
       \begin{itemize}
-      \item Single-pixel clusters: hit reconstructed at the geometric
-        center of the pixel
-      \item Multi-pixel clusters: the reconstruction takes into
-        account the non-linearity of charge sharing for the hit
-        reconstruction.
+      \item \textcolor{Green}{Single-pixel clusters}: hit
+        reconstructed at the geometric center of the pixel
+      \item \textcolor{Green}{Multi-pixel clusters}: the
+        reconstruction takes into account the non-linearity of charge
+        sharing for the hit reconstruction.
       \end{itemize}
     \end{itemize}
 
@@ -1114,64 +1126,32 @@ height=4em]
   \end{columns}
 
   \vspace{-1.3cm}
+
   \begin{columns}
     \column{0.5\textwidth}
     \begin{itemize}
-    \item Global detection efficiency as a function of the threshold
-      of the readout ASIC.
+    \item Good agreement between data and simulation
     \end{itemize}
 
     \column{0.5\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{../figures/TestBeam/Efficiency_vs_THL.pdf}
+    \includegraphics[width=0.8\textwidth]{../figures/TestBeam/residuals_vs_thickness.pdf}
   \end{columns}
+  % \begin{columns}
+  %   \column{0.5\textwidth}
+  %   \begin{itemize}
+  %   \item Detection efficiency as a function of the threshold
+  %     of the readout ASIC.
+  %   \end{itemize}
+
+  %   \column{0.5\textwidth}
+  %   \centering
+  %   \includegraphics[width=0.8\textwidth]{../figures/TestBeam/Efficiency_vs_THL.pdf}
+  % \end{columns}
   
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%         SLIDE             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Thin sensors: validation of simulation}
 
-  \begin{itemize}
-  \item For assemblies operated at nominal conditions:
-    \begin{itemize}
-    \item Threshold: $\sim$500 electrons
-    \item Fully depleted
-    \end{itemize}
-  % \item AllPix simulation
-  %   \begin{itemize}
-  %   \item Digitiser for planar sensors bump-bonded to the Timepix3
-  %     ASIC
-  %   \end{itemize}
-  \end{itemize}
-
-  \begin{columns}
-    \column{0.5\textwidth}
-    \begin{itemize}
-    \item Cluster-size distribution
-    \end{itemize}
-    \centering
-    \includegraphics[width=\textwidth]{../figures/TestBeam/cluSize_vs_thickness.pdf}
-
-    \column{0.5\textwidth}
-    \begin{itemize}
-    \item Hit resolution
-    \end{itemize}
-    \centering
-    \includegraphics[width=\textwidth]{../figures/TestBeam/residuals_vs_thickness.pdf}
-  \end{columns}
-
-  \begin{itemize}
-  \item Good agreement between data and simulation \ding{51}
-    \begin{itemize}
-    \item Simulation can be used for the extrapolation to smaller
-      pixels
-    \end{itemize}
-  \end{itemize}
-
-\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1194,9 +1174,9 @@ height=4em]
   \begin{itemize}
   \item CLICpix readout ASIC demonstrator with $25\,\micron$ pitch
     under investigation
-    \begin{itemize}
-    \item Still, no data with $50\,\micron$ thick sensor is available
-    \end{itemize}
+    % \begin{itemize}
+    % \item Still, no data with $50\,\micron$ thick sensor is available
+    % \end{itemize}
   \item Extrapolation of the simulation to smaller pixels:
     $10\,\micron$-$55\,\micron$ pitch
     \begin{itemize}
@@ -1341,11 +1321,16 @@ height=4em]
   \end{columns}
 \end{frame}
 
+\subsection{Fabrication process}
+\begin{frame}
+  \frametitle{}
+  \tableofcontents[currentsubsection]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Active-edge sensors: fabrication process}
+  \frametitle{Fabrication process}
 
   \begin{itemize}
   \item The \textcolor{Blue}{DRIE} (Deep Reactive-Ion Etching) process
@@ -1428,14 +1413,15 @@ height=4em]
   \begin{itemize}
   \item 4 assemblies with $50\,\micron$-thick sensors: No GR, floating
     and grounded potentials GR.
-  \item 2 assemblies with grounded GR: $100\,\micron$ and
-    $150\,\micron$ thick sensors.
   \end{itemize}
 
+  \vspace{-0.3cm}
   \begin{columns}[t]
     \column{0.23\textwidth}
     \begin{itemize}
-    \item 20-NGR-50
+    %\item 20-NGR-50
+    \item No GR \\
+      $\Rightarrow$ $20\,\micron$ edge
     \end{itemize}
     \centering
     \begin{tikzpicture}
@@ -1455,32 +1441,13 @@ height=4em]
       \end{scope}
     \end{tikzpicture}
 
-    \column{0.23\textwidth}
-    \begin{itemize}
-    \item 23-FGR-50
-    \end{itemize}
-    \centering
-    \begin{tikzpicture}
-      \node[anchor=south west,inner sep=0] (image) at
-      (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_float_GR_3.png}};
-      \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        % \node[above] at (0.8, 0.7) {\small{\SI{20}{\micro\meter}}};
-        \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
-        \draw[Blue, thick, dashed](0.7, 0.05)--(0.7, 0.95);
-        \draw[Blue, thick](0.4, 0.05)--(0.4, 0.95);
-        \draw[Blue, thick](1, 0.05)--(1, 0.95);
-        \draw[Blue, thick](0.4, 0.05)--(1, 0.05);
-        \draw[Blue, thick](0.4, 0.95)--(1, 0.95);
-        \node[below, color=Blue] at (0.4, 0.055) {-0.055};
-        \node[below, color=Blue] at (0.7, 0.055) {0};
-        \node[below, color=Blue] at (1, 0.055) {0.055};
-      \end{scope}
-    \end{tikzpicture}
 
     \column{0.27\textwidth}
     \begin{itemize}
-    \item 28-GNDGR-50
-    \end{itemize}
+%    \item 28-GNDGR-50
+    \item Grounded GR \\
+      $\Rightarrow$ $28\,\micron$ edge  
+  \end{itemize}
     \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at
@@ -1500,7 +1467,9 @@ height=4em]
 
     \column{0.27\textwidth}
     \begin{itemize}
-    \item 55-GNDGR-50
+    %\item 55-GNDGR-50
+    \item Grounded GR \\
+      $\Rightarrow$ $55\,\micron$ edge
     \end{itemize}
     \centering
     \begin{tikzpicture}
@@ -1519,7 +1488,37 @@ height=4em]
       \end{scope}
     \end{tikzpicture}
 
+
+    \column{0.23\textwidth}
+    \begin{itemize}
+    % \item 23-FGR-50
+    \item Floating GR \\
+      $\Rightarrow$ $23\,\micron$ edge
+    \end{itemize}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_float_GR_3.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        % \node[above] at (0.8, 0.7) {\small{\SI{20}{\micro\meter}}};
+        \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
+        \draw[Blue, thick, dashed](0.7, 0.05)--(0.7, 0.95);
+        \draw[Blue, thick](0.4, 0.05)--(0.4, 0.95);
+        \draw[Blue, thick](1, 0.05)--(1, 0.95);
+        \draw[Blue, thick](0.4, 0.05)--(1, 0.05);
+        \draw[Blue, thick](0.4, 0.95)--(1, 0.95);
+        \node[below, color=Blue] at (0.4, 0.055) {-0.055};
+        \node[below, color=Blue] at (0.7, 0.055) {0};
+        \node[below, color=Blue] at (1, 0.055) {0.055};
+      \end{scope}
+    \end{tikzpicture}
+
   \end{columns}
+
+  \begin{itemize}
+  \item 2 assemblies with grounded GR: $100\,\micron$ and
+    $150\,\micron$ thick sensors.
+  \end{itemize}
 
   \begin{columns}[t]
     \column{0.5\textwidth}
@@ -1551,6 +1550,11 @@ height=4em]
 
 \end{frame}
 
+\subsection{Edge performance in data and simulations}
+\begin{frame}
+  \frametitle{}
+  \tableofcontents[currentsubsection]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1618,67 +1622,6 @@ height=4em]
 \end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%         SLIDE             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Active-edge sensor with floating GR (23-FGR-50)}
-
-  \begin{columns}
-    \column{0.5\textwidth}
-
-    \begin{itemize}
-    \item Efficient up to the physical edge.
-    \item A loss of the charge near the edge is observed.
-    \end{itemize}
-
-
-    \column{0.5\textwidth}
-
-    \begin{columns}
-      \column{0.5\textwidth}
-      \centering
-      \begin{tikzpicture}
-        \node[anchor=south west,inner sep=0] (image) at
-        (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_float_GR_3.png}};
-        \begin{scope}[x={(image.south east)},y={(image.north west)}]
-          \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
-          \draw[Blue, thick, dashed](0.7, 0.05)--(0.7, 0.95);
-          \draw[Blue, thick](0.4, 0.05)--(0.4, 0.95);
-          \draw[Blue, thick](1, 0.05)--(1, 0.95);
-          \draw[Blue, thick](0.4, 0.05)--(1, 0.05);
-          \draw[Blue, thick](0.4, 0.95)--(1, 0.95);
-          \node[below, color=Blue] at (0.4, 0.055) {-0.055};
-          \node[below, color=Blue] at (0.7, 0.055) {0};
-          \node[below, color=Blue] at (1, 0.055) {0.055};
-        \end{scope}
-      \end{tikzpicture}
-      \column{0.5\textwidth}
-      \centering
-      \reflectbox{\includegraphics[width=\textwidth]{../figures/ActiveEdge/streamlines_23-FGR-50.png}}
-    \end{columns}
-
-  \end{columns}
-
-  \begin{columns}[t]
-    \column{0.5\textwidth}
-    
-    \begin{itemize}
-    \item Efficiency vs. track position
-    \end{itemize}
-    \centering
-    \includegraphics[width=\textwidth, page=6]{../figures/TestBeam/edge_bcp.pdf}
-    
-    \column{0.5\textwidth}
-    \begin{itemize}
-    \item Energy deposition vs. track position
-    \end{itemize}
-    \centering
-    \includegraphics[width=\textwidth]{../figures/ActiveEdge/23_FGR_Edep_TCAD_data.pdf}
-
-  \end{columns}
-
-\end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1805,6 +1748,74 @@ height=4em]
   \end{columns}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Active-edge sensor with floating GR (23-FGR-50)}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+
+    \begin{itemize}
+    \item Most suitable solution for thin sensors:
+      \begin{itemize}
+      \item High detection efficiency at the edge
+      \item Acceptable breakdown behaviour
+      \end{itemize}
+    % \item Efficient up to the physical edge.
+    % \item A loss of the charge near the edge is observed.
+    \end{itemize}
+
+
+    \column{0.5\textwidth}
+
+    \begin{columns}
+      \column{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) at
+        (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_float_GR_3.png}};
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+          \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
+          \draw[Blue, thick, dashed](0.7, 0.05)--(0.7, 0.95);
+          \draw[Blue, thick](0.4, 0.05)--(0.4, 0.95);
+          \draw[Blue, thick](1, 0.05)--(1, 0.95);
+          \draw[Blue, thick](0.4, 0.05)--(1, 0.05);
+          \draw[Blue, thick](0.4, 0.95)--(1, 0.95);
+          \node[below, color=Blue] at (0.4, 0.055) {-0.055};
+          \node[below, color=Blue] at (0.7, 0.055) {0};
+          \node[below, color=Blue] at (1, 0.055) {0.055};
+        \end{scope}
+      \end{tikzpicture}
+      \column{0.5\textwidth}
+      \centering
+      \reflectbox{\includegraphics[width=\textwidth]{../figures/ActiveEdge/streamlines_23-FGR-50.png}}
+    \end{columns}
+
+  \end{columns}
+
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    
+    \begin{itemize}
+    \item Efficiency vs. track position
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth, page=6]{../figures/TestBeam/edge_bcp.pdf}
+    
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Energy deposition vs. track position
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/ActiveEdge/23_FGR_Edep_TCAD_data.pdf}
+
+  \end{columns}
+
+\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         SLIDE             %
@@ -2196,5 +2207,51 @@ height=4em]
     \includegraphics[width=\textwidth]{../figures/TestBeam/Efficiency_vs_THL.pdf}
   \end{columns}
 
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         SLIDE             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Thin sensors: validation of simulation}
+
+  \begin{itemize}
+  \item For assemblies operated at nominal conditions:
+    \begin{itemize}
+    \item Threshold: $\sim$500 electrons
+    \item Fully depleted
+    \end{itemize}
+  % \item AllPix simulation
+  %   \begin{itemize}
+  %   \item Digitiser for planar sensors bump-bonded to the Timepix3
+  %     ASIC
+  %   \end{itemize}
+  \end{itemize}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Cluster-size distribution
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/cluSize_vs_thickness.pdf}
+
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Hit resolution
+    \end{itemize}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/TestBeam/residuals_vs_thickness.pdf}
+  \end{columns}
+
+  \begin{itemize}
+  \item Good agreement between data and simulation \ding{51}
+    \begin{itemize}
+    \item Simulation can be used for the extrapolation to smaller
+      pixels
+    \end{itemize}
+  \end{itemize}
 
 \end{frame}
