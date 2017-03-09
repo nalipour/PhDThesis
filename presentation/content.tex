@@ -490,6 +490,8 @@
     \includegraphics[width=\textwidth]{figures/Global_energies_CLIC_SiD_spirals_Charm_Beauty_.pdf}
   \end{columns}
 
+  \beamerbutton{Optimisation Studies for the CLIC Vertex-Detector Geometry, CLICdp-Note-2014-002.}
+
 \end{frame}
 
 
@@ -510,6 +512,7 @@
     \begin{itemize}
     \item Sensor and readout electronics are fabricated separately
     \item Connection via bumps 
+    \item Widely used at the LHC experiments
     \end{itemize}
     \column{0.5\textwidth}
     \centering
@@ -564,7 +567,16 @@ height=4em]
 
     \column{0.5\textwidth}
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/Advacam-50um-assembly.jpeg}
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at
+    (0,0){\includegraphics[width=\textwidth]{figures/Advacam-50um-assembly.jpeg}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+      \node[above, color=Black] at (0.2, 0.8) {\small{$50\,\micron$
+          sensor}};
+      \node[above, color=Black] at (0.2, 0.7) {\small{$700\,\micron$ Timepix}};
+    \end{scope}
+  \end{tikzpicture} 
+
   \end{columns}
 
   \begin{itemize}
@@ -735,13 +747,23 @@ height=4em]
     \end{tikzpicture}
   \end{columns}
 
-  \begin{itemize}
-  \item \textcolor{Green}{Digitisation}: responsible for the
-    full simulation of the detector
+  \begin{columns}
+    \column{0.6\textwidth}
     \begin{itemize}
-    \item Drift and diffusion of the charge carriers in the sensor
-    \item Functionning of the Timepix3 readout chip
+    \item \textcolor{Green}{Digitisation}: responsible for the
+      full simulation of the detector
+      \begin{itemize}
+      \item Drift and diffusion of the charge carriers in the sensor
+      \item Functionning of the Timepix3 readout chip
+      \end{itemize}
     \end{itemize}
+
+    \column{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/ChargeSharing/Diffusion_vs_Bias.pdf}
+  \end{columns}
+
+  \begin{itemize}
   \item \textcolor{Red}{Goal}:
     \begin{itemize}
     \item Simulation of the test-beam setup.
@@ -928,7 +950,7 @@ height=4em]
       \end{itemize}
     \end{itemize}
 
-    $\Rightarrow$ Good agreement between data and simulation
+    $\Rightarrow$ Simulation in agreement with data
 
     \column{0.5\textwidth}
     \centering
@@ -988,7 +1010,7 @@ height=4em]
   \begin{columns}
     \column{0.5\textwidth}
     \begin{itemize}
-    \item Good agreement between data and simulation
+    \item Simulation in agreement with data
     \end{itemize}
 
     \column{0.5\textwidth}
@@ -1122,16 +1144,17 @@ height=4em]
     \column{0.5\textwidth}
 
     \begin{itemize}
-    \item Traditional cutting of sensors from a wafer creates inactive
-      regions on the edges.
-    \item Maximise the sensitive region of detectors with active edge
-      sensors
-    \item Seamless tiling of pixel sensors:
-      \begin{itemize}
+    \item Fabrication of large area detection systems with seamless
+      tiling of pixel sensors:
+     \begin{itemize}
       \item Avoid overlaps between the pixel sensors
       \item Reduce the material content in the detector
       \item High coverage
       \end{itemize}
+    \item Conventional saw dicing of sensors from a wafer creates
+      inactive regions on the edges.
+    \item Maximise the sensitive region of detectors with active edge
+      sensors
     \end{itemize}
 
     \column{0.5\textwidth}
@@ -1229,8 +1252,8 @@ height=4em]
   \item Implantation on the sidewall of the sensor $\Rightarrow$
     control the potential at the edge by creating an extension of the
     backside electrode on the edge.
-  \item Guard rings (GR): metal and n-implants to establish a smooth
-    voltage drop between the edge and the last pixel.
+  \item Guard rings (GR) to establish a smooth voltage drop between
+    the edge and the last pixel.
   \end{itemize}
 
   \begin{columns}
@@ -1411,6 +1434,11 @@ height=4em]
     $150\,\micron$ thick sensors.
   \end{itemize}
 
+  \beamerbutton{Recent results with HV-CMOS and planar sensors for the
+    CLIC vertex detector, http://dx.doi.org/10.1016/j.nima.2016.05.133}
+
+  \vspace{-0.3cm}
+
   \begin{columns}[t]
     \column{0.5\textwidth}
     \begin{itemize}
@@ -1450,8 +1478,85 @@ height=4em]
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Active-edge sensor without GR (20-NGR-50)}
+ % \frametitle{Active-edge sensor without GR (20-NGR-50)}
+ \begin{columns}[t]
+    \column{0.23\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/Layout2Pixels2.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        % \node[above] at (0.8, 0.7) {\small{\SI{15}{\micro\meter}}};
+        \draw[Blue, thick](0.765, 0.05)--(0.765, 0.95);
+        \draw[Blue, thick, dashed](0.7, 0.05)--(0.7, 0.95);
+        \draw[Blue, thick](0.38, 0.05)--(0.38, 0.95);
+        \draw[Blue, thick](0.98, 0.05)--(0.98, 0.95);
+        \draw[Blue, thick](0.38, 0.05)--(0.98, 0.05);
+        \draw[Blue, thick](0.38, 0.95)--(0.98, 0.95);
+        \node[below, color=Blue] at (0.38, 0.055) {-0.055};
+        \node[below, color=Blue] at (0.7, 0.055) {0};
+        \node[below, color=Blue] at (0.98, 0.055) {0.055};
+      \end{scope}
+    \end{tikzpicture}
 
+
+    \column{0.27\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_GRND_GR_2.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \draw[Blue, thick](0.68, 0.05)--(0.68, 0.95);
+        \draw[Blue, thick, dashed](0.55, 0.05)--(0.55, 0.95);
+        \draw[Blue, thick](0.3, 0.05)--(0.3, 0.95);
+        \draw[Blue, thick](0.9, 0.05)--(0.9, 0.95);
+        \draw[Blue, thick](0.3, 0.05)--(0.9, 0.05);
+        \draw[Blue, thick](0.3, 0.95)--(0.9, 0.95);
+        \node[below, color=Blue] at (0.3, 0.055) {-0.055};
+        \node[below, color=Blue] at (0.55, 0.055) {0};
+        \node[below, color=Blue] at (0.9, 0.055) {0.055};
+      \end{scope}
+    \end{tikzpicture}
+
+    \column{0.27\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{{figures/50_edge_GRND_GR_2.png}}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
+        \draw[Blue, thick, dashed](0.55, 0.05)--(0.55, 0.95);
+        \draw[Blue, thick](0.25, 0.05)--(0.25, 0.95);
+        \draw[Blue, thick](0.9, 0.05)--(0.9, 0.95);
+        \draw[Blue, thick](0.25, 0.05)--(0.9, 0.05);
+        \draw[Blue, thick](0.25, 0.95)--(0.9, 0.95);
+        \node[below, color=Blue] at (0.25, 0.055) {-0.055};
+        \node[below, color=Blue] at (0.55, 0.055) {0};
+        \node[below, color=Blue] at (0.9, 0.055) {0.055};
+      \end{scope}
+    \end{tikzpicture}
+
+
+    \column{0.23\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_float_GR_3.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        % \node[above] at (0.8, 0.7) {\small{\SI{20}{\micro\meter}}};
+        \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
+        \draw[Blue, thick, dashed](0.7, 0.05)--(0.7, 0.95);
+        \draw[Blue, thick](0.4, 0.05)--(0.4, 0.95);
+        \draw[Blue, thick](1, 0.05)--(1, 0.95);
+        \draw[Blue, thick](0.4, 0.05)--(1, 0.05);
+        \draw[Blue, thick](0.4, 0.95)--(1, 0.95);
+        \node[below, color=Blue] at (0.4, 0.055) {-0.055};
+        \node[below, color=Blue] at (0.7, 0.055) {0};
+        \node[below, color=Blue] at (1, 0.055) {0.055};
+      \end{scope}
+    \end{tikzpicture}
+
+  \end{columns}
   \begin{columns}
     \column{0.5\textwidth}
 
