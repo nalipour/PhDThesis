@@ -1479,7 +1479,7 @@ height=4em]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
  % \frametitle{Active-edge sensor without GR (20-NGR-50)}
- \begin{columns}[t]
+ \begin{columns}
     \column{0.23\textwidth}
     \centering
     \begin{tikzpicture}
@@ -1505,17 +1505,7 @@ height=4em]
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image) at
       (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_GRND_GR_2.png}};
-      \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \draw[Blue, thick](0.68, 0.05)--(0.68, 0.95);
-        \draw[Blue, thick, dashed](0.55, 0.05)--(0.55, 0.95);
-        \draw[Blue, thick](0.3, 0.05)--(0.3, 0.95);
-        \draw[Blue, thick](0.9, 0.05)--(0.9, 0.95);
-        \draw[Blue, thick](0.3, 0.05)--(0.9, 0.05);
-        \draw[Blue, thick](0.3, 0.95)--(0.9, 0.95);
-        \node[below, color=Blue] at (0.3, 0.055) {-0.055};
-        \node[below, color=Blue] at (0.55, 0.055) {0};
-        \node[below, color=Blue] at (0.9, 0.055) {0.055};
-      \end{scope}
+ 
     \end{tikzpicture}
 
     \column{0.27\textwidth}
@@ -1524,15 +1514,7 @@ height=4em]
       \node[anchor=south west,inner sep=0] (image) at
       (0,0){\includegraphics[width=0.8\textwidth]{{figures/50_edge_GRND_GR_2.png}}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
-        \draw[Blue, thick, dashed](0.55, 0.05)--(0.55, 0.95);
-        \draw[Blue, thick](0.25, 0.05)--(0.25, 0.95);
-        \draw[Blue, thick](0.9, 0.05)--(0.9, 0.95);
-        \draw[Blue, thick](0.25, 0.05)--(0.9, 0.05);
-        \draw[Blue, thick](0.25, 0.95)--(0.9, 0.95);
-        \node[below, color=Blue] at (0.25, 0.055) {-0.055};
-        \node[below, color=Blue] at (0.55, 0.055) {0};
-        \node[below, color=Blue] at (0.9, 0.055) {0.055};
+
       \end{scope}
     \end{tikzpicture}
 
@@ -1543,16 +1525,7 @@ height=4em]
       \node[anchor=south west,inner sep=0] (image) at
       (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_float_GR_3.png}};
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
-        % \node[above] at (0.8, 0.7) {\small{\SI{20}{\micro\meter}}};
-        \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
-        \draw[Blue, thick, dashed](0.7, 0.05)--(0.7, 0.95);
-        \draw[Blue, thick](0.4, 0.05)--(0.4, 0.95);
-        \draw[Blue, thick](1, 0.05)--(1, 0.95);
-        \draw[Blue, thick](0.4, 0.05)--(1, 0.05);
-        \draw[Blue, thick](0.4, 0.95)--(1, 0.95);
-        \node[below, color=Blue] at (0.4, 0.055) {-0.055};
-        \node[below, color=Blue] at (0.7, 0.055) {0};
-        \node[below, color=Blue] at (1, 0.055) {0.055};
+ 
       \end{scope}
     \end{tikzpicture}
 
@@ -1561,43 +1534,19 @@ height=4em]
     \column{0.5\textwidth}
 
     \begin{itemize}
-    \item Efficient up to the physical edge.
-    \item All the generated charge is collected by the pixel implant.
+    \item $50\,\micron$-thick sensor
+    \item No Guard ring
+    \item Edge-to-pixel distance: $20\,\micron$
     \end{itemize}
 
 
     \column{0.5\textwidth}
-
-    \begin{columns}
-      \column{0.5\textwidth}
-      \centering
-      \begin{tikzpicture}
-        \node[anchor=south west,inner sep=0] (image) at
-        (0,0){\includegraphics[width=\textwidth]{figures/Layout2Pixels2.png}};
-        \begin{scope}[x={(image.south east)},y={(image.north west)}]
-          % \node[above, color=Blue, rotate=90] at (0.1, 0.5)
-          % {\small{\textbf{20-NGR}}};
-          % \node[above, color=Blue, rotate=90] at (0.25, 0.5) {\small{(no GR)}};
-          % \node[above] at (0.8, 0.7) {\small{\SI{15}{\micro\meter}}};
-          \draw[Blue, thick](0.765, 0.05)--(0.765, 0.95);
-          \draw[Blue, thick, dashed](0.7, 0.05)--(0.7, 0.95);
-          \draw[Blue, thick](0.38, 0.05)--(0.38, 0.95);
-          \draw[Blue, thick](0.98, 0.05)--(0.98, 0.95);
-          \draw[Blue, thick](0.38, 0.05)--(0.98, 0.05);
-          \draw[Blue, thick](0.38, 0.95)--(0.98, 0.95);
-          \node[below, color=Blue] at (0.38, 0.055) {-0.055};
-          \node[below, color=Blue] at (0.7, 0.055) {0};
-          \node[below, color=Blue] at (0.98, 0.055) {0.055};
-        \end{scope}
-      \end{tikzpicture}
-      \column{0.5\textwidth}
-      \centering
-      \reflectbox{\includegraphics[width=\textwidth]{../figures/ActiveEdge/streamlines_20-NGR-50.png}}
-    \end{columns}
-
+    \centering 
+    \reflectbox{\includegraphics[width=0.5\textwidth]{../figures/ActiveEdge/streamlines_20-NGR-50.png}}
   \end{columns}
 
-  \begin{columns}[t]
+  \vspace{-0.3cm}
+  \begin{columns}
     \column{0.5\textwidth}
     
     \begin{itemize}
@@ -1624,46 +1573,71 @@ height=4em]
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Active-edge sensor with grounded GR (28-GNDGR-50)}
+  %\frametitle{Active-edge sensor with grounded GR (28-GNDGR-50)}
+
+
+  \begin{columns}
+    \column{0.23\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/Layout2Pixels2.png}};
+    \end{tikzpicture}
+
+
+    \column{0.27\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_GRND_GR_2.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \draw[Blue, thick](0.68, 0.05)--(0.68, 0.95);
+        \draw[Blue, thick, dashed](0.55, 0.05)--(0.55, 0.95);
+        \draw[Blue, thick](0.3, 0.05)--(0.3, 0.95);
+        \draw[Blue, thick](0.9, 0.05)--(0.9, 0.95);
+        \draw[Blue, thick](0.3, 0.05)--(0.9, 0.05);
+        \draw[Blue, thick](0.3, 0.95)--(0.9, 0.95);
+        \node[below, color=Blue] at (0.3, 0.055) {-0.055};
+        \node[below, color=Blue] at (0.55, 0.055) {0};
+        \node[below, color=Blue] at (0.9, 0.055) {0.055};
+      \end{scope}
+    \end{tikzpicture}
+
+    \column{0.27\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{{figures/50_edge_GRND_GR_2.png}}};
+    \end{tikzpicture}
+
+
+    \column{0.23\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_float_GR_3.png}};
+    \end{tikzpicture}
+
+  \end{columns}
 
   \begin{columns}
     \column{0.5\textwidth}
 
     \begin{itemize}
-    \item The efficiency drops in-between the pixels.
-    \item A large part of the charge is collected by the guard ring.
+    \item $50\,\micron$-thick sensor
+    \item Grounded Guard ring
+    \item Edge-to-pixel distance: $28\,\micron$
     \end{itemize}
 
 
+
     \column{0.5\textwidth}
-
-    \begin{columns}
-      \column{0.5\textwidth}
-      \centering
-      \begin{tikzpicture}
-        \node[anchor=south west,inner sep=0] (image) at
-        (0,0){\includegraphics[width=\textwidth]{figures/20_edge_GRND_GR_2.png}};
-        \begin{scope}[x={(image.south east)},y={(image.north west)}]
-          \draw[Blue, thick](0.68, 0.05)--(0.68, 0.95);
-          \draw[Blue, thick, dashed](0.55, 0.05)--(0.55, 0.95);
-          \draw[Blue, thick](0.3, 0.05)--(0.3, 0.95);
-          \draw[Blue, thick](0.9, 0.05)--(0.9, 0.95);
-          \draw[Blue, thick](0.3, 0.05)--(0.9, 0.05);
-          \draw[Blue, thick](0.3, 0.95)--(0.9, 0.95);
-          \node[below, color=Blue] at (0.3, 0.055) {-0.055};
-          \node[below, color=Blue] at (0.55, 0.055) {0};
-          \node[below, color=Blue] at (0.9, 0.055) {0.055};
-        \end{scope}
-      \end{tikzpicture}
-
-      \column{0.5\textwidth}
-      \centering
-      \reflectbox{\includegraphics[width=\textwidth]{../figures/ActiveEdge/streamlines_28-GNDGR-50.png}}
-    \end{columns}
-
+    \centering
+    \reflectbox{\includegraphics[width=0.5\textwidth]{../figures/ActiveEdge/streamlines_28-GNDGR-50.png}}
+ 
   \end{columns}
 
-  \begin{columns}[t]
+  \begin{columns}
     \column{0.5\textwidth}
     
     \begin{itemize}
@@ -1687,43 +1661,66 @@ height=4em]
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Active-edge sensor with grounded GR (55-GNDGR-50)}
+  %\frametitle{Active-edge sensor with grounded GR (55-GNDGR-50)}
+
+\begin{columns}
+    \column{0.23\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/Layout2Pixels2.png}};
+    \end{tikzpicture}
+
+
+    \column{0.27\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_GRND_GR_2.png}};
+
+    \end{tikzpicture}
+
+    \column{0.27\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{{figures/50_edge_GRND_GR_2.png}}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
+        \draw[Blue, thick, dashed](0.55, 0.05)--(0.55, 0.95);
+        \draw[Blue, thick](0.25, 0.05)--(0.25, 0.95);
+        \draw[Blue, thick](0.9, 0.05)--(0.9, 0.95);
+        \draw[Blue, thick](0.25, 0.05)--(0.9, 0.05);
+        \draw[Blue, thick](0.25, 0.95)--(0.9, 0.95);
+        \node[below, color=Blue] at (0.25, 0.055) {-0.055};
+        \node[below, color=Blue] at (0.55, 0.055) {0};
+        \node[below, color=Blue] at (0.9, 0.055) {0.055};
+      \end{scope}
+    \end{tikzpicture}
+
+
+    \column{0.23\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_float_GR_3.png}};
+    \end{tikzpicture}
+
+  \end{columns}
 
   \begin{columns}
     \column{0.5\textwidth}
 
     \begin{itemize}
-    \item The edge is not efficient.
-    \item Most of the charge at the edge is collected by the guard
-      ring.
+    \item $50\,\micron$-thick sensor
+    \item Grounded Guard ring
+    \item Edge-to-pixel distance: $55\,\micron$
     \end{itemize}
 
-
     \column{0.5\textwidth}
+    \centering
+    \reflectbox{\includegraphics[width=0.5\textwidth]{../figures/ActiveEdge/streamlines_55-GNDGR-50.png}}
 
-    \begin{columns}
-      \column{0.5\textwidth}
-      \centering
-      \begin{tikzpicture}
-        \node[anchor=south west,inner sep=0] (image) at
-        (0,0){\includegraphics[width=0.9\textwidth]{{figures/50_edge_GRND_GR_2.png}}};
-        \begin{scope}[x={(image.south east)},y={(image.north west)}]
-          \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
-          \draw[Blue, thick, dashed](0.55, 0.05)--(0.55, 0.95);
-          \draw[Blue, thick](0.25, 0.05)--(0.25, 0.95);
-          \draw[Blue, thick](0.9, 0.05)--(0.9, 0.95);
-          \draw[Blue, thick](0.25, 0.05)--(0.9, 0.05);
-          \draw[Blue, thick](0.25, 0.95)--(0.9, 0.95);
-          \node[below, color=Blue] at (0.25, 0.055) {-0.055};
-          \node[below, color=Blue] at (0.55, 0.055) {0};
-          \node[below, color=Blue] at (0.9, 0.055) {0.055};
-        \end{scope}
-      \end{tikzpicture}
-
-      \column{0.5\textwidth}
-      \centering
-      \reflectbox{\includegraphics[width=\textwidth]{../figures/ActiveEdge/streamlines_55-GNDGR-50.png}}
-    \end{columns}
   \end{columns}
 
   \begin{columns}[t]
@@ -1749,47 +1746,68 @@ height=4em]
 %         SLIDE             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Active-edge sensor with floating GR (23-FGR-50)}
+%  \frametitle{Active-edge sensor with floating GR (23-FGR-50)}
+
+ \begin{columns}[t]
+    \column{0.23\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/Layout2Pixels2.png}};
+    \end{tikzpicture}
+
+
+    \column{0.27\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_GRND_GR_2.png}};
+    \end{tikzpicture}
+
+    \column{0.27\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{{figures/50_edge_GRND_GR_2.png}}};
+    \end{tikzpicture}
+
+
+    \column{0.23\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at
+      (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_float_GR_3.png}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        % \node[above] at (0.8, 0.7) {\small{\SI{20}{\micro\meter}}};
+        \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
+        \draw[Blue, thick, dashed](0.7, 0.05)--(0.7, 0.95);
+        \draw[Blue, thick](0.4, 0.05)--(0.4, 0.95);
+        \draw[Blue, thick](1, 0.05)--(1, 0.95);
+        \draw[Blue, thick](0.4, 0.05)--(1, 0.05);
+        \draw[Blue, thick](0.4, 0.95)--(1, 0.95);
+        \node[below, color=Blue] at (0.4, 0.055) {-0.055};
+        \node[below, color=Blue] at (0.7, 0.055) {0};
+        \node[below, color=Blue] at (1, 0.055) {0.055};
+      \end{scope}
+    \end{tikzpicture}
+
+  \end{columns}
+
 
   \begin{columns}
     \column{0.5\textwidth}
 
     \begin{itemize}
-    \item Most suitable solution for thin sensors:
-      \begin{itemize}
-      \item High detection efficiency at the edge
-      \item Acceptable breakdown behaviour
-      \end{itemize}
-    % \item Efficient up to the physical edge.
-    % \item A loss of the charge near the edge is observed.
+    \item $50\,\micron$-thick sensor
+    \item Floating Guard ring
+    \item Edge-to-pixel distance: $23\,\micron$
     \end{itemize}
 
 
     \column{0.5\textwidth}
 
-    \begin{columns}
-      \column{0.5\textwidth}
-      \centering
-      \begin{tikzpicture}
-        \node[anchor=south west,inner sep=0] (image) at
-        (0,0){\includegraphics[width=0.8\textwidth]{figures/20_edge_float_GR_3.png}};
-        \begin{scope}[x={(image.south east)},y={(image.north west)}]
-          \draw[Blue, thick](0.8, 0.05)--(0.8, 0.95);
-          \draw[Blue, thick, dashed](0.7, 0.05)--(0.7, 0.95);
-          \draw[Blue, thick](0.4, 0.05)--(0.4, 0.95);
-          \draw[Blue, thick](1, 0.05)--(1, 0.95);
-          \draw[Blue, thick](0.4, 0.05)--(1, 0.05);
-          \draw[Blue, thick](0.4, 0.95)--(1, 0.95);
-          \node[below, color=Blue] at (0.4, 0.055) {-0.055};
-          \node[below, color=Blue] at (0.7, 0.055) {0};
-          \node[below, color=Blue] at (1, 0.055) {0.055};
-        \end{scope}
-      \end{tikzpicture}
-      \column{0.5\textwidth}
-      \centering
-      \reflectbox{\includegraphics[width=\textwidth]{../figures/ActiveEdge/streamlines_23-FGR-50.png}}
-    \end{columns}
-
+    \centering
+    \reflectbox{\includegraphics[width=0.5\textwidth]{../figures/ActiveEdge/streamlines_23-FGR-50.png}}
   \end{columns}
 
   \begin{columns}[t]
